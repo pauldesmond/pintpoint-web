@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PINtPOINT — Beer radar for people who care</title>
+  <meta name="description" content="Point your phone. Find your next great pint. PINtPOINT is a beer radar that shows every decent pub and brewery nearby — by direction and distance." />
+  <meta property="og:title" content="PINtPOINT" />
+  <meta property="og:description" content="Beer radar for people who care what's in their glass." />
+  <meta property="og:image" content="icon.png" />
+  <link rel="icon" href="favicon.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #4ECDC4;
+      --teal-dim: #2a9d8f;
+      --bg: #0a0e14;
+      --bg2: #0f1520;
+      --text: #e8f0fe;
+      --muted: #8899aa;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Radar pulse background */
+    .radar-bg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .radar-bg circle {
+      fill: none;
+      stroke: var(--teal);
+      opacity: 0.06;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .logo-wrap {
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .logo-wrap img {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      box-shadow: 0 0 40px rgba(78, 205, 196, 0.25);
+    }
+
+    .pulse-ring {
+      position: absolute;
+      inset: -16px;
+      border-radius: 50%;
+      border: 2px solid var(--teal);
+      opacity: 0;
+      animation: pulse 2.4s ease-out infinite;
+    }
+    .pulse-ring:nth-child(2) { animation-delay: 0.8s; }
+    .pulse-ring:nth-child(3) { animation-delay: 1.6s; }
+
+    @keyframes pulse {
+      0%   { transform: scale(0.8); opacity: 0.6; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 8vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    h1 span { color: var(--teal); }
+
+    .tagline {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-appstore {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--teal);
+      color: #0a0e14;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-appstore:hover {
+      background: #5ee8de;
+      transform: translateY(-2px);
+    }
+    .btn-appstore svg { width: 22px; height: 22px; }
+
+    .coming-soon {
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Features */
+    .features {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .feature {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(78,205,196,0.12);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+    .feature h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .feature p { font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    footer a { color: var(--teal); text-decoration: none; }
+
+    /* Instagram link */
+    .social {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-top: 4px;
+      transition: color 0.2s;
+    }
+    .social:hover { color: var(--teal); }
+  </style>
+</head>
+<body>
+
+  <!-- Radar background rings -->
+  <svg class="radar-bg" viewBox="0 0 800 800">
+    <circle cx="400" cy="400" r="100"/>
+    <circle cx="400" cy="400" r="180"/>
+    <circle cx="400" cy="400" r="260"/>
+    <circle cx="400" cy="400" r="340"/>
+    <circle cx="400" cy="400" r="380"/>
+  </svg>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="logo-wrap">
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring"></div>
+      <img src="icon.png" alt="PINtPOINT logo" />
+    </div>
+
+    <h1>Beer radar for people<br>who care what's in<br><span>their glass.</span></h1>
+
+    <p class="tagline">
+      Point your phone. The compass shows every pub and brewery nearby —
+      by direction and distance. No map. No clutter.
+      Just a radar that tells you where to drink.
+    </p>
+
+    <div class="cta-group">
+      <!-- Swap href to App Store link once live -->
+      <a href="#" class="btn-appstore">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download on the App Store
+      </a>
+      <span class="coming-soon">Coming very soon</span>
+      <a href="https://instagram.com/pint_point" class="social" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @pint_point
+      </a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="feature">
+      <div class="feature-icon">🧭</div>
+      <h3>Radar Compass</h3>
+      <p>Point and go. See nearby venues by direction and distance — no map, no clutter.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🍺</div>
+      <h3>Live Tap Lists</h3>
+      <p>See what's on tap before you arrive. Filter by 60+ beer styles.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🌍</div>
+      <h3>Community-Powered</h3>
+      <p>Every venue added is instantly available worldwide. You're not just finding pubs — you're building the map.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">👻</div>
+      <h3>Ghost Hunter</h3>
+      <p>The only pub you'll never reach. Explore a database of closed and demolished venues.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔔</div>
+      <h3>Beer Alerts</h3>
+      <p>Watch for a specific beer and get notified the moment it appears nearby.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">✦</div>
+      <h3>One-Time Purchase</h3>
+      <p>No subscription. No ads. Just the app.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 PINtPOINT &nbsp;·&nbsp; <a href="mailto:hello@pintpoint.co.uk">hello@pintpoint.co.uk</a> &nbsp;·&nbsp; <a href="https://instagram.com/pint_point" target="_blank">Instagram</a></p>
+  </footer>
+
+</body>
+</html>
