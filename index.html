@@ -108,10 +108,10 @@
 
     /* RADAR BACKGROUND */
     .radar-bg {
-      position: fixed;
-      top: 40%;
+      position: absolute;
+      top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -55%);
       width: 900px;
       height: 900px;
       pointer-events: none;
@@ -137,8 +137,8 @@
       100% { transform: scale(2.0); opacity: 0; }
     }
 
-    /* Hero needs relative z-index to sit above radar */
-    .hero { position: relative; z-index: 1; }
+    /* Hero contains the radar */
+    .hero { position: relative; z-index: 1; overflow: hidden; }
 
     @media (max-width: 600px) {
       nav { padding: 16px 20px; }
@@ -158,6 +158,7 @@
     </div>
   </nav>
 
+  <section class="hero">
   <!-- Radar background rings -->
   <svg class="radar-bg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
     <circle cx="450" cy="450" r="100"/>
@@ -166,8 +167,6 @@
     <circle cx="450" cy="450" r="370"/>
     <circle cx="450" cy="450" r="430"/>
   </svg>
-
-  <section class="hero">
     <div class="logo-wrap">
       <div class="pulse-ring"></div>
       <div class="pulse-ring"></div>
