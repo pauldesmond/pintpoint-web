@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PINtPOINT – Screenshots</title>
+  <meta name="description" content="See PINtPOINT in action — radar compass, globe view, Six Pack, venue cards, pub crawls, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d1117; --teal: #00D4AA; --text: #ffffff;
+      --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08);
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--teal); }
+    .logo a { color: inherit; text-decoration: none; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    nav a:hover { color: var(--text); }
+    nav a.active { color: var(--teal); }
+
+    .page-header {
+      text-align: center;
+      padding: 60px 24px 20px;
+    }
+    .page-header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+    .page-header h1 em { color: var(--teal); font-style: normal; }
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .gallery {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      justify-items: center;
+    }
+
+    .screenshot {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s, transform 0.3s;
+      max-width: 320px;
+      width: 100%;
+    }
+    .screenshot:hover {
+      border-color: rgba(0,212,170,0.3);
+      transform: translateY(-4px);
+    }
+    .screenshot img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .screenshot .caption {
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .screenshot .caption h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      margin-bottom: 4px;
+    }
+    .screenshot .caption p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .cta-block {
+      text-align: center;
+      padding: 0 24px 80px;
+    }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 24px 12px 60px; }
+      .screenshot { max-width: 100%; }
+      .screenshot .caption { padding: 10px 10px; }
+      .screenshot .caption h3 { font-size: 0.85rem; }
+      .screenshot .caption p { font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo"><a href="index.html">PINt<span>POINT</span></a></div>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="features.html">Features</a>
+      <a href="screenshots.html" class="active">Screenshots</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <h1>See it <em>in action.</em></h1>
+    <p>Eight screens. One mission. Find your perfect pint.</p>
+  </section>
+
+  <section class="gallery">
+    <div class="screenshot">
+      <img src="screenshots/1.radar.png" alt="Radar compass view" />
+      <div class="caption">
+        <h3>Radar</h3>
+        <p>Point your phone. See every pub nearby as a blip on the radar.</p>
+      </div>
+    </div>
+    <div class="screenshot">
+      <img src="screenshots/2.world.png" alt="Globe view" />
+      <div class="caption">
+        <h3>PINtPOINT World</h3>
+        <p>Watch the globe grow in real time as venues are added worldwide.</p>
+      </div>
+    </div>
+    <div class="screenshot">
+      <img src="screenshots/3.six.png" alt="Six Pack continent view" />
+      <div class="caption">
+        <h3>The Six Pack</h3>
+        <p>Explore venue density across six continents.</p>
+      </div>
+    </div>
+    <div class="screenshot">
+      <img src="screenshots/4.venues.png" alt="Venue list" />
+      <div class="caption">
+        <h3>Venues</h3>
+        <p>Browse, search, and filter by beer style — 60+ styles supported.</p>
+      </div>
+    </div>
+    <div class="screenshot">
+      <img src="screenshots/5.crawl.png" alt="Pub crawl planner" />
+      <div class="caption">
+        <h3>Create-a-Crawl</h3>
+        <p>Build a custom pub crawl with route optimisation. Share via QR.</p>
+      </div>
+    </div>
+    <div class="screenshot">
+      <img src="screenshots/6.curate.png" alt="Curate your list" />
+      <div class="caption">
+        <h3>Curate</h3>
+        <p>Rate beers, favourite venues, and build your drinking history.</p>
+      </div>
+    </div>
+    <div class="screenshot">
+      <img src="screenshots/7.last.png" alt="Venue detail" />
+      <div class="caption">
+        <h3>Venue Detail</h3>
+        <p>See what's on tap, FPI scores, photos, and directions.</p>
+      </div>
+    </div>
+    <div class="screenshot">
+      <img src="screenshots/8.lost.png" alt="Ghost pub" />
+      <div class="caption">
+        <h3>Ghost Hunter</h3>
+        <p>The only pub you'll never reach. Explore closed venues across the UK.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-block">
+    <a href="https://apps.apple.com/app/pintpoint/id6759681209" class="btn-primary">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on the App Store
+    </a>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="ghost.html">Ghost Mode</a>
+      <a href="fpi.html">Troubled Pubs</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+
+</body>
+</html>
