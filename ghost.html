@@ -3,20 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PINtPOINT — Ghost Hunter</title>
-  <meta name="description" content="PINtPOINT doesn't just show what's still open. It reveals the pubs that vanished, were demolished, or quietly slipped away. Turn on Ghost Hunter and London fills with purple blips from another era." />
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="icon.png" />
-  <link rel="canonical" href="https://pintpoint.co.uk/ghost.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://pintpoint.co.uk/ghost.html" />
-  <meta property="og:title" content="PINtPOINT — Ghost Hunter" />
-  <meta property="og:description" content="PINtPOINT reveals the pubs that vanished, were demolished, or quietly slipped away." />
-  <meta property="og:image" content="https://pintpoint.co.uk/icon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="PINtPOINT — Ghost Hunter" />
-  <meta name="twitter:description" content="500+ closed pubs mapped with historical photos." />
-  <meta name="twitter:image" content="https://pintpoint.co.uk/icon.png" />
+  <title>PINtPOINT — Ghost Mode</title>
+  <meta name="description" content="Every street corner was once a pub. Ghost Mode maps 500+ closed London pubs — with historical photos, former names, and what replaced them." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
@@ -42,28 +30,21 @@
     .eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 16px; }
     h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 900; line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 16px; }
     h1 em { color: var(--purple); font-style: normal; }
-    .subtitle { font-size: 1.1rem; color: #aaa; max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+    .subtitle { font-size: 1.1rem; color: #aaa; max-width: 540px; margin: 0 auto 48px; line-height: 1.7; }
 
-    /* PUB CARDS — FLIP */
-    .pubs-section { max-width: 960px; margin: 0 auto; padding: 60px 24px; }
+    /* THEN & NOW */
+    .then-now-section { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
     .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 20px; text-align: center; }
-    .pub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 16px; }
-    .flip-container { perspective: 1000px; aspect-ratio: 4/3; cursor: pointer; }
-    .flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s ease; transform-style: preserve-3d; border-radius: 16px; }
-    .flip-container.flipped .flip-inner { transform: rotateY(180deg); }
-    .flip-front, .flip-back { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 16px; overflow: hidden; }
-    .flip-back { transform: rotateY(180deg); }
-    .photo-card { position: relative; width: 100%; height: 100%; background: #1a1a2e; }
+    .photo-pair { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+    .photo-card { position: relative; border-radius: 16px; overflow: hidden; width: 340px; aspect-ratio: 4/3; background: #1a1a2e; flex-shrink: 0; }
     .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .photo-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(155,89,182,0.3) 0%, transparent 35%, rgba(13,17,23,0.88) 100%); }
-    .photo-overlay.now { background: linear-gradient(180deg, rgba(100,100,100,0.3) 0%, transparent 35%, rgba(13,17,23,0.88) 100%); }
-    .photo-badge { position: absolute; top: 12px; right: 12px; background: rgba(155,89,182,0.85); border-radius: 10px; padding: 4px 10px; font-size: 11px; font-weight: 700; color: #fff; z-index: 2; }
-    .photo-badge.now { background: rgba(100,100,100,0.85); }
+    .photo-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(155,89,182,0.35) 0%, transparent 40%, rgba(13,17,23,0.85) 100%); }
+    .photo-badge { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.75); border-radius: 10px; padding: 4px 10px; font-size: 11px; font-weight: 700; color: #fff; }
     .photo-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; }
-    .photo-caption h3 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-    .photo-caption p { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.4; }
-    .photo-credit { text-align: center; color: rgba(255,255,255,0.35); font-size: 11px; margin-top: 12px; }
-    .tap-hint { text-align: center; color: var(--purple); font-size: 13px; margin-top: 8px; margin-bottom: 0; }
+    .photo-caption h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .photo-caption p { font-size: 11px; color: rgba(255,255,255,0.65); }
+    .photo-credit { position: absolute; bottom: 8px; right: 12px; font-size: 10px; color: rgba(255,255,255,0.5); }
+    .tap-hint { text-align: center; color: var(--purple); font-size: 13px; margin-bottom: 48px; }
 
     /* HOW IT WORKS */
     hr.divider { border: none; border-top: 1px solid #1e1e2e; margin: 0; }
@@ -102,7 +83,7 @@
 
     @media (max-width: 600px) {
       nav { padding: 16px 20px; }
-      .pub-grid { grid-template-columns: 1fr; }
+      .photo-card { width: 100%; max-width: 360px; }
     }
   </style>
 </head>
@@ -120,99 +101,35 @@
 
   <div class="hero">
     <div class="ghost-emoji">👻</div>
-    <p class="eyebrow">Ghost Hunter</p>
-    <h1>A pub map with<br/>a <em>memory.</em></h1>
-    <p class="subtitle">PINtPOINT doesn't just show what's still open. It also reveals the pubs that vanished, were demolished, or quietly slipped away. Turn on Ghost Hunter and London fills with purple blips from another era.</p>
+    <p class="eyebrow">Secret Feature</p>
+    <h1>Every street corner<br/>was once a <em>pub.</em></h1>
+    <p class="subtitle">Switch on Ghost Mode and your radar transforms. Hundreds of closed and demolished London pubs appear as purple blips. Tap any ghost to see what it once looked like — and what it became.</p>
   </div>
 
-  <div class="pubs-section">
-    <p class="section-label">Lost pubs of London</p>
-    <div class="pub-grid">
-
-      <div class="flip-container" onclick="this.classList.toggle('flipped')">
-        <div class="flip-inner">
-          <div class="flip-front">
-            <div class="photo-card">
-              <img src="img/ghost/the-underwriter.jpg" alt="The Underwriter — Then">
-              <div class="photo-overlay"></div>
-              <div class="photo-badge">📸 Then</div>
-              <div class="photo-caption">
-                <h3>The Underwriter</h3>
-                <p>City of London — a proper City boozer</p>
-              </div>
-            </div>
-          </div>
-          <div class="flip-back">
-            <div class="photo-card">
-              <img src="img/ghost/the-underwriter-now.jpg" alt="The Underwriter — Now">
-              <div class="photo-overlay now"></div>
-              <div class="photo-badge now">📍 Now</div>
-              <div class="photo-caption">
-                <h3>The Underwriter</h3>
-                <p>Now a Costa. Of course it is.</p>
-              </div>
-            </div>
-          </div>
+  <div class="then-now-section">
+    <p class="section-label">Then &amp; Now — tap the photo to flip in the app</p>
+    <div class="photo-pair">
+      <div class="photo-card">
+        <img src="https://maps.googleapis.com/maps/api/streetview?size=800x450&location=51.5116,-0.0873&fov=90&pitch=10&key=AIzaSyBOxOXtUXQ3wE-eLK5h1etO5icTR9HokRg" alt="Ship Tavern today" onerror="this.src='https://via.placeholder.com/800x450/0d1117/333?text=Now'">
+        <div class="photo-overlay"></div>
+        <div class="photo-badge">📷 Now</div>
+        <div class="photo-caption">
+          <h3>Ship Tavern</h3>
+          <p>Gracechurch Street, EC3 · Closed 2011</p>
         </div>
       </div>
-
-      <div class="flip-container" onclick="this.classList.toggle('flipped')">
-        <div class="flip-inner">
-          <div class="flip-front">
-            <div class="photo-card">
-              <img src="img/ghost/cantaloupe.jpg" alt="Cantaloupe — Then">
-              <div class="photo-overlay"></div>
-              <div class="photo-badge">📸 Then</div>
-              <div class="photo-caption">
-                <h3>Cantaloupe</h3>
-                <p>Shoreditch — that red facade was unmistakable</p>
-              </div>
-            </div>
-          </div>
-          <div class="flip-back">
-            <div class="photo-card">
-              <img src="img/ghost/cantaloupe-now.jpg" alt="Cantaloupe — Now">
-              <div class="photo-overlay now"></div>
-              <div class="photo-badge now">📍 Now</div>
-              <div class="photo-caption">
-                <h3>Cantaloupe</h3>
-                <p>Under scaffolding. The red facade is being erased.</p>
-              </div>
-            </div>
-          </div>
+      <div class="photo-card">
+        <img src="https://live.staticflickr.com/2557/3781448104_a1e03157c8_b.jpg" alt="Ship Tavern historical">
+        <div class="photo-overlay"></div>
+        <div class="photo-badge">📸 Then</div>
+        <div class="photo-caption">
+          <h3>Ship Tavern</h3>
+          <p>As it was — a proper City boozer</p>
         </div>
+        <div class="photo-credit">📷 Ewan Munro / Flickr</div>
       </div>
-
-      <div class="flip-container" onclick="this.classList.toggle('flipped')">
-        <div class="flip-inner">
-          <div class="flip-front">
-            <div class="photo-card">
-              <img src="img/ghost/the-crispin.jpg" alt="The Crispin — Then">
-              <div class="photo-overlay"></div>
-              <div class="photo-badge">📸 Then</div>
-              <div class="photo-caption">
-                <h3>The Crispin</h3>
-                <p>City of London — suits, pints, and a pool bar downstairs</p>
-              </div>
-            </div>
-          </div>
-          <div class="flip-back">
-            <div class="photo-card">
-              <img src="img/ghost/the-crispin-now.jpg" alt="The Crispin — Now">
-              <div class="photo-overlay now"></div>
-              <div class="photo-badge now">📍 Now</div>
-              <div class="photo-caption">
-                <h3>The Crispin</h3>
-                <p>Broadgate redeveloped. The pool table didn't survive.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
-    <p class="photo-credit">Photos: Ewan Munro · Street View: Google</p>
-    <p class="tap-hint">↑ Click a photo to flip between then and now</p>
+    <p class="tap-hint">↑ In the app, tap the hero image to flip between then and now</p>
   </div>
 
   <hr class="divider">
@@ -221,19 +138,24 @@
     <p class="section-label" style="text-align:left;margin-bottom:20px">How it works</p>
     <div class="info-grid">
       <div class="info-card">
-        <div class="info-icon">🟣</div>
-        <h3>Purple Blips</h3>
-        <p>Ghost pubs appear as solid purple blips on the radar. 363 with historical photos. 71 demolished entirely. Toggle in Refine Results.</p>
+        <div class="info-icon">🗺️</div>
+        <h3>Live Radar</h3>
+        <p>Find open craft beer pubs near you, sorted by distance and quality. Tap any blip for a live compass to guide you there.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">👻</div>
+        <h3>Ghost Mode</h3>
+        <p>Switch to see 500+ former pubs — with history, former names, and what replaced them. Purple blips on your radar.</p>
       </div>
       <div class="info-card">
         <div class="info-icon">📸</div>
         <h3>Then &amp; Now</h3>
-        <p>Historical photos alongside current Street View. Tap the venue image to flip between past and present — the same corner, decades apart.</p>
+        <p>Historical photos alongside current Street View. Tap to flip between past and present. Full credit to the photographers.</p>
       </div>
       <div class="info-card">
-        <div class="info-icon">💀</div>
-        <h3>Demolished Mode</h3>
-        <p>Filter to show only the pubs that no longer exist at all — not converted, not closed, just gone. A map of what London lost.</p>
+        <div class="info-icon">🔥</div>
+        <h3>Troubled Mode</h3>
+        <p>Orange blips for at-risk pubs. Real pressure data. Make your next pint count — drink local before it's too late.</p>
       </div>
     </div>
   </div>
@@ -273,7 +195,7 @@
 
   <div class="cta-section">
     <h2>Find the ghosts in your city.</h2>
-    <p>Ghost Hunter is included in PINtPOINT. 7-day free trial, then £3.99/year.</p>
+    <p>Ghost Mode is included in PINtPOINT. 7-day free trial, then £4.99 one-time unlock.</p>
     <a href="https://apps.apple.com/app/pintpoint/id6759681209" class="btn-primary">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       Download PINtPOINT

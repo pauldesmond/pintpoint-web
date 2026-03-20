@@ -3,20 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PINtPOINT — Beer radar for people who care what's in their glass</title>
-  <meta name="description" content="Point your phone. The compass shows every pub and brewery nearby — by direction and distance. See what's on tap before you arrive. No map. No clutter." />
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="icon.png" />
-  <link rel="canonical" href="https://pintpoint.co.uk/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://pintpoint.co.uk/" />
-  <meta property="og:title" content="PINtPOINT — Beer radar for people who care what's in their glass" />
-  <meta property="og:description" content="Point your phone. The compass shows every pub and brewery nearby — by direction and distance. See what's on tap before you arrive." />
-  <meta property="og:image" content="https://pintpoint.co.uk/icon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="PINtPOINT — Beer radar for people who care" />
-  <meta name="twitter:description" content="Point your phone. Find great beer nearby. See what's on tap before you arrive." />
-  <meta name="twitter:image" content="https://pintpoint.co.uk/icon.png" />
+  <title>PINtPOINT – Find Your Perfect Pint</title>
+  <meta name="description" content="Stop bimbling. Start drinking better. PINtPOINT is the smarter way to find great beer — live radar, tap lists, venue discovery, and pub crawl planner." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
@@ -45,9 +33,6 @@
     .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-1px); }
     .price-note { margin-top: 20px; font-size: 0.85rem; color: var(--muted); }
     .price-note strong { color: var(--teal); }
-    .trust-note { margin-top: 12px; font-size: 0.78rem; color: #555; letter-spacing: 0.3px; }
-    .trust-note a { color: #555; text-decoration: underline; }
-    .trust-note a:hover { color: var(--muted); }
 
     .qr-block { margin-top: 36px; text-align: center; }
     .qr-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
@@ -124,7 +109,7 @@
     /* RADAR BACKGROUND */
     .radar-bg {
       position: fixed;
-      top: 50%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 900px;
@@ -152,7 +137,7 @@
       100% { transform: scale(2.0); opacity: 0; }
     }
 
-    /* Hero sits above radar */
+    /* Hero needs relative z-index to sit above radar */
     .hero { position: relative; z-index: 1; }
 
     @media (max-width: 600px) {
@@ -174,7 +159,6 @@
     </div>
   </nav>
 
-  <section class="hero">
   <!-- Radar background rings -->
   <svg class="radar-bg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
     <circle cx="450" cy="450" r="100"/>
@@ -183,66 +167,77 @@
     <circle cx="450" cy="450" r="370"/>
     <circle cx="450" cy="450" r="430"/>
   </svg>
+
+  <section class="hero">
     <div class="logo-wrap">
       <div class="pulse-ring"></div>
       <div class="pulse-ring"></div>
       <div class="pulse-ring"></div>
-      <img src="./icon.png" alt="PINtPOINT" />
+      <img src="icon.png" alt="PINtPOINT" />
     </div>
-    <h1>Stop bimbling.<br/><em>Start drinking smarter.</em></h1>
-    <p class="tagline">Find the right pub before the first pint.</p>
+    <div class="badge">🍺 Available Now</div>
+    <h1>Stop bimbling.<br/><em>Start drinking better.</em></h1>
+    <p class="tagline">Find great beer near you. Plan the perfect pub crawl.<br/>Know what's on tap before you walk through the door.</p>
     <div class="cta-group">
       <a href="https://apps.apple.com/app/pintpoint/id6759681209" class="btn-primary">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Download on the App Store
       </a>
+      <a href="screenshots.html" class="btn-secondary">📱 See the App</a>
       <a href="features.html" class="btn-secondary">See All Features</a>
     </div>
-    <p class="price-note">7-day free trial · <strong>£3.99</strong>/year · Cancel anytime · No ads</p>
-    <p class="trust-note"></p>
+    <p class="price-note">7-day free trial · then <strong>£3.99/year</strong> · No ads</p>
   </section>
 
   <section class="features">
     <div class="feature-card">
       <div class="feature-icon">📡</div>
-      <h3>Live Radar</h3>
-      <p>See nearby venues as blips on a live radar. Tap one and PINtPOINT flips into a compass that points you straight there.</p>
+      <h3>Radar That Points the Way</h3>
+      <p>A live radar sweeps your surroundings and plots nearby venues as blips. Tap any blip and it transforms into a live compass pointing you directly at your chosen pub. Pinch to zoom, 2 fingers to pan.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🍺</div>
-      <h3>What's On Tap</h3>
-      <p>Check tap lists before you walk through the door, so you're not gambling your evening on a chalkboard and a warm hope.</p>
+      <div class="feature-icon">🔍</div>
+      <h3>Find Your Kind of Pub</h3>
+      <p>Filter by beer style — West Coast IPA, Bitter, Hazy Pale — so every result is already relevant before you tap. Search by name and the closest match appears first.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✨</div>
+      <h3>Discover Hidden Gems</h3>
+      <p>Surface venues you've never visited, automatically. Browse rich venue cards with photos, ratings, and open/closed status. Add anywhere to your PINtPOINT list with a single tap.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🗺️</div>
       <h3>Create-a-Crawl</h3>
-      <p>Build a custom pub crawl in seconds. Set the distance, number of stops, and route shape, then share it with your group.</p>
+      <p>Bimble no more. Build a custom pub crawl from venues around you in seconds. Set your stops, max gap, and total distance. Share the route with your group via QR code. Works anywhere in the world.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔔</div>
-      <h3>Beer Alerts</h3>
-      <p>Watch specific beers and get alerted when they appear at your saved venues. Perfect for chasing seasonal releases and favourites.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔍</div>
-      <h3>Browse, Search & Filter</h3>
-      <p>Fully searchable venue list with photos and ratings. Filter by beer style — ie West Coast — so every result is already relevant before you tap.</p>
+      <h3>Watchlist Alerts</h3>
+      <p>Add a beer to your Watchlist and PINtPOINT notifies you when it's being poured nearby. Perfect for chasing that seasonal release or rare import.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🃏</div>
       <h3>Tap Trumps</h3>
-      <p>Share any venue as a collectible card with stats, top beers, and a photo. Every share is a mini-advert for the pub.</p>
+      <p>Turn any pub into a shareable card. Stats, top beers, photo. Send it to the group chat before you even arrive.</p>
     </div>
   </section>
 
   <!-- GHOST MODE SECTION -->
   <section class="ghost-section">
-    <p class="ghost-eyebrow">Ghost Hunter</p>
-    <h2 class="ghost-title">A pub map with a <span class="ghost-em">memory.</span></h2>
-    <p class="ghost-sub">PINtPOINT doesn't just show what's still open. It also reveals the pubs that vanished, were demolished, or quietly slipped away. Turn on Ghost Hunter and London fills with purple blips from another era.</p>
+    <p class="ghost-eyebrow">Ghost Mode</p>
+    <h2 class="ghost-title">Every street corner<br/>was once a <span class="ghost-em">pub.</span></h2>
+    <p class="ghost-sub">Switch on Ghost Mode and your radar transforms — hundreds of closed and demolished London pubs appear as purple blips across the city. Tap any ghost to see what it once looked like.</p>
 
     <div class="photo-pair">
-
+      <div class="photo-card">
+        <img src="https://maps.googleapis.com/maps/api/streetview?size=800x450&location=51.5116,-0.0873&fov=90&pitch=10&key=AIzaSyBOxOXtUXQ3wE-eLK5h1etO5icTR9HokRg" alt="Ship Tavern now" onerror="this.style.display='none'">
+        <div class="photo-overlay"></div>
+        <div class="photo-badge">📷 Now</div>
+        <div class="photo-caption">
+          <h4>Ship Tavern</h4>
+          <p>Gracechurch Street, EC3 · Closed 2011</p>
+        </div>
+      </div>
       <div class="photo-card">
         <img src="https://live.staticflickr.com/2557/3781448104_a1e03157c8_b.jpg" alt="Ship Tavern then">
         <div class="photo-overlay"></div>
@@ -261,13 +256,13 @@
       <div class="ghost-stat"><div class="num">363</div><div class="lbl">With historical photos</div></div>
       <div class="ghost-stat"><div class="num">71</div><div class="lbl">Demolished forever</div></div>
     </div>
-    <a href="ghost.html" class="btn-ghost">👻 Full Ghost Hunter story →</a>
+    <a href="features.html#ghost" class="btn-ghost">👻 See Ghost Mode in Features →</a>
   </section>
 
   <!-- TROUBLED PUBS / FPI SECTION -->
   <section class="fpi-section">
     <p class="fpi-eyebrow">🕯️ Troubled Pub Mode</p>
-    <h2 class="fpi-title">Drink here <span class="fpi-em">before it disappears.</span></h2>
+    <h2 class="fpi-title">Drink here <span class="fpi-em">before it closes.</span></h2>
     <p class="fpi-sub">PINtPOINT uses FPI data from <a href="https://ismypubfucked.com" style="color:#F5A623;text-decoration:none" target="_blank">ismypubfucked.com</a> to highlight venues under financial pressure — amber blips that pulse harder the worse the outlook.</p>
 
     <div class="fpi-cards">
@@ -321,13 +316,14 @@
   </section>
 
   <div class="divider">
-    <p><em>£3.99/year.</em> Less than half a London pint.<br/>Cancel anytime.</p>
+    <p><em>£3.99/year.</em> Less than half a London pint.<br/>Try free for 7 days.</p>
   </div>
 
   <footer>
     <div class="links">
       <a href="features.html">Features</a>
-      <a href="ghost.html">Ghost Hunter</a>
+      <a href="screenshots.html">Screenshots</a>
+      <a href="ghost.html">Ghost Mode</a>
       <a href="fpi.html">Troubled Pubs</a>
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
