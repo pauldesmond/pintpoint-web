@@ -3,20 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PINtPOINT — Beer radar for people who care what's in their glass</title>
-  <meta name="description" content="Point your phone. The compass shows every pub and brewery nearby — by direction and distance. See what's on tap before you arrive. No map. No clutter." />
+  <title>PINtPOINT — Know which pub to walk to.</title>
+  <meta name="description" content="PINtPOINT shows you the best nearby venues, what's on tap, and where to head next. No bimbling. No guesswork. Just better pints." />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="canonical" href="https://pintpoint.co.uk/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pintpoint.co.uk/" />
-  <meta property="og:title" content="PINtPOINT — Beer radar for people who care what's in their glass" />
-  <meta property="og:description" content="Point your phone. The compass shows every pub and brewery nearby — by direction and distance. See what's on tap before you arrive." />
+  <meta property="og:title" content="PINtPOINT — Know which pub to walk to." />
+  <meta property="og:description" content="PINtPOINT shows you the best nearby venues, what's on tap, and where to head next. No bimbling. No guesswork. Just better pints." />
   <meta property="og:image" content="https://pintpoint.co.uk/icon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="PINtPOINT — Beer radar for people who care" />
-  <meta name="twitter:description" content="Point your phone. Find great beer nearby. See what's on tap before you arrive." />
-  <meta name="twitter:image" content="https://pintpoint.co.uk/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
@@ -33,11 +29,11 @@
     nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
     nav a:hover { color: var(--text); }
 
-    .hero { text-align: center; padding: 100px 24px 80px; max-width: 800px; margin: 0 auto; }
+    .hero { text-align: center; padding: 100px 24px 80px; max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
     .badge { display: inline-block; background: rgba(0,212,170,0.12); color: var(--teal); border: 1px solid rgba(0,212,170,0.3); border-radius: 20px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 28px; }
     h1 { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.05; letter-spacing: -2px; margin-bottom: 12px; }
     h1 em { color: var(--teal); font-style: normal; }
-    .tagline { font-size: clamp(1.1rem, 3vw, 1.5rem); color: var(--muted); margin-bottom: 48px; font-weight: 400; }
+    .tagline { font-size: clamp(1.1rem, 3vw, 1.5rem); color: var(--muted); margin-bottom: 48px; font-weight: 400; line-height: 1.6; }
     .cta-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
@@ -45,15 +41,24 @@
     .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-1px); }
     .price-note { margin-top: 20px; font-size: 0.85rem; color: var(--muted); }
     .price-note strong { color: var(--teal); }
-    .trust-note { margin-top: 12px; font-size: 0.78rem; color: #555; letter-spacing: 0.3px; }
-    .trust-note a { color: #555; text-decoration: underline; }
-    .trust-note a:hover { color: var(--muted); }
 
-    .qr-block { margin-top: 36px; text-align: center; }
-    .qr-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-    .qr-block img { width: 150px; height: 150px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.1); }
+    /* RADAR BACKGROUND */
+    .radar-bg { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 900px; height: 900px; pointer-events: none; z-index: 0; }
+    .radar-bg circle { fill: none; stroke: var(--teal); opacity: 0.05; }
 
-    .features { max-width: 1100px; margin: 0 auto; padding: 80px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    /* PULSE RINGS */
+    .logo-wrap { position: relative; display: inline-block; margin-bottom: 32px; }
+    .logo-wrap img { width: 110px; height: 110px; border-radius: 24px; box-shadow: 0 0 40px rgba(0,212,170,0.2); display: block; }
+    .pulse-ring { position: absolute; inset: -14px; border-radius: 50%; border: 2px solid var(--teal); opacity: 0; animation: pulse 2.6s ease-out infinite; }
+    .pulse-ring:nth-child(2) { animation-delay: 0.87s; }
+    .pulse-ring:nth-child(3) { animation-delay: 1.74s; }
+    @keyframes pulse { 0% { transform: scale(0.75); opacity: 0.55; } 100% { transform: scale(2.0); opacity: 0; } }
+
+    /* WHY IT WINS */
+    .why-section { max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
+    .section-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; text-align: center; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 48px; text-align: center; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
     .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 36px 32px; transition: border-color 0.2s; }
     .feature-card:hover { border-color: rgba(0,212,170,0.3); }
     .feature-icon { font-size: 2.2rem; margin-bottom: 16px; }
@@ -61,25 +66,11 @@
     .feature-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
 
     /* GHOST SECTION */
-    .ghost-section {
-      background: linear-gradient(180deg, #0d1117 0%, #1a0a2e 40%, #1a0a2e 60%, #0d1117 100%);
-      border-top: 1px solid #2a1a4a; border-bottom: 1px solid #2a1a4a;
-      padding: 80px 24px; text-align: center;
-    }
+    .ghost-section { background: linear-gradient(180deg, #0d1117 0%, #1a0a2e 40%, #1a0a2e 60%, #0d1117 100%); border-top: 1px solid #2a1a4a; border-bottom: 1px solid #2a1a4a; padding: 80px 24px; text-align: center; }
     .ghost-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #9b59b6; margin-bottom: 16px; }
     .ghost-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
     .ghost-title .ghost-em { color: #9b59b6; }
     .ghost-sub { font-size: 1.05rem; color: #aaa; max-width: 560px; margin: 0 auto 48px; line-height: 1.7; }
-    .photo-pair { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; max-width: 700px; margin: 0 auto 16px; }
-    .photo-card { position: relative; border-radius: 16px; overflow: hidden; width: 320px; aspect-ratio: 4/3; background: #1a1a2e; flex-shrink: 0; }
-    .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .photo-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(155,89,182,0.3) 0%, transparent 40%, rgba(13,17,23,0.85) 100%); }
-    .photo-badge { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.75); border-radius: 10px; padding: 4px 10px; font-size: 11px; font-weight: 700; color: #fff; }
-    .photo-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; }
-    .photo-caption h4 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-    .photo-caption p { font-size: 11px; color: rgba(255,255,255,0.65); }
-    .photo-credit { position: absolute; bottom: 8px; right: 12px; font-size: 10px; color: rgba(255,255,255,0.5); }
-    .ghost-hint { font-size: 0.85rem; color: #9b59b6; margin-bottom: 40px; }
     .ghost-stats { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
     .ghost-stat .num { font-size: 2.2rem; font-weight: 900; color: #9b59b6; line-height: 1; }
     .ghost-stat .lbl { font-size: 0.8rem; color: #888; margin-top: 4px; }
@@ -87,11 +78,7 @@
     .btn-ghost:hover { background: rgba(155,89,182,0.25); }
 
     /* FPI SECTION */
-    .fpi-section {
-      background: linear-gradient(180deg, #0d1117 0%, #1a1000 40%, #1a1000 60%, #0d1117 100%);
-      border-top: 1px solid #3a2a00; border-bottom: 1px solid #3a2a00;
-      padding: 80px 24px; text-align: center;
-    }
+    .fpi-section { background: linear-gradient(180deg, #0d1117 0%, #1a1000 40%, #1a1000 60%, #0d1117 100%); border-top: 1px solid #3a2a00; border-bottom: 1px solid #3a2a00; padding: 80px 24px; text-align: center; }
     .fpi-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #F5A623; margin-bottom: 16px; }
     .fpi-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
     .fpi-title .fpi-em { color: #F5A623; }
@@ -112,58 +99,32 @@
     .btn-amber { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,166,35,0.15); color: #F5A623; font-weight: 600; font-size: 0.95rem; padding: 14px 28px; border-radius: 12px; text-decoration: none; border: 1px solid rgba(245,166,35,0.4); }
     .btn-amber:hover { background: rgba(245,166,35,0.25); }
 
-    .divider { text-align: center; padding: 60px 24px; border-top: 1px solid var(--border); }
-    .divider p { font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.5px; color: var(--muted); }
-    .divider p em { color: var(--text); font-style: normal; }
+    /* FINAL CTA */
+    .final-cta { text-align: center; padding: 100px 24px; max-width: 700px; margin: 0 auto; }
+    .final-cta h2 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
+    .final-cta h2 em { color: var(--teal); font-style: normal; }
+    .final-cta p { font-size: 1.1rem; color: var(--muted); margin-bottom: 40px; line-height: 1.6; }
 
     footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
 
-    /* RADAR BACKGROUND */
-    .radar-bg {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 900px;
-      height: 900px;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .radar-bg circle { fill: none; stroke: var(--teal); opacity: 0.05; }
-
-    /* PULSE RINGS around logo */
-    .logo-wrap { position: relative; display: inline-block; margin-bottom: 32px; }
-    .logo-wrap img { width: 110px; height: 110px; border-radius: 24px; box-shadow: 0 0 40px rgba(0,212,170,0.2); display: block; }
-    .pulse-ring {
-      position: absolute;
-      inset: -14px;
-      border-radius: 50%;
-      border: 2px solid var(--teal);
-      opacity: 0;
-      animation: pulse 2.6s ease-out infinite;
-    }
-    .pulse-ring:nth-child(2) { animation-delay: 0.87s; }
-    .pulse-ring:nth-child(3) { animation-delay: 1.74s; }
-    @keyframes pulse {
-      0%   { transform: scale(0.75); opacity: 0.55; }
-      100% { transform: scale(2.0); opacity: 0; }
-    }
-
-    /* Hero sits above radar */
-    .hero { position: relative; z-index: 1; }
-
     @media (max-width: 600px) {
       nav { padding: 16px 20px; }
       .hero { padding: 60px 20px 60px; }
-      .photo-card { width: 100%; max-width: 340px; }
-      .fpi-card { width: 140px; }
     }
   </style>
 </head>
 <body>
+
+  <svg class="radar-bg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="450" cy="450" r="100"/>
+    <circle cx="450" cy="450" r="190"/>
+    <circle cx="450" cy="450" r="280"/>
+    <circle cx="450" cy="450" r="370"/>
+    <circle cx="450" cy="450" r="430"/>
+  </svg>
 
   <nav>
     <div class="logo">PINt<span>POINT</span></div>
@@ -174,103 +135,83 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
-  <!-- Radar background rings -->
-  <svg class="radar-bg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="450" cy="450" r="100"/>
-    <circle cx="450" cy="450" r="190"/>
-    <circle cx="450" cy="450" r="280"/>
-    <circle cx="450" cy="450" r="370"/>
-    <circle cx="450" cy="450" r="430"/>
-  </svg>
     <div class="logo-wrap">
       <div class="pulse-ring"></div>
       <div class="pulse-ring"></div>
       <div class="pulse-ring"></div>
       <img src="./icon.png" alt="PINtPOINT" />
     </div>
-    <h1>Stop bimbling.<br/><em>Start drinking smarter.</em></h1>
-    <p class="tagline">Find the right pub before the first pint.</p>
+    <div class="badge">Now on iPhone</div>
+    <h1>Know which pub<br/><em>to walk to.</em></h1>
+    <p class="tagline">PINtPOINT shows you the best nearby venues, what's on tap,<br/>and where to head next. No bimbling. No guesswork. Just better pints.</p>
     <div class="cta-group">
       <a href="https://apps.apple.com/app/pintpoint/id6759681209" class="btn-primary">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Download on the App Store
       </a>
-      <a href="screenshots.html" class="btn-secondary">📱 See the App</a>
-      <a href="features.html" class="btn-secondary">See All Features</a>
+      <a href="features.html" class="btn-secondary">See Features</a>
     </div>
-    <p class="price-note">7-day free trial · then <strong>£3.99/year</strong> · No ads</p>
-    <p class="trust-note"></p>
+    <p class="price-note">7-day free trial · <strong>£4.99</strong> one-time unlock · No subscription · No ads</p>
   </section>
 
-  <section class="features">
-    <div class="feature-card">
-      <div class="feature-icon">📡</div>
-      <h3>Live Radar</h3>
-      <p>See nearby venues as blips on a live radar. Tap one and PINtPOINT flips into a compass that points you straight there.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🍺</div>
-      <h3>What's On Tap</h3>
-      <p>Check tap lists before you walk through the door, so you're not gambling your evening on a chalkboard and a warm hope.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🗺️</div>
-      <h3>Create-a-Crawl</h3>
-      <p>Build a custom pub crawl in seconds. Set the distance, number of stops, and route shape, then share it with your group.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔔</div>
-      <h3>Beer Alerts</h3>
-      <p>Watch specific beers and get alerted when they appear at your saved venues. Perfect for chasing seasonal releases and favourites.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔍</div>
-      <h3>Find Your Kind of Pub</h3>
-      <p>Filter by beer style — West Coast IPA, Bitter, Hazy Pale — so every result is already relevant before you tap. Search by name and the closest match appears first.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🃏</div>
-      <h3>Tap Trumps</h3>
-      <p>Turn any pub into a shareable card. Stats, top beers, photo. Send it to the group chat before you even arrive.</p>
-    </div>
-  </section>
-
-  <!-- GHOST MODE SECTION -->
-  <section class="ghost-section">
-    <p class="ghost-eyebrow">Ghost Hunter</p>
-    <h2 class="ghost-title">A pub map with a <span class="ghost-em">memory.</span></h2>
-    <p class="ghost-sub">PINtPOINT doesn't just show what's still open. It also reveals the pubs that vanished, were demolished, or quietly slipped away. Turn on Ghost Hunter and London fills with purple blips from another era.</p>
-
-    <div class="photo-pair">
-
-      <div class="photo-card">
-        <img src="https://live.staticflickr.com/2557/3781448104_a1e03157c8_b.jpg" alt="Ship Tavern then">
-        <div class="photo-overlay"></div>
-        <div class="photo-badge">📸 Then</div>
-        <div class="photo-caption">
-          <h4>Ship Tavern</h4>
-          <p>As it was — a proper City boozer</p>
-        </div>
-        <div class="photo-credit">📷 Ewan Munro / Flickr</div>
+  <!-- WHY IT WINS -->
+  <section class="why-section">
+    <p class="section-eyebrow">Why PINtPOINT</p>
+    <h2 class="section-title">The smarter way to pick your next pint.</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">📡</div>
+        <h3>Live Radar</h3>
+        <p>See nearby venues as blips on a live radar. Tap one and PINtPOINT flips into a compass that points you straight there.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🍺</div>
+        <h3>What's On Tap</h3>
+        <p>Check tap lists before you walk through the door, so you're not gambling your evening on a chalkboard and a warm hope.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗺️</div>
+        <h3>Create-a-Crawl</h3>
+        <p>Build a custom pub crawl in seconds. Set the distance, number of stops, and route shape, then share it with your group.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3>Beer Alerts</h3>
+        <p>Watch specific beers and get alerted when they appear at your saved venues. Perfect for chasing seasonal releases and favourites.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👻</div>
+        <h3>Ghost Hunter</h3>
+        <p>Switch on Ghost Mode to reveal hundreds of closed and demolished pubs across London, with history and archive photos where available.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🕯️</div>
+        <h3>Troubled Pub Mode</h3>
+        <p>See which venues are under pressure from rising costs, so you can drink there while they're still here.</p>
       </div>
     </div>
-    <p class="ghost-hint">In the app, tap the hero image to flip between then and now ↑</p>
+  </section>
 
+  <!-- GHOST SECTION -->
+  <section class="ghost-section">
+    <p class="ghost-eyebrow">Ghost Hunter</p>
+    <h2 class="ghost-title">A pub map<br/>with a <span class="ghost-em">memory.</span></h2>
+    <p class="ghost-sub">PINtPOINT doesn't just show what's still open. It also reveals the pubs that vanished, were demolished, or quietly slipped away. Turn on Ghost Mode and London fills with purple blips from another era.</p>
     <div class="ghost-stats">
       <div class="ghost-stat"><div class="num">500+</div><div class="lbl">Ghost pubs mapped</div></div>
       <div class="ghost-stat"><div class="num">327</div><div class="lbl">With historical photos</div></div>
       <div class="ghost-stat"><div class="num">71</div><div class="lbl">Demolished forever</div></div>
     </div>
-    <a href="ghost.html" class="btn-ghost">👻 Full Ghost Hunter story →</a>
+    <a href="ghost.html" class="btn-ghost">👻 See Ghost Hunter</a>
   </section>
 
-  <!-- TROUBLED PUBS / FPI SECTION -->
+  <!-- FPI SECTION -->
   <section class="fpi-section">
-    <p class="fpi-eyebrow">🕯️ Troubled Pub Mode</p>
+    <p class="fpi-eyebrow">Troubled Pub Mode</p>
     <h2 class="fpi-title">Drink here <span class="fpi-em">before it disappears.</span></h2>
-    <p class="fpi-sub">PINtPOINT uses FPI data from <a href="https://ismypubfucked.com" style="color:#F5A623;text-decoration:none" target="_blank">ismypubfucked.com</a> to highlight venues under financial pressure — amber blips that pulse harder the worse the outlook.</p>
-
+    <p class="fpi-sub">PINtPOINT uses FPI data to highlight pubs under real financial pressure. Amber blips show the venues worth supporting now, not after they've become stories.</p>
     <div class="fpi-cards">
       <div class="fpi-card">
         <div class="fpi-card-body">
@@ -318,18 +259,24 @@
       </div>
     </div>
     <p class="fpi-attr">FPI data: <a href="https://ismypubfucked.com" target="_blank">ismypubfucked.com</a> by @bjhguerin · VOA rating list data</p>
-    <a href="fpi.html" class="btn-amber">⚠️ Full Troubled Pub Mode story →</a>
+    <a href="fpi.html" class="btn-amber">⚠️ See Troubled Pub Mode</a>
   </section>
 
-  <div class="divider">
-    <p><em>£3.99/year.</em> Less than half a London pint.<br/>Cancel anytime.</p>
-  </div>
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2>Find the right pub<br/><em>before the first pint.</em></h2>
+    <p>Download PINtPOINT and stop wandering into the wrong place.</p>
+    <a href="https://apps.apple.com/app/pintpoint/id6759681209" class="btn-primary">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on the App Store
+    </a>
+    <p class="price-note" style="margin-top:16px">7-day free trial · <strong>£4.99</strong> one-time unlock · No subscription · No ads</p>
+  </section>
 
   <footer>
     <div class="links">
       <a href="features.html">Features</a>
-      <a href="screenshots.html">Screenshots</a>
-      <a href="ghost.html">Ghost Hunter</a>
+      <a href="ghost.html">Ghost Mode</a>
       <a href="fpi.html">Troubled Pubs</a>
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
