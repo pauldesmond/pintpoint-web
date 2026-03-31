@@ -1,38 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PINtPOINT – Features</title>
-  <meta name="description" content="Every feature in PINtPOINT — the smarter way to find great beer. Live radar, tap lists, venue discovery, pub crawl planner, beer alerts, ghost pubs, and more." />
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="icon.png" />
-  <link rel="canonical" href="https://pintpoint.co.uk/features.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://pintpoint.co.uk/features.html" />
-  <meta property="og:title" content="PINtPOINT — Features" />
-  <meta property="og:description" content="Every feature in PINtPOINT — live radar, tap lists, venue discovery, pub crawl planner, beer alerts, ghost pubs, and more." />
-  <meta property="og:image" content="https://pintpoint.co.uk/icon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="PINtPOINT — Features" />
-  <meta name="twitter:description" content="Every feature in PINtPOINT — the smarter way to find great beer." />
-  <meta name="twitter:image" content="https://pintpoint.co.uk/icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features – PINtPOINT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #0d1117;
+      --bg-card: #161b22;
+      --bg-card-hover: #1c2128;
+      --border: #30363d;
       --teal: #00D4AA;
-      --text: #ffffff;
-      --muted: #8b949e;
-      --card: #161b22;
-      --border: rgba(255,255,255,0.08);
-      --amber: #F5A623;
-      --purple: #9B59B6;
-      --red: #FF4D6A;
-      --blue: #4A9EFF;
+      --teal-dim: rgba(0,212,170,0.12);
+      --teal-dim2: rgba(0,212,170,0.06);
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --text-dim: #6e7681;
+      --radius: 12px;
+      --radius-sm: 8px;
     }
 
     html { scroll-behavior: smooth; }
@@ -40,1017 +30,911 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 16px 40px;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 60px;
       background: rgba(13,17,23,0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    .nav-links { display: flex; gap: 24px; align-items: center; }
-    .nav-links a {
-      color: var(--muted);
+
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
       text-decoration: none;
-      font-size: 0.85rem;
+      letter-spacing: -0.3px;
+    }
+    .logo span { color: var(--teal); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
       font-weight: 500;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text); }
-    .nav-links .btn-sm {
+    .btn-sm {
       background: var(--teal);
-      color: #000;
-      padding: 8px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 0.85rem;
+      color: #0d1117 !important;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+      transition: opacity 0.2s !important;
     }
-    .nav-links .btn-sm:hover { opacity: 0.88; color: #000; }
+    .btn-sm:hover { opacity: 0.88; }
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 80px 24px 60px;
-      max-width: 800px;
-      margin: 0 auto;
+    /* ── CATEGORY NAV PILLS ── */
+    .cat-nav {
+      position: sticky;
+      top: 60px;
+      z-index: 90;
+      background: rgba(13,17,23,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
-    .hero h1 {
-      font-size: clamp(2.2rem, 6vw, 3.8rem);
-      font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -1.5px;
-      margin-bottom: 16px;
-    }
-    .hero h1 em { color: var(--teal); font-style: normal; }
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--muted);
-      max-width: 560px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
+    .cat-nav::-webkit-scrollbar { display: none; }
 
-    /* FEATURE NAV (pill bar) */
-    .feature-nav {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px 48px;
+    .cat-nav-inner {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
+      gap: 8px;
+      width: max-content;
     }
-    .feature-nav a {
+
+    .cat-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 16px;
-      border-radius: 10px;
-      background: var(--card);
+      padding: 7px 16px;
+      border-radius: 20px;
+      background: var(--bg-card);
       border: 1px solid var(--border);
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-size: 13px;
       font-weight: 500;
+      cursor: pointer;
       transition: all 0.2s;
       white-space: nowrap;
+      user-select: none;
     }
-    .feature-nav a:hover {
-      border-color: rgba(0,212,170,0.4);
-      color: var(--text);
-      background: rgba(0,212,170,0.06);
+    .cat-pill:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: var(--teal-dim2);
     }
-    .pill-icon { font-size: 1rem; }
+    .cat-pill.active {
+      background: var(--teal-dim);
+      border-color: var(--teal);
+      color: var(--teal);
+    }
 
-    /* SECTIONS */
-    .feature-section {
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 72px 24px 56px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .hero p {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .content {
       max-width: 900px;
       margin: 0 auto;
-      padding: 64px 24px;
-      border-top: 1px solid var(--border);
-      scroll-margin-top: 72px;
+      padding: 0 24px 80px;
     }
 
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
+    /* ── CATEGORY BLOCK ── */
+    .category {
       margin-bottom: 12px;
-    }
-    .section-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      flex-shrink: 0;
-    }
-    .section-header h2 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-    .section-intro {
-      font-size: 1.05rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 32px;
-      max-width: 700px;
-    }
-
-    /* Detail grid inside each section */
-    .detail-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-    }
-    .detail-card {
-      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px;
+      border-radius: var(--radius);
+      overflow: hidden;
       transition: border-color 0.2s;
     }
-    .detail-card:hover { border-color: rgba(0,212,170,0.25); }
-    .detail-card h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 6px;
+    .category:hover { border-color: #3d444d; }
+    .category.open { border-color: rgba(0,212,170,0.3); }
+
+    .cat-header {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+      padding: 20px 24px;
+      cursor: pointer;
+      background: var(--bg-card);
+      user-select: none;
+      transition: background 0.2s;
+      border-left: 3px solid transparent;
     }
-    .detail-card h4 .mini-icon { font-size: 1rem; }
-    .detail-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
+    .category.open .cat-header {
+      border-left-color: var(--teal);
+      background: #161b22;
+    }
+    .cat-header:hover { background: var(--bg-card-hover); }
+
+    .cat-emoji {
+      font-size: 22px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .cat-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      flex: 1;
+    }
+    .category.open .cat-title { color: var(--teal); }
+
+    .cat-badge {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 12px;
+      letter-spacing: 0.3px;
+    }
+    .category.open .cat-badge {
+      background: var(--teal-dim);
+      border-color: rgba(0,212,170,0.3);
+      color: var(--teal);
+    }
+
+    .cat-chevron {
+      color: var(--text-dim);
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .category.open .cat-chevron { transform: rotate(45deg); }
+
+    /* ── COLLAPSIBLE BODY ── */
+    .cat-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .category.open .cat-body { max-height: 6000px; }
+
+    .cat-body-inner {
+      padding: 0 24px 28px;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── SECTION ── */
+    .section {
+      padding-top: 28px;
+    }
+    .section + .section {
+      border-top: 1px solid var(--border);
+      margin-top: 28px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+
+    .section-intro {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      max-width: 720px;
+    }
+
+    /* ── FEATURE CARDS GRID ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 600px) {
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+
+    .feature-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .feature-card:hover {
+      border-color: rgba(0,212,170,0.25);
+      background: var(--teal-dim2);
+    }
+
+    .card-icon {
+      font-size: 18px;
+      margin-bottom: 6px;
+      line-height: 1;
+      display: block;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-muted);
       line-height: 1.55;
     }
 
-    /* Blip legend */
-    .blip-legend {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-top: 20px;
-    }
-    .blip-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      background: var(--card);
+    /* ── INFO BOX (legend / FPI) ── */
+    .info-box {
+      background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-left: 3px solid var(--teal);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      margin-bottom: 20px;
     }
-    .blip-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .blip-dot.flash {
-      animation: flash 1s ease-in-out infinite;
-    }
-    @keyframes flash {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-    .blip-label {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    /* Accent backgrounds for section icons */
-    .icon-teal { background: rgba(0,212,170,0.12); }
-    .icon-amber { background: rgba(245,166,35,0.12); }
-    .icon-purple { background: rgba(155,89,182,0.12); }
-    .icon-red { background: rgba(255,77,106,0.12); }
-    .icon-blue { background: rgba(74,158,255,0.12); }
-
-    /* CTA */
-    .final-cta {
-      text-align: center;
-      padding: 80px 24px;
-      border-top: 1px solid var(--border);
-    }
-    .final-cta h2 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-    }
-    .final-cta h2 em { color: var(--teal); font-style: normal; }
-    .final-cta .sub {
-      color: var(--muted);
-      font-size: 1rem;
-      margin-bottom: 32px;
-    }
-    .final-cta .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--teal);
-      color: #000;
+    .info-box-title {
+      font-size: 11px;
       font-weight: 700;
-      font-size: 1rem;
-      padding: 16px 32px;
-      border-radius: 14px;
-      text-decoration: none;
-      transition: opacity 0.2s, transform 0.2s;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
     }
-    .final-cta .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-    .price-note {
-      margin-top: 16px;
-      font-size: 0.85rem;
-      color: var(--muted);
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
-    .price-note strong { color: var(--teal); }
+    .info-box li {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 10px;
+    }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      text-align: center;
-      padding: 40px 24px;
       border-top: 1px solid var(--border);
-      font-size: 0.85rem;
-      color: var(--muted);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 13px;
     }
-    footer a { color: var(--muted); text-decoration: none; }
+    footer a { color: var(--text-muted); text-decoration: none; }
     footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
 
-    /* Back to top */
-    .back-top {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 1.2rem;
-      transition: all 0.2s;
-      opacity: 0;
-      pointer-events: none;
-    }
-    .back-top.show { opacity: 1; pointer-events: auto; }
-    .back-top:hover { border-color: var(--teal); color: var(--teal); }
-
-    @media (max-width: 600px) {
-      nav { padding: 14px 16px; }
-      .nav-links { gap: 14px; }
-      .hero { padding: 48px 20px 40px; }
-      .feature-section { padding: 48px 16px; }
-      .detail-grid { grid-template-columns: 1fr; }
-      .blip-legend { grid-template-columns: 1fr; }
-    }
-
-    /* Collapsible category groups */
-    .category-group { margin-bottom: 8px; }
-
-    .category-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 22px 40px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
-      user-select: none;
-    }
-    .category-header:hover { background: rgba(255,255,255,0.05); border-color: rgba(0,212,170,0.3); }
-    .category-header.open { border-color: rgba(0,212,170,0.4); border-radius: 16px 16px 0 0; }
-
-    .category-icon { font-size: 1.6rem; }
-    .category-header h2 {
-      flex: 1;
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-      color: var(--text);
-      margin: 0;
-    }
-    .category-count { font-size: 0.8rem; color: var(--muted); }
-    .category-chevron {
-      font-size: 1.4rem;
-      color: var(--muted);
-      transition: transform 0.25s;
-      line-height: 1;
-    }
-    .category-header.open .category-chevron { transform: rotate(45deg); color: var(--teal); }
-
-    .category-content {
-      display: none;
-      border: 1px solid rgba(0,212,170,0.4);
-      border-top: none;
-      border-radius: 0 0 16px 16px;
-      overflow: hidden;
-      margin-bottom: 0;
-    }
-    .category-content.open { display: block; }
-
-    /* Remove top padding from first section inside a group */
-    .category-content .feature-section:first-child { padding-top: 32px; }
-    .category-content .feature-section:last-child { padding-bottom: 40px; }
-
-    @media (max-width: 600px) {
-      .category-header { padding: 18px 20px; }
-      .category-header h2 { font-size: 1.05rem; }
-    }
+    /* ── SCROLL MARGIN ── */
+    .category { scroll-margin-top: 120px; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div class="nav-links">
-      <a href="#top">Features</a>
-      <a href="screenshots.html">Screenshots</a>
-      <a href="https://apps.apple.com/app/pintpoint/id6760611613" class="btn-sm">Get the App</a>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">PINt<span>POINT</span></a>
+  <div class="nav-links">
+    <a href="index.html">← Back</a>
+    <a href="index.html" class="btn-sm">Download</a>
+  </div>
+</nav>
+
+<!-- CATEGORY NAV PILLS -->
+<div class="cat-nav">
+  <div class="cat-nav-inner">
+    <button class="cat-pill active" onclick="openCategory('explore')">🔍 Find &amp; Explore</button>
+    <button class="cat-pill" onclick="openCategory('beer')">🍺 Beer</button>
+    <button class="cat-pill" onclick="openCategory('nights')">🗺️ Nights Out</button>
+    <button class="cat-pill" onclick="openCategory('culture')">🏚️ Pub Culture</button>
+    <button class="cat-pill" onclick="openCategory('manage')">⚙️ Manage</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="hero-eyebrow">Full Feature List</span>
+  <h1>Every Feature</h1>
+  <p>No map. No clutter. Just the tools that help you decide where to drink, what's on, and what's worth the walk.</p>
+</header>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- ── FIND & EXPLORE ── -->
+  <div class="category open" id="cat-explore">
+    <div class="cat-header" onclick="toggleCategory('explore')">
+      <span class="cat-emoji">🔍</span>
+      <span class="cat-title">Find &amp; Explore</span>
+      <span class="cat-badge">3 features</span>
+      <span class="cat-chevron">+</span>
     </div>
-  </nav>
+    <div class="cat-body">
+      <div class="cat-body-inner">
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <h1>Everything <em>PINtPOINT</em> does</h1>
-    <p>A quick tour of every feature — tap any section below to jump straight to it.</p>
-  </section>
+        <!-- Discover -->
+        <div class="section" id="sec-discover">
+          <div class="section-title">Discover</div>
+          <p class="section-intro">Surface venues you've never visited. Discover searches nearby pubs and bars and shows rich cards with photos, ratings, and live venue details where available. Add any discovery to your PINtPOINT list with one tap.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">📍</span>
+              <div class="card-title">Configurable Radius</div>
+              <div class="card-desc">Search within a range that suits you, from a short local wander to a wider destination search.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🟢</span>
+              <div class="card-title">Open Now Badges</div>
+              <div class="card-desc">Discovered venues show whether they're currently open or closed, along with ratings and other useful context where available.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🔗</span>
+              <div class="card-title">Find on Untappd</div>
+              <div class="card-desc">Tap to search for a discovered venue on Untappd and check what they're pouring before adding it.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🍻</span>
+              <div class="card-title">Crawl from Discoveries</div>
+              <div class="card-desc">Found a cluster of interesting places? Build a pub crawl directly from your discovered venues.</div>
+            </div>
+          </div>
+        </div>
 
-  <!-- FEATURE NAV PILLS -->
-  <div class="feature-nav">
-    <a href="#explore"><span class="pill-icon">🔍</span> Find &amp; Explore</a>
-    <a href="#beer"><span class="pill-icon">🍺</span> Beer</a>
-    <a href="#nights-out"><span class="pill-icon">🗺️</span> Nights Out</a>
-    <a href="#pub-culture"><span class="pill-icon">🏚️</span> Pub Culture</a>
-    <a href="#manage"><span class="pill-icon">⚙️</span> Manage</a>
+        <!-- Live Radar & Compass -->
+        <div class="section" id="sec-radar">
+          <div class="section-title">Live Radar &amp; Compass</div>
+          <p class="section-intro">A live radar sweeps your surroundings and plots nearby venues as colour-coded blips. Tap a blip to lock on and the radar becomes a live compass pointing you directly at your chosen pub, with real-time distance and bearing.</p>
+          <div class="info-box">
+            <div class="info-box-title">Blip Legend</div>
+            <ul>
+              <li>Nearby venue</li>
+              <li>Favourited venue</li>
+              <li>Matches style filter</li>
+              <li>Struggling pub</li>
+              <li>At-risk pub</li>
+              <li>Critical pub</li>
+              <li>Ghost pub</li>
+            </ul>
+          </div>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">🔒</span>
+              <div class="card-title">Lock-on Navigation</div>
+              <div class="card-desc">Tap any blip to lock on. See bearing, distance, and a compass needle that updates as you move and turn.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🔄</span>
+              <div class="card-title">Two Display Modes</div>
+              <div class="card-desc">Switch between nearest venues and all venues within your chosen radius.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🤏</span>
+              <div class="card-title">Pinch &amp; Pan</div>
+              <div class="card-desc">Pinch to zoom your radar range and explore beyond your immediate area.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🗺️</span>
+              <div class="card-title">Maps Handoff</div>
+              <div class="card-desc">When locked on, hand off to Apple Maps or Google Maps for turn-by-turn directions.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tap Roulette -->
+        <div class="section" id="sec-roulette">
+          <div class="section-title">Tap Roulette</div>
+          <p class="section-intro">Can't decide where to go? Tap Roulette picks a nearby venue and sends you straight there — no overthinking, no committee meeting, just a decision made.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">📍</span>
+              <div class="card-title">Radius Control</div>
+              <div class="card-desc">Set how far you're willing to travel, from a short walk to a longer wander. Results are filtered to your chosen range.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🎯</span>
+              <div class="card-title">Lock &amp; Go</div>
+              <div class="card-desc">Once a venue is picked, you get the essentials — distance, details, and a one-tap handoff to Maps.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🔄</span>
+              <div class="card-title">Spin Again</div>
+              <div class="card-desc">Not feeling it? Spin again and let fate have another go.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 
-  <div class="category-group">
-    <div class="category-header" id="explore" onclick="toggleCategory(this)">
-      <span class="category-icon">🔍</span>
-      <h2>Find &amp; Explore</h2>
-      <span class="category-count">3 features</span>
-      <span class="category-chevron">+</span>
+  <!-- ── BEER ── -->
+  <div class="category" id="cat-beer">
+    <div class="cat-header" onclick="toggleCategory('beer')">
+      <span class="cat-emoji">🍺</span>
+      <span class="cat-title">Beer</span>
+      <span class="cat-badge">2 features</span>
+      <span class="cat-chevron">+</span>
     </div>
-    <div class="category-content">
+    <div class="cat-body">
+      <div class="cat-body-inner">
 
-  <!-- ======================== DISCOVER ======================== -->
-  <section class="feature-section" id="discover">
-    <div class="section-header">
-      <div class="section-icon icon-teal">✨</div>
-      <h2>Discover</h2>
-    </div>
-    <p class="section-intro">
-      Surface venues you've never visited. Discover searches Google Places for pubs and bars near your location, showing rich cards with photos, ratings, and open/closed status. Add any discovery to your PINtPOINT list with one tap.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">📍</span> Configurable Radius</h4>
-        <p>Search within 0.5mi to 15mi. Adjust the radius to explore your neighbourhood or scope out a destination before visiting.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🟢</span> Open Now Badges</h4>
-        <p>Each discovered venue shows whether it's currently open or closed, plus its Google rating and review count.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🔗</span> Find on Untappd</h4>
-        <p>Tap to search for any discovered venue on Untappd to check their tap list before adding to PINtPOINT.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🍻</span> Crawl from Discoveries</h4>
-        <p>Found a cluster of interesting places? Build a pub crawl directly from your discovered venues.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================== RADAR ======================== -->
-  <section class="feature-section" id="radar">
-    <div class="section-header">
-      <div class="section-icon icon-teal">📡</div>
-      <h2>Radar</h2>
-    </div>
-    <p class="section-intro">
-      A live radar sweeps your surroundings and plots nearby venues as colour-coded blips. Tap a blip to lock on — the radar transforms into a live compass pointing you directly at your chosen pub, with real-time distance and bearing.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">🔒</span> Lock-on Navigation</h4>
-        <p>Tap any blip to lock on. The display shows bearing, distance, and a compass needle that updates as you move and turn.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🔄</span> Two Display Modes</h4>
-        <p><strong>Nearest venues</strong> shows the N closest pubs regardless of distance. <strong>All within radius</strong> shows everything in your search area.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🤏</span> Pinch &amp; Pan</h4>
-        <p>Pinch to zoom your radar range. Two-finger drag to pan the view. Lets you explore beyond your immediate area.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🗺️</span> Maps Handoff</h4>
-        <p>When locked on, tap the maps button for turn-by-turn directions in Apple Maps (iOS) or Google Maps (Android).</p>
-      </div>
-    </div>
-
-    <h4 style="margin-top:32px; margin-bottom:8px; font-size:0.9rem; color:var(--muted); letter-spacing:0.5px;">BLIP LEGEND</h4>
-    <div class="blip-legend">
-      <div class="blip-item">
-        <div class="blip-dot" style="background: #00D4AA;"></div>
-        <span class="blip-label">Nearby venue</span>
-      </div>
-      <div class="blip-item">
-        <div class="blip-dot" style="background: #FF4D6A;"></div>
-        <span class="blip-label">Favourited venue</span>
-      </div>
-      <div class="blip-item">
-        <div class="blip-dot" style="background: #4A9EFF;"></div>
-        <span class="blip-label">Matches style filter</span>
-      </div>
-      <div class="blip-item">
-        <div class="blip-dot" style="background: #F5A623;"></div>
-        <span class="blip-label">Struggling pub (FPI 30-59)</span>
-      </div>
-      <div class="blip-item">
-        <div class="blip-dot flash" style="background: #F5A623;"></div>
-        <span class="blip-label">At-risk pub (FPI 60-89)</span>
-      </div>
-      <div class="blip-item">
-        <div class="blip-dot flash" style="background: #9B59B6;"></div>
-        <span class="blip-label">Critical pub (FPI 90+)</span>
-      </div>
-      <div class="blip-item">
-        <div class="blip-dot" style="background: #9B59B6;"></div>
-        <span class="blip-label">Ghost pub (closed)</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================== TAP ROULETTE ======================== -->
-  <section class="feature-section" id="roulette">
-    <div class="section-header">
-      <div class="section-icon icon-amber">🎰</div>
-      <h2>Tap Roulette</h2>
-    </div>
-    <p class="section-intro">
-      Can't decide where to go? Spin the wheel and let fate pick your next pint. Tap Roulette randomly selects a venue from those nearby and sends you straight there — no arguments, no overthinking, just beer.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">📍</span> Radius Control</h4>
-        <p>Set how far you're willing to travel — from a short walk to a longer adventure. Results are filtered to your chosen range.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🎯</span> Lock &amp; Go</h4>
-        <p>Once the wheel locks on a venue, you get full details — tap list, distance, rating — and a one-tap handoff to Maps for directions.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🔄</span> Spin Again</h4>
-        <p>Not feeling it? Spin again for a fresh pick. Keep going until something grabs you.</p>
-      </div>
-    </div>
-  </section>
-
-    </div><!-- /.category-content (Find & Explore) -->
-  </div><!-- /.category-group (Find & Explore) -->
-
-  <div class="category-group">
-    <div class="category-header" id="beer" onclick="toggleCategory(this)">
-      <span class="category-icon">🍺</span>
-      <h2>Beer</h2>
-      <span class="category-count">2 features</span>
-      <span class="category-chevron">+</span>
-    </div>
-    <div class="category-content">
-
-  <!-- ======================== BEER ALERTS ======================== -->
-  <section class="feature-section" id="alerts">
-    <div class="section-header">
-      <div class="section-icon icon-amber">🔔</div>
-      <h2>Beer Alerts</h2>
-    </div>
-    <p class="section-intro">
-      Never miss your favourite beer. Add beers to your watchlist, and PINtPOINT will alert you when they appear at any venue in your area. Matched against recent Untappd check-in data.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">📝</span> Watchlist</h4>
-        <p>Build a list of beers you love. Add as many as you want — swipe to remove any you no longer care about.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">⚡</span> Instant Alerts</h4>
-        <p>PINtPOINT scans your saved venues every 6 hours and sends you a push notification when a watched beer appears on tap.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================== CAN SCAN ======================== -->
-  <section class="feature-section" id="scan">
-    <div class="section-header">
-      <div class="section-icon icon-teal">📷</div>
-      <h2>Beer Can Scan</h2>
-    </div>
-    <p class="section-intro">
-      Point your camera at any beer can or bottle barcode and PINtPOINT will try to identify it using the Open Food Database. Recognition works best on well-known packaged beers — success rates vary and some labels won't match. If it finds a result, you can add the beer to your watchlist.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">🔍</span> Instant Recognition</h4>
-        <p>Scan a barcode and PINtPOINT looks it up in the Open Food Database. Works best on mainstream canned and bottled beers with registered barcodes.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">⭐</span> Ratings &amp; Reviews</h4>
-        <p>If the beer is found, you'll see the name and brewery so you can look it up on Untappd yourself for ratings and reviews.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🔔</span> Add to Watchlist</h4>
-        <p>Spot a beer you love on a shelf? Add it to your beer watchlist and get alerted when it appears on a nearby tap list.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📦</span> Cans &amp; Bottles Only</h4>
-        <p>The scanner reads barcodes — it works on packaged cans and bottles only. Pump clips and draught beers have no barcode and can't be scanned.</p>
-      </div>
-    </div>
-  </section>
-
-    </div><!-- /.category-content (Beer) -->
-  </div><!-- /.category-group (Beer) -->
-
-  <div class="category-group">
-    <div class="category-header" id="nights-out" onclick="toggleCategory(this)">
-      <span class="category-icon">🗺️</span>
-      <h2>Nights Out</h2>
-      <span class="category-count">2 features</span>
-      <span class="category-chevron">+</span>
-    </div>
-    <div class="category-content">
-
-  <!-- ======================== CREATE-A-CRAWL ======================== -->
-  <section class="feature-section" id="crawl">
-    <div class="section-header">
-      <div class="section-icon icon-amber">🗺️</div>
-      <h2>Create-a-Crawl</h2>
-    </div>
-    <p class="section-intro">
-      Plan the perfect pub crawl in seconds. Set your starting point, number of stops, maximum gap between venues, and total walking distance. PINtPOINT builds an optimised route using a nearest-next algorithm.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">📐</span> Smart Routing</h4>
-        <p>Set 2-8 stops with configurable max gap and total walk distance. The algorithm finds the best route through nearby venues.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🚶</span> Walk Times</h4>
-        <p>Real-time walking time estimates between each stop. See total crawl distance and estimated duration at a glance.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">✅</span> Progress Tracking</h4>
-        <p>Mark stops as visited as you go. Resume an active crawl anytime — your progress is saved.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📲</span> Share with Friends</h4>
-        <p>Generate a QR code for your crawl. Friends scan it to get the full route with all stops and directions.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================== SHARING ======================== -->
-  <section class="feature-section" id="sharing">
-    <div class="section-header">
-      <div class="section-icon icon-teal">📲</div>
-      <h2>Sharing</h2>
-    </div>
-    <p class="section-intro">
-      Share venues and crawl routes with friends using QR codes. One scan adds the venue or loads the full route — no links, no accounts, no faff.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">🃏</span> Tap Trumps</h4>
-        <p>Share any venue as a collectible card — photo, stats, top beers, and PINtPOINT branding. Send it to WhatsApp, iMessage, or anywhere.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🗺️</span> Crawl QR Codes</h4>
-        <p>Share an entire pub crawl route as a QR code. Friends join with all stops, distances, and progress tracking intact.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📷</span> Built-in Scanner</h4>
-        <p>Point your camera at a PINtPOINT QR code to instantly load a pub crawl route. No third-party app needed.</p>
-      </div>
-    </div>
-  </section>
-
-    </div><!-- /.category-content (Nights Out) -->
-  </div><!-- /.category-group (Nights Out) -->
-
-  <div class="category-group">
-    <div class="category-header" id="pub-culture" onclick="toggleCategory(this)">
-      <span class="category-icon">🏚️</span>
-      <h2>Pub Culture</h2>
-      <span class="category-count">2 features</span>
-      <span class="category-chevron">+</span>
-    </div>
-    <div class="category-content">
-
-  <!-- ======================== GHOST HUNTER ======================== -->
-  <section class="feature-section" id="ghost" style="background:linear-gradient(180deg,#0d1117 0%,#1a0a2e 50%,#0d1117 100%);border-radius:20px;margin-bottom:2px;">
-    <div class="section-header">
-      <div class="section-icon icon-purple">👻</div>
-      <h2>Ghost Hunter</h2>
-    </div>
-    <p class="section-intro">
-      PINtPOINT doesn't just show what's still open. Toggle Ghost Hunter and your radar transforms — 500+ closed and demolished London pubs appear as purple blips. Tap any ghost to see what it once looked like, and what replaced it.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card" style="border-color:#2a1a4a">
-        <h4><span class="mini-icon">📸</span> Then &amp; Now</h4>
-        <p>Historical photos alongside current Street View. Tap the venue image to flip between past and present — the same corner, decades apart.</p>
-      </div>
-      <div class="detail-card" style="border-color:#2a1a4a">
-        <h4><span class="mini-icon">🟣</span> Purple Blips</h4>
-        <p>Ghost pubs appear as solid purple blips on the radar. 327 with archive photos.Toggle in Refine Results.</p>
-      </div>
-      <div class="detail-card" style="border-color:#2a1a4a">
-        <h4><span class="mini-icon">💀</span> Demolished Mode</h4>
-        <p>Filter to show only the pubs that no longer exist at all — not converted, not closed, just gone. A map of what London lost.</p>
-      </div>
-    </div>
-    <!-- Ghost pub photo cards -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:28px">
-      <div style="background:#161b22;border:1px solid rgba(155,89,182,0.3);border-radius:14px;overflow:hidden">
-        <div style="position:relative">
-          <img src="img/the-crobar.jpg" alt="The Crobar" style="width:100%;height:120px;object-fit:cover;display:block">
-          <span style="position:absolute;top:8px;right:8px;background:rgba(155,89,182,0.9);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px">Closed</span>
-        </div>
-        <div style="padding:14px">
-          <div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:3px">The Crobar</div>
-          <div style="font-size:11px;color:#888;margin-bottom:6px">17 Manette St, Soho, W1D</div>
-          <div style="font-size:11px;color:#9b59b6">Legendary dive bar. Closed 2014.</div>
-        </div>
-      </div>
-      <div style="background:#161b22;border:1px solid rgba(155,89,182,0.3);border-radius:14px;overflow:hidden">
-        <div style="position:relative">
-          <img src="img/the-intrepid-fox.jpg" alt="The Intrepid Fox" style="width:100%;height:120px;object-fit:cover;display:block">
-          <span style="position:absolute;top:8px;right:8px;background:rgba(155,89,182,0.9);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px">Demolished</span>
-        </div>
-        <div style="padding:14px">
-          <div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:3px">The Intrepid Fox</div>
-          <div style="font-size:11px;color:#888;margin-bottom:6px">99 Wardour St, Soho, W1F</div>
-          <div style="font-size:11px;color:#9b59b6">Rock pub icon. Demolished 2006.</div>
-        </div>
-      </div>
-      <div style="background:#161b22;border:1px solid rgba(155,89,182,0.3);border-radius:14px;overflow:hidden">
-        <div style="position:relative">
-          <img src="img/the-12-bar-club.jpg" alt="The 12 Bar Club" style="width:100%;height:120px;object-fit:cover;display:block">
-          <span style="position:absolute;top:8px;right:8px;background:rgba(155,89,182,0.9);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px">Closed</span>
-        </div>
-        <div style="padding:14px">
-          <div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:3px">The 12 Bar Club</div>
-          <div style="font-size:11px;color:#888;margin-bottom:6px">Denmark St, Soho, WC2H</div>
-          <div style="font-size:11px;color:#9b59b6">Tin Pan Alley landmark. Closed 2015.</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:8px;text-align:center">
-      <a href="ghost.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(155,89,182,0.15);color:#c39bd3;font-weight:600;font-size:0.9rem;padding:12px 24px;border-radius:10px;text-decoration:none;border:1px solid rgba(155,89,182,0.4)">👻 Full Ghost Hunter story →</a>
-    </div>
-  </section>
-
-  <!-- ======================== TROUBLED PUBS ======================== -->
-  <section class="feature-section" id="troubled">
-    <div class="section-header">
-      <div class="section-icon icon-amber">⚠️</div>
-      <h2>Troubled Pubs</h2>
-    </div>
-    <p class="section-intro">
-      Some pubs need your support before it's too late. PINtPOINT uses FPI (Financial Pressure Index) data from <a href="https://ismypubfucked.com" style="color:var(--amber);text-decoration:none" target="_blank">ismypubfucked.com</a> to highlight venues under financial strain — from "Feeling It" to "Absolutely Fucked". Visit them while you still can.
-    </p>
-
-    <!-- FPI severity scale -->
-    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px">
-      <div style="display:flex;align-items:center;gap:8px;background:#161b22;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 14px;font-size:13px;color:#ccc"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#00D4AA;flex-shrink:0"></span>Fine — rates flat</div>
-      <div style="display:flex;align-items:center;gap:8px;background:#161b22;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 14px;font-size:13px;color:#ccc"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#F5A623;flex-shrink:0"></span>Feeling It — FPI 1–29</div>
-      <div style="display:flex;align-items:center;gap:8px;background:#161b22;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 14px;font-size:13px;color:#ccc"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#F5A623;flex-shrink:0;animation:blip-pulse 1.5s ease-in-out infinite"></span>Struggling — FPI 30–59</div>
-      <div style="display:flex;align-items:center;gap:8px;background:#161b22;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 14px;font-size:13px;color:#ccc"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FF4D6A;flex-shrink:0"></span>Fucked — FPI 60–99</div>
-      <div style="display:flex;align-items:center;gap:8px;background:#161b22;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 14px;font-size:13px;color:#ccc"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#9B59B6;flex-shrink:0"></span>Absolutely Fucked — FPI 100+</div>
-    </div>
-
-    <!-- Example venue cards -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:28px">
-      <div style="background:#161b22;border:1px solid rgba(245,166,35,0.3);border-radius:14px;overflow:hidden">
-        <div style="position:relative">
-          <img src="img/rose-and-crown.jpg" alt="The Rose and Crown" style="width:100%;height:120px;object-fit:cover;display:block">
-          <span style="position:absolute;top:8px;right:8px;background:rgba(255,77,106,0.9);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px">At Risk of Closure</span>
-        </div>
-        <div style="padding:14px">
-          <div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:3px">The Rose and Crown</div>
-          <div style="font-size:11px;color:#888;margin-bottom:10px">2 The Polygon, Clapham Old Town, SW4</div>
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div><span style="font-size:12px;color:#FF4D6A;font-weight:700">Fucked</span><br><span style="font-size:10px;color:#888">Rates +180.0% vs 2023</span></div>
-            <div style="text-align:right"><span style="font-size:20px;font-weight:900;color:#F5A623">84</span><span style="font-size:10px;color:#888">/100 FPI</span></div>
+        <!-- Beer Alerts -->
+        <div class="section" id="sec-alerts">
+          <div class="section-title">Beer Alerts</div>
+          <p class="section-intro">Never miss your favourite beer. Add beers to your watchlist, and PINtPOINT alerts you when they appear at your favourited venues. Matches are based on recent tap-list and check-in data.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">📝</span>
+              <div class="card-title">Watchlist</div>
+              <div class="card-desc">Build a list of beers you love. Add as many as you want and remove any you no longer care about.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">❤️</span>
+              <div class="card-title">Favourited Venue Alerts</div>
+              <div class="card-desc">Alerts are matched against venues you've saved in PINtPOINT, so notifications stay relevant to the places you actually care about.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🔔</span>
+              <div class="card-title">Push Notifications</div>
+              <div class="card-desc">Get notified when a watched beer is spotted at one of your favourited venues.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📲</span>
+              <div class="card-title">Checks on Open</div>
+              <div class="card-desc">Alerts also run when you open the app, so you can quickly see what's appeared since your last visit.</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div style="background:#161b22;border:1px solid rgba(245,166,35,0.3);border-radius:14px;overflow:hidden">
-        <div style="position:relative">
-          <img src="img/crown-and-shuttle.jpg" alt="Crown and Shuttle" style="width:100%;height:120px;object-fit:cover;display:block">
-          <span style="position:absolute;top:8px;right:8px;background:rgba(255,77,106,0.9);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px">At Risk of Closure</span>
-        </div>
-        <div style="padding:14px">
-          <div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:3px">Crown &amp; Shuttle</div>
-          <div style="font-size:11px;color:#888;margin-bottom:10px">226 Shoreditch High St, E1</div>
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div><span style="font-size:12px;color:#FF4D6A;font-weight:700">Fucked</span><br><span style="font-size:10px;color:#888">Rates +158.0% vs 2023</span></div>
-            <div style="text-align:right"><span style="font-size:20px;font-weight:900;color:#F5A623">77</span><span style="font-size:10px;color:#888">/100 FPI</span></div>
+
+        <!-- Beer Can Scan -->
+        <div class="section" id="sec-scan">
+          <div class="section-title">Beer Can Scan</div>
+          <p class="section-intro">Point your camera at a beer can or bottle barcode and PINtPOINT will try to identify it using the Open Food Facts database. Recognition works best on beers with registered barcodes, and some labels won't match.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">🔍</span>
+              <div class="card-title">Instant Recognition</div>
+              <div class="card-desc">Scan a barcode and PINtPOINT looks it up against Open Food Facts.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🍺</span>
+              <div class="card-title">Beer Details</div>
+              <div class="card-desc">If a match is found, you'll see the beer name and brewery so you can save it or look it up further.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🔔</span>
+              <div class="card-title">Add to Watchlist</div>
+              <div class="card-desc">Spot a beer you love on a shelf? Add it to your watchlist and get alerted when it appears on tap at one of your favourited venues.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📦</span>
+              <div class="card-title">Cans &amp; Bottles Only</div>
+              <div class="card-desc">Beer Can Scan works on packaged cans and bottles with barcodes.</div>
+            </div>
           </div>
         </div>
+
       </div>
-      <div style="background:#161b22;border:1px solid rgba(245,166,35,0.3);border-radius:14px;overflow:hidden">
-        <div style="position:relative">
-          <img src="img/bradleys-spanish-bar.jpg" alt="Bradley's Spanish Bar" style="width:100%;height:120px;object-fit:cover;display:block">
-          <span style="position:absolute;top:8px;right:8px;background:rgba(245,166,35,0.9);color:#000;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px">Under Pressure</span>
-        </div>
-        <div style="padding:14px">
-          <div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:3px">Bradley's Spanish Bar</div>
-          <div style="font-size:11px;color:#888;margin-bottom:10px">42–44 Hanway St, Fitzrovia, W1T</div>
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div><span style="font-size:12px;color:#F5A623;font-weight:700">Struggling</span><br><span style="font-size:10px;color:#888">Rates +80.0% vs 2023</span></div>
-            <div style="text-align:right"><span style="font-size:20px;font-weight:900;color:#F5A623">48</span><span style="font-size:10px;color:#888">/100 FPI</span></div>
+    </div>
+  </div>
+
+  <!-- ── NIGHTS OUT ── -->
+  <div class="category" id="cat-nights">
+    <div class="cat-header" onclick="toggleCategory('nights')">
+      <span class="cat-emoji">🗺️</span>
+      <span class="cat-title">Nights Out</span>
+      <span class="cat-badge">2 features</span>
+      <span class="cat-chevron">+</span>
+    </div>
+    <div class="cat-body">
+      <div class="cat-body-inner">
+
+        <!-- Create-a-Crawl -->
+        <div class="section" id="sec-crawl">
+          <div class="section-title">Create-a-Crawl</div>
+          <p class="section-intro">Plan a pub crawl in seconds. Set your starting point, number of stops, maximum gap between venues, and total walking distance. PINtPOINT builds an optimised route through nearby pubs.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">📐</span>
+              <div class="card-title">Smart Routing</div>
+              <div class="card-desc">Set the crawl length and walking constraints, then let PINtPOINT build the route.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🚶</span>
+              <div class="card-title">Walk Times</div>
+              <div class="card-desc">See estimated walking times between stops, plus total distance and route length.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">✅</span>
+              <div class="card-title">Progress Tracking</div>
+              <div class="card-desc">Mark stops as visited and pick up where you left off.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📲</span>
+              <div class="card-title">Share with Friends</div>
+              <div class="card-desc">Generate a QR code so friends can load the same crawl instantly.</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div style="background:#161b22;border:1px solid rgba(245,166,35,0.3);border-radius:14px;overflow:hidden">
-        <div style="position:relative">
-          <img src="img/coach-and-horses.jpg" alt="Coach and Horses" style="width:100%;height:120px;object-fit:cover;display:block">
-          <span style="position:absolute;top:8px;right:8px;background:rgba(245,166,35,0.9);color:#000;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px">Under Pressure</span>
-        </div>
-        <div style="padding:14px">
-          <div style="font-weight:700;font-size:14px;color:#fff;margin-bottom:3px">Coach &amp; Horses</div>
-          <div style="font-size:11px;color:#888;margin-bottom:10px">29 Greek St, Soho, W1D</div>
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div><span style="font-size:12px;color:#F5A623;font-weight:700">Struggling</span><br><span style="font-size:10px;color:#888">Rates +70.6% vs 2023</span></div>
-            <div style="text-align:right"><span style="font-size:20px;font-weight:900;color:#F5A623">42</span><span style="font-size:10px;color:#888">/100 FPI</span></div>
+
+        <!-- Share & QR -->
+        <div class="section" id="sec-share">
+          <div class="section-title">Share &amp; QR</div>
+          <p class="section-intro">Share venues and pub crawl routes with friends using PINtPOINT QR codes. One scan loads the venue or route — no links, no accounts, no faff.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">🃏</span>
+              <div class="card-title">Tap Trumps</div>
+              <div class="card-desc">Share any venue as a collectible card with photo, stats, and PINtPOINT branding.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🗺️</span>
+              <div class="card-title">Crawl QR Codes</div>
+              <div class="card-desc">Share an entire pub crawl route with all stops and directions.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📷</span>
+              <div class="card-title">Built-in Scanner</div>
+              <div class="card-desc">Scan PINtPOINT QR codes directly in the app.</div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">🟠</span> Amber Radar Blips</h4>
-        <p>Struggling pubs show as solid amber. At-risk pubs pulse faster the higher the FPI score. Critical pubs flash purple. Instantly visible on your radar sweep.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🧭</span> Lock-On Warning</h4>
-        <p>Tap an amber blip — the compass needle turns amber and a flickering warning appears: UNDER PRESSURE, AT RISK, or IN SERIOUS TROUBLE.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📊</span> Venue FPI Card</h4>
-        <p>Every troubled pub page shows FPI score, severity label, and rate change vs 2023 — fully credited to <a href="https://ismypubfucked.com" style="color:var(--amber);text-decoration:none" target="_blank">ismypubfucked.com</a> · VOA data.</p>
       </div>
     </div>
-    <div style="margin-top:24px;text-align:center">
-      <a href="fpi.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.15);color:#F5A623;font-weight:600;font-size:0.9rem;padding:12px 24px;border-radius:10px;text-decoration:none;border:1px solid rgba(245,166,35,0.4)">🕯️ Full Troubled Pub Mode story →</a>
-    </div>
-  </section>
+  </div>
 
-    </div><!-- /.category-content (Pub Culture) -->
-  </div><!-- /.category-group (Pub Culture) -->
+  <!-- ── PUB CULTURE ── -->
+  <div class="category" id="cat-culture">
+    <div class="cat-header" onclick="toggleCategory('culture')">
+      <span class="cat-emoji">🏚️</span>
+      <span class="cat-title">Pub Culture</span>
+      <span class="cat-badge">2 features</span>
+      <span class="cat-chevron">+</span>
+    </div>
+    <div class="cat-body">
+      <div class="cat-body-inner">
 
-  <div class="category-group">
-    <div class="category-header" id="manage" onclick="toggleCategory(this)">
-      <span class="category-icon">⚙️</span>
-      <h2>Manage</h2>
-      <span class="category-count">5 features</span>
-      <span class="category-chevron">+</span>
-    </div>
-    <div class="category-content">
+        <!-- Ghost Hunter -->
+        <div class="section" id="sec-ghost">
+          <div class="section-title">Ghost Hunter</div>
+          <p class="section-intro">PINtPOINT doesn't just show what's still open. Toggle Ghost Hunter and your radar transforms — closed and demolished pubs (primarily London) appear as purple blips. Tap any ghost to see what it once looked like, and what replaced it.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">📸</span>
+              <div class="card-title">Then &amp; Now</div>
+              <div class="card-desc">See historical photography alongside current imagery where available.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🟣</span>
+              <div class="card-title">Purple Blips</div>
+              <div class="card-desc">Ghost pubs appear as solid purple blips on the radar, with many linked to archive photography and historical notes.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">💀</span>
+              <div class="card-title">Demolished Mode</div>
+              <div class="card-desc">Filter to show only the pubs that no longer exist at all.</div>
+            </div>
+          </div>
+        </div>
 
-  <!-- ======================== ADD VENUE ======================== -->
-  <section class="feature-section" id="add-venue">
-    <div class="section-header">
-      <div class="section-icon icon-teal">➕</div>
-      <h2>Add Venue</h2>
-    </div>
-    <p class="section-intro">
-      Found a pub that's not in the database? Add it yourself. Search by name, Untappd URL, or add from your discoveries. PINtPOINT pulls in photos, location data, and recent check-ins automatically.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">🔍</span> Untappd Search</h4>
-        <p>Paste an Untappd venue URL or search by name. PINtPOINT imports recent check-ins, ratings, and venue details.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📸</span> Auto Photos</h4>
-        <p>Google Places photos are fetched automatically. If the initial fetch fails, photos are lazily loaded when you browse.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🌍</span> Works Anywhere</h4>
-        <p>Add venues from anywhere in the world. PINtPOINT already has pubs in 37 countries — and growing. Every venue you add helps the community.</p>
-      </div>
-    </div>
-  </section>
+        <!-- Troubled Pubs -->
+        <div class="section" id="sec-troubled">
+          <div class="section-title">Troubled Pubs</div>
+          <p class="section-intro">Some pubs need your support before it's too late. PINtPOINT uses Financial Pressure Index data from ismypubfucked.com to highlight venues under financial strain, from "Feeling It" to "Absolutely F**ked".</p>
+          <div class="info-box">
+            <div class="info-box-title">FPI Levels</div>
+            <ul>
+              <li>Fine</li>
+              <li>Feeling It</li>
+              <li>Struggling</li>
+              <li>F**ked</li>
+              <li>Absolutely F**ked</li>
+            </ul>
+          </div>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">🟠</span>
+              <div class="card-title">Amber Radar Blips</div>
+              <div class="card-desc">Troubled pubs stand out on the radar so you can spot them instantly.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🧭</span>
+              <div class="card-title">Lock-On Warning</div>
+              <div class="card-desc">Tap a troubled venue and PINtPOINT surfaces its current pressure level clearly.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📊</span>
+              <div class="card-title">Venue FPI Card</div>
+              <div class="card-desc">Venue pages show FPI score, severity label, and rate-change context, credited to ismypubfucked.com and VOA data.</div>
+            </div>
+          </div>
+        </div>
 
-  <!-- ======================== CUSTOMISE ======================== -->
-  <section class="feature-section" id="customise">
-    <div class="section-header">
-      <div class="section-icon icon-blue">🎨</div>
-      <h2>Customise</h2>
-    </div>
-    <p class="section-intro">
-      Make PINtPOINT yours. Choose your theme, pick an accent colour, set your preferred units, configure your radar behaviour, and set up Quick Picks for the areas you visit most.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">🎨</span> Themes</h4>
-        <p>Multiple colour themes to suit your taste — Teal, Amber, Purple, Blue and more. Every UI element adapts.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📡</span> Radar Settings</h4>
-        <p>Choose between Nearest Venues or All Within Radius mode. Set how many blips to show or the radar range.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📌</span> Quick Picks</h4>
-        <p>Save up to 6 favourite areas (postcodes, neighbourhoods, cities) for instant location switching. Perfect for regulars.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📏</span> Units</h4>
-        <p>Switch between miles and metres. Distance displays across the entire app update instantly.</p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ======================== REFINE RESULTS ======================== -->
-  <section class="feature-section" id="filters">
-    <div class="section-header">
-      <div class="section-icon icon-blue">🎯</div>
-      <h2>Refine Results</h2>
+  <!-- ── MANAGE ── -->
+  <div class="category" id="cat-manage">
+    <div class="cat-header" onclick="toggleCategory('manage')">
+      <span class="cat-emoji">⚙️</span>
+      <span class="cat-title">Manage</span>
+      <span class="cat-badge">5 features</span>
+      <span class="cat-chevron">+</span>
     </div>
-    <p class="section-intro">
-      Dial in exactly what you're looking for. Filter by beer style, search for a specific beer by name, set minimum ratings, adjust your radius, and toggle special modes — all from one bottom sheet.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">🍺</span> Style Filter</h4>
-        <p>Multi-select from dozens of styles — IPA, Stout, Lager, Sour, Saison, and more. Long-press any style for a description.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🔎</span> Named Beer Search</h4>
-        <p>Looking for a specific beer? Search by name across all venues to find exactly where it's pouring.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">⭐</span> Rating &amp; ABV</h4>
-        <p>Set minimum rating thresholds and ABV ranges to narrow your results to the beers that match your preferences.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📏</span> Radius Control</h4>
-        <p>Nine preset radius options from 250 yards to 100 miles. Your selection syncs across the radar and venue list.</p>
+    <div class="cat-body">
+      <div class="cat-body-inner">
+
+        <!-- Add a Venue -->
+        <div class="section" id="sec-addvenue">
+          <div class="section-title">Add a Venue</div>
+          <p class="section-intro">Found a pub that's not in the database? Add it yourself. Search by name, Untappd URL, or add from your discoveries. PINtPOINT can pull in location data, photos, and Untappd-linked details where available.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">🔍</span>
+              <div class="card-title">Untappd Search</div>
+              <div class="card-desc">Paste an Untappd venue URL or search by name to match the right place.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📸</span>
+              <div class="card-title">Photos Where Available</div>
+              <div class="card-desc">Venue photos will be pulled in from Google Places where available.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🌍</span>
+              <div class="card-title">Worldwide</div>
+              <div class="card-desc">Add venues from anywhere in the world. PINtPOINT already covers venues across multiple countries and keeps growing as more places are added.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customisation -->
+        <div class="section" id="sec-custom">
+          <div class="section-title">Customisation</div>
+          <p class="section-intro">Make PINtPOINT yours. Choose your theme, accent colour, units, radar behaviour, and Quick Picks for the areas you visit most.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">🎨</span>
+              <div class="card-title">Themes</div>
+              <div class="card-desc">Choose from multiple colour themes across the app.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📡</span>
+              <div class="card-title">Radar Settings</div>
+              <div class="card-desc">Control how many venues appear and how the radar behaves.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📌</span>
+              <div class="card-title">Quick Picks</div>
+              <div class="card-desc">Save regular areas for instant switching.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📏</span>
+              <div class="card-title">Units</div>
+              <div class="card-desc">Switch between miles and metres across the app.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filters & Search -->
+        <div class="section" id="sec-filters">
+          <div class="section-title">Filters &amp; Search</div>
+          <p class="section-intro">Dial in exactly what you're looking for. Filter by beer style, search by beer name, adjust radius, and refine the venue list from one place.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">🍺</span>
+              <div class="card-title">Style Filter</div>
+              <div class="card-desc">Filter by styles including IPA, stout, lager, sour, saison, and more.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🔎</span>
+              <div class="card-title">Named Beer Search</div>
+              <div class="card-desc">Search for a specific beer name across venues.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">⭐</span>
+              <div class="card-title">Rating &amp; ABV</div>
+              <div class="card-desc">Set thresholds to narrow down the beers and venues you want.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📏</span>
+              <div class="card-title">Radius Control</div>
+              <div class="card-desc">Adjust your search range and keep radar and venue list aligned.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Venue Detail -->
+        <div class="section" id="sec-venuedetail">
+          <div class="section-title">Venue Detail</div>
+          <p class="section-intro">Tap any venue card to see the full picture — tap list, ratings, distance, navigation, sharing, and more.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">🍺</span>
+              <div class="card-title">Recent Beers</div>
+              <div class="card-desc">See recent beers, brewery info, styles, and other available detail.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🧭</span>
+              <div class="card-title">Navigate</div>
+              <div class="card-desc">Open directions in Apple Maps or Google Maps with one tap.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📲</span>
+              <div class="card-title">Share &amp; QR</div>
+              <div class="card-desc">Share venues as Tap Trumps cards or pub crawl routes as QR codes.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">🔗</span>
+              <div class="card-title">Untappd Link</div>
+              <div class="card-desc">Jump straight to the venue's Untappd page to check in or browse more detail.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Venues -->
+        <div class="section" id="sec-venues">
+          <div class="section-title">Venues</div>
+          <p class="section-intro">Browse a searchable list of venues with photos, ratings, and live beer context where available. Search by venue or beer name, sort by distance or style match, and filter to find exactly what suits the moment.</p>
+          <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">🔍</span>
+              <div class="card-title">Smart Search</div>
+              <div class="card-desc">Search across venue names and beer names without needing exact spelling.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📊</span>
+              <div class="card-title">Sort Options</div>
+              <div class="card-desc">Sort by distance or style relevance.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">❤️</span>
+              <div class="card-title">Favourites</div>
+              <div class="card-desc">Save venues you care about and spot them quickly on the radar.</div>
+            </div>
+            <div class="feature-card">
+              <span class="card-icon">📸</span>
+              <div class="card-title">Rich Cards</div>
+              <div class="card-desc">Venue cards show the useful stuff at a glance — photo, distance, rating, beer count, and a featured beer where available.</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ======================== VENUE DETAIL ======================== -->
-  <section class="feature-section" id="venue-detail">
-    <div class="section-header">
-      <div class="section-icon icon-teal">📋</div>
-      <h2>Venue Detail</h2>
-    </div>
-    <p class="section-intro">
-      Tap any venue card to see the full picture — tap list, ratings, distance, navigation, sharing, and more.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">🍺</span> Recent Beers</h4>
-        <p>See what's been checked in recently — beer name, style, brewery, and ABV. Sort by rating or ABV.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🧭</span> Navigate</h4>
-        <p>One tap to open directions in Apple Maps or Google Maps. See distance from your current location.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📲</span> Share &amp; QR</h4>
-        <p>Share venues as Tap Trumps cards via any messaging app. Share pub crawl routes as QR codes for your group.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">🔗</span> Untappd Link</h4>
-        <p>Jump to the venue's Untappd page to check in, see reviews, and browse the full beer menu.</p>
-      </div>
-    </div>
-  </section>
+</main>
 
-  <!-- ======================== VENUES ======================== -->
-  <section class="feature-section" id="venues">
-    <div class="section-header">
-      <div class="section-icon icon-teal">🍺</div>
-      <h2>Venues</h2>
-    </div>
-    <p class="section-intro">
-      A fully searchable list of venues with photos, ratings, and recent check-in data. Search by venue name or beer name. Sort by distance or style match. Filter by beer style, rating, ABV, and more.
-    </p>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <h4><span class="mini-icon">🔍</span> Smart Search</h4>
-        <p>Search across venue names and beer names simultaneously. Fuzzy matching means you don't need exact spellings.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📊</span> Sort Options</h4>
-        <p>Sort by distance to find what's close, or by style match when filtering to find venues with the best selection of your chosen style.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">❤️</span> Favourites</h4>
-        <p>Heart any venue to save it. Favourited venues show as red blips on the radar so you can always spot your regulars.</p>
-      </div>
-      <div class="detail-card">
-        <h4><span class="mini-icon">📸</span> Rich Cards</h4>
-        <p>Every venue card shows a photo, distance, rating, beer count, and a featured beer pill highlighting what's worth trying.</p>
-      </div>
-    </div>
-  </section>
+<footer>
+  <p>&copy; 2025 PINtPOINT &nbsp;·&nbsp; <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="index.html">Home</a></p>
+</footer>
 
-    </div><!-- /.category-content (Manage) -->
-  </div><!-- /.category-group (Manage) -->
+<script>
+  // Map category id to DOM element id
+  const CAT_IDS = {
+    explore: 'cat-explore',
+    beer:    'cat-beer',
+    nights:  'cat-nights',
+    culture: 'cat-culture',
+    manage:  'cat-manage'
+  };
 
-  <!-- FINAL CTA -->
-  <section class="final-cta">
-    <h2><em>£3.99/year.</em> Less than half a London pint.</h2>
-    <p class="sub">7-day free trial. Cancel anytime. No ads. Ever.</p>
-    <a href="https://apps.apple.com/app/pintpoint/id6760611613" class="btn-primary">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      Download on the App Store
-    </a>
-    <p class="price-note">Also available on <strong>Android</strong> via Google Play</p>
-  </section>
+  // Map category id to pill index
+  const PILL_MAP = {
+    explore: 0,
+    beer:    1,
+    nights:  2,
+    culture: 3,
+    manage:  4
+  };
 
-  <footer>
-    <div class="links">
-      <a href="index.html">Home</a>
-      <a href="privacy-policy">Privacy Policy</a>
-      <a href="screenshots.html">Screenshots</a>
-      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
-    </div>
-    <p>&copy; 2026 PINtPOINT</p>
-  </footer>
+  function getPills() {
+    return document.querySelectorAll('.cat-pill');
+  }
 
-  <a href="#top" class="back-top" id="backTop">&uarr;</a>
-
-  <script>
-    // Show/hide back-to-top button
-    const btn = document.getElementById('backTop');
-    window.addEventListener('scroll', () => {
-      btn.classList.toggle('show', window.scrollY > 400);
+  function setActivePill(id) {
+    const pills = getPills();
+    pills.forEach((p, i) => {
+      p.classList.toggle('active', i === PILL_MAP[id]);
     });
-  </script>
+  }
 
-  <script>
-    function toggleCategory(header) {
-      const content = header.nextElementSibling;
-      const isOpen = content.classList.contains('open');
+  function toggleCategory(id) {
+    const el = document.getElementById(CAT_IDS[id]);
+    if (!el) return;
+    const isOpen = el.classList.contains('open');
+    el.classList.toggle('open', !isOpen);
+    if (!isOpen) setActivePill(id);
+  }
 
-      // Close all
-      document.querySelectorAll('.category-header').forEach(h => h.classList.remove('open'));
-      document.querySelectorAll('.category-content').forEach(c => c.classList.remove('open'));
+  function openCategory(id) {
+    const el = document.getElementById(CAT_IDS[id]);
+    if (!el) return;
+    el.classList.add('open');
+    setActivePill(id);
+    // Scroll after a brief tick to let layout settle
+    setTimeout(() => {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 20);
+  }
 
-      // Open clicked (unless it was already open)
-      if (!isOpen) {
-        header.classList.add('open');
-        content.classList.add('open');
+  // Sync active pill on scroll using IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const catEl = entry.target;
+        const id = Object.keys(CAT_IDS).find(k => CAT_IDS[k] === catEl.id);
+        if (id) setActivePill(id);
       }
-    }
-
-    // Nav pill clicks should also open the correct category
-    document.querySelectorAll('.feature-nav a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href').replace('#', '');
-        const header = document.getElementById(targetId);
-        if (header && header.classList.contains('category-header')) {
-          e.preventDefault();
-          toggleCategory(header);
-          setTimeout(() => header.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-        }
-      });
     });
-  </script>
+  }, { threshold: 0.25, rootMargin: '-120px 0px -40% 0px' });
+
+  Object.values(CAT_IDS).forEach(domId => {
+    const el = document.getElementById(domId);
+    if (el) observer.observe(el);
+  });
+</script>
 
 </body>
 </html>
