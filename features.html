@@ -326,23 +326,60 @@
       .blip-legend { grid-template-columns: 1fr; }
     }
 
+    /* Collapsible category groups */
+    .category-group { margin-bottom: 8px; }
+
     .category-header {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 48px 40px 8px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      margin-top: 16px;
+      gap: 16px;
+      padding: 22px 40px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      user-select: none;
     }
-    .category-header:first-of-type { border-top: none; margin-top: 0; }
-    .category-icon { font-size: 1.8rem; }
+    .category-header:hover { background: rgba(255,255,255,0.05); border-color: rgba(0,212,170,0.3); }
+    .category-header.open { border-color: rgba(0,212,170,0.4); border-radius: 16px 16px 0 0; }
+
+    .category-icon { font-size: 1.6rem; }
     .category-header h2 {
-      font-size: 1.5rem;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      color: var(--teal);
+      flex: 1;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      margin: 0;
     }
-    @media (max-width: 600px) { .category-header { padding: 36px 16px 8px; } }
+    .category-count { font-size: 0.8rem; color: var(--muted); }
+    .category-chevron {
+      font-size: 1.4rem;
+      color: var(--muted);
+      transition: transform 0.25s;
+      line-height: 1;
+    }
+    .category-header.open .category-chevron { transform: rotate(45deg); color: var(--teal); }
+
+    .category-content {
+      display: none;
+      border: 1px solid rgba(0,212,170,0.4);
+      border-top: none;
+      border-radius: 0 0 16px 16px;
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+    .category-content.open { display: block; }
+
+    /* Remove top padding from first section inside a group */
+    .category-content .feature-section:first-child { padding-top: 32px; }
+    .category-content .feature-section:last-child { padding-bottom: 40px; }
+
+    @media (max-width: 600px) {
+      .category-header { padding: 18px 20px; }
+      .category-header h2 { font-size: 1.05rem; }
+    }
   </style>
 </head>
 <body>
@@ -371,10 +408,14 @@
     <a href="#manage"><span class="pill-icon">⚙️</span> Manage</a>
   </div>
 
-  <div class="category-header" id="explore">
-    <span class="category-icon">🔍</span>
-    <h2>Find &amp; Explore</h2>
-  </div>
+  <div class="category-group">
+    <div class="category-header" id="explore" onclick="toggleCategory(this)">
+      <span class="category-icon">🔍</span>
+      <h2>Find &amp; Explore</h2>
+      <span class="category-count">3 features</span>
+      <span class="category-chevron">+</span>
+    </div>
+    <div class="category-content">
 
   <!-- ======================== DISCOVER ======================== -->
   <section class="feature-section" id="discover">
@@ -491,10 +532,17 @@
     </div>
   </section>
 
-  <div class="category-header" id="beer">
-    <span class="category-icon">🍺</span>
-    <h2>Beer</h2>
-  </div>
+    </div><!-- /.category-content (Find & Explore) -->
+  </div><!-- /.category-group (Find & Explore) -->
+
+  <div class="category-group">
+    <div class="category-header" id="beer" onclick="toggleCategory(this)">
+      <span class="category-icon">🍺</span>
+      <h2>Beer</h2>
+      <span class="category-count">2 features</span>
+      <span class="category-chevron">+</span>
+    </div>
+    <div class="category-content">
 
   <!-- ======================== BEER ALERTS ======================== -->
   <section class="feature-section" id="alerts">
@@ -546,10 +594,17 @@
     </div>
   </section>
 
-  <div class="category-header" id="nights-out">
-    <span class="category-icon">🗺️</span>
-    <h2>Nights Out</h2>
-  </div>
+    </div><!-- /.category-content (Beer) -->
+  </div><!-- /.category-group (Beer) -->
+
+  <div class="category-group">
+    <div class="category-header" id="nights-out" onclick="toggleCategory(this)">
+      <span class="category-icon">🗺️</span>
+      <h2>Nights Out</h2>
+      <span class="category-count">2 features</span>
+      <span class="category-chevron">+</span>
+    </div>
+    <div class="category-content">
 
   <!-- ======================== CREATE-A-CRAWL ======================== -->
   <section class="feature-section" id="crawl">
@@ -605,10 +660,17 @@
     </div>
   </section>
 
-  <div class="category-header" id="pub-culture">
-    <span class="category-icon">🏚️</span>
-    <h2>Pub Culture</h2>
-  </div>
+    </div><!-- /.category-content (Nights Out) -->
+  </div><!-- /.category-group (Nights Out) -->
+
+  <div class="category-group">
+    <div class="category-header" id="pub-culture" onclick="toggleCategory(this)">
+      <span class="category-icon">🏚️</span>
+      <h2>Pub Culture</h2>
+      <span class="category-count">2 features</span>
+      <span class="category-chevron">+</span>
+    </div>
+    <div class="category-content">
 
   <!-- ======================== GHOST HUNTER ======================== -->
   <section class="feature-section" id="ghost" style="background:linear-gradient(180deg,#0d1117 0%,#1a0a2e 50%,#0d1117 100%);border-radius:20px;margin-bottom:2px;">
@@ -773,10 +835,17 @@
     </div>
   </section>
 
-  <div class="category-header" id="manage">
-    <span class="category-icon">⚙️</span>
-    <h2>Manage</h2>
-  </div>
+    </div><!-- /.category-content (Pub Culture) -->
+  </div><!-- /.category-group (Pub Culture) -->
+
+  <div class="category-group">
+    <div class="category-header" id="manage" onclick="toggleCategory(this)">
+      <span class="category-icon">⚙️</span>
+      <h2>Manage</h2>
+      <span class="category-count">5 features</span>
+      <span class="category-chevron">+</span>
+    </div>
+    <div class="category-content">
 
   <!-- ======================== ADD VENUE ======================== -->
   <section class="feature-section" id="add-venue">
@@ -919,6 +988,9 @@
     </div>
   </section>
 
+    </div><!-- /.category-content (Manage) -->
+  </div><!-- /.category-group (Manage) -->
+
   <!-- FINAL CTA -->
   <section class="final-cta">
     <h2><em>£3.99/year.</em> Less than half a London pint.</h2>
@@ -947,6 +1019,36 @@
     const btn = document.getElementById('backTop');
     window.addEventListener('scroll', () => {
       btn.classList.toggle('show', window.scrollY > 400);
+    });
+  </script>
+
+  <script>
+    function toggleCategory(header) {
+      const content = header.nextElementSibling;
+      const isOpen = content.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.category-header').forEach(h => h.classList.remove('open'));
+      document.querySelectorAll('.category-content').forEach(c => c.classList.remove('open'));
+
+      // Open clicked (unless it was already open)
+      if (!isOpen) {
+        header.classList.add('open');
+        content.classList.add('open');
+      }
+    }
+
+    // Nav pill clicks should also open the correct category
+    document.querySelectorAll('.feature-nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').replace('#', '');
+        const header = document.getElementById(targetId);
+        if (header && header.classList.contains('category-header')) {
+          e.preventDefault();
+          toggleCategory(header);
+          setTimeout(() => header.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        }
+      });
     });
   </script>
 
