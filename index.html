@@ -325,6 +325,20 @@
     <p><em>£3.99/year.</em> Less than half a London pint.<br/>Cancel anytime.</p>
   </div>
 
+  
+  <div style="text-align:center;padding:16px 24px 0;font-size:0.85rem;color:#444;">
+    👁 <span id="visitor-count">…</span> visitors
+  </div>
+  <script>
+    fetch('https://api.counterapi.dev/v1/pintpoint/homepage/up')
+      .then(r => r.json())
+      .then(d => {
+        const el = document.getElementById('visitor-count');
+        if (el && d && d.count != null) el.textContent = (d.count + 1984).toLocaleString();
+      })
+      .catch(() => {});
+  </script>
+
   <footer>
     <div class="links">
       <a href="features.html">Features</a>
