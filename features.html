@@ -414,8 +414,13 @@
         <!-- Discover -->
         <div class="section" id="sec-discover">
           <div class="section-title">Discover</div>
-          <p class="section-intro">Surface venues you've never visited. Discover searches nearby pubs and bars and shows rich cards with photos, ratings, and live venue details where available. Add any discovery to your PINtPOINT list with one tap.</p>
+          <p class="section-intro">Surface venues you've never visited. Discover searches both Google Places and Foursquare for nearby pubs and bars, showing rich cards with photos, ratings, and live venue details. Add any discovery to your PINtPOINT list with one tap.</p>
           <div class="cards-grid">
+            <div class="feature-card">
+              <span class="card-icon">🔍</span>
+              <div class="card-title">Dual-Source Discovery</div>
+              <div class="card-desc">Searches both Google Places and Foursquare so venues that one source might miss still surface. Better coverage, fewer gaps.</div>
+            </div>
             <div class="feature-card">
               <span class="card-icon">📍</span>
               <div class="card-title">Configurable Radius</div>
@@ -591,12 +596,12 @@
         <!-- Create-a-Crawl -->
         <div class="section" id="sec-crawl">
           <div class="section-title">Create-a-Crawl</div>
-          <p class="section-intro">Plan a pub crawl in seconds. Set your starting point, number of stops, maximum gap between venues, and total walking distance. PINtPOINT builds an optimised route through nearby pubs.</p>
+          <p class="section-intro">Plan a pub crawl in seconds. Set your starting point, number of stops, maximum gap between venues, and total walking distance. PINtPOINT builds a route using a nearest-neighbour algorithm — picking the closest unvisited venue at each step.</p>
           <div class="cards-grid">
             <div class="feature-card">
               <span class="card-icon">📐</span>
-              <div class="card-title">Smart Routing</div>
-              <div class="card-desc">Set the crawl length and walking constraints, then let PINtPOINT build the route.</div>
+              <div class="card-title">Auto-Generated Routes</div>
+              <div class="card-desc">Set the crawl length and walking constraints. PINtPOINT picks the closest unvisited venue at each step to build your route.</div>
             </div>
             <div class="feature-card">
               <span class="card-icon">🚶</span>
