@@ -330,13 +330,26 @@
     👁 <span id="visitor-count">…</span> visitors
   </div>
   <script>
-    fetch('https://api.counterapi.dev/v1/pintpoint/homepage/up')
-      .then(r => r.json())
-      .then(d => {
-        const el = document.getElementById('visitor-count');
-        if (el && d && d.count != null) el.textContent = (d.count + 1984).toLocaleString();
-      })
-      .catch(() => {});
+    (function() {
+      const el = document.getElementById('visitor-count');
+      // Try V2 first, fall back to V1
+      const urls = [
+        'https://api.counterapi.dev/v2/pintpoint/homepage/up',
+        'https://api.counterapi.dev/v1/pintpoint/homepage/up',
+      ];
+      function tryNext(i) {
+        if (i >= urls.length) { if (el) el.closest('div').style.display = 'none'; return; }
+        fetch(urls[i])
+          .then(r => r.ok ? r.json() : Promise.reject())
+          .then(d => {
+            if (el && d && d.count != null) {
+              el.textContent = (d.count + 1984).toLocaleString();
+            } else { tryNext(i + 1); }
+          })
+          .catch(() => tryNext(i + 1));
+      }
+      tryNext(0);
+    })();
   </script>
 
   <footer>
