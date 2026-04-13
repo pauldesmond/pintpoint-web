@@ -18,6 +18,125 @@
   <meta name="twitter:title" content="PINtPOINT — Find the right pub before the first pint." />
   <meta name="twitter:description" content="Stop bimbling. See what's on tap before you arrive, track your favourites, and never walk past a great pub again." />
   <meta name="twitter:image" content="https://pintpoint.co.uk/icon.png" />
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PINtPOINT",
+    "url": "https://pintpoint.co.uk",
+    "logo": "https://pintpoint.co.uk/icon.png",
+    "description": "PINtPOINT helps you find better pubs, see what's on tap, and decide where to go next before you walk through the door.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "hello@pintpoint.co.uk",
+      "contactType": "customer support"
+    }
+  }
+  </script>
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PINtPOINT",
+    "operatingSystem": "iOS",
+    "applicationCategory": "LifestyleApplication",
+    "description": "Find the right pub before the first pint. See what's on tap before you arrive, track your favourites, and never walk past a great pub again.",
+    "url": "https://pintpoint.co.uk",
+    "downloadUrl": "https://apps.apple.com/app/pintpoint/id6760611613",
+    "offers": {
+      "@type": "Offer",
+      "price": "3.99",
+      "priceCurrency": "GBP",
+      "description": "Annual subscription with 7-day free trial"
+    },
+    "featureList": [
+      "Live radar that points you to nearby pubs",
+      "See what's on tap before you arrive",
+      "Create custom pub crawls and share routes",
+      "Beer alerts when favourites appear on tap",
+      "Filter pubs by beer style",
+      "Ghost Hunter: explore 500+ closed London pubs",
+      "Troubled Pub Mode: pubs under financial pressure"
+    ],
+    "screenshot": "https://pintpoint.co.uk/screenshots/1.radar.png"
+  }
+  </script>
+  <!-- Structured Data: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PINtPOINT",
+    "url": "https://pintpoint.co.uk"
+  }
+  </script>
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is PINtPOINT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PINtPOINT is an iPhone app that helps you find better pubs. It shows you what's on tap before you arrive, uses a live radar to point you to nearby venues, and lets you filter by beer style so every result is already relevant."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does PINtPOINT know what's on tap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PINtPOINT pulls live tap list data from venues that publish their current beers online. When a pub updates its taps, PINtPOINT updates too, so you can see what's pouring before you walk through the door."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does PINtPOINT cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PINtPOINT costs \u00a33.99 per year after a 7-day free trial. No ads, no data selling. That's less than half a London pint for a full year of better pub decisions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Ghost Hunter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ghost Hunter reveals over 500 closed and demolished London pubs on your radar as purple blips. Tap any ghost pub to see archive photos of what it once looked like. It's a pub map with a memory."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Troubled Pub Mode?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Troubled Pub Mode uses FPI (Financial Pressure Index) data to highlight pubs under financial pressure as amber blips. It helps you support your local before it's too late by showing which venues are struggling with rising costs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is PINtPOINT available on Android?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PINtPOINT is currently available on iPhone via the App Store. An Android version is planned for the future."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What cities does PINtPOINT cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PINtPOINT works across the UK and internationally. The discovery feature finds pubs and bars wherever you are using live venue data. Ghost Hunter and Troubled Pub Mode currently focus on London, with more cities being added."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
@@ -112,6 +231,17 @@
     .fpi-attr a { color: #F5A623; text-decoration: none; }
     .btn-amber { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,166,35,0.15); color: #F5A623; font-weight: 600; font-size: 0.95rem; padding: 14px 28px; border-radius: 12px; text-decoration: none; border: 1px solid rgba(245,166,35,0.4); }
     .btn-amber:hover { background: rgba(245,166,35,0.25); }
+
+    /* FAQ SECTION */
+    .faq-section { max-width: 760px; margin: 0 auto; padding: 80px 24px; }
+    .faq-section h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -1px; text-align: center; margin-bottom: 40px; }
+    .faq-section h2 em { color: var(--teal); font-style: normal; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+    .faq-item summary { font-size: 1.05rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::after { content: '+'; font-size: 1.4rem; color: var(--teal); font-weight: 400; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item p { margin-top: 12px; font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
 
     .divider { text-align: center; padding: 60px 24px; border-top: 1px solid var(--border); }
     .divider p { font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.5px; color: var(--muted); }
@@ -321,8 +451,41 @@
     <a href="fpi.html" class="btn-amber">⚠️ Full Troubled Pub Mode story →</a>
   </section>
 
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <h2>Frequently <em>asked.</em></h2>
+    <details class="faq-item">
+      <summary>What is PINtPOINT?</summary>
+      <p>PINtPOINT is an iPhone app that helps you find better pubs. It shows you what's on tap before you arrive, uses a live radar to point you to nearby venues, and lets you filter by beer style so every result is already relevant.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How does PINtPOINT know what's on tap?</summary>
+      <p>PINtPOINT pulls live tap list data from venues that publish their current beers online. When a pub updates its taps, PINtPOINT updates too, so you can see what's pouring before you walk through the door.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How much does PINtPOINT cost?</summary>
+      <p>PINtPOINT costs &pound;3.99 per year after a 7-day free trial. No ads, no data selling. That's less than half a London pint for a full year of better pub decisions.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What is Ghost Hunter?</summary>
+      <p>Ghost Hunter reveals over 500 closed and demolished London pubs on your radar as purple blips. Tap any ghost pub to see archive photos of what it once looked like. It's a pub map with a memory.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What is Troubled Pub Mode?</summary>
+      <p>Troubled Pub Mode uses FPI (Financial Pressure Index) data to highlight pubs under financial pressure as amber blips. It helps you support your local before it's too late by showing which venues are struggling with rising costs.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is PINtPOINT available on Android?</summary>
+      <p>PINtPOINT is currently available on iPhone via the App Store. An Android version is planned for the future.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What cities does PINtPOINT cover?</summary>
+      <p>PINtPOINT works across the UK and internationally. The discovery feature finds pubs and bars wherever you are using live venue data. Ghost Hunter and Troubled Pub Mode currently focus on London, with more cities being added.</p>
+    </details>
+  </section>
+
   <div class="divider">
-    <p><em>£3.99/year.</em> Less than half a London pint.<br/>Cancel anytime.</p>
+    <p><em>&pound;3.99/year.</em> Less than half a London pint.<br/>Cancel anytime.</p>
   </div>
 
   

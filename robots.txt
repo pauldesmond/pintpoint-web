@@ -1,4 +1,34 @@
+# PINtPOINT — pintpoint.co.uk
+# Allow search engines and AI assistants to index the site
+# Block only training-focused crawlers
+
 User-agent: *
 Allow: /
+
+# Allow AI search/assistant crawlers (these surface your site in AI answers)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Block pure training/scraping crawlers
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
 
 Sitemap: https://pintpoint.co.uk/sitemap.xml
