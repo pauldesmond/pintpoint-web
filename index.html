@@ -88,7 +88,15 @@
         "name": "What is PINtPOINT?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "PINtPOINT is an iPhone app that helps you find better pubs. It shows you what's on tap before you arrive, uses a live radar to point you to nearby venues, and lets you filter by beer style so every result is already relevant."
+          "text": "PINtPOINT is a beer-first pub discovery app that helps people find pubs, bars, and taprooms worth visiting. It shows you what's on tap before you arrive, uses a live radar to point you to nearby venues, and lets you filter by beer style so every result is already relevant."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is PINtPOINT just another pub finder?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Most pub finders focus on what's closest. PINtPOINT is built around what's actually worth seeking out — better beer, better pubs, better nights out."
         }
       },
       {
@@ -101,10 +109,42 @@
       },
       {
         "@type": "Question",
+        "name": "Can I use PINtPOINT to find real ale pubs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. It's designed to help people discover pubs with character, strong beer reputations, and the kind of atmosphere that makes them worth visiting — whether that's a traditional cask ale pub or a modern taproom."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does PINtPOINT work for craft beer too?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. PINtPOINT is just as useful for finding craft beer bars, taprooms, and places with a more modern beer focus. Filter by style — IPA, Pale Ale, Stout, Sour — and every result is relevant before you set off."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can PINtPOINT help me plan a pub crawl?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Create-a-Crawl lets you build a custom route from nearby venues in seconds. Set your stops, maximum distance between them, and share the route with your group. No more leaving it to chance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is PINtPOINT different from Untappd?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Untappd is mainly about tracking and rating beers. PINtPOINT is more about deciding where to go. One helps you remember what you drank. The other helps you find your next pint."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "How much does PINtPOINT cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "PINtPOINT costs \u00a33.99 per year after a 7-day free trial. No ads, no data selling. That's less than half a London pint for a full year of better pub decisions."
+          "text": "\u00a33.99 per year after a 7-day free trial. No ads, no data selling. That's less than half a London pint for a full year of better pub decisions."
         }
       },
       {
@@ -120,7 +160,7 @@
         "name": "What is Troubled Pub Mode?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Troubled Pub Mode uses FPI (Financial Pressure Index) data to highlight pubs under financial pressure as amber blips. It helps you support your local before it's too late by showing which venues are struggling with rising costs."
+          "text": "Troubled Pub Mode uses FPI (Financial Pressure Index) data to highlight pubs under financial pressure as amber blips. It covers England and Wales and helps you support your local before it's too late."
         }
       },
       {
@@ -136,7 +176,7 @@
         "name": "What cities does PINtPOINT cover?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "PINtPOINT works across the UK and internationally. The discovery feature finds pubs and bars wherever you are using live venue data. Ghost Hunter focuses on London (with some coverage beyond). Troubled Pub Mode covers England and Wales using VOA rating list data."
+          "text": "PINtPOINT works across the UK and internationally. The discovery feature finds pubs and bars wherever you are. Ghost Hunter focuses on London. Troubled Pub Mode covers England and Wales using VOA rating list data."
         }
       }
     ]
@@ -236,6 +276,12 @@
     .fpi-attr a { color: #F5A623; text-decoration: none; }
     .btn-amber { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,166,35,0.15); color: #F5A623; font-weight: 600; font-size: 0.95rem; padding: 14px 28px; border-radius: 12px; text-decoration: none; border: 1px solid rgba(245,166,35,0.4); }
     .btn-amber:hover { background: rgba(245,166,35,0.25); }
+
+    /* ABOUT SECTION */
+    .about-section { max-width: 760px; margin: 0 auto; padding: 80px 24px 40px; }
+    .about-section h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -1px; text-align: center; margin-bottom: 32px; }
+    .about-section h2 em { color: var(--teal); font-style: normal; }
+    .about-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
 
     /* FAQ SECTION */
     .faq-section { max-width: 760px; margin: 0 auto; padding: 80px 24px; }
@@ -372,6 +418,16 @@
     </div>
   </section>
 
+  <!-- ABOUT SECTION -->
+  <section class="about-section">
+    <h2>About <em>PINtPOINT.</em></h2>
+    <p>PINtPOINT is for people who don't just want the nearest pub. They want the right one.</p>
+    <p>If you care about good beer, proper pubs, and ending up somewhere worth the walk, a generic map search doesn't really cut it. PINtPOINT is a beer-first pub finder built to make discovery more useful, more local, and more beer-led. Whether you're after a cask ale pub, a craft beer bar, a decent IPA, or a route that turns into a very good pub crawl, it helps you work out where to go next without the usual faff.</p>
+    <p>The idea is simple. Pubs are not interchangeable, and neither are pints. One place is good for a quick one. Another is worth crossing town for. Some are steeped in history. Some are all about what's fresh on tap. Some just get the balance right. PINtPOINT is built to help people find those places with a bit more confidence and a lot less bimbling.</p>
+    <p>Launched in 2025, PINtPOINT is a smarter alternative to generic venue search tools and beer check-in apps. It's designed for pub lovers, craft beer drinkers, real ale fans, and anyone who has ever stood on a street corner trying to decide between three mediocre options and one place that might actually be brilliant.</p>
+    <p>It's not just about what's nearby. It's about what's worth your time.</p>
+  </section>
+
   <!-- GHOST MODE SECTION -->
   <section class="ghost-section">
     <p class="ghost-eyebrow">Ghost Hunter</p>
@@ -461,15 +517,35 @@
     <h2>Frequently <em>asked.</em></h2>
     <details class="faq-item">
       <summary>What is PINtPOINT?</summary>
-      <p>PINtPOINT is an iPhone app that helps you find better pubs. It shows you what's on tap before you arrive, uses a live radar to point you to nearby venues, and lets you filter by beer style so every result is already relevant.</p>
+      <p>PINtPOINT is a beer-first pub discovery app that helps people find pubs, bars, and taprooms worth visiting. It shows you what's on tap before you arrive, uses a live radar to point you to nearby venues, and lets you filter by beer style so every result is already relevant.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is PINtPOINT just another pub finder?</summary>
+      <p>No. Most pub finders focus on what's closest. PINtPOINT is built around what's actually worth seeking out &mdash; better beer, better pubs, better nights out.</p>
     </details>
     <details class="faq-item">
       <summary>How does PINtPOINT know what's on tap?</summary>
       <p>PINtPOINT pulls live tap list data from venues that publish their current beers online. When a pub updates its taps, PINtPOINT updates too, so you can see what's pouring before you walk through the door.</p>
     </details>
     <details class="faq-item">
+      <summary>Can I use PINtPOINT to find real ale pubs?</summary>
+      <p>Yes. It's designed to help people discover pubs with character, strong beer reputations, and the kind of atmosphere that makes them worth visiting &mdash; whether that's a traditional cask ale pub or a modern taproom.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Does PINtPOINT work for craft beer too?</summary>
+      <p>Yes. PINtPOINT is just as useful for finding craft beer bars, taprooms, and places with a more modern beer focus. Filter by style &mdash; IPA, Pale Ale, Stout, Sour &mdash; and every result is relevant before you set off.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can PINtPOINT help me plan a pub crawl?</summary>
+      <p>Yes. Create-a-Crawl lets you build a custom route from nearby venues in seconds. Set your stops, maximum distance between them, and share the route with your group. No more leaving it to chance.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How is PINtPOINT different from Untappd?</summary>
+      <p>Untappd is mainly about tracking and rating beers. PINtPOINT is more about deciding where to go. One helps you remember what you drank. The other helps you find your next pint.</p>
+    </details>
+    <details class="faq-item">
       <summary>How much does PINtPOINT cost?</summary>
-      <p>PINtPOINT costs &pound;3.99 per year after a 7-day free trial. No ads, no data selling. That's less than half a London pint for a full year of better pub decisions.</p>
+      <p>&pound;3.99 per year after a 7-day free trial. No ads, no data selling. That's less than half a London pint for a full year of better pub decisions.</p>
     </details>
     <details class="faq-item">
       <summary>What is Ghost Hunter?</summary>
@@ -477,15 +553,15 @@
     </details>
     <details class="faq-item">
       <summary>What is Troubled Pub Mode?</summary>
-      <p>Troubled Pub Mode uses FPI (Financial Pressure Index) data to highlight pubs under financial pressure as amber blips. It helps you support your local before it's too late by showing which venues are struggling with rising costs.</p>
+      <p>Troubled Pub Mode uses FPI (Financial Pressure Index) data to highlight pubs under financial pressure as amber blips. It covers England and Wales and helps you support your local before it's too late.</p>
     </details>
     <details class="faq-item">
       <summary>Is PINtPOINT available on Android?</summary>
-      <p>PINtPOINT is currently available on iPhone via the App Store. An Android version is in closed testing via Google Play — a wider release is under consideration but not currently planned.</p>
+      <p>PINtPOINT is currently available on iPhone via the App Store. An Android version is in closed testing via Google Play &mdash; a wider release is under consideration but not currently planned.</p>
     </details>
     <details class="faq-item">
       <summary>What cities does PINtPOINT cover?</summary>
-      <p>PINtPOINT works across the UK and internationally. The discovery feature finds pubs and bars wherever you are using live venue data. Ghost Hunter focuses on London (with some coverage beyond). Troubled Pub Mode covers England and Wales using VOA rating list data.</p>
+      <p>PINtPOINT works across the UK and internationally. The discovery feature finds pubs and bars wherever you are. Ghost Hunter focuses on London. Troubled Pub Mode covers England and Wales using VOA rating list data.</p>
     </details>
   </section>
 
