@@ -599,7 +599,7 @@
               '<div><div class="sighting-beer">' + esc(s.beer) + '</div>' +
               (detail ? '<div class="sighting-detail">' + esc(detail) + '</div>' : '') +
               '</div>' +
-              '<div><div class="sighting-where"><a href="pubs/' + slugify(s.venue) + '.html" style="color:var(--teal);text-decoration:none">' + esc(s.venue) + '</a></div>' +
+              '<div><div class="sighting-where"><a href="pubs/' + slugify(s.venue) + '" style="color:var(--teal);text-decoration:none">' + esc(s.venue) + '</a></div>' +
               '<div class="sighting-time">' + esc(s.city ? s.city + ' · ' + ago : ago) + '</div>' +
               '</div></div>';
           });
@@ -659,7 +659,7 @@
       }
       for (var k = 0; k < picked.length; k++) {
         var v = picked[k];
-        html += '<a href="pubs/' + v.slug + '.html" class="featured-chip">' + v.name + '<span class="chip-city">' + v.city + '</span></a>';
+        html += '<a href="pubs/' + v.slug + '" class="featured-chip">' + v.name + '<span class="chip-city">' + v.city + '</span></a>';
       }
       el.innerHTML = html;
     })();
