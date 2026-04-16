@@ -430,6 +430,7 @@
     <div style="display:flex;gap:20px;align-items:center">
       <a href="about-pintpoint.html">About</a>
       <a href="features.html">Features</a>
+      <a href="pubs/">Venues</a>
       <a href="screenshots.html">Screenshots</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
     </div>
@@ -534,15 +535,15 @@
         <div class="global-cell header">Coverage</div>
       </div>
       <div class="global-row">
-        <div class="global-cell">Europe <span style="color:#666;font-size:0.8em">UK, Spain, Norway, Poland, Germany</span></div>
+        <div class="global-cell">Europe <span style="color:#666;font-size:0.8em"><a href="pubs/the-rake.html" style="color:#666;text-decoration:underline">London</a>, <a href="pubs/capitan-amargo.html" style="color:#666;text-decoration:underline">Granada</a>, <a href="pubs/p-rgu.html" style="color:#666;text-decoration:underline">Tallinn</a>, <a href="pubs/mad-island-capitol.html" style="color:#666;text-decoration:underline">Palma</a></span></div>
         <div class="global-cell">650+ venues · 2,000+ beers</div>
       </div>
       <div class="global-row">
-        <div class="global-cell">North America <span style="color:#666;font-size:0.8em">USA, Puerto Rico, Canada</span></div>
+        <div class="global-cell">North America <span style="color:#666;font-size:0.8em"><a href="pubs/harlem-public.html" style="color:#666;text-decoration:underline">New York</a>, <a href="pubs/broadway-brewhouse-downtown.html" style="color:#666;text-decoration:underline">Nashville</a>, <a href="pubs/beer-corner-usa.html" style="color:#666;text-decoration:underline">Omaha</a></span></div>
         <div class="global-cell">180+ venues · 600+ beers</div>
       </div>
       <div class="global-row">
-        <div class="global-cell">Oceania <span style="color:#666;font-size:0.8em">Australia, New Zealand</span></div>
+        <div class="global-cell">Oceania <span style="color:#666;font-size:0.8em"><a href="pubs/the-crafty-tap.html" style="color:#666;text-decoration:underline">Christchurch</a></span></div>
         <div class="global-cell">65+ venues · 250+ beers</div>
       </div>
       <div class="global-row">
@@ -552,6 +553,7 @@
     </div>
 
     <p class="global-footer">3,140+ Beers · 960+ Venues · 40+ Countries <span>and growing</span></p>
+    <p style="text-align:center;margin-top:16px"><a href="pubs/" style="color:var(--teal);text-decoration:none;font-size:0.9rem;font-weight:600">Browse all venues &rarr;</a></p>
   </section>
 
   <div class="divider">
@@ -604,7 +606,7 @@
               '<div><div class="sighting-beer">' + esc(s.beer) + '</div>' +
               (detail ? '<div class="sighting-detail">' + esc(detail) + '</div>' : '') +
               '</div>' +
-              '<div><div class="sighting-where">' + esc(s.venue) + '</div>' +
+              '<div><div class="sighting-where"><a href="pubs/' + slugify(s.venue) + '.html" style="color:var(--teal);text-decoration:none">' + esc(s.venue) + '</a></div>' +
               '<div class="sighting-time">' + esc(s.city ? s.city + ' · ' + ago : ago) + '</div>' +
               '</div></div>';
           });
@@ -621,6 +623,7 @@
         return h + 'h ago';
       }
       function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+      function slugify(s) { return s.toLowerCase().replace(/['']/g,'').replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
     })();
   </script>
 
