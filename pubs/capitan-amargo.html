@@ -37,6 +37,12 @@
     .beer-detail { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
     .beer-style { font-size: 0.8rem; color: var(--teal); text-align: right; }
     .beer-abv { font-size: 0.75rem; color: #555; }
+    .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
+    .green { background: #00D4AA; }
+    .amber { background: #F5A623; }
+    .red { background: #FF4D6A; }
+    .freshness-key { display: flex; gap: 16px; justify-content: center; margin-bottom: 24px; font-size: 0.75rem; color: #555; }
+    .freshness-key span { display: inline-flex; align-items: center; gap: 4px; }
     .cta-block { margin-top: 48px; text-align: center; padding: 32px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; }
     .cta-block p { font-size: 0.95rem; color: var(--muted); margin-bottom: 16px; line-height: 1.6; }
     .btn { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 14px 28px; border-radius: 14px; text-decoration: none; }
@@ -64,12 +70,20 @@
 
     <h2>Live Tap List</h2>
     
+    <div class="freshness-key">
+      <span><span class="dot green"></span> Fresh</span>
+      <span><span class="dot amber"></span> Recent</span>
+      <span><span class="dot red"></span> Stale</span>
+    </div>
     <ul class="tap-list">
       
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Mucho Mucho Simcoe</div>
-          <div class="beer-detail">Basqueland Brewing</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Mucho Mucho Simcoe</div>
+            <div class="beer-detail">Basqueland Brewing</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">IPA - Imperial / Double New England / Hazy</div>
@@ -77,9 +91,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Noda</div>
-          <div class="beer-detail">SOMA Beer</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Noda</div>
+            <div class="beer-detail">SOMA Beer</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">IPA - New England / Hazy</div>
@@ -87,9 +104,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Taram Taram</div>
-          <div class="beer-detail">La Gavach</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Taram Taram</div>
+            <div class="beer-detail">La Gavach</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Red Ale - American Amber / Red</div>
@@ -97,9 +117,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">ESB</div>
-          <div class="beer-detail">Basqueland Brewing</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">ESB</div>
+            <div class="beer-detail">Basqueland Brewing</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Bitter - Extra Special / Strong (ESB)</div>
@@ -107,9 +130,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Salvator (2026)</div>
-          <div class="beer-detail">Paulaner Brauerei</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Salvator (2026)</div>
+            <div class="beer-detail">Paulaner Brauerei</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Bock - Doppelbock</div>
@@ -117,9 +143,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Decandencia Moral</div>
-          <div class="beer-detail">Wylie Brewery</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Decandencia Moral</div>
+            <div class="beer-detail">Wylie Brewery</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Stout - Other</div>
@@ -127,9 +156,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Sucaba (2023)</div>
-          <div class="beer-detail">Firestone Walker Brewing Company</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Sucaba (2023)</div>
+            <div class="beer-detail">Firestone Walker Brewing Company</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Barleywine - Other</div>
@@ -137,9 +169,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">SOUR SQUEEZE</div>
-          <div class="beer-detail">FERMENTERARNA</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">SOUR SQUEEZE</div>
+            <div class="beer-detail">FERMENTERARNA</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Sour - Fruited</div>
@@ -147,9 +182,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">WAYWARD</div>
-          <div class="beer-detail">MALANDAR BREWING</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">WAYWARD</div>
+            <div class="beer-detail">MALANDAR BREWING</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">IPA - Triple</div>
@@ -157,9 +195,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">BRASKADI</div>
-          <div class="beer-detail">Laugar Brewery</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">BRASKADI</div>
+            <div class="beer-detail">Laugar Brewery</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Stout - Russian Imperial</div>
@@ -167,9 +208,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Saison</div>
-          <div class="beer-detail">Brasserie St-Feuillien</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Saison</div>
+            <div class="beer-detail">Brasserie St-Feuillien</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Saison</div>
@@ -177,9 +221,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Hyperactive</div>
-          <div class="beer-detail">Cervesa Espiga</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Hyperactive</div>
+            <div class="beer-detail">Cervesa Espiga</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">IPA - American</div>
@@ -187,9 +234,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Hoegaarden Wit / Blanche</div>
-          <div class="beer-detail">Brouwerij Hoegaarden</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Hoegaarden Wit / Blanche</div>
+            <div class="beer-detail">Brouwerij Hoegaarden</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Wheat Beer - Witbier / Blanche</div>
@@ -197,9 +247,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Gouden Carolus Whisky Infused</div>
-          <div class="beer-detail">Brouwerij Het Anker</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Gouden Carolus Whisky Infused</div>
+            <div class="beer-detail">Brouwerij Het Anker</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Belgian Strong Dark Ale</div>
@@ -207,9 +260,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Weihenstephaner Hefeweissbier</div>
-          <div class="beer-detail">Bayerische Staatsbrauerei Weihenstephan</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Weihenstephaner Hefeweissbier</div>
+            <div class="beer-detail">Bayerische Staatsbrauerei Weihenstephan</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Wheat Beer - Hefeweizen</div>
@@ -217,9 +273,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Dougalls 2/20</div>
-          <div class="beer-detail">2/20</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Dougalls 2/20</div>
+            <div class="beer-detail">2/20</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">IPA - American</div>
@@ -227,9 +286,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Must Kuld</div>
-          <div class="beer-detail">Põhjala</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Must Kuld</div>
+            <div class="beer-detail">Põhjala</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Porter - Other</div>
@@ -237,9 +299,12 @@
         </div>
       </li>
       <li class="tap-item">
-        <div>
-          <div class="beer-name">Galipette Cidre Brut</div>
-          <div class="beer-detail">Galipette Cidre</div>
+        <div style="display:flex;align-items:center">
+          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <div>
+            <div class="beer-name">Galipette Cidre Brut</div>
+            <div class="beer-detail">Galipette Cidre</div>
+          </div>
         </div>
         <div>
           <div class="beer-style">Cider - Dry</div>

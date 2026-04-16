@@ -3,32 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PINtPOINT Venues</title>
+  <title>PINtPOINT Venues — Live Tap Lists from Around the World</title>
+  <meta name="description" content="Browse live tap lists from pubs, bars, and taprooms across 40+ countries. See what's on tap right now at venues tracked by PINtPOINT." />
   <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/pubs/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --border: rgba(255,255,255,0.08); }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-    .loading { text-align: center; }
-    .loading p { color: var(--muted); font-size: 0.9rem; margin-top: 16px; }
-    .spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--teal); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; letter-spacing: -1.5px; text-align: center; margin-bottom: 8px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    .sub { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 40px; }
+    .venue-list { list-style: none; }
+    .venue-link { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text); transition: color 0.2s; }
+    .venue-link:hover { color: var(--teal); }
+    .venue-name { font-size: 1rem; font-weight: 700; }
+    .venue-city { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .venue-arrow { color: var(--teal); font-size: 1.2rem; }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); margin-top: 48px; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 60px; } }
   </style>
-  <script>
-    // Extract slug from URL path: /pubs/radio-city-social → radio-city-social
-    var path = window.location.pathname.replace(/\/$/, '');
-    var parts = path.split('/');
-    var slug = parts[parts.length - 1];
-    if (slug && slug !== 'pubs' && slug !== 'index.html') {
-      // Redirect to the edge function
-      window.location.replace('https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/venue-page?slug=' + encodeURIComponent(slug));
-    }
-  </script>
 </head>
 <body>
-  <div class="loading">
-    <div class="spinner"></div>
-    <p>Loading venue&hellip;</p>
+  <nav>
+    <a href="https://pintpoint.co.uk" class="logo">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="https://pintpoint.co.uk">Home</a>
+      <a href="https://pintpoint.co.uk/features.html">Features</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h1>Browse <em>Venues</em></h1>
+    <p class="sub">Live tap lists from pubs, bars, and taprooms tracked by PINtPOINT.</p>
+
+    <ul class="venue-list">
+      <li><a href="radio-city-social.html" class="venue-link"><div><div class="venue-name">Radio City Social</div><div class="venue-city">Chelmsford</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="the-rake.html" class="venue-link"><div><div class="venue-name">The Rake</div><div class="venue-city">London</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="capitan-amargo.html" class="venue-link"><div><div class="venue-name">Capitan Amargo</div><div class="venue-city">Granada</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="the-ale-house.html" class="venue-link"><div><div class="venue-name">The Ale House</div><div class="venue-city">Chelmsford</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="harlem-public.html" class="venue-link"><div><div class="venue-name">Harlem Public</div><div class="venue-city">New York</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="the-kernel-brewery.html" class="venue-link"><div><div class="venue-name">The Kernel Brewery</div><div class="venue-city">London</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="sherlock-holmes.html" class="venue-link"><div><div class="venue-name">Sherlock Holmes</div><div class="venue-city">London</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="dc-tap-house.html" class="venue-link"><div><div class="venue-name">DC Tap House</div><div class="venue-city">Cupertino</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="the-white-swan.html" class="venue-link"><div><div class="venue-name">The White Swan</div><div class="venue-city">Market Rasen</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="mad-island-capitol.html" class="venue-link"><div><div class="venue-name">Mad Island CAPITOL</div><div class="venue-city">Palma</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="p-rgu.html" class="venue-link"><div><div class="venue-name">Põrgu</div><div class="venue-city">Tallinn</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="broadway-brewhouse-downtown.html" class="venue-link"><div><div class="venue-name">Broadway Brewhouse Downtown</div><div class="venue-city">Nashville</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="the-crafty-tap.html" class="venue-link"><div><div class="venue-name">The Crafty Tap</div><div class="venue-city">Christchurch</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="beer-corner-usa.html" class="venue-link"><div><div class="venue-name">Beer Corner USA</div><div class="venue-city">Omaha</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="yard-house-kansas-city-legends-outlets.html" class="venue-link"><div><div class="venue-name">Yard House</div><div class="venue-city">Kansas City</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="moody-goose-brewery.html" class="venue-link"><div><div class="venue-name">Moody Goose Brewery</div><div class="venue-city">Braintree</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="bar-arbolada.html" class="venue-link"><div><div class="venue-name">Bar Arbolada</div><div class="venue-city">Oklahoma City</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+      <li><a href="evgr-pub-and-beer-garden.html" class="venue-link"><div><div class="venue-name">EVGR Pub &amp; Beer Garden</div><div class="venue-city">Stanford</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
+    </ul>
   </div>
+
+  <footer>
+    <p>These are a sample of venues tracked by PINtPOINT. Download the app for the full live radar.</p>
+    <p style="margin-top:8px"><a href="https://pintpoint.co.uk">pintpoint.co.uk</a> &middot; &copy; 2026 PINtPOINT</p>
+  </footer>
 </body>
 </html>
