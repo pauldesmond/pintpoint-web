@@ -357,6 +357,9 @@
     .global-screenshot { max-width: 280px; border-radius: 20px; border: 2px solid rgba(0,212,170,0.2); margin: 0 auto 32px; display: block; }
     .global-footer { font-size: 1.1rem; font-weight: 800; color: var(--teal); letter-spacing: -0.3px; }
     .global-footer span { color: var(--muted); font-weight: 400; }
+    .featured-chip { display: inline-block; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 8px 16px; text-decoration: none; font-size: 0.8rem; font-weight: 600; color: var(--muted); transition: border-color 0.2s, color 0.2s; }
+    .featured-chip:hover { border-color: rgba(0,212,170,0.3); color: var(--teal); }
+    .featured-chip .chip-city { color: #555; font-weight: 400; margin-left: 4px; }
     @media (max-width: 600px) {
       .global-cell { padding: 12px 16px; font-size: 0.85rem; }
     }
@@ -541,6 +544,8 @@
     </div>
 
     <p class="global-footer">3,140+ Beers · 960+ Venues · 40+ Countries <span>and growing</span></p>
+
+    <div id="featured-venues" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px"></div>
     <p style="text-align:center;margin-top:16px"><a href="pubs/" style="color:var(--teal);text-decoration:none;font-size:0.9rem;font-weight:600">Browse all venues &rarr;</a></p>
   </section>
 
@@ -612,6 +617,45 @@
       }
       function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
       function slugify(s) { return s.toLowerCase().replace(/['']/g,'').replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var venues = [
+        {name:'The Rake',city:'London',slug:'the-rake'},
+        {name:'Capitan Amargo',city:'Granada',slug:'capitan-amargo'},
+        {name:'Harlem Public',city:'New York',slug:'harlem-public'},
+        {name:'The Local Taphouse',city:'Melbourne',slug:'the-local-taphouse'},
+        {name:'Broadway Brewhouse',city:'Nashville',slug:'broadway-brewhouse-downtown'},
+        {name:'Põrgu',city:'Tallinn',slug:'p-rgu'},
+        {name:'The Crafty Tap',city:'Christchurch',slug:'the-crafty-tap'},
+        {name:'Mad Island CAPITOL',city:'Palma',slug:'mad-island-capitol'},
+        {name:'Beer Corner USA',city:'Omaha',slug:'beer-corner-usa'},
+        {name:'Radio City Social',city:'Chelmsford',slug:'radio-city-social'},
+        {name:'The Kernel Brewery',city:'London',slug:'the-kernel-brewery'},
+        {name:'Sherlock Holmes',city:'London',slug:'sherlock-holmes'},
+        {name:'Boilermaker House',city:'Melbourne',slug:'boilermaker-house'},
+        {name:'The Ale House',city:'Chelmsford',slug:'the-ale-house'},
+        {name:'Moody Goose Brewery',city:'Braintree',slug:'moody-goose-brewery'},
+        {name:'Yard House',city:'Kansas City',slug:'yard-house-kansas-city-legends-outlets'},
+        {name:'DC Tap House',city:'Cupertino',slug:'dc-tap-house'},
+        {name:'Bar Arbolada',city:'Oklahoma City',slug:'bar-arbolada'},
+      ];
+      // Shuffle and pick 4
+      for (var i = venues.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = venues[i]; venues[i] = venues[j]; venues[j] = t;
+      }
+      var el = document.getElementById('featured-venues');
+      if (!el) return;
+      var html = '';
+      var picked = venues.slice(0, 4);
+      for (var k = 0; k < picked.length; k++) {
+        var v = picked[k];
+        html += '<a href="pubs/' + v.slug + '.html" class="featured-chip">' + v.name + '<span class="chip-city">' + v.city + '</span></a>';
+      }
+      el.innerHTML = html;
     })();
   </script>
 
