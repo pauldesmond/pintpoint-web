@@ -642,7 +642,7 @@
         {name:'DC Tap House',city:'Cupertino',slug:'dc-tap-house'},
         {name:'Bar Arbolada',city:'Oklahoma City',slug:'bar-arbolada'},
       ];
-      // Shuffle and pick 4
+      // Shuffle and pick 4, max 1 per city
       for (var i = venues.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var t = venues[i]; venues[i] = venues[j]; venues[j] = t;
@@ -650,7 +650,13 @@
       var el = document.getElementById('featured-venues');
       if (!el) return;
       var html = '';
-      var picked = venues.slice(0, 4);
+      var picked = [], usedCities = {};
+      for (var p = 0; p < venues.length && picked.length < 4; p++) {
+        var c = venues[p].city.toLowerCase();
+        if (usedCities[c]) continue;
+        usedCities[c] = true;
+        picked.push(venues[p]);
+      }
       for (var k = 0; k < picked.length; k++) {
         var v = picked[k];
         html += '<a href="pubs/' + v.slug + '.html" class="featured-chip">' + v.name + '<span class="chip-city">' + v.city + '</span></a>';
