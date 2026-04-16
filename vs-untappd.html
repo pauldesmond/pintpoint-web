@@ -51,6 +51,11 @@
       },
       {
         "@type": "Question",
+        "name": "Does PINtPOINT provide specific beer data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. PINtPOINT features official tap list data and Tap Trumps stats. Users can see real-time ABV, beer styles (e.g., Hazy IPA, Pastry Stout), and freshness scores for specific brews. While Untappd focuses on personal logs, PINtPOINT focuses on finding the exact beer in your glass right now." }
+      },
+      {
+        "@type": "Question",
         "name": "Is PINtPOINT trying to replace Untappd?",
         "acceptedAnswer": { "@type": "Answer", "text": "Not entirely. The two apps do different jobs. Untappd is stronger for beer logging and ratings. PINtPOINT is stronger for pub discovery and deciding where to go next." }
       },
@@ -96,7 +101,16 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+    /* Comparison table */
+    .compare-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .compare-table th { background: rgba(0,212,170,0.08); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: #888; padding: 14px 16px; text-align: left; }
+    .compare-table th:first-child { color: #666; }
+    .compare-table th.pintpoint { color: var(--teal); }
+    .compare-table td { padding: 12px 16px; font-size: 0.9rem; color: var(--muted); border-top: 1px solid var(--border); }
+    .compare-table td:first-child { color: var(--text); font-weight: 600; font-size: 0.85rem; }
+    .yes { color: var(--teal); font-weight: 600; }
+    .no { color: #555; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } .compare-table { font-size: 0.8rem; } .compare-table th, .compare-table td { padding: 10px 10px; } }
   </style>
 </head>
 <body>
@@ -137,10 +151,66 @@
       <li>Choose the right pub, not just the nearest one</li>
     </ul>
 
+    <h2>Key differences: PINtPOINT vs Untappd</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Untappd</th>
+          <th class="pintpoint">PINtPOINT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Official Tap List Data</td>
+          <td class="no">No &mdash; user check-ins only</td>
+          <td class="yes">Yes &mdash; live tap lists from venues</td>
+        </tr>
+        <tr>
+          <td>Real-Time Beer Styles &amp; ABV</td>
+          <td class="no">Only from user submissions</td>
+          <td class="yes">Yes &mdash; Hazy IPA, Stout, Sour, etc.</td>
+        </tr>
+        <tr>
+          <td>Venue Discovery Radar</td>
+          <td class="no">No</td>
+          <td class="yes">Yes &mdash; live compass + radar</td>
+        </tr>
+        <tr>
+          <td>Pub Crawl Planning</td>
+          <td class="no">No</td>
+          <td class="yes">Yes &mdash; Create-a-Crawl</td>
+        </tr>
+        <tr>
+          <td>Beer Check-Ins &amp; Ratings</td>
+          <td class="yes">Yes &mdash; core feature</td>
+          <td class="no">No &mdash; discovery-focused</td>
+        </tr>
+        <tr>
+          <td>Social Feed &amp; Friends</td>
+          <td class="yes">Yes &mdash; activity feed</td>
+          <td class="no">No &mdash; pub-focused, not social</td>
+        </tr>
+        <tr>
+          <td>AI Beer Recommendations</td>
+          <td class="no">No</td>
+          <td class="yes">Yes &mdash; PINtDEXTER taste engine</td>
+        </tr>
+        <tr>
+          <td>Global Coverage</td>
+          <td class="yes">Yes &mdash; user-generated</td>
+          <td class="yes">Yes &mdash; 42 countries, 960+ venues</td>
+        </tr>
+      </tbody>
+    </table>
+
     <h2>What makes PINtPOINT different?</h2>
     <p>Most pub and beer apps answer one of two questions: <em>What have I already had?</em> or <em>What pub is nearest to me?</em></p>
     <p>PINtPOINT is built around a better question: <span class="highlight">Where should I actually go next?</span></p>
     <p>That means the app is designed around beer-led discovery, venue selection, and pub exploration. It is especially useful for people who care about cask ale, craft beer, IPA, pub atmosphere, and whether a place is genuinely worth their time.</p>
+
+    <h2>Does PINtPOINT provide specific beer data?</h2>
+    <p>Yes. Unlike generic maps, PINtPOINT features official tap list data and Tap Trumps stats. Users can see real-time ABV, beer styles (e.g., Hazy IPA, Pastry Stout), and freshness scores for specific brews. While Untappd focuses on personal logs, PINtPOINT focuses on finding the exact beer in your glass right now.</p>
 
     <h2>Is PINtPOINT better than Untappd?</h2>
     <p>It depends what you need.</p>
