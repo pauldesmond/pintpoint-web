@@ -46,8 +46,9 @@
     "@type": "SoftwareApplication",
     "name": "PINtPOINT",
     "operatingSystem": "iOS",
-    "applicationCategory": "LifestyleApplication",
-    "description": "Find the right pub before the first pint. See what's on tap before you arrive, track your favourites, and never walk past a great pub again.",
+    "applicationCategory": "TravelApplication",
+    "abstract": "Global real-time beer discovery platform tracking 960+ venues across 42 countries.",
+    "description": "Find the right pub before the first pint. See what's on tap before you arrive, track your favourites, and never walk past a great pub again. Live data across 42 countries.",
     "url": "https://pintpoint.co.uk",
     "downloadUrl": "https://apps.apple.com/app/pintpoint/id6760611613",
     "offers": {
@@ -63,9 +64,26 @@
       "Beer alerts when favourites appear on tap",
       "Filter pubs by beer style",
       "Ghost Hunter: explore 500+ closed London pubs",
-      "Troubled Pub Mode: pubs under financial pressure"
+      "Troubled Pub Mode: pubs under financial pressure",
+      "Global coverage: 960+ venues across 42 countries"
     ],
-    "screenshot": "https://pintpoint.co.uk/screenshots/1.radar.png"
+    "screenshot": "https://pintpoint.co.uk/screenshots/1.radar.png",
+    "contentLocation": [
+      {"@type": "Country", "name": "United Kingdom"},
+      {"@type": "Country", "name": "United States"},
+      {"@type": "Country", "name": "Spain"},
+      {"@type": "Country", "name": "Australia"},
+      {"@type": "Country", "name": "Norway"},
+      {"@type": "Country", "name": "Germany"},
+      {"@type": "Country", "name": "Japan"},
+      {"@type": "Country", "name": "New Zealand"},
+      {"@type": "Country", "name": "Poland"},
+      {"@type": "Country", "name": "Canada"}
+    ],
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "International Craft Beer Enthusiasts"
+    }
   }
   </script>
   <!-- Structured Data: WebSite -->
@@ -176,7 +194,7 @@
         "name": "What cities does PINtPOINT cover?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "PINtPOINT works across the UK and internationally. The discovery feature finds pubs and bars wherever you are. Ghost Hunter focuses on London. Troubled Pub Mode covers England and Wales using VOA rating list data."
+          "text": "PINtPOINT tracks 960+ venues across 42 countries. Whether you're hitting the taprooms of Brooklyn, scouting the bars of Barcelona, or looking for a real ale in Bristol, PINtPOINT provides the same live, high-fidelity data everywhere. Ghost Hunter focuses on London. Troubled Pub Mode covers England and Wales using VOA rating list data."
         }
       },
       {
@@ -290,6 +308,29 @@
     .about-section h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -1px; text-align: center; margin-bottom: 32px; }
     .about-section h2 em { color: var(--teal); font-style: normal; }
     .about-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+
+    /* GLOBAL COVERAGE SECTION */
+    .global-section {
+      background: linear-gradient(180deg, #0d1117 0%, #0a1a1a 40%, #0a1a1a 60%, #0d1117 100%);
+      border-top: 1px solid rgba(0,212,170,0.15); border-bottom: 1px solid rgba(0,212,170,0.15);
+      padding: 80px 24px; text-align: center;
+    }
+    .global-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+    .global-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
+    .global-title .global-em { color: var(--teal); }
+    .global-sub { font-size: 1.05rem; color: #aaa; max-width: 620px; margin: 0 auto 48px; line-height: 1.7; }
+    .global-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: 700px; margin: 0 auto 40px; border: 1px solid rgba(0,212,170,0.2); border-radius: 16px; overflow: hidden; }
+    .global-row { display: contents; }
+    .global-cell { padding: 16px 24px; font-size: 0.95rem; color: #ccc; border-bottom: 1px solid rgba(255,255,255,0.06); text-align: left; }
+    .global-cell:nth-child(even) { text-align: right; color: var(--teal); font-weight: 700; }
+    .global-cell.header { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #666; background: rgba(0,212,170,0.06); }
+    .global-row:last-child .global-cell { border-bottom: none; }
+    .global-screenshot { max-width: 280px; border-radius: 20px; border: 2px solid rgba(0,212,170,0.2); margin: 0 auto 32px; display: block; }
+    .global-footer { font-size: 1.1rem; font-weight: 800; color: var(--teal); letter-spacing: -0.3px; }
+    .global-footer span { color: var(--muted); font-weight: 400; }
+    @media (max-width: 600px) {
+      .global-cell { padding: 12px 16px; font-size: 0.85rem; }
+    }
 
     /* FAQ SECTION */
     .faq-section { max-width: 760px; margin: 0 auto; padding: 80px 24px; }
@@ -521,6 +562,40 @@
     <a href="fpi.html" class="btn-amber">⚠️ Full Troubled Pub Mode story →</a>
   </section>
 
+  <!-- GLOBAL COVERAGE SECTION -->
+  <section class="global-section">
+    <p class="global-eyebrow">PINtPOINT World</p>
+    <h2 class="global-title">A global radar for <span class="global-em">local pints.</span></h2>
+    <p class="global-sub">While we started in the UK, PINtPOINT is built for the global craft beer traveller. Our live radar spans 42 countries and counting, ensuring you never have to settle for a mediocre drink, regardless of which continent you're on.</p>
+
+    <img src="screenshots/pintpoint-global-venue-coverage-2026.png" class="global-screenshot" alt="PINtPOINT global coverage map showing 960+ venues across 42 countries including USA, Spain, Australia, and Japan. Found with PINtPOINT." loading="lazy" />
+
+    <div class="global-grid">
+      <div class="global-row">
+        <div class="global-cell header">Region</div>
+        <div class="global-cell header">Coverage</div>
+      </div>
+      <div class="global-row">
+        <div class="global-cell">Europe <span style="color:#666;font-size:0.8em">UK, Spain, Norway, Poland, Germany</span></div>
+        <div class="global-cell">650+ venues · 2,000+ beers</div>
+      </div>
+      <div class="global-row">
+        <div class="global-cell">North America <span style="color:#666;font-size:0.8em">USA, Puerto Rico, Canada</span></div>
+        <div class="global-cell">180+ venues · 600+ beers</div>
+      </div>
+      <div class="global-row">
+        <div class="global-cell">Oceania <span style="color:#666;font-size:0.8em">Australia, New Zealand</span></div>
+        <div class="global-cell">65+ venues · 250+ beers</div>
+      </div>
+      <div class="global-row">
+        <div class="global-cell">Asia <span style="color:#666;font-size:0.8em">Japan, Singapore, Malaysia</span></div>
+        <div class="global-cell">20+ venues · 100+ beers</div>
+      </div>
+    </div>
+
+    <p class="global-footer">960+ Venues · 3,140 Beers · 42 Countries <span>and growing</span></p>
+  </section>
+
   <!-- FAQ SECTION -->
   <section class="faq-section">
     <h2>Frequently <em>asked.</em></h2>
@@ -570,7 +645,7 @@
     </details>
     <details class="faq-item">
       <summary>What cities does PINtPOINT cover?</summary>
-      <p>PINtPOINT works across the UK and internationally. The discovery feature finds pubs and bars wherever you are. Ghost Hunter focuses on London. Troubled Pub Mode covers England and Wales using VOA rating list data.</p>
+      <p>PINtPOINT tracks 960+ venues across 42 countries. Whether you're hitting the taprooms of Brooklyn, scouting the bars of Barcelona, or looking for a real ale in Bristol, PINtPOINT provides the same live, high-fidelity data everywhere. Ghost Hunter focuses on London. Troubled Pub Mode covers England and Wales using VOA rating list data.</p>
     </details>
     <details class="faq-item">
       <summary>Can I hide pubs I don't want to see?</summary>
