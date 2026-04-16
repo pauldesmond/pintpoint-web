@@ -265,6 +265,21 @@
     .feature-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.3px; }
     .feature-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
 
+    /* LIVE FEED */
+    .live-feed { max-width: 700px; margin: 0 auto; padding: 0 24px 80px; }
+    .live-feed-header { text-align: center; margin-bottom: 24px; }
+    .live-feed-header h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
+    .live-feed-header h2 em { color: var(--teal); font-style: normal; }
+    .live-feed-header p { font-size: 0.85rem; color: #555; }
+    .live-pulse { display: inline-block; width: 8px; height: 8px; background: var(--teal); border-radius: 50%; margin-right: 8px; animation: feedpulse 2s ease-in-out infinite; }
+    @keyframes feedpulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .sighting { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .sighting-beer { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+    .sighting-detail { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .sighting-where { font-size: 0.8rem; color: var(--teal); text-align: right; white-space: nowrap; }
+    .sighting-time { font-size: 0.7rem; color: #555; margin-top: 2px; }
+    .live-feed-empty { text-align: center; color: #555; font-size: 0.9rem; padding: 24px 0; }
+
     /* GHOST SECTION */
     .ghost-section {
       background: linear-gradient(180deg, #0d1117 0%, #1a0a2e 40%, #1a0a2e 60%, #0d1117 100%);
@@ -483,6 +498,17 @@
     </div>
   </section>
 
+  <!-- LIVE FEED -->
+  <section class="live-feed" id="live-feed">
+    <div class="live-feed-header">
+      <h2><span class="live-pulse"></span>Recently <em>spotted.</em></h2>
+      <p>Live from the PINtPOINT radar — beers confirmed on tap in the last 24 hours.</p>
+    </div>
+    <div id="sightings-list">
+      <p class="live-feed-empty">Loading live data&hellip;</p>
+    </div>
+  </section>
+
   <!-- ABOUT SECTION -->
   <section class="about-section">
     <h2>About <em>PINtPOINT.</em></h2>
@@ -697,6 +723,45 @@
           .catch(() => tryNext(i + 1));
       }
       tryNext(0);
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var el = document.getElementById('sightings-list');
+      if (!el) return;
+      fetch('https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/recent-sightings')
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (!d.ok || !d.sightings || !d.sightings.length) {
+            el.innerHTML = '<p class="live-feed-empty">No recent sightings — check back soon.</p>';
+            return;
+          }
+          var html = '';
+          d.sightings.forEach(function(s) {
+            var ago = timeAgo(s.spotted);
+            var detail = [s.brewery, s.style, s.abv ? s.abv + '%' : ''].filter(Boolean).join(' · ');
+            html += '<div class="sighting">' +
+              '<div><div class="sighting-beer">' + esc(s.beer) + '</div>' +
+              (detail ? '<div class="sighting-detail">' + esc(detail) + '</div>' : '') +
+              '</div>' +
+              '<div><div class="sighting-where">' + esc(s.venue) + '</div>' +
+              '<div class="sighting-time">' + esc(s.city ? s.city + ' · ' + ago : ago) + '</div>' +
+              '</div></div>';
+          });
+          el.innerHTML = html;
+        })
+        .catch(function() {
+          el.innerHTML = '<p class="live-feed-empty">Live feed unavailable.</p>';
+        });
+      function timeAgo(iso) {
+        var ms = Date.now() - new Date(iso).getTime();
+        var m = Math.floor(ms / 60000);
+        if (m < 60) return m + 'm ago';
+        var h = Math.floor(m / 60);
+        return h + 'h ago';
+      }
+      function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
     })();
   </script>
 
