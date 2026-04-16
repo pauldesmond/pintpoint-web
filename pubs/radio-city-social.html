@@ -38,9 +38,9 @@
     .beer-style { font-size: 0.8rem; color: var(--teal); text-align: right; }
     .beer-abv { font-size: 0.75rem; color: #555; }
     .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
-    .green { background: #00D4AA; }
+    .green { background: #34C759; }
     .amber { background: #F5A623; }
-    .faded { background: rgba(255,255,255,0.35); }
+    .red { background: #FF3B30; }
     .freshness-key { display: flex; gap: 16px; justify-content: center; margin-bottom: 24px; font-size: 0.75rem; color: #555; }
     .freshness-key span { display: inline-flex; align-items: center; gap: 4px; }
     .cta-block { margin-top: 48px; text-align: center; padding: 32px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; }
@@ -71,15 +71,15 @@
     <h2>Live Tap List</h2>
     
     <div class="freshness-key">
-      <span><span class="dot green"></span> Live</span>
-      <span><span class="dot amber"></span> This week</span>
-      <span><span class="dot faded"></span> Older</span>
+      <span><span class="dot green"></span> &le;3 days</span>
+      <span><span class="dot amber"></span> 4-10 days</span>
+      <span><span class="dot red"></span> &gt;10 days</span>
     </div>
     <ul class="tap-list">
       
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot green" title="Live — spotted within 24 hours"></span>
+          <span class="dot green" title="Fresh — checked in within 3 days"></span>
           <div>
             <div class="beer-name">Static Haze</div>
             <div class="beer-detail">Radio City Beer Works</div>
@@ -92,7 +92,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot green" title="Live — spotted within 24 hours"></span>
+          <span class="dot green" title="Fresh — checked in within 3 days"></span>
           <div>
             <div class="beer-name">Transmission</div>
             <div class="beer-detail">Radio City Beer Works</div>
@@ -105,7 +105,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot green" title="Live — spotted within 24 hours"></span>
+          <span class="dot green" title="Fresh — checked in within 3 days"></span>
           <div>
             <div class="beer-name">Signal Lager</div>
             <div class="beer-detail">Radio City Beer Works</div>
@@ -118,7 +118,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot green" title="Live — spotted within 24 hours"></span>
+          <span class="dot green" title="Fresh — checked in within 3 days"></span>
           <div>
             <div class="beer-name">Frequency Pale</div>
             <div class="beer-detail">Radio City Beer Works</div>
@@ -131,7 +131,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot green" title="Live — spotted within 24 hours"></span>
+          <span class="dot green" title="Fresh — checked in within 3 days"></span>
           <div>
             <div class="beer-name">Dark Broadcast</div>
             <div class="beer-detail">Radio City Beer Works</div>
@@ -144,7 +144,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot green" title="Live — spotted within 24 hours"></span>
+          <span class="dot green" title="Fresh — checked in within 3 days"></span>
           <div>
             <div class="beer-name">4th Birthday TDH IPA</div>
             <div class="beer-detail">Sureshot Brewing</div>
@@ -157,7 +157,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot green" title="Live — spotted within 24 hours"></span>
+          <span class="dot green" title="Fresh — checked in within 3 days"></span>
           <div>
             <div class="beer-name">Somebody Ring the Dinkster?</div>
             <div class="beer-detail">Sureshot Brewing</div>
@@ -170,7 +170,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot amber" title="Recent — spotted within 7 days"></span>
+          <span class="dot green" title="Fresh — checked in within 3 days"></span>
           <div>
             <div class="beer-name">Every Fragment Still Knows The Shape of The Whole</div>
             <div class="beer-detail">Parish Brewing Co.</div>
@@ -183,7 +183,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot amber" title="Recent — spotted within 7 days"></span>
+          <span class="dot green" title="Fresh — checked in within 3 days"></span>
           <div>
             <div class="beer-name">Milson</div>
             <div class="beer-detail">Sureshot Brewing</div>
@@ -196,7 +196,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot amber" title="Recent — spotted within 7 days"></span>
+          <span class="dot green" title="Fresh — checked in within 3 days"></span>
           <div>
             <div class="beer-name">Pale Ale</div>
             <div class="beer-detail">CBCo Brewing</div>
@@ -209,7 +209,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot amber" title="Recent — spotted within 7 days"></span>
+          <span class="dot green" title="Fresh — checked in within 3 days"></span>
           <div>
             <div class="beer-name">499</div>
             <div class="beer-detail">Garage Beer Co.</div>
@@ -222,7 +222,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot amber" title="Recent — spotted within 7 days"></span>
+          <span class="dot amber" title="Recent — checked in 4-10 days ago"></span>
           <div>
             <div class="beer-name">Cherry Sour Blend</div>
             <div class="beer-detail">Little Earth Project</div>
@@ -235,7 +235,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot amber" title="Recent — spotted within 7 days"></span>
+          <span class="dot amber" title="Recent — checked in 4-10 days ago"></span>
           <div>
             <div class="beer-name">Cyber Sue</div>
             <div class="beer-detail">Toppling Goliath Brewing Co.</div>
@@ -248,7 +248,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot amber" title="Recent — spotted within 7 days"></span>
+          <span class="dot amber" title="Recent — checked in 4-10 days ago"></span>
           <div>
             <div class="beer-name">499</div>
             <div class="beer-detail">Garage Beer Co.</div>
@@ -261,7 +261,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot amber" title="Recent — spotted within 7 days"></span>
+          <span class="dot amber" title="Recent — checked in 4-10 days ago"></span>
           <div>
             <div class="beer-name">Still - Blend Four</div>
             <div class="beer-detail">Mills Brewing</div>
@@ -274,7 +274,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot amber" title="Recent — spotted within 7 days"></span>
+          <span class="dot amber" title="Recent — checked in 4-10 days ago"></span>
           <div>
             <div class="beer-name">Every Fragment Still Knows The Shape of The Whole</div>
             <div class="beer-detail">Parish Brewing Co.</div>
@@ -287,7 +287,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot amber" title="Recent — spotted within 7 days"></span>
+          <span class="dot amber" title="Recent — checked in 4-10 days ago"></span>
           <div>
             <div class="beer-name">Pime Öö PX (Cellar Series)</div>
             <div class="beer-detail">Põhjala</div>
