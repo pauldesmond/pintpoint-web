@@ -40,7 +40,7 @@
     .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
     .green { background: #00D4AA; }
     .amber { background: #F5A623; }
-    .red { background: #FF4D6A; }
+    .faded { background: rgba(255,255,255,0.35); }
     .freshness-key { display: flex; gap: 16px; justify-content: center; margin-bottom: 24px; font-size: 0.75rem; color: #555; }
     .freshness-key span { display: inline-flex; align-items: center; gap: 4px; }
     .cta-block { margin-top: 48px; text-align: center; padding: 32px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; }
@@ -71,15 +71,15 @@
     <h2>Live Tap List</h2>
     
     <div class="freshness-key">
-      <span><span class="dot green"></span> Fresh</span>
-      <span><span class="dot amber"></span> Recent</span>
-      <span><span class="dot red"></span> Stale</span>
+      <span><span class="dot green"></span> Live</span>
+      <span><span class="dot amber"></span> This week</span>
+      <span><span class="dot faded"></span> Older</span>
     </div>
     <ul class="tap-list">
       
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Landlord</div>
             <div class="beer-detail">Timothy Taylor's Brewery</div>
@@ -92,7 +92,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Abbot Ale</div>
             <div class="beer-detail">Greene King</div>
@@ -105,7 +105,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Guinness Draught</div>
             <div class="beer-detail">Guinness</div>
@@ -118,7 +118,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Level Head</div>
             <div class="beer-detail">Greene King</div>

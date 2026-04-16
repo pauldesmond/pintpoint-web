@@ -40,7 +40,7 @@
     .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
     .green { background: #00D4AA; }
     .amber { background: #F5A623; }
-    .red { background: #FF4D6A; }
+    .faded { background: rgba(255,255,255,0.35); }
     .freshness-key { display: flex; gap: 16px; justify-content: center; margin-bottom: 24px; font-size: 0.75rem; color: #555; }
     .freshness-key span { display: inline-flex; align-items: center; gap: 4px; }
     .cta-block { margin-top: 48px; text-align: center; padding: 32px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; }
@@ -71,15 +71,15 @@
     <h2>Live Tap List</h2>
     
     <div class="freshness-key">
-      <span><span class="dot green"></span> Fresh</span>
-      <span><span class="dot amber"></span> Recent</span>
-      <span><span class="dot red"></span> Stale</span>
+      <span><span class="dot green"></span> Live</span>
+      <span><span class="dot amber"></span> This week</span>
+      <span><span class="dot faded"></span> Older</span>
     </div>
     <ul class="tap-list">
       
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Little Monster From the Id</div>
             <div class="beer-detail">Tun Brewing Company</div>
@@ -92,7 +92,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Mizzle</div>
             <div class="beer-detail">Neckstamper Brewing</div>
@@ -105,7 +105,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">SOUNDSCAPES</div>
             <div class="beer-detail">Garage Beer Co.</div>
@@ -118,7 +118,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Abyss</div>
             <div class="beer-detail">Neptune Brewery</div>
@@ -131,7 +131,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">JUDGEMENTAL</div>
             <div class="beer-detail">Otherworld Brewing</div>
@@ -144,7 +144,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Hitachino Nest White Ale</div>
             <div class="beer-detail">Kiuchi Brewery</div>
@@ -157,7 +157,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Chocolate Orange Nitro</div>
             <div class="beer-detail">Left Hand Brewing Company</div>
@@ -170,7 +170,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Tenacious C</div>
             <div class="beer-detail">Elusive Brewing</div>
@@ -183,7 +183,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Scapa Special</div>
             <div class="beer-detail">Swannay Brewery</div>
@@ -196,7 +196,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">The Cape</div>
             <div class="beer-detail">Neptune Brewery</div>
@@ -209,7 +209,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Budvar Nefiltr</div>
             <div class="beer-detail">Budějovický Budvar</div>
@@ -222,7 +222,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Tegernseer Hell</div>
             <div class="beer-detail">Herzoglich Bayerisches Brauhaus Tegernsee</div>
@@ -235,7 +235,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Sun City Pineapple, Coconut &amp; Lime</div>
             <div class="beer-detail">Põhjala</div>
@@ -248,7 +248,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Schofferhofer SPRITZ</div>
             <div class="beer-detail">Radeberger Gruppe</div>
@@ -261,7 +261,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Patches</div>
             <div class="beer-detail">Prairie Artisan Ales</div>
@@ -274,7 +274,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Fresh Apple</div>
             <div class="beer-detail">Red Fin Cider</div>
@@ -287,7 +287,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Blueberry</div>
             <div class="beer-detail">SeaCider</div>
@@ -300,7 +300,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Lamprey - 1880 Historic Pale Ale</div>
             <div class="beer-detail">Otherworld Brewing</div>
@@ -313,7 +313,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot amber" title="Recent — spotted within 7 days"></span>
           <div>
             <div class="beer-name">Bigfoot</div>
             <div class="beer-detail">Sierra Nevada Brewing Co.</div>

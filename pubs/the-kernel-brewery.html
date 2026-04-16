@@ -40,7 +40,7 @@
     .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
     .green { background: #00D4AA; }
     .amber { background: #F5A623; }
-    .red { background: #FF4D6A; }
+    .faded { background: rgba(255,255,255,0.35); }
     .freshness-key { display: flex; gap: 16px; justify-content: center; margin-bottom: 24px; font-size: 0.75rem; color: #555; }
     .freshness-key span { display: inline-flex; align-items: center; gap: 4px; }
     .cta-block { margin-top: 48px; text-align: center; padding: 32px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; }
@@ -71,15 +71,15 @@
     <h2>Live Tap List</h2>
     
     <div class="freshness-key">
-      <span><span class="dot green"></span> Fresh</span>
-      <span><span class="dot amber"></span> Recent</span>
-      <span><span class="dot red"></span> Stale</span>
+      <span><span class="dot green"></span> Live</span>
+      <span><span class="dot amber"></span> This week</span>
+      <span><span class="dot faded"></span> Older</span>
     </div>
     <ul class="tap-list">
       
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">India Pale Ale Vic Secret Citra</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -92,7 +92,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Victorian Mild</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -105,7 +105,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">A London Porter</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -118,7 +118,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Table Beer</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -131,7 +131,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">India Double Porter Columbus Chinook</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -144,7 +144,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Pale Ale Centennial Columbus</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -157,7 +157,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Imperial Brown Stout Scotch Whisky Barrel Aged</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -170,7 +170,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Dark Mild</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -183,7 +183,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Pale Ale Citra</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -196,7 +196,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Imperial Brown Stout London 1856</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -209,7 +209,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Kernel Imperial Brown 1856 (2026)</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -222,7 +222,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">India Pale Ale Citra Galaxy Mosaic</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -235,7 +235,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Petite Saison</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -248,7 +248,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Pale Ale Citra Columbus Chinook</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -261,7 +261,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Dry Stout Citra Centennial</div>
             <div class="beer-detail">The Kernel Brewery</div>
@@ -274,7 +274,7 @@
       </li>
       <li class="tap-item">
         <div style="display:flex;align-items:center">
-          <span class="dot red" title="Stale — last spotted over 24 hours ago"></span>
+          <span class="dot faded" title="Stale — last spotted over 7 days ago"></span>
           <div>
             <div class="beer-name">Export Stout London 1890</div>
             <div class="beer-detail">The Kernel Brewery</div>
