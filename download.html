@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PINtPOINT for Android — Download & Install</title>
+  <meta name="description" content="Get PINtPOINT on Android. Side-load directly, no Play Store required. One-time £9.99 lifetime license unlocks every feature forever." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/download" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pintpoint.co.uk/download" />
+  <meta property="og:title" content="PINtPOINT for Android" />
+  <meta property="og:description" content="Side-load PINtPOINT on Android. £9.99 lifetime. One payment, no subscriptions." />
+  <meta property="og:image" content="https://pintpoint.co.uk/screenshots/1.7.radar.png" />
+  <meta name="robots" content="index,follow" />
+
+  <style>
+    :root {
+      --bg: #0d1117;
+      --teal: #00D4AA;
+      --text: #ffffff;
+      --muted: #8b949e;
+      --card: #161b22;
+      --border: rgba(255,255,255,0.08);
+      --amber: #F5A623;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 24px 20px 64px; }
+    .back { display: inline-block; color: var(--muted); text-decoration: none; font-size: 14px; margin-bottom: 32px; }
+    .back:hover { color: var(--teal); }
+    h1 { font-size: clamp(32px, 6vw, 48px); font-weight: 900; letter-spacing: -0.02em; margin: 0 0 12px; }
+    h1 .teal { color: var(--teal); }
+    .sub { color: var(--muted); font-size: 17px; margin: 0 0 36px; max-width: 540px; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+    .card h2 {
+      font-size: 22px; font-weight: 800; margin: 0 0 8px;
+      letter-spacing: -0.01em;
+    }
+    .card p { color: var(--muted); margin: 0 0 16px; font-size: 15px; }
+
+    .price {
+      display: flex; align-items: baseline; gap: 10px; margin: 8px 0 20px;
+    }
+    .price .amount { font-size: 42px; font-weight: 900; color: var(--text); }
+    .price .unit { color: var(--muted); font-size: 15px; }
+    .price .badge {
+      background: rgba(0,212,170,0.15);
+      color: var(--teal);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--teal);
+      color: #000;
+      font-weight: 800;
+      font-size: 17px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.1s ease, background 0.2s ease;
+    }
+    .btn:hover { background: #00bf99; transform: translateY(-1px); }
+    .btn.full { width: 100%; display: block; }
+    .btn.secondary {
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn.secondary:hover { background: rgba(255,255,255,0.12); }
+
+    ul.features { list-style: none; padding: 0; margin: 0 0 20px; }
+    ul.features li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      font-size: 15px;
+    }
+    ul.features li:last-child { border-bottom: none; }
+    ul.features li::before {
+      content: "✓";
+      color: var(--teal);
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .steps { counter-reset: step; padding: 0; list-style: none; margin: 0; }
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding: 16px 0 16px 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0; top: 14px;
+      width: 36px; height: 36px;
+      background: rgba(0,212,170,0.15);
+      color: var(--teal);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 15px;
+    }
+    .steps li strong { display: block; color: var(--text); margin-bottom: 4px; }
+    .steps li span { color: var(--muted); font-size: 14px; }
+
+    .warn {
+      background: rgba(245,166,35,0.1);
+      border: 1px solid rgba(245,166,35,0.3);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: var(--amber);
+      font-size: 14px;
+      margin: 16px 0;
+    }
+    .warn strong { color: var(--amber); }
+
+    .small { font-size: 13px; color: var(--muted); }
+    .small a { color: var(--teal); text-decoration: none; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 40px;
+    }
+    footer a { color: var(--teal); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back">← pintpoint.co.uk</a>
+
+    <h1>PINtPOINT for <span class="teal">Android</span>.</h1>
+    <p class="sub">Side-load directly from here. No Play Store required, no tracking, no adverts.</p>
+
+    <div class="card">
+      <h2>Lifetime License</h2>
+      <p>One-off payment, every feature unlocked forever. No subscriptions, no renewals.</p>
+      <div class="price">
+        <span class="amount">£9.99</span>
+        <span class="unit">one-time</span>
+        <span class="badge">Lifetime</span>
+      </div>
+      <ul class="features">
+        <li>Every premium feature — forever</li>
+        <li>Personalised Best Pint Next recommendations</li>
+        <li>Minimum rating filter + tap history</li>
+        <li>Full Sip or Skip taste profiling</li>
+        <li>All future updates included</li>
+      </ul>
+      <a id="buy-btn" href="https://buy.stripe.com/3cI4gz3IIet8cmW31L2oE00" class="btn full">Buy Lifetime — £9.99</a>
+      <p class="small" style="margin-top: 12px; text-align: center;">
+        After payment you&rsquo;ll get a 32-character license key by email. Paste it into Settings → Redeem License Key in the app.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Download the APK</h2>
+      <p>Latest version hosted here. Free to install; premium features unlock with your license key.</p>
+      <!-- APK_DOWNLOAD placeholder — link to actual APK once uploaded -->
+      <a id="apk-btn" href="#apk" class="btn full secondary">Download PINtPOINT.apk</a>
+      <p class="small" style="margin-top: 10px;">
+        <span id="apk-version">Version 1.8.2</span> · <span id="apk-size">~45 MB</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>How to install</h2>
+      <ol class="steps">
+        <li>
+          <strong>Tap Download PINtPOINT.apk above</strong>
+          <span>Your browser will warn you the file "may harm your device" — it won&rsquo;t, but Google shows that message for every non-Play install. Tap Download anyway.</span>
+        </li>
+        <li>
+          <strong>Open the APK from your Downloads</strong>
+          <span>Notification bar or Files app → Downloads → tap PINtPOINT.apk.</span>
+        </li>
+        <li>
+          <strong>Allow install from this source</strong>
+          <span>Android prompts "For your security, your phone isn&rsquo;t allowed to install unknown apps from this source." Tap Settings → toggle Allow on for Chrome (or whichever browser). Back out and open the APK again.</span>
+        </li>
+        <li>
+          <strong>Install</strong>
+          <span>Tap Install → Done. PINtPOINT is now in your app drawer.</span>
+        </li>
+        <li>
+          <strong>Redeem your license</strong>
+          <span>Open PINtPOINT → Settings → Redeem License Key → paste the 32-character key from your email.</span>
+        </li>
+      </ol>
+      <div class="warn">
+        <strong>Auto-updates:</strong> since PINtPOINT isn&rsquo;t on the Play Store, Android won&rsquo;t auto-update it. We push UI &amp; feature updates silently over-the-air, but roughly twice a year we&rsquo;ll release a new APK — we&rsquo;ll nudge you from inside the app when that happens.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Why side-load?</h2>
+      <p>Google Play requires publishing developer contact info (home address, phone number) on every app&rsquo;s public listing. That&rsquo;s a non-starter for a solo developer. Side-loading lets us deliver the app directly without forcing PII disclosure — and saves the 15-30% Play fee, which is why a lifetime license works at £9.99 instead of an ongoing subscription.</p>
+    </div>
+
+    <footer>
+      <p>© 2026 PINtPOINT · <a href="/privacy-policy.html">Privacy</a> · <a href="mailto:hello@pintpoint.co.uk">hello@pintpoint.co.uk</a></p>
+    </footer>
+  </div>
+</body>
+</html>
