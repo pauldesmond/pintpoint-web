@@ -1,9 +1,9 @@
 {
   "latest_version": "1.8.2",
   "min_supported_version": "1.7.0",
-  "apk_url": "https://expo.dev/artifacts/eas/6kri5dXyrcaMGfTpKmt8KR.apk",
+  "apk_url": "https://expo.dev/artifacts/eas/eKbACDSyazRVYHctbkiHvd.apk",
   "release_notes_url": "https://pintpoint.co.uk/changelog",
-  "released_at": "2026-04-17",
-  "notes": "Enhanced Sip or Skip cards, neon-city style photos, improved recommendations.",
-  "urgent": false
+  "released_at": "2026-04-18",
+  "notes": "7-day free trial for new sideload installs, paywall-first flow, Head to Head pulls from the full beer DB, fixes startup hang on some Android devices.",
+  "urgent": true
 }
