@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/agent-skills-discovery-rfc/main/schema/v0.2.0/agent-skills-index.json",
+  "version": "0.2.0",
+  "publisher": {
+    "name": "PINtPOINT",
+    "url": "https://pintpoint.co.uk"
+  },
+  "skills": [
+    {
+      "name": "find-pub-nearby",
+      "type": "markdown",
+      "description": "Find craft beer pubs and breweries near a location, with live tap-list data.",
+      "url": "https://pintpoint.co.uk/.well-known/agent-skills/find-pub-nearby/SKILL.md",
+      "sha256": "6f80e78acb6787805bb27f51a25a9b202d01b16c2123ac55a0d9804577a46e6a"
+    },
+    {
+      "name": "view-venue-taps",
+      "type": "markdown",
+      "description": "View the current live tap list for a specific pub or brewery, with beer freshness indicators.",
+      "url": "https://pintpoint.co.uk/.well-known/agent-skills/view-venue-taps/SKILL.md",
+      "sha256": "15791c0907d24133571de4c80ffc1b94a8db863da99e7a2f2e7e1254e24ee3f7"
+    },
+    {
+      "name": "get-pintpoint",
+      "type": "markdown",
+      "description": "Download and install the PINtPOINT mobile app on iOS (App Store) or Android (sideload APK).",
+      "url": "https://pintpoint.co.uk/.well-known/agent-skills/get-pintpoint/SKILL.md",
+      "sha256": "68a83bdde94249879435dd90539e7c1195797e9953d92afa3ff80bddbcbae309"
+    }
+  ]
+}

@@ -2,6 +2,12 @@
 # Allow search engines and AI assistants to index the site
 # Block only training-focused crawlers
 
+# Content Signals (contentsignals.org) — declare per-use-case preferences:
+# - ai-train=no  : do not use my content to train foundation models
+# - search=yes   : do index my content for search-engine results
+# - ai-input=yes : do use my content as context for live AI assistant answers
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+
 User-agent: *
 Allow: /
 
