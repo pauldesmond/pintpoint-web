@@ -1,9 +1,9 @@
 {
   "latest_version": "1.8.2",
   "min_supported_version": "1.7.0",
-  "apk_url": "https://expo.dev/artifacts/eas/hvLSipbrGQ8AHUXEapk1tx.apk",
+  "apk_url": "https://expo.dev/artifacts/eas/uAzEPgKW75Jnuwqz7f4GKx.apk",
   "release_notes_url": "https://pintpoint.co.uk/changelog",
   "released_at": "2026-04-18",
-  "notes": "7-day free trial for new Android sideload installs, paywall-first flow, Head to Head pulls from full beer DB, TUNeDEXTER sliders track your picks, many bug fixes.",
+  "notes": "7-day free trial for new Android sideload installs, paywall-first flow, Head to Head pulls from full beer DB, TUNeDEXTER sliders track your picks, many bug fixes. (Fixes startup hang on some devices.)",
   "urgent": true
 }
