@@ -1,0 +1,12 @@
+name = "pintpoint-pubs"
+main = "src/index.js"
+compatibility_date = "2025-11-01"
+account_id = "2c8869d0743b3846dca0b34a462fe16a"
+
+# Route binding: intercept /pubs/* on pintpoint.co.uk
+routes = [
+  { pattern = "pintpoint.co.uk/pubs/*", zone_name = "pintpoint.co.uk" }
+]
+
+[observability]
+enabled = true
