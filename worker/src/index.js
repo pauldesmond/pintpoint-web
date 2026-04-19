@@ -14,6 +14,10 @@
 
 const SUPABASE_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/venue-page';
 
+// Bump this to invalidate the Worker's edge cache (e.g. after changing
+// the edge function's rendering or slug-resolution logic).
+const CACHE_VERSION = 'v2';
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -43,6 +47,7 @@ export default {
     }
 
     const cacheUrl = new URL(request.url);
+    cacheUrl.searchParams.set('_cv', CACHE_VERSION);
     const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
     const cache = caches.default;
 
@@ -57,8 +62,22 @@ export default {
     const upstreamResp = await fetch(upstream.toString(), {
       method: 'GET',
       headers: { 'Accept': 'text/html' },
+      redirect: 'manual',
       cf: { cacheEverything: false },
     });
+
+    // Edge function returns 301 when a legacy bare-name slug resolves
+    // unambiguously to a canonical name+city slug. Pass it through so the
+    // browser visits the canonical URL (and so Google consolidates signals).
+    if (upstreamResp.status === 301 || upstreamResp.status === 302) {
+      const location = upstreamResp.headers.get('Location');
+      if (location) {
+        return new Response(null, {
+          status: 301,
+          headers: { 'Location': location },
+        });
+      }
+    }
 
     if (upstreamResp.status === 404) {
       return new Response('Venue not found', { status: 404 });
