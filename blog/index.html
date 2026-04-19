@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PINtPOINT Blog — Writing About Beer, Pubs, and the Tools We Build</title>
+  <meta name="description" content="Long-form writing from the PINtPOINT team — local beer-mile guides, beer-recommender criticism, product thinking, and occasional historical rabbit holes." />
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pintpoint.co.uk/blog/" />
+  <meta property="og:title" content="PINtPOINT Blog" />
+  <meta property="og:description" content="Long-form writing from PINtPOINT — beer-mile guides, product thinking, occasional rabbit holes." />
+  <meta property="og:image" content="https://pintpoint.co.uk/screenshots/1.7.radar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "PINtPOINT Blog",
+    "description": "Long-form writing from the PINtPOINT team on beer, pubs, and the tools we build.",
+    "url": "https://pintpoint.co.uk/blog/",
+    "publisher": { "@type": "Organization", "name": "PINtPOINT", "url": "https://pintpoint.co.uk" },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "The Chelmsford Beer Mile: A Live Guide to Essex's Best Craft-Beer Crawl",
+        "url": "https://pintpoint.co.uk/blog/chelmsford-beer-mile-guide.html",
+        "datePublished": "2026-04-19",
+        "description": "Walking-order guide to the nine Chelmsford Beer Mile venues plus Voodoo Keller, with live tap lists for each stop and a footnote on Baddow Brewery's 1798-1927 heritage."
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "What's Wrong With Beer Recommendation Systems (And What PINtPOINT Does Differently)",
+        "url": "https://pintpoint.co.uk/blog/beer-recommendation-systems-what-most-get-wrong.html",
+        "datePublished": "2026-04-19",
+        "description": "A response to Ethan Haley's Untappd-as-a-recommender piece and NYC Data Science's Ninkasi — the three walls rating-based recommenders hit, and how PINtDEXTER routes around them."
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 12px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    .lede { font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 40px; }
+    .post-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .post { display: block; padding: 24px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; text-decoration: none; color: var(--text); transition: border-color 0.15s; }
+    .post:hover { border-color: var(--teal); }
+    .post-date { font-size: 0.75rem; font-weight: 700; color: var(--teal); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+    .post-title { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.3px; line-height: 1.3; margin-bottom: 8px; }
+    .post-excerpt { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+    .post-read { font-size: 0.8rem; color: var(--teal); font-weight: 600; margin-top: 12px; }
+    .empty { margin-top: 32px; color: var(--muted); font-size: 0.9rem; padding: 20px; border: 1px dashed var(--border); border-radius: 10px; text-align: center; }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); margin-top: 64px; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../features.html">Features</a>
+      <a href="../pubs/">Venues</a>
+      <a href="../screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h1>PINtPOINT <em>Blog</em></h1>
+    <p class="lede">Long-form writing from the team — local beer-mile guides, criticism of rating-based recommender systems, product thinking, and the occasional historical rabbit hole.</p>
+
+    <ul class="post-list">
+      <li>
+        <a href="chelmsford-beer-mile-guide.html" class="post">
+          <div class="post-date">19 April 2026 · Guide</div>
+          <div class="post-title">The Chelmsford Beer Mile: A Live Guide to Essex's Best Craft-Beer Crawl</div>
+          <div class="post-excerpt">Nine specialist venues in a mile — bottle shops, a brewpub, railway arch taprooms — walked in the right order. With live tap lists for every stop, plus a footnote on Baddow Brewery (1798–1927) and how Chelmsford Brew Co broke the century-long local-brewing quiet.</div>
+          <div class="post-read">Read the guide →</div>
+        </a>
+      </li>
+
+      <li>
+        <a href="beer-recommendation-systems-what-most-get-wrong.html" class="post">
+          <div class="post-date">19 April 2026 · Product</div>
+          <div class="post-title">What's Wrong With Beer Recommendation Systems (And What PINtPOINT Does Differently)</div>
+          <div class="post-excerpt">A response to Ethan Haley's Untappd-as-a-recommender analysis and NYC Data Science's Ninkasi project. Three walls rating-based recommenders hit — cold start, popularity bias, geography-blindness — and how PINtDEXTER layers Sip-or-Skip, Head-to-Head and venue-aware scoring to answer the different question a drinker is actually asking.</div>
+          <div class="post-read">Read the essay →</div>
+        </a>
+      </li>
+    </ul>
+
+    <p class="empty">More posts coming. Got a topic you'd like us to cover? <a href="mailto:hello@pintpoint.co.uk" style="color:var(--teal)">hello@pintpoint.co.uk</a></p>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../features.html">Features</a>
+      <a href="../how-to-find-beer-near-you.html">How to find beer near you</a>
+      <a href="../vs-untappd.html">vs Untappd</a>
+      <a href="../vs-real-ale-finder.html">vs Real Ale Finder</a>
+      <a href="../pubs/">Venues</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+</body>
+</html>
