@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What's Wrong With Beer Recommendation Systems (And What PINtPOINT Does Differently)</title>
+  <meta name="description" content="A response to two smart attempts at beer recommenders — Ethan Haley's Untappd-as-a-recommender analysis and NYC Data Science's Ninkasi — and a different way to answer 'what should I drink next?'" />
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/blog/beer-recommendation-systems-what-most-get-wrong.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://pintpoint.co.uk/blog/beer-recommendation-systems-what-most-get-wrong.html" />
+  <meta property="og:title" content="What's Wrong With Beer Recommendation Systems" />
+  <meta property="og:description" content="Cold start, popularity bias, and geography-blindness are why collaborative-filtering beer recommenders struggle. Here's another way." />
+  <meta property="og:image" content="https://pintpoint.co.uk/screenshots/1.7.radar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What's Wrong With Beer Recommendation Systems" />
+  <meta name="twitter:description" content="A response to two public beer-recommender projects, and a different approach built into PINtPOINT." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What's Wrong With Beer Recommendation Systems (And What PINtPOINT Does Differently)",
+    "description": "A response to two public beer-recommender projects — Ethan Haley's Untappd analysis and NYC Data Science's Ninkasi — and a different approach built into PINtPOINT.",
+    "author": { "@type": "Organization", "name": "PINtPOINT", "url": "https://pintpoint.co.uk" },
+    "publisher": { "@type": "Organization", "name": "PINtPOINT", "url": "https://pintpoint.co.uk" },
+    "datePublished": "2026-04-19",
+    "dateModified": "2026-04-19",
+    "url": "https://pintpoint.co.uk/blog/beer-recommendation-systems-what-most-get-wrong.html",
+    "image": "https://pintpoint.co.uk/screenshots/1.7.radar.png",
+    "mainEntityOfPage": "https://pintpoint.co.uk/blog/beer-recommendation-systems-what-most-get-wrong.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is the cold start problem so hard for beer recommenders?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Collaborative-filtering recommenders like the SVD++ model in Ninkasi or typical Untappd-rating models need dozens of ratings from a user before their predictions converge. For a new drinker opening the app, there's no signal to work with, so the system falls back to popular beers — which is exactly the least personalised thing you could recommend. PINtPOINT sidesteps this with Sip-or-Skip: a structured preference-elicitation flow where ~10 quick taps produce a usable style profile from day one." }
+      },
+      {
+        "@type": "Question",
+        "name": "What's wrong with using Untappd ratings as the main input to a recommender?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Untappd ratings are a great record of what someone drank, but they're a biased sample. Heavily rated beers (popular releases, hype cans) dominate the dataset, which means a model trained on them learns popularity more than preference. You end up recommending Pliny the Elder to anyone with a vaguely IPA-shaped history. A recommender built on purpose-collected preference signals — structured comparisons, not reviews of random things — produces sharper personalisation." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does PINtPOINT's PINtDEXTER recommender work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "PINtDEXTER layers three signals. First, Sip-or-Skip and Head-to-Head pair-choice rounds build a fast style profile by asking the user to make forced choices (A or B) rather than rate individual beers on a 1-5 scale. Second, that profile derives sliders across 13 style categories (IPA, lager, stout, sour, cask, cider, etc.) that the user can fine-tune directly. Third, the current tap lists at nearby venues are scored against that profile, so the recommendation is always tied to beer that is actually in front of you tonight." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do most beer recommenders ignore location?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Because the training data doesn't include it, or the system is built as a catalogue recommender (what beers exist in the world) rather than an availability recommender (what beers are on tap near you tonight). The former is an academic exercise; the latter is the useful product. A recommendation for a Brooklyn brewery you'll never visit isn't a recommendation — it's a suggestion." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a good beer recommender even possible given how noisy ratings are?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends what you're trying to predict. A model that tries to predict star ratings from other people's star ratings will hit the noise floor quickly — RateBeer and Untappd both have heavy reviewer bias, style preferences, and context effects. A model that tries to answer 'of these 4 pints on the bar in front of you, which one are you most likely to enjoy' is a narrower, more tractable problem. Narrow the question and the recommender gets sharper." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from Next Glass, BeerMenus, or Untappd's own recommendations?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Next Glass (acquired into Untappd) and other rating-driven systems optimise for cataloguing and historical preference. PINtPOINT optimises for the real-time decision at a specific venue. The two are complementary — Untappd is the diary, PINtPOINT is the decision engine." }
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; }
+    h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 24px; margin-bottom: 10px; color: var(--text); }
+    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    p a { color: var(--teal); }
+    .highlight { color: var(--text); font-weight: 600; }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
+    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
+    .quote { font-size: 1.2rem; font-weight: 700; color: var(--teal); text-align: center; padding: 32px 0; margin: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); line-height: 1.55; }
+    ul, ol { margin: 16px 0 24px 20px; }
+    li { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 6px; }
+    blockquote { border-left: 2px solid var(--teal); padding: 4px 16px; margin: 20px 0; color: var(--muted); font-style: italic; }
+    code { background: var(--card); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; font-family: 'SF Mono', Menlo, monospace; color: var(--teal); }
+    .sources { font-size: 0.85rem; color: #666; margin-top: 32px; padding: 16px 20px; background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; }
+    .sources a { color: var(--muted); text-decoration: underline; }
+    .faq { margin-top: 48px; }
+    .faq h2 { margin-bottom: 24px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-item summary { font-size: 1rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--teal); }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item p { margin-top: 10px; }
+    .cta { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; margin-top: 32px; }
+    .cta:hover { opacity: 0.88; }
+    .closing { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../features.html">Features</a>
+      <a href="../pubs/">Venues</a>
+      <a href="../screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <p class="meta">Published 19 April 2026 · PINtPOINT blog</p>
+    <h1>What's Wrong With Beer <em>Recommendation Systems</em> (And What PINtPOINT Does Differently)</h1>
+
+    <p class="lede">Every couple of years, a smart data-science student builds a beer recommender on top of Untappd or RateBeer data, posts the write-up, and it makes the rounds. The models are usually solid. The underlying question is the one they don't quite get to: <span class="highlight">is this actually useful to someone standing at a bar tonight?</span></p>
+
+    <p>Two pieces are worth reading as a starting point:</p>
+    <ul>
+      <li><a href="https://www.rpubs.com/ebhtra/758377" target="_blank">Ethan Haley — Untappd as a recommender</a> (RPubs, 2021)</li>
+      <li><a href="https://nycdatascience.com/blog/student-works/ninkasi-beer-recommender-system/" target="_blank">NYC Data Science — NINKASI: Beer Recommender System</a> (2020)</li>
+    </ul>
+
+    <p>Haley's piece treats Untappd's rating data as fuel for a collaborative-filtering recommender. Ninkasi scrapes RateBeer, runs SVD++ and Restricted Boltzmann Machines, and wraps the output in a Flask app. Both are careful, honest work — the kind you wish more consumer-app companies did publicly.</p>
+
+    <p>They also both bump into the same three walls, and those walls are what <a href="https://pintpoint.co.uk">PINtPOINT</a> was designed around rather than over.</p>
+
+    <h2>Wall 1: The cold-start problem</h2>
+    <p>Collaborative filtering needs history. SVD++ needs dozens of ratings per user before predictions stabilise. RBMs are even hungrier. What does a rating-based recommender serve to a brand-new user with zero check-ins?</p>
+    <p>In practice: <span class="highlight">popular beers</span>. Pliny the Elder for anyone with "IPA" in their signature. Guinness for anyone who once rated a stout. That's not a recommendation — it's a bestseller list.</p>
+    <p>PINtPOINT uses a structured preference-elicitation step instead: a feature called <a href="../features.html" style="color:var(--teal)">Sip-or-Skip</a>. Ten quick card-swipes — "would you order this? yes/no" — produces a usable style profile in under a minute. It's the same principle Tinder uses for matchmaking: forced binary choices beat free-form ratings for fast signal.</p>
+
+    <blockquote>Asking "rate this beer 1-5" is a harder cognitive task than "would you order this now?" — and it produces noisier data.</blockquote>
+
+    <h2>Wall 2: Popularity bias</h2>
+    <p>Any model trained on open rating data learns what's popular long before it learns what's personal. RateBeer and Untappd both have a heavy head: the top 1% of beers collect 50%+ of ratings. A recommender trained on that data is, mathematically, a popularity predictor wearing a collaborative-filtering costume.</p>
+    <p>This shows up in practice as a kind of ceiling. Haley's model and Ninkasi can both predict ratings well — but "predict rating" and "predict the pint you'll actually enjoy ordering next" are different tasks. The former is solved. The latter, less so.</p>
+    <p>PINtPOINT's approach is to use <span class="highlight">pair-choice</span> rounds (Head-to-Head) where both options are plausible for the user — forcing the model to learn genuine preference gradients, not just which beer is on the hype cycle this month.</p>
+
+    <h2>Wall 3: Geography-blindness</h2>
+    <p>The biggest practical problem with nearly every public beer recommender is that it doesn't know, and doesn't try to know, what you can actually order right now.</p>
+    <p>Ninkasi's output is: "you'll probably like Westmalle Tripel." Great. The bar in front of you is a 30-pub craft garden in Shoreditch. Which of those 30 taps is actually the Westmalle-flavoured experience? The model can't say, because it only knows beers, not venues.</p>
+    <p>PINtPOINT scores your style profile against <span class="highlight">the live tap lists at pubs near you</span>. The recommendation engine runs on what's pouring, not a global beer catalogue:</p>
+    <ol>
+      <li>You walk into range of a venue tracked by PINtPOINT</li>
+      <li>The app pulls its current tap list (cask + keg, freshness-indicated)</li>
+      <li>Your PINtDEXTER profile scores each line</li>
+      <li>The top match gets flagged with a taste-match percentage</li>
+    </ol>
+    <p>The unit of recommendation is <em>a pint that exists, on a bar you can reach, tonight</em> — not an abstract beer name you'll screenshot and forget.</p>
+
+    <h2>What a good beer recommender is actually solving for</h2>
+    <p>Haley and Ninkasi are both solving <span class="highlight">"predict this user's rating of beer X."</span> That's a well-defined ML task. It trains, it evaluates, it publishes nicely.</p>
+    <p>The consumer-facing question is different:</p>
+    <p class="quote">"Of the pints I can order right now, which should I pick?"</p>
+    <p>That's a smaller problem — and a more tractable one. You don't need to predict every beer in the world. You need to rank the 8-20 beers on the bar in front of the user, with enough preference signal to be confidently better than "just pick the IPA". Once the problem is scoped that way, cold start, popularity bias, and geography-blindness all shrink.</p>
+
+    <h2>How PINtDEXTER layers the signals</h2>
+    <p>The engine inside PINtPOINT is called PINtDEXTER. It combines:</p>
+    <ul>
+      <li><span class="highlight">Sip-or-Skip</span> — fast binary card swipes across beer styles, for the cold-start minute</li>
+      <li><span class="highlight">Head-to-Head</span> — paired-choice rounds that sharpen a profile the user has already seeded</li>
+      <li><span class="highlight">Preferred-styles layer</span> — an interpretable derivation across 13 style categories (IPA, lager, stout, sour, cask, cider, pale, wheat, porter, saison, imperial, session, other)</li>
+      <li><span class="highlight">TUNeDEXTER manual sliders</span> — user-exposed knobs that override the inferred profile if you disagree</li>
+      <li><span class="highlight">Venue-aware ranking</span> — scoring applied against the live tap list at pubs near you</li>
+    </ul>
+    <p>It's deliberately <em>not</em> a black-box neural net. The layered structure is there so the user can see why the app recommended what it did, and correct it if they want.</p>
+
+    <h2>What we're not claiming</h2>
+    <p>PINtDEXTER isn't a breakthrough in recommender research. It's not going to out-predict SVD++ on a RateBeer leaderboard. Those models and the people who build them are doing harder work than what's in a consumer app.</p>
+    <p>What we think it <em>is</em> is a better answer to the practical question a drinker is actually asking: <span class="highlight">what should I get?</span> Framed as a venue-bound, tonight-shaped problem, the recommender gets to use much smaller, cleaner inputs and deliver a sharper output.</p>
+
+    <h2>Where the public recommender projects are still valuable</h2>
+    <p>Honest respect to both linked pieces. A few things they get exactly right:</p>
+    <ul>
+      <li>Ratings data <em>does</em> have real structure. Style co-occurrences and per-user bias are picked up cleanly by matrix-factorisation approaches like SVD++.</li>
+      <li>RateBeer and Untappd are generous corpora by industry standards — the beer world is unusually open about its ratings.</li>
+      <li>Transparent methodology + working Flask/R web apps + public notebooks is a great cultural norm. The models linked above could be dropped into a real product with modest effort.</li>
+    </ul>
+    <p>If you're interested in the ML side of beer recommendation specifically, both links in the intro are worth reading end-to-end. If you're interested in what to drink tonight, PINtPOINT will answer that question faster.</p>
+
+    <p class="quote">Most beer recommenders predict ratings.<br/>PINtPOINT picks pints.</p>
+
+    <div class="faq">
+      <h2>Frequently asked questions</h2>
+      <details class="faq-item">
+        <summary>Why is the cold start problem so hard for beer recommenders?</summary>
+        <p>Collaborative-filtering models like SVD++ or RBMs need dozens of ratings per user before predictions stabilise. A brand-new user gets "popular beers" as a fallback, which isn't personalisation — it's a leaderboard. PINtPOINT solves this with Sip-or-Skip: ~10 binary card swipes yield a usable style profile on first use.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What's wrong with using Untappd ratings as the main input to a recommender?</summary>
+        <p>Untappd ratings are a biased sample — heavy-hitting releases collect disproportionate ratings, so a model trained on them learns popularity more than preference. Recommenders built on purpose-collected pair-choice signals, rather than free-form reviews, produce sharper personalisation.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How does PINtPOINT's PINtDEXTER recommender work?</summary>
+        <p>Three layers: (1) Sip-or-Skip + Head-to-Head pair rounds build a style profile from binary choices; (2) that profile derives 13 style-category sliders the user can fine-tune directly; (3) the live tap lists at nearby venues are scored against the profile, so recommendations are always tied to beer actually in front of you.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Why do most beer recommenders ignore location?</summary>
+        <p>Because the training data doesn't include it, or the system is built as a catalogue recommender (what beers exist) rather than an availability recommender (what's pouring near you tonight). A recommendation for a beer you'll never order isn't really a recommendation.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is a good beer recommender even possible given how noisy ratings are?</summary>
+        <p>It depends what you're predicting. Predicting star ratings from other star ratings hits a noise floor fast. Predicting "of the 4 pints on the bar in front of you, which one will you enjoy most" is a narrower, more tractable problem.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is this different from Next Glass, BeerMenus, or Untappd's own recommendations?</summary>
+        <p>Next Glass (acquired by Untappd) and similar rating-driven systems optimise for catalogue-style historical preference. PINtPOINT optimises for the real-time decision at a specific venue. The two are complementary — Untappd is the diary, PINtPOINT is the decision engine.</p>
+      </details>
+    </div>
+
+    <div class="sources">
+      <strong>Source material referenced:</strong>
+      <ul style="margin:8px 0 0 20px">
+        <li><a href="https://www.rpubs.com/ebhtra/758377" target="_blank">Ethan Haley — "Untappd as a recommender"</a> (RPubs)</li>
+        <li><a href="https://nycdatascience.com/blog/student-works/ninkasi-beer-recommender-system/" target="_blank">NINKASI: Beer Recommender System</a> (NYC Data Science blog)</li>
+        <li><a href="https://web.archive.org/web/20190910223114/https://ninkasibeer.herokuapp.com/recom" target="_blank">Ninkasi Beer recommender app</a> (Internet Archive)</li>
+      </ul>
+    </div>
+
+    <div class="closing">
+      <p>If you're a data scientist, go read the linked work — it's good. If you're a beer drinker, try PINtPOINT and let PINtDEXTER pick your next pint based on the tap list in front of you, not a global leaderboard.</p>
+      <a href="https://apps.apple.com/app/pintpoint/id6760611613" class="cta">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download PINtPOINT
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../features.html">Features</a>
+      <a href="../screenshots.html">Screenshots</a>
+      <a href="../how-to-find-beer-near-you.html">How to find beer near you</a>
+      <a href="../vs-untappd.html">vs Untappd</a>
+      <a href="../vs-real-ale-finder.html">vs Real Ale Finder</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+    </div>
+    <p style="font-size:0.75rem;color:#555;margin-top:12px">Untappd, RateBeer, Next Glass, BeerMenus are trademarks of their respective owners. Links to third-party research are included for reference and critique, not endorsement.</p>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+</body>
+</html>
