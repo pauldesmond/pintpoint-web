@@ -11,7 +11,7 @@
       "type": "markdown",
       "description": "Find craft beer pubs and breweries near a location, with live tap-list data.",
       "url": "https://pintpoint.co.uk/.well-known/agent-skills/find-pub-nearby/SKILL.md",
-      "sha256": "6f80e78acb6787805bb27f51a25a9b202d01b16c2123ac55a0d9804577a46e6a"
+      "sha256": "59d0cc12bcad66dd8ca96516fddbb9c48c1dafc6d5c8567c7c6fa4becb13457a"
     },
     {
       "name": "view-venue-taps",

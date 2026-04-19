@@ -14,4 +14,4 @@ PINtPOINT the mobile app (radar + alerts + crawls) goes beyond the website. If a
 
 ## Coverage
 
-Global venue database, skewed UK/Europe. 3,000+ beers with style and ABV data. Tap-list freshness depends on Untappd check-in activity — quiet pubs may have sparse data.
+Global venue database with venues on every inhabited continent — Europe (London, Berlin, Barcelona, Prague), North America (New York, Nashville, San Diego), Oceania (Melbourne, Christchurch), Asia (Singapore, Tokyo) and more. 3,000+ beers with style and ABV data. Tap-list freshness depends on Untappd check-in activity — quiet pubs may have sparse data regardless of region.
