@@ -88,6 +88,11 @@
     p a { color: var(--teal); }
     .highlight { color: var(--text); font-weight: 600; }
     .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
+    .category.essay { color: #9DA5FF; border: 1px solid rgba(157,165,255,0.4); }
+    .category.guide { color: #00D4AA; border: 1px solid rgba(0,212,170,0.4); }
+    .category.love { color: #FF8C9E; border: 1px solid rgba(255,140,158,0.4); }
+    .category.note { color: #C0A340; border: 1px solid rgba(192,163,64,0.4); }
     .lede { font-size: 1.05rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
     .quote { font-size: 1.2rem; font-weight: 700; color: var(--teal); text-align: center; padding: 32px 0; margin: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); line-height: 1.55; }
     ul, ol { margin: 16px 0 24px 20px; }
@@ -127,10 +132,12 @@
   </nav>
 
   <div class="content">
-    <p class="meta">Published 19 April 2026 · PINtPOINT blog</p>
+    <p class="meta"><span class="category essay">Essay</span>19 April 2026 · Product</p>
     <h1>What's Wrong With Beer <em>Recommendation Systems</em> (And What PINtPOINT Does Differently)</h1>
 
     <p class="lede">Every couple of years, a smart data-science student builds a beer recommender on top of Untappd or RateBeer data, posts the write-up, and it makes the rounds. The models are usually solid. The underlying question is the one they don't quite get to: <span class="highlight">is this actually useful to someone standing at a bar tonight?</span></p>
+
+    <p class="quote">The best beer recommendation system is useless<br/>if it ignores what's actually pouring tonight.</p>
 
     <p>Two pieces are worth reading as a starting point:</p>
     <ul>

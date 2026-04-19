@@ -553,28 +553,50 @@
     <p style="text-align:center;margin-top:16px"><a href="pubs/" style="color:var(--teal);text-decoration:none;font-size:0.9rem;font-weight:600">Browse recent venues &rarr;</a></p>
   </section>
 
-  <section style="max-width:760px;margin:40px auto 24px;padding:0 24px">
-    <h2 style="text-align:center;font-size:1.1rem;font-weight:800;letter-spacing:-0.3px;color:var(--text);margin-bottom:20px">Guides &amp; comparisons</h2>
+  <section style="max-width:860px;margin:40px auto 24px;padding:0 24px">
+    <style>
+      .home-cat { display:inline-block; font-size:0.65rem; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; padding:1px 7px; border-radius:4px; margin-bottom:10px; }
+      .home-cat.essay { color:#9DA5FF; border:1px solid rgba(157,165,255,0.4); }
+      .home-cat.guide { color:#00D4AA; border:1px solid rgba(0,212,170,0.4); }
+      .home-cat.love { color:#FF8C9E; border:1px solid rgba(255,140,158,0.4); }
+      .home-cat.note { color:#C0A340; border:1px solid rgba(192,163,64,0.4); }
+      .home-card { display:block; padding:18px 20px; background:var(--card,#161b22); border:1px solid rgba(255,255,255,0.08); border-radius:12px; text-decoration:none; color:var(--text); transition: border-color 0.15s; }
+      .home-card:hover { border-color: var(--teal, #00D4AA); }
+      .home-card .t { font-size:0.95rem; font-weight:700; margin-bottom:4px; letter-spacing:-0.1px; }
+      .home-card .d { font-size:0.8rem; color:var(--muted,#8b949e); line-height:1.4; }
+    </style>
+    <h2 style="text-align:center;font-size:1.1rem;font-weight:800;letter-spacing:-0.3px;color:var(--text);margin-bottom:6px">From the blog</h2>
+    <p style="text-align:center;font-size:0.85rem;color:var(--muted,#8b949e);margin-bottom:20px">Guides, love letters, essays, notes — <a href="blog/" style="color:var(--teal,#00D4AA);text-decoration:none">browse all →</a></p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
-      <a href="how-to-find-beer-near-you.html" style="display:block;padding:18px 20px;background:var(--card,#161b22);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--text)">
-        <div style="font-size:0.95rem;font-weight:700;margin-bottom:4px">How to find beer near you</div>
-        <div style="font-size:0.8rem;color:var(--muted,#8b949e)">The fastest way, step by step</div>
+      <a href="blog/hops-what-each-one-tastes-like.html" class="home-card">
+        <span class="home-cat essay">Essay</span>
+        <div class="t">The Drinker's Guide to Hops</div>
+        <div class="d">30+ varieties, six flavour categories, zero jargon</div>
       </a>
-      <a href="vs-untappd.html" style="display:block;padding:18px 20px;background:var(--card,#161b22);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--text)">
-        <div style="font-size:0.95rem;font-weight:700;margin-bottom:4px">PINtPOINT vs Untappd</div>
-        <div style="font-size:0.8rem;color:var(--muted,#8b949e)">Which app is for which job</div>
+      <a href="blog/chelmsford-beer-mile-guide.html" class="home-card">
+        <span class="home-cat guide">Guide</span>
+        <div class="t">The Chelmsford Beer Mile</div>
+        <div class="d">A live guide to the 9-stop craft crawl</div>
       </a>
-      <a href="vs-real-ale-finder.html" style="display:block;padding:18px 20px;background:var(--card,#161b22);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--text)">
-        <div style="font-size:0.95rem;font-weight:700;margin-bottom:4px">PINtPOINT vs Real Ale Finder</div>
-        <div style="font-size:0.8rem;color:var(--muted,#8b949e)">Cask-only vs everything-on-tap</div>
+      <a href="blog/san-diego-ipa-capital-love-letter.html" class="home-card">
+        <span class="home-cat love">Love letter</span>
+        <div class="t">A Love Letter to San Diego</div>
+        <div class="d">How a navy town became IPA Capital of the world</div>
       </a>
-      <a href="blog/beer-recommendation-systems-what-most-get-wrong.html" style="display:block;padding:18px 20px;background:var(--card,#161b22);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--text)">
-        <div style="font-size:0.95rem;font-weight:700;margin-bottom:4px">Why beer recommenders miss the mark</div>
-        <div style="font-size:0.8rem;color:var(--muted,#8b949e)">A response to Haley &amp; Ninkasi</div>
+      <a href="how-to-find-beer-near-you.html" class="home-card">
+        <span class="home-cat guide">Guide</span>
+        <div class="t">How to find beer near you</div>
+        <div class="d">The fastest way, step by step</div>
       </a>
-      <a href="blog/chelmsford-beer-mile-guide.html" style="display:block;padding:18px 20px;background:var(--card,#161b22);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--text)">
-        <div style="font-size:0.95rem;font-weight:700;margin-bottom:4px">The Chelmsford Beer Mile</div>
-        <div style="font-size:0.8rem;color:var(--muted,#8b949e)">A live guide to the 9-stop craft crawl</div>
+      <a href="vs-untappd.html" class="home-card">
+        <span class="home-cat guide">Guide</span>
+        <div class="t">PINtPOINT vs Untappd</div>
+        <div class="d">Which app is for which job</div>
+      </a>
+      <a href="blog/beer-recommendation-systems-what-most-get-wrong.html" class="home-card">
+        <span class="home-cat essay">Essay</span>
+        <div class="t">Why beer recommenders miss the mark</div>
+        <div class="d">A response to Haley &amp; Ninkasi</div>
       </a>
     </div>
   </section>
