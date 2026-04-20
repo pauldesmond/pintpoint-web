@@ -46,7 +46,11 @@
           referrer: document.referrer || null,
           ua: navigator.userAgent || null
         });
-        var blob = new Blob([payload], { type: 'application/json' });
+        // text/plain keeps the beacon a CORS "simple request" so the browser
+        // doesn't need a preflight (which sendBeacon can't perform — the
+        // request would otherwise be silently dropped). Server parses the
+        // text as JSON regardless.
+        var blob = new Blob([payload], { type: 'text/plain' });
         navigator.sendBeacon(
           'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/log-apk-download',
           blob
