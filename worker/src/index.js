@@ -16,7 +16,7 @@ const SUPABASE_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/venue
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
 // the edge function's rendering or slug-resolution logic).
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 
 export default {
   async fetch(request, env, ctx) {
