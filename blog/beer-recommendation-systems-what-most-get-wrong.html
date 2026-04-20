@@ -26,7 +26,7 @@
     "author": { "@type": "Person", "name": "Sophie Ro", "url": "https://pintpoint.co.uk/about-pintpoint.html", "sameAs": ["https://www.linkedin.com/in/sophie-ro-642927404/", "https://x.com/sophiero84", "https://instagram.com/pint_point", "https://www.youtube.com/@SophieRo-l5h", "https://www.reddit.com/user/SophieRo_"] },
     "publisher": { "@type": "Organization", "name": "PINtPOINT", "url": "https://pintpoint.co.uk" },
     "datePublished": "2026-03-29",
-    "dateModified": "2026-03-29",
+    "dateModified": "2026-04-20",
     "url": "https://pintpoint.co.uk/blog/beer-recommendation-systems-what-most-get-wrong.html",
     "image": "https://pintpoint.co.uk/screenshots/1.7.radar.png",
     "mainEntityOfPage": "https://pintpoint.co.uk/blog/beer-recommendation-systems-what-most-get-wrong.html"
@@ -146,7 +146,7 @@
     <p class="meta"><span class="category essay">Essay</span>29 March 2026 · Product</p>
     <h1>What's Wrong With Beer <em>Recommendation Systems</em> (And What PINtPOINT Does Differently)</h1>
 
-    <p class="lede">Every couple of years, a smart data-science student builds a beer recommender on top of Untappd or RateBeer data, posts the write-up, and it makes the rounds. The models are usually solid. The underlying question is the one they don't quite get to: <span class="highlight">is this actually useful to someone standing at a bar tonight?</span></p>
+    <p class="lede">Every couple of years, a smart data-science student builds a beer recommender on top of Untappd or RateBeer data and posts the write-up. The models are often solid. The question they rarely answer is simpler: <span class="highlight">is this useful to someone standing at a bar tonight?</span></p>
 
     <p class="quote">The best beer recommendation system is useless<br/>if it ignores what's actually pouring tonight.</p>
 
@@ -161,15 +161,15 @@
     <p>They also both bump into the same three walls, and those walls are what <a href="https://pintpoint.co.uk">PINtPOINT</a> was designed around rather than over.</p>
 
     <h2>Wall 1: The cold-start problem</h2>
-    <p>Collaborative filtering needs history. SVD++ needs dozens of ratings per user before predictions stabilise. RBMs are even hungrier. What does a rating-based recommender serve to a brand-new user with zero check-ins?</p>
-    <p>In practice: <span class="highlight">popular beers</span>. Pliny the Elder for anyone with "IPA" in their signature. Guinness for anyone who once rated a stout. That's not a recommendation — it's a bestseller list.</p>
-    <p>PINtPOINT uses a structured preference-elicitation step instead: a feature called <a href="../features.html" style="color:var(--teal)">Sip-or-Skip</a>. Ten quick card-swipes — "would you order this? yes/no" — produces a usable style profile in under a minute. It's the same principle Tinder uses for matchmaking: forced binary choices beat free-form ratings for fast signal.</p>
+    <p>Collaborative filtering needs history. These models need dozens of ratings per user before predictions stabilise. What does a rating-based recommender serve to a brand-new user with zero check-ins?</p>
+    <p>In practice: <span class="highlight">popular beers</span>. Pliny the Elder for anyone with "IPA" in their signature. Guinness for anyone who once rated a stout. That's not a recommendation. It's a bestseller list.</p>
+    <p>PINtPOINT uses a structured preference-elicitation step instead: a feature called <a href="../features.html" style="color:var(--teal)">Sip-or-Skip</a>. Ten quick card-swipes — "would you order this? yes/no" — produces a usable style profile in under a minute. It uses the same basic logic as fast pair-choice systems elsewhere: forced binary choices beat vague ratings when you need signal quickly.</p>
 
     <blockquote>Asking "rate this beer 1-5" is a harder cognitive task than "would you order this now?" — and it produces noisier data.</blockquote>
 
     <h2>Wall 2: Popularity bias</h2>
-    <p>Any model trained on open rating data learns what's popular long before it learns what's personal. RateBeer and Untappd both have a heavy head: the top 1% of beers collect 50%+ of ratings. A recommender trained on that data is, mathematically, a popularity predictor wearing a collaborative-filtering costume.</p>
-    <p>This shows up in practice as a kind of ceiling. Haley's model and Ninkasi can both predict ratings well — but "predict rating" and "predict the pint you'll actually enjoy ordering next" are different tasks. The former is solved. The latter, less so.</p>
+    <p>Any model trained on open rating data learns what's popular long before it learns what's personal. RateBeer and Untappd both have a heavy head: the top 1% of beers collect 50%+ of ratings. A recommender trained on that data is, mathematically, a popularity predictor disguised as personalisation.</p>
+    <p>This shows up in practice as a kind of ceiling. Haley's model and Ninkasi can both predict ratings well — but "predict rating" and "predict the pint you'll actually enjoy ordering next" are different tasks. Predicting ratings is already a mature problem. Predicting the pint someone will actually want next is much less solved.</p>
     <p>PINtPOINT's approach is to use <span class="highlight">pair-choice</span> rounds (Head-to-Head) where both options are plausible for the user — forcing the model to learn genuine preference gradients, not just which beer is on the hype cycle this month.</p>
 
     <h2>Wall 3: Geography-blindness</h2>
@@ -193,13 +193,13 @@
     <h2>How PINtDEXTER layers the signals</h2>
     <p>The engine inside PINtPOINT is called PINtDEXTER. It combines:</p>
     <ul>
-      <li><span class="highlight">Sip-or-Skip</span> — fast binary card swipes across beer styles, for the cold-start minute</li>
-      <li><span class="highlight">Head-to-Head</span> — paired-choice rounds that sharpen a profile the user has already seeded</li>
-      <li><span class="highlight">Preferred-styles layer</span> — an interpretable derivation across 13 style categories (IPA, lager, stout, sour, cask, cider, pale, wheat, porter, saison, imperial, session, other)</li>
-      <li><span class="highlight">TUNeDEXTER manual sliders</span> — user-exposed knobs that override the inferred profile if you disagree</li>
-      <li><span class="highlight">Venue-aware ranking</span> — scoring applied against the live tap list at pubs near you</li>
+      <li><span class="highlight">Sip-or-Skip</span> — fast binary swipes for cold-start signal</li>
+      <li><span class="highlight">Head-to-Head</span> — pair rounds that sharpen an existing taste profile</li>
+      <li><span class="highlight">Preferred styles</span> — an interpretable layer across 13 style families</li>
+      <li><span class="highlight">TUNeDEXTER sliders</span> — manual overrides when the user disagrees</li>
+      <li><span class="highlight">Venue-aware ranking</span> — recommendations scored against live taps nearby</li>
     </ul>
-    <p>It's deliberately <em>not</em> a black-box neural net. The layered structure is there so the user can see why the app recommended what it did, and correct it if they want.</p>
+    <p>The layered structure is deliberate: the user can see why the app recommended what it did, and correct it if they want.</p>
 
     <h2>What we're not claiming</h2>
     <p>PINtDEXTER isn't a breakthrough in recommender research. It's not going to out-predict SVD++ on a RateBeer leaderboard. Those models and the people who build them are doing harder work than what's in a consumer app.</p>
