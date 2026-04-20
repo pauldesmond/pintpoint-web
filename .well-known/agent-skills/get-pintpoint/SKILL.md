@@ -14,7 +14,7 @@ Not distributed via Google Play. Users install the APK directly from the officia
 
 - Landing page: `https://pintpoint.co.uk/download`
 - Latest APK manifest: `https://pintpoint.co.uk/latest-version.json`
-- Pricing model: 7-day server-tracked free trial on first launch, then £9.99 one-off lifetime licence via Stripe Payment Link (no auto-renew)
+- Pricing model: 7-day server-tracked free trial on first launch, then £3.99/year subscription via Stripe Payment Link — same price as iOS
 
 Android users must enable "Install unknown apps" for their browser before opening the APK. Instructions are on the download page.
 
