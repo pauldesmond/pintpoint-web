@@ -106,7 +106,7 @@ async function fetchVenues() {
 // the last 90 days is "active" — we're still watching it, Google
 // gets a fresh signal. Anything older is treated as stale: page
 // still works on deep-link, just not advertised to search engines.
-const SITEMAP_FRESHNESS_DAYS = 90;
+const SITEMAP_FRESHNESS_DAYS = 180;
 
 function isFresh(venue) {
   const last = venue.last_scraped_at;
