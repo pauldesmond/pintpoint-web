@@ -54,8 +54,10 @@
     }
   },
   "knowledge_graph": [
+    "https://www.wikidata.org/wiki/Q139494284",
     "https://grokipedia.com/page/PINtPOINT_Beer_Radar"
   ],
+  "wikidata_id": "Q139494284",
   "social": {
     "x": "https://x.com/sophiero84",
     "instagram": "https://instagram.com/pint_point",

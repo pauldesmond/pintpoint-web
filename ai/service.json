@@ -68,7 +68,11 @@
   "trust_signals": {
     "privacy_policy": "https://pintpoint.co.uk/privacy-policy.html",
     "contact_email": "hello@pintpoint.co.uk",
-    "knowledge_graph": "https://grokipedia.com/page/PINtPOINT_Beer_Radar",
+    "knowledge_graph": [
+      "https://www.wikidata.org/wiki/Q139494284",
+      "https://grokipedia.com/page/PINtPOINT_Beer_Radar"
+    ],
+    "wikidata_id": "Q139494284",
     "founder": "Paul Desmond",
     "founded_year": 2026
   },
