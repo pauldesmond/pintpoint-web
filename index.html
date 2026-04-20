@@ -612,12 +612,12 @@
   </section>
 
   <!-- LIVE FEED -->
-  <section class="live-feed" id="live-feed">
+  <section class="live-feed" id="live-feed" role="region" aria-labelledby="live-feed-heading">
     <div class="live-feed-header">
-      <h2><span class="live-pulse"></span>Recently <em>spotted.</em></h2>
+      <h2 id="live-feed-heading"><span class="live-pulse" aria-hidden="true"></span>Recently <em>spotted.</em></h2>
       <p>Live from the PINtPOINT radar — beers confirmed on tap in the last 24 hours.</p>
     </div>
-    <div id="sightings-list">
+    <div id="sightings-list" aria-live="polite" aria-busy="true" aria-label="Recent beer sightings — updates as new data loads">
       <p class="live-feed-empty">Loading live data&hellip;</p>
     </div>
   </section>
@@ -752,13 +752,14 @@
         .then(function(d) {
           if (!d.ok || !d.sightings || !d.sightings.length) {
             el.innerHTML = '<p class="live-feed-empty">No recent sightings — check back soon.</p>';
+            el.setAttribute('aria-busy', 'false');
             return;
           }
           var html = '';
           d.sightings.forEach(function(s) {
             var ago = timeAgo(s.spotted);
             var detail = [s.brewery, s.style, s.abv ? s.abv + '%' : ''].filter(Boolean).join(' · ');
-            html += '<div class="sighting">' +
+            html += '<div class="sighting" role="listitem">' +
               '<div><div class="sighting-beer">' + esc(s.beer) + '</div>' +
               (detail ? '<div class="sighting-detail">' + esc(detail) + '</div>' : '') +
               '</div>' +
@@ -767,9 +768,12 @@
               '</div></div>';
           });
           el.innerHTML = html;
+          el.setAttribute('role', 'list');
+          el.setAttribute('aria-busy', 'false');
         })
         .catch(function() {
-          el.innerHTML = '<p class="live-feed-empty">Live feed unavailable.</p>';
+          el.innerHTML = '<p class="live-feed-empty" role="alert">Live feed unavailable.</p>';
+          el.setAttribute('aria-busy', 'false');
         });
       function timeAgo(iso) {
         var ms = Date.now() - new Date(iso).getTime();
