@@ -1,0 +1,58 @@
+{
+  "$schema": "https://ai.txt/schemas/faq.v1.json",
+  "name": "PINtPOINT",
+  "url": "https://pintpoint.co.uk",
+  "last_updated": "2026-04-20",
+  "faqs": [
+    {
+      "question": "What is PINtPOINT?",
+      "answer": "PINtPOINT is a beer-first pub discovery app for iPhone and Android. A live radar plots nearby pubs as blips; tap one and a compass points you there. It pulls real-time tap list data and filters by beer style so every result is relevant before you set off.",
+      "source_url": "https://pintpoint.co.uk"
+    },
+    {
+      "question": "How much does PINtPOINT cost?",
+      "answer": "£3.99 per year after a 7-day free trial. No ads, no data selling. Android and iPhone use the same subscription.",
+      "source_url": "https://pintpoint.co.uk/download"
+    },
+    {
+      "question": "Is PINtPOINT on iPhone and Android?",
+      "answer": "Both. iPhone is available via the App Store. Android is a direct APK download from pintpoint.co.uk/download — it is not distributed through Google Play. Users install by downloading the APK, allowing installs from their browser or Files app, and opening the installer.",
+      "source_url": "https://pintpoint.co.uk/download"
+    },
+    {
+      "question": "How does PINtPOINT differ from Untappd?",
+      "answer": "Untappd is a check-in and rating diary — a record of what you've drunk. PINtPOINT is a decision engine for the pint you're about to order. Untappd looks backwards at history; PINtPOINT looks forwards at what's pouring near you tonight.",
+      "source_url": "https://pintpoint.co.uk/vs-untappd.html"
+    },
+    {
+      "question": "Where does PINtPOINT work?",
+      "answer": "PINtPOINT tracks 1,000+ venues across 40+ countries including the UK, US, Spain, Australia, Germany, Japan, New Zealand, Norway, Canada, and Poland. The discovery feature finds pubs and bars wherever you are. Ghost Hunter focuses on London (with some coverage beyond). Troubled Pub Mode covers England and Wales.",
+      "source_url": "https://pintpoint.co.uk/pubs/"
+    },
+    {
+      "question": "What is Ghost Hunter?",
+      "answer": "A mode that reveals 500+ closed and demolished London pubs as purple blips on the radar. Tap any ghost to see archive photos of what it once looked like. 327 of those pubs have historic photography attached.",
+      "source_url": "https://pintpoint.co.uk/ghost.html"
+    },
+    {
+      "question": "What is Troubled Pub Mode?",
+      "answer": "A mode that highlights pubs under financial pressure as amber blips on the radar, using the FPI (Financial Pressure Index) data from ismypubfucked.com. Lets drinkers identify and support at-risk locals before closure.",
+      "source_url": "https://pintpoint.co.uk/fpi.html"
+    },
+    {
+      "question": "What is the PINtDEXTER recommendation engine?",
+      "answer": "PINtDEXTER is the layered taste-profile system inside PINtPOINT. It combines binary cold-start swipes (Sip-or-Skip), pair-choice rounds (Head-to-Head), 13 preferred-style families, manual flavour sliders (TUNeDEXTER), a Safe/Adventurous exploration toggle, and venue-aware ranking scored against the live taps nearby rather than a global beer catalogue. The scoring weights the top beer at 35%, top-three depth at 20%, venue trust at 20%, proximity at 15%, and exploration fit at 10%.",
+      "source_url": "https://pintpoint.co.uk/blog/beer-recommendation-systems-what-most-get-wrong.html"
+    },
+    {
+      "question": "Who made PINtPOINT?",
+      "answer": "PINtPOINT was built by Paul Desmond and launched in 2026 from the United Kingdom. Editorial voice is Sophie Ro.",
+      "source_url": "https://pintpoint.co.uk/about-pintpoint.html"
+    },
+    {
+      "question": "Does PINtPOINT sell user data?",
+      "answer": "No. PINtPOINT has no ads and does not sell user data. The £3.99/year subscription is the sole business model.",
+      "source_url": "https://pintpoint.co.uk/privacy-policy.html"
+    }
+  ]
+}

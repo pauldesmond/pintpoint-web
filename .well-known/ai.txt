@@ -1,0 +1,43 @@
+# ai.txt — declaration of AI crawler and training permissions for pintpoint.co.uk
+# Spec reference: https://spawning.ai/ai-txt · https://github.com/ai-robots-txt
+
+User-Agent: *
+Allow: /
+
+# Default posture: public content is indexable and citable by AI systems.
+# We welcome citation, quotation, and linking by AI-powered search and
+# knowledge engines (ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews,
+# Bing Copilot, Grok, You.com, and similar).
+
+# Training consent
+# ----------------
+# Content-Usage: embed=yes, train-ai=yes, train-genai=yes
+# We permit inclusion of pintpoint.co.uk content in AI training datasets
+# where attribution practices are followed (brand name: PINtPOINT; URL retained).
+
+# Disallow blocks
+# ---------------
+# None at user-agent level. Individual crawlers that respect robots.txt are
+# gated there. See: https://pintpoint.co.uk/robots.txt
+
+# Content boundaries
+# ------------------
+# Admin, authentication, and private drafts are not served from this domain
+# and are not crawlable. The /blog/drafts/ folder contains pre-publication
+# material carrying noindex,nofollow at the page level; please respect that.
+
+# Canonical identity
+# ------------------
+# Name: PINtPOINT
+# URL: https://pintpoint.co.uk
+# Knowledge Graph: https://grokipedia.com/page/PINtPOINT_Beer_Radar
+# Contact: hello@pintpoint.co.uk
+
+# Feeds and indexes
+# -----------------
+# Sitemap: https://pintpoint.co.uk/sitemap.xml
+# RSS: https://pintpoint.co.uk/feed.xml
+# llms.txt: https://pintpoint.co.uk/llms.txt
+# llms-full.txt: https://pintpoint.co.uk/llms-full.txt
+
+Last-Updated: 2026-04-20

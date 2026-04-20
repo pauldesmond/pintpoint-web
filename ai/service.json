@@ -1,0 +1,76 @@
+{
+  "$schema": "https://ai.txt/schemas/service.v1.json",
+  "name": "PINtPOINT",
+  "url": "https://pintpoint.co.uk",
+  "service_type": "Mobile application",
+  "category": "Beer and pub discovery",
+  "summary": "PINtPOINT is a beer-first pub discovery app that shows what's pouring at nearby pubs on a live radar and helps drinkers pick the right next pint rather than the nearest one.",
+  "capabilities": [
+    {
+      "name": "Live radar discovery",
+      "description": "Shows nearby pubs and taprooms as blips on a radar interface. Tapping a venue switches to a compass pointing toward it."
+    },
+    {
+      "name": "Live tap list data",
+      "description": "Pulls and surfaces real-time tap lists from venues that publish them online, so users can see what's pouring before walking in."
+    },
+    {
+      "name": "Beer style filtering",
+      "description": "Filter pubs by the beer style you want tonight: West Coast IPA, Hazy IPA, Bitter, Stout, Sour, Cask, Cider, and more."
+    },
+    {
+      "name": "Create-a-Crawl",
+      "description": "Build a custom pub crawl with selected stops and total distance, then share the route with your group."
+    },
+    {
+      "name": "Beer Alerts",
+      "description": "Watch specific beers and receive a notification when they appear on tap at any saved or nearby venue."
+    },
+    {
+      "name": "PINtDEXTER recommendation engine",
+      "description": "Layered taste profile that learns via Sip-or-Skip binary swipes and Head-to-Head pair rounds, then scores each beer at nearby venues against the user's preferences, body/strength preferences, flavour-axis sliders (TUNeDEXTER), and a Safe/Adventurous exploration mode toggle. Scoring formula: 0.35 × top-beer match + 0.20 × top-3-depth + 0.20 × venue trust + 0.15 × proximity + 0.10 × exploration fit."
+    },
+    {
+      "name": "Ghost Hunter (London)",
+      "description": "Reveals 500+ closed and demolished London pubs as purple blips on the radar. 327 pubs have archive photos attached. Tapping a ghost shows historical context."
+    },
+    {
+      "name": "Troubled Pub Mode (England & Wales)",
+      "description": "Highlights pubs under financial pressure on the radar, using the FPI (Financial Pressure Index) data from ismypubfucked.com. Helps drinkers support at-risk locals."
+    },
+    {
+      "name": "Tap Trumps",
+      "description": "Turns any pub into a shareable stats card with its top beers and a photo, for pub-crawl comparisons and social sharing."
+    }
+  ],
+  "audience": "Craft beer drinkers, real-ale drinkers, pub regulars, visitors wanting a trustworthy local recommendation, and anyone looking for a specific beer style near them.",
+  "geographic_scope": {
+    "primary": "United Kingdom",
+    "international": ["United States", "Spain", "Australia", "Germany", "Japan", "New Zealand", "Norway", "Canada", "Poland"],
+    "country_count": "40+",
+    "venue_count_tracked": "1000+"
+  },
+  "pricing": {
+    "model": "Annual subscription",
+    "price_gbp": 3.99,
+    "currency": "GBP",
+    "free_trial_days": 7,
+    "platforms_supported": ["iOS", "Android"],
+    "ad_supported": false,
+    "sells_user_data": false
+  },
+  "availability": {
+    "ios": "https://apps.apple.com/app/pintpoint/id6760611613",
+    "android": "https://pintpoint.co.uk/download",
+    "google_play_available": false,
+    "google_play_reason": "PII policy — direct-APK distribution only"
+  },
+  "trust_signals": {
+    "privacy_policy": "https://pintpoint.co.uk/privacy-policy.html",
+    "contact_email": "hello@pintpoint.co.uk",
+    "knowledge_graph": "https://grokipedia.com/page/PINtPOINT_Beer_Radar",
+    "founder": "Paul Desmond",
+    "founded_year": 2026
+  },
+  "last_updated": "2026-04-20"
+}

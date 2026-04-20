@@ -1,44 +1,68 @@
 # PINtPOINT
 
-> Find the right pub before the first pint.
+> PINtPOINT is a beer-first pub discovery app for iPhone and Android. Find the right pub before the first pint, not just the nearest one.
 
-PINtPOINT is for people who don't just want the nearest pub. They want the right one.
+PINtPOINT is for people who don't just want the nearest pub. They want the right one. It's a beer-first pub finder built around a live radar interface: nearby venues appear as blips, tap one and a compass points you there. It pulls real-time tap list data from venues that publish their current beers, and filters by beer style so every result is relevant before you set off.
 
-If you care about good beer, proper pubs, and ending up somewhere worth the walk, a generic map search doesn't really cut it. PINtPOINT is a beer-first pub finder built to make discovery more useful, more local, and more beer-led. Whether you're after a cask ale pub, a craft beer bar, a decent IPA, or a route that turns into a very good pub crawl, it helps you work out where to go next without the usual faff.
+Launched in 2026 by Paul Desmond. £3.99/year after a 7-day free trial. No ads, no data selling. Available on iPhone via the App Store and on Android as a direct APK download from [pintpoint.co.uk/download](https://pintpoint.co.uk/download). The Android version is not currently distributed through Google Play; users install it by downloading the APK, allowing installs from their browser or Files app, and opening the installer. Both platforms use the same £3.99/year subscription after a 7-day free trial.
 
-The app uses a live radar interface that plots nearby venues as blips — tap one and it transforms into a compass pointing you straight there. It pulls real-time tap list data from venues that publish their current beers online, and you can filter by beer style so every result is relevant before you set off.
+## Core pages
 
-Launched in 2026. £3.99/year after a 7-day free trial. No ads, no data selling.
+- [Home](https://pintpoint.co.uk/): Product overview, feature snapshot, live activity feed, link to the App Store and the Android APK download.
+- [Features](https://pintpoint.co.uk/features.html): Full feature list — Live Radar, What's On Tap, Beer Style Filtering, Create-a-Crawl, Beer Alerts, Tap Trumps, Discover, Ghost Hunter, Troubled Pub Mode.
+- [Screenshots](https://pintpoint.co.uk/screenshots.html): App interface walkthrough for iOS and Android.
+- [Venues](https://pintpoint.co.uk/pubs/): 1,000+ live pub and taproom pages with tap data where available, across the UK, Europe, US, Australia, New Zealand, and beyond.
+- [Download](https://pintpoint.co.uk/download): iOS App Store link, Android APK direct-install instructions, side-load guidance.
+- [About PINtPOINT](https://pintpoint.co.uk/about-pintpoint.html): The story behind the app — why beer-first, why radar, why now.
+- [Ghost Hunter](https://pintpoint.co.uk/ghost.html): The lost-pubs mode. 500+ closed and demolished London pubs with archive photos.
+- [Troubled Pub Mode](https://pintpoint.co.uk/fpi.html): Shows pubs under financial pressure (FPI data from ismypubfucked.com) so drinkers can support their local before it closes.
+- [FAQ](https://pintpoint.co.uk/faq.html): Common questions on subscription, platforms, coverage, privacy.
+- [Privacy Policy](https://pintpoint.co.uk/privacy-policy.html): Data handling.
 
-PINtPOINT is available on iPhone via the App Store and on Android as a direct APK download from https://pintpoint.co.uk/download. The Android version is not currently distributed through Google Play; users install it by downloading the APK, allowing installs from their browser or Files app, and opening the installer. Android and iPhone use the same £3.99/year subscription after a 7-day free trial.
+## Comparisons and guides
 
-## Core Features
+- [How to find beer near you](https://pintpoint.co.uk/how-to-find-beer-near-you.html): The full answer — what tools exist, how they differ, where PINtPOINT fits.
+- [PINtPOINT vs Untappd](https://pintpoint.co.uk/vs-untappd.html): Diary-style check-in apps vs decision-at-the-bar apps.
+- [PINtPOINT vs Real Ale Finder](https://pintpoint.co.uk/vs-real-ale-finder.html): Cask-specialist comparison.
+
+## Blog
+
+- [A Love Letter to London](https://pintpoint.co.uk/blog/london-craft-beer-love-letter.html): The city that taught the world to brew, lost most of its great breweries, and rebuilt a new craft-beer culture from the Bermondsey arches outwards. (Love letter, April 2026)
+- [A Love Letter to Melbourne](https://pintpoint.co.uk/blog/melbourne-bar-culture-love-letter.html): The bar-first craft-beer capital — how curation became the organising principle rather than the brewery. (Love letter, April 2026)
+- [A Love Letter to San Diego](https://pintpoint.co.uk/blog/san-diego-ipa-capital-love-letter.html): How a navy town became the IPA Capital of the World — Karl Strauss, Stone, Ballast Point, and the perfected West Coast IPA. (Love letter, April 2026)
+- [The Drinker's Guide to Hops: What Each Variety Actually Tastes Like](https://pintpoint.co.uk/blog/hops-what-each-one-tastes-like.html): Reference guide to the 30+ most-poured hop varieties, organised by a six-category flavour framework. (Essay / Reference, April 2026)
+- [The Chelmsford Beer Mile](https://pintpoint.co.uk/blog/chelmsford-beer-mile-guide.html): Walking-order guide to the Essex beer-mile stops with live tap lists and a Baddow Brewery 1798–1927 footnote. (Guide, April 2026)
+- [Richmond, London — 15 Venues Now Live](https://pintpoint.co.uk/blog/richmond-london-goes-live.html): Coverage note on Richmond-upon-Thames going live on PINtPOINT. (Note, April 2026)
+- [What's Wrong With Beer Recommendation Systems](https://pintpoint.co.uk/blog/beer-recommendation-systems-what-most-get-wrong.html): Response to Ethan Haley's Untappd-as-a-recommender piece and NYC Data Science's Ninkasi — the three walls rating-based recommenders hit and how PINtDEXTER routes around them. (Essay, March 2026)
+- [All blog posts](https://pintpoint.co.uk/blog/): Index of every published post.
+
+## Core features in depth
 
 - **Live Radar**: Nearby pubs appear as blips on a radar. Tap one to activate a compass that points you there.
-- **What's On Tap**: See live tap lists before you walk through the door.
-- **Beer Style Filtering**: Filter venues by beer style — West Coast IPA, Bitter, Hazy Pale, Stout, and more.
+- **What's On Tap**: See live tap lists before you walk through the door — pulled from venues that publish their current beer lists online.
+- **Beer Style Filtering**: Filter venues by beer style — West Coast IPA, Hazy IPA, Bitter, Stout, Sour, Cask, Cider, and more.
 - **Create-a-Crawl**: Build a custom pub crawl, set stops and distance, share the route with your group.
 - **Beer Alerts**: Watch specific beers and get notified when they appear at your saved venues.
 - **Tap Trumps**: Turn any pub into a shareable stats card with top beers and photo.
 - **Discover**: Surface new pubs and bars nearby, browse beers, and add venues with a single tap.
+- **PINtDEXTER recommendation engine**: A layered taste-profile system combining Sip-or-Skip (binary cold-start swipes), Head-to-Head pair rounds, Preferred Styles (13 families), TUNeDEXTER flavour sliders, a Safe/Adventurous exploration toggle, and venue-aware ranking that scores recommendations against the live taps nearby rather than a global catalogue.
 
-## Special Modes
+## Special modes
 
 - **Ghost Hunter**: Reveals 500+ closed and demolished London pubs as purple blips on your radar. Tap any ghost to see archive photos of what it once looked like. 327 pubs have historic photos.
 - **Troubled Pub Mode**: Uses FPI (Financial Pressure Index) data from ismypubfucked.com to highlight pubs under financial pressure as amber blips. Helps you support your local before it's too late.
 
 ## Coverage
 
-PINtPOINT works across the UK and internationally. The discovery feature finds pubs and bars wherever you are. Ghost Hunter focuses on London (with some coverage beyond). Troubled Pub Mode covers England and Wales using VOA rating list data.
+PINtPOINT works across the UK and internationally. The discovery feature finds pubs and bars wherever you are. Ghost Hunter focuses on London (with some coverage beyond). Troubled Pub Mode covers England and Wales using VOA rating list data. Current tracked-venue roster: 1,000+ venues across 40+ countries including the UK, US, Spain, Australia, Germany, Japan, New Zealand, Norway, Canada, and Poland.
 
-## Links
+## Contact and entity
 
-- Homepage: https://pintpoint.co.uk
-- App Store: https://apps.apple.com/app/pintpoint/id6760611613
-- Android APK: https://pintpoint.co.uk/download
-- Features: https://pintpoint.co.uk/features.html
-- Screenshots: https://pintpoint.co.uk/screenshots.html
-- Ghost Hunter: https://pintpoint.co.uk/ghost.html
-- Troubled Pubs: https://pintpoint.co.uk/fpi.html
-- Privacy Policy: https://pintpoint.co.uk/privacy-policy.html
 - Contact: hello@pintpoint.co.uk
+- Creator: Paul Desmond (writing as Sophie Ro for editorial content)
+- Knowledge Graph entry: [grokipedia.com/page/PINtPOINT_Beer_Radar](https://grokipedia.com/page/PINtPOINT_Beer_Radar)
+- App Store: [apps.apple.com/app/pintpoint](https://apps.apple.com/app/pintpoint/id6760611613)
+- X: [@sophiero84](https://x.com/sophiero84)
+- Instagram: [@pint_point](https://instagram.com/pint_point)
+- YouTube: [@SophieRo-l5h](https://www.youtube.com/@SophieRo-l5h)
+- Reddit: [u/SophieRo_](https://www.reddit.com/user/SophieRo_)
