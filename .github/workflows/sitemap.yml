@@ -1,0 +1,92 @@
+name: Regenerate sitemap
+
+# Runs nightly and on demand. Reads venues from Supabase, writes
+# sitemap.xml, commits + pushes if anything changed, then pings
+# IndexNow so Bing/Yandex/DuckDuckGo recrawl.
+#
+# Required repo secrets:
+#   PINTPOINT_SUPABASE_URL
+#   PINTPOINT_SUPABASE_SERVICE_ROLE_KEY
+
+on:
+  schedule:
+    - cron: "17 3 * * *"   # 03:17 UTC nightly
+  workflow_dispatch:        # manual "Run workflow" button
+
+concurrency:
+  group: sitemap
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Regenerate sitemap.xml
+        env:
+          PINTPOINT_SUPABASE_URL: ${{ secrets.PINTPOINT_SUPABASE_URL }}
+          PINTPOINT_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.PINTPOINT_SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/generate-sitemap.mjs
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No sitemap changes."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Sitemap changed:"
+            git diff --stat -- sitemap.xml
+          fi
+
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name  "pintpoint-sitemap-bot"
+          git config user.email "noreply@pintpoint.co.uk"
+          git add sitemap.xml
+          git commit -m "sitemap: nightly regeneration from Supabase"
+          git push
+
+      - name: Ping IndexNow
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          # Submit every URL in the freshly-generated sitemap to IndexNow.
+          # Up to 10,000 URLs per call; we have ~1100 so one call is fine.
+          python3 - <<'PY'
+          import json, re, sys, urllib.request, urllib.error
+          urls = re.findall(r'<loc>([^<]+)</loc>', open('sitemap.xml').read())
+          body = json.dumps({
+              "host": "pintpoint.co.uk",
+              "key": "cdf453273179a936cd5bf51aebd89d90",
+              "keyLocation": "https://pintpoint.co.uk/cdf453273179a936cd5bf51aebd89d90.txt",
+              "urlList": urls,
+          }).encode()
+          req = urllib.request.Request(
+              "https://api.indexnow.org/IndexNow",
+              data=body,
+              method="POST",
+              headers={"Content-Type": "application/json; charset=utf-8"},
+          )
+          print(f"Submitting {len(urls)} URL(s) to IndexNow...")
+          try:
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  print(f"OK (HTTP {r.status})")
+          except urllib.error.HTTPError as e:
+              print(f"FAILED (HTTP {e.code}): {e.read().decode(errors='replace')}", file=sys.stderr)
+              sys.exit(1)
+          PY
