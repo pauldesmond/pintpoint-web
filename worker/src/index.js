@@ -2,17 +2,21 @@
  * pintpoint-pubs — Cloudflare Worker
  *
  * Serves dynamic venue pages at /pubs/<slug> by proxying to the
- * `venue-page` Supabase edge function. Removes the need for
- * committing per-venue HTML files to the pintpoint-web repo.
+ * `venue-page` Supabase edge function, and canonicalises /about
+ * to /about-pintpoint.html so the conventional /about path resolves
+ * for AI crawlers without creating a duplicate-content page.
  *
  * - /pubs/             → pass through to origin (static index.html for now)
  * - /pubs/index.html   → pass through to origin
  * - /pubs/<slug>       → render via Supabase edge function
  * - /pubs/<slug>.html  → redirect to /pubs/<slug> (canonical, clean URL)
+ * - /about, /about/    → 301 redirect to /about-pintpoint.html
+ * - /about/<anything>  → 301 redirect to /about-pintpoint.html
  * - everything else    → pass through to origin
  */
 
 const SUPABASE_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/venue-page';
+const ABOUT_CANONICAL = 'https://pintpoint.co.uk/about-pintpoint.html';
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
 // the edge function's rendering or slug-resolution logic).
@@ -22,6 +26,21 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const { pathname } = url;
+
+    // Canonicalise /about, /about/, and any /about/* path to the real
+    // About page. GitHub Pages used to serve /about/index.html as a
+    // meta-refresh with a 200 status, which reads to audit tools as a
+    // duplicate page rather than a redirect. A true 301 from the edge
+    // is the correct fix.
+    if (pathname === '/about' || pathname === '/about/' || pathname.startsWith('/about/')) {
+      return new Response(null, {
+        status: 301,
+        headers: {
+          'Location': ABOUT_CANONICAL,
+          'Cache-Control': 'public, max-age=3600',
+        },
+      });
+    }
 
     if (!pathname.startsWith('/pubs/')) {
       return fetch(request);

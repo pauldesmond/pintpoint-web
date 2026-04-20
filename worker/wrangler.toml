@@ -3,9 +3,15 @@ main = "src/index.js"
 compatibility_date = "2025-11-01"
 account_id = "2c8869d0743b3846dca0b34a462fe16a"
 
-# Route binding: intercept /pubs/* on pintpoint.co.uk
+# Route bindings on pintpoint.co.uk:
+# - /pubs/*  → dynamic venue pages (proxied to Supabase edge function)
+# - /about   → 301 redirect to /about-pintpoint.html (canonicalise)
+# - /about/  → 301 redirect to /about-pintpoint.html (canonicalise)
 routes = [
-  { pattern = "pintpoint.co.uk/pubs/*", zone_name = "pintpoint.co.uk" }
+  { pattern = "pintpoint.co.uk/pubs/*", zone_name = "pintpoint.co.uk" },
+  { pattern = "pintpoint.co.uk/about", zone_name = "pintpoint.co.uk" },
+  { pattern = "pintpoint.co.uk/about/", zone_name = "pintpoint.co.uk" },
+  { pattern = "pintpoint.co.uk/about/*", zone_name = "pintpoint.co.uk" }
 ]
 
 [observability]

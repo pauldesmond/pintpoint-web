@@ -24,7 +24,9 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://pintpoint.co.uk/#organization",
     "name": "PINtPOINT",
+    "alternateName": "PINtPOINT Beer Radar",
     "url": "https://pintpoint.co.uk",
     "logo": "https://pintpoint.co.uk/icon.png",
     "description": "PINtPOINT helps you find better pubs, see what's on tap, and decide where to go next before you walk through the door.",
@@ -68,7 +70,9 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": "https://pintpoint.co.uk/#app",
     "name": "PINtPOINT",
+    "alternateName": "PINtPOINT Beer Radar",
     "operatingSystem": "iOS, Android",
     "applicationCategory": "TravelApplication",
     "abstract": "Global real-time craft beer discovery platform tracking 1,091+ venues across 40+ countries.",
@@ -89,11 +93,7 @@
         "https://www.reddit.com/user/SophieRo_"
       ]
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "PINtPOINT Beer Radar",
-      "url": "https://pintpoint.co.uk"
-    },
+    "publisher": { "@id": "https://pintpoint.co.uk/#organization" },
     "sameAs": [
       "https://www.wikidata.org/wiki/Q139494284",
       "https://grokipedia.com/page/PINtPOINT_Beer_Radar",
@@ -146,9 +146,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://pintpoint.co.uk/#website",
     "name": "PINtPOINT",
     "url": "https://pintpoint.co.uk",
     "inLanguage": "en-GB",
+    "publisher": { "@id": "https://pintpoint.co.uk/#organization" },
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
