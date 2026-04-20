@@ -102,6 +102,39 @@ async function fetchVenues() {
   }
 }
 
+// Only venues with at least one tap_list row are worth indexing — a
+// venue page with "0 beers on tap" is thin content and hurts site
+// quality signals. Returns a Set of venue_ids that have tap data.
+async function fetchVenueIdsWithTaps() {
+  const ids = new Set();
+  for (let offset = 0; ; offset += PAGE_SIZE) {
+    const endpoint = new URL('/rest/v1/tap_list', supabaseUrl);
+    endpoint.searchParams.set('select', 'venue_id');
+    endpoint.searchParams.set('venue_id', 'not.is.null');
+    endpoint.searchParams.set('order', 'venue_id.asc');
+    endpoint.searchParams.set('limit', String(PAGE_SIZE));
+    endpoint.searchParams.set('offset', String(offset));
+
+    const response = await fetch(endpoint, {
+      headers: {
+        apikey: serviceRoleKey,
+        Authorization: `Bearer ${serviceRoleKey}`,
+      },
+    });
+
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(`Supabase tap_list fetch failed: HTTP ${response.status} ${body.slice(0, 500)}`);
+    }
+
+    const page = await response.json();
+    for (const row of page) {
+      if (row.venue_id != null) ids.add(row.venue_id);
+    }
+    if (page.length < PAGE_SIZE) return ids;
+  }
+}
+
 function renderUrl({ loc, lastmod, changefreq, priority }) {
   return [
     '  <url>',
@@ -113,8 +146,13 @@ function renderUrl({ loc, lastmod, changefreq, priority }) {
   ].join('\n');
 }
 
-const venues = await fetchVenues();
-const venueUrls = venues
+const [venues, venueIdsWithTaps] = await Promise.all([
+  fetchVenues(),
+  fetchVenueIdsWithTaps(),
+]);
+const totalVenues = venues.length;
+const indexableVenues = venues.filter((v) => venueIdsWithTaps.has(v.id));
+const venueUrls = indexableVenues
   .map((venue) => {
     const slug = canonicalSlug(venue);
     if (!slug) return null;
@@ -147,6 +185,7 @@ const sitemap = [
 await import('node:fs/promises').then(({ writeFile }) => writeFile(new URL('../sitemap.xml', import.meta.url), sitemap));
 
 console.log(`Generated sitemap.xml with ${staticUrls.length} static URL(s) and ${uniqueVenueUrlCount} unique venue URL(s).`);
+console.log(`Excluded ${totalVenues - indexableVenues.length} venue(s) with zero tap data (of ${totalVenues} total).`);
 if (uniqueVenueUrlCount !== venueUrls.length) {
   console.log(`Skipped ${venueUrls.length - uniqueVenueUrlCount} duplicate canonical venue slug(s).`);
 }
