@@ -102,19 +102,51 @@ async function fetchVenues() {
   }
 }
 
-// Freshness threshold for sitemap inclusion. A venue scraped within
-// the last 90 days is "active" — we're still watching it, Google
-// gets a fresh signal. Anything older is treated as stale: page
-// still works on deep-link, just not advertised to search engines.
-const SITEMAP_FRESHNESS_DAYS = 180;
+// Sitemap inclusion = "has live tap data right now". A venue qualifies
+// if it has at least MIN_LIVE_BEERS confirmed tap_list rows whose
+// last_seen is within TAP_FRESHNESS_DAYS. Beats the old
+// last_scraped_at heuristic: a venue can be freshly scraped and still
+// empty, and a venue with live taps but a slightly stale scrape timestamp
+// shouldn't be penalised. Stricter signal = stronger SEO quality.
+const TAP_FRESHNESS_DAYS = 30;
+const MIN_LIVE_BEERS = 3;
 
-function isFresh(venue) {
-  const last = venue.last_scraped_at;
-  if (!last) return false;
-  const lastMs = new Date(last).getTime();
-  if (Number.isNaN(lastMs)) return false;
-  const cutoff = Date.now() - SITEMAP_FRESHNESS_DAYS * 24 * 60 * 60 * 1000;
-  return lastMs >= cutoff;
+// Build a Map<venue_id, liveBeerCount> by paginating tap_list and
+// counting client-side. PostgREST doesn't offer a simple group-by-count
+// over REST, so we pull the rows we need and aggregate here — still
+// fast because we project only venue_id.
+async function fetchLiveTapCountsByVenue() {
+  const cutoff = new Date(Date.now() - TAP_FRESHNESS_DAYS * 24 * 60 * 60 * 1000).toISOString();
+  const counts = new Map();
+  for (let offset = 0; ; offset += PAGE_SIZE) {
+    const endpoint = new URL('/rest/v1/tap_list', supabaseUrl);
+    endpoint.searchParams.set('select', 'venue_id');
+    endpoint.searchParams.set('confirmed', 'eq.true');
+    endpoint.searchParams.set('last_seen', `gte.${cutoff}`);
+    endpoint.searchParams.set('venue_id', 'not.is.null');
+    endpoint.searchParams.set('order', 'venue_id.asc');
+    endpoint.searchParams.set('limit', String(PAGE_SIZE));
+    endpoint.searchParams.set('offset', String(offset));
+
+    const response = await fetch(endpoint, {
+      headers: {
+        apikey: serviceRoleKey,
+        Authorization: `Bearer ${serviceRoleKey}`,
+      },
+    });
+
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(`Supabase tap_list fetch failed: HTTP ${response.status} ${body.slice(0, 500)}`);
+    }
+
+    const page = await response.json();
+    for (const row of page) {
+      if (row.venue_id == null) continue;
+      counts.set(row.venue_id, (counts.get(row.venue_id) ?? 0) + 1);
+    }
+    if (page.length < PAGE_SIZE) return counts;
+  }
 }
 
 function renderUrl({ loc, lastmod, changefreq, priority }) {
@@ -128,9 +160,12 @@ function renderUrl({ loc, lastmod, changefreq, priority }) {
   ].join('\n');
 }
 
-const venues = await fetchVenues();
+const [venues, liveTapCounts] = await Promise.all([
+  fetchVenues(),
+  fetchLiveTapCountsByVenue(),
+]);
 const totalVenues = venues.length;
-const indexableVenues = venues.filter(isFresh);
+const indexableVenues = venues.filter(v => (liveTapCounts.get(v.id) ?? 0) >= MIN_LIVE_BEERS);
 const venueUrls = indexableVenues
   .map((venue) => {
     const slug = canonicalSlug(venue);
@@ -164,7 +199,7 @@ const sitemap = [
 await import('node:fs/promises').then(({ writeFile }) => writeFile(new URL('../sitemap.xml', import.meta.url), sitemap));
 
 console.log(`Generated sitemap.xml with ${staticUrls.length} static URL(s) and ${uniqueVenueUrlCount} unique venue URL(s).`);
-console.log(`Excluded ${totalVenues - indexableVenues.length} venue(s) not scraped within ${SITEMAP_FRESHNESS_DAYS} days (of ${totalVenues} total).`);
+console.log(`Excluded ${totalVenues - indexableVenues.length} venue(s) with fewer than ${MIN_LIVE_BEERS} live taps in the last ${TAP_FRESHNESS_DAYS} days (of ${totalVenues} total).`);
 if (uniqueVenueUrlCount !== venueUrls.length) {
   console.log(`Skipped ${venueUrls.length - uniqueVenueUrlCount} duplicate canonical venue slug(s).`);
 }
