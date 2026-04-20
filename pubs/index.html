@@ -40,6 +40,38 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are PINtPOINT venue pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PINtPOINT venue pages are public beer-led pages for pubs, bars, taprooms, and breweries tracked by the app. They help drinkers check venue context and tap list activity before choosing where to go."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do PINtPOINT venue pages show live tap lists?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Where live tap list data is available, PINtPOINT venue pages show what a venue is pouring so you can compare pubs by beer choice rather than distance alone."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use PINtPOINT venues to plan a pub crawl?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Browse venue pages for city and neighbourhood context, then use the PINtPOINT app to build beer-led pub crawls with live radar, style filters, saved favourites, and route planning."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pintpoint.co.uk/" },
@@ -84,6 +116,10 @@
     .answer-card p:last-child { margin-bottom: 0; }
     .answer-card a { color: var(--teal); text-decoration: none; }
     .answer-card a:hover { text-decoration: underline; }
+    .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0 0 34px; }
+    .guide-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 16px; padding: 18px; }
+    .guide-card h2 { font-size: 1rem; font-weight: 800; letter-spacing: -0.2px; margin-bottom: 8px; }
+    .guide-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
     .section-label { color: var(--teal); font-size: 0.78rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin: 24px 0 10px; }
     .venue-list { list-style: none; }
     .venue-link { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text); transition: color 0.2s; }
@@ -94,7 +130,7 @@
     footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); margin-top: 48px; }
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--teal); }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 60px; } }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 60px; } .guide-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -117,6 +153,25 @@
       <p>PINtPOINT tracks live tap lists and beer-focused venue data so you can compare pubs, bars, taprooms, and breweries before you walk through the door. These public venue pages are a sample of the places PINtPOINT watches across the UK, Europe, the US, Australia, New Zealand, and beyond.</p>
       <p>Use this page to browse recent venues, then open the app for the full radar, beer-style filters, saved favourites, pub crawls, and alerts when a beer you care about appears nearby.</p>
       <p>Looking for a broader guide? Start with <a href="../how-to-find-beer-near-you.html">how to find beer near you</a>, compare <a href="../vs-untappd.html">PINtPOINT vs Untappd</a>, or download PINtPOINT for <a href="../download">Android</a> and <a href="https://apps.apple.com/app/pintpoint/id6760611613">iPhone</a>.</p>
+    </div>
+
+    <div class="guide-grid" aria-label="How PINtPOINT venue pages help">
+      <section class="guide-card">
+        <h2>Check the tap list first</h2>
+        <p>Each venue page is built around beer discovery: what is on tap, what styles appear there, and whether the pub is worth the walk for the pint you want now.</p>
+      </section>
+      <section class="guide-card">
+        <h2>Plan by city or neighbourhood</h2>
+        <p>Use venue pages to compare pubs in places like London, Chelmsford, Barcelona, Melbourne, New York, and Tokyo before turning the app into a live crawl planner.</p>
+      </section>
+      <section class="guide-card">
+        <h2>Find beer when travelling</h2>
+        <p>PINtPOINT tracks venues across 40+ countries, so the same beer-led search works at home, on a city break, or when you land somewhere with no local pub knowledge.</p>
+      </section>
+      <section class="guide-card">
+        <h2>Go beyond generic maps</h2>
+        <p>Search engines can tell you what is nearby. PINtPOINT helps answer the better question: which nearby pub, bar, brewery, or taproom is pouring something worth choosing?</p>
+      </section>
     </div>
 
     <p class="section-label">Recent tracked venues</p>
