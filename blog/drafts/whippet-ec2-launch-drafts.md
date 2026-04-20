@@ -8,7 +8,8 @@
 **Context:** First Whippet since the original Holborn Whippet closed in 2020
 
 **Recommended publish timing:**
-- Blog post: Monday 5 May 2026 (7 days before launch — enough for Google to index ahead of launch-day searches, not so early it feels stale)
+- Blog post: Tuesday 5 May 2026 (7 days before launch — enough for Google to index ahead of launch-day searches, not so early it feels stale)
+- Optional early publish: Monday 4 May 2026 if we want the post live before the working week starts properly
 - X teaser: 5 May (same day as blog)
 - X reminder: morning of 12 May
 - Instagram launch post: afternoon 12 May, after the 3pm opening
@@ -52,11 +53,13 @@ The Whippet EC2 looks like it may be aiming at something more specific.
 If the early details hold, this is a venue trying to bridge several London drinking instincts at once:
 
 - serious European lager drinkers who will clock Augustiner immediately
-- cask obsessives who will absolutely notice Boddingtons being served with a sparkler
+- cask drinkers who will absolutely notice Boddingtons being served with a sparkler
 - station-adjacent City drinkers who want somewhere with more character than the usual anonymous chain-bar drift
 - people who know the Euston Tap legacy and understand that Bloomsbury Leisure usually means beer is being taken seriously
 
 That mix matters. London's beer scene has plenty of excellent places, but fewer that feel designed to cut across cask drinkers, lager traditionalists, and modern craft drinkers without becoming muddled. The Whippet EC2 might.
+
+The group has started to name its opening brewery line-up on the @WhippetEC2 account: **Green Duck, Bris Beer Factory, Joseph Holt, Floc, Otter, Ossett and Boddingtons**. The phrase they used was that these are breweries "generally locked out of the big chains in London" — which is exactly the gap a bar like this should be filling. Independent regional producers that most City drinkers cannot get pouring within walking distance of their office. The list reinforces everything the Augustiner-and-sparkler signal was already telling us.
 
 ### The location is a bigger deal than it looks
 
@@ -135,7 +138,7 @@ The most interesting new venues usually reveal themselves fast. Within a week or
 
 ### Where this goes on PINtPOINT
 
-The Whippet EC2 will be added to the PINtPOINT London roster ahead of launch. Once the tap list stabilises in the first few weeks of trading, live tap data will surface on the app's radar. For the lineage, see our <a href="../london-craft-beer-love-letter.html">London love letter</a> — the scene the Whippet EC2 is joining did not inherit itself. It had to be built, and every new room at this standard is another vote for the version of London we wrote about.
+The Whippet EC2 will be added to the PINtPOINT London roster ahead of launch. Once the tap list stabilises in the first few weeks of trading, live tap data will surface on the app's radar wherever the current list can be resolved cleanly. For the lineage, see our <a href="../london-craft-beer-love-letter.html">London love letter</a> — the scene the Whippet EC2 is joining did not inherit itself. It had to be built, and every new room at this standard is another vote for the version of London we wrote about.
 
 ### Final word
 
@@ -205,6 +208,17 @@ Because it sounds like it knows what it is doing.
 
 *(Quote + URL. Works as a standalone post or the opener of a thread.)*
 
+### Variant E — quote-retweet the @WhippetEC2 brewery teaser
+
+*(If @WhippetEC2 posts their opening line-up ahead of launch — as they just have — quote-retweet with something like:)*
+
+> Independent regional breweries "generally locked out of the big chains in London", pouring a minute from Liverpool Street, from the team behind the Euston Tap. That is exactly the gap this part of town has been waiting for.
+>
+> Opens 12 May. Full preview 👇
+> pintpoint.co.uk/blog/the-whippet-ec2-liverpool-street-opens.html
+
+*(259 chars including link. Lands as editorial reinforcement of their marketing — stronger than a cold announcement because it hooks off their own framing.)*
+
 ---
 
 ## 3. Instagram caption — launch day afternoon post (12 May)
@@ -215,7 +229,7 @@ Because it sounds like it knows what it is doing.
 >
 > Six years after the Holborn Whippet closed, Bloomsbury Leisure Group — the team behind the Euston Tap — are back with The Whippet EC2, a brand-new station-tap just outside Liverpool Street.
 >
-> Augustiner on draught. Boddingtons on cask, with a sparkler, exactly as it should be. A pool table because pubs are still pubs. And, if the teasers hold, a pizza kitchen.
+> Augustiner on draught. Boddingtons on cask, with a sparkler, exactly as it should be. Green Duck, Bris Beer Factory, Joseph Holt, Floc, Otter, Ossett — independent regional breweries "generally locked out of the big chains in London", pouring a minute from the station. A pool table because pubs are still pubs. And, if the teasers hold, a pizza kitchen.
 >
 > Not a random list of crowd-pleasers. A statement of intent.
 >
@@ -235,7 +249,7 @@ Because it sounds like it knows what it is doing.
 
 ## Pre-launch checklist (once Paul approves these drafts)
 
-**Blog post publish (target: Mon 5 May)**
+**Blog post publish (target: Tue 5 May, or Mon 4 May if publishing early)**
 - [ ] Convert this markdown to HTML at `blog/the-whippet-ec2-liverpool-street-opens.html`
 - [ ] Copy structural scaffolding from a recent Note (`blog/richmond-london-goes-live.html` is the closest format)
 - [ ] Add BlogPosting + FAQPage schema
