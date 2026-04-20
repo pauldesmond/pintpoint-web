@@ -7,6 +7,62 @@
   <meta name="description" content="Browse live tap lists from pubs, bars, and taprooms across 40+ countries. See what's on tap right now at venues tracked by PINtPOINT." />
   <link rel="icon" type="image/png" href="../favicon.png" />
   <link rel="canonical" href="https://pintpoint.co.uk/pubs/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pintpoint.co.uk/pubs/" />
+  <meta property="og:title" content="PINtPOINT Venues — Live Tap Lists from Around the World" />
+  <meta property="og:description" content="Browse pubs, bars, taprooms, and breweries tracked by PINtPOINT. See live tap lists and beer-led venue pages across 40+ countries." />
+  <meta property="og:image" content="https://pintpoint.co.uk/screenshots/1.7.radar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PINtPOINT Venues — Live Tap Lists" />
+  <meta name="twitter:description" content="Browse beer-led venue pages and live tap lists from pubs, bars, and taprooms tracked by PINtPOINT." />
+  <meta name="twitter:image" content="https://pintpoint.co.uk/screenshots/1.7.radar.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "PINtPOINT Venues",
+    "url": "https://pintpoint.co.uk/pubs/",
+    "description": "A sample of pubs, bars, taprooms, and breweries tracked by PINtPOINT, with beer-led venue pages and live tap list discovery.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "PINtPOINT",
+      "url": "https://pintpoint.co.uk/"
+    },
+    "about": [
+      { "@type": "Thing", "name": "Live tap lists" },
+      { "@type": "Thing", "name": "Pub discovery" },
+      { "@type": "Thing", "name": "Craft beer bars" },
+      { "@type": "Thing", "name": "Taprooms" },
+      { "@type": "Thing", "name": "Real ale pubs" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pintpoint.co.uk/" },
+      { "@type": "ListItem", "position": 2, "name": "Venues", "item": "https://pintpoint.co.uk/pubs/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Sample PINtPOINT venue pages",
+    "itemListOrder": "https://schema.org/ItemListUnordered",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Radio City Social", "url": "https://pintpoint.co.uk/pubs/radio-city-social-chelmsford" },
+      { "@type": "ListItem", "position": 2, "name": "The Rake", "url": "https://pintpoint.co.uk/pubs/the-rake-london" },
+      { "@type": "ListItem", "position": 3, "name": "Capitan Amargo", "url": "https://pintpoint.co.uk/pubs/capitan-amargo-granada" },
+      { "@type": "ListItem", "position": 4, "name": "The Ale House", "url": "https://pintpoint.co.uk/pubs/the-ale-house-chelmsford" },
+      { "@type": "ListItem", "position": 5, "name": "Harlem Public", "url": "https://pintpoint.co.uk/pubs/harlem-public-new-york" },
+      { "@type": "ListItem", "position": 6, "name": "The Kernel Brewery", "url": "https://pintpoint.co.uk/pubs/the-kernel-brewery-london" }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
@@ -22,6 +78,13 @@
     h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; letter-spacing: -1.5px; text-align: center; margin-bottom: 8px; }
     h1 em { color: var(--teal); font-style: normal; }
     .sub { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 40px; }
+    .answer-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 24px; margin-bottom: 28px; }
+    .answer-card h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 10px; }
+    .answer-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 12px; }
+    .answer-card p:last-child { margin-bottom: 0; }
+    .answer-card a { color: var(--teal); text-decoration: none; }
+    .answer-card a:hover { text-decoration: underline; }
+    .section-label { color: var(--teal); font-size: 0.78rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin: 24px 0 10px; }
     .venue-list { list-style: none; }
     .venue-link { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text); transition: color 0.2s; }
     .venue-link:hover { color: var(--teal); }
@@ -47,7 +110,16 @@
 
   <div class="content">
     <h1>Browse Recent <em>Venues</em></h1>
-    <p class="sub">Live tap lists from pubs, bars, and taprooms recently tracked by PINtPOINT.</p>
+    <p class="sub">Beer-led venue pages and live tap lists from pubs, bars, taprooms, and breweries tracked by PINtPOINT.</p>
+
+    <div class="answer-card">
+      <h2>Find pubs by what they are pouring, not just where they are.</h2>
+      <p>PINtPOINT tracks live tap lists and beer-focused venue data so you can compare pubs, bars, taprooms, and breweries before you walk through the door. These public venue pages are a sample of the places PINtPOINT watches across the UK, Europe, the US, Australia, New Zealand, and beyond.</p>
+      <p>Use this page to browse recent venues, then open the app for the full radar, beer-style filters, saved favourites, pub crawls, and alerts when a beer you care about appears nearby.</p>
+      <p>Looking for a broader guide? Start with <a href="../how-to-find-beer-near-you.html">how to find beer near you</a>, compare <a href="../vs-untappd.html">PINtPOINT vs Untappd</a>, or download PINtPOINT for <a href="../download">Android</a> and <a href="https://apps.apple.com/app/pintpoint/id6760611613">iPhone</a>.</p>
+    </div>
+
+    <p class="section-label">Recent tracked venues</p>
 
     <ul class="venue-list">
       <li><a href="radio-city-social-chelmsford" class="venue-link"><div><div class="venue-name">Radio City Social</div><div class="venue-city">Chelmsford</div></div><span class="venue-arrow">&rsaquo;</span></a></li>
