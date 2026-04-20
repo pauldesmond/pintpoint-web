@@ -27,13 +27,20 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-# Block pure training/scraping crawlers
+# CCBot (Common Crawl) — re-allowed 2026-04-20 so the site surfaces in
+# the AI-search systems that seed from CC. Our Content-Signal still
+# declares ai-train=no; CCBot honours it.
 User-agent: CCBot
-Disallow: /
+Allow: /
 
+# Bytespider (ByteDance / TikTok Search) — kept blocked. Historically
+# aggressive crawler with spotty Content-Signal honouring; the GEO
+# upside is marginal until ByteDance's AI search footprint grows.
 User-agent: Bytespider
 Disallow: /
 
+# Meta AI's standalone agent — blocked. Their AI search uses different
+# entry points; this one is closer to pure training-data collection.
 User-agent: meta-externalagent
 Disallow: /
 
