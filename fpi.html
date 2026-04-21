@@ -47,7 +47,16 @@
     "url": "https://pintpoint.co.uk/fpi.html",
     "mainEntityOfPage": "https://pintpoint.co.uk/fpi.html",
     "image": "https://pintpoint.co.uk/icon.png",
-    "citation": { "@type": "CreativeWork", "name": "Is My Pub Fucked (FPI data)", "url": "https://ismypubfucked.com" }
+    "citation": [
+      {
+        "@type": "CreativeWork",
+        "name": "Is My Pub Fucked",
+        "url": "https://ismypubfucked.com",
+        "description": "Original source of the FPI (Financial Pressure Index) dataset — a pub-by-pub indicator of financial pressure derived from Valuation Office Agency rating-list data for England and Wales. Created by @bjhguerin."
+      }
+    ],
+    "isPartOf": { "@id": "https://pintpoint.co.uk/#website" },
+    "keywords": "Troubled Pub Mode, FPI, Financial Pressure Index, ismypubfucked, at-risk pubs, pub closures, VOA rating list, England Wales pubs, support your local, pubs under pressure, pub rescue"
   }
   </script>
   <script type="application/ld+json">
@@ -175,6 +184,11 @@
     .cta-section { text-align: center; padding: 60px 24px; }
     .cta-section h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
     .cta-section p { color: #aaa; margin-bottom: 32px; }
+    .further-reading { max-width: 720px; margin: 0 auto; padding: 40px 24px; text-align: center; }
+    .further-reading .label { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 16px; }
+    .further-reading p { color: #aaa; font-size: 0.95rem; line-height: 1.75; margin-bottom: 14px; }
+    .further-reading a { color: var(--amber); font-weight: 600; }
+    .further-reading a:hover { text-decoration: underline; }
     .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; }
     .btn-primary:hover { opacity: 0.88; }
 
@@ -354,6 +368,14 @@
       <div class="stat"><div class="num">Live</div><div class="lbl">VOA-sourced data</div></div>
     </div>
   </div>
+
+  <div class="further-reading">
+    <div class="label">Further reading</div>
+    <p>The FPI dataset originates with <a href="https://ismypubfucked.com" target="_blank" rel="noopener">Is My Pub Fucked</a> — an independent project by <a href="https://x.com/bjhguerin" target="_blank" rel="noopener">@bjhguerin</a> that calculates a Financial Pressure Index for every licensed venue in England and Wales from VOA rating-list data. Troubled Pub Mode is PINtPOINT's way of surfacing that signal on the radar, pub-by-pub, in-context.</p>
+    <p>If you want the full tabular breakdown — rateable-value deltas, tenure data, trading context — go to the source. If you want to act on it at the door, Troubled Pub Mode is the spatial layer.</p>
+  </div>
+
+  <hr class="divider">
 
   <div class="cta-section">
     <h2>Make your next pint count.</h2>
