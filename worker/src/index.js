@@ -20,7 +20,12 @@ const ABOUT_CANONICAL = 'https://pintpoint.co.uk/about-pintpoint.html';
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
 // the edge function's rendering or slug-resolution logic).
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5';
+
+// Fallback Cache-Control if the upstream edge function doesn't set one.
+// In practice the edge function sets a per-page-type value (short for
+// live tap lists, long for ghosts etc.) — this is belt-and-braces.
+const DEFAULT_CACHE_CONTROL = 'public, max-age=600, s-maxage=3600';
 
 export default {
   async fetch(request, env, ctx) {
@@ -107,11 +112,15 @@ export default {
     }
 
     const body = await upstreamResp.text();
+    // Respect the upstream Cache-Control when the edge function sets one —
+    // different page types deserve different TTLs (live tap lists 10min,
+    // ghost pages 24h, coming-soon 1h, disambiguation 24h).
+    const upstreamCacheControl = upstreamResp.headers.get('Cache-Control') || DEFAULT_CACHE_CONTROL;
     response = new Response(body, {
       status: 200,
       headers: {
         'Content-Type': 'text/html; charset=utf-8',
-        'Cache-Control': 'public, max-age=3600, s-maxage=86400',
+        'Cache-Control': upstreamCacheControl,
         'X-Rendered-By': 'pintpoint-pubs-worker',
       },
     });
