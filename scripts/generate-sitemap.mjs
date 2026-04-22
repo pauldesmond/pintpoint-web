@@ -103,6 +103,46 @@ async function fetchVenues() {
   }
 }
 
+// Curated ghost venues = those with substantive human-touched content.
+// Matches the noindex gate in the venue-page edge function exactly:
+// historical_note ≥ 200 chars, OR a historical photo, OR a final pour.
+// Auto-imported thin ghosts stay out of the sitemap until someone
+// upgrades them.
+async function fetchCuratedGhosts() {
+  const ghosts = [];
+  for (let offset = 0; ; offset += PAGE_SIZE) {
+    const endpoint = new URL('/rest/v1/venues', supabaseUrl);
+    endpoint.searchParams.set('select', 'id,name,city,updated_at,historical_note,historical_photos,last_pour_beer,last_pour_date');
+    endpoint.searchParams.set('deleted_at', 'is.null');
+    endpoint.searchParams.set('closed_down', 'eq.true');
+    endpoint.searchParams.set('order', 'id.asc');
+    endpoint.searchParams.set('limit', String(PAGE_SIZE));
+    endpoint.searchParams.set('offset', String(offset));
+
+    const response = await fetch(endpoint, {
+      headers: {
+        apikey: serviceRoleKey,
+        Authorization: `Bearer ${serviceRoleKey}`,
+      },
+    });
+
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(`Supabase ghosts fetch failed: HTTP ${response.status} ${body.slice(0, 500)}`);
+    }
+
+    const page = await response.json();
+    const curated = page.filter((v) => {
+      const noteLen = (v.historical_note || '').trim().length;
+      const hasHist = Array.isArray(v.historical_photos) && v.historical_photos.some(p => p && p.url);
+      const hasFinalPour = !!(v.last_pour_beer && v.last_pour_date);
+      return noteLen >= 200 || hasHist || hasFinalPour;
+    });
+    ghosts.push(...curated);
+    if (page.length < PAGE_SIZE) return ghosts;
+  }
+}
+
 // Sitemap inclusion = "has live tap data right now". A venue qualifies
 // if it has at least MIN_LIVE_BEERS confirmed tap_list rows whose
 // last_seen is within TAP_FRESHNESS_DAYS. Beats the old
@@ -161,9 +201,10 @@ function renderUrl({ loc, lastmod, changefreq, priority }) {
   ].join('\n');
 }
 
-const [venues, liveTapCounts] = await Promise.all([
+const [venues, liveTapCounts, curatedGhosts] = await Promise.all([
   fetchVenues(),
   fetchLiveTapCountsByVenue(),
+  fetchCuratedGhosts(),
 ]);
 const totalVenues = venues.length;
 const indexableVenues = venues.filter(v => (liveTapCounts.get(v.id) ?? 0) >= MIN_LIVE_BEERS);
@@ -180,8 +221,21 @@ const venueUrls = indexableVenues
   })
   .filter(Boolean);
 
+const ghostUrls = curatedGhosts
+  .map((venue) => {
+    const slug = canonicalSlug(venue);
+    if (!slug) return null;
+    return {
+      loc: `/pubs/${slug}`,
+      lastmod: isoDate(venue.updated_at),
+      changefreq: 'monthly', // ghost pages rarely change once curated
+      priority: '0.5',
+    };
+  })
+  .filter(Boolean);
+
 const seen = new Set();
-const urls = [...staticUrls, ...venueUrls].filter((url) => {
+const urls = [...staticUrls, ...venueUrls, ...ghostUrls].filter((url) => {
   const loc = url.loc.startsWith('http') ? url.loc : `${SITE_URL}${url.loc}`;
   if (seen.has(loc)) return false;
   seen.add(loc);
@@ -199,8 +253,9 @@ const sitemap = [
 
 await import('node:fs/promises').then(({ writeFile }) => writeFile(new URL('../sitemap.xml', import.meta.url), sitemap));
 
-console.log(`Generated sitemap.xml with ${staticUrls.length} static URL(s) and ${uniqueVenueUrlCount} unique venue URL(s).`);
-console.log(`Excluded ${totalVenues - indexableVenues.length} venue(s) with fewer than ${MIN_LIVE_BEERS} live taps in the last ${TAP_FRESHNESS_DAYS} days (of ${totalVenues} total).`);
-if (uniqueVenueUrlCount !== venueUrls.length) {
-  console.log(`Skipped ${venueUrls.length - uniqueVenueUrlCount} duplicate canonical venue slug(s).`);
+console.log(`Generated sitemap.xml with ${staticUrls.length} static URL(s), ${venueUrls.length} live-venue URL(s), and ${ghostUrls.length} curated ghost URL(s).`);
+console.log(`Excluded ${totalVenues - indexableVenues.length} live venue(s) with fewer than ${MIN_LIVE_BEERS} live taps in the last ${TAP_FRESHNESS_DAYS} days (of ${totalVenues} total).`);
+const venueUrlInputTotal = venueUrls.length + ghostUrls.length;
+if (uniqueVenueUrlCount !== venueUrlInputTotal) {
+  console.log(`Skipped ${venueUrlInputTotal - uniqueVenueUrlCount} duplicate canonical venue slug(s).`);
 }
