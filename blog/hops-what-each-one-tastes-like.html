@@ -119,6 +119,17 @@
     .hop-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 8px; }
     .hop-meta { font-size: 0.78rem; color: #666; }
     .hop-meta strong { color: var(--muted); font-weight: 600; }
+    .meters { margin-top: 14px; }
+    .meter { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+    .meter .m-label { color: var(--muted); flex: 0 0 104px; font-size: 0.74rem; }
+    .meter .m-track { flex: 1; background: rgba(255,255,255,0.06); border-radius: 3px; height: 7px; overflow: hidden; }
+    .meter .m-fill { background: var(--teal); height: 100%; border-radius: 3px; }
+    .meter .m-val { flex: 0 0 1.5em; color: #666; font-size: 0.7rem; font-variant-numeric: tabular-nums; text-align: right; }
+    .meter.m-intensity { border-top: 1px dashed var(--border); padding-top: 8px; margin-top: 6px; }
+    .meter.m-intensity .m-fill { background: linear-gradient(90deg, var(--teal), #9DA5FF); }
+    .aside-box { padding: 18px 22px; background: rgba(157,165,255,0.06); border: 1px solid rgba(157,165,255,0.2); border-radius: 12px; margin: 32px 0; }
+    .aside-box .aside-label { color: #9DA5FF; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; display: block; }
+    .aside-box p { margin: 0; font-size: 0.92rem; line-height: 1.7; }
     .toc { padding: 20px 24px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin: 24px 0 32px; }
     .toc-label { font-size: 0.7rem; font-weight: 700; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
     .toc ul { margin: 0; list-style: none; padding: 0; }
@@ -167,7 +178,7 @@
 
     <p>It's not a replacement for <a href="https://beermaverick.com/hops/" target="_blank" rel="noopener">Beer Maverick</a>, which is the canonical brewer's reference and has every data field a recipe formulator could want. It's not a replacement for <a href="https://shop.yorkshirecraftbeers.co.uk/pages/hop-profiles" target="_blank" rel="noopener">Yorkshire Craft Beers' profiles</a>, which are sharper on recommended brewing stage. It's a companion to both, aimed squarely at the person looking at a pint glass and trying to work out what it's trying to tell them.</p>
 
-    <p class="quote">Brewers describe hops by what they put in.<br/>Drinkers need to describe them by what they take out.</p>
+    <p class="quote">A hop variety is a palette, not a flavour.<br/>What you taste depends on when and how the brewer used it.</p>
 
     <div class="toc">
       <div class="toc-label">On this page</div>
@@ -196,6 +207,10 @@
     </ul>
 
     <p>If you've ever wondered why the same hop can be described as "piney" by one brewer and "tropical" by another, this is the mechanism: different brewing processes pull different compounds to the foreground. The variety supplies the palette; the brewer chooses which colours to use.</p>
+
+    <p><span class="highlight">One important qualifier before the categories</span>: hops are one lever of four. The <span class="highlight">malt bill</span> contributes caramel, toffee, biscuit, bread-crust and roast character. The <span class="highlight">yeast</span> contributes banana-and-clove (Hefeweizen), pear-drop (English ale), peppery dryness (Belgian) or almost nothing at all (clean lagers). The <span class="highlight">water</span> shapes mouthfeel and perceived bitterness — Burton-on-Trent sulfate and Dublin carbonate are a whole conversation. And the <span class="highlight">serving context</span> — temperature, glass, freshness, CO<sub>2</sub> level — can change what you taste more than any of them.</p>
+
+    <p>So "what am I tasting?" is rarely just "which hop?" This page is about the hop answer. It isn't the whole answer.</p>
 
     <h2 id="framework">The six flavour categories</h2>
 
@@ -243,32 +258,75 @@
 
     <p>You won't identify every variety this way — professional brewers often can't, blind — but you will reliably place a beer in one of the six flavour families, which is 95% of what knowing your hops is actually for.</p>
 
+    <div class="aside-box">
+      <span class="aside-label">Aside · fresh or don't bother</span>
+      <p>A two-month-old Citra IPA isn't telling you about Citra any more — it's telling you about storage. Dry-hopped aromatic oils degrade fast: tropical turns oniony, then old-hay, then flat. If a modern IPA smells off-register for what you were promised, check the packaging date before blaming the brewery. A hop is only as good as the last week it spent in cold storage.</p>
+    </div>
+
     <h2 id="american-c">The American C-hops</h2>
 
     <p>The foundation of modern craft beer. Four cultivars whose names all start with C, all released or popularised in the 1970s–90s, collectively responsible for the West Coast IPA and everything downstream of it.</p>
+
+    <p style="font-size:0.85rem;color:#666;font-style:italic;margin-bottom:16px">Each hop below carries a flavour-presence strip — a 0–5 reading across the six categories plus an overall <em>intensity</em> bar. Ratings are editorial, anchored to typical late-addition / dry-hop character, and cross-checked against <a href="https://beermaverick.com/hops/" target="_blank" rel="noopener" style="color:var(--teal)">Beer Maverick</a>. Treat them as a reading aid, not a lab result.</p>
 
     <div class="hop">
       <div class="hop-head"><span class="hop-name">Cascade</span><span class="hop-tag us">USA · 1972</span></div>
       <div class="hop-desc">The foundational American hop. Grapefruit, pine, a light floral edge. Moderate bitterness, moderate intensity. If a beer tastes like "American craft beer", Cascade is why. Sierra Nevada Pale Ale is the reference.</div>
       <div class="hop-meta"><strong>Primary categories:</strong> Citrus · Pine &amp; resin &nbsp;·&nbsp; <strong>Alpha:</strong> 4.5–7%</div>
+      <div class="meters" aria-label="Flavour presence, 0 to 5 scale">
+        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill" style="width:80%"></div></div><div class="m-val">4</div></div>
+        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
+        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill" style="width:40%"></div></div><div class="m-val">2</div></div>
+        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
+        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
+      </div>
     </div>
 
     <div class="hop">
       <div class="hop-head"><span class="hop-name">Centennial</span><span class="hop-tag us">USA · 1990</span></div>
       <div class="hop-desc">Often described as "super Cascade": bigger grapefruit, cleaner pine, higher bitterness. Cornerstone of Founders Centennial IPA and the 2000s West Coast IPA canon. Punchier than Cascade but carries the same genetic handwriting.</div>
       <div class="hop-meta"><strong>Primary categories:</strong> Citrus · Pine &amp; resin &nbsp;·&nbsp; <strong>Alpha:</strong> 9–11.5%</div>
+      <div class="meters" aria-label="Flavour presence, 0 to 5 scale">
+        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill" style="width:100%"></div></div><div class="m-val">5</div></div>
+        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill" style="width:80%"></div></div><div class="m-val">4</div></div>
+        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
+        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill" style="width:80%"></div></div><div class="m-val">4</div></div>
+      </div>
     </div>
 
     <div class="hop">
       <div class="hop-head"><span class="hop-name">Chinook</span><span class="hop-tag us">USA · 1985</span></div>
       <div class="hop-desc">Pine-forward, with grapefruit pith and a distinctive spicy / peppery edge. More aggressive than Cascade. Often the bittering hop in West Coast IPAs that then use Cascade or Centennial for late aroma.</div>
       <div class="hop-meta"><strong>Primary categories:</strong> Pine &amp; resin · Earthy &amp; spicy &nbsp;·&nbsp; <strong>Alpha:</strong> 12–14%</div>
+      <div class="meters" aria-label="Flavour presence, 0 to 5 scale">
+        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
+        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
+        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill" style="width:100%"></div></div><div class="m-val">5</div></div>
+        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
+        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
+        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill" style="width:80%"></div></div><div class="m-val">4</div></div>
+      </div>
     </div>
 
     <div class="hop">
       <div class="hop-head"><span class="hop-name">Columbus (CTZ)</span><span class="hop-tag us">USA · 1990s</span></div>
       <div class="hop-desc">"Dank" is the defining word here — resin, cannabis, pungent pine. Very high alpha acid, so primarily used for bittering. Stone's core range leaned heavily on Columbus for that distinctive aggressive-resinous West Coast signature.</div>
       <div class="hop-meta"><strong>Primary categories:</strong> Pine &amp; resin &nbsp;·&nbsp; <strong>Alpha:</strong> 14–18%</div>
+      <div class="meters" aria-label="Flavour presence, 0 to 5 scale">
+        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill" style="width:40%"></div></div><div class="m-val">2</div></div>
+        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
+        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill" style="width:100%"></div></div><div class="m-val">5</div></div>
+        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
+        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
+        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
+        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill" style="width:100%"></div></div><div class="m-val">5</div></div>
+      </div>
     </div>
 
     <h2 id="modern-us">Modern American (tropical) hops</h2>
