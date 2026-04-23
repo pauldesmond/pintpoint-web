@@ -4,12 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>
-    // iOS and iPadOS users land on this page (e.g. via the beer-mat QR or
-    // any /download link) and should be routed straight to the App Store
-    // rather than shown the Android-APK install guide. Runs before any
-    // render so visitors never see the Android page flash.
     (function () {
       var ua = navigator.userAgent || '';
+      // Fire-and-forget page-view beacon. sendBeacon survives page unload,
+      // so a subsequent redirect won't interrupt it. Pair with apk_downloads
+      // to compute download-funnel conversion.
+      try {
+        var payload = JSON.stringify({
+          path: '/download',
+          referrer: document.referrer || null,
+          ua: ua || null
+        });
+        // text/plain keeps this a CORS "simple request" (no preflight,
+        // which sendBeacon can't perform).
+        var blob = new Blob([payload], { type: 'text/plain' });
+        navigator.sendBeacon(
+          'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/log-page-view',
+          blob
+        );
+      } catch (e) { /* silent */ }
+      // iOS and iPadOS users land on this page (e.g. via the beer-mat QR or
+      // any /download link) and should be routed straight to the App Store
+      // rather than shown the Android-APK install guide.
       var isIOS = /iPad|iPhone|iPod/.test(ua)
         || (/Macintosh/.test(ua) && 'ontouchend' in document); // iPadOS masquerading as Mac
       if (isIOS) {
