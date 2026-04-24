@@ -16,11 +16,12 @@
  */
 
 const SUPABASE_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/venue-page';
+const CRAWL_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/crawl-page';
 const ABOUT_CANONICAL = 'https://pintpoint.co.uk/about-pintpoint.html';
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
 // the edge function's rendering or slug-resolution logic).
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v6';
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
@@ -45,6 +46,49 @@ export default {
           'Cache-Control': 'public, max-age=3600',
         },
       });
+    }
+
+    // /crawl/<slug> → proxy to the crawl-page edge function
+    if (pathname.startsWith('/crawl/')) {
+      let slug = pathname.slice('/crawl/'.length);
+      if (slug.endsWith('/')) slug = slug.slice(0, -1);
+      if (slug.endsWith('.html')) {
+        const canonical = new URL(url);
+        canonical.pathname = `/crawl/${slug.slice(0, -5)}`;
+        return Response.redirect(canonical.toString(), 301);
+      }
+      if (!slug || !/^[a-z0-9-]+$/i.test(slug)) {
+        return new Response('Crawl not found', { status: 404 });
+      }
+
+      const crawlCacheUrl = new URL(request.url);
+      crawlCacheUrl.searchParams.set('_cv', CACHE_VERSION);
+      const crawlCacheKey = new Request(crawlCacheUrl.toString(), { method: 'GET' });
+      const crawlCache = caches.default;
+      const cached = await crawlCache.match(crawlCacheKey);
+      if (cached) return cached;
+
+      const crawlUpstream = new URL(CRAWL_FN);
+      crawlUpstream.searchParams.set('slug', slug);
+      const crawlResp = await fetch(crawlUpstream.toString(), {
+        method: 'GET',
+        headers: { 'Accept': 'text/html' },
+        cf: { cacheEverything: false },
+      });
+      if (crawlResp.status === 404) return new Response('Crawl not found', { status: 404 });
+      if (!crawlResp.ok) return new Response('Upstream error', { status: 502 });
+      const crawlBody = await crawlResp.text();
+      const crawlCC = crawlResp.headers.get('Cache-Control') || DEFAULT_CACHE_CONTROL;
+      const resp = new Response(crawlBody, {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html; charset=utf-8',
+          'Cache-Control': crawlCC,
+          'X-Rendered-By': 'pintpoint-crawl-worker',
+        },
+      });
+      ctx.waitUntil(crawlCache.put(crawlCacheKey, resp.clone()));
+      return resp;
     }
 
     if (!pathname.startsWith('/pubs/')) {
