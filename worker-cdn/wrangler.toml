@@ -1,0 +1,16 @@
+name = "pintpoint-cdn"
+main = "src/index.js"
+compatibility_date = "2025-11-01"
+account_id = "2c8869d0743b3846dca0b34a462fe16a"
+
+# Edge cache for venue photos. Sits in front of Supabase Storage to absorb
+# repeat reads (Supabase free tier has a 2GB/mo egress limit; once a photo
+# is cached at the CF edge, subsequent reads cost zero Supabase egress).
+#
+# Route:  cdn.pintpoint.co.uk/photos/<filename> → Supabase Storage venue-photos bucket
+routes = [
+  { pattern = "cdn.pintpoint.co.uk/photos/*", zone_name = "pintpoint.co.uk" }
+]
+
+[observability]
+enabled = true
