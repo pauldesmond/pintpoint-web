@@ -66,7 +66,8 @@
       "Beer Alerts \u2014 watch specific beers and get notified when they appear at your saved venues",
       "Beer Can Scan \u2014 scan a beer can label with the camera to log and look up the beer",
       "Venue Detail \u2014 full venue page with tap list, style filters, freshness scores, photos, and share card",
-      "Create-a-Crawl \u2014 build and share a custom pub crawl with distance, stops, and route shape",
+      "Create-a-Crawl \u2014 build and share a custom pub crawl with distance, stops, and route shape (standard, hands-on, or ghost mode)",
+      "Hall of Fame \u2014 25+ curated pub crawls including the Bermondsey Beer Mile, Monopoly Board, Circle Line Pub Crawl, and historic routes back to 2007",
       "Sharing \u2014 itinerary-style crawl shares plus Tap Trumps stat cards and Google Reviews links",
       "Ghost Hunter \u2014 reveal 500+ closed and demolished London pubs on the radar as purple blips",
       "Troubled Pubs \u2014 amber blips for venues under financial pressure using FPI data",
@@ -96,12 +97,13 @@
       { "@type": "ListItem", "position": 10, "name": "Beer Can Scan" },
       { "@type": "ListItem", "position": 11, "name": "Venue Detail" },
       { "@type": "ListItem", "position": 12, "name": "Create-a-Crawl" },
-      { "@type": "ListItem", "position": 13, "name": "Sharing" },
-      { "@type": "ListItem", "position": 14, "name": "Ghost Hunter" },
-      { "@type": "ListItem", "position": 15, "name": "Troubled Pubs" },
-      { "@type": "ListItem", "position": 16, "name": "Add Venue" },
-      { "@type": "ListItem", "position": 17, "name": "Customisation" },
-      { "@type": "ListItem", "position": 18, "name": "Filters" }
+      { "@type": "ListItem", "position": 13, "name": "Hall of Fame" },
+      { "@type": "ListItem", "position": 14, "name": "Sharing" },
+      { "@type": "ListItem", "position": 15, "name": "Ghost Hunter" },
+      { "@type": "ListItem", "position": 16, "name": "Troubled Pubs" },
+      { "@type": "ListItem", "position": 17, "name": "Add Venue" },
+      { "@type": "ListItem", "position": 18, "name": "Customisation" },
+      { "@type": "ListItem", "position": 19, "name": "Filters" }
     ]
   }
   </script>
@@ -968,7 +970,7 @@
     <details class="category">
       <summary>
         <div class="cat-emoji">🗺️</div>
-        <span class="cat-label">Nights Out <span class="cat-sub">Create-a-Crawl · Map View · Sharing</span></span>
+        <span class="cat-label">Nights Out <span class="cat-sub">Create-a-Crawl · Hall of Fame · Map View · Sharing</span></span>
         <span class="cat-chevron">›</span>
       </summary>
       <div class="cat-body">
@@ -980,16 +982,28 @@
             <h2>Create-a-Crawl</h2>
           </div>
           <p class="section-intro">
-            Plan the perfect pub crawl in seconds. Set your starting point, number of stops, maximum gap between venues, and total walking distance. PINtPOINT builds an optimised route using a nearest-next algorithm.
+            Plan the perfect pub crawl in seconds. Set your starting point, number of stops (2–12), maximum gap between venues, and total walking distance. Three modes — automatic, hands-on, and ghost — let you build anything from a routine evening to a haunted historical wander.
           </p>
           <div class="detail-grid">
             <div class="detail-card">
               <h4>📐 Smart Routing</h4>
-              <p>Set 2–8 stops with configurable max gap and total walk distance. The algorithm finds the best route through nearby venues.</p>
+              <p>Standard mode picks the closest unvisited venue at each step. Configurable stops, max gap, and total walk distance keep the route within reach.</p>
+            </div>
+            <div class="detail-card">
+              <h4>🧭 Nearest Neighbours</h4>
+              <p>Hands-on mode: at each stop, you pick from the 3 closest pubs. The walk shape emerges as you go — great for unfamiliar areas where you want some say.</p>
+            </div>
+            <div class="detail-card">
+              <h4>👻 Ghost Crawl</h4>
+              <p>Swap every stop for a closed pub from CAMRA-era guides (1983, 1986, 1991, or all eras). Walks the ghosts of pubs past — a city tour you can no longer drink in.</p>
+            </div>
+            <div class="detail-card">
+              <h4>🆕 New Venues Only</h4>
+              <p>Skip pubs you've already saved. Forces the route into territory you've never set foot in.</p>
             </div>
             <div class="detail-card">
               <h4>🚶 Walk Times</h4>
-              <p>Real-time walking time estimates between each stop. See total crawl distance and estimated duration at a glance.</p>
+              <p>Real-time walking estimates between each stop. Total crawl distance and duration shown at a glance.</p>
             </div>
             <div class="detail-card">
               <h4>✅ Progress Tracking</h4>
@@ -997,15 +1011,52 @@
             </div>
             <div class="detail-card">
               <h4>📲 Share with Friends</h4>
-              <p>Share your crawl itinerary via any messaging app — venue names, distances, and walk times between each stop.</p>
+              <p>Share the itinerary via any messaging app — venue names, distances, and walk times between each stop.</p>
             </div>
             <div class="detail-card">
               <h4>🗺️ Map View</h4>
-              <p>Toggle between list and map with a single tap. Every stop appears as a numbered pin on a dark-styled map with a dashed route line connecting them in order. Your current stop is highlighted.</p>
+              <p>Toggle list/map with one tap. Every stop is a numbered pin on a dark-styled map, dashed route line connecting them in order. Current stop highlighted.</p>
             </div>
             <div class="detail-card">
               <h4>📍 Open in Google Maps</h4>
-              <p>Send the full crawl route to Google Maps with all stops as waypoints — navigate the whole night without leaving your maps app.</p>
+              <p>Send the full crawl route to Google Maps with all stops as waypoints — navigate the whole night from your maps app.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- HALL OF FAME -->
+        <div class="feature-section" id="hall-of-fame">
+          <div class="section-header">
+            <div class="section-icon icon-amber">🏆</div>
+            <h2>Hall of Fame</h2>
+          </div>
+          <p class="section-intro">
+            25+ curated pub crawls preserved from the archive — time-stamped routes, living and lost pubs both. A mixture of well-known classics and lesser-known routes from personal archives stretching back to 2007. Reach it via the 🏆 trophy at the top of Create-a-Crawl.
+          </p>
+          <div class="detail-grid">
+            <div class="detail-card">
+              <h4>🍺 Classic Routes</h4>
+              <p>Bermondsey Beer Mile, Orange Line Mile, Black Horse Beer Mile, the Monopoly Board, and the Circle Line Pub Crawl — the routes London craft drinkers know by heart.</p>
+            </div>
+            <div class="detail-card">
+              <h4>📜 Personal Archives</h4>
+              <p>Time-stamped crawls from personal archives going back to 2007. Each preserves the original narrative, route, and pub picks of the day — a snapshot of a drinking moment in London history.</p>
+            </div>
+            <div class="detail-card">
+              <h4>👻 Living &amp; Lost</h4>
+              <p>Many archive crawls now include closed pubs as ghost stops. Walk a 2008 route in 2026 and see how much of the city's pub fabric has changed in a generation.</p>
+            </div>
+            <div class="detail-card">
+              <h4>🚀 Start Any Crawl</h4>
+              <p>Tap "Start this crawl" on any Hall of Fame entry to load it as your active route. Mark stops visited as you go, share with mates, send to Google Maps.</p>
+            </div>
+            <div class="detail-card">
+              <h4>🎲 Hidden Variants</h4>
+              <p>Some crawls have an "Advanced drinkers" link to harder variants. The Monopoly Board hides an A–Z challenge: order a drink starting with a different letter at every stop.</p>
+            </div>
+            <div class="detail-card">
+              <h4>🌍 Submit Your Own</h4>
+              <p>Got a great crawl in your city? PINtPOINT isn't London-only — tap the amber CTA at the top of Hall of Fame to send a route from Berlin, Brooklyn, Brisbane, anywhere worth preserving.</p>
             </div>
           </div>
         </div>
