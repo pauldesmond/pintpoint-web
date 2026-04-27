@@ -1,8 +1,9 @@
-name: Regenerate sitemap
+name: Regenerate sitemap and pubs index
 
 # Runs nightly and on demand. Reads venues from Supabase, writes
-# sitemap.xml, commits + pushes if anything changed, then pings
-# IndexNow so Bing/Yandex/DuckDuckGo recrawl.
+# sitemap.xml AND regenerates the venue list inside pubs/index.html
+# (between PUBS-INDEX markers). Commits + pushes if anything changed,
+# then pings IndexNow so Bing/Yandex/DuckDuckGo recrawl.
 #
 # Required repo secrets:
 #   PINTPOINT_SUPABASE_URL
@@ -41,16 +42,22 @@ jobs:
           PINTPOINT_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.PINTPOINT_SUPABASE_SERVICE_ROLE_KEY }}
         run: node scripts/generate-sitemap.mjs
 
+      - name: Regenerate pubs/index.html venue list
+        env:
+          PINTPOINT_SUPABASE_URL: ${{ secrets.PINTPOINT_SUPABASE_URL }}
+          PINTPOINT_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.PINTPOINT_SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/generate-pubs-index.mjs
+
       - name: Check for changes
         id: diff
         run: |
-          if git diff --quiet -- sitemap.xml; then
+          if git diff --quiet -- sitemap.xml pubs/index.html; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No sitemap changes."
+            echo "No changes."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Sitemap changed:"
-            git diff --stat -- sitemap.xml
+            echo "Changed files:"
+            git diff --stat -- sitemap.xml pubs/index.html
           fi
 
       - name: Commit and push
@@ -58,8 +65,8 @@ jobs:
         run: |
           git config user.name  "pintpoint-sitemap-bot"
           git config user.email "noreply@pintpoint.co.uk"
-          git add sitemap.xml
-          git commit -m "sitemap: nightly regeneration from Supabase"
+          git add sitemap.xml pubs/index.html
+          git commit -m "sitemap + pubs index: nightly regeneration from Supabase"
           git push
 
       - name: Ping IndexNow
