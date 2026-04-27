@@ -64,7 +64,7 @@
       "TUNeDEXTER \u2014 music recommendations tuned to the beer you're drinking",
       "PINtDEXTER \u2014 AI-powered beer recommendations at nearby venues based on your live taste profile",
       "Beer Alerts \u2014 watch specific beers and get notified when they appear at your saved venues",
-      "Beer Can Scan \u2014 scan a beer can label with the camera to log and look up the beer",
+      "Beer Scan \u2014 auto-barcode plus vision label-reading for cans, bottles and cask pump clips, with Untappd auto-link",
       "Venue Detail \u2014 full venue page with tap list, style filters, freshness scores, photos, and share card",
       "Create-a-Crawl \u2014 build and share a custom pub crawl with distance, stops, and route shape (standard, hands-on, or ghost mode)",
       "Hall of Fame \u2014 25+ curated pub crawls including the Bermondsey Beer Mile, Monopoly Board, Circle Line Pub Crawl, and historic routes back to 2007",
@@ -94,7 +94,7 @@
       { "@type": "ListItem", "position": 7, "name": "TUNeDEXTER" },
       { "@type": "ListItem", "position": 8, "name": "PINtDEXTER" },
       { "@type": "ListItem", "position": 9, "name": "Beer Alerts" },
-      { "@type": "ListItem", "position": 10, "name": "Beer Can Scan" },
+      { "@type": "ListItem", "position": 10, "name": "Beer Scan" },
       { "@type": "ListItem", "position": 11, "name": "Venue Detail" },
       { "@type": "ListItem", "position": 12, "name": "Create-a-Crawl" },
       { "@type": "ListItem", "position": 13, "name": "Hall of Fame" },
@@ -753,7 +753,7 @@
     <details class="category">
       <summary>
         <div class="cat-emoji">🍺</div>
-        <span class="cat-label">Beer <span class="cat-sub">Sip or Skip · Head to Head · TUNeDEXTER · PINtDEXTER · Beer Alerts · Beer Can Scan · Venue Detail</span></span>
+        <span class="cat-label">Beer <span class="cat-sub">Sip or Skip · Head to Head · TUNeDEXTER · PINtDEXTER · Beer Alerts · Beer Scan · Venue Detail</span></span>
         <span class="cat-chevron">›</span>
       </summary>
       <div class="cat-body">
@@ -903,31 +903,31 @@
           </div>
         </div>
 
-        <!-- BEER CAN SCAN -->
+        <!-- BEER SCAN -->
         <div class="feature-section" id="beer-can-scan">
           <div class="section-header">
-            <div class="section-icon icon-teal">📦</div>
-            <h2>Beer Can Scan</h2>
+            <div class="section-icon icon-teal">📷</div>
+            <h2>Beer Scan</h2>
           </div>
           <p class="section-intro">
-            Point your camera at the barcode on a can or bottle. PINtPOINT looks it up using the EAN-DB product database and returns the beer name, brewery, and style where available. Cans and bottles only — pump clips aren't scannable.
+            Two ways to identify a beer from your camera. Frame any can or bottle and PINtPOINT auto-reads the barcode in real time. For cans without a useful barcode, cask pump clips, or anything where the printed label tells you more than the strip, tap "Scan" and PINtPOINT reads the label itself — extracting brewery, beer name, style and ABV.
           </p>
           <div class="detail-grid">
             <div class="detail-card">
-              <h4>📷 Instant Barcode Scan</h4>
-              <p>Live camera scan reads the barcode instantly. No typing, no searching — point and scan.</p>
+              <h4>📷 Auto Barcode Scan</h4>
+              <p>Live camera scan reads the EAN/UPC barcode instantly — no typing, no tapping. Cross-checks our central catalog, then EAN-DB and Open Food Facts as fallbacks.</p>
             </div>
             <div class="detail-card">
-              <h4>🍺 Beer Identification</h4>
-              <p>Returns beer name, brewery, and style where available. Some labels won't match — you can fill in the details manually.</p>
+              <h4>👁️ Label Vision</h4>
+              <p>Tap "Scan" to read a label with vision. Works on craft cans, cask pump clips, taps with no barcode in frame — anywhere the printed label is more reliable than a strip.</p>
             </div>
             <div class="detail-card">
-              <h4>🗃️ Save to My Beers</h4>
-              <p>Add the scanned beer to your personal collection, edit the details, and track your stash.</p>
+              <h4>🔗 Untappd Auto-Link</h4>
+              <p>When vision finds a confident match on Untappd, your scan attaches the canonical beer ID and adds it to the central catalog automatically — every scan grows the database for the next user.</p>
             </div>
             <div class="detail-card">
-              <h4>📦 Cans &amp; Bottles Only</h4>
-              <p>Beer Can Scan works on packaged cans and bottles with barcodes. Pump clip photos can't be scanned.</p>
+              <h4>📚 Save &amp; Scan Next</h4>
+              <p>Confirm-screen has primary save and a secondary "Save &amp; Scan Next" — fast batch entry when you're working through a haul or a flight.</p>
             </div>
           </div>
         </div>
