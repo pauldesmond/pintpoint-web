@@ -201,11 +201,9 @@
     "name": "PINtPOINT — Guides, love letters, essays and notes",
     "itemListOrder": "https://schema.org/ItemListUnordered",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "url": "https://pintpoint.co.uk/blog/hops-what-each-one-tastes-like.html", "name": "The Drinker's Guide to Hops" },
-      { "@type": "ListItem", "position": 2, "url": "https://pintpoint.co.uk/blog/chelmsford-beer-mile-guide.html", "name": "The Chelmsford Beer Mile" },
-      { "@type": "ListItem", "position": 3, "url": "https://pintpoint.co.uk/blog/san-diego-ipa-capital-love-letter.html", "name": "A Love Letter to San Diego" },
-      { "@type": "ListItem", "position": 4, "url": "https://pintpoint.co.uk/blog/melbourne-bar-culture-love-letter.html", "name": "A Love Letter to Melbourne" },
-      { "@type": "ListItem", "position": 5, "url": "https://pintpoint.co.uk/blog/beer-recommendation-systems-what-most-get-wrong.html", "name": "Why beer recommenders miss the mark" }
+      { "@type": "ListItem", "position": 1, "url": "https://pintpoint.co.uk/blog/augustiner-on-draft-uk-six-pubs.html", "name": "Augustiner on Draft, Finally: All Seven UK Pubs Pouring It" },
+      { "@type": "ListItem", "position": 2, "url": "https://pintpoint.co.uk/blog/12-years-of-bosko.html", "name": "12 Years of Bosko" },
+      { "@type": "ListItem", "position": 3, "url": "https://pintpoint.co.uk/blog/left-field-beer-britain-american-craft.html", "name": "Left Field Beer: One of Britain's Best Independent Beer Shops" }
     ]
   }
   </script>
@@ -684,34 +682,68 @@
     </style>
     <h2 style="text-align:center;font-size:1.1rem;font-weight:800;letter-spacing:-0.3px;color:var(--text);margin-bottom:6px">From the blog</h2>
     <p style="text-align:center;font-size:0.85rem;color:var(--muted,#8b949e);margin-bottom:20px">Guides, love letters, essays, notes — <a href="blog/" style="color:var(--teal,#00D4AA);text-decoration:none">browse all →</a></p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
-      <a href="blog/hops-what-each-one-tastes-like.html" class="home-card">
+    <div id="home-blog-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+      <!-- Static fallback for crawlers + no-JS readers. JS below replaces with the live top 3 from feed.xml. -->
+      <a href="blog/augustiner-on-draft-uk-six-pubs.html" class="home-card">
+        <span class="home-cat note">Note</span>
+        <div class="t">Augustiner on Draft, Finally</div>
+        <div class="d">All seven UK pubs pouring it — and the eighth opening 12 May</div>
+      </a>
+      <a href="blog/12-years-of-bosko.html" class="home-card">
+        <span class="home-cat note">Note</span>
+        <div class="t">12 Years of Bosko</div>
+        <div class="d">All 12 UK venues pouring Pressure Drop's iconic IPA on 1 May</div>
+      </a>
+      <a href="blog/left-field-beer-britain-american-craft.html" class="home-card">
         <span class="home-cat essay">Essay</span>
-        <div class="t">The Drinker's Guide to Hops</div>
-        <div class="d">30+ varieties, six flavour categories, zero jargon</div>
-      </a>
-      <a href="blog/chelmsford-beer-mile-guide.html" class="home-card">
-        <span class="home-cat guide">Guide</span>
-        <div class="t">The Chelmsford Beer Mile</div>
-        <div class="d">A live guide to the 9-stop craft crawl</div>
-      </a>
-      <a href="blog/san-diego-ipa-capital-love-letter.html" class="home-card">
-        <span class="home-cat love">Love letter</span>
-        <div class="t">A Love Letter to San Diego</div>
-        <div class="d">How a navy town became IPA Capital of the world</div>
-      </a>
-      <a href="blog/melbourne-bar-culture-love-letter.html" class="home-card">
-        <span class="home-cat love">Love letter</span>
-        <div class="t">A Love Letter to Melbourne</div>
-        <div class="d">Bar-first, not brewery-first — San Diego's twin</div>
-      </a>
-      <a href="blog/beer-recommendation-systems-what-most-get-wrong.html" class="home-card">
-        <span class="home-cat essay">Essay</span>
-        <div class="t">Why beer recommenders miss the mark</div>
-        <div class="d">A response to Haley &amp; Ninkasi</div>
+        <div class="t">Left Field Beer</div>
+        <div class="d">One of Britain's best independent beer shops</div>
       </a>
     </div>
   </section>
+
+  <script>
+    // Replace the static "From the blog" cards with the live top 3 from
+    // feed.xml on load — keeps the home page in sync without redeploys.
+    (function() {
+      var grid = document.getElementById('home-blog-cards');
+      if (!grid) return;
+      fetch('blog/feed.xml', { cache: 'no-cache' })
+        .then(function(r) { return r.ok ? r.text() : Promise.reject(); })
+        .then(function(xml) {
+          var doc = new DOMParser().parseFromString(xml, 'application/xml');
+          var items = Array.prototype.slice.call(doc.querySelectorAll('item'), 0, 3);
+          if (items.length < 3) return; // keep static fallback
+          var html = items.map(function(item) {
+            var title = (item.querySelector('title') || {}).textContent || '';
+            var link = (item.querySelector('link') || {}).textContent || '#';
+            var cat = ((item.querySelector('category') || {}).textContent || 'Note').trim();
+            var desc = (item.querySelector('description') || {}).textContent || '';
+            // Keep titles tight on the card — first colon-clause if present
+            var shortTitle = title.split(':')[0].trim();
+            // ~95 char description excerpt
+            var shortDesc = desc.length > 95 ? desc.slice(0, 92).trim() + '…' : desc;
+            // Map category text to existing CSS class
+            var c = cat.toLowerCase();
+            var catClass = c.indexOf('love') === 0 ? 'love'
+                         : c === 'guide' ? 'guide'
+                         : c === 'essay' ? 'essay'
+                         : 'note';
+            // Strip absolute prefix so links work relative to /
+            var relLink = link.replace(/^https?:\/\/pintpoint\.co\.uk\//, '');
+            // Escape for safe insertion
+            function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+            return '<a href="' + esc(relLink) + '" class="home-card">' +
+              '<span class="home-cat ' + catClass + '">' + esc(cat) + '</span>' +
+              '<div class="t">' + esc(shortTitle) + '</div>' +
+              '<div class="d">' + esc(shortDesc) + '</div>' +
+            '</a>';
+          }).join('');
+          grid.innerHTML = html;
+        })
+        .catch(function() { /* keep static fallback */ });
+    })();
+  </script>
 
   <div class="divider">
     <p><em>&pound;3.99/year.</em> Less than half a London pint.<br/>Cancel anytime.</p>
