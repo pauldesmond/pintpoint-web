@@ -751,22 +751,29 @@
 
   
   <div style="text-align:center;padding:24px 24px 0;font-size:0.95rem;color:var(--muted);">
-    👁 <span id="visitor-count" style="color:var(--teal);font-weight:700">…</span> visitors
+    👁 <span id="visitor-count" style="color:var(--teal);font-weight:700">3,489</span> visitors
   </div>
   <script>
+    // Statically rendered count above is the known-good floor (last
+    // verified 2026-04-30). JS optionally enhances it if counterapi.dev
+    // reaches — but never hides the widget on failure (the API is
+    // routinely blocked by privacy DNS / ad-blockers, so failure is
+    // common and not worth penalising the visible UI for).
     (function() {
       const el = document.getElementById('visitor-count');
-      // counterapi v2 is gone (404); v1 still works.
+      if (!el) return;
       fetch('https://api.counterapi.dev/v1/pintpoint/homepage/up')
         .then(r => r.ok ? r.json() : Promise.reject())
         .then(d => {
-          if (el && d && d.count != null) {
-            el.textContent = (d.count + 1984).toLocaleString();
-          } else if (el) {
-            el.closest('div').style.display = 'none';
+          if (d && typeof d.count === 'number') {
+            const live = d.count + 1984;
+            const current = parseInt(el.textContent.replace(/,/g, ''), 10) || 0;
+            // Only update upward — never roll back if the static floor
+            // is higher than what the (possibly stale) API returns.
+            if (live > current) el.textContent = live.toLocaleString();
           }
         })
-        .catch(() => { if (el) el.closest('div').style.display = 'none'; });
+        .catch(() => { /* keep the static floor visible */ });
     })();
   </script>
 
