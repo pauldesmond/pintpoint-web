@@ -754,23 +754,34 @@
     👁 <span id="visitor-count" style="color:var(--teal);font-weight:700">3,489</span> visitors
   </div>
   <script>
-    // Statically rendered count above is the known-good floor (last
-    // verified 2026-04-30). JS optionally enhances it if counterapi.dev
-    // reaches — but never hides the widget on failure (the API is
-    // routinely blocked by privacy DNS / ad-blockers, so failure is
-    // common and not worth penalising the visible UI for).
+    // Statically rendered count above is the known-good floor as of
+    // 2026-04-30 (the offset that aligns DB count with the historical
+    // counterapi.dev count we used previously). JS enhances upward by
+    // calling our own log-page-view edge fn — also increments the
+    // count, so this is single-trip read+write. Never hides the widget
+    // on failure (privacy DNS may block any third-party fetch).
     (function() {
       const el = document.getElementById('visitor-count');
       if (!el) return;
-      fetch('https://api.counterapi.dev/v1/pintpoint/homepage/up')
+      var payload = JSON.stringify({
+        path: '/',
+        referrer: document.referrer || null,
+        ua: navigator.userAgent || null,
+      });
+      fetch('https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/log-page-view', {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: payload,
+      })
         .then(r => r.ok ? r.json() : Promise.reject())
         .then(d => {
           if (d && typeof d.count === 'number') {
-            const live = d.count + 1984;
-            const current = parseInt(el.textContent.replace(/,/g, ''), 10) || 0;
-            // Only update upward — never roll back if the static floor
-            // is higher than what the (possibly stale) API returns.
-            if (live > current) el.textContent = live.toLocaleString();
+            // Offset = static floor minus DB count at deploy time, so
+            // the displayed number always grows from 3,489 upward.
+            var OFFSET = 3489 - 7;  // 7 = page_views row count at 2026-04-30
+            var displayed = d.count + OFFSET;
+            var current = parseInt(el.textContent.replace(/,/g, ''), 10) || 0;
+            if (displayed > current) el.textContent = displayed.toLocaleString();
           }
         })
         .catch(() => { /* keep the static floor visible */ });
