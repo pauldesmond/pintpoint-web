@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://pintpoint.co.uk/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/download</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -44,19 +44,19 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/vs-untappd.html</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/vs-real-ale-finder.html</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/how-to-find-beer-near-you.html</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -110,19 +110,19 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/privacy-policy.html</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/about-pintpoint.html</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/faq.html</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -176,7 +176,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/labeerynt-80-835-gda-sk</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -199,12 +199,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pintpoint.co.uk/pubs/lamb-and-lion-bath</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://pintpoint.co.uk/pubs/bridport-arms-bridport</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -219,6 +213,12 @@
   <url>
     <loc>https://pintpoint.co.uk/pubs/belgian-beer-caf-oostende-adelaide</loc>
     <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/the-cave-pub-bra-ov</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -392,7 +392,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/la-terraza-de-bonanza-san-juan-puerto-rico</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -506,7 +506,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/bar-desy-guip-zcoa</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -650,7 +650,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/cricket-club-nassau-bahamas</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -704,13 +704,13 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/m-tico-bar-granada</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-coach-and-horses-london</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -741,6 +741,12 @@
   <url>
     <loc>https://pintpoint.co.uk/pubs/millstream-hitchin</loc>
     <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/bistro-de-larte-bra-ov</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -818,7 +824,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-irish-tavern-illes-balears</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -859,6 +865,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://pintpoint.co.uk/pubs/the-champion-london</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://pintpoint.co.uk/pubs/the-mitre-london</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -878,7 +890,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/old-town-pub-bra-ov</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -908,13 +920,13 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/paulaner-bierhaus-donosti-san-sebasti-n</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-cock-hitchin-hitchin</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1058,7 +1070,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/brauhaus-czell-bra-ov</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1148,7 +1160,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/out-of-the-barrel-los-gatos-los-gatos</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1256,7 +1268,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/bodega-beer-point-bra-ov</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1298,13 +1310,13 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/churlys-and-45-brew-pub-and-eatery-auckland-new-zealand</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/for-sale-pub-bra-ov</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1340,7 +1352,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-crew-pub-nassau-bahamas</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1490,7 +1502,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-mitre-tavern-melbourne</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1509,6 +1521,12 @@
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-bell-inn-bath</loc>
     <lastmod>2026-04-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/kruhnen-musik-halle-bra-ov</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1621,12 +1639,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pintpoint.co.uk/pubs/hot-box-live-events-chelmsford</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://pintpoint.co.uk/pubs/luas-irish-tavern-28039-madrid</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -1700,7 +1712,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/tiki-lodge-bar-and-restaurant-santa-catalina</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1850,7 +1862,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/aft-r-stube-bra-ov</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1904,7 +1916,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/good-george-brewing-craft-house-auckland-new-zealand</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2013,6 +2025,12 @@
   <url>
     <loc>https://pintpoint.co.uk/pubs/ampersand-brew-tap-diss</loc>
     <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/the-portcullis-taphouse-portchester</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2156,7 +2174,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/dc-tap-house-cupertino</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2246,7 +2264,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-hawthorn-new-york</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2306,7 +2324,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-sound-lounge-sutton</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2432,7 +2450,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-emerald-peacock-melbourne</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2564,13 +2582,13 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-heist-portland</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/ummagumma-bar-playa-del-carmen</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2618,7 +2636,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/fisherrow-tap-musselburgh</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2912,7 +2930,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/craft-republic-albuquerque</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2924,7 +2942,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/p-rgu-tallinn</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3008,7 +3026,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/gregans-castle-hotel-corkscrew-hill-co-clare-co-clare-map</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3032,7 +3050,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/boston-beer-company-boston</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3092,7 +3110,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/kilowatt-brewing-san-diego</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3224,7 +3242,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-white-horse-slough</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3248,7 +3266,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/hardimans-hotel-kensington</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3326,7 +3344,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-bar-mission</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3350,7 +3368,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/millers-ale-house-orlando</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3482,7 +3500,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/hula-hula-hvar</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3548,7 +3566,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/aerolineas-argentinas-vip-lounge-sal-n-condor-ezeiza</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3638,7 +3656,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/kings-and-convicts-brewing-co-san-diego</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3836,7 +3854,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/blackout-brewing-apahida</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3866,7 +3884,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/imperial-dive-bar-and-food-hall-albuquerque</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4028,7 +4046,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-central-st-andrews</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4112,7 +4130,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/hinterlands-bar-kings-county</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4136,7 +4154,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/brusca-brewpub-mallorca-brewery-manacor</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4472,7 +4490,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-lord-edward-dublin-8</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4712,7 +4730,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-jackalope-london</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4850,7 +4868,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/station-house-pub-london</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4886,7 +4904,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/hornes-brewery-tap-bow-brickhill</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4964,7 +4982,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-blind-beggar-london</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4989,6 +5007,54 @@
   <url>
     <loc>https://pintpoint.co.uk/pubs/basqueland-izakaia-donostia-san-sebasti-n</loc>
     <lastmod>2026-04-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/the-bear-craft-beer-co-london</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/cleveland-arms-london</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/the-union-tavern-london</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/the-warrington-london</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/the-victoria-london</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/the-mad-bishop-and-bear-london</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/brewdog-paddington-london</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/the-pride-of-paddington-paddington</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5060,7 +5126,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/radio-city-social-chelmsford</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5120,7 +5186,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-ale-house-chelmsford</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5222,7 +5288,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/pelt-trader-london</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5240,7 +5306,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-rake-london</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5288,19 +5354,19 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/craft-beer-co-st-marys-axe-london</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-blue-maid-london</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-hydrant-london</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5438,7 +5504,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-warwick-castle-london</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5480,7 +5546,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-white-swan-market-rasen</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5510,7 +5576,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/eleanor-arms-london</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5534,12 +5600,6 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/three-cranes-london</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://pintpoint.co.uk/pubs/the-bishops-finger-london</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -5600,7 +5660,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/tap-east-london</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5618,7 +5678,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/mother-kellys-london</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5642,7 +5702,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-gladstone-arms-london</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
