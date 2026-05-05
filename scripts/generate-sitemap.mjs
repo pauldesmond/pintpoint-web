@@ -34,7 +34,6 @@ const staticUrls = [
   { loc: '/blog/12-years-of-bosko.html', lastmod: '2026-05-01', changefreq: 'monthly', priority: '0.85' },
   { loc: '/blog/blackhorse-beer-mile-4th-birthday.html', lastmod: '2026-05-01', changefreq: 'weekly', priority: '0.95' },
   { loc: '/blog/radio-city-7-deadly-sins.html', lastmod: '2026-05-02', changefreq: 'weekly', priority: '0.95' },
-  { loc: '/blog/the-whippet-ec2-liverpool-street-opens.html', lastmod: '2026-05-05', changefreq: 'weekly', priority: '0.95' },
   { loc: '/privacy-policy.html', lastmod: TODAY, changefreq: 'yearly', priority: '0.3' },
   { loc: '/about-pintpoint.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
   { loc: '/faq.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.7' },
