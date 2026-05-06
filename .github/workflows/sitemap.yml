@@ -69,31 +69,6 @@ jobs:
           git commit -m "sitemap + pubs index: nightly regeneration from Supabase"
           git push
 
-      - name: Ping IndexNow
+      - name: Ping IndexNow (streaming, one URL per request)
         if: steps.diff.outputs.changed == 'true'
-        run: |
-          # Submit every URL in the freshly-generated sitemap to IndexNow.
-          # Up to 10,000 URLs per call; we have ~1100 so one call is fine.
-          python3 - <<'PY'
-          import json, re, sys, urllib.request, urllib.error
-          urls = re.findall(r'<loc>([^<]+)</loc>', open('sitemap.xml').read())
-          body = json.dumps({
-              "host": "pintpoint.co.uk",
-              "key": "cdf453273179a936cd5bf51aebd89d90",
-              "keyLocation": "https://pintpoint.co.uk/cdf453273179a936cd5bf51aebd89d90.txt",
-              "urlList": urls,
-          }).encode()
-          req = urllib.request.Request(
-              "https://api.indexnow.org/IndexNow",
-              data=body,
-              method="POST",
-              headers={"Content-Type": "application/json; charset=utf-8"},
-          )
-          print(f"Submitting {len(urls)} URL(s) to IndexNow...")
-          try:
-              with urllib.request.urlopen(req, timeout=30) as r:
-                  print(f"OK (HTTP {r.status})")
-          except urllib.error.HTTPError as e:
-              print(f"FAILED (HTTP {e.code}): {e.read().decode(errors='replace')}", file=sys.stderr)
-              sys.exit(1)
-          PY
+        run: ./scripts/indexnow.sh --all
