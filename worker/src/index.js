@@ -10,6 +10,10 @@
  * - /pubs/index.html   → pass through to origin
  * - /pubs/<slug>       → render via Supabase edge function
  * - /pubs/<slug>.html  → redirect to /pubs/<slug> (canonical, clean URL)
+ * - /blog/<slug>       → 301 redirect to /blog/<slug>.html (canonical w/ extension)
+ * - /blog/<slug>/      → 301 redirect to /blog/<slug>.html
+ * - /blog/<slug>.html  → pass through to origin
+ * - /blog/...other...  → pass through (drafts, images, the index)
  * - /about, /about/    → 301 redirect to /about-pintpoint.html
  * - /about/<anything>  → 301 redirect to /about-pintpoint.html
  * - everything else    → pass through to origin
@@ -21,7 +25,7 @@ const ABOUT_CANONICAL = 'https://pintpoint.co.uk/about-pintpoint.html';
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
 // the edge function's rendering or slug-resolution logic).
-const CACHE_VERSION = 'v9';
+const CACHE_VERSION = 'v10';
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
@@ -46,6 +50,42 @@ export default {
           'Cache-Control': 'public, max-age=3600',
         },
       });
+    }
+
+    // /blog/<slug> (bare) → 301 → /blog/<slug>.html
+    // GitHub Pages serves both forms with HTTP 200, which Bing flags as
+    // duplicate content per Webmaster Guideline #6. Canonical tags + sitemap
+    // already use .html as the canonical form; this enforces it at the edge.
+    // Pass through: /blog/, /blog/index.html, /blog/<slug>.html, /blog/<dir>/...
+    if (pathname.startsWith('/blog/')) {
+      const tail = pathname.slice('/blog/'.length);
+      // Bare single-segment slug (a-z 0-9 hyphens, no extension, no slash) → redirect
+      if (/^[a-z0-9-]+$/.test(tail)) {
+        const canonical = new URL(url);
+        canonical.pathname = `/blog/${tail}.html`;
+        return new Response(null, {
+          status: 301,
+          headers: {
+            'Location': canonical.toString(),
+            'Cache-Control': 'public, max-age=3600',
+          },
+        });
+      }
+      // Trailing slash on slug → strip + redirect (e.g. /blog/foo/ → /blog/foo.html)
+      if (/^[a-z0-9-]+\/$/.test(tail)) {
+        const slug = tail.slice(0, -1);
+        const canonical = new URL(url);
+        canonical.pathname = `/blog/${slug}.html`;
+        return new Response(null, {
+          status: 301,
+          headers: {
+            'Location': canonical.toString(),
+            'Cache-Control': 'public, max-age=3600',
+          },
+        });
+      }
+      // Everything else (.html files, drafts, images, the index) → origin
+      return fetch(request);
     }
 
     // /crawl/<slug> → proxy to the crawl-page edge function
