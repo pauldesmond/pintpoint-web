@@ -21,7 +21,7 @@ const ABOUT_CANONICAL = 'https://pintpoint.co.uk/about-pintpoint.html';
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
 // the edge function's rendering or slug-resolution logic).
-const CACHE_VERSION = 'v8';
+const CACHE_VERSION = 'v9';
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for

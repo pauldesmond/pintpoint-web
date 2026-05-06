@@ -59,7 +59,7 @@ If the early details hold, this is a venue trying to bridge several London drink
 
 That mix matters. London's beer scene has plenty of excellent places, but fewer that feel designed to cut across cask drinkers, lager traditionalists, and modern craft drinkers without becoming muddled. The Whippet EC2 might.
 
-The group has started to name its opening brewery line-up on the @WhippetEC2 account: **Green Duck, Bris Beer Factory, Joseph Holt, Floc, Otter, Ossett and Boddingtons**. The phrase they used was that these are breweries "generally locked out of the big chains in London" — which is exactly the gap a bar like this should be filling. Independent regional producers that most City drinkers cannot get pouring within walking distance of their office. The list reinforces everything the Augustiner-and-sparkler signal was already telling us.
+The group has started to name its opening brewery line-up on the @WhippetEC2 account: **Green Duck, Bristol Beer Factory, Joseph Holt, Floc, Otter, Ossett and Boddingtons**. The phrase they used was that these are breweries "generally locked out of the big chains in London" — which is exactly the gap a bar like this should be filling. Independent regional producers that most City drinkers cannot get pouring within walking distance of their office. The list reinforces everything the Augustiner-and-sparkler signal was already telling us.
 
 ### The location is a bigger deal than it looks
 
@@ -229,7 +229,7 @@ Because it sounds like it knows what it is doing.
 >
 > Six years after the Holborn Whippet closed, Bloomsbury Leisure Group — the team behind the Euston Tap — are back with The Whippet EC2, a brand-new station-tap just outside Liverpool Street.
 >
-> Augustiner on draught. Boddingtons on cask, with a sparkler, exactly as it should be. Green Duck, Bris Beer Factory, Joseph Holt, Floc, Otter, Ossett — independent regional breweries "generally locked out of the big chains in London", pouring a minute from the station. A pool table because pubs are still pubs. And, if the teasers hold, a pizza kitchen.
+> Augustiner on draught. Boddingtons on cask, with a sparkler, exactly as it should be. Green Duck, Bristol Beer Factory, Joseph Holt, Floc, Otter, Ossett — independent regional breweries "generally locked out of the big chains in London", pouring a minute from the station. A pool table because pubs are still pubs. And, if the teasers hold, a pizza kitchen.
 >
 > Not a random list of crowd-pleasers. A statement of intent.
 >
