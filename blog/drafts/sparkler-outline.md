@@ -1,6 +1,6 @@
 # What is a Sparkler, and Why is it Popular North of London?
 
-**Target publish:** Thursday 7 May 2026 (5 days before Whippet EC2 opens 12 May)
+**Target publish:** Thursday 7 May 2026 (5 days before Whippet opens 14 May)
 **Slug:** `what-is-a-sparkler-and-why-is-it-popular-north-of-london.html`
 **Category:** Essay / Reference
 **Word count target:** 1,200–1,500 (essay length, sits between the Hops reference piece and the love letters)
@@ -12,7 +12,7 @@
 The piece exists because three things converged this fortnight:
 
 1. **Pressure Drop's Bosko launch (1 May)** features "Boddingtons cask with a sparkler" prominently in the venue prep notes — a deliberate northern signal in London bars.
-2. **The Whippet EC2 (opening 12 May)** is a Tap-branded family pub at Liverpool Street; cask programmes in that family historically take the cask question seriously, and the sparkler / no-sparkler choice is part of how a pub signals what kind of cask drinker it expects.
+2. **The Whippet (opening 14 May)** is a Tap-branded family pub at Liverpool Street; cask programmes in that family historically take the cask question seriously, and the sparkler / no-sparkler choice is part of how a pub signals what kind of cask drinker it expects.
 3. **Boak & Bailey** are Augustiner-curious right now (per the post that triggered last week's piece) and adjacent on the cask question — they've written about sparklers before from a "respect the regional preference" angle.
 
 The piece pre-loads the cask conversation around Whippet's opening without naming the Whippet as the headline — the Whippet becomes the live worked example in week two.
@@ -22,7 +22,7 @@ The piece pre-loads the cask conversation around Whippet's opening without namin
 ## Structure
 
 ### Lede (~120 words)
-Pulled from the Whippet EC2's pre-launch prep — Boddingtons cask listed with a sparkler — set against the fact that, in London, the same pump-clip would more often appear without one. Pose the question: what is a sparkler, why does it matter, and why does the answer change as you move up the M1?
+Pulled from the Whippet's pre-launch prep — Boddingtons cask listed with a sparkler — set against the fact that, in London, the same pump-clip would more often appear without one. Pose the question: what is a sparkler, why does it matter, and why does the answer change as you move up the M1?
 
 ### Section 1 — What a sparkler actually is (~200 words)
 - Plastic nozzle screwed onto the end of a hand-pump beer engine
@@ -38,7 +38,7 @@ Pulled from the Whippet EC2's pre-launch prep — Boddingtons cask listed with a
 - The dividing line isn't a hard border — it's more a cultural watershed than a postcode line
 - CAMRA's regional cellarmanship guidance acknowledges both as valid; the regional pub trade has its preferences
 - Notable exceptions: London pubs run by northern-trained cellar staff; Manchester pubs imitating southern serve for specific styles
-- The Whippet EC2 (London EC2, sparkler on Boddy) is a Tap-family decision — Euston Tap and the rest of the family have form pouring northern bitters in the northern style
+- The Whippet (London EC2, sparkler on Boddy) is a Tap-family decision — Euston Tap and the rest of the family have form pouring northern bitters in the northern style
 
 ### Section 3 — Why? Three honest answers (~400 words)
 
@@ -56,7 +56,7 @@ Pulled from the Whippet EC2's pre-launch prep — Boddingtons cask listed with a
 
 ### Section 5 — Why this matters this fortnight (~150 words)
 - Pressure Drop's Bosko launch on 1 May features Boddingtons cask with a sparkler at multiple venues — it's the *northern serve in southern bars* gesture, deliberate
-- The Whippet EC2 opens 12 May with both Augustiner Helles (4°C cellar surgery) and Boddingtons cask with a sparkler (cellarmanship statement) on the same opening lineup. That's not coincidence; it's two declarations of intent on opening day
+- The Whippet opens 14 May with both Augustiner Helles (4°C cellar surgery) and Boddingtons cask with a sparkler (cellarmanship statement) on the same opening lineup. That's not coincidence; it's two declarations of intent on opening day
 - PINtPOINT can surface cask venues by region; we're not yet tagging sparkler / no-sparkler explicitly but it'd be a natural addition
 
 ### Closing (~80 words)
@@ -72,7 +72,7 @@ A sparkler is a piece of plastic with a few holes drilled in it. It changes how 
 
 3. **Does a sparkler ruin the beer?** — Depends on the beer. Sparklered serve enhances Yorkshire bitter, Manchester pale, north-east session ales. It can blunt aroma on dry-hopped modern pales and is generally avoided by London cellars handling those styles.
 
-4. **Where can I drink sparklered cask in London?** — A growing handful of pubs deliberately pour northern bitters in the northern style. The new Whippet EC2 (opening 12 May 2026, by Liverpool Street) is one of them, with Boddingtons cask listed with a sparkler. PINtPOINT's app can locate cask venues nearby; sparkler vs no-sparkler isn't yet a filter we expose, but the cask filter is a starting point.
+4. **Where can I drink sparklered cask in London?** — A growing handful of pubs deliberately pour northern bitters in the northern style. The new Whippet (opening 14 May 2026, by Liverpool Street) is one of them, with Boddingtons cask listed with a sparkler. PINtPOINT's app can locate cask venues nearby; sparkler vs no-sparkler isn't yet a filter we expose, but the cask filter is a starting point.
 
 5. **What's the difference between a sparkler-on and sparkler-off pour?** — Sparkler on: tighter, creamier head; cooler-feeling mouthfeel; muted aroma; dense foam. Sparkler off: looser pour, larger bubbles, fuller aroma release, looser head that drops faster. Same beer, two different drinks.
 
@@ -80,7 +80,7 @@ A sparkler is a piece of plastic with a few holes drilled in it. It changes how 
 
 ## Internal cross-links
 
-- Whippet EC2 venue page (`/pubs/the-whippet-ec2-london`)
+- Whippet venue page (`/pubs/the-whippet-ec2-london`)
 - Augustiner essay (`/blog/augustiner-on-draft-uk-six-pubs.html`) — sister piece on the same opening-day Whippet lineup
 - Bosko-12 piece (`/blog/12-years-of-bosko.html`) — the Boddingtons cask + sparkler reference
 - Hops guide (`/blog/hops-what-each-one-tastes-like.html`) — the dry-hop-aroma counter-argument
