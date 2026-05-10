@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>PINtPOINT Blog</title>
+    <title>PINtPRESS</title>
     <link>https://pintpoint.co.uk/blog/</link>
     <atom:link href="https://pintpoint.co.uk/blog/feed.xml" rel="self" type="application/rss+xml" />
-    <description>Long-form writing from the PINtPOINT team on beer, pubs, and the tools we build. Love letters to beer cities, guides to crawls and styles, and notes on what's new in the app.</description>
+    <description>Long-form writing from the PINtPOINT team on beer, pubs, and the tools we build. Postcards from beer cities, guides to crawls and styles, and notes on what's new in the app.</description>
     <language>en-GB</language>
     <copyright>© 2026 PINtPOINT</copyright>
     <managingEditor>hello@pintpoint.co.uk (Sophie Ro)</managingEditor>
@@ -15,7 +15,7 @@
     <ttl>1440</ttl>
     <image>
       <url>https://pintpoint.co.uk/icon.png</url>
-      <title>PINtPOINT Blog</title>
+      <title>PINtPRESS</title>
       <link>https://pintpoint.co.uk/blog/</link>
     </image>
 
@@ -90,13 +90,13 @@
     </item>
 
     <item>
-      <title>A Love Letter to London: The City That Taught the World to Brew, Then Started Again</title>
+      <title>A Postcard from London: The City That Taught the World to Brew, Then Started Again</title>
       <link>https://pintpoint.co.uk/blog/london-craft-beer-love-letter.html</link>
       <guid isPermaLink="true">https://pintpoint.co.uk/blog/london-craft-beer-love-letter.html</guid>
       <pubDate>Mon, 20 Apr 2026 12:00:00 +0000</pubDate>
       <dc:creator>Sophie Ro</dc:creator>
-      <category>Love letter</category>
-      <description>London is one of the oldest beer cities in the world, but the version you can drink now is barely fifteen years old. The third in the love-letter trilogy — a comeback layered over an inheritance.</description>
+      <category>Postcard</category>
+      <description>London is one of the oldest beer cities in the world, but the version you can drink now is barely fifteen years old. The third in the postcard trilogy — a comeback layered over an inheritance.</description>
     </item>
 
     <item>
@@ -110,12 +110,12 @@
     </item>
 
     <item>
-      <title>A Love Letter to Melbourne: The City That Built a Craft-Beer Scene on Bars, Not Breweries</title>
+      <title>A Postcard from Melbourne: The City That Built a Craft-Beer Scene on Bars, Not Breweries</title>
       <link>https://pintpoint.co.uk/blog/melbourne-bar-culture-love-letter.html</link>
       <guid isPermaLink="true">https://pintpoint.co.uk/blog/melbourne-bar-culture-love-letter.html</guid>
       <pubDate>Thu, 16 Apr 2026 12:00:00 +0000</pubDate>
       <dc:creator>Sophie Ro</dc:creator>
-      <category>Love letter</category>
+      <category>Postcard</category>
       <description>Companion to the San Diego piece — the structural opposite. Catfish, Local Taphouse, Cookie, Hippo, Boilermaker — a scene that turned curation into a category of its own.</description>
     </item>
 
@@ -131,12 +131,12 @@
     </item>
 
     <item>
-      <title>A Love Letter to San Diego: How a Navy Town Became the IPA Capital of the World</title>
+      <title>A Postcard from San Diego: How a Navy Town Became the IPA Capital of the World</title>
       <link>https://pintpoint.co.uk/blog/san-diego-ipa-capital-love-letter.html</link>
       <guid isPermaLink="true">https://pintpoint.co.uk/blog/san-diego-ipa-capital-love-letter.html</guid>
       <pubDate>Thu, 09 Apr 2026 12:00:00 +0000</pubDate>
       <dc:creator>Sophie Ro</dc:creator>
-      <category>Love letter</category>
+      <category>Postcard</category>
       <description>Karl Strauss in 1989. Stone and Ballast Point in 1996. A hop arms race through the 2000s that perfected the West Coast IPA. A tour of how San Diego quietly became the IPA capital and where to drink its legacy today.</description>
     </item>
 
