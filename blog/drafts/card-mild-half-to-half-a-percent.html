@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200, initial-scale=1.0" />
+  <title>OG card — mild</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet" />
+  <style>
+    /* OG cards are exactly 1200×630 — open this file in a browser and
+       screenshot the .card element to produce the share image. Chrome
+       DevTools: cmd-shift-P, "Capture node screenshot" on .card. */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #050a0f; }
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Inter', sans-serif; }
+    .card {
+      width: 1200px;
+      height: 630px;
+      background: #0d1117;
+      color: #fff;
+      padding: 56px 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .topbar { display: flex; justify-content: space-between; align-items: center; }
+    .mast { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
+    .mast span { color: #00D4AA; }
+    .badge {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+      color: #B5C8FF; border: 1px solid rgba(181,200,255,0.35); padding: 5px 12px; border-radius: 4px;
+    }
+    .charts { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch; }
+    .chart { display: flex; flex-direction: column; }
+    .chart-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #8b949e; margin-bottom: 16px;
+    }
+    .chart svg { flex: 1; width: 100%; }
+    .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; fill: #fff; }
+    .num.end-down { fill: #FF7A45; }
+    .num.end-up { fill: #00D4AA; }
+    .num.muted { fill: #8b949e; font-size: 22px; }
+    .axis-label { font-family: 'Inter', sans-serif; font-size: 13px; fill: #8b949e; font-weight: 500; }
+    .title-block { }
+    .kicker {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 26px; color: #00D4AA; margin-bottom: 12px; letter-spacing: -0.3px;
+    }
+    .title {
+      font-size: 38px; font-weight: 900; letter-spacing: -1.4px; line-height: 1.12; max-width: 920px;
+    }
+    .title em { color: #FF7A45; font-style: italic; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.05em; }
+    .footstrip {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: #6b7280; letter-spacing: 0.18em; text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div class="topbar">
+      <div class="mast">PINt<span>POINT</span></div>
+      <div class="badge">Essay · Mild Month</div>
+    </div>
+
+    <div class="charts">
+
+      <!-- LEFT: SALES SHARE — monotone decline -->
+      <div class="chart">
+        <div class="chart-label">Mild's share of British beer</div>
+        <svg viewBox="0 0 500 240" preserveAspectRatio="none">
+          <!-- baseline -->
+          <line x1="0" y1="218" x2="500" y2="218" stroke="#1f2937" stroke-width="1"/>
+          <!-- sales falling curve -->
+          <path d="M 30 40 C 90 42, 170 70, 250 150 S 380 212, 470 215" fill="none" stroke="#FF7A45" stroke-width="4" stroke-linecap="round"/>
+          <!-- start endpoint -->
+          <circle cx="30" cy="40" r="7" fill="#FF7A45"/>
+          <text class="num" x="48" y="48" font-size="44">50%</text>
+          <text class="axis-label" x="48" y="74">in 1959</text>
+          <!-- end endpoint -->
+          <circle cx="470" cy="215" r="7" fill="#FF7A45"/>
+          <text class="num end-down" x="462" y="200" font-size="44" text-anchor="end">0.5%</text>
+          <text class="axis-label" x="462" y="226" text-anchor="end">today</text>
+        </svg>
+      </div>
+
+      <!-- RIGHT: STRENGTH — down then fork -->
+      <div class="chart">
+        <div class="chart-label">And mild's strength</div>
+        <svg viewBox="0 0 500 240" preserveAspectRatio="none">
+          <line x1="0" y1="218" x2="500" y2="218" stroke="#1f2937" stroke-width="1"/>
+          <!-- shared descent pre-WWI → 1945 -->
+          <path d="M 30 50 C 100 55, 180 78, 260 160" fill="none" stroke="#FF7A45" stroke-width="4" stroke-linecap="round"/>
+          <!-- stalwart branch: flat from 1945 to today -->
+          <path d="M 260 160 L 470 160" fill="none" stroke="#FF7A45" stroke-width="4" stroke-linecap="round"/>
+          <!-- revivalist branch: split off ~2009, climb to today -->
+          <path d="M 380 150 C 410 110, 440 70, 470 35" fill="none" stroke="#00D4AA" stroke-width="4" stroke-linecap="round"/>
+          <!-- start endpoint -->
+          <circle cx="30" cy="50" r="7" fill="#FF7A45"/>
+          <text class="num" x="48" y="58" font-size="40">5%</text>
+          <text class="axis-label" x="48" y="84">pre-WWI</text>
+          <!-- stalwart endpoint -->
+          <circle cx="470" cy="160" r="7" fill="#FF7A45"/>
+          <text class="num end-down" x="462" y="195" font-size="34" text-anchor="end">3.5%</text>
+          <text class="axis-label" x="462" y="218" text-anchor="end">stalwarts</text>
+          <!-- revivalist endpoint -->
+          <circle cx="470" cy="35" r="7" fill="#00D4AA"/>
+          <text class="num end-up" x="462" y="28" font-size="34" text-anchor="end">6–10%</text>
+          <text class="axis-label" x="462" y="50" text-anchor="end">revivalists</text>
+        </svg>
+      </div>
+
+    </div>
+
+    <div class="title-block">
+      <div class="kicker">Sales collapsed. Strength forked.</div>
+      <div class="title">From half of British beer to half a percent — what happened to <em>mild</em></div>
+    </div>
+
+    <div class="footstrip">
+      <span>pintpoint.co.uk / blog</span>
+      <span>14 May 2026</span>
+    </div>
+
+  </div>
+</body>
+</html>
