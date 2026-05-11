@@ -9,8 +9,8 @@
     <copyright>© 2026 PINtPOINT</copyright>
     <managingEditor>hello@pintpoint.co.uk (Sophie Ro)</managingEditor>
     <webMaster>hello@pintpoint.co.uk (Sophie Ro)</webMaster>
-    <lastBuildDate>Fri, 08 May 2026 09:00:00 +0000</lastBuildDate>
-    <pubDate>Fri, 08 May 2026 09:00:00 +0000</pubDate>
+    <lastBuildDate>Thu, 14 May 2026 09:00:00 +0000</lastBuildDate>
+    <pubDate>Thu, 14 May 2026 09:00:00 +0000</pubDate>
     <generator>PINtPOINT hand-maintained RSS</generator>
     <ttl>1440</ttl>
     <image>
@@ -18,6 +18,16 @@
       <title>PINtPRESS</title>
       <link>https://pintpoint.co.uk/blog/</link>
     </image>
+
+    <item>
+      <title>From Half of British Beer to Half a Percent — What Happened to Mild</title>
+      <link>https://pintpoint.co.uk/blog/mild-half-to-half-a-percent.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/mild-half-to-half-a-percent.html</guid>
+      <pubDate>Thu, 14 May 2026 09:00:00 +0000</pubDate>
+      <dc:creator>Sophie Ro</dc:creator>
+      <category>Essay</category>
+      <description>In 1959 mild was still half the beer Britain drank. By 2011 it was 0.5%. How Britain's everyday beer became a rarity — and why Mild May is trying to bring it back. Pattinson, Cornell and Boak &amp; Bailey on the collapse from a 1700s young-ale category through the 1930s peak to the post-war floor; the modern fork between Black Country stalwarts at 3-3.5% and craft revisionists at 6-10%.</description>
+    </item>
 
     <item>
       <title>The Sparkler Question — A Field Guide to Britain's Quietest Cask Argument</title>
