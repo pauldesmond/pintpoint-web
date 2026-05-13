@@ -85,6 +85,22 @@ export default {
           },
         });
       }
+      // Truncated .htm → 301 to .html. X / Twitter sometimes clips link
+      // detection one char short of `.html`, so the canonical link in a
+      // tweet preview can land as /blog/<slug>.htm and 404 on GH Pages.
+      // Catch any /blog/<slug>.htm (where slug is the standard charset)
+      // and forward to the .html canonical.
+      if (/^[a-z0-9-]+\.htm$/.test(tail)) {
+        const canonical = new URL(url);
+        canonical.pathname = `/blog/${tail}l`;
+        return new Response(null, {
+          status: 301,
+          headers: {
+            'Location': canonical.toString(),
+            'Cache-Control': 'public, max-age=3600',
+          },
+        });
+      }
       // Everything else (.html files, drafts, images, the index) → origin
       return fetch(request);
     }
