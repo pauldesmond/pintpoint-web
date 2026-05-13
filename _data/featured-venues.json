@@ -1,0 +1,11 @@
+{
+  "_comment": "Hand-picked featured venues for the top of pubs/index.html. Read by scripts/generate-pubs-index.mjs — these render first (positions 1–6), then the script auto-fills positions 7–20 from the most-recently-updated venues in Supabase. The JSON-LD ItemList on the same page is generated from this same source, so what humans see and what Google sees stay in sync. To add or replace a featured venue, edit this file and re-run the script (or wait for the nightly workflow). Order in this array is the order shown on the page.",
+  "featured": [
+    { "name": "Radio City Social", "city": "Chelmsford" },
+    { "name": "The Rake", "city": "London" },
+    { "name": "Capitan Amargo", "city": "Granada" },
+    { "name": "The Ale House", "city": "Chelmsford" },
+    { "name": "The Whippet EC2", "city": "London" },
+    { "name": "The Catfish", "city": "Fitzroy" }
+  ]
+}
