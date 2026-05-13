@@ -21,6 +21,7 @@
 
 const SUPABASE_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/venue-page';
 const CRAWL_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/crawl-page';
+const BEER_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/beer-page';
 const ABOUT_CANONICAL = 'https://pintpoint.co.uk/about-pintpoint.html';
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
@@ -86,6 +87,52 @@ export default {
       }
       // Everything else (.html files, drafts, images, the index) → origin
       return fetch(request);
+    }
+
+    // /beers/<slug> → proxy to the beer-page edge function.
+    // Mirrors the /pubs/<slug> + /crawl/<slug> pattern: canonical URL
+    // shape is /beers/<slug> with no trailing slash and no .html, so
+    // redirect any drift to the canonical form before proxying.
+    if (pathname.startsWith('/beers/')) {
+      let slug = pathname.slice('/beers/'.length);
+      if (slug.endsWith('/')) slug = slug.slice(0, -1);
+      if (slug.endsWith('.html')) {
+        const canonical = new URL(url);
+        canonical.pathname = `/beers/${slug.slice(0, -5)}`;
+        return Response.redirect(canonical.toString(), 301);
+      }
+      if (!slug || !/^[a-z0-9-]+$/i.test(slug)) {
+        return new Response('Beer not found', { status: 404 });
+      }
+
+      const beerCacheUrl = new URL(request.url);
+      beerCacheUrl.searchParams.set('_cv', CACHE_VERSION);
+      const beerCacheKey = new Request(beerCacheUrl.toString(), { method: 'GET' });
+      const beerCache = caches.default;
+      const cachedBeer = await beerCache.match(beerCacheKey);
+      if (cachedBeer) return cachedBeer;
+
+      const beerUpstream = new URL(BEER_FN);
+      beerUpstream.searchParams.set('slug', slug);
+      const beerResp = await fetch(beerUpstream.toString(), {
+        method: 'GET',
+        headers: { 'Accept': 'text/html' },
+        cf: { cacheEverything: false },
+      });
+      if (beerResp.status === 404) return new Response('Beer not found', { status: 404 });
+      if (!beerResp.ok) return new Response('Upstream error', { status: 502 });
+      const beerBody = await beerResp.text();
+      const beerCC = beerResp.headers.get('Cache-Control') || DEFAULT_CACHE_CONTROL;
+      const resp = new Response(beerBody, {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html; charset=utf-8',
+          'Cache-Control': beerCC,
+          'X-Rendered-By': 'pintpoint-beers-worker',
+        },
+      });
+      ctx.waitUntil(beerCache.put(beerCacheKey, resp.clone()));
+      return resp;
     }
 
     // /crawl/<slug> → proxy to the crawl-page edge function
