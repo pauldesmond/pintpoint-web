@@ -212,6 +212,24 @@ export default {
       return Response.redirect(canonical.toString(), 301);
     }
 
+    // Renames — old slug → new slug 301s, so external links (blog posts,
+    // tweets, OG cards) keep working when a venue's name changes. Keep
+    // this map small; permanent.
+    const PUB_SLUG_REDIRECTS = {
+      'the-whippet-ec2-london': 'the-whippet-london', // 15 May 2026: dropped EC2 suffix
+    };
+    if (PUB_SLUG_REDIRECTS[slug]) {
+      const canonical = new URL(url);
+      canonical.pathname = `/pubs/${PUB_SLUG_REDIRECTS[slug]}`;
+      return new Response(null, {
+        status: 301,
+        headers: {
+          'Location': canonical.toString(),
+          'Cache-Control': 'public, max-age=86400',
+        },
+      });
+    }
+
     // Slug must be a single path segment with safe characters
     if (!slug || !/^[a-z0-9-]+$/i.test(slug)) {
       return fetch(request);
