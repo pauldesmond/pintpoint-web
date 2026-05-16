@@ -209,123 +209,12 @@
     ]
   }
   </script>
-  <!-- Structured Data: FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "speakable": {
-      "@type": "SpeakableSpecification",
-      "cssSelector": [".faq-item summary", ".faq-item p"]
-    },
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is PINtPOINT?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "PINtPOINT is a beer-first pub discovery app that helps people find pubs, bars, and taprooms worth visiting. It shows you what's on tap before you arrive, uses a live radar to point you to nearby venues, and lets you filter by beer style so every result is already relevant."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is PINtPOINT just another pub finder?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Most pub finders focus on what's closest. It's built around what's actually worth seeking out — better beer, better pubs, better nights out."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does PINtPOINT know what's on tap?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It pulls live tap list data from venues that publish their current beers online. When a pub updates its taps, the radar updates too, so you can see what's pouring before you walk through the door."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use PINtPOINT to find real ale pubs?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. It's designed to help people discover pubs with character, strong beer reputations, and the kind of atmosphere that makes them worth visiting — whether that's a traditional cask ale pub or a modern taproom."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does PINtPOINT work for craft beer too?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. It's just as useful for finding craft beer bars, taprooms, and places with a more modern beer focus. Filter by style — IPA, Pale Ale, Stout, Sour — and every result is relevant before you set off."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can PINtPOINT help me plan a pub crawl?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Create-a-Crawl lets you build a custom route from nearby venues in seconds. Set your stops, maximum distance between them, and share the route with your group. No more leaving it to chance."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is PINtPOINT different from Untappd?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Untappd is mainly about tracking and rating beers. PINtPOINT is more about deciding where to go. One helps you remember what you drank. The other helps you find your next pint."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much does PINtPOINT cost?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "\u00a33.99 per year after a 7-day free trial. No ads, no data selling. That's less than half a London pint for a full year of better pub decisions."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is Ghost Hunter?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ghost Hunter reveals over 500 closed and demolished London pubs on your radar as purple blips. Tap any ghost pub to see archive photos of what it once looked like. It's a pub map with a memory."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is Troubled Pub Mode?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Troubled Pub Mode uses FPI (Financial Pressure Index) data to highlight pubs under financial pressure as amber blips. It covers England and Wales and helps you support your local before it's too late."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is PINtPOINT available on Android?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The app runs on iPhone via the App Store, and on Android as a direct sideload download from pintpoint.co.uk/download. Both platforms run on the same £3.99/year subscription with a 7-day free trial."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What cities does PINtPOINT cover?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The radar covers 1,091+ venues across 40+ countries. Whether you're hitting the taprooms of Brooklyn, scouting the bars of Barcelona, or looking for a real ale in Bristol, the data is the same everywhere. Ghost Hunter focuses on London. Troubled Pub Mode covers England and Wales using VOA rating list data."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I hide pubs I don't want to see?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. If a venue isn't relevant to you, mark it as BARRED. It will still appear in the Venues list with a BARRED stamp, but it will be hidden from the radar and excluded from crawls. Use Favourites for pubs you want more of, and BARRED for the ones you want less of."
-        }
-      }
-    ]
-  }
-  </script>
+  <!-- 2026-05-16: an orphan FAQPage JSON-LD block used to live here.
+       The visible FAQ rendering lives at /faq.html (with its own
+       matching FAQPage schema). Google's structured-data guidance
+       requires schema to match what's visibly rendered on the same
+       page, so the homepage block was removed. Reinstate only if
+       the questions are also rendered here as <details class="faq-item">. -->
   <link rel="preload" as="image" href="/pplogo7.png" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
