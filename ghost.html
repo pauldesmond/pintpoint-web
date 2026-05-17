@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-itunes-app" content="app-id=6760611613">
   <title>PINtPOINT — Ghost Hunter</title>
   <meta name="description" content="PINtPOINT doesn't just show what's still open. It reveals the pubs that vanished, were demolished, or quietly slipped away. Turn on Ghost Hunter and London fills with purple blips from another era." />
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -186,6 +187,44 @@
       .pub-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "@id": "https://pintpoint.co.uk/ghost.html#dataset",
+    "name": "PINtPOINT Ghost Hunter — UK historic and closed pubs",
+    "alternateName": "Ghost Hunter",
+    "description": "A curated dataset of 500+ closed, demolished and historic UK pubs, with archive photographs attached to 327 records. Each entry includes the pub name, last known address, closure status and (where known) the year of closure. Surfaced in the PINtPOINT mobile app as purple blips on the live radar map.",
+    "url": "https://pintpoint.co.uk/ghost.html",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "creator": { "@id": "https://pintpoint.co.uk/#organization" },
+    "publisher": { "@id": "https://pintpoint.co.uk/#organization" },
+    "keywords": "closed pubs, historic pubs, UK pub closures, ghost pubs, demolished pubs, pub history, London pubs",
+    "spatialCoverage": {
+      "@type": "Place",
+      "name": "United Kingdom",
+      "geo": {
+        "@type": "GeoShape",
+        "box": "49.9 -8.6 60.9 1.8"
+      }
+    },
+    "temporalCoverage": "1700/..",
+    "variableMeasured": [
+      { "@type": "PropertyValue", "name": "Pub name" },
+      { "@type": "PropertyValue", "name": "Last known address" },
+      { "@type": "PropertyValue", "name": "Closure status" },
+      { "@type": "PropertyValue", "name": "Year of closure (where known)" },
+      { "@type": "PropertyValue", "name": "Archive photograph (327 records)" }
+    ],
+    "distribution": {
+      "@type": "DataDownload",
+      "encodingFormat": "text/html",
+      "contentUrl": "https://pintpoint.co.uk/ghost.html"
+    },
+    "mainEntityOfPage": { "@id": "https://pintpoint.co.uk/ghost.html#article" }
+  }
+  </script>
 </head>
 <body>
 
