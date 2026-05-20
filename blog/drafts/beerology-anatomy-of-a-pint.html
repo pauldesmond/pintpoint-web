@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6760611613">
+  <title>Beerology — The Anatomy of a Pint</title>
+  <meta name="description" content="A better way to picture what a beer actually feels like to drink. Eight drinker-experience axes, the palate map sommeliers actually use, and a Victorian anatomical-poster aesthetic." />
+  <link rel="icon" type="image/png" href="../../favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/blog/beerology-anatomy-of-a-pint.html" />
+  <link rel="alternate" type="application/rss+xml" title="PINtPRESS" href="https://pintpoint.co.uk/blog/feed.xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://pintpoint.co.uk/blog/beerology-anatomy-of-a-pint.html" />
+  <meta property="og:title" content="Beerology — The Anatomy of a Pint" />
+  <meta property="og:description" content="Best-of-breed tasting intelligence, dressed in lightly unhinged pseudo-scientific pub language." />
+  <meta property="og:image" content="https://pintpoint.co.uk/screenshots/1.7.radar.png" />
+  <meta property="og:image:alt" content="A Beerology reading card — anatomical-poster aesthetic, eight axes radar, drinker cues, and a one-line gut take on a real pint." />
+  <meta property="fb:app_id" content="1892965231402903" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Beerology — The Anatomy of a Pint" />
+  <meta name="twitter:description" content="A new way of describing a pint: eight drinker-experience axes, drinker cues, and a Beerology verdict. Built so you can decide between four taps in 800ms." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; }
+    h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 24px; margin-bottom: 10px; color: var(--text); }
+    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    p a { color: var(--teal); }
+    .highlight { color: var(--text); font-weight: 600; }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
+    .category.essay { color: #9DA5FF; border: 1px solid rgba(157,165,255,0.4); }
+    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
+    .quote { font-size: 1.2rem; font-weight: 700; color: var(--teal); text-align: center; padding: 32px 0; margin: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); line-height: 1.55; }
+    ul, ol { margin: 16px 0 24px 20px; }
+    li { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 6px; }
+    blockquote { border-left: 2px solid var(--teal); padding: 4px 16px; margin: 20px 0; color: var(--muted); font-style: italic; }
+    code { background: var(--card); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; font-family: 'SF Mono', Menlo, monospace; color: var(--teal); }
+    .draft-note { background: rgba(192,163,64,0.08); border-left: 2px solid #C0A340; color: #C0A340; padding: 12px 16px; margin: 20px 0; font-size: 0.85rem; font-style: italic; }
+    .sources { font-size: 0.85rem; color: #666; margin-top: 32px; padding: 16px 20px; background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; }
+    .sources a { color: var(--muted); text-decoration: underline; }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="../../about-pintpoint.html">About</a>
+      <a href="../../features.html">Features</a>
+      <a href="../../pubs/">Venues</a>
+      <a href="../">Blog</a>
+      <a href="../../screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <p class="meta"><span class="category essay">Essay</span>DRAFT · TBD May 2026 · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
+    <h1>Beerology — <em>The Anatomy of a Pint</em></h1>
+
+    <p class="draft-note">DRAFT skeleton. Section sketches below; prose to be filled out as the worked-card data lands (see "The first reading" section, awaiting a real beer scored honestly with eight numbers and a one-line gut take). Pull-quote candidates and FAQ deferred until the body lands.</p>
+
+    <p class="lede">A better way to picture what a beer actually feels like to drink. Not a rating, not a flavour wheel — a reading system that sits between sensory map, personality test, field guide, useful tasting interface, and (let's be honest) lightly unhinged pseudo-scientific pub language. Built so you can decide between four taps in 800ms with a glance.</p>
+
+    <h2>Where existing flavour vocabulary stops</h2>
+
+    <p>[DRAFT] Four-tap scene at the bar. Untappd tells you what people gave a beer, not what it'll be in your hand. Flavour wheels tell you what category a beer belongs to. Radar charts (including PINtPOINT's own TastePentagon) tell you the magnitude of each sensory axis. Sommelier palate maps walk you through entry, mid-palate, finish, aftertaste — the closest existing framework. But none of them answer the actual decision question: <span class="highlight">what does this beer feel like to drink, entry through finish, in glanceable form?</span> That's the gap Beerology fills.</p>
+
+    <h2>The palate map is real. The tongue map isn't.</h2>
+
+    <p>[DRAFT] Quick honest note. The tongue-zoning diagram from Edwardian textbooks (sweet at the tip, bitter at the back) is debunked — taste receptors are distributed across the whole tongue. What sommeliers and Cicerones actually use is the <em>palate map</em>: the temporal-spatial arc of a sip through the mouth — entry, mid-palate, finish, aftertaste. That IS a real framework that trained tasters reference. Beerology's substance is sound palate-mapping. The Victorian anatomical-poster aesthetic is the visual identity play, not the science: brass-rim chrome and sepia-paper styling. Anatomical-museum-print on the outside, palate-mapping on the inside.</p>
+
+    <h2>The three-level reading</h2>
+
+    <p>[DRAFT] Each Beerology card has three layers. They compose: the first is quantitative, the second is experiential, the third is editorial. None of them works on its own; together they answer the decision question.</p>
+
+    <h3>A. Core shape — eight axes</h3>
+
+    <p>The quantitative spine. Each beer scored 1–10 on:</p>
+
+    <ul>
+      <li><span class="highlight">Body</span> — light to full</li>
+      <li><span class="highlight">Bitterness</span> — soft to sharp</li>
+      <li><span class="highlight">Sweetness</span> — dry to plush</li>
+      <li><span class="highlight">Roast</span> — absent to pronounced</li>
+      <li><span class="highlight">Fruit</span> — clean to expressive</li>
+      <li><span class="highlight">Finish</span> — short to lingering</li>
+      <li><span class="highlight">Softness</span> — crisp to rounded</li>
+      <li><span class="highlight">Complexity</span> — straightforward to layered</li>
+    </ul>
+
+    <p>[DRAFT] Eight axes = octagon, not the five-axis TastePentagon that lives in the app's beer cards. Those are intentionally different scales — the pentagon is a brand-mark silhouette that has to read at thumbnail size; Beerology is a deeper reading that earns its complexity. Both use the same underlying data; both have a place. The pentagon answers "is this kind of beer mine"; Beerology answers "what's it like to drink".</p>
+
+    <h3>B. Drinker cues — what it does to your evening</h3>
+
+    <p>[DRAFT] The genuinely novel layer. Most beer-rating frameworks can't ask this question; the rating-out-of-5 mode is fundamentally about ranking, not character. Drinker cues are short phrases that describe what a beer <em>does</em> rather than what it <em>contains</em>:</p>
+
+    <ul>
+      <li><span class="highlight">first-pint friendly</span> · <span class="highlight">contemplative</span> · <span class="highlight">session-safe</span></li>
+      <li><span class="highlight">meal-proof</span> · <span class="highlight">roast-forward</span> · <span class="highlight">soft landing</span></li>
+      <li><span class="highlight">crisp finish</span> · <span class="highlight">pub-classic</span> · <span class="highlight">show-offy</span></li>
+      <li><span class="highlight">fireside</span> · <span class="highlight">all-nighter risk</span> · <span class="highlight">better on the second</span></li>
+    </ul>
+
+    <p>[DRAFT] Three or four per beer. Not exhaustive — a curation. The phrase that closes the question "what kind of pinting am I signing up for" is more useful than another decimal place on a sensory axis.</p>
+
+    <h3>C. Beerology overlay — the anatomical-poster register</h3>
+
+    <p>[DRAFT] The editorial wrapper. Half-clinical, half-playful. Anatomy labels that act as section headings or callouts on the visual card:</p>
+
+    <ul>
+      <li>first-contact sweetness · mid-palate spread · finish grip</li>
+      <li>roast centre · hop edge · pubability</li>
+      <li>session drift · aftertaste echo</li>
+    </ul>
+
+    <p>[DRAFT] These are the wink-vocabulary. Used sparingly — one or two per card maximum. The visual seriousness of the chrome (Victorian brass, sepia paper, anatomical cross-section styling) is what licenses the editorial-overlay register to be playful without tipping into wankery. The discipline rule: <span class="highlight">the joke layer must never compromise scannability.</span> If a reader can't decide between two pints in 800ms because of the Beerology framing, the format has failed. Decision-helpful first, distinctive second.</p>
+
+    <h2>The first reading</h2>
+
+    <p class="draft-note">[AWAITING beer scores from Paul — Radio City Pride is the first preference per project memory, or any pint drunk recently and scored honestly. Send eight numbers (Body / Bitterness / Sweetness / Roast / Fruit / Finish / Softness / Complexity, 1-10 each) plus a one-line gut take. The worked card slots in here.]</p>
+
+    <p>[PLACEHOLDER for the rendered Beerology card — header bar with the Beerology / Anatomy of a Pint mast, the eight-axis radar chart, the drinker cues row, the "what it feels like" sentence, and the Beerology verdict line. Layout to match the OG image / IG card so the screenshot moment lives in the post.]</p>
+
+    <h2>What this isn't</h2>
+
+    <p>[DRAFT] Three honest disclaimers before anyone overstates what's happening here:</p>
+
+    <ul>
+      <li><span class="highlight">Not new sensory science.</span> The eight axes are descended from generations of beer-writing convention — Cornell, Protz, Mosher, BJCP. Beerology contributes a presentation register, not a research breakthrough.</li>
+      <li><span class="highlight">Not a tongue-map revival.</span> The tongue map is debunked. We know. The anatomical aesthetic is a deliberate Victorian-poster visual joke, never a truth claim.</li>
+      <li><span class="highlight">Not displacing other flavour viz.</span> Flavour wheels answer "what style"; the TastePentagon answers "is this my kind of thing"; Beerology answers "what does drinking it feel like". Three views, one underlying data layer, complementary by design.</li>
+    </ul>
+
+    <p>[DRAFT] What Beerology <em>is</em>: experience legibility. <em>Serious enough to trust, funny enough to remember.</em></p>
+
+    <p class="quote">Best-of-breed tasting intelligence,<br/>dressed in lightly unhinged pseudo-scientific pub language.</p>
+
+    <div class="sources">
+      <strong>Source material:</strong>
+      <ul style="margin:8px 0 0 20px">
+        <li><a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engineering essay this builds on, where the per-beer flavour DNA comes from.</li>
+        <li>[TBC — a Cicerone / sommelier reference for the palate-map framework. Garrett Oliver's <em>Oxford Companion to Beer</em> or similar.]</li>
+        <li>[TBC — a Boak-and-Bailey-style cultural piece on the language of beer description.]</li>
+      </ul>
+    </div>
+
+    <div class="closing" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border)">
+      <a href="https://apps.apple.com/app/pintpoint/id6760611613" style="display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#000;font-weight:700;font-size:1rem;padding:16px 32px;border-radius:14px;text-decoration:none;margin-top:32px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download PINtPOINT
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="../../index.html">Home</a>
+      <a href="../../features.html">Features</a>
+      <a href="../../screenshots.html">Screenshots</a>
+      <a href="../../how-to-find-beer-near-you.html">How to find beer near you</a>
+      <a href="../../vs-untappd.html">vs Untappd</a>
+      <a href="../../vs-real-ale-finder.html">vs Real Ale Finder</a>
+      <a href="../../privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+</body>
+</html>
