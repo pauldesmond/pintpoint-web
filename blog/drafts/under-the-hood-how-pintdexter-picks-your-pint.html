@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6760611613">
+  <title>Under the Hood: How PINtDEXTER Picks Your Pint</title>
+  <meta name="description" content="The engineering follow-up to PINtPOINT's beer-recommender essay. Four layers, per-beer LLM-inferred flavour DNA, and the Dutch pale lager that exposed the bug." />
+  <link rel="icon" type="image/png" href="../../favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/blog/under-the-hood-how-pintdexter-picks-your-pint.html" />
+  <link rel="alternate" type="application/rss+xml" title="PINtPRESS" href="https://pintpoint.co.uk/blog/feed.xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://pintpoint.co.uk/blog/under-the-hood-how-pintdexter-picks-your-pint.html" />
+  <meta property="og:title" content="Under the Hood: How PINtDEXTER Picks Your Pint" />
+  <meta property="og:description" content="The catalogue isn't ratings. It's content features. And the LLM did the labelling." />
+  <meta property="og:image" content="https://pintpoint.co.uk/screenshots/1.7.radar.png" />
+  <meta property="og:image:alt" content="Two beer flavour pentagons of the same declared style, showing different shapes — the per-beer DNA the recommender now uses." />
+  <meta property="fb:app_id" content="1892965231402903" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Under the Hood: How PINtDEXTER Picks Your Pint" />
+  <meta name="twitter:description" content="Why PINtPOINT skipped collaborative filtering and built a content-first recommender on top of LLM-inferred per-beer flavour DNA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Under the Hood: How PINtDEXTER Picks Your Pint",
+    "description": "The engineering follow-up to PINtPOINT's beer-recommender essay. Four layers, per-beer LLM-inferred flavour DNA, and the Dutch pale lager that exposed the bug.",
+    "author": { "@type": "Person", "name": "Sophie Ro", "url": "https://pintpoint.co.uk/about-pintpoint.html", "sameAs": ["https://www.linkedin.com/in/sophie-roberts-119ba8205/", "https://x.com/sophiero84", "https://instagram.com/pint_point", "https://www.tiktok.com/@pintpoint84", "https://www.youtube.com/@SophieRo-l5h", "https://www.reddit.com/user/SophieRo_"] },
+    "publisher": { "@id": "https://pintpoint.co.uk/#organization" },
+    "datePublished": "2026-05-20",
+    "url": "https://pintpoint.co.uk/blog/under-the-hood-how-pintdexter-picks-your-pint.html",
+    "image": "https://pintpoint.co.uk/screenshots/1.7.radar.png",
+    "mainEntityOfPage": "https://pintpoint.co.uk/blog/under-the-hood-how-pintdexter-picks-your-pint.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pintpoint.co.uk/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://pintpoint.co.uk/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Under the Hood: How PINtDEXTER Picks Your Pint" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is content-based recommendation and why does PINtPOINT use it?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A content-based recommender scores items by their own features rather than by which other users liked them. For beer, the features are the 6-axis flavour DNA (hoppy, bitter, sweet, fruity, roast, tart) plus body, fermentation family, and ABV. PINtPOINT extracts these features per beer with a small LLM that reads the beer's name, brewery, declared style and ABV — meaning a brand-new release from a tiny brewery has a usable shape on day one, before any user has rated it." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why not just use collaborative filtering like other beer recommenders?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Collaborative filtering needs a dense user-by-beer rating matrix to work. Beer catalogues are heavy-tailed: a few hundred famous beers collect most ratings, the long tail collects almost none. Cold-start is brutal both for new users and for new beers. A content-based recommender sidesteps that — the beer's features come from text the LLM can read, not from waiting for community ratings to accumulate." }
+      },
+      {
+        "@type": "Question",
+        "name": "What are PINtDEXTER's four layers?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override with explicit sliders across 13 style categories (TUNeDEXTER). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 is the availability filter that scores those features against the live tap list at venues near the user." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the fermentation-family override?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Two beers with similar flavour numbers can taste fundamentally different if one is an ale and one is a lager — yeast character, finish dryness, and clean-versus-estery profile diverge sharply across fermentation families. PINtDEXTER applies a 0.5x penalty to cross-family matches. The family was originally derived from the beer's declared style; that broke when a beer's style was wrong (Amstel labelled 'Pale Ale' but actually a pale lager). The LLM now scores fermentation family directly per beer, overriding the style-derived value when they disagree." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does it cost to score the whole catalogue with an LLM?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Roughly £0.0025 per beer at current Haiku 4.5 pricing. PINtPOINT's catalogue of around 12,000 beers costs about £30 to score end-to-end, and the result is cached forever — re-scoring only fires when the schema changes or a row is deleted. That's a price point at which content-based recommendation stops being an academic alternative and becomes the obvious default." }
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; }
+    h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 24px; margin-bottom: 10px; color: var(--text); }
+    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    p a { color: var(--teal); }
+    .highlight { color: var(--text); font-weight: 600; }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
+    .category.essay { color: #9DA5FF; border: 1px solid rgba(157,165,255,0.4); }
+    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
+    .quote { font-size: 1.2rem; font-weight: 700; color: var(--teal); text-align: center; padding: 32px 0; margin: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); line-height: 1.55; }
+    ul, ol { margin: 16px 0 24px 20px; }
+    li { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 6px; }
+    blockquote { border-left: 2px solid var(--teal); padding: 4px 16px; margin: 20px 0; color: var(--muted); font-style: italic; }
+    code { background: var(--card); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; font-family: 'SF Mono', Menlo, monospace; color: var(--teal); }
+    .sources { font-size: 0.85rem; color: #666; margin-top: 32px; padding: 16px 20px; background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; }
+    .sources a { color: var(--muted); text-decoration: underline; }
+    .faq { margin-top: 48px; }
+    .faq h2 { margin-bottom: 24px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-item summary { font-size: 1rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--teal); }
+    .faq-item[open] summary::after { content: '\2212'; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item p { margin-top: 10px; }
+    .cta { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; margin-top: 32px; }
+    .cta:hover { opacity: 0.88; }
+    .closing { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="../../about-pintpoint.html">About</a>
+      <a href="../../features.html">Features</a>
+      <a href="../../pubs/">Venues</a>
+      <a href="../">Blog</a>
+      <a href="../../screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <p class="meta"><span class="category essay">Essay</span>20 May 2026 · Engineering · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
+    <h1>Under the Hood: <em>How PINtDEXTER Picks Your Pint</em></h1>
+
+    <p class="lede">An <a href="beer-recommendation-systems-what-most-get-wrong.html">earlier essay</a> made the argument: predict the pint, not the rating. The follow-up question is how, exactly. This is the engineering version — four layers, the per-beer DNA that drives them, and the Dutch pale "lager" that surfaced the most recent fix.</p>
+
+    <p class="quote">A recommender is only as good as the features <br/>it has about the thing it's recommending.</p>
+
+    <h2>What the first essay didn't say</h2>
+
+    <p>The earlier piece was about the <span class="highlight">user side</span> of the matrix. Sip-or-Skip, Head-to-Head, preferred styles — all of that is how PINtPOINT learns what a drinker likes. It said comparatively little about the other side: how each beer gets a shape the recommender can compare against.</p>
+
+    <p>That side matters more than the user side. A taste profile is useless if the beers themselves are unstructured strings. You can know with great precision that someone wants something bitter and tropical and full-bodied, and still fail to recommend the right pint if all you know about the pint is "Hazy IPA, 6.2%, Cloudwater."</p>
+
+    <h2>The default answer, and why it doesn't work for beer</h2>
+
+    <p>The dominant approach to recommendation in the last fifteen years is <span class="highlight">collaborative filtering</span>: factor a user-by-item rating matrix into low-rank components, and use those components to predict missing ratings. It's the thing Netflix made famous. It's also the architecture under most published beer recommenders — David Smith's <a href="https://www.r-bloggers.com/2013/06/a-beer-recommendation-system-made-with-r/" target="_blank">yhat R prototype in 2013</a>, NYC Data Science's Ninkasi, Ethan Haley's Untappd work, all hybridised variants of the same idea.</p>
+
+    <p>It depends on something craft beer doesn't have: a dense rating matrix. The UK alone releases more than a hundred new beers a week. Most of them never accumulate the rating volume that collaborative filtering needs. Cold start hits twice — once for new users with no history, once for new beers with no community signal. The fallback in both cases is popularity, which is a ranked list of famous things rather than a recommendation.</p>
+
+    <p>There's a second cost rarely talked about: the rating treadmill. Models like this need users to keep rating items, and keep rating recommended items, to refine themselves. The product becomes a labelling job. Drinkers will tolerate that for a while; they won't tolerate it forever, especially when the value back is "the famous beer is famous."</p>
+
+    <h2>The other half of the field, suddenly cheap</h2>
+
+    <p>The alternative to collaborative filtering has always been <span class="highlight">content-based recommendation</span>: score items by their own features, not by which other users liked them. The classic example is Pandora, which paid human musicologists to label every song across hundreds of features before the recommender ever saw them.</p>
+
+    <p>That model was historically prohibitive for catalogues the size of beer. Twelve thousand beers, hand-labelled across eight axes, is months of work and a budget no consumer app can justify. <a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Nishant Kushwaha's 2023 prototype</a> got partway there by mining BeerAdvocate user comments with an LLM and matching extracted attributes against the user's selected preferences — clever, but the features still came from how much the community had already written about a given beer. Cold start in disguise.</p>
+
+    <p>What changed in 2025–2026 is that LLMs got good enough — and cheap enough — to label the <em>beer</em>, not its discussion. Given a beer's name, brewery, declared style and ABV, a small model produces a structured 8-axis profile in about two seconds for around <code>£0.0025</code>. Twelve thousand beers cost roughly thirty quid to score end-to-end, and the result caches forever. Pandora's labelling problem became a script that runs overnight, with no community discourse required.</p>
+
+    <h2>What goes into a beer's DNA</h2>
+
+    <p>Each row in the catalogue gets the following inferred features, plus the ABV and declared style that came from the source data:</p>
+
+    <ul>
+      <li><span class="highlight">Hoppy</span> — aroma and flavour from hops (citrus, pine, tropical, floral). Not bitterness.</li>
+      <li><span class="highlight">Bitter</span> — palate bite from boil hops; the lingering, drying side of hop chemistry.</li>
+      <li><span class="highlight">Sweet</span> — residual sugar, lactose, caramel malt, fruit sweetness.</li>
+      <li><span class="highlight">Fruity</span> — juicy, estery, tropical, stone-fruit. Whether the source is hops, yeast, or adjuncts.</li>
+      <li><span class="highlight">Roast</span> — malt character of any colour: biscuit and toffee at the pale end, coffee and cocoa at the dark end.</li>
+      <li><span class="highlight">Tart</span> — sour or acidic, from wild fermentation or fruit puree.</li>
+      <li><span class="highlight">Body</span> — light, medium, or full.</li>
+      <li><span class="highlight">Fermentation family</span> — ale, lager, mixed, wild, cider, or mead. The one that matters most for cross-style mistakes.</li>
+    </ul>
+
+    <p>Six of those become the visual signature in the app — the <span class="highlight">TastePentagon</span> that appears on a beer's detail card and in Head-to-Head matchups. It's the same data either way; the brand mark is what makes it portable.</p>
+
+    <h2>The four layers, end to end</h2>
+
+    <p>PINtDEXTER stacks four signals. Each answers a different question. Take any one out and recommendations get worse in a different direction.</p>
+
+    <ol>
+      <li><span class="highlight">Preference capture</span> — Sip-or-Skip binary swipes and Head-to-Head pair rounds. Forced choices, not free-form ratings. Output: a soft style profile after about ten interactions.</li>
+      <li><span class="highlight">Sliders (TUNeDEXTER)</span> — the user can take direct control across 13 style categories when the inferred profile is wrong. The app never overrides explicit slider settings; preference learning is suggestion, not law.</li>
+      <li><span class="highlight">Per-beer DNA</span> — the LLM-scored content features above. Independent of any user. Cached per-beer, re-runs only on schema change.</li>
+      <li><span class="highlight">Availability filter</span> — the live tap list at venues near the user. The recommendation is always tied to a pint you can order tonight, not a beer name to screenshot.</li>
+    </ol>
+
+    <p>Layers 1 and 2 are the <em>user</em> side. Layer 3 is the <em>beer</em> side. Layer 4 is the <em>world</em> side. The cross-product is what gets surfaced.</p>
+
+    <h2>The Amstel case</h2>
+
+    <p>Mid-May 2026 a quiet bug surfaced. A drinker whose profile pointed firmly at pale ales was being served Amstel as an 83% match. Amstel is a pale lager, not a pale ale. The mismatch should never have scored that high.</p>
+
+    <p>The trace took about an hour. Amstel had been ingested with <code>style="Pale Ale"</code> — the source data was wrong. PINtDEXTER's cross-family penalty existed and worked correctly, but it relied on a lookup from declared style to fermentation family. Style said "Pale Ale," lookup said "ale," and the penalty for serving a lager to an ale fan never fired. The LLM's <em>own</em> rationale for the beer's flavour profile already read "a mainstream European lager-leaning pale, clean and restrained despite 'Pale Ale' label." The system knew. The recommender wasn't asking.</p>
+
+    <p>The fix is what you'd expect: give the LLM an explicit family axis and use that value in preference to the style-derived one. The override path means the recommender stops trusting the declared style when the LLM disagrees — Amstel now scores correctly, and the same correction propagates to every other beer whose Untappd category drifted (there are a few hundred, scattered through cider-pretending-to-be-fruit-beer and lambic-pretending-to-be-Belgian-ale cases).</p>
+
+    <p>It's a small change that fixes a class of bug, which is the most flattering thing you can say about an engineering change.</p>
+
+    <h2>Why this scales</h2>
+
+    <p>The thing that makes content-based recommendation work for PINtPOINT specifically is the price of LLM feature extraction in 2026. The whole catalogue scores for less than a pub lunch. New beers added by the menu pipeline get scored within a few minutes of ingestion. The recommender has a usable shape for every beer the moment it appears, before any user has rated it.</p>
+
+    <p>The implication is asymmetric: a user-side cold-start problem is solved by ten taps on the first launch. A beer-side cold-start problem is solved by the catalogue pipeline before the user ever sees the beer. Either way, the experience the user gets is "the app already knows enough to be useful" — not "rate things until we have a signal."</p>
+
+    <h2>What we're not claiming</h2>
+
+    <p>Content-based recommenders aren't new. LLM-based feature extraction isn't new — Kushwaha applied that pattern to BeerAdvocate comments in 2023, and live consumer products in the same shape have begun to surface. The flavour axes themselves are descended from generations of beer-writing convention — Cornell, Protz, Mosher, the BJCP guidelines.</p>
+
+    <p>The contribution worth flagging is narrow: feature extraction from the <em>beer's own metadata</em> (name, brewery, declared style, ABV) rather than from community discussion. That removes one more layer of cold-start, because a beer doesn't need to be famous enough to have been written about before it has a recommendation shape. Combined with the four-layer pipeline above, and the venue-bound question the app actually answers — which pint, on which bar, tonight — that's the part that's worth shipping.</p>
+
+    <p class="quote">Most beer recommenders predict ratings.<br/>PINtPOINT picks the pint that's on the bar.</p>
+
+    <div class="faq">
+      <h2>Frequently asked questions</h2>
+      <details class="faq-item">
+        <summary>What is content-based recommendation and why does PINtPOINT use it?</summary>
+        <p>A content-based recommender scores items by their own features rather than by which other users liked them. For beer, the features are the 6-axis flavour DNA (hoppy, bitter, sweet, fruity, roast, tart) plus body, fermentation family, and ABV. PINtPOINT extracts these features per beer with a small LLM that reads the beer's name, brewery, declared style and ABV — meaning a brand-new release from a tiny brewery has a usable shape on day one, before any user has rated it.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Why not just use collaborative filtering like other beer recommenders?</summary>
+        <p>Collaborative filtering needs a dense user-by-beer rating matrix to work. Beer catalogues are heavy-tailed: a few hundred famous beers collect most ratings, the long tail collects almost none. Cold-start is brutal both for new users and for new beers. A content-based recommender sidesteps that — the beer's features come from text the LLM can read, not from waiting for community ratings to accumulate.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What are PINtDEXTER's four layers?</summary>
+        <p>Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override with explicit sliders across 13 style categories (TUNeDEXTER). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 is the availability filter that scores those features against the live tap list at venues near the user.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is the fermentation-family override?</summary>
+        <p>Two beers with similar flavour numbers can taste fundamentally different if one is an ale and one is a lager — yeast character, finish dryness, and clean-versus-estery profile diverge sharply across fermentation families. PINtDEXTER applies a 0.5x penalty to cross-family matches. The family was originally derived from the beer's declared style; that broke when a beer's style was wrong (Amstel labelled "Pale Ale" but actually a pale lager). The LLM now scores fermentation family directly per beer, overriding the style-derived value when they disagree.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How much does it cost to score the whole catalogue with an LLM?</summary>
+        <p>Roughly £0.0025 per beer at current Haiku 4.5 pricing. PINtPOINT's catalogue of around 12,000 beers costs about £30 to score end-to-end, and the result is cached forever — re-scoring only fires when the schema changes or a row is deleted. That's a price point at which content-based recommendation stops being an academic alternative and becomes the obvious default.</p>
+      </details>
+    </div>
+
+    <div class="sources">
+      <strong>Source material and related reading:</strong>
+      <ul style="margin:8px 0 0 20px">
+        <li><a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the earlier PINtPOINT essay this follows up</li>
+        <li><a href="https://www.r-bloggers.com/2013/06/a-beer-recommendation-system-made-with-r/" target="_blank">A Beer Recommendation System Made With R</a> — David Smith / yhat, 2013. Classic collaborative filtering on Beer Advocate.</li>
+        <li><a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Beer Recommendation Engine: Harnessing the Power of LLMs and Embeddings</a> — Nishant Kushwaha, 2023. The closest cousin in the literature: LLM-based feature extraction, but from community comments rather than beer metadata.</li>
+        <li><a href="https://github.com/NittalaAditya/Beer-Recommendation-System" target="_blank">NittalaAditya / Beer-Recommendation-System</a> — student project on sentiment-driven recommendation.</li>
+        <li><a href="https://www.rpubs.com/ebhtra/758377" target="_blank">Ethan Haley — Untappd as a recommender</a> (RPubs, 2021)</li>
+        <li><a href="https://nycdatascience.com/blog/student-works/ninkasi-beer-recommender-system/" target="_blank">NINKASI: Beer Recommender System</a> (NYC Data Science blog, 2020)</li>
+        <li><a href="https://www.tastethis.beer/about" target="_blank">TasteThis.Beer</a> — a 2025 live consumer recommender in the same space; algorithm not publicly described.</li>
+        <li><a href="../features.html">PINtPOINT features</a> — how the four layers surface in the app</li>
+      </ul>
+    </div>
+
+    <div class="closing">
+      <p>If you've been using PINtPOINT, the change you'll notice is small but specific: beers with mis-labelled styles stop scoring high for the wrong people, and brand-new releases get a recommendation shape on day one. The architecture under that is content-first, the labelling work is done by the LLM, and the recommender stays focused on the actual question — which of the pints in front of you is the right one tonight.</p>
+      <a href="https://apps.apple.com/app/pintpoint/id6760611613" class="cta">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download PINtPOINT
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="../../index.html">Home</a>
+      <a href="../../features.html">Features</a>
+      <a href="../../screenshots.html">Screenshots</a>
+      <a href="../../how-to-find-beer-near-you.html">How to find beer near you</a>
+      <a href="../../vs-untappd.html">vs Untappd</a>
+      <a href="../../vs-real-ale-finder.html">vs Real Ale Finder</a>
+      <a href="../../privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+</body>
+</html>
