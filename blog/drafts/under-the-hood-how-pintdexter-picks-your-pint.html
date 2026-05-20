@@ -54,17 +54,17 @@
       {
         "@type": "Question",
         "name": "What if the LLM gets a beer's profile wrong?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Three corrective layers sit on top of the inferred profile. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And every beer's confidence score is exposed in the rationale — low-confidence inferences get scored more conservatively. Mis-extractions still happen but get caught by the architecture rather than escaping into the recommendation silently." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Three corrective layers sit on top of the inferred profile. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And confidence influences scoring — low-signal beers get treated more cautiously in ranking. Mis-extractions still happen but get caught by the architecture rather than escaping into the recommendation silently." }
       },
       {
         "@type": "Question",
         "name": "How quickly does a brand-new beer become recommendable?",
-        "acceptedAnswer": { "@type": "Answer", "text": "PINtPOINT's menu pipeline picks up new beers from venue tap lists within hours of a brewery uploading them. The infer-beer-flavour edge function fires within minutes of ingestion. A new release from a small brewery typically has a usable recommendation shape the same evening it goes on tap, with no waiting for community ratings to accumulate." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Typically same day for venues whose menus PINtPOINT syncs on a daily cadence; for others it depends on when the tap list refreshes next. The point is that the recommendation shape doesn't depend on community ratings accumulating first — once a beer is ingested with style and ABV, the LLM can score it." }
       },
       {
         "@type": "Question",
         "name": "What are PINtDEXTER's four layers?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override with explicit sliders across 13 style categories (TUNeDEXTER). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 is the availability filter that scores those features against the live tap list at venues near the user." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override directly with five flavour sliders plus body and strength (TUNeDEXTER). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 scores those features against what's been pouring recently at venues near the user." }
       },
       {
         "@type": "Question",
@@ -179,9 +179,9 @@
 
     <ol style="margin: 20px 0 28px 24px;">
       <li style="margin-bottom: 14px"><span class="highlight">Preference capture</span> — Sip-or-Skip binary swipes and Head-to-Head pair rounds. Forced choices, not free-form ratings. Output: a soft style profile after about ten interactions.</li>
-      <li style="margin-bottom: 14px"><span class="highlight">Sliders (TUNeDEXTER)</span> — the user can take direct control across 13 style categories when the inferred profile is wrong. The app never overrides explicit slider settings; preference learning is suggestion, not law.</li>
-      <li style="margin-bottom: 14px"><span class="highlight">Per-beer DNA</span> — the LLM-scored content features above. Independent of any user. Cached per beer, re-runs only on schema change.</li>
-      <li><span class="highlight">Availability filter</span> — the live tap list at venues near the user. The recommendation is always tied to a pint you can order tonight, not a beer name to screenshot.</li>
+      <li style="margin-bottom: 14px"><span class="highlight">Sliders (TUNeDEXTER)</span> — the user can take direct control of five flavour sliders plus body and strength when the inferred profile is wrong. The app never overrides explicit slider settings; preference learning is suggestion, not law.</li>
+      <li style="margin-bottom: 14px"><span class="highlight">Per-beer DNA</span> — the LLM-scored content features above. Independent of any user. Cached per beer, re-run only when we explicitly backfill or invalidate.</li>
+      <li><span class="highlight">Availability filter</span> — recent tap-list activity at venues near you, drawn from Untappd's public feeds. The recommendation is grounded in a specific bar's recent pours, not a beer name plucked from a global catalogue.</li>
     </ol>
 
     <p>Layers 1 and 2 are the <em>user</em> side. Layer 3 is the <em>beer</em> side. Layer 4 is the <em>world</em> side. The cross-product is what gets surfaced.</p>
@@ -198,7 +198,7 @@
 
     <h2>What we're not claiming</h2>
 
-    <p>None of this means content-based recommendation is new, or that PINtPOINT invented LLM feature extraction. The contribution is narrower: feature extraction from the beer's own metadata rather than from community discussion, combined with a four-layer pipeline tied to what is actually pouring nearby tonight.</p>
+    <p>None of this means content-based recommendation is new, or that PINtPOINT invented LLM feature extraction. The contribution is narrower: feature extraction from the beer's own metadata rather than from community discussion, combined with a four-layer pipeline tied to what's been pouring recently at venues nearby — not a global catalogue, not a leaderboard.</p>
 
     <p class="quote">Most beer recommenders predict ratings.<br/>PINtPOINT picks the pint that's on the bar.</p>
 
@@ -206,15 +206,15 @@
       <h2>Frequently asked questions</h2>
       <details class="faq-item">
         <summary>What if the LLM gets a beer's profile wrong?</summary>
-        <p>Three corrective layers sit on top. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And every beer's confidence score is exposed in the rationale — low-confidence inferences (no specific signal from name or brewery) get scored more conservatively. Mis-extractions still happen, but they get caught by the architecture rather than escaping into the recommendation silently.</p>
+        <p>Three corrective layers sit on top. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And confidence influences scoring — low-signal beers (no specific cue from name or brewery) get treated more cautiously in ranking. Mis-extractions still happen, but they get caught by the architecture rather than escaping into the recommendation silently.</p>
       </details>
       <details class="faq-item">
         <summary>How quickly does a brand-new beer become recommendable?</summary>
-        <p>The menu pipeline picks up new beers from venue tap lists within hours of a brewery uploading them. The infer-beer-flavour edge function fires within minutes of ingestion. A new release from a small brewery typically has a usable recommendation shape the same evening it goes on tap — no waiting for community ratings to accumulate.</p>
+        <p>Typically same day for venues whose menus we sync on a daily cadence; for others it depends on when their tap list refreshes next. The point is that the recommendation shape doesn't depend on community ratings accumulating first — once a beer is ingested with style and ABV, the LLM can score it.</p>
       </details>
       <details class="faq-item">
         <summary>What are PINtDEXTER's four layers?</summary>
-        <p>Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override with explicit sliders across 13 style categories (TUNeDEXTER). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 is the availability filter that scores those features against the live tap list at venues near the user.</p>
+        <p>Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override directly with five flavour sliders plus body and strength (TUNeDEXTER). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 scores those features against what's been pouring recently at venues near you.</p>
       </details>
       <details class="faq-item">
         <summary>What is the fermentation-family override?</summary>
