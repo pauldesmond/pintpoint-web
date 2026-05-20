@@ -142,9 +142,9 @@
 
     <h2>The default answer, and where it breaks on beer</h2>
 
-    <p>The dominant approach for the last fifteen years is <span class="highlight">collaborative filtering</span> — factor a user-by-item rating matrix and predict missing ratings. Netflix made it famous; the cleanest beer example is <a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">yhat's June 2013 item-item R prototype</a> on 1.5M BeerAdvocate reviews.</p>
+    <p>The dominant approach for the last fifteen years is <span class="highlight">collaborative filtering</span> — factor a user-by-item rating matrix and predict missing ratings. Netflix made it famous; the cleanest beer example is <a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">&#375;hat's June 2013 item-item R prototype</a> on 1.5M BeerAdvocate reviews.</p>
 
-    <p>The yhat post is honest about what makes the approach work. Their worked example pits Fat Tire against Michelob Ultra and Dale's Pale Ale: Fat Tire fans rate Dale's similarly and Michelob lower, and the recommender quantifies the difference. Intuitive — on those three beers. The catch is in the filter: they only considered beers with 500+ reviews, and the demo ran on the 20 most-reviewed beers in the dataset.</p>
+    <p>The &#375;hat post is honest about what makes the approach work. Their worked example pits Fat Tire against Michelob Ultra and Dale's Pale Ale: Fat Tire fans rate Dale's similarly and Michelob lower, and the recommender quantifies the difference. Intuitive — on those three beers. The catch is in the filter: they only considered beers with 500+ reviews, and the demo ran on the 20 most-reviewed beers in the dataset.</p>
 
     <p>That threshold isn't a footnote, it's the design speaking. Collaborative filtering needs density. The UK alone releases more than a hundred new beers a week, and most never accumulate that volume. Cold start hits twice — new users have no history, new beers have no community signal — and the fallback in both cases is popularity, which is a ranked list of famous things rather than a recommendation.</p>
 
@@ -152,7 +152,7 @@
 
     <p>The alternative is <span class="highlight">content-based recommendation</span>: score items by their own features. Pandora's the canonical version — paid musicologists labelling every song before the recommender saw it. Beautiful in theory, historically prohibitive for a catalogue the size of beer.</p>
 
-    <p>There's a quiet ten-year arc worth naming. The yhat post said, of the BeerAdvocate review text: <em>"the text does provide some excellent opportunities for analysis, we're going to focus only on the ratings."</em> They threw it away. A decade later, <a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Nishant Kushwaha's 2023 prototype</a> went back and did exactly the analysis they'd skipped — feeding the review text through an LLM to extract attributes per beer. Clever, but the features still depended on how much the community had written about the beer. Cold start in disguise.</p>
+    <p>There's a quiet ten-year arc worth naming. The &#375;hat post said, of the BeerAdvocate review text: <em>"the text does provide some excellent opportunities for analysis, we're going to focus only on the ratings."</em> They threw it away. A decade later, <a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Nishant Kushwaha's 2023 prototype</a> went back and did exactly the analysis they'd skipped — feeding the review text through an LLM to extract attributes per beer. Clever, but the features still depended on how much the community had written about the beer. Cold start in disguise.</p>
 
     <p>What changed in 2025–2026 is the price of asking the LLM to label the <em>beer</em>, not its discussion. Name, brewery, declared style, ABV in; a structured 8-axis profile out, in about two seconds for around <code>£0.0025</code>. Twelve thousand beers cost roughly thirty quid to score end-to-end, and the result caches forever. Pandora's labelling problem became a script that runs overnight, with no community discourse required.</p>
 
@@ -226,7 +226,7 @@
       <strong>Source material:</strong>
       <ul style="margin:8px 0 0 20px">
         <li><a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the earlier PINtPOINT essay this follows up.</li>
-        <li><a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">A Beer Recommendation System Made With R</a> — David Smith / yhat, June 2013. Item-item collaborative filtering on 1.5M BeerAdvocate reviews; ratings only.</li>
+        <li><a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">A Beer Recommendation System Made With R</a> — David Smith / &#375;hat, June 2013. Item-item collaborative filtering on 1.5M BeerAdvocate reviews; ratings only.</li>
         <li><a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Beer Recommendation Engine: Harnessing the Power of LLMs and Embeddings</a> — Nishant Kushwaha, 2023. LLM-based attribute extraction from community review text.</li>
       </ul>
     </div>
