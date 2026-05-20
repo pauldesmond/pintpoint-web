@@ -147,7 +147,7 @@
 
     <h2>The default answer, and why it stalls on beer</h2>
 
-    <p>The dominant approach for the last fifteen years is <span class="highlight">collaborative filtering</span> — factor a user-by-item rating matrix and predict missing ratings. Netflix made it famous, and most published beer recommenders sit in the same family: <a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">yhat's June 2013 item-item R prototype</a> on 1.5M BeerAdvocate reviews, NYC Data Science's Ninkasi, Ethan Haley's Untappd work.</p>
+    <p>The dominant approach for the last fifteen years is <span class="highlight">collaborative filtering</span> — factor a user-by-item rating matrix and predict missing ratings. Netflix made it famous; the cleanest beer example is <a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">yhat's June 2013 item-item R prototype</a> on 1.5M BeerAdvocate reviews.</p>
 
     <p>The yhat post is honest about what makes the approach work. Their worked example pits Fat Tire against Michelob Ultra and Dale's Pale Ale — Fat Tire fans rate Dale's similarly and Michelob lower, and the recommender quantifies the difference. Intuitive, on those three beers. The catch is in the filter: they only considered beers with 500+ reviews, and the demo ran on the 20 most-reviewed beers in the dataset.</p>
 
@@ -240,16 +240,11 @@
     </div>
 
     <div class="sources">
-      <strong>Source material and related reading:</strong>
+      <strong>Source material:</strong>
       <ul style="margin:8px 0 0 20px">
-        <li><a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the earlier PINtPOINT essay this follows up</li>
-        <li><a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">Recommendation System in R</a> — yhat, 19 June 2013 (Internet Archive). Item-item collaborative filtering on 1.5M BeerAdvocate reviews; similarity = weighted correlation across rating dimensions. Cross-posted on r-bloggers by <a href="https://www.r-bloggers.com/2013/06/a-beer-recommendation-system-made-with-r/" target="_blank">David Smith</a> the following week.</li>
-        <li><a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Beer Recommendation Engine: Harnessing the Power of LLMs and Embeddings</a> — Nishant Kushwaha, 2023. The closest cousin in the literature: LLM-based feature extraction, but from community comments rather than beer metadata.</li>
-        <li><a href="https://github.com/NittalaAditya/Beer-Recommendation-System" target="_blank">NittalaAditya / Beer-Recommendation-System</a> — student project on sentiment-driven recommendation.</li>
-        <li><a href="https://www.rpubs.com/ebhtra/758377" target="_blank">Ethan Haley — Untappd as a recommender</a> (RPubs, 2021)</li>
-        <li><a href="https://nycdatascience.com/blog/student-works/ninkasi-beer-recommender-system/" target="_blank">NINKASI: Beer Recommender System</a> (NYC Data Science blog, 2020)</li>
-        <li><a href="https://www.tastethis.beer/about" target="_blank">TasteThis.Beer</a> — a 2025 live consumer recommender in the same space; algorithm not publicly described.</li>
-        <li><a href="../features.html">PINtPOINT features</a> — how the four layers surface in the app</li>
+        <li><a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">Recommendation System in R</a> — David Smith / yhat, June 2013 (Internet Archive). Item-item collaborative filtering on 1.5M BeerAdvocate reviews; ratings only.</li>
+        <li><a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Beer Recommendation Engine: Harnessing the Power of LLMs and Embeddings</a> — Nishant Kushwaha, 2023. LLM-based attribute extraction from community review text.</li>
+        <li><a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the earlier PINtPOINT essay this follows up.</li>
       </ul>
     </div>
 
