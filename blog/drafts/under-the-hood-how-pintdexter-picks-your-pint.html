@@ -54,7 +54,7 @@
       {
         "@type": "Question",
         "name": "What if the LLM gets a beer's profile wrong?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Three corrective layers run on top of the inferred profile. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And every beer's confidence score is exposed in the rationale — low-confidence inferences get scored more conservatively. Mis-extractions still happen but get caught by the architecture rather than escaping into the recommendation silently." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Three corrective layers sit on top of the inferred profile. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And every beer's confidence score is exposed in the rationale — low-confidence inferences get scored more conservatively. Mis-extractions still happen but get caught by the architecture rather than escaping into the recommendation silently." }
       },
       {
         "@type": "Question",
@@ -70,11 +70,6 @@
         "@type": "Question",
         "name": "What is the fermentation-family override?",
         "acceptedAnswer": { "@type": "Answer", "text": "Two beers with similar flavour numbers can taste fundamentally different if one is an ale and one is a lager — yeast character, finish dryness, and clean-versus-estery profile diverge sharply across fermentation families. PINtDEXTER applies a 0.5x penalty to cross-family matches. The family was originally derived from the beer's declared style; that broke when a beer's style was wrong (Amstel labelled 'Pale Ale' but actually a pale lager). The LLM now scores fermentation family directly per beer, overriding the style-derived value when they disagree." }
-      },
-      {
-        "@type": "Question",
-        "name": "How much does it cost to score the whole catalogue with an LLM?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Roughly £0.0025 per beer at current Haiku 4.5 pricing. PINtPOINT's catalogue of around 12,000 beers costs about £30 to score end-to-end, and the result is cached forever — re-scoring only fires when the schema changes or a row is deleted. That's a price point at which content-based recommendation stops being an academic alternative and becomes the obvious default." }
       }
     ]
   }
@@ -141,15 +136,15 @@
     <p class="meta"><span class="category essay">Essay</span>20 May 2026 · Engineering · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
     <h1>Under the Hood: <em>How PINtDEXTER Picks Your Pint</em></h1>
 
-    <p class="lede">An <a href="beer-recommendation-systems-what-most-get-wrong.html">earlier essay</a> argued the case for predicting the pint rather than the rating. That piece was about the user side of the recommender — how PINtPOINT learns what you like. This one is the other side: how each beer gets a shape worth recommending. Four layers, a per-beer DNA, and the misclassified pale lager that surfaced the most recent fix.</p>
+    <p class="lede">An <a href="beer-recommendation-systems-what-most-get-wrong.html">earlier essay</a> argued for predicting the pint rather than the rating. That piece was about the user side of the recommender — how PINtPOINT learns what you like. This one is the other side: how each beer gets a shape worth recommending. It comes down to four layers, a per-beer DNA, and the misclassified pale lager that exposed the most recent fix.</p>
 
     <p class="quote">A recommender is only as good as what it knows about the thing it's recommending.</p>
 
-    <h2>The default answer, and why it stalls on beer</h2>
+    <h2>The default answer, and where it breaks on beer</h2>
 
     <p>The dominant approach for the last fifteen years is <span class="highlight">collaborative filtering</span> — factor a user-by-item rating matrix and predict missing ratings. Netflix made it famous; the cleanest beer example is <a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">yhat's June 2013 item-item R prototype</a> on 1.5M BeerAdvocate reviews.</p>
 
-    <p>The yhat post is honest about what makes the approach work. Their worked example pits Fat Tire against Michelob Ultra and Dale's Pale Ale — Fat Tire fans rate Dale's similarly and Michelob lower, and the recommender quantifies the difference. Intuitive, on those three beers. The catch is in the filter: they only considered beers with 500+ reviews, and the demo ran on the 20 most-reviewed beers in the dataset.</p>
+    <p>The yhat post is honest about what makes the approach work. Their worked example pits Fat Tire against Michelob Ultra and Dale's Pale Ale: Fat Tire fans rate Dale's similarly and Michelob lower, and the recommender quantifies the difference. Intuitive — on those three beers. The catch is in the filter: they only considered beers with 500+ reviews, and the demo ran on the 20 most-reviewed beers in the dataset.</p>
 
     <p>That threshold isn't a footnote, it's the design speaking. Collaborative filtering needs density. The UK alone releases more than a hundred new beers a week, and most never accumulate that volume. Cold start hits twice — new users have no history, new beers have no community signal — and the fallback in both cases is popularity, which is a ranked list of famous things rather than a recommendation.</p>
 
@@ -157,7 +152,7 @@
 
     <p>The alternative is <span class="highlight">content-based recommendation</span>: score items by their own features. Pandora's the canonical version — paid musicologists labelling every song before the recommender saw it. Beautiful in theory, historically prohibitive for a catalogue the size of beer.</p>
 
-    <p>There's a quiet ten-year arc worth naming. The yhat post said, of the BeerAdvocate review text: <em>"the text does provide some excellent opportunities for analysis, we're going to focus only on the ratings."</em> They threw it away. A decade later, <a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Nishant Kushwaha's 2023 prototype</a> went back and did exactly the analysis they'd skipped — feeding the review text through an LLM to extract attributes per beer. Clever, but the features still depended on how much the community had written about each beer. Cold start in disguise.</p>
+    <p>There's a quiet ten-year arc worth naming. The yhat post said, of the BeerAdvocate review text: <em>"the text does provide some excellent opportunities for analysis, we're going to focus only on the ratings."</em> They threw it away. A decade later, <a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Nishant Kushwaha's 2023 prototype</a> went back and did exactly the analysis they'd skipped — feeding the review text through an LLM to extract attributes per beer. Clever, but the features still depended on how much the community had written about the beer. Cold start in disguise.</p>
 
     <p>What changed in 2025–2026 is the price of asking the LLM to label the <em>beer</em>, not its discussion. Name, brewery, declared style, ABV in; a structured 8-axis profile out, in about two seconds for around <code>£0.0025</code>. Twelve thousand beers cost roughly thirty quid to score end-to-end, and the result caches forever. Pandora's labelling problem became a script that runs overnight, with no community discourse required.</p>
 
@@ -182,10 +177,10 @@
 
     <p>PINtDEXTER stacks four signals. Each answers a different question. Take any one out and recommendations get worse in a different direction.</p>
 
-    <ol>
-      <li><span class="highlight">Preference capture</span> — Sip-or-Skip binary swipes and Head-to-Head pair rounds. Forced choices, not free-form ratings. Output: a soft style profile after about ten interactions.</li>
-      <li><span class="highlight">Sliders (TUNeDEXTER)</span> — the user can take direct control across 13 style categories when the inferred profile is wrong. The app never overrides explicit slider settings; preference learning is suggestion, not law.</li>
-      <li><span class="highlight">Per-beer DNA</span> — the LLM-scored content features above. Independent of any user. Cached per-beer, re-runs only on schema change.</li>
+    <ol style="margin: 20px 0 28px 24px;">
+      <li style="margin-bottom: 14px"><span class="highlight">Preference capture</span> — Sip-or-Skip binary swipes and Head-to-Head pair rounds. Forced choices, not free-form ratings. Output: a soft style profile after about ten interactions.</li>
+      <li style="margin-bottom: 14px"><span class="highlight">Sliders (TUNeDEXTER)</span> — the user can take direct control across 13 style categories when the inferred profile is wrong. The app never overrides explicit slider settings; preference learning is suggestion, not law.</li>
+      <li style="margin-bottom: 14px"><span class="highlight">Per-beer DNA</span> — the LLM-scored content features above. Independent of any user. Cached per beer, re-runs only on schema change.</li>
       <li><span class="highlight">Availability filter</span> — the live tap list at venues near the user. The recommendation is always tied to a pint you can order tonight, not a beer name to screenshot.</li>
     </ol>
 
@@ -197,21 +192,13 @@
 
     <p>The trace took about an hour. Amstel had been ingested with <code>style="Pale Ale"</code> — the source data was wrong. PINtDEXTER's cross-family penalty existed and worked correctly, but it relied on a lookup from declared style to fermentation family. Style said "Pale Ale," lookup said "ale," and the penalty for serving a lager to an ale fan never fired. The LLM's <em>own</em> rationale for the beer's flavour profile already read "a mainstream European lager-leaning pale, clean and restrained despite 'Pale Ale' label." The system knew. The recommender wasn't asking.</p>
 
-    <p>The fix is what you'd expect: give the LLM an explicit family axis and use that value in preference to the style-derived one. The override path means the recommender stops trusting the declared style when the LLM disagrees — Amstel now scores correctly, and the same correction propagates to every other beer whose Untappd category drifted (there are a few hundred, scattered through cider-pretending-to-be-fruit-beer and lambic-pretending-to-be-Belgian-ale cases).</p>
+    <p>The fix was straightforward: give the LLM an explicit family axis and use that value in preference to the style-derived one. The override path means the recommender stops trusting the declared style when the LLM disagrees — Amstel now scores correctly, and the same correction propagates to every other beer whose Untappd category drifted (there are a few hundred, scattered through cider-pretending-to-be-fruit-beer and lambic-pretending-to-be-Belgian-ale cases).</p>
 
     <p>It's a small change that fixes a class of bug, which is the most flattering thing you can say about an engineering change.</p>
 
-    <h2>Why this scales</h2>
-
-    <p>The thing that makes content-based recommendation work for PINtPOINT specifically is the price of LLM feature extraction in 2026. The whole catalogue scores for less than a pub lunch. New beers added by the menu pipeline get scored within a few minutes of ingestion. The recommender has a usable shape for every beer the moment it appears, before any user has rated it.</p>
-
-    <p>The implication is asymmetric: a user-side cold-start problem is solved by ten taps on the first launch. A beer-side cold-start problem is solved by the catalogue pipeline before the user ever sees the beer. Either way, the experience the user gets is "the app already knows enough to be useful" — not "rate things until we have a signal."</p>
-
     <h2>What we're not claiming</h2>
 
-    <p>Content-based recommenders aren't new. LLM-based feature extraction isn't new — Kushwaha applied that pattern to BeerAdvocate comments in 2023, and live consumer products in the same shape have begun to surface. The flavour axes themselves are descended from generations of beer-writing convention — Cornell, Protz, Mosher, the BJCP guidelines.</p>
-
-    <p>The contribution worth flagging is narrow: feature extraction from the <em>beer's own metadata</em> (name, brewery, declared style, ABV) rather than from community discussion. That removes one more layer of cold-start, because a beer doesn't need to be famous enough to have been written about before it has a recommendation shape. Combined with the four-layer pipeline above, and the venue-bound question the app actually answers — which pint, on which bar, tonight — that's the part that's worth shipping.</p>
+    <p>None of this means content-based recommendation is new, or that PINtPOINT invented LLM feature extraction. The contribution is narrower: feature extraction from the beer's own metadata rather than from community discussion, combined with a four-layer pipeline tied to what is actually pouring nearby tonight.</p>
 
     <p class="quote">Most beer recommenders predict ratings.<br/>PINtPOINT picks the pint that's on the bar.</p>
 
@@ -219,7 +206,7 @@
       <h2>Frequently asked questions</h2>
       <details class="faq-item">
         <summary>What if the LLM gets a beer's profile wrong?</summary>
-        <p>Three corrective layers run on top. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And every beer's confidence score is exposed in the rationale — low-confidence inferences (no specific signal from name or brewery) get scored more conservatively. Mis-extractions still happen, but they get caught by the architecture rather than escaping into the recommendation silently.</p>
+        <p>Three corrective layers sit on top. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And every beer's confidence score is exposed in the rationale — low-confidence inferences (no specific signal from name or brewery) get scored more conservatively. Mis-extractions still happen, but they get caught by the architecture rather than escaping into the recommendation silently.</p>
       </details>
       <details class="faq-item">
         <summary>How quickly does a brand-new beer become recommendable?</summary>
@@ -233,18 +220,14 @@
         <summary>What is the fermentation-family override?</summary>
         <p>Two beers with similar flavour numbers can taste fundamentally different if one is an ale and one is a lager — yeast character, finish dryness, and clean-versus-estery profile diverge sharply across fermentation families. PINtDEXTER applies a 0.5x penalty to cross-family matches. The family was originally derived from the beer's declared style; that broke when a beer's style was wrong (Amstel labelled "Pale Ale" but actually a pale lager). The LLM now scores fermentation family directly per beer, overriding the style-derived value when they disagree.</p>
       </details>
-      <details class="faq-item">
-        <summary>How much does it cost to score the whole catalogue with an LLM?</summary>
-        <p>Roughly £0.0025 per beer at current Haiku 4.5 pricing. PINtPOINT's catalogue of around 12,000 beers costs about £30 to score end-to-end, and the result is cached forever — re-scoring only fires when the schema changes or a row is deleted. That's a price point at which content-based recommendation stops being an academic alternative and becomes the obvious default.</p>
-      </details>
     </div>
 
     <div class="sources">
       <strong>Source material:</strong>
       <ul style="margin:8px 0 0 20px">
-        <li><a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">Recommendation System in R</a> — David Smith / yhat, June 2013 (Internet Archive). Item-item collaborative filtering on 1.5M BeerAdvocate reviews; ratings only.</li>
-        <li><a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Beer Recommendation Engine: Harnessing the Power of LLMs and Embeddings</a> — Nishant Kushwaha, 2023. LLM-based attribute extraction from community review text.</li>
         <li><a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the earlier PINtPOINT essay this follows up.</li>
+        <li><a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">A Beer Recommendation System Made With R</a> — David Smith / yhat, June 2013. Item-item collaborative filtering on 1.5M BeerAdvocate reviews; ratings only.</li>
+        <li><a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Beer Recommendation Engine: Harnessing the Power of LLMs and Embeddings</a> — Nishant Kushwaha, 2023. LLM-based attribute extraction from community review text.</li>
       </ul>
     </div>
 
