@@ -53,13 +53,13 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is content-based recommendation and why does PINtPOINT use it?",
-        "acceptedAnswer": { "@type": "Answer", "text": "A content-based recommender scores items by their own features rather than by which other users liked them. For beer, the features are the 6-axis flavour DNA (hoppy, bitter, sweet, fruity, roast, tart) plus body, fermentation family, and ABV. PINtPOINT extracts these features per beer with a small LLM that reads the beer's name, brewery, declared style and ABV — meaning a brand-new release from a tiny brewery has a usable shape on day one, before any user has rated it." }
+        "name": "What if the LLM gets a beer's profile wrong?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Three corrective layers run on top of the inferred profile. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And every beer's confidence score is exposed in the rationale — low-confidence inferences get scored more conservatively. Mis-extractions still happen but get caught by the architecture rather than escaping into the recommendation silently." }
       },
       {
         "@type": "Question",
-        "name": "Why not just use collaborative filtering like other beer recommenders?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Collaborative filtering needs a dense user-by-beer rating matrix to work. Beer catalogues are heavy-tailed: a few hundred famous beers collect most ratings, the long tail collects almost none. Cold-start is brutal both for new users and for new beers. A content-based recommender sidesteps that — the beer's features come from text the LLM can read, not from waiting for community ratings to accumulate." }
+        "name": "How quickly does a brand-new beer become recommendable?",
+        "acceptedAnswer": { "@type": "Answer", "text": "PINtPOINT's menu pipeline picks up new beers from venue tap lists within hours of a brewery uploading them. The infer-beer-flavour edge function fires within minutes of ingestion. A new release from a small brewery typically has a usable recommendation shape the same evening it goes on tap, with no waiting for community ratings to accumulate." }
       },
       {
         "@type": "Question",
@@ -141,27 +141,23 @@
     <p class="meta"><span class="category essay">Essay</span>20 May 2026 · Engineering · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
     <h1>Under the Hood: <em>How PINtDEXTER Picks Your Pint</em></h1>
 
-    <p class="lede">An <a href="beer-recommendation-systems-what-most-get-wrong.html">earlier essay</a> made the argument: predict the pint, not the rating. The follow-up question is how, exactly. This is the engineering version — four layers, the per-beer DNA that drives them, and the misclassified pale lager that surfaced the most recent fix.</p>
+    <p class="lede">An <a href="beer-recommendation-systems-what-most-get-wrong.html">earlier essay</a> argued the case for predicting the pint rather than the rating. That piece was about the user side of the recommender — how PINtPOINT learns what you like. This one is the other side: how each beer gets a shape worth recommending. Four layers, a per-beer DNA, and the misclassified pale lager that surfaced the most recent fix.</p>
 
     <p class="quote">A recommender is only as good as what it knows about the thing it's recommending.</p>
-
-    <h2>What the first essay didn't say</h2>
-
-    <p>The earlier piece was about the <span class="highlight">user side</span> of the matrix. Sip-or-Skip, Head-to-Head, preferred styles — how PINtPOINT learns what a drinker likes. It said comparatively little about the other side: how each beer gets a shape the recommender can compare against. A taste profile is useless if the beers themselves are unstructured strings. Knowing precisely that someone wants something bitter, tropical and full-bodied doesn't help if all the catalogue tells you about the candidate pint is "Hazy IPA, 6.2%, Cloudwater."</p>
 
     <h2>The default answer, and why it stalls on beer</h2>
 
     <p>The dominant approach for the last fifteen years is <span class="highlight">collaborative filtering</span> — factor a user-by-item rating matrix and predict missing ratings. Netflix made it famous, and most published beer recommenders sit in the same family: <a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">yhat's June 2013 item-item R prototype</a> on 1.5M BeerAdvocate reviews, NYC Data Science's Ninkasi, Ethan Haley's Untappd work.</p>
 
-    <p>The yhat post is honest about what makes the approach work. Their best worked example is Fat Tire versus Michelob Ultra versus Dale's Pale Ale: Fat Tire fans tend to rate Michelob Ultra lower and Dale's Pale Ale similarly, and the recommender quantifies the latter as the better match. Intuitive, vivid, and persuasive — for those three beers. The catch is in their filter: they only considered beers with 500+ reviews. The demo ran on just the 20 most-reviewed beers in the dataset.</p>
+    <p>The yhat post is honest about what makes the approach work. Their worked example pits Fat Tire against Michelob Ultra and Dale's Pale Ale — Fat Tire fans rate Dale's similarly and Michelob lower, and the recommender quantifies the difference. Intuitive, on those three beers. The catch is in the filter: they only considered beers with 500+ reviews, and the demo ran on the 20 most-reviewed beers in the dataset.</p>
 
-    <p>That 500-review threshold isn't a footnote, it's the design speaking. Collaborative filtering needs a dense rating matrix. The UK alone releases more than a hundred new beers a week, and most never accumulate that volume. Cold start hits twice — new users have no history, new beers have no community signal — and the fallback in both cases is popularity, which is a ranked list of famous things rather than a recommendation.</p>
+    <p>That threshold isn't a footnote, it's the design speaking. Collaborative filtering needs density. The UK alone releases more than a hundred new beers a week, and most never accumulate that volume. Cold start hits twice — new users have no history, new beers have no community signal — and the fallback in both cases is popularity, which is a ranked list of famous things rather than a recommendation.</p>
 
     <h2>The other half of the field, suddenly cheap</h2>
 
-    <p>The alternative is <span class="highlight">content-based recommendation</span>: score items by their own features. Pandora's the canonical example — they paid human musicologists to label every song across hundreds of axes before the recommender ever saw them. Beautiful in theory, prohibitive in practice for a catalogue the size of beer.</p>
+    <p>The alternative is <span class="highlight">content-based recommendation</span>: score items by their own features. Pandora's the canonical version — paid musicologists labelling every song before the recommender saw it. Beautiful in theory, historically prohibitive for a catalogue the size of beer.</p>
 
-    <p>There's a quiet ten-year arc here that's worth naming. The yhat post said, of the BeerAdvocate review text: <em>"the text does provide some excellent opportunities for analysis, we're going to focus only on the ratings."</em> They threw it away. A decade later, <a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Nishant Kushwaha's 2023 prototype</a> went back and did exactly the analysis they'd skipped — feeding the review text through an LLM to extract attributes and sentiment per beer. Clever work, but the features still came from how much the community had written about each beer. Cold start in disguise.</p>
+    <p>There's a quiet ten-year arc worth naming. The yhat post said, of the BeerAdvocate review text: <em>"the text does provide some excellent opportunities for analysis, we're going to focus only on the ratings."</em> They threw it away. A decade later, <a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Nishant Kushwaha's 2023 prototype</a> went back and did exactly the analysis they'd skipped — feeding the review text through an LLM to extract attributes per beer. Clever, but the features still depended on how much the community had written about each beer. Cold start in disguise.</p>
 
     <p>What changed in 2025–2026 is the price of asking the LLM to label the <em>beer</em>, not its discussion. Name, brewery, declared style, ABV in; a structured 8-axis profile out, in about two seconds for around <code>£0.0025</code>. Twelve thousand beers cost roughly thirty quid to score end-to-end, and the result caches forever. Pandora's labelling problem became a script that runs overnight, with no community discourse required.</p>
 
@@ -222,12 +218,12 @@
     <div class="faq">
       <h2>Frequently asked questions</h2>
       <details class="faq-item">
-        <summary>What is content-based recommendation and why does PINtPOINT use it?</summary>
-        <p>A content-based recommender scores items by their own features rather than by which other users liked them. An LLM extracts the 8-axis flavour profile from each beer's name, brewery, style and ABV — so a brand-new release from a tiny brewery has a usable shape on day one, before anyone's rated it.</p>
+        <summary>What if the LLM gets a beer's profile wrong?</summary>
+        <p>Three corrective layers run on top. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And every beer's confidence score is exposed in the rationale — low-confidence inferences (no specific signal from name or brewery) get scored more conservatively. Mis-extractions still happen, but they get caught by the architecture rather than escaping into the recommendation silently.</p>
       </details>
       <details class="faq-item">
-        <summary>Why not just use collaborative filtering like other beer recommenders?</summary>
-        <p>Collaborative filtering needs a dense user-by-beer rating matrix. Beer catalogues are heavy-tailed — a few hundred famous beers collect most ratings and the long tail collects almost none — so cold-start is brutal for both new users and new beers. Content-based extraction sidesteps that.</p>
+        <summary>How quickly does a brand-new beer become recommendable?</summary>
+        <p>The menu pipeline picks up new beers from venue tap lists within hours of a brewery uploading them. The infer-beer-flavour edge function fires within minutes of ingestion. A new release from a small brewery typically has a usable recommendation shape the same evening it goes on tap — no waiting for community ratings to accumulate.</p>
       </details>
       <details class="faq-item">
         <summary>What are PINtDEXTER's four layers?</summary>
