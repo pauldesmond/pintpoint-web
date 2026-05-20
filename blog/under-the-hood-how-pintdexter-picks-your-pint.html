@@ -188,13 +188,15 @@
 
     <h2>The Amstel case</h2>
 
-    <p>Mid-May 2026 a quiet bug surfaced. A drinker whose profile pointed firmly at pale ales was being served Amstel as an 83% match. Amstel is a pale lager, not a pale ale. The mismatch should never have scored that high.</p>
+    <p>In mid-May 2026, a quiet bug surfaced. A drinker whose profile pointed firmly at pale ales was being served Amstel as an 83% match. That should never have happened. Amstel is a pale lager, not a pale ale.</p>
 
-    <p>The trace took about an hour. Amstel had been ingested with <code>style="Pale Ale"</code> — the source data was wrong. PINtDEXTER's cross-family penalty existed and worked correctly, but it relied on a lookup from declared style to fermentation family. Style said "Pale Ale," lookup said "ale," and the penalty for serving a lager to an ale fan never fired. The LLM's <em>own</em> rationale for the beer's flavour profile already read "a mainstream European lager-leaning pale, clean and restrained despite 'Pale Ale' label." The system knew. The recommender wasn't asking.</p>
+    <p>The trace took about an hour. The beer had been ingested with its style set to "Pale Ale" — the source data was simply wrong. PINtDEXTER's cross-family penalty existed and worked correctly, but it depended on a lookup from declared style to fermentation family. The style said pale ale. The lookup said ale. So the penalty for serving a lager to an ale drinker never fired.</p>
 
-    <p>The fix was straightforward: give the LLM an explicit family axis and use that value in preference to the style-derived one. The override path means the recommender stops trusting the declared style when the LLM disagrees — Amstel now scores correctly, and the same correction propagates to every other beer whose Untappd category drifted (there are a few hundred, scattered through cider-pretending-to-be-fruit-beer and lambic-pretending-to-be-Belgian-ale cases).</p>
+    <p>The interesting part was that the system already had the right instinct. The LLM's own rationale described the beer as "a mainstream European lager-leaning pale, clean and restrained despite 'Pale Ale' label." The system knew. The recommender wasn't asking.</p>
 
-    <p>It's a small change that fixes a class of bug, which is the most flattering thing you can say about an engineering change.</p>
+    <p>The fix was straightforward: give the LLM an explicit family axis and prefer that value when it disagrees with the style-derived one. Once that override existed, the score corrected immediately — not just for this beer, but for the broader class of category-drift errors scattered through the catalogue, from cider misfiled as fruit beer to lambic misfiled as Belgian ale.</p>
+
+    <p>That is a small change that fixes a whole class of bug, which is about the nicest thing you can say about an engineering fix.</p>
 
     <h2>What we're not claiming</h2>
 
