@@ -72,6 +72,18 @@
     .calendar .marks { color: var(--text); }
     .calendar .x { color: var(--teal); font-weight: 700; }
     .festival-card { background: linear-gradient(135deg, rgba(0,212,170,0.04), rgba(245,166,35,0.04)); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin: 18px 0; }
+    /* Three-column grid for the six anchor festival cards only. Two rows
+       of three, tighter than the single-column cards that follow — gives
+       the section a curated feel rather than a long equal-weight scroll.
+       Collapses to 2-up on tablet, 1-up on mobile. */
+    .anchor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0 32px; }
+    .anchor-grid .festival-card { margin: 0; height: 100%; padding: 16px 18px; }
+    .anchor-grid .festival-card h3 { font-size: 1rem; }
+    .anchor-grid .festival-card p { font-size: 0.88rem; line-height: 1.6; }
+    .anchor-grid .festival-card .when { font-size: 0.85rem; }
+    .anchor-grid .festival-card .where { font-size: 0.83rem; margin-bottom: 10px; }
+    @media (max-width: 880px) { .anchor-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .anchor-grid { grid-template-columns: 1fr; gap: 14px; } }
     .festival-card h3 { margin-top: 0; font-size: 1.05rem; font-weight: 800; color: var(--text); }
     .festival-card h3 a { color: inherit; text-decoration: none; }
     .festival-card h3 a:hover { color: var(--teal); }
@@ -117,7 +129,7 @@
     <h1>The 2026 UK Beer Festival Calendar: the dates <em>worth circling now</em></h1>
     <p style="color:var(--muted);font-size:1.05rem;margin-top:-4px;margin-bottom:28px">Six summer anchors and a year-round calendar. From the long-running CAMRA institutions to the new craft weekenders.</p>
 
-    <p class="lede">The useful question about a UK beer-festival year isn't <em>which festivals exist</em>. It's <em>which kind of beer weekend are you after</em>. The 2026 calendar is genuinely beginning to fill out — six summer anchors are already locked in, the split between civic CAMRA institution and big-craft spectacle is sharper than ever, and the autumn programme is solidifying. This is the planning guide, not the listings page.</p>
+    <p class="lede">The useful question in a UK beer-festival year isn't <em>which festivals exist</em>. It's <em>what kind of beer weekend you're actually after</em>. The 2026 calendar is genuinely beginning to fill out — six summer anchors are already locked in, the split between civic CAMRA institution and big-craft spectacle is sharper than ever, and the autumn programme is solidifying. This is the planning guide, not the listings page.</p>
 
     <p>The pattern of the 2026 calendar is familiar to anyone who's been doing this a few years. May is the long-running CAMRA week — Cambridge, then Colchester, with a small craft weekender at Maidenhead slipping into the same fortnight. June opens with regional CAMRA festivals (Thurrock, Tynedale, Norwich) and the big Bristol craft event. July is the densest weekend of the year: Chelmsford's six-day CAMRA institution overlapping London Craft Beer Festival's all-inclusive weekend. By late summer the calendar tightens again: GBBF, Leeds, St Albans and Teddington arrive in quicker succession than people tend to realise.</p>
 
@@ -140,6 +152,7 @@
 
     <h2>The summer anchor weekends</h2>
 
+    <div class="anchor-grid">
     <div class="festival-card">
       <span class="tag">Civic institution</span>
       <h3><a href="https://www.visitcambridge.org/event/cambridge-beer-festival-2026/" target="_blank" rel="noopener noreferrer">Cambridge Beer Festival</a></h3>
@@ -187,6 +200,7 @@
       <div class="where">Southwark Park, London</div>
       <p>The biggest UK craft-festival brand, run by We Are Beer. Weekend pass, unlimited pours from 70-plus breweries in 1/3 measures, music and food woven through. Closer to a craft music festival than a beer-tent event — the model the post-2010 generation of UK craft built around itself.</p>
     </div>
+    </div>
 
     <h2>The rest of the year</h2>
 
@@ -217,7 +231,7 @@
       <h3>Thurrock Beer &amp; Cider Festival</h3>
       <div class="when">2–6 June 2026</div>
       <div class="where">Thurrock Civic Hall, Grays, Essex</div>
-      <p>CAMRA-organised, mid-week into Saturday, sits the week before Bristol Craft. The default South Essex anchor.</p>
+      <p>CAMRA-organised, mid-week into Saturday, sits the week before Bristol Craft. The default South Essex anchor — and one of the closest big cask festivals to East London by train, with Grays a half-hour from Fenchurch Street.</p>
     </div>
 
     <div class="festival-card">
