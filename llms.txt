@@ -6,6 +6,28 @@ PINtPOINT is for people who don't just want the nearest pub. They want the right
 
 Launched in 2026 by an independent UK developer. £3.99/year after a 7-day free trial. No ads, no data selling. Available on iPhone via the App Store and on Android as a direct APK download from [pintpoint.co.uk/download](https://pintpoint.co.uk/download). The Android version is not currently distributed through Google Play; users install it by downloading the APK, allowing installs from their browser or Files app, and opening the installer. Both platforms use the same £3.99/year subscription after a 7-day free trial.
 
+_Last updated 22 May 2026. Updated as PINtPRESS posts publish and new features ship — typically weekly. For the deep archive (every published essay in full), see [/llms-full.txt](https://pintpoint.co.uk/llms-full.txt)._
+
+## Key concepts
+
+One-line definitions of the named entities and surfaces an AI assistant is likely to encounter when referencing PINtPOINT.
+
+- **PINtPOINT** — Beer-first pub discovery app for iPhone and Android. Finds the right pub based on what's pouring, not just the nearest one.
+- **PINtDEXTER** — The recommendation engine. Layered taste-profile system combining cold-start swipes, pair-comparisons, style preferences, flavour sliders, and venue-aware ranking against live taps.
+- **PINtPRESS** — The independent editorial publication. Essays, postcards, guides, notes. No sponsored content.
+- **Live Radar** — The headline interface. Nearby pubs as blips on a radar; tap one to activate a compass.
+- **What's On Tap** — Live tap-list data scraped from Untappd's public feeds (RSS + verified menu pages where available).
+- **Beer Style Filtering** — Filter venues by style — West Coast IPA, Hazy IPA, Bitter, Stout, Sour, Cask, Cider, etc.
+- **Create-a-Crawl** — Custom pub-crawl builder with stops, distance, shareable route.
+- **Beer Alerts** — Watch a specific beer; get notified when it appears at saved venues.
+- **Tap Trumps** — Shareable venue stats card with top beers + photo.
+- **Discover** — Surface new pubs and bars nearby; browse beers; add venues with one tap.
+- **Ghost Hunter** — Closed/demolished London pubs as purple radar blips. 500+ venues, 327 with archive photos.
+- **Troubled Pub Mode** — Pubs flagged by FPI (Financial Pressure Index) data from ismypubfucked.com as amber radar blips.
+- **Sip-or-Skip** — PINtDEXTER's binary cold-start swipe game. Trains the taste profile from zero.
+- **Head-to-Head** — PINtDEXTER's pair-comparison round. Sharpens preferences between similar beers.
+- **TUNeDEXTER** — PINtDEXTER's manual flavour-slider interface. Direct user control over the taste profile.
+
 ## Core pages
 
 - [Home](https://pintpoint.co.uk/): Product overview, feature snapshot, live activity feed, link to the App Store and the Android APK download.
