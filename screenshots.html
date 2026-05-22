@@ -87,13 +87,17 @@
     }
 
     .gallery {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 40px 24px 80px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
       justify-items: center;
+    }
+    /* 8 images split into 4×2 on desktop, 3-column step on tablet, 2×4 on mobile. */
+    @media (max-width: 1000px) {
+      .gallery { grid-template-columns: repeat(3, 1fr); }
     }
 
     .screenshot {
