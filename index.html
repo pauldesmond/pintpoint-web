@@ -266,6 +266,10 @@
     .sighting-where { font-size: 0.8rem; color: var(--teal); text-align: right; white-space: nowrap; }
     .sighting-time { font-size: 0.7rem; color: #555; margin-top: 2px; }
     .live-feed-empty { text-align: center; color: #555; font-size: 0.9rem; padding: 24px 0; }
+    /* Reserve vertical space for JS-injected content so it doesn't push
+       surrounding sections down when hydrated (CLS-prevention, 2026-05-22). */
+    #sightings-list { min-height: 360px; }
+    #featured-venues { min-height: 56px; }
 
     /* GHOST SECTION */
     .ghost-section {
@@ -426,6 +430,8 @@
     </div>
   </nav>
 
+  <main>
+
   <section class="hero">
   <!-- Radar background rings -->
   <svg class="radar-bg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
@@ -521,7 +527,7 @@
     <h2 class="global-title">A global radar for <span class="global-em">local pints.</span></h2>
     <p class="global-sub">We started in the UK, but the app was built for the global craft beer traveller. The live radar spans 40+ countries and counting, so you never have to settle for a mediocre drink no matter which continent you're on.</p>
 
-    <img src="screenshots/pintpoint-global-venue-coverage-2026.png" class="global-screenshot" alt="PINtPOINT global coverage map showing 1,091+ venues across 40+ countries including USA, Spain, Australia, and Japan. Found with PINtPOINT." loading="lazy" />
+    <img src="screenshots/pintpoint-global-venue-coverage-2026.png" class="global-screenshot" alt="PINtPOINT global coverage map showing 1,091+ venues across 40+ countries including USA, Spain, Australia, and Japan. Found with PINtPOINT." width="1280" height="1266" loading="lazy" decoding="async" />
 
     <div class="global-grid">
       <div class="global-row">
@@ -761,6 +767,8 @@
       el.innerHTML = html;
     })();
   </script>
+
+  </main>
 
   <footer>
     <div class="links">
