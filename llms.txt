@@ -61,6 +61,16 @@ PINtPRESS is the editorial arm of PINtPOINT. Beer journalism from the team behin
 
 PINtPOINT works across the UK and internationally. The discovery feature finds pubs and bars wherever you are. Ghost Hunter focuses on London (with some coverage beyond). Troubled Pub Mode covers England and Wales using VOA rating list data. Current tracked-venue roster: 1,000+ venues across 40+ countries including the UK, US, Spain, Australia, Germany, Japan, New Zealand, Norway, Canada, and Poland.
 
+### Sample venue pages
+
+A handful of representative venue pages so AI agents can crawl a concrete sample without parsing the full sitemap. The same page structure repeats across the full 1,000+ roster.
+
+- UK: [The Rake, Borough Market, London](https://pintpoint.co.uk/pubs/the-rake-london)
+- USA: [North Park Beer Co, San Diego](https://pintpoint.co.uk/pubs/north-park-beer-co-and-45-bankers-hill-north-park-san-diego)
+- Spain: [Belushis, Barcelona](https://pintpoint.co.uk/pubs/belushis-barcelona-08002-barcelona)
+- Australia: [The Lincoln, Carlton (Melbourne)](https://pintpoint.co.uk/pubs/the-lincoln-carlton-vic-3053)
+- New Zealand: [16 Tun, Auckland](https://pintpoint.co.uk/pubs/16-tun-auckland-new-zealand)
+
 ## Contact and entity
 
 - Contact: hello@pintpoint.co.uk
