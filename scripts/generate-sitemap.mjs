@@ -14,6 +14,8 @@ if (!supabaseUrl || !serviceRoleKey) {
 
 const staticUrls = [
   { loc: '/', lastmod: TODAY, changefreq: 'weekly', priority: '1.0' },
+  { loc: '/llms.txt', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
+  { loc: '/llms-full.txt', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
   { loc: '/download', lastmod: TODAY, changefreq: 'weekly', priority: '0.95' },
   { loc: '/pubs/', lastmod: TODAY, changefreq: 'weekly', priority: '0.95' },
   { loc: '/features.html', lastmod: '2026-04-13', changefreq: 'monthly', priority: '0.8' },
