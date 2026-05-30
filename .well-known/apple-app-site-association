@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["8R8B3GR68V.com.pintpoint.app"],
+        "components": [
+          { "/": "/pubs/*" },
+          { "/": "/beers/*" }
+        ]
+      }
+    ]
+  }
+}
