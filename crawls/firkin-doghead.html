@@ -19,7 +19,7 @@
   <meta name="twitter:image" content="https://pintpoint.co.uk/blog/images/firkin-died-as-a-chain.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -135,7 +135,7 @@
     <p>&copy; 2026 PINtPOINT · Find the right pub before the first pint.</p>
   </footer>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     const STOPS = [
       { n: 1,  slug: 'fuzzock',  hist: 'Fuzzock & Firkin', curr: 'Tapping the Admiral', addr: '77 Castle Road, NW1 8SU', role: 'North Ear (Left)', lat: 51.5451, lng: -0.1444, ghost: false, desc: 'Now Tapping the Admiral — independent, well-regarded, real-ale led.' },
@@ -152,31 +152,7 @@
       { n: 12, slug: 'frog',     hist: 'Frog & Firkin', curr: 'Former Frog & Firkin (demolished)', addr: '41 Tavistock Crescent, W11 1AD', role: 'The Temple (loop close)', lat: 51.5203, lng: -0.2034, ghost: true, desc: 'The ultimate ghost stop on the trail: the original building was demolished in 2010. A modern residential block stands here now — no trace of the Frog & Firkin, the Tavistock Arms, or any of the names that came after.' },
     ];
 
-    // Map
-    const map = L.map('map', { zoomControl: true, scrollWheelZoom: false }).setView([51.510, -0.090], 11);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 18,
-    }).addTo(map);
-
-    const latlngs = STOPS.map(s => [s.lat, s.lng]);
-    // Closed loop (1 → ... → 12 → 1) to trace the dog head outline
-    L.polyline([...latlngs, latlngs[0]], { color: '#00D4AA', weight: 2.5, opacity: 0.8 }).addTo(map);
-
-    STOPS.forEach(s => {
-      const icon = L.divIcon({
-        className: 'leaflet-marker-numbered' + (s.ghost ? ' ghost' : ''),
-        html: String(s.n),
-        iconSize: [26, 26],
-      });
-      L.marker([s.lat, s.lng], { icon })
-        .addTo(map)
-        .bindPopup(`<strong>${s.n}. ${s.hist}</strong><br>${s.curr}<br><small>${s.addr}</small>`);
-    });
-
-    map.fitBounds(latlngs, { padding: [30, 30] });
-
-    // Stop cards
+    // Stop cards first — render unconditionally so a map failure can't take them down
     const stopsEl = document.getElementById('stops');
     STOPS.forEach(s => {
       const div = document.createElement('div');
@@ -193,6 +169,46 @@
       `;
       stopsEl.appendChild(div);
     });
+
+    // Map (best-effort; if Leaflet failed to load we still have the stops)
+    try {
+      if (typeof L === 'undefined') throw new Error('Leaflet not loaded');
+      const map = L.map('map', { zoomControl: true, scrollWheelZoom: false }).setView([51.510, -0.090], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+      }).addTo(map);
+
+      const latlngs = STOPS.map(s => [s.lat, s.lng]);
+      // Closed loop (1 → ... → 12 → 1) to trace the dog head outline
+      L.polyline([...latlngs, latlngs[0]], { color: '#00D4AA', weight: 2.5, opacity: 0.8 }).addTo(map);
+
+      STOPS.forEach(s => {
+        const icon = L.divIcon({
+          className: 'leaflet-marker-numbered' + (s.ghost ? ' ghost' : ''),
+          html: String(s.n),
+          iconSize: [26, 26],
+        });
+        L.marker([s.lat, s.lng], { icon })
+          .addTo(map)
+          .bindPopup(`<strong>${s.n}. ${s.hist}</strong><br>${s.curr}<br><small>${s.addr}</small>`);
+      });
+
+      map.fitBounds(latlngs, { padding: [30, 30] });
+    } catch (e) {
+      console.error('Leaflet init failed:', e);
+      const mapEl = document.getElementById('map');
+      if (mapEl) {
+        mapEl.style.display = 'flex';
+        mapEl.style.alignItems = 'center';
+        mapEl.style.justifyContent = 'center';
+        mapEl.style.color = 'var(--muted)';
+        mapEl.style.fontSize = '0.9rem';
+        mapEl.style.padding = '24px';
+        mapEl.style.textAlign = 'center';
+        mapEl.innerHTML = 'Map failed to load — see the 12 stops listed below.';
+      }
+    }
   </script>
 </body>
 </html>
