@@ -207,6 +207,13 @@
       L.polyline([...perimeter, perimeter[0]], { color: '#0d1117', weight: 7, opacity: 0.85 }).addTo(map);
       L.polyline([...perimeter, perimeter[0]], { color: '#00D4AA', weight: 4, opacity: 1 }).addTo(map);
 
+      // The "ear flap" — interior line through Flounder (2) → Flock (3) →
+      // Pheasant (9), as drawn on the 1990 leaflet. Gives the dog a droopy
+      // floppy ear inside the silhouette.
+      const earFlap = [2, 3, 9].map(n => ll(STOPS.find(s => s.n === n)));
+      L.polyline(earFlap, { color: '#0d1117', weight: 7, opacity: 0.85 }).addTo(map);
+      L.polyline(earFlap, { color: '#00D4AA', weight: 4, opacity: 1 }).addTo(map);
+
       // All 12 markers still render — interior eye markers get a small
       // pupil dot inside the numbered circle so they read as eyes.
       STOPS.forEach((s) => {
