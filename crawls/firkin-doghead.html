@@ -85,6 +85,7 @@
     @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 18px 60px; } #map { height: 360px; } .stop { grid-template-columns: 32px 1fr; padding: 14px 16px; } }
     .leaflet-marker-numbered { background: var(--teal); color: #0d1117; border: 2px solid #0d1117; box-shadow: 0 0 0 1px var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.78rem; }
     .leaflet-marker-numbered.ghost { background: var(--ghost); box-shadow: 0 0 0 1px var(--ghost); }
+    .leaflet-marker-numbered.eye { border: 2px solid #ffffff; box-shadow: 0 0 0 2px var(--ghost), 0 0 0 4px rgba(155,89,182,0.35); }
   </style>
 </head>
 <body>
@@ -105,7 +106,7 @@
 
     <div id="map" role="img" aria-label="Map of the 12 Firkin Dog-Head stops in London"></div>
 
-    <p style="font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:-22px;margin-bottom:26px;">Stop order traced from the 1990 leaflet. Phantom (5) — the snout — is shown ~1.5km east of its real Balaam Street position so the dog's nose pokes out the way Bruce drew it. Real addresses on the stop cards below.</p>
+    <p style="font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:-22px;margin-bottom:26px;">Perimeter traced from Bruce's 1990 leaflet — 10 outer stops draw the silhouette, with The Flock (3) and The Pheasant (9) sitting inside as the dog's eyes (which is how Bruce drew them too). The Phoenix (7) is the snout; The Phantom (5) is the back of the head extending east.</p>
 
     <div class="legend">
       <span><span class="dot live"></span>Still a pub (different name)</span>
@@ -146,14 +147,14 @@
     // Without these nudges the literal-GPS rendering is a thin, lopsided oval.
     const STOPS = [
       { n: 1,  slug: 'fuzzock',  hist: 'Fuzzock & Firkin', curr: 'Tapping the Admiral', addr: '77 Castle Road, NW1 8SU', role: 'Left Ear', lat: 51.5451, lng: -0.1444, ghost: false, desc: 'Now Tapping the Admiral — independent, well-regarded, real-ale led.' },
-      { n: 2,  slug: 'flounder', hist: 'Flounder & Firkin', curr: 'The Lamb', addr: '54 Holloway Road, N7 8JL', role: 'Crown', lat: 51.5471, lng: -0.1098, ghost: false, desc: 'Now The Lamb, a traditional-looking free house.' },
-      { n: 3,  slug: 'flock',    hist: 'Flock & Firkin', curr: 'OM (formerly Village 512)', addr: '512 Kingsland Road, E8 4AE', role: 'Crown Dip', lat: 51.5414, lng: -0.0754, ghost: true, desc: 'Once the back of the dog’s head as a Kingsland Road staple. Now a late-night LGBTQ+ venue — the “512” branding above the door is the last visible trace of the Firkin years.' },
+      { n: 2,  slug: 'flounder', hist: 'Flounder & Firkin', curr: 'The Lamb', addr: '54 Holloway Road, N7 8JL', role: 'Forehead', lat: 51.5471, lng: -0.1098, ghost: false, desc: 'Now The Lamb, a traditional-looking free house.' },
+      { n: 3,  slug: 'flock',    hist: 'Flock & Firkin', curr: 'OM (formerly Village 512)', addr: '512 Kingsland Road, E8 4AE', role: 'Eye (right)', lat: 51.5414, lng: -0.0754, ghost: true, interior: true, desc: 'In Bruce’s 1990 drawing, this sits inside the silhouette as one of the dog’s eyes — not on the outer perimeter. Now a late-night LGBTQ+ venue called OM; the “512” branding above the door is the last visible trace of the Firkin years.' },
       { n: 4,  slug: 'falcon',   hist: 'Falcon & Firkin', curr: "The People's Park Tavern", addr: '360 Victoria Park Road, E9 7BT', role: 'Right Ear', lat: 51.5398, lng: -0.0351, ghost: false, desc: 'Bruce’s favourite, per his memoir. Latin motto on the bar mat: “Usque ad mortem bibendum.” Now the People’s Park Tavern, on the edge of Victoria Park.' },
-      { n: 5,  slug: 'phantom',  hist: 'Phantom & Firkin', curr: "Barnardo's Making Connections", addr: '140 Balaam Street, E13 8RD', role: 'The Snout', lat: 51.5235, lng: 0.0244, displayLat: 51.5260, displayLng: 0.0450, ghost: true, desc: 'Where the industrial East End met the punning spirit of the 80s. The Firkin storefront is gone; the building is now a quiet Barnardo’s family-history and adoption office. Furthest-east point on the route — and the dog’s nose.' },
-      { n: 6,  slug: 'fox',      hist: 'Fox & Firkin', curr: 'Fox & Firkin', addr: '316 Lewisham High Street, SE13 6JZ', role: 'The Jowl', lat: 51.4572, lng: -0.0139, ghost: false, desc: 'The only original Firkin still trading under the Firkin name — and the anchor point for the modern Firkin Brewery revival.' },
-      { n: 7,  slug: 'phoenix',  hist: 'Phoenix & Firkin', curr: 'The Phoenix Denmark Hill', addr: 'Windsor Walk, SE5 8BB', role: 'The Snout (Tip)', lat: 51.4688, lng: -0.0887, ghost: false, desc: 'Grand arched station pub, beautifully preserved. The dog’s snout.' },
-      { n: 8,  slug: 'goose',    hist: 'Goose & Firkin', curr: 'The Duke of York', addr: '280 Southwark Bridge Road, SE1 6AY', role: 'The Jawline', lat: 51.4984, lng: -0.0978, ghost: false, desc: 'The first Firkin (1979) — Bruce’s original brewpub. Same corner, re-addressed; the door is now on Southwark Bridge Road instead of Borough Road.' },
-      { n: 9,  slug: 'pheasant', hist: 'Pheasant & Firkin', curr: 'The Old Ivy House', addr: '166 Goswell Road, EC1V 7DT', role: 'Upper Jaw', lat: 51.5268, lng: -0.0988, ghost: false, desc: 'Now The Old Ivy House, a Shepherd Neame pub on the Goswell Road corner.' },
+      { n: 5,  slug: 'phantom',  hist: 'Phantom & Firkin', curr: "Barnardo's Making Connections", addr: '140 Balaam Street, E13 8RD', role: 'Back of Head', lat: 51.5235, lng: 0.0244, ghost: true, desc: 'Where the industrial East End met the punning spirit of the 80s. The Firkin storefront is gone; the building is now a quiet Barnardo’s family-history and adoption office. Furthest-east point on the route — the back of the dog’s head, extending east before the long drop south to Lewisham.' },
+      { n: 6,  slug: 'fox',      hist: 'Fox & Firkin', curr: 'Fox & Firkin', addr: '316 Lewisham High Street, SE13 6JZ', role: 'Lower Jowl', lat: 51.4572, lng: -0.0139, ghost: false, desc: 'The only original Firkin still trading under the Firkin name — and the anchor point for the modern Firkin Brewery revival.' },
+      { n: 7,  slug: 'phoenix',  hist: 'Phoenix & Firkin', curr: 'The Phoenix Denmark Hill', addr: 'Windsor Walk, SE5 8BB', role: 'The Snout', lat: 51.4688, lng: -0.0887, ghost: false, desc: 'Grand arched station pub, beautifully preserved. The sharp southern angle here is what gives the dog its snout.' },
+      { n: 8,  slug: 'goose',    hist: 'Goose & Firkin', curr: 'The Duke of York', addr: '280 Southwark Bridge Road, SE1 6AY', role: 'Lower Jaw', lat: 51.4984, lng: -0.0978, ghost: false, desc: 'The first Firkin (1979) — Bruce’s original brewpub. Same corner, re-addressed; the door is now on Southwark Bridge Road instead of Borough Road.' },
+      { n: 9,  slug: 'pheasant', hist: 'Pheasant & Firkin', curr: 'The Old Ivy House', addr: '166 Goswell Road, EC1V 7DT', role: 'Eye (left)', lat: 51.5268, lng: -0.0988, ghost: false, interior: true, desc: 'The second of Bruce’s interior “eye” points in the 1990 drawing — inside the silhouette rather than on the perimeter. Now The Old Ivy House, a Shepherd Neame pub on the Goswell Road corner.' },
       { n: 10, slug: 'ferret',   hist: 'Ferret & Firkin', curr: 'Former Ferret & Firkin (residential)', addr: '114 Lots Road, SW10 0RJ', role: 'Lower Neck (West)', lat: 51.4795, lng: -0.1802, ghost: true, desc: 'The original Firkin space has been redeveloped into residential housing. The Lots Road Pub & Dining Room operates adjacent under separate ownership if you want a pint nearby.' },
       { n: 11, slug: 'frigate',  hist: 'Frigate & Firkin', curr: 'Former Frigate & Firkin (Kensington West)', addr: '24 Blythe Road, W14 0HA', role: 'Upper Neck (West)', lat: 51.4971, lng: -0.2130, ghost: true, desc: 'The historic Beaconsfield frontage still stands above the door, but the building is now part of the Kensington West residential development. Not a working pub.' },
       { n: 12, slug: 'frog',     hist: 'Frog & Firkin', curr: 'Former Frog & Firkin (demolished)', addr: '41 Tavistock Crescent, W11 1AD', role: 'The Temple (loop close)', lat: 51.5203, lng: -0.2034, ghost: true, desc: 'The ultimate ghost stop on the trail: the original building was demolished in 2010. A modern residential block stands here now — no trace of the Frog & Firkin, the Tavistock Arms, or any of the names that came after.' },
@@ -186,27 +187,31 @@
         maxZoom: 18,
       }).addTo(map);
 
-      // Display coords (real lat/lng with a few "Bruce-route" nudges for the
-      // ears and snout so the dog-head silhouette pops the way the 1990
-      // leaflet drew it). Pin popups still show the real address.
-      const latlngs = STOPS.map(s => [s.displayLat ?? s.lat, s.displayLng ?? s.lng]);
-      // Closed loop (1 → ... → 12 → 1) to trace the dog head outline.
-      // Halo (dark, thick) under the teal line for legibility over varied OSM tiles.
-      L.polyline([...latlngs, latlngs[0]], { color: '#0d1117', weight: 7, opacity: 0.85 }).addTo(map);
-      L.polyline([...latlngs, latlngs[0]], { color: '#00D4AA', weight: 4, opacity: 1 }).addTo(map);
+      // Per-stop display coords (real lat/lng with optional artistic nudges).
+      const ll = s => [s.displayLat ?? s.lat, s.displayLng ?? s.lng];
 
-      STOPS.forEach((s, i) => {
+      // The dog-head silhouette is drawn by the 10 PERIMETER stops only —
+      // Flock (3) and Pheasant (9) are interior "eye" points in Bruce's
+      // 1990 drawing, not on the outer edge.
+      const perimeter = STOPS.filter(s => !s.interior).map(ll);
+      // Halo (dark, thick) under the teal line for legibility over varied OSM tiles.
+      L.polyline([...perimeter, perimeter[0]], { color: '#0d1117', weight: 7, opacity: 0.85 }).addTo(map);
+      L.polyline([...perimeter, perimeter[0]], { color: '#00D4AA', weight: 4, opacity: 1 }).addTo(map);
+
+      // All 12 markers still render — interior eye markers get a small
+      // pupil dot inside the numbered circle so they read as eyes.
+      STOPS.forEach((s) => {
         const icon = L.divIcon({
-          className: 'leaflet-marker-numbered' + (s.ghost ? ' ghost' : ''),
+          className: 'leaflet-marker-numbered' + (s.ghost ? ' ghost' : '') + (s.interior ? ' eye' : ''),
           html: String(s.n),
           iconSize: [26, 26],
         });
-        L.marker(latlngs[i], { icon })
+        L.marker(ll(s), { icon })
           .addTo(map)
-          .bindPopup(`<strong>${s.n}. ${s.hist}</strong><br>${s.curr}<br><small>${s.addr}</small>`);
+          .bindPopup(`<strong>${s.n}. ${s.hist}</strong><br>${s.curr}<br><small>${s.addr}</small>${s.interior ? '<br><em style="color:#9B59B6">interior — dog\'s eye</em>' : ''}`);
       });
 
-      map.fitBounds(latlngs, { padding: [30, 30] });
+      map.fitBounds(STOPS.map(ll), { padding: [30, 30] });
     } catch (e) {
       console.error('Leaflet init failed:', e);
       const mapEl = document.getElementById('map');
