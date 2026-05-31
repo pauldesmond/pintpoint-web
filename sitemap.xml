@@ -79,6 +79,18 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://pintpoint.co.uk/blog/firkin-died-as-a-chain.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/crawls/firkin-doghead.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://pintpoint.co.uk/blog/beer-recommendation-systems-what-most-get-wrong.html</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
