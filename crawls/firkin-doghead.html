@@ -110,7 +110,7 @@
 
     <div id="map" role="img" aria-label="Map of the 12 Firkin Ale Trail stops in London, traced into the shape of a dog's head"></div>
 
-    <p style="font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:-22px;margin-bottom:26px;">Perimeter traced from Bruce's 1990 leaflet. The dog faces west: snout at Frigate (11, Blythe Road W14); back of the neck extending east at Phantom (5, Balaam Street E13); a long drooping jowl dropping south to Fox (6, Lewisham). The Flock (3) and The Pheasant (9) sit inside the silhouette rather than on the perimeter. (Bruce added the dog's eye and ear flap as separate ink details on the leaflet — the eye was a coloured-in atlas page-number — not pubs.)</p>
+    <p style="font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:-22px;margin-bottom:26px;">Perimeter traced from Bruce's 1990 leaflet. The dog faces west: snout at Frigate (11, Blythe Road W14); back of the neck extending east at Phantom (5, Balaam Street E13); a long drooping jowl dropping south to Fox (6, Lewisham). Eleven pubs form the outer perimeter; The Pheasant (9, Goswell Road EC1) is the only one inside the silhouette. (Bruce added the dog's eye and ear flap as separate ink details on the leaflet — the eye was a coloured-in atlas page-number — not pubs.)</p>
 
     <div class="legend">
       <span><span class="dot live"></span>Still a pub (different name)</span>
@@ -119,7 +119,7 @@
 
     <section class="eyes-callout">
       <h2>About the eye</h2>
-      <p>Ten stops draw the perimeter of a west-facing dog. Two others — <strong>The Flock</strong> (Stop 3, now OM on Kingsland Road) and <strong>The Pheasant</strong> (Stop 9, now The Old Ivy House on Goswell Road) — sit inside the silhouette rather than on its edge. The dog's <em>eye</em> on the original leaflet is something else entirely: Bruce drew it by colouring in the "6" of the printed "62" atlas page-number, with the "0" of the page label as the eye socket. Pure pub-leaflet wit, not a pub. Walk all 12 to complete the trail.</p>
+      <p>Eleven pubs form the perimeter of a west-facing dog. The twelfth — <strong>The Pheasant</strong> (Stop 9, now The Old Ivy House on Goswell Road) — is the only one inside the silhouette. The dog's <em>eye</em> on the original leaflet is something else entirely: Bruce drew it by colouring in the "6" of the printed "62" atlas page-number, with the "0" of the page label as the eye socket. Pure pub-leaflet wit, not a pub — though The Pheasant happens to be the pub closest to where he drew it. Walk all 12 to complete the trail.</p>
     </section>
 
     <div class="stops" id="stops"></div>
@@ -157,13 +157,13 @@
     const STOPS = [
       { n: 1,  slug: 'fuzzock',  hist: 'Fuzzock & Firkin', curr: 'Tapping the Admiral', addr: '77 Castle Road, NW1 8SU', role: 'Back of Crown', lat: 51.5451, lng: -0.1444, ghost: false, desc: 'Now Tapping the Admiral — independent, well-regarded, real-ale led.' },
       { n: 2,  slug: 'flounder', hist: 'Flounder & Firkin', curr: 'The Lamb', addr: '54 Holloway Road, N7 8JL', role: 'Top of Head', lat: 51.5471, lng: -0.1098, ghost: false, desc: 'Now The Lamb, a traditional-looking free house.' },
-      { n: 3,  slug: 'flock',    hist: 'Flock & Firkin', curr: 'OM (formerly Village 512)', addr: '512 Kingsland Road, E8 4AE', role: 'Inside the silhouette', lat: 51.5414, lng: -0.0754, ghost: true, interior: true, desc: 'Sits inside the dog-head silhouette rather than on its perimeter — too far north-east of the central cluster to land on the outer line. Now a late-night LGBTQ+ venue called OM; the “512” branding above the door is the last visible trace of the Firkin years.' },
+      { n: 3,  slug: 'flock',    hist: 'Flock & Firkin', curr: 'OM (formerly Village 512)', addr: '512 Kingsland Road, E8 4AE', role: 'Crown', lat: 51.5414, lng: -0.0754, ghost: true, desc: 'Sits on the top of the head perimeter between Flounder (west) and Falcon (east). Now a late-night LGBTQ+ venue called OM; the “512” branding above the door is the last visible trace of the Firkin years.' },
       { n: 4,  slug: 'falcon',   hist: 'Falcon & Firkin', curr: "The People's Park Tavern", addr: '360 Victoria Park Road, E9 7BT', role: 'Back of Head', lat: 51.5398, lng: -0.0351, ghost: false, desc: 'Bruce’s favourite, per his memoir. Latin motto on the bar mat: “Usque ad mortem bibendum.” Now the People’s Park Tavern, on the edge of Victoria Park.' },
       { n: 5,  slug: 'phantom',  hist: 'Phantom & Firkin', curr: "Barnardo's Making Connections", addr: '140 Balaam Street, E13 8RD', role: 'Back of Neck', lat: 51.5235, lng: 0.0244, ghost: true, desc: 'Where the industrial East End met the punning spirit of the 80s. The Firkin storefront is gone; the building is now a quiet Barnardo’s family-history and adoption office. The furthest-east point on the route — the back of the dog’s neck, extending east before the long drop south to Lewisham.' },
       { n: 6,  slug: 'fox',      hist: 'Fox & Firkin', curr: 'Fox & Firkin', addr: '316 Lewisham High Street, SE13 6JZ', role: 'Drooping Jowl', lat: 51.4572, lng: -0.0139, ghost: false, desc: 'The only original Firkin still trading under the Firkin name — and the anchor point for the modern Firkin Brewery revival. The lowest, southernmost point on the route — pulling the dog into a long drooping jowl down to Lewisham.' },
       { n: 7,  slug: 'phoenix',  hist: 'Phoenix & Firkin', curr: 'The Phoenix Denmark Hill', addr: 'Windsor Walk, SE5 8BB', role: 'Throat', lat: 51.4688, lng: -0.0887, ghost: false, desc: 'Grand arched station pub, beautifully preserved. Sits under the dog’s throat on the route.' },
       { n: 8,  slug: 'goose',    hist: 'Goose & Firkin', curr: 'The Duke of York', addr: '280 Southwark Bridge Road, SE1 6AY', role: 'Chest', lat: 51.4984, lng: -0.0978, ghost: false, desc: 'The first Firkin (1979) — Bruce’s original brewpub. Same corner, re-addressed; the door is now on Southwark Bridge Road instead of Borough Road.' },
-      { n: 9,  slug: 'pheasant', hist: 'Pheasant & Firkin', curr: 'The Old Ivy House', addr: '166 Goswell Road, EC1V 7DT', role: 'Inside the silhouette', lat: 51.5268, lng: -0.0988, ghost: false, interior: true, desc: 'Sits inside the dog-head silhouette rather than on its perimeter. Geographically central — the right place for Bruce to add the dog’s eye as a separate graphic on the leaflet next to it (a coloured-in "62" atlas page-number) but the pub itself isn’t the eye. Now The Old Ivy House, a Shepherd Neame pub on the Goswell Road corner.' },
+      { n: 9,  slug: 'pheasant', hist: 'Pheasant & Firkin', curr: 'The Old Ivy House', addr: '166 Goswell Road, EC1V 7DT', role: 'Inside the silhouette', lat: 51.5268, lng: -0.0988, ghost: false, interior: true, desc: 'The only pub that sits inside the dog-head silhouette rather than on its perimeter — geographically central, in the Clerkenwell area. Bruce added the dog’s eye on the leaflet right next to it, by colouring in the "6" of the printed "62" atlas page-number (the "0" as the eye socket). The pub isn’t the eye; it’s just the pub closest to where Bruce drew it. Now The Old Ivy House, a Shepherd Neame pub on the Goswell Road corner.' },
       { n: 10, slug: 'ferret',   hist: 'Ferret & Firkin', curr: 'Former Ferret & Firkin (residential)', addr: '114 Lots Road, SW10 0RJ', role: 'Lower Jaw', lat: 51.4795, lng: -0.1802, ghost: true, desc: 'The original Firkin space has been redeveloped into residential housing. The Lots Road Pub & Dining Room operates adjacent under separate ownership if you want a pint nearby.' },
       { n: 11, slug: 'frigate',  hist: 'Frigate & Firkin', curr: 'Former Frigate & Firkin (Kensington West)', addr: '24 Blythe Road, W14 0HA', role: 'The Snout', lat: 51.4971, lng: -0.2130, ghost: true, desc: 'The historic Beaconsfield frontage still stands above the door, but the building is now part of the Kensington West residential development. Not a working pub. Westernmost point on the route — the tip of the dog’s nose.' },
       { n: 12, slug: 'frog',     hist: 'Frog & Firkin', curr: 'Former Frog & Firkin (demolished)', addr: '41 Tavistock Crescent, W11 1AD', role: 'Top of Muzzle', lat: 51.5203, lng: -0.2034, ghost: true, desc: 'The ultimate ghost stop on the trail: the original building was demolished in 2010. A modern residential block stands here now — no trace of the Frog & Firkin, the Tavistock Arms, or any of the names that came after. Sits above the snout as the top of the dog’s muzzle.' },
@@ -202,14 +202,14 @@
       // The dog-head silhouette is drawn by the 10 PERIMETER stops only —
       // Flock (3) and Pheasant (9) are interior "eye" points in Bruce's
       // 1990 drawing, not on the outer edge.
-      // West-facing dog: perimeter is the 10 outer stops (Bruce's 1990 plot
-      // has the snout at Blythe Road W14 / Frigate, not Windsor Walk).
-      // Walking order around the silhouette: 1 (back-of-crown) → 2 (top) →
-      // 4 (back of head) → 5 (back of neck, far east) → 6 (drooping dewlap
-      // south) → 7 (throat) → 8 (chest) → 10 (lower jaw west) → 11 (snout
-      // tip, far west) → 12 (top of muzzle). Closes back to 1.
-      // Stops 3 (Flock) and 9 (Pheasant) sit inside the silhouette as the
-      // dog's two eyes — interior to the perimeter on Bruce's drawing.
+      // West-facing dog: 11 outer stops form the perimeter; The Pheasant
+      // (9) is the only pub interior to the silhouette.
+      // Walking order around the perimeter: 1 (back-of-crown) → 2 (top) →
+      // 3 (crown, east) → 4 (back of head) → 5 (back of neck, far east) →
+      // 6 (drooping jowl, far south) → 7 (throat) → 8 (chest) → 10 (lower
+      // jaw, west) → 11 (snout tip, far west) → 12 (top of muzzle). Closes
+      // back to 1. Bruce's eye+ear-flap on the leaflet are graphical
+      // annotations (eye = coloured-in "62" atlas page-number), not pubs.
       const perimeter = STOPS.filter(s => !s.interior).map(ll);
       L.polyline([...perimeter, perimeter[0]], { color: '#0d1117', weight: 7, opacity: 0.85 }).addTo(map);
       L.polyline([...perimeter, perimeter[0]], { color: '#00D4AA', weight: 4, opacity: 1 }).addTo(map);
