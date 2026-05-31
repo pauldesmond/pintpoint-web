@@ -180,8 +180,10 @@
       }).addTo(map);
 
       const latlngs = STOPS.map(s => [s.lat, s.lng]);
-      // Closed loop (1 → ... → 12 → 1) to trace the dog head outline
-      L.polyline([...latlngs, latlngs[0]], { color: '#00D4AA', weight: 2.5, opacity: 0.8 }).addTo(map);
+      // Closed loop (1 → ... → 12 → 1) to trace the dog head outline.
+      // Halo (dark, thick) under the teal line for legibility over varied OSM tiles.
+      L.polyline([...latlngs, latlngs[0]], { color: '#0d1117', weight: 7, opacity: 0.85 }).addTo(map);
+      L.polyline([...latlngs, latlngs[0]], { color: '#00D4AA', weight: 4, opacity: 1 }).addTo(map);
 
       STOPS.forEach(s => {
         const icon = L.divIcon({
