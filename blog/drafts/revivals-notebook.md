@@ -4,6 +4,20 @@
 
 ---
 
+## The central editorial inquiry (Paul's own framing, 2026-06-01)
+
+> *"When a beer returns, what exactly has been resurrected — the recipe, the badge, the strength, the package, or just the feeling?"*
+
+That single question is the piece's spine. The 6-tier spectrum below is the technical answer; this question is the lede shape. Use the typology to organise the discussion:
+
+- **The recipe** — actual continuity (Burton Bridge DBA, Jennings core lineup)
+- **The badge** — corporate marketing trading on memory (Carling Black Label, Watney's brand)
+- **The strength** — ABV adjusted up or down for commercial reasons (Belhaven Twisted Thistle, Carling Black Label, Marble Flagship Pale)
+- **The package** — the iconic container (Watney's Party Seven mini-keg / 9-pint can — the OBJECT is the revival, not the beer)
+- **The feeling** — cultural nostalgia, John Bull cartoons, Madchester bees, jingles ("Double Diamond works wonders")
+
+The 6-tier honesty spectrum below maps to these — but Paul's framing is the more readable structure for the actual piece.
+
 ## Working title candidates
 
 - **"These aren't revivals — they're hauntings"**
@@ -303,6 +317,21 @@ Build path (when commissioned):
 The DIY tier is where actual recipe faithfulness lives — mediated by archive research (Pattinson) and brewed by enthusiasts in kettles in sheds.
 
 ---
+
+## Strong candidates to research next (Paul, 2026-06-01)
+
+- **Burton Bridge Burton Ale** — already in notebook as DBA; cross-check if "Burton Ale" and "DBA" are distinct
+- **Marble Flagship Pale** — already noted (3.9 → 3.4 → 3.9 reversal as ABV-customer-revolt anecdote); worth a dedicated case
+- **Cumberland Ale** (Jennings) — already in core lineup, but probably warrants its own beat in the piece
+- **Castle Bitter** (Jennings) — the renamed-but-revived case; classic "not quite the same beer" example
+- **Homebrew clone recipes** — Double Diamond clones, Watney's Red Barrel clones, Party Seven clones from homebrewtalk + Barclay Perkins blog → DIY/Tier-5 evidence
+
+## Additional sources surfaced 2026-06-01 (evening drop)
+
+- **Double Diamond** — CAMRA: https://camra.org.uk/articles/2333 (mentions Allsopp's + **Kirkstall** — Kirkstall Brewery in Leeds may be contract-brewing for Allsopp's; verify); Tesco listing: https://www.tesco.com/groceries/en-GB/products/321966719
+- **Carling Black Label** — Food Manufacture: https://www.foodmanufacture.co.uk/Article/2026/02/26/carling-is-tapping-to-nostalgia-with-the-resurrection-of-its-black-label-brand/
+- **Watney's Party Seven** — European Malt: https://www.europeanmalt.com/2020/10/14/2020-european-malt-company-celebrates-30-years-plus-the-return-of-the-infamous-watneys-party-seven/ (frames the return as 2020 mini-keg revival; may be a separate format release from the Jan 2021 Watney's-brand-co. relaunch we already have)
+- **Belhaven Twisted Thistle** — Belhaven's own page: https://www.belhaven.co.uk/our-beers/belhaven-twisted-thistle-ipa; DRAM Scotland: https://dramscotland.co.uk/2026/02/26/belhaven-relaunches-twisted-thistle/
 
 ## Open research questions
 
