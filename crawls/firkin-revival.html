@@ -24,15 +24,36 @@
   {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
+    "@id": "https://pintpoint.co.uk/crawls/firkin-revival.html#trip",
     "name": "The Firkin Ale Trail II",
     "description": "An 8-stop walking route through the modern Firkin Brewery revival, an estate of south London bars pouring beers brewed at Fox & Firkin Lewisham. Sequel to Bruce's 1990 Firkin Ale Trail.",
     "url": "https://pintpoint.co.uk/crawls/firkin-revival.html",
     "image": "https://pintpoint.co.uk/blog/images/firkin-died-as-a-chain.jpg",
-    "touristType": "Beer enthusiasts, pub crawl historians",
+    "touristType": "Beer enthusiasts, pub crawl historians, Firkin chain fans",
     "itinerary": {
       "@type": "ItemList",
-      "numberOfItems": 8
+      "numberOfItems": 8,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Club Cheek",          "description": "Brixton — sister to Loki" },
+        { "@type": "ListItem", "position": 2, "name": "Mc & Sons Vauxhall",  "description": "Vauxhall outpost pouring Firkin Brewery" },
+        { "@type": "ListItem", "position": 3, "name": "Mc & Sons London",    "description": "Bankside / Borough sister" },
+        { "@type": "ListItem", "position": 4, "name": "Enid Street Tavern",  "description": "Bermondsey trade street" },
+        { "@type": "ListItem", "position": 5, "name": "Craft Beer Junction", "description": "Bermondsey, next door to Enid Street Tavern" },
+        { "@type": "ListItem", "position": 6, "name": "Fox & Firkin",        "description": "The anchor — Firkin Brewery's actual brewery, Lewisham" },
+        { "@type": "ListItem", "position": 7, "name": "Sarah's Place",       "description": "Hither Green sister to Fox & Firkin" },
+        { "@type": "ListItem", "position": 8, "name": "The Rusty Bucket",    "description": "Eltham — easternmost stop" }
+      ]
     }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Firkin hub", "item": "https://pintpoint.co.uk/firkin/" },
+      { "@type": "ListItem", "position": 2, "name": "The Firkin Ale Trail II", "item": "https://pintpoint.co.uk/crawls/firkin-revival.html" }
+    ]
   }
   </script>
   <style>
@@ -125,6 +146,7 @@
       <h3>The story behind the revival</h3>
       <a href="../blog/firkin-died-as-a-chain.html">Firkin died as a chain. Parts of the idea are still alive. →</a>
       <p style="margin-top:14px;font-size:0.9rem;color:var(--text)">Or walk Ale Trail I <a href="/crawls/firkin-doghead.html">— the 1990 dog-head route through Bruce's original 12 →</a></p>
+      <p style="margin-top:10px;font-size:0.88rem;color:var(--muted)">Part of the <a href="/firkin/">Firkin hub on PINtPOINT</a> — article, three Ale Trails and ~40 pubs in one place.</p>
     </div>
   </article>
 
