@@ -37,6 +37,7 @@ Revivals fall on a gradient from naked nostalgia retail to recipe-faithful conti
 | 5 | Scholar / homebrew | Ron Pattinson, Barclay Perkins blog, homebrewtalk.com, beersmith.com | DIY purity |
 | 6a | Continuity by people | Burton Bridge DBA — ex-Ind Coope brewers picking up DBA after Carlsberg killed it (Mar 2015) | Humble continuity |
 | 6b | Continuity by place | Jennings (Cockermouth) — Canfield purchase 2024/25, 100 archive recipes, cask-first | Place-based continuity |
+| 6c | Continuity by region (corporate-licensed hybrid) | Boddingtons (JW Lees brewing under AB InBev licence, late 2025) — Manchester yeast non-negotiable | Hybrid: mega-corporate IP, regional execution |
 
 ### 2. The 2023 UK alcohol duty reform rewrites recipes
 
@@ -68,7 +69,23 @@ The same corporate parent that kills heritage brands repeatedly creates the cond
 
 This is journalism-grade: *kill the brand → let it be rescued by enthusiasts who do it better*.
 
-### 4. The shelf-presence defence (the editorial soft-nuance)
+### 4. Heritage revival as gateway drug for cask beer
+
+The CAMRA piece on the Boddingtons / JW Lees revival makes this argument explicitly. Heritage brands act as a low-risk entry point for younger drinkers who'd otherwise be intimidated by a row of unknown handpulls. The cask renaissance is being seeded by familiar names, not by craft education.
+
+Evidence:
+- **Bass Pale Ale** — +19% growth year-on-year (cited in the Boddingtons piece)
+- **Boddingtons (JW Lees)** — Manchester venues already "not able to keep up with demand"
+- The drinkers ordering it are *"young, fashionable, and about as far away from the cask beer stereotype as you can possibly get"*
+
+> *"For many drinkers, especially younger ones, a row of handpulls featuring a range of products they've never heard of can be incredibly intimidating. In Boddingtons, a brand has been revived that people can easily trust."* — CAMRA What's Brewing, Oct 2025
+
+But: the tension.
+> *"This needs to be considered for what it really is: the world's largest brewer muscling in on bar space typically reserved for the UK's small, independent brewers."*
+
+The same revival that draws new drinkers to cask also crowds smaller breweries off the handpulls. Two true things at once.
+
+### 5. The shelf-presence defence (the editorial soft-nuance)
 
 Paul's quote in his own words:
 > *"The beer is nothing special, but I do love seeing them in supermarkets with original(ish) branding, with the little cartoon fellow from the adverts. It may not be my choice, but I'd rather see that on the shelves than Fosters and Budweiser."*
@@ -160,6 +177,24 @@ The defining quote — humble, honest, the opposite of marketing:
 Drinker reactions confirm continuity:
 > *"smooth, sweet, a little bitter"* / *"absolutely gorgeous bitter, rich and almost sticky on the palate"* — Untappd users
 
+### Boddingtons Bitter (JW Lees) — Tier 6c (corporate-licensed regional hybrid)
+- Strangeways Brewery founded 1778, Boddington name from 1853, sold to Whitbread 1989, acquired by Interbrew (now AB InBev) 2000
+- Recipe changed late 1980s/early 1990s — from straw-pale + sharp astringency (invert sugar + English whole-leaf hops) to browner and less bitter
+- 2004: Strangeways closed. 2012: Hydes-brewed cask version discontinued. Then: nitrokeg + nitrocan only
+- Late 2025: JW Lees announces at AGM it will brew cask Boddingtons under licence from AB InBev
+- Launched at JW Lees' Founders Hall, Manchester
+- **Brewed with JW Lees' OWN house yeast** — *"a 'non-negotiable' part of the licence agreement with AB InBev"* (Michael Lees-Jones, production director)
+- "Soft, bready character, reminiscent of fresh dough" — author of CAMRA piece
+- Timing: end of Oasis world tour 2025; Manchester at cultural peak
+- Source: https://wb.camra.org.uk/2025/10/10/boddingtons-is-back
+
+Honest critic verdict from the CAMRA piece (the whole article is worth lifting from):
+> *"this beer is not reinventing the wheel — there are far more interesting and flavourful pints available, even from JW Lees itself. But I consider the resurgence of Boddingtons is about more than flavour."*
+
+The hybrid model — corporate IP + regional brewing + non-negotiable local yeast — is a NEW pattern. It splits the difference between Tier 2 (corporate marketing revival) and Tier 6 (continuity). The brand is corporate; the execution is regional; the authenticity claim rests on the Manchester yeast culture rather than the original recipe (which is gone — the post-1990s changes broke that line).
+
+The "Cream of Manchester" / Melanie Sykes / *"By 'eck it's gorgeous"* / Friends reference / Madchester era — the brand's cultural saturation is what gives this revival its gravity, more than the liquid does.
+
 ### Jennings Brewery — Tier 6b (continuity by place)
 - Closed Nov 2022 by Carlsberg Marston's Brewing Company
 - Bought by Kurt & Rebecca Canfield (local couple, Cockermouth)
@@ -248,6 +283,9 @@ The DIY tier is where actual recipe faithfulness lives — mediated by archive r
 - [ ] The "government considered nationalising Double Diamond" claim — verify
 - [ ] Get hands on bottles/cans of: Allsopp's Double Diamond (Tesco), Watney's Party Seven, Burton Bridge DBA (Untappd venue check), Belhaven Twisted Thistle, Tennent's 1868 commemorative (if still available)
 - [ ] Carling Black Label — wait until March 16 launch, then sample
+- [ ] **Boddingtons (JW Lees, late 2025)** — get to a Manchester venue or JW Lees Founders Hall to sample
+- [ ] **Bass Pale Ale** — +19% YoY growth cited in the CAMRA piece; check current owner / brewer + recipe-faithfulness story
+- [ ] Truman's Brixton — confirm the NCYC original-yeast story
 
 ---
 
@@ -261,6 +299,10 @@ The DIY tier is where actual recipe faithfulness lives — mediated by archive r
 - *"Universally loathed"* / *"sickly sweet"* / *"full of caramel and sticky"* (Drinks Business commenters on original Double Diamond) — the anti-iconic correction
 - John Bull cartoon + Piccadilly Circus neon — the shelf-presence imagery
 - Drunken captain → preserved beer (Tennent's 1868) — irresistible detail
+- *"The world's largest brewer muscling in on bar space typically reserved for the UK's small, independent brewers"* (CAMRA on Boddingtons / AB InBev) — the corporate-revival tension
+- *"This beer is not reinventing the wheel"* (CAMRA on Boddingtons) — honest critic verdict that doesn't disqualify the revival
+- JW Lees yeast as *"non-negotiable"* clause in the AB InBev licence — the legal-document detail that's editorially gold
+- *"Cream of Manchester"* / *"By 'eck it's gorgeous"* / Melanie Sykes — Boddingtons cultural baggage
 
 ---
 
