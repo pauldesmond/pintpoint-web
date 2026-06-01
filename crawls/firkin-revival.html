@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6760611613">
+  <title>The Firkin Ale Trail II — the modern Firkin Brewery revival, 8 south London bars</title>
+  <meta name="description" content="The modern Firkin Brewery's eight south London bars, anchored at Fox & Firkin in Lewisham. A sequel to Bruce's 1990 Firkin Ale Trail — same brewing-in-the-room ethos, scaled across Brixton, Vauxhall, Bankside, Bermondsey, Lewisham, Hither Green and Eltham." />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/crawls/firkin-revival.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://pintpoint.co.uk/crawls/firkin-revival.html" />
+  <meta property="og:title" content="The Firkin Ale Trail II — the modern Firkin Brewery revival" />
+  <meta property="og:description" content="Eight south London bars pouring beers brewed at Fox & Firkin Lewisham — sequel to Bruce's 1990 Firkin Ale Trail. Brixton, Vauxhall, Bankside, Bermondsey, Lewisham, Hither Green, Eltham." />
+  <meta property="og:image" content="https://pintpoint.co.uk/blog/images/firkin-died-as-a-chain.jpg" />
+  <meta property="fb:app_id" content="1892965231402903" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://pintpoint.co.uk/blog/images/firkin-died-as-a-chain.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../vendor/leaflet/leaflet.min.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": "The Firkin Ale Trail II",
+    "description": "An 8-stop walking route through the modern Firkin Brewery revival, an estate of south London bars pouring beers brewed at Fox & Firkin Lewisham. Sequel to Bruce's 1990 Firkin Ale Trail.",
+    "url": "https://pintpoint.co.uk/crawls/firkin-revival.html",
+    "image": "https://pintpoint.co.uk/blog/images/firkin-died-as-a-chain.jpg",
+    "touristType": "Beer enthusiasts, pub crawl historians",
+    "itinerary": {
+      "@type": "ItemList",
+      "numberOfItems": 8
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --accent: #FF7A45; --ghost: #9B59B6; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 16px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; color: #FFD580; border: 1px solid rgba(255,213,128,0.4); }
+    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 12px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.75; margin-bottom: 32px; }
+    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    p a { color: var(--teal); }
+    #map { height: 480px; width: 100%; border-radius: 12px; border: 1px solid var(--border); margin: 24px 0 36px; background: #1a1f26; }
+    .legend { display: flex; gap: 24px; font-size: 0.85rem; color: var(--muted); margin-bottom: 32px; flex-wrap: wrap; }
+    .legend .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: middle; margin-right: 6px; }
+    .legend .dot.live { background: var(--teal); }
+    .legend .dot.ghost { background: var(--ghost); }
+    .stops { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 0 0 40px; }
+    .stop { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; }
+    .stop .num { font-size: 1.4rem; font-weight: 900; color: var(--teal); line-height: 1.1; }
+    .stop.ghost .num { color: var(--ghost); }
+    .stop .body { min-width: 0; }
+    .stop .role { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+    .stop.ghost .role { color: var(--ghost); }
+    .stop .name { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .stop .historical { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+    .stop .historical em { color: var(--teal); font-style: normal; font-weight: 600; }
+    .stop.ghost .historical em { color: var(--accent); }
+    .stop .addr { font-size: 0.82rem; color: #666; margin-bottom: 10px; }
+    .stop .desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+    .open-app { margin: 40px 0; padding: 24px 28px; background: linear-gradient(135deg, rgba(0,212,170,0.08), rgba(0,212,170,0.02)); border: 1px solid rgba(0,212,170,0.3); border-radius: 12px; }
+    .open-app h2 { font-size: 1.2rem; font-weight: 800; color: var(--teal); margin-bottom: 10px; }
+    .open-app p { font-size: 0.92rem; color: var(--text); margin-bottom: 8px; }
+    .open-app .steps { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+    .eyes-callout { margin: 0 0 32px; padding: 20px 24px; background: linear-gradient(135deg, rgba(155,89,182,0.08), rgba(155,89,182,0.02)); border: 1px solid rgba(155,89,182,0.3); border-radius: 12px; }
+    .eyes-callout h2 { font-size: 1.05rem; font-weight: 800; color: var(--ghost); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .eyes-callout p { font-size: 0.9rem; color: var(--text); margin-bottom: 0; line-height: 1.7; }
+    .eyes-callout strong { color: var(--ghost); }
+    .read-more { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .read-more h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .read-more a { color: var(--teal); font-size: 0.95rem; text-decoration: none; font-weight: 600; }
+    .read-more a:hover { text-decoration: underline; }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 18px 60px; } #map { height: 360px; } .stop { grid-template-columns: 32px 1fr; padding: 14px 16px; } }
+    .leaflet-marker-numbered { background: var(--teal); color: #0d1117; border: 2px solid #0d1117; box-shadow: 0 0 0 1px var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.78rem; }
+    .leaflet-marker-numbered.ghost { background: var(--ghost); box-shadow: 0 0 0 1px var(--ghost); }
+    .leaflet-marker-numbered.eye { border: 2px solid #ffffff; box-shadow: 0 0 0 2px var(--ghost), 0 0 0 4px rgba(155,89,182,0.35); }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../features.html">Features</a>
+      <a href="../pubs/">Venues</a>
+      <a href="../blog/">Blog</a>
+    </div>
+  </nav>
+
+  <article class="content">
+    <p class="meta"><span class="category">Hall of Fame Crawl</span>London · 12 stops · ~30km perimeter</p>
+    <h1>The <em>Firkin Ale Trail II</em></h1>
+    <p class="lede">The Firkin chain officially died on 8 October 1999 when the brewing stopped. The idea didn't. <a href="https://firkinbrewery.com/find-a-bar/" target="_blank" rel="noopener noreferrer">A modern Firkin Brewery operates today from Fox &amp; Firkin in Lewisham</a> — pouring beers across <strong>eight south London bars</strong>, the same brewing-in-the-room ethos at a small-estate scale. This is the sequel to <a href="/crawls/firkin-doghead.html">The Firkin Ale Trail</a> (the 1990 dog-head): same DNA, new chain. Brixton to Eltham, west to east.</p>
+
+    <div id="map" role="img" aria-label="Map of the 8 Firkin Ale Trail II stops across south London, west to east"></div>
+
+    <p style="font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:-22px;margin-bottom:26px;">Walking order west-to-east across south London — ~19km end-to-end, transit-assisted between Surrey Quays and Lewisham. The anchor is Fox &amp; Firkin (Stop 6, Lewisham) where the modern brewing is done; the others pour those beers.</p>
+
+    <div class="stops" id="stops"></div>
+
+    <section class="open-app">
+      <h2>Walk it in the app</h2>
+      <p>Open <strong>PINtPOINT</strong>, tap the radar, then:</p>
+      <p class="steps">Create-a-Crawl → 🏆 Hall of Fame → <strong>The Firkin Ale Trail II</strong> → tap "Start this crawl".</p>
+      <p class="steps">The app will walk you stop-to-stop with directions, mark off stops as you reach them, and show live tap-list info for each pub so you know what Firkin Brewery beer is on before you walk in.</p>
+    </section>
+
+    <div class="read-more">
+      <h3>The story behind the revival</h3>
+      <a href="../blog/firkin-died-as-a-chain.html">Firkin died as a chain. Parts of the idea are still alive. →</a>
+      <p style="margin-top:14px;font-size:0.9rem"><a href="/crawls/firkin-doghead.html">Or walk Ale Trail I — the 1990 dog-head route through Bruce's original 12 →</a></p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="links">
+      <a href="../index.html">PINtPOINT</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT · Find the right pub before the first pint.</p>
+  </footer>
+
+  <script src="../vendor/leaflet/leaflet.min.js"></script>
+  <script>
+    // The Firkin Ale Trail II — modern Firkin Brewery revival's 8 south
+    // London bars. All currently trading. Walking order west-to-east.
+    const STOPS = [
+      { n: 1, slug: 'club-cheek',          curr: 'Club Cheek',           addr: '302-304 Barrington Road, SW9 7JJ',    role: 'Brixton',       lat: 51.463487, lng: -0.107353, desc: "Brixton opener of the modern Firkin trail. Sister venue to Loki, the brewery's EDM-leaning Brixton outpost." },
+      { n: 2, slug: 'mc-sons-vauxhall',    curr: 'Mc & Sons Vauxhall',   addr: '355 Kennington Lane, SE11 5QY',       role: 'Vauxhall',      lat: 51.486184, lng: -0.119571, desc: "Vauxhall outpost of Mc & Sons, pouring Firkin Brewery beers." },
+      { n: 3, slug: 'mc-sons-london',      curr: 'Mc & Sons London',     addr: '160 Union Street, SE1 0LH',           role: 'Bankside',      lat: 51.503819, lng: -0.099775, desc: "Bankside / Borough sister to Mc & Sons Vauxhall." },
+      { n: 4, slug: 'enid-street-tavern',  curr: 'Enid Street Tavern',   addr: '87 Enid Street, SE16 3RA',            role: 'Bermondsey',    lat: 51.497074, lng: -0.071296, desc: "Surrey Quays / Bermondsey trade street. Sits next door to Craft Beer Junction on the same Bermondsey block." },
+      { n: 5, slug: 'craft-beer-junction', curr: 'Craft Beer Junction',  addr: '86 Enid Street, SE16 3RA',            role: 'Bermondsey',    lat: 51.497152, lng: -0.071437, desc: "Bermondsey, next door to Enid Street Tavern. Two stops a few paces apart." },
+      { n: 6, slug: 'fox-firkin',          curr: 'Fox & Firkin',         addr: '316 Lewisham High Street, SE13 6JZ',  role: 'The Anchor',    lat: 51.456902, lng: -0.014288, desc: "The anchor — the only original 1979–2001 Firkin still trading under the Firkin name, and the brewery for the whole modern estate." },
+      { n: 7, slug: 'sarahs-place',        curr: "Sarah's Place",        addr: '214 Hither Green Lane, SE13 6RT',     role: 'Hither Green',  lat: 51.450863, lng: -0.006252, desc: "Hither Green sister pub to Fox & Firkin — just south of the Lewisham anchor." },
+      { n: 8, slug: 'rusty-bucket',        curr: 'The Rusty Bucket',     addr: '11 Court Yard, Eltham, SE9 5PR',      role: 'Eltham',        lat: 51.450369, lng:  0.052166, desc: "Eltham endpoint — easternmost stop on the revival trail." },
+    ];
+
+    // Stop cards first — render unconditionally so a map failure can't take them down
+    const stopsEl = document.getElementById('stops');
+    STOPS.forEach(s => {
+      const div = document.createElement('div');
+      div.className = 'stop';
+      div.innerHTML = `
+        <div class="num">${s.n}</div>
+        <div class="body">
+          <div class="role">${s.role}</div>
+          <div class="name">${s.curr}</div>
+          <div class="addr">${s.addr}</div>
+          <div class="desc">${s.desc}</div>
+        </div>
+      `;
+      stopsEl.appendChild(div);
+    });
+
+    // Map (best-effort; if Leaflet failed to load we still have the stops)
+    try {
+      if (typeof L === 'undefined') throw new Error('Leaflet not loaded');
+      const map = L.map('map', { zoomControl: true, scrollWheelZoom: false }).setView([51.510, -0.090], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+      }).addTo(map);
+
+      // Open walking line west-to-east across south London — not a closed
+      // loop (this is a route, not a silhouette).
+      const ll = s => [s.lat, s.lng];
+      const route = STOPS.map(ll);
+      L.polyline(route, { color: '#0d1117', weight: 7, opacity: 0.85 }).addTo(map);
+      L.polyline(route, { color: '#00D4AA', weight: 4, opacity: 1 }).addTo(map);
+
+      STOPS.forEach((s) => {
+        const icon = L.divIcon({
+          className: 'leaflet-marker-numbered',
+          html: String(s.n),
+          iconSize: [26, 26],
+        });
+        L.marker(ll(s), { icon })
+          .addTo(map)
+          .bindPopup(`<strong>${s.n}. ${s.curr}</strong><br><small>${s.addr}</small>`);
+      });
+
+      map.fitBounds(route, { padding: [30, 30] });
+    } catch (e) {
+      console.error('Leaflet init failed:', e);
+      const mapEl = document.getElementById('map');
+      if (mapEl) {
+        mapEl.style.display = 'flex';
+        mapEl.style.alignItems = 'center';
+        mapEl.style.justifyContent = 'center';
+        mapEl.style.color = 'var(--muted)';
+        mapEl.style.fontSize = '0.9rem';
+        mapEl.style.padding = '24px';
+        mapEl.style.textAlign = 'center';
+        mapEl.innerHTML = 'Map failed to load — see the 12 stops listed below.';
+      }
+    }
+  </script>
+</body>
+</html>
