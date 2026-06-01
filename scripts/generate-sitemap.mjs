@@ -80,6 +80,39 @@ function xmlEscape(value) {
     .replace(/'/g, '&apos;');
 }
 
+// Auto-scan /crawls/*.html — Hall-of-Fame crawl pages live as flat
+// HTML files in the repo. Each file becomes a sitemap entry with its
+// real mtime as lastmod. Saves having to manually update this script
+// every time a new crawl ships.
+async function listCrawlPages() {
+  const { readdir, stat } = await import('node:fs/promises');
+  const crawlsDir = new URL('../crawls/', import.meta.url);
+  let entries;
+  try {
+    entries = await readdir(crawlsDir);
+  } catch (e) {
+    console.warn(`[crawls] readdir failed (${e.code}); skipping crawl-page section`);
+    return [];
+  }
+  const out = [];
+  for (const file of entries) {
+    if (!file.endsWith('.html')) continue;
+    if (file === 'index.html') continue; // would be /crawls/ already
+    let mtime = TODAY;
+    try {
+      const s = await stat(new URL(file, crawlsDir));
+      mtime = s.mtime.toISOString().slice(0, 10);
+    } catch { /* fall through to TODAY */ }
+    out.push({
+      loc: `/crawls/${file}`,
+      lastmod: mtime,
+      changefreq: 'monthly',
+      priority: '0.8',
+    });
+  }
+  return out;
+}
+
 async function fetchVenues() {
   const venues = [];
   for (let offset = 0; ; offset += PAGE_SIZE) {
@@ -207,10 +240,11 @@ function renderUrl({ loc, lastmod, changefreq, priority }) {
   ].join('\n');
 }
 
-const [venues, liveTapCounts, curatedGhosts] = await Promise.all([
+const [venues, liveTapCounts, curatedGhosts, crawlPages] = await Promise.all([
   fetchVenues(),
   fetchLiveTapCountsByVenue(),
   fetchCuratedGhosts(),
+  listCrawlPages(),
 ]);
 const totalVenues = venues.length;
 const indexableVenues = venues.filter(v => (liveTapCounts.get(v.id) ?? 0) >= MIN_LIVE_BEERS);
@@ -241,7 +275,7 @@ const ghostUrls = curatedGhosts
   .filter(Boolean);
 
 const seen = new Set();
-const urls = [...staticUrls, ...venueUrls, ...ghostUrls].filter((url) => {
+const urls = [...staticUrls, ...crawlPages, ...venueUrls, ...ghostUrls].filter((url) => {
   const loc = url.loc.startsWith('http') ? url.loc : `${SITE_URL}${url.loc}`;
   if (seen.has(loc)) return false;
   seen.add(loc);
@@ -259,7 +293,7 @@ const sitemap = [
 
 await import('node:fs/promises').then(({ writeFile }) => writeFile(new URL('../sitemap.xml', import.meta.url), sitemap));
 
-console.log(`Generated sitemap.xml with ${staticUrls.length} static URL(s), ${venueUrls.length} live-venue URL(s), and ${ghostUrls.length} curated ghost URL(s).`);
+console.log(`Generated sitemap.xml with ${staticUrls.length} static URL(s), ${crawlPages.length} crawl-page URL(s), ${venueUrls.length} live-venue URL(s), and ${ghostUrls.length} curated ghost URL(s).`);
 console.log(`Excluded ${totalVenues - indexableVenues.length} live venue(s) with fewer than ${MIN_LIVE_BEERS} live taps in the last ${TAP_FRESHNESS_DAYS} days (of ${totalVenues} total).`);
 const venueUrlInputTotal = venueUrls.length + ghostUrls.length;
 if (uniqueVenueUrlCount !== venueUrlInputTotal) {
