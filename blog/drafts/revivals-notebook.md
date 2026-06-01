@@ -85,7 +85,19 @@ But: the tension.
 
 The same revival that draws new drinkers to cask also crowds smaller breweries off the handpulls. Two true things at once.
 
-### 5. The shelf-presence defence (the editorial soft-nuance)
+### 5. The hop list as honesty diagnostic
+
+Within seconds of reading a revival's spec sheet, the hop list tells you almost everything about whether the brewery is delivering heritage or selling it. Modern American "C-hops" (Citra, Centennial, Columbus, Cascade, Mosaic, Galaxy) are the 2010s craft-IPA palette. Classic English hops (Fuggles, Goldings, Challenger, Bramling Cross, Target, Pilgrim, plus the Central European Celeia / Saaz) are the 19th-and-20th-century British palette. A heritage revival that uses American C-hops is either being honest about reinventing the beer (Tier 2) or pretending the historical anchor is real when it isn't (Tier 3).
+
+| Beer | Hops | Era of hop palette |
+|---|---|---|
+| Allsopp's Double Diamond (claims 1922 inspiration) | Citra, Columbus, Mosaic | 2010s American craft |
+| Jennings core lineup (revival of 1990s recipes) | Fuggles, Goldings, Challenger, Celeia | Classic English |
+| Burton Bridge DBA (continuity from 1976 Ind Coope) | (Burton-Ale style, traditional) | English heritage |
+
+This isn't gatekeeping — modern hops aren't bad. But if a brewery says "as it was in 1922" while using hops that didn't exist commercially until 60 years later, the rhetoric isn't honest. The hop list is the spec-sheet receipt of editorial intent.
+
+### 6. The shelf-presence defence (the editorial soft-nuance)
 
 Paul's quote in his own words:
 > *"The beer is nothing special, but I do love seeing them in supermarkets with original(ish) branding, with the little cartoon fellow from the adverts. It may not be my choice, but I'd rather see that on the shelves than Fosters and Budweiser."*
@@ -195,15 +207,37 @@ The hybrid model — corporate IP + regional brewing + non-negotiable local yeas
 
 The "Cream of Manchester" / Melanie Sykes / *"By 'eck it's gorgeous"* / Friends reference / Madchester era — the brand's cultural saturation is what gives this revival its gravity, more than the liquid does.
 
-### Jennings Brewery — Tier 6b (continuity by place)
+### Jennings Brewery — Tier 6b (continuity by place) — THE HEROIC CASE
 - Closed Nov 2022 by Carlsberg Marston's Brewing Company
 - Bought by Kurt & Rebecca Canfield (local couple, Cockermouth)
 - New MD Chris France — *"recipes for about 100 beers"*
-- Cumberland Ale + Bitter coming back cask-first — *"the best format for our beer and the most traditional format"*
-- Sneck Lifter and Cocker Hoop *"overriding favourites to come back"*
-- Bottled-by-Carlsberg interim until March 2025, then brand rights transfer
+- Head Brewer: Buster. New Taproom Manager: Gavin.
+- Mid-June reopening with refurbished taproom + tours
 - CAMRA's Stephen Walker: *"I hope they won't just live in the past, that they'll progress and do new stuff"*
-- Source: https://www.bbc.co.uk/news/articles/cr46p61vxe3o
+- Sources:
+  - https://www.bbc.co.uk/news/articles/cr46p61vxe3o
+  - https://www.jenningsbrewery.co.uk/blogs/news/something-s-brewing
+
+**Core beer lineup (announced direct from brewery)** — each shows actual recipe fidelity rather than cosplay:
+
+| Beer | First brewed | Recipe / hops | Heritage anchor |
+|---|---|---|---|
+| **Sneck Lifter** | 1990 | Maris Otter + amber + pale chocolate malts; Fuggles / Goldings / Challenger | Deep amber ale, dried-fruit + spice. Name = Northern dialect for last sixpence — money to lift the latch of a pub door |
+| **Cumberland Ale** | (classic) | Jennings Well water + Maris Otter + dash of pale chocolate; Fuggles / Goldings / Challenger | "Iconic beer of the North West", their best-seller outside the Lake District |
+| **Cocker Hoop** | ~30 yrs ago | Maris Otter + wheat + oats; Goldings + **Celeia** hops | Pale golden bitter, named for "cock-a-hoop" (spigot removed from cask before drinking) + the River Cocker |
+| **Castle Bitter** | (renamed from Jennings 'Bitter') | (classic English bitter) | Renamed for the brewery's location alongside Cockermouth Castle wall — heritage rename, not modernisation rebrand |
+| **Back Yam** (NEW) | 2026 | Celebratory new beer marking the revival | "Yam" = home, Northern dialect. Honest about being new in the lineup |
+
+**Why this matters editorially**: Jennings is the cleanest counter-example to Allsopp's Double Diamond. Both claim heritage. One uses **Maris Otter + Fuggles + Goldings + Challenger + Celeia + their own well water**; the other uses **Citra + Columbus + Mosaic**. The difference between heritage-claimed and heritage-delivered is the hop list.
+
+The "Back Yam" detail is also important — they explicitly bracket it as new, not a revival. That's the honesty Allsopp's lacks ("inspired by 1922" while building a 2024 craft IPA).
+
+Quotes worth lifting verbatim:
+> *"Bringing the history and heritage of Jennings back to Cockermouth."*
+
+> *"Sneck Lifter, in Northern dialect, means someone's last sixpence, which allowed them to lift the latch of a pub door and buy a pint of beer, with hopes that another friendly face inside would buy them a couple more."*
+
+> *"To celebrate the revival of Jennings Brewery, we have released our 'Back Yam' beer as a new and celebratory piece to the lineup."*
 
 ---
 
@@ -303,6 +337,9 @@ The DIY tier is where actual recipe faithfulness lives — mediated by archive r
 - *"This beer is not reinventing the wheel"* (CAMRA on Boddingtons) — honest critic verdict that doesn't disqualify the revival
 - JW Lees yeast as *"non-negotiable"* clause in the AB InBev licence — the legal-document detail that's editorially gold
 - *"Cream of Manchester"* / *"By 'eck it's gorgeous"* / Melanie Sykes — Boddingtons cultural baggage
+- *"Sneck Lifter, in Northern dialect, means someone's last sixpence"* (Jennings) — heritage detail that justifies the beer name
+- *"Back Yam"* as honestly-new-in-revival-lineup (Jennings) — the rare brewery that brackets new from revived
+- **The hop list as receipt** — Citra/Mosaic vs Fuggles/Goldings as the spec-sheet honesty check
 
 ---
 
