@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6760611613">
+  <title>Ex-Firkin Survivors — The Holy Trinity (3 ex-Firkin pubs)</title>
+  <meta name="description" content="The Holy Trinity — three pubs that survived the 1999 chain collapse in three distinct ways. Kept the soul. Kept the building. Kept the name. North to south: Clerkenwell → Denmark Hill → Lewisham. Part of the Ex-Firkin Survivor Series — 3 stops in this chapter." />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/crawls/ex-firkin-survivors.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://pintpoint.co.uk/crawls/ex-firkin-survivors.html" />
+  <meta property="og:title" content="Ex-Firkin Survivors — The Holy Trinity (3 ex-Firkin pubs)" />
+  <meta property="og:description" content="The Holy Trinity — three pubs that survived the 1999 chain collapse in three distinct ways. Kept the soul. Kept the building. Kept the name. North to south: Clerkenwell → Denmark Hill → Lewisham. Part of the Ex-Firkin Survivor Series — 3 stops in this chapter." />
+  <meta property="og:image" content="https://pintpoint.co.uk/blog/images/firkin-died-as-a-chain.jpg" />
+  <meta property="fb:app_id" content="1892965231402903" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://pintpoint.co.uk/blog/images/firkin-died-as-a-chain.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../vendor/leaflet/leaflet.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --accent: #FF7A45; --ghost: #9B59B6; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 16px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; color: #FFD580; border: 1px solid rgba(255,213,128,0.4); }
+    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 12px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.75; margin-bottom: 32px; }
+    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    p a { color: var(--teal); }
+    #map { height: 480px; width: 100%; border-radius: 12px; border: 1px solid var(--border); margin: 24px 0 28px; background: #1a1f26; }
+    .siblings { font-size: 0.9rem; margin: 0 0 30px; line-height: 2; }
+    .legend { display: flex; gap: 24px; font-size: 0.85rem; color: var(--muted); margin-bottom: 24px; flex-wrap: wrap; }
+    .legend .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: middle; margin-right: 6px; }
+    .legend .dot.live { background: var(--teal); }
+    .legend .dot.ghost { background: var(--ghost); }
+    .stops { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 0 0 40px; }
+    .stop { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; }
+    .stop .num { font-size: 1.4rem; font-weight: 900; color: var(--teal); line-height: 1.1; }
+    .stop.ghost .num { color: var(--ghost); }
+    .stop .body { min-width: 0; }
+    .stop .role { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+    .stop.ghost .role { color: var(--ghost); }
+    .stop .name { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .stop .historical { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+    .stop .historical em { color: var(--teal); font-style: normal; font-weight: 600; }
+    .stop.ghost .historical em { color: var(--accent); }
+    .stop .addr { font-size: 0.82rem; color: #666; }
+    .open-app { margin: 40px 0; padding: 24px 28px; background: linear-gradient(135deg, rgba(0,212,170,0.08), rgba(0,212,170,0.02)); border: 1px solid rgba(0,212,170,0.3); border-radius: 12px; }
+    .open-app h2 { font-size: 1.2rem; font-weight: 800; color: var(--teal); margin-bottom: 10px; }
+    .open-app p { font-size: 0.92rem; color: var(--text); margin-bottom: 8px; }
+    .open-app .steps { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+    .chapters-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 32px 0; }
+    .chapter-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; text-decoration: none; color: var(--text); display: flex; align-items: center; justify-content: space-between; gap: 14px; transition: border-color 0.15s; }
+    .chapter-card:hover { border-color: rgba(0,212,170,0.5); }
+    .chapter-card .label { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+    .chapter-card .sub { font-size: 0.85rem; color: var(--muted); margin-top: 3px; }
+    .chapter-card .chevron { font-size: 1.4rem; color: var(--teal); }
+    .read-more { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .read-more h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .read-more a { color: var(--teal); font-size: 0.95rem; text-decoration: none; font-weight: 600; }
+    .read-more a:hover { text-decoration: underline; }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 18px 60px; } #map { height: 360px; } .stop { grid-template-columns: 32px 1fr; padding: 14px 16px; } }
+    .leaflet-marker-numbered { background: var(--teal); color: #0d1117; border: 2px solid #0d1117; box-shadow: 0 0 0 1px var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.78rem; }
+    .leaflet-marker-numbered.ghost { background: var(--ghost); box-shadow: 0 0 0 1px var(--ghost); }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../features.html">Features</a>
+      <a href="../pubs/">Venues</a>
+      <a href="../blog/">Blog</a>
+    </div>
+  </nav>
+
+  <article class="content">
+    <p class="meta"><span class="category">Hall of Fame · Chapter</span>London · 3 stops · The Holy Trinity</p>
+    <h1>Ex-Firkin Survivors — <em>The Holy Trinity</em></h1>
+    <p class="lede">The Holy Trinity — three pubs that survived the 1999 chain collapse in three distinct ways. Kept the soul. Kept the building. Kept the name. North to south: Clerkenwell → Denmark Hill → Lewisham.</p>
+
+    <div id="map" role="img" aria-label="Map of Ex-Firkin Survivors stops"></div>
+
+    <div class="siblings"><a href="/crawls/ex-firkin-london.html" style="color:var(--teal);font-size:0.9rem;margin-right:14px;text-decoration:none;">Umbrella · all 22 →</a><a href="/crawls/ex-firkin-central.html" style="color:var(--teal);font-size:0.9rem;margin-right:14px;text-decoration:none;">Central · 5 →</a><a href="/crawls/ex-firkin-south.html" style="color:var(--teal);font-size:0.9rem;margin-right:14px;text-decoration:none;">South · 4 →</a><a href="/crawls/ex-firkin-north.html" style="color:var(--teal);font-size:0.9rem;margin-right:14px;text-decoration:none;">North · 4 →</a><a href="/crawls/ex-firkin-west.html" style="color:var(--teal);font-size:0.9rem;margin-right:14px;text-decoration:none;">West · 4 →</a></div>
+
+    
+
+    <div class="stops" id="stops"></div>
+
+    <section class="open-app">
+      <h2>Walk it in the app</h2>
+      <p>Open <strong>PINtPOINT</strong>, then:</p>
+      <p class="steps">Settings → 🏆 Hall of Fame → <strong>Ex-Firkin London</strong> → pick <strong>Ex-Firkin Survivors</strong> → tap "Start this crawl".</p>
+    </section>
+
+    <div class="read-more">
+      <h3>The story behind the chain</h3>
+      <a href="../blog/firkin-died-as-a-chain.html">Firkin died as a chain. Parts of the idea are still alive. →</a>
+      <p style="margin-top:14px;font-size:0.9rem;color:var(--text)">Or jump to the <a href="/crawls/ex-firkin-london.html">umbrella — all 22 stops on one map →</a></p>
+    </div>
+  </article>
+  <script src="../vendor/leaflet/leaflet.min.js"></script>
+  <script>
+    const STOPS = [
+  {
+    "n": 1,
+    "curr": "The Old Ivy House",
+    "firkin": "Pheasant & Firkin",
+    "addr": "166 Goswell Road, London EC1V 7DT",
+    "role": "Clerkenwell",
+    "lat": 51.525875,
+    "lng": -0.099612,
+    "ghost": false
+  },
+  {
+    "n": 2,
+    "curr": "The Phoenix",
+    "firkin": "Phoenix & Firkin",
+    "addr": "Windsor Walk, London SE5 8BB",
+    "role": "Denmark Hill",
+    "lat": 51.46816,
+    "lng": -0.089758,
+    "ghost": false
+  },
+  {
+    "n": 3,
+    "curr": "Fox & Firkin",
+    "firkin": "— still named",
+    "addr": "316 Lewisham High Street, London SE13 6JZ",
+    "role": "Lewisham",
+    "lat": 51.456902,
+    "lng": -0.014288,
+    "ghost": false
+  }
+];
+
+    const stopsEl = document.getElementById('stops');
+    STOPS.forEach(s => {
+      const div = document.createElement('div');
+      div.className = 'stop' + (s.ghost ? ' ghost' : '');
+      const historicalLine = s.firkin
+        ? '<div class="historical">Formerly <em>' + s.firkin + '</em></div>'
+        : '';
+      div.innerHTML = '<div class="num">' + s.n + '</div>' +
+        '<div class="body">' +
+          '<div class="role">' + (s.ghost ? '👻 ' : '') + s.role + '</div>' +
+          '<div class="name">' + s.curr + '</div>' +
+          historicalLine +
+          '<div class="addr">' + s.addr + '</div>' +
+        '</div>';
+      stopsEl.appendChild(div);
+    });
+
+    try {
+      if (typeof L === 'undefined') throw new Error('Leaflet not loaded');
+      const map = L.map('map', { zoomControl: true, scrollWheelZoom: false }).setView([51.510, -0.120], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+      }).addTo(map);
+
+      const ll = s => [s.lat, s.lng];
+      
+      const route = STOPS.filter(s => !s.ghost).map(ll);
+      if (route.length >= 2) {
+        L.polyline(route, { color: '#0d1117', weight: 7, opacity: 0.85 }).addTo(map);
+        L.polyline(route, { color: '#00D4AA', weight: 4, opacity: 1 }).addTo(map);
+      }
+
+      STOPS.forEach((s) => {
+        const icon = L.divIcon({
+          className: 'leaflet-marker-numbered' + (s.ghost ? ' ghost' : ''),
+          html: String(s.n),
+          iconSize: [26, 26],
+        });
+        L.marker(ll(s), { icon })
+          .addTo(map)
+          .bindPopup('<strong>' + s.n + '. ' + s.curr + '</strong><br><small>' + s.addr + '</small>' + (s.firkin ? '<br><em>formerly ' + s.firkin + '</em>' : ''));
+      });
+
+      const all = STOPS.map(ll);
+      map.fitBounds(all, { padding: [30, 30] });
+    } catch (e) {
+      console.error('Leaflet init failed:', e);
+      const mapEl = document.getElementById('map');
+      if (mapEl) {
+        mapEl.style.display = 'flex';
+        mapEl.style.alignItems = 'center';
+        mapEl.style.justifyContent = 'center';
+        mapEl.style.color = 'var(--muted)';
+        mapEl.style.padding = '24px';
+        mapEl.style.textAlign = 'center';
+        mapEl.innerHTML = 'Map failed to load — see stops listed below.';
+      }
+    }
+  </script>
+  <footer>
+    <div class="links">
+      <a href="../index.html">PINtPOINT</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT · Find the right pub before the first pint.</p>
+  </footer>
+</body>
+</html>
