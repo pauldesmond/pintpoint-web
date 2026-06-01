@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6760611613">
+  <title>Firkin on PINtPOINT — one chain, three trails, forty pubs</title>
+  <meta name="description" content="The full Firkin landscape on PINtPOINT — David Bruce's 1979–1988 brewpubs, the 1988–1999 chain-era expansion, and the modern Firkin Brewery revival. One long-read article, three walkable Ale Trails, forty London pubs mapped." />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/firkin/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pintpoint.co.uk/firkin/" />
+  <meta property="og:title" content="Firkin on PINtPOINT — one chain, three trails, forty pubs" />
+  <meta property="og:description" content="David Bruce's original brewpubs, the chain-era expansion, and the modern revival — all mapped. One article, three Ale Trails." />
+  <meta property="og:image" content="https://pintpoint.co.uk/blog/images/firkin-died-as-a-chain.jpg" />
+  <meta property="fb:app_id" content="1892965231402903" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://pintpoint.co.uk/blog/images/firkin-died-as-a-chain.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Firkin on PINtPOINT",
+    "url": "https://pintpoint.co.uk/firkin/",
+    "description": "A hub covering David Bruce's Firkin brewpubs (1979–1988), the Firkin Pub Co chain era (1988–1999), and the modern Firkin Brewery revival (2017–). Three walkable Ale Trails across London, one long-read article, forty pubs mapped.",
+    "hasPart": [
+      { "@type": "Article", "name": "Firkin died as a chain. Parts of the idea are still alive.", "url": "https://pintpoint.co.uk/blog/firkin-died-as-a-chain.html" },
+      { "@type": "TouristTrip", "name": "The Firkin Ale Trail", "url": "https://pintpoint.co.uk/crawls/firkin-doghead.html" },
+      { "@type": "TouristTrip", "name": "The Firkin Ale Trail II", "url": "https://pintpoint.co.uk/crawls/firkin-revival.html" },
+      { "@type": "TouristTrip", "name": "Ex-Firkin London", "url": "https://pintpoint.co.uk/crawls/ex-firkin-london.html" }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --accent: #FF7A45; --ghost: #9B59B6; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; line-height: 1.6; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 1040px; margin: 0 auto; padding: 56px 24px 80px; }
+
+    .hero { text-align: center; padding: 16px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+    .hero .eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    h1 { font-size: clamp(2.4rem, 6vw, 3.4rem); font-weight: 900; letter-spacing: -2px; line-height: 1.05; margin-bottom: 16px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    .hero .tagline { font-size: clamp(1rem, 2.2vw, 1.25rem); color: var(--text); max-width: 620px; margin: 0 auto; }
+    .hero .stats { display: flex; justify-content: center; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+    .hero .stat { text-align: center; }
+    .hero .stat .num { font-size: 1.8rem; font-weight: 900; color: var(--teal); line-height: 1; }
+    .hero .stat .lbl { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+    h2 { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.5px; margin: 56px 0 18px; }
+    h2 .num { color: var(--teal); margin-right: 12px; font-variant-numeric: tabular-nums; }
+    p { color: var(--muted); font-size: 0.95rem; margin-bottom: 14px; }
+    p.intro { font-size: 1.02rem; color: var(--text); line-height: 1.75; }
+
+    .timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 28px 0 4px; }
+    .timeline .pt { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px; text-align: center; }
+    .timeline .pt .year { font-size: 1.2rem; font-weight: 900; color: var(--teal); letter-spacing: -0.5px; }
+    .timeline .pt .what { font-size: 0.75rem; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+    @media (max-width: 720px) {
+      .timeline { grid-template-columns: 1fr 1fr; }
+    }
+
+    .feature { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; background: linear-gradient(135deg, rgba(0,212,170,0.06), rgba(0,212,170,0.01)); border: 1px solid rgba(0,212,170,0.25); border-radius: 16px; padding: 28px 32px; margin: 8px 0 0; align-items: center; }
+    .feature h3 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 10px; }
+    .feature h3 em { color: var(--teal); font-style: normal; }
+    .feature p { color: var(--text); }
+    .feature .read { display: inline-block; margin-top: 10px; color: var(--teal); font-weight: 700; text-decoration: none; }
+    .feature .read:hover { text-decoration: underline; }
+    .feature .meta { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.3px; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
+    .feature .img { background: var(--bg); border-radius: 12px; aspect-ratio: 4/3; background-image: url('/blog/images/firkin-died-as-a-chain.jpg'); background-size: cover; background-position: center; border: 1px solid var(--border); }
+    @media (max-width: 720px) {
+      .feature { grid-template-columns: 1fr; padding: 24px; }
+      .feature .img { aspect-ratio: 16/9; }
+    }
+
+    .trails { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .trail { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: border-color 0.15s, transform 0.15s; }
+    .trail:hover { border-color: rgba(0,212,170,0.5); transform: translateY(-2px); }
+    .trail .id { font-size: 0.72rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .trail h3 { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 8px; }
+    .trail .sub { font-size: 0.85rem; color: var(--teal); font-weight: 600; margin-bottom: 10px; }
+    .trail .blurb { font-size: 0.88rem; color: var(--muted); line-height: 1.6; flex: 1; }
+    .trail .footer-row { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .trail .stops { font-size: 0.78rem; color: var(--muted); }
+    .trail .stops strong { color: var(--text); }
+    .trail .go { font-size: 1.2rem; color: var(--teal); }
+    @media (max-width: 860px) {
+      .trails { grid-template-columns: 1fr; }
+    }
+
+    .chapters { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 18px 0 8px; }
+    .chapter { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px; text-decoration: none; color: var(--text); text-align: center; transition: border-color 0.15s; }
+    .chapter:hover { border-color: rgba(0,212,170,0.5); }
+    .chapter .name { font-size: 0.92rem; font-weight: 800; color: var(--text); }
+    .chapter .sub  { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
+    .chapter .ct   { font-size: 0.7rem; color: var(--teal); font-weight: 700; margin-top: 6px; letter-spacing: 0.5px; }
+    @media (max-width: 720px) {
+      .chapters { grid-template-columns: 1fr 1fr; }
+    }
+
+    .sources { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 12px 0 8px; }
+    .sources h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 12px; }
+    .sources ul { list-style: none; }
+    .sources li { padding: 6px 0; font-size: 0.9rem; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .sources li:last-child { border-bottom: none; }
+    .sources a { color: var(--teal); text-decoration: none; }
+    .sources a:hover { text-decoration: underline; }
+    .sources em { color: var(--text); }
+
+    .open-app { margin: 48px 0 0; padding: 24px 28px; background: linear-gradient(135deg, rgba(0,212,170,0.08), rgba(0,212,170,0.02)); border: 1px solid rgba(0,212,170,0.3); border-radius: 12px; }
+    .open-app h2 { font-size: 1.1rem; font-weight: 800; color: var(--teal); margin: 0 0 8px; }
+    .open-app p { font-size: 0.92rem; color: var(--text); margin-bottom: 6px; }
+    .open-app .steps { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); margin-top: 56px; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .content { padding: 32px 18px 60px; }
+      h2 { font-size: 1.3rem; margin: 40px 0 14px; }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../features.html">Features</a>
+      <a href="../pubs/">Venues</a>
+      <a href="../blog/">Blog</a>
+    </div>
+  </nav>
+
+  <article class="content">
+    <header class="hero">
+      <p class="eyebrow">Firkin universe</p>
+      <h1>One chain, <em>three trails</em>, forty pubs.</h1>
+      <p class="tagline">The full Firkin landscape on PINtPOINT — David Bruce's original 1979–1988 brewpubs, the Firkin Pub Co chain-era expansion, the 1999 collapse, and the modern Firkin Brewery revival pouring today out of Lewisham.</p>
+      <div class="stats">
+        <div class="stat"><div class="num">3</div><div class="lbl">Ale Trails</div></div>
+        <div class="stat"><div class="num">40+</div><div class="lbl">Pubs mapped</div></div>
+        <div class="stat"><div class="num">20yr</div><div class="lbl">Story arc</div></div>
+        <div class="stat"><div class="num">1</div><div class="lbl">Long read</div></div>
+      </div>
+    </header>
+
+    <h2><span class="num">1</span>The twenty-year arc</h2>
+    <p class="intro">Bruce founded the Goose &amp; Firkin in Elephant &amp; Castle in 1979 — the first new brewpub in London for fifty years. He sold the estate in 1988, the chain expanded through the 1990s, and on <strong>8 October 1999</strong> Bass and Punch Taverns axed the brewing across all sites overnight. The brewing-in-the-pub idea that defined Firkin disappeared. Eighteen years later, at the Fox &amp; Firkin in Lewisham, brewing on premises came back.</p>
+
+    <div class="timeline">
+      <div class="pt"><div class="year">1979</div><div class="what">Goose &amp; Firkin opens in Elephant &amp; Castle</div></div>
+      <div class="pt"><div class="year">1988</div><div class="what">Bruce sells the original 12 to Midsummer Inns</div></div>
+      <div class="pt"><div class="year">1990</div><div class="what">The Firkin Ale Trail passport challenge launches</div></div>
+      <div class="pt"><div class="year">1999</div><div class="what">Bass/Punch kill the brewing on all sites</div></div>
+      <div class="pt"><div class="year">2017</div><div class="what">Modern Firkin Brewery revival begins at Fox &amp; Firkin</div></div>
+    </div>
+
+    <h2><span class="num">2</span>The story</h2>
+    <div class="feature">
+      <div>
+        <p class="meta">Long read · PINtPRESS</p>
+        <h3><em>Firkin died as a chain.</em> Parts of the idea are still alive.</h3>
+        <p>Why the brewing died on a Friday in 1999, what the original 12 brewpubs actually were, the leaflet that made it a game, and where the idea lives on today. Borough Road, Tavistock Crescent, Ladbroke Grove, Lewisham — a circular history from Bruce's pioneering brewpub through the chain-era expansion to the present-day revival.</p>
+        <a class="read" href="../blog/firkin-died-as-a-chain.html">Read the article →</a>
+      </div>
+      <div class="img" role="img" aria-label="Period Firkin merch and signage"></div>
+    </div>
+
+    <h2><span class="num">3</span>The three Ale Trails</h2>
+    <p>Each trail is a Hall-of-Fame crawl in PINtPOINT and a companion page on the web. Walk one in the app; share the page on the bar wall.</p>
+    <div class="trails">
+      <a class="trail" href="../crawls/firkin-doghead.html">
+        <div class="id">Ale Trail I</div>
+        <h3>The Dog-Head</h3>
+        <div class="sub">Bruce's original 12 · 1990</div>
+        <div class="blurb">The 1990 passport challenge — twelve brewpubs from Camden Town to Lewisham, plotted in perimeter order. The line on the map traces a dog facing west: snout in Notting Hill, ear flap at Goswell Road.</div>
+        <div class="footer-row"><div class="stops"><strong>12</strong> stops · 7 live + 5 ghosts</div><div class="go">→</div></div>
+      </a>
+
+      <a class="trail" href="../crawls/firkin-revival.html">
+        <div class="id">Ale Trail II</div>
+        <h3>The Revival</h3>
+        <div class="sub">Modern Firkin Brewery · 2017→</div>
+        <div class="blurb">Eight south London bars pouring beers brewed today at Fox &amp; Firkin Lewisham. The sequel to Bruce's 1990 trail: same brewing-in-the-room ethos, scaled across a small modern estate. Brixton to Eltham.</div>
+        <div class="footer-row"><div class="stops"><strong>8</strong> stops · all active</div><div class="go">→</div></div>
+      </a>
+
+      <a class="trail" href="../crawls/ex-firkin-london.html">
+        <div class="id">Ale Trail III</div>
+        <h3>Ex-Firkin London</h3>
+        <div class="sub">Chain-era survivors · 22 pubs</div>
+        <div class="blurb">The full map of London's ex-Firkin sites — Bruce-era originals still trading plus the chain-era expansion of the 1990s. Five walkable chapters covering Central, South, North, West and the Bruce-era Originals.</div>
+        <div class="footer-row"><div class="stops"><strong>22</strong> stops · 5 chapters + memorial</div><div class="go">→</div></div>
+      </a>
+    </div>
+
+    <h2><span class="num">4</span>Ale Trail III · the five chapters</h2>
+    <p>Twenty-two pubs is impossible in one walk — High Barnet to Sydenham is ten miles each way. Five chapters break it into walkable afternoons.</p>
+    <div class="chapters">
+      <a class="chapter" href="../crawls/ex-firkin-central.html"><div class="name">Central</div><div class="sub">Marylebone → Islington</div><div class="ct">5 stops</div></a>
+      <a class="chapter" href="../crawls/ex-firkin-south.html"><div class="name">South</div><div class="sub">Wandsworth → Sydenham</div><div class="ct">4 stops</div></a>
+      <a class="chapter" href="../crawls/ex-firkin-north.html"><div class="name">North</div><div class="sub">Harrow + A1000</div><div class="ct">4 stops</div></a>
+      <a class="chapter" href="../crawls/ex-firkin-west.html"><div class="name">West</div><div class="sub">Ealing → Notting Hill</div><div class="ct">4 stops</div></a>
+      <a class="chapter" href="../crawls/ex-firkin-survivors.html"><div class="name">Originals</div><div class="sub">Bruce-era brewpubs</div><div class="ct">3 stops</div></a>
+    </div>
+
+    <h2><span class="num">5</span>Source material</h2>
+    <div class="sources">
+      <ul>
+        <li><a href="https://amzn.eu/d/05ss9rql" target="_blank" rel="noopener noreferrer">David Bruce, <em>The Firkin Saga: Brewing up entrepreneurial adventures and pioneering tales with the Prince of Ales</em></a></li>
+        <li><a href="https://www.pelliclemag.com/home/2025/8/31/what-a-firkin-life-david-bruce-obes-life-in-beer" target="_blank" rel="noopener noreferrer">Phil Mellows, Pellicle: <em>What a Firkin Life — David Bruce OBE's Life in Beer</em> (August 2025)</a></li>
+        <li><a href="https://www.goodbeergoodpubs.co.uk/articles/what-happened-to-the-firkin-pubs/" target="_blank" rel="noopener noreferrer">Good Beer Good Pubs: <em>What Happened to the Firkin Pubs?</em></a></li>
+        <li><a href="https://realale-london.blogspot.com/2017/10/firkin-pubs-where-are-they-now.html" target="_blank" rel="noopener noreferrer">John Donnelly, Real Ale London: <em>Firkin Pubs — Where Are They Now?</em></a></li>
+        <li><a href="https://www.protzonbeer.co.uk/" target="_blank" rel="noopener noreferrer">Roger Protz, Protz on Beer (business-rates beat and chain-era trade reporting)</a></li>
+      </ul>
+    </div>
+
+    <section class="open-app">
+      <h2>Walk one in the app</h2>
+      <p>Open <strong>PINtPOINT</strong> and head to:</p>
+      <p class="steps">Settings → 🏆 Hall of Fame → pick The Firkin Ale Trail, II, or Ex-Firkin London → tap "Start this crawl". For Ale Trail III the umbrella opens a chooser so you can pick a single chapter or see all 22 stops at once.</p>
+    </section>
+  </article>
+
+  <footer>
+    <div class="links">
+      <a href="../index.html">PINtPOINT</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT · Find the right pub before the first pint.</p>
+  </footer>
+</body>
+</html>
