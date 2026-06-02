@@ -131,6 +131,20 @@ This softens the "revivals are hauntings" thesis into something truer: **be hone
 - 9 pints in a single can — *"It is a very satisfying experience to twist the nozzle and see and hear beer pouring into the glass"*
 - Source: https://metalpackager.com/2021/01/metalpackager-com-watneys-party7/
 
+### Allsopp brand IP history (from Des de Moor's Ind Coope piece, 2026)
+
+The Allsopp brand has gone through ownership that frames the modern revival:
+- 1876: Double Diamond originates as Allsopp's premium bottled pale ale, Burton
+- **1934: Ind Coope took over Allsopp & Sons** → became Ind Coope & Allsopp
+- After Ind Coope absorbed Allsopp: brand passed down through Allied Breweries → Allied Lyons → Allied Domecq → Carlsberg-Tetley
+- **2017: BrewDog purchased the Allsopp trademark from Carlsberg**
+- **2021: BrewDog sold the trademark to Jamie Allsopp**, a direct descendant of the original Allsopp family
+- **2022: Jamie Allsopp relaunches the brand via cuckoo brewing** — this is the revival Allsopp's Brewery we already track
+
+So when Allsopp's Double Diamond is sold today as "the Allsopp revival", the framing is: *a descendant of the original family bought their own family name back from Carlsberg (via BrewDog) and is now cuckoo-brewing a 3.8% Citra/Mosaic interpretation of the 1922 recipe.* That's a much more layered story than "Allsopp's brewery revived Double Diamond" — the IP-chain itself is the editorial spine.
+
+Source: https://desdemoor.co.uk/ind-coope-allied-breweries/
+
 ### Allsopp's Double Diamond — Tier 3
 - First brewed 1876 as an IPA. Discontinued 2003.
 - Allsopp's Brewery (modern revival of 19th-c Burton brewer) relaunched Oct 2024
@@ -188,10 +202,12 @@ Reader comments (drinker policing in real time):
 > *"Relaunch? That didn't last long the first time around."*
 
 ### Burton Bridge DBA — Tier 6a (continuity by people)
-- Original Ind Coope DBA, launched 1976, CAMRA Champion Beer of Britain
-- Carlsberg discontinued it
+- Original Ind Coope DBA, **launched 1976** in response to the cask-beer revival
+- 4.8% — **not a historic "Burton ale"** but a pale ale based on the 1950s Double Diamond recipe (per Des de Moor's history — so DBA's recipe genealogy goes back to the original Allsopp Double Diamond, the SAME beer Jamie Allsopp's modern revival claims descent from). Tier 3 (Allsopp DD) and Tier 6 (Burton Bridge DBA) are reviving two interpretations of the same 1950s recipe DNA.
+- **Discontinued 2015** by Carlsberg (who owned the brands by then; the cask DBA had been contract-brewed at JW Lees, Manchester before discontinuation)
+- **Burton Bridge DBA introduced 2015 by ex-Bass employees** who were involved in DBA's original development (Bass acquired the Ind Coope estate after the 1998 Burton-plant sale; the brewers had moved with the brand)
 - Social-media campaign demanded a brewer pick it up
-- Burton Bridge directors *had worked on the original at Ind Coope*
+- Burton Bridge directors *had worked on the original*
 - Debuted at Burton CAMRA Beer Festival March 2015
 - 4.8% ABV, Style: "Historical Beer - Burton Ale"
 - 1,399 ratings on Untappd, 3.51 average
