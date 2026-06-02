@@ -72,7 +72,20 @@ Allsopp's confession in this context:
 
 That's a duty-band choice with aesthetic consequences. The original Double Diamond was a strong IPA. "Drinks like a lager" is honest about where the duty reform pushes heritage recipes.
 
-### 3. The Carlsberg villain pattern
+### 3. The corporate IP-aggregator pattern (Heineken + Carlsberg-Marston's + AB InBev + Molson Coors)
+
+Three corporate parents now hold most of the lost-British-brewery IP. The pattern is consistent: brand acquired through M&A cascade, then either licensed back to a third party (Truman → 2013 revivalists, Watney → Brands Reunited 2016, Boddingtons → JW Lees) or quietly shelved (most of the rest). The interesting case studies of the last decade are all third parties trying to do something honest with brands the IP-aggregators have given up trying to monetise directly.
+
+| Aggregator | Brands held | Revival activity |
+|---|---|---|
+| **Heineken** | Watney's, Truman's, Courage, McEwan's, Scottish & Newcastle estate | Watney→Brands Reunited (dead). Truman→2013 revivalists, then sold to site owners 2022. |
+| **Carlsberg-Marston's** | Jennings, Ind Coope DBA, Banks's, Bombardier, Marston's family | Closes breweries (Jennings 2022, DBA discontinued 2015). Continuity revivals happen *after* corporate closure: Burton Bridge for DBA, Canfield rescue for Jennings. |
+| **AB InBev** | Boddingtons, Bass, Whitbread keg | Licenses to local brewers (Boddingtons → JW Lees 2025). Same model as Heineken-licensed Truman's. |
+| **Molson Coors** | Carling, Worthington's | Direct revivals (Carling Black Label 2026 line extension). Marketing-led, not heritage-led. |
+
+The pattern is that the **aggregators are the gatekeepers, not the executors**. The interesting revivals happen at the third-party brewing layer (JW Lees, Burton Bridge, Allsopp's of Burton, the original 2013 Truman's revivalists), which is exactly where the editorial spectrum gets richest.
+
+### 4. The Carlsberg villain pattern
 
 The same corporate parent that kills heritage brands repeatedly creates the conditions for independents to revive them.
 
@@ -124,12 +137,18 @@ This softens the "revivals are hauntings" thesis into something truer: **be hone
 
 ## Cases catalogued
 
-### Watney's Party Seven — Tier 1
-- Revived January 2021 by Watney's (the 2016-revived brand co.)
-- Pandemic-driven, home-drinking nostalgia
-- No recipe-faithfulness claim
-- 9 pints in a single can — *"It is a very satisfying experience to twist the nozzle and see and hear beer pouring into the glass"*
-- Source: https://metalpackager.com/2021/01/metalpackager-com-watneys-party7/
+### Watney's Party Seven — Tier 1 (and ALREADY DEAD)
+- The "Watney's revival" entity is **Brands Reunited**, who **licensed the trademark from Heineken in 2016** (Heineken acquired the Watney IP via Scottish Courage in 2008)
+- 2016 launch: keg + can beers brewed by **Sambrook's** — described by Des de Moor as *"distant relatives of Watney's pale ales"*
+- 2021 Party Seven reissue: 5L minikeg, "actually" — Des de Moor's wording suggests scepticism about the format claim
+- **"The beers disappeared from sale soon afterwards"** (Des de Moor) — the entire 2016-2021 Watney's revival is already extinct
+- Original Watney's Red Barrel framing: *"Rebranded as Red in the early 1970s, it became a byword for a poorly brewed and characterless national brand foisted on an unwilling public"* — and was so toxic by 1979 that Watney's removed the red barrel symbol from their own corporate branding in 1982. The brand died not from market pressure but from reputational suicide.
+- Stag Brewery Mortlake (Watney's primary site post-1898) ceased brewing **December 2015** — "the final working remnant of London's 18th-19th century industrial brewing legacy" per Des de Moor. AB InBev had owned it since 2002.
+- Sources:
+  - https://metalpackager.com/2021/01/metalpackager-com-watneys-party7/
+  - https://desdemoor.co.uk/stag-brewery-mortlake-ab-inbev-uk-watney-mann/
+
+**Editorial implication for the piece**: Watney's is the cautionary case. The revival isn't just dishonest — it's a *failed* revival. Brands Reunited bet that "sufficient time had passed for the brand to be revived ironically" (Des's wording) and the market said no. This is the **revival arc as failure**: licensed name + outsourced brewing + nostalgia framing → quiet disappearance. The opposite of Burton Bridge DBA's humble continuity success.
 
 ### Allsopp brand IP history (from Des de Moor's Ind Coope piece, 2026)
 
@@ -218,6 +237,22 @@ The defining quote — humble, honest, the opposite of marketing:
 
 Drinker reactions confirm continuity:
 > *"smooth, sweet, a little bitter"* / *"absolutely gorgeous bitter, rich and almost sticky on the palate"* — Untappd users
+
+### Truman's Beer — Tier 3 hybrid (trademark + new recipes + authentic yeast)
+
+Closer to Allsopp's Double Diamond than to Burton Bridge DBA, but with a technical-continuity twist that resolves our long-standing open question on yeast.
+
+- Original Black Eagle Brewery, Brick Lane, founded c.1666 by Thomas Bucknall; Joseph Truman appointed brewer 1679. Last major independent London brewery; **closed 1989**.
+- IP chain: Truman Hanbury Buxton → Grand Metropolitan (1971) → Watney Mann Truman (1974) → Courage (1991) → Scottish Courage (1995) → **Heineken (2008, present)**. Same pattern as Watney's — Heineken aggregates the lost-London-brewery IP.
+- **2013 revival by two young professionals** (not original brewers). Cuckoo-brewed from 2010, own brewery The Eyrie in Hackney Wick from 2013.
+- **YES the NCYC yeast claim is real** (confirms our open research question): per Des de Moor, *"using the Truman yeast, retrieved from the National Collection of Yeast Cultures"*. So the technical continuity is real even though the personnel isn't.
+- 2022: Original revival company **sold the brand to the Brick Lane site owners (Truman Estates / Zeloof family)** and rebranded itself as **Big Penny**. So the modern Truman's beer is now cuckoo-brewed by a property company, not the 2013 revivalists.
+- *"Most beers were new recipes but included recreations of classic stouts and porters and Ben Truman Export"* (Des de Moor) — partial recipe authenticity, mostly new beers.
+- Source: https://desdemoor.co.uk/trumans-beer/
+
+**Tier placement**: Trademark + new recipes (Tier 3) + authentic yeast strain via NCYC (a unique technical-continuity layer). The yeast adds a dimension our other tier-3 cases lack. Could justify a 3.5 sub-tier or just sit within Tier 3 with a footnote: *"yeast-authentic, recipe-modern"*. Compare to Allsopp's DD where there's no analogous biological continuity.
+
+Editorial value for the piece: Truman's is the most architecturally honest revival — actual brewing site survives (Brick Lane), yeast strain is genuine, owners ARE descendants of a sort (Truman Estates owns the physical site continuously since 1995). The 2022 ownership transfer to the site-owning property company is the awkward modern coda.
 
 ### Boddingtons Bitter (JW Lees) — Tier 6c (corporate-licensed regional hybrid)
 - Strangeways Brewery founded 1778, Boddington name from 1853, sold to Whitbread 1989, acquired by Interbrew (now AB InBev) 2000
