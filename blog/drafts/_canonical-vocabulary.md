@@ -40,7 +40,7 @@ The per-beer profile. **6 flavour axes, each scored 0–5**, plus three non-flav
 - Personality labels float across families by score (not a fixed slot per family).
 - Two colour modes: `heat` (green→amber→red) and `brand` (teal). User-selectable (`flavourVizColor`).
 - Used on the beer-detail screen and Head-to-Head.
-- **Current default:** equaliser. `DEFAULT_SETTINGS.flavourViz = 'equaliser'` (`context/UserSettingsContext.tsx:17`); H2H reads the preference (`app/head-to-head/play.tsx:185`). **Editorial discipline:** essays should NOT anchor copy to which viz is default — say "used in H2H," not "default in H2H." The default is a UX call that can flip without warning; the fact-that-it's-available is durable.
+- **Current defaults:** equaliser viz, brand (teal) colour. `DEFAULT_SETTINGS.flavourViz = 'equaliser'` and `flavourVizColor = 'brand'` (`context/UserSettingsContext.tsx:17–18`); H2H reads the preference (`app/head-to-head/play.tsx:185`). **Editorial discipline:** essays should NOT anchor copy to which viz or colour is default — say "used in H2H," not "default in H2H." Defaults are UX calls that can flip without warning; the fact-that-they're-available is durable.
 
 ### Personality sub-labels (`services/subDescriptors.ts`)
 - **Hop family (4):** Citrusy · Tropical · Piney · Floral (+ generic **Hoppy**). Keyword precedence: Citrusy → Tropical → Piney → Floral.
