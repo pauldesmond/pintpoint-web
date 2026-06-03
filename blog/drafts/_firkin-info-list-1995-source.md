@@ -233,3 +233,70 @@ The article should be edited to incorporate:
 
 1. **Hedgehog & Hogshead** — Bruce's post-Firkin chain (4 known sites in 1995). Strong PINtPRESS shape.
 2. **Firkin nationwide ex-estate (FAT IV)** — ~25 additional 1995 Firkin sites outside London, almost certainly mostly ghosts now.
+
+---
+
+## v1.90 (June 1995) vs v2.5 (January 1997) — second-pass salvage (added 2026-06-03)
+
+The Info-List exists in at least two cross-posted versions on Usenet:
+
+- **v1.90** — 25 June 1995, rec.food.drink.beer — `https://groups.google.com/g/rec.food.drink.beer/c/dN9jaW0nOwI`
+- **v2.5** — 12 January 1997, alt.beer — `https://groups.google.com/g/alt.beer/c/-tWktnEjG_s`
+
+Both authored by Sean Desmond (with Roger Burton-West + Sean Keane on v1.90). The 18-month gap between versions captures the chain's mid-90s expansion (and some closures) under Stakis Leisure ownership — the Fuzzock & Firkin lineage shift between Camden and Leicester is the clearest one.
+
+### Fuzzock & Firkin: two pubs, one name (CRITICAL)
+
+The "Fuzzock & Firkin" name was used by the chain at **two physically separate pubs** in different cities:
+
+- **Camden** — 77 Castle Road, London NW1 — Bruce's 10th Firkin, est. 1987 — listed as **closed** in v2.5 (1997)
+- **Leicester** — **203 Welford Road, Leicester LE2 6DH** — est. 1994 — listed as **active** in v2.5
+
+The v2.5 explicitly notes: *"The slogan may be recycled along with the name for the new Fuzzock, in Leicester."* So the chain deliberately re-used the Camden Fuzzock brand for the new Leicester opening.
+
+This explains the "203" on Chris D Pyrah's Flickr photo of "FUZZOCK & FIRKIN 203" — that's 203 Welford Road, Leicester, **not** the Camden Castle Road pub. Two different buildings sharing the same Firkin-chain branding (and same chalkboard slogans).
+
+PINtPOINT impact: our `firkin-fuzzock` row is the **Camden** one only. The Leicester Fuzzock isn't in our DB (and per the London-only ghost-tracking scope, won't be added).
+
+### Newly-salvaged 1995 data points (not in the published Firkin article)
+
+These were trimmed or never made it into `/blog/firkin-died-as-a-chain.html` to preserve the piece's editorial shape. Available for future use (Firkin-trivia follow-up, revivals piece, social captions, FAT IV nationwide research, etc.):
+
+**Production scale**
+- **1,500 pints per brew** — per Firkin brewpub's stated capacity per brew session
+- Firkin cask = 9 gallons = 72 pints
+- Fermentation: 4–5 days
+- Mash time: 1.5 hours
+
+**ABV ladder (1995)**
+- Full Mash Mild — 3.4% ABV
+- House bitters — 3.4–3.7%
+- House best bitters — 4.0–4.4%
+- Dogbolter — 5.6% (this matches the Ramsgate Brewery revival recipe range)
+- Mistlet'Ale (Christmas 1994–95 special) — **8.0%**
+
+**Pint prices, winter 1994–95** (period-detail goldmine)
+- Bitter — £1.30+
+- Best Bitter — £1.45+
+- Dogbolter — £1.80–£1.85
+- Mistlet'Ale — £2.00
+
+**Sections worth deeper-mining if a follow-up post happens**
+- *Master Brewer's Address* — likely lists head-brewer names per pub. Useful for "human side of the chain" piece.
+- *T-Shirts and Other Goodies* — chain-merch ephemera (the Firkin brand was prefiguring modern craft-merch decades early per the published article — this would be the deep dive).
+- *The Firkin Crawl* + *Firkin Forays* — pre-internet curated crawl routes the chain itself promoted. Source material for any HoF crawl additions (we already have Ex-Firkin Central/South/North/West chapter crawls — the Forays might suggest a fifth chapter or add stops we missed).
+- *The World Tour* — Firkin-themed travel ephemera; probably a tongue-in-cheek section, but possibly useful for trivia.
+- *The Firkin Club* — membership / loyalty programme details. Modern-craft-loyalty foreshadow.
+
+**Dogbolter naming etymology (v1.90 has more detail)**
+- Bruce was brewing Earthstopper when a long phone call interrupted him — brew came out weaker, so he renamed it Dogbolter on the fly
+- The "Dogbolter" name itself comes from Bruce's uncle's friends who "slipped off the path, slithered into the beck" when walking home, and their dogs "bolted onto the moors"
+- The published article uses the phone-call origin story but doesn't have the uncle-and-dogs etymology layer. Worth a footnote if the article ever gets a v3.
+
+### What v2.5 (1997) adds beyond v1.90 (1995)
+- Leicester Fuzzock & Firkin listed as live (opened between the two versions)
+- Camden Fuzzock confirmed closed
+- Implicit: chain still expanding under Stakis ownership (1990–1997 period). Carlsberg-Tetley takeover comes after both versions.
+
+### Editorial discipline reminder
+Per `feedback_blog_trim_patterns.md` — do NOT retrofit the above into the published Firkin article. Figure density, inventory drift, period-detail piling-on are exactly the patterns Paul has trained against. These data points are research stockpile for *new* pieces, not patches to the existing one.
