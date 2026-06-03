@@ -48,6 +48,15 @@
     blockquote { border-left: 2px solid var(--teal); padding: 4px 16px; margin: 20px 0; color: var(--muted); font-style: italic; }
     code { background: var(--card); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; font-family: 'SF Mono', Menlo, monospace; color: var(--teal); }
     .draft-note { background: rgba(192,163,64,0.08); border-left: 2px solid #C0A340; color: #C0A340; padding: 12px 16px; margin: 20px 0; font-size: 0.85rem; font-style: italic; }
+    /* Gold-highlighted text marks additions from the 2026-06-03 review
+       pass — fold-in of the equaliser / adaptive-descriptor work and
+       the Hieronymus + Haley intellectual scaffolding. Strip these
+       classes (or change to color: var(--muted) / inherit) before publishing. */
+    .new-edit { color: #C0A340; }
+    .new-edit a { color: #C0A340; text-decoration: underline; }
+    .new-edit em, .new-edit strong { color: #C0A340; }
+    p.new-edit, li.new-edit { color: #C0A340; }
+    .new-edit .highlight { color: #E0BE5C; }
     .sources { font-size: 0.85rem; color: #666; margin-top: 32px; padding: 16px 20px; background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; }
     .sources a { color: var(--muted); text-decoration: underline; }
     footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
@@ -73,7 +82,7 @@
     <p class="meta"><span class="category essay">Essay</span>DRAFT · TBD May 2026 · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
     <h1>Beerology — <em>The Anatomy of a Pint</em></h1>
 
-    <p class="draft-note">DRAFT v2. Restructured for pace and to put the worked card earlier. The "first reading" section is still placeholder — waiting on one real beer, scored honestly with eight numbers and a one-line gut take. When that lands, the section fills in and the whole post earns its keep.</p>
+    <p class="draft-note">DRAFT v3 · 2026-06-03. Gold-highlighted text marks additions from the visualisation-work review pass — the Hieronymus + Haley intellectual scaffolding, the Beerology-vs-Pentagon-vs-Equaliser three-view positioning, the drinker-cues / drinkability-bucket sibling pattern, and a first-pass Bosko card to fill the "first reading" slot. The Bosko scores are best-effort from memory and need an honest verification pass before publishing.</p>
 
     <p class="lede">You're at the bar. Four taps. You have about 800 milliseconds before someone else makes the call. The existing language for picking between those four pints — star ratings, flavour-wheel categories, hop varieties listed off a chalkboard — none of it is built for the decision you're actually making. This is a different one: what does each of these beers <em>feel like to drink</em>?</p>
 
@@ -83,6 +92,8 @@
 
     <p>Beer description, as a public discipline, has matured around two questions: <span class="highlight">what category is this beer in</span> (the flavour wheel) and <span class="highlight">how good is it</span> (the rating). Both useful in their place. Neither answers the bar-decision question. A 4.2-star NEIPA tells you it's well-liked. A "tropical / juicy / pillowy" tasting note tells you what's in the glass. Neither tells you whether this is a first-pint or a third-pint beer, whether it'll keep up with food, whether it'll wear you out by 10pm. The decision-shape of a pint is missing from the vocabulary.</p>
 
+    <p class="new-edit">Two writers have been picking at the same problem from different angles. Stan Hieronymus — author of <em>For the Love of Hops</em> — borrows Eric Asimov's phrase the <em>tyranny of the tasting note</em>: <em>"When somebody starts describing 'aromas of apricot, jam, guava, and jackfruit' there's little chance another drinker will get that."</em> Specific aroma descriptors are personal; they don't transfer. <a href="https://www.rpubs.com/ebhtra/758377" target="_blank">Ethan Haley's 2019 essay on Untappd as a recommender</a> approaches the rating side just as bluntly: <em>"beer ratings are very noisy, given the circumstances of check-ins"</em> — freshness, glassware, what the drinker had immediately before, the company, the weather. Aggregation smooths some of it on famous beers; the rest of the catalogue can't rely on it. Hieronymus is sceptical of the language we use about beer; Haley is sceptical of the scores we attach to it. Both leave a vacuum where the question this piece is built around still sits — <span class="highlight">what kind of pinting am I signing up for?</span></p>
+
     <p>The closest existing framework — the sommelier's palate map, an entry/mid-palate/finish/aftertaste arc through the mouth — gets at it from one direction. Beerology starts there and builds a glanceable card.</p>
 
     <h2>A quick note on the science</h2>
@@ -91,11 +102,28 @@
 
     <h2>The first reading</h2>
 
-    <p class="draft-note">[AWAITING beer scores from Paul. Radio City Pride is the first preference per project memory; or any pint drunk recently and scored honestly. Send eight numbers (Body / Bitterness / Sweetness / Roast / Fruit / Finish / Softness / Complexity, 1-10 each) plus a one-line gut take on what it felt like to drink. The card below fills in.]</p>
+    <p class="new-edit"><strong>Pressure Drop Bosko</strong> — West Coast IPA, 6.5% ABV. A London-brewed WCIPA that's become a benchmark for the style in the UK, available on cask and keg widely. First-pass scores are honest-best-guess from memory and need verifying in person before this goes to press.</p>
 
-    <p>[PLACEHOLDER: a rendered Beerology card lives here — eight-axis radar with the beer's profile shape; four-or-so drinker cues; one "what it feels like" sentence; one Beerology verdict line. This is the moment the format earns its keep. The card should be the OG image / IG share asset too, so the screenshot moment is the same artefact in three places.]</p>
+    <p class="draft-note">[CARD ASSET TO RENDER: anatomical-poster framing around an eight-axis radar (the eight numbers below), four drinker cues underneath, one "what it feels like" sentence, one Beerology verdict line. Same artefact for the OG image / IG share. The 1-10 scores below are the source data.]</p>
 
-    <p>[After the card, one short paragraph: why this reading helps the decision in a way ratings and style notes don't. Use a specific comparison — e.g. "Untappd would tell you this beer is rated X. The brewery's own copy would call it Y. Neither tells you it's a soft-landing pint for after work, not a first-pint when you're hungry." Make the case from the artefact, not from the framework.]</p>
+    <ul class="new-edit">
+      <li><span class="highlight">Body</span> 4 — medium, dry-finishing; not the sticky oils of a haze.</li>
+      <li><span class="highlight">Bitterness</span> 8 — clean cut, the whole point of the style.</li>
+      <li><span class="highlight">Sweetness</span> 2 — restrained; WCIPA's animating principle is dryness.</li>
+      <li><span class="highlight">Roast</span> 1 — pale-and-pale; no malt drama.</li>
+      <li><span class="highlight">Fruit</span> 6 — citrus and stone fruit from the C-hops, not haze-bomb mango.</li>
+      <li><span class="highlight">Finish</span> 8 — long, dry, lingering bitterness; the finish is the experience.</li>
+      <li><span class="highlight">Softness</span> 3 — punchy, not pillowy.</li>
+      <li><span class="highlight">Complexity</span> 6 — well-made and layered, not maximalist.</li>
+    </ul>
+
+    <p class="new-edit"><span class="highlight">Drinker cues:</span> <em>Cuts through dinner</em> · <em>Beer-geek default</em> · <em>Better cold</em> · <em>Style-defining</em>.</p>
+
+    <p class="new-edit"><span class="highlight">What it feels like:</span> a pin-sharp West Coast that reminds you what hops actually do — bitter without abrasion, dry without thirst, the kind of pint that earns the second pour because the first one was a thesis statement.</p>
+
+    <p class="new-edit"><span class="highlight">Beerology verdict:</span> reference-grade. The WCIPA most other UK WCIPAs are accidentally trying to be.</p>
+
+    <p class="new-edit">Read against the other formats: Untappd has Bosko around 4.0 — well-liked but not famous, the kind of score that tells you almost nothing about whether it suits the moment. A flavour-wheel reading would slot it under "American IPA / West Coast" — accurate, useless for picking. The brewery's own copy goes hard on hop varietals. None of those signals tell you it's the pint to start your evening with, that it'll outpace fried food, that you should drink it before the smoothie sours and the dessert stouts. The Beerology card does — in eight numbers, four cues, and a sentence.</p>
 
     <h2>The bit that's new: drinker cues</h2>
 
@@ -105,16 +133,20 @@
 
     <p>Three or four cues per beer. Not a checklist — a curation. The wrong cue is worse than no cue, so the cues that don't fire stay quiet.</p>
 
+    <p class="new-edit">There's a quieter cousin to the drinker cues already running inside PINtPOINT: the <em>drinkability bucket</em> the recommender attaches to every beer — <em>Session</em>, <em>Standard</em>, <em>Strong</em>, <em>Boozy</em>. Those are mechanical, ABV-derived, single-dimensional; you'd struggle to write a Beerology cue from one. The cue is what the bucket reaches for and can't quite touch — a label that combines strength, body, finish length and complexity into a phrase the drinker uses without thinking. Cues are buckets with subtext.</p>
+
     <h2>How the card is built</h2>
 
-    <p>The eight axes do the quantitative work: Body, Bitterness, Sweetness, Roast, Fruit, Finish, Softness, Complexity, each 1–10. The shape across those eight is the beer's <em>skeleton</em> — a different scale from the five-axis TastePentagon that appears in the app's beer cards, because the pentagon has to read at thumbnail size and the Beerology card is allowed more room to talk. The drinker cues sit underneath. The anatomical-poster wrapper (first-contact sweetness, mid-palate spread, finish grip, aftertaste echo) does the visual register. One "what it feels like" sentence, in plain English, is the soul. One closing Beerology verdict line ties it.</p>
+    <p>The eight axes do the quantitative work: Body, Bitterness, Sweetness, Roast, Fruit, Finish, Softness, Complexity, each 1–10. The shape across those eight is the beer's <em>skeleton</em> <span class="new-edit">— deliberately a different axis set from the recommender's in-app visualisations.</span> The drinker cues sit underneath. The anatomical-poster wrapper (first-contact sweetness, mid-palate spread, finish grip, aftertaste echo) does the visual register. One "what it feels like" sentence, in plain English, is the soul. One closing Beerology verdict line ties it.</p>
+
+    <p class="new-edit">PINtPOINT ships two recommender visualisations alongside Beerology, both built on a shared 5-axis core (Sweet · Bitter · Sour · Body · Strength): a <span class="highlight">TastePentagon</span> radar for the brand-mark single-beer view, and a <span class="highlight">FlavourEqualizer</span> that adds three "personality" columns picked per beer — a NEIPA reads three hop/fruit notes (e.g. Citrusy · Tropical · Juicy), a stout three malt notes (e.g. Roasty · Malty · Toasty), labels floating across families by score rather than a fixed slot per family. Both visualisations answer the recommender's question — <em>is this beer's shape close to my preferred shape?</em> — at thumbnail and tap-list density. Beerology's eight axes share three with the core (Body · Bitterness · Sweetness), drop two (Sour gets handled by Fruit's adjacent territory when present; Strength is absorbed into the gut-take line instead), and add five decision-relevant ones (Roast · Fruit · Finish · Softness · Complexity). Different question, different scale, different chart. Three views, one beer.</p>
 
     <h2>What this isn't</h2>
 
     <ul>
       <li><span class="highlight">Not new sensory science.</span> The eight axes are descended from generations of beer-writing — Cornell, Protz, Mosher, BJCP. We've reshuffled, not discovered.</li>
       <li><span class="highlight">Not a tongue-map revival.</span> The tongue map is bogus and we know it. The anatomy aesthetic is a wink.</li>
-      <li><span class="highlight">Not replacing other flavour viz.</span> Flavour wheels answer style. Star ratings answer popularity. The TastePentagon answers <em>is this my kind of thing</em>. Beerology answers <em>what does drinking it feel like</em>. Three views, complementary, none of them sufficient alone.</li>
+      <li><span class="highlight">Not replacing other flavour viz.</span> Flavour wheels answer <em>what style</em>. Star ratings answer <em>how popular</em>. <span class="new-edit">The PINtPOINT TastePentagon and FlavourEqualizer answer <em>is this my kind of thing</em> — the same question rendered two ways (silhouette for single-beer recognition; vertical bars for side-by-side comparison).</span> Beerology answers <em>what does drinking it feel like</em>. <span class="new-edit">Four views, complementary, none sufficient alone.</span></li>
     </ul>
 
     <p>Serious enough to trust, funny enough to remember.</p>
@@ -124,7 +156,9 @@
     <div class="sources">
       <strong>Source material:</strong>
       <ul style="margin:8px 0 0 20px">
-        <li><a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engineering essay this builds on; where the per-beer flavour data comes from.</li>
+        <li><a href="../under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engineering essay this builds on; where the per-beer flavour data comes from.</li>
+        <li class="new-edit"><a href="https://appellationbeer.com/blog/another-way-to-think-about-hop-presence/" target="_blank">Another way to think about hop presence</a> — Stan Hieronymus, Appellation Beer. The "tyranny of the tasting note" framing borrowed from Eric Asimov; case for shape and impact over specific aroma descriptors.</li>
+        <li class="new-edit"><a href="https://www.rpubs.com/ebhtra/758377" target="_blank">Untappd as a recommender</a> — Ethan Haley, 2019. Argument that beer ratings are noise-dominated by check-in circumstance; location is the dominant honest signal.</li>
         <li>[TBC — sommelier/Cicerone palate-map reference; Garrett Oliver's <em>Oxford Companion to Beer</em> is the obvious candidate.]</li>
         <li>[TBC — one cultural-essay reference on the language of beer description; Boak &amp; Bailey or Cornell would fit.]</li>
       </ul>
