@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-itunes-app" content="app-id=6760611613">
   <title>Under the Hood: How PINtDEXTER Picks Your Pint</title>
-  <meta name="description" content="The engineering follow-up to PINtPOINT's beer-recommender essay. Four layers, per-beer LLM-inferred flavour DNA, and three production tests — a misclassified pale lager, a misread pump clip, and a stale tap list — each of which surfaced something worth fixing." />
+  <meta name="description" content="The engineering follow-up to PINtPOINT's beer-recommender essay. Four layers, per-beer LLM-inferred flavour DNA, and the misclassified pale lager that exposed the bug." />
   <link rel="icon" type="image/png" href="../favicon.png" />
   <link rel="canonical" href="https://pintpoint.co.uk/blog/under-the-hood-how-pintdexter-picks-your-pint.html" />
   <link rel="alternate" type="application/rss+xml" title="PINtPRESS" href="https://pintpoint.co.uk/blog/feed.xml" />
@@ -70,16 +70,6 @@
         "@type": "Question",
         "name": "What is the fermentation-family override?",
         "acceptedAnswer": { "@type": "Answer", "text": "Two beers with similar flavour numbers can taste fundamentally different if one is an ale and one is a lager — yeast character, finish dryness, and clean-versus-estery profile diverge sharply across fermentation families. PINtDEXTER applies a 0.5x penalty to cross-family matches. The family was originally derived from the beer's declared style; that broke when a beer's style was wrong (Amstel labelled 'Pale Ale' but actually a pale lager). The LLM now scores fermentation family directly per beer, overriding the style-derived value when they disagree." }
-      },
-      {
-        "@type": "Question",
-        "name": "How does PINtDEXTER handle freshness?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Every menu scrape writes a per-beer last_seen stamp. Beers confirmed on today's scrape rank first; beers last seen days ago drift down and eventually drop off the visible tap list. The UI orders by that timestamp rather than by when the beer was first added to the catalogue, so a beer that's been on tap for weeks and was reconfirmed this morning sits above a beer added last week but not seen since." }
-      },
-      {
-        "@type": "Question",
-        "name": "Why do some venues get scraped daily and others weekly?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Multi-tap rotating pubs get scraped daily so the freshness signal stays tight. Brewery taprooms where a three-barrel kit might brew once a fortnight and the same five beers stay on for weeks get a weekly scrape instead. Both run on a single cron with a tag-based filter; the cadence is set per venue based on how fast the tap list actually rotates." }
       }
     ]
   }
@@ -143,10 +133,10 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>20 May 2026 · Updated 3 June 2026 · Engineering · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
+    <p class="meta"><span class="category essay">Essay</span>20 May 2026 · Engineering · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
     <h1>Under the Hood: <em>How PINtDEXTER Picks Your Pint</em></h1>
 
-    <p class="lede">An <a href="beer-recommendation-systems-what-most-get-wrong.html">earlier essay</a> argued for predicting the pint rather than the rating. That piece was about the user side of the recommender — how PINtPOINT learns what you like. This one is the other side: how each beer gets a shape worth recommending. Four layers, a per-beer DNA built from controlled metadata rather than marketing copy, and three production tests — a misclassified pale lager, a misread pump clip, and a stale tap list — each of which surfaced something worth fixing.</p>
+    <p class="lede">An <a href="beer-recommendation-systems-what-most-get-wrong.html">earlier essay</a> argued for predicting the pint rather than the rating. That piece was about the user side of the recommender — how PINtPOINT learns what you like. This one is the other side: how each beer gets a shape worth recommending. It comes down to four layers, a per-beer DNA, and the misclassified pale lager that exposed the most recent fix.</p>
 
     <p class="quote">A recommender is only as good as what it knows about the thing it's recommending.</p>
 
@@ -158,8 +148,6 @@
 
     <p>That threshold isn't a footnote, it's the design speaking. Collaborative filtering needs density. The UK alone releases more than a hundred new beers a week, and most never accumulate that volume. Cold start hits twice — new users have no history, new beers have no community signal — and the fallback in both cases is popularity, which is a ranked list of famous things rather than a recommendation.</p>
 
-    <p>There's a quieter problem too. <a href="https://www.rpubs.com/ebhtra/758377" target="_blank">Ethan Haley's 2019 R Pubs essay on Untappd as a recommender</a> names it bluntly: <em>"Beer ratings are very noisy, given the circumstances of check-ins."</em> Freshness of the keg, the glassware, what the drinker had immediately before, the company, the weather — none of that is in the rating, but all of it shapes the rating. Aggregation smooths some of it on famous beers with hundreds of ratings; on a small-run cask released last Thursday in Sheffield, there's nothing to smooth. The noise stays loud.</p>
-
     <h2>The other half of the field, suddenly cheap</h2>
 
     <p>The alternative is <span class="highlight">content-based recommendation</span>: score items by their own features. Pandora's the canonical version — paid musicologists labelling every song before the recommender saw it. Beautiful in theory, historically prohibitive for a catalogue the size of beer.</p>
@@ -167,16 +155,6 @@
     <p>There's a quiet ten-year arc worth naming. The &#375;hat post said, of the BeerAdvocate review text: <em>"the text does provide some excellent opportunities for analysis, we're going to focus only on the ratings."</em> They threw it away. A decade later, <a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Nishant Kushwaha's 2023 prototype</a> went back and did exactly the analysis they'd skipped — feeding the review text through an LLM to extract attributes per beer. Clever, but the features still depended on how much the community had written about the beer. Cold start in disguise.</p>
 
     <p>What changed in 2025–2026 is that asking an LLM to label the <em>beer</em> itself — not its discussion — became cheap enough to be a practical catalogue step rather than a research luxury. Pandora's labelling problem became a script that runs overnight, with no community discourse required.</p>
-
-    <h2>The tyranny of the tasting note</h2>
-
-    <p>Skipping the community discourse isn't only an availability call, it's a precision one. Beer writer <a href="https://appellationbeer.com/blog/another-way-to-think-about-hop-presence/" target="_blank">Stan Hieronymus</a> — author of <em>For the Love of Hops</em> — borrows Eric Asimov's phrase the <em>tyranny of the tasting note</em>: <em>"When somebody starts describing 'aromas of apricot, jam, guava, and jackfruit' there's little chance another drinker will get that."</em> Specific aroma descriptors are personal. They don't transfer.</p>
-
-    <p>That argument shaped which axes PINtDEXTER scores. The six visible on the TastePentagon — Hoppy, Bitter, Sweet, Fruity, Roast, Tart — are deliberately broad. Two drinkers can disagree whether a beer's fruit is mango or apricot but agree it's a fruity beer. The pentagon is about shape and impact, not whose tongue is right about the jackfruit.</p>
-
-    <p>The pentagon shape is one implementation of the underlying principle. Hieronymus's preferred visualisation, picked up by DRAFT magazine for their IPA feature, is a graphic-equaliser stack of vertical bars — same broad-axis logic, different chart. Both work. The principle is what matters: shape and impact, not the specific aroma identity.</p>
-
-    <p>One sub-choice is worth naming because most beer language collapses it. <span class="highlight">Hoppy</span> and <span class="highlight">Bitter</span> are scored separately. They sound interchangeable in casual talk — both come from the same plant — but they behave differently in the glass. A NEIPA can be aggressively hoppy with low bitterness; a West Coast IPA can be the opposite. Treating them as one axis is how recommendation engines end up suggesting "more of the same hop bomb" when what the drinker actually liked was the juice character, not the bite. Splitting them is how the pentagon avoids that mistake.</p>
 
     <h2>What goes into a beer's DNA</h2>
 
@@ -195,8 +173,6 @@
 
     <p>Six of those become the visual signature in the app — the <span class="highlight">TastePentagon</span> that appears on a beer's detail card and in Head-to-Head matchups. It's the same data either way; the brand mark is what makes it portable.</p>
 
-    <p>What the LLM is deliberately <em>not</em> shown is the Untappd descriptor — the free-text "about this beer" blurb that appears on venue menu listings. It looks like signal but isn't. Pump-clip copy is unauthored, often written by a junior team member months after the recipe was finalised, often copy-pasted across multiple beers, regularly contradicting the recipe in the keg. The scoring runs from controlled fields only: brewery name, beer name, declared style, ABV. The blurb gets shown to drinkers in the UI as flavour text, never read by the recommender as fact.</p>
-
     <h2>The four layers, end to end</h2>
 
     <p>PINtDEXTER stacks four signals. Each answers a different question. Take any one out and recommendations get worse in a different direction.</p>
@@ -205,12 +181,10 @@
       <li style="margin-bottom: 14px"><span class="highlight">Preference capture</span> — Sip-or-Skip binary swipes and Head-to-Head pair rounds. Forced choices, not free-form ratings. Output: a soft style profile after about ten interactions.</li>
       <li style="margin-bottom: 14px"><span class="highlight">Sliders (TUNeDEXTER)</span> — the user can take direct control of five flavour sliders plus body and strength when the inferred profile is wrong. The app never overrides explicit slider settings; preference learning is suggestion, not law.</li>
       <li style="margin-bottom: 14px"><span class="highlight">Per-beer DNA</span> — the LLM-scored content features above. Independent of any user. Cached per beer, re-run only when we explicitly backfill or invalidate.</li>
-      <li><span class="highlight">Availability filter</span> — recent tap-list activity at venues near you, drawn from Untappd's public feeds. Each beer carries a per-scrape <code>last_seen</code> stamp, so the system distinguishes <em>on tap today</em> from <em>seen here at some point</em>. Cadence varies by venue type: multi-tap rotating pubs get a daily scrape, brewery taprooms where a three-barrel kit might brew once a fortnight get a weekly one. The recommendation is grounded in a specific bar's recent pours, not a beer name plucked from a global catalogue.</li>
+      <li><span class="highlight">Availability filter</span> — recent tap-list activity at venues near you, drawn from Untappd's public feeds. The recommendation is grounded in a specific bar's recent pours, not a beer name plucked from a global catalogue.</li>
     </ol>
 
     <p>Layers 1 and 2 are the <em>user</em> side. Layer 3 is the <em>beer</em> side. Layer 4 is the <em>world</em> side. The cross-product is what gets surfaced.</p>
-
-    <p>Haley puts Layer 4's case bluntly: <em>"There's no point in training your recommender to know what type of IPA your user is apt to like… if she has to fly 3000 miles to buy it."</em> Even from within the collaborative-filtering paradigm, the location anchor is the dominant factor. PINtDEXTER takes that further — Layer 4 isn't just "near you" but "on the bar at the room you're sitting in tonight."</p>
 
     <h2>The Amstel case</h2>
 
@@ -224,37 +198,9 @@
 
     <p>That is a small change that fixes a whole class of bug, which is about the nicest thing you can say about an engineering fix.</p>
 
-    <h2>The Steam Town case</h2>
-
-    <p>A separate misread came from a different layer. A drinker browsing the tap list at The Ale House Chelmsford saw four IPAs on offer. Among them was Steam Town Brew Co's West Coast IPA — a beer the brewery makes reliably true to style — described on its Untappd page as <em>"hazy, citrus, pine, tropical fruit."</em> A reasonable reader would clock the descriptor's internal contradiction: hazy and West Coast are different schools.</p>
-
-    <p>The right reading was that the descriptor was wrong, not the beer. The brewery's actual product is a clean, dry-finish WCIPA every time. The Untappd descriptor field is uploaded by humans, often months stale, regularly inconsistent with the recipe — exactly the kind of low-signal text the LLM scoring deliberately ignores.</p>
-
-    <p>PINtDEXTER's catalogue scoring already worked around the noise. The lesson was for the surfaces around it: anywhere the app displays a pump-clip descriptor alongside a beer name, the descriptor reads as flavour text, not fact — closer to wallpaper than to a recipe spec. A small typography rule, applied across the UI.</p>
-
-    <h2>The freshness signal</h2>
-
-    <p>A subtler failure mode surfaced the same week. PINtDEXTER's pick at Radio City Social was <em>Juice That Makes You Explode</em> from Ten Tun Brew House — an 89% match for the user, and verifiably on the bar's current Untappd menu. The pick was right. The user didn't trust it.</p>
-
-    <p>The reason had nothing to do with the recommendation engine. The visible tap list beneath the pick was showing beers from thirteen days earlier — beers that had long since rotated off. The list looked invented. So the pick on top of it looked invented too, even though it wasn't.</p>
-
-    <p>The bug was upstream of recommendation. tap_list rows had been ordered by first-seen timestamp rather than last-seen, so a beer entered the catalogue on 20 May and confirmed on every scrape since stayed pinned to its original date instead of refreshing. The fix was a single column-write in the scrape function (write <code>last_seen</code> on every match, not just first sight) and one ORDER BY in the UI. Tight diff. Big perceived change.</p>
-
-    <p>The wider lesson outlasted the fix: recommendation accuracy and recommendation credibility are two different things. A correct pick read off a stale-looking list lands as suspect. Layer 4's job isn't only to find what's on the bar — it's to look like it knows.</p>
-
     <h2>What we're not claiming</h2>
 
-    <p>None of this means content-based recommendation is new, or that PINtPOINT invented LLM feature extraction. The contribution is narrower: feature extraction from the beer's own controlled metadata rather than from community discussion or pump-clip marketing copy, combined with a four-layer pipeline tied to what's been pouring recently at venues nearby — not a global catalogue, not a leaderboard.</p>
-
-    <p>Three things the recommender deliberately doesn't read, all of which look like signal:</p>
-
-    <ul>
-      <li><span class="highlight">Community review text and ratings.</span> Per Haley, ratings carry the noise of every check-in's circumstance — freshness, temperature, drinking order, mood. Aggregation smooths some of it on famous beers; the rest of the catalogue can't rely on it.</li>
-      <li><span class="highlight">The Untappd pump-clip descriptor.</span> Per the Steam Town case, this is human-uploaded marketing copy regularly inconsistent with the recipe. Visible to the drinker, invisible to the recommender.</li>
-      <li><span class="highlight">Specific aroma tasting notes.</span> Per Hieronymus, "apricot, jam, guava, and jackfruit" doesn't transfer between palates. The pentagon scores broader shape: hoppy, fruity, bitter, sweet, roast, tart — axes any two drinkers can agree on.</li>
-    </ul>
-
-    <p>And one thing it doesn't claim: that there's a single best beer for any drinker. The pick is a sharper match given what's actually on the bar in the room you're sitting in tonight. Walk into a different pub and the same recommender, same user, returns a different pick. That's by design.</p>
+    <p>None of this means content-based recommendation is new, or that PINtPOINT invented LLM feature extraction. The contribution is narrower: feature extraction from the beer's own metadata rather than from community discussion, combined with a four-layer pipeline tied to what's been pouring recently at venues nearby — not a global catalogue, not a leaderboard.</p>
 
     <p class="quote">Most beer recommenders predict ratings.<br/>PINtPOINT picks the pint that's on the bar.</p>
 
@@ -276,14 +222,6 @@
         <summary>What is the fermentation-family override?</summary>
         <p>Two beers with similar flavour numbers can taste fundamentally different if one is an ale and one is a lager — yeast character, finish dryness, and clean-versus-estery profile diverge sharply across fermentation families. PINtDEXTER applies a 0.5x penalty to cross-family matches. The family was originally derived from the beer's declared style; that broke when a beer's style was wrong (Amstel labelled "Pale Ale" but actually a pale lager). The LLM now scores fermentation family directly per beer, overriding the style-derived value when they disagree.</p>
       </details>
-      <details class="faq-item">
-        <summary>How does PINtDEXTER handle freshness — what stops it picking a beer that's been gone for days?</summary>
-        <p>Every menu scrape writes a per-beer <code>last_seen</code> stamp on the row. Beers confirmed on today's scrape rank first; beers last seen days ago drift down and eventually drop off the bar's visible tap list. The UI orders by that timestamp rather than by when the beer was first added to the catalogue, so a beer that's been on tap for weeks and was reconfirmed this morning sits above a beer added last week but not seen since.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Why do some venues get scraped daily and others weekly?</summary>
-        <p>Multi-tap rotating pubs — craft destinations and Wetherspoons with strong cask programmes — get scraped daily so the freshness signal stays tight. Brewery taprooms where a three-barrel kit might brew once a fortnight and the same five beers stay on for weeks get a weekly scrape instead. Both run on a single cron with a tag-based filter; the cadence is set per venue at add-time based on how fast the tap list actually rotates.</p>
-      </details>
     </div>
 
     <div class="sources">
@@ -292,8 +230,6 @@
         <li><a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the earlier PINtPOINT essay this follows up.</li>
         <li><a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">A Beer Recommendation System Made With R</a> — David Smith / &#375;hat, June 2013. Item-item collaborative filtering on 1.5M BeerAdvocate reviews; ratings only.</li>
         <li><a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Beer Recommendation Engine: Harnessing the Power of LLMs and Embeddings</a> — Nishant Kushwaha, 2023. LLM-based attribute extraction from community review text.</li>
-        <li><a href="https://www.rpubs.com/ebhtra/758377" target="_blank">Untappd as a recommender</a> — Ethan Haley, 2019. Argument for location as the dominant factor and ratings as noise-dominated.</li>
-        <li><a href="https://appellationbeer.com/blog/another-way-to-think-about-hop-presence/" target="_blank">Another way to think about hop presence</a> — Stan Hieronymus, Appellation Beer. The "tyranny of the tasting note" framing; case for broad shape over specific aroma descriptors.</li>
       </ul>
     </div>
 
