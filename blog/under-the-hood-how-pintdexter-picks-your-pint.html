@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-itunes-app" content="app-id=6760611613">
   <title>Under the Hood: How PINtDEXTER Picks Your Pint</title>
-  <meta name="description" content="The engineering follow-up to PINtPOINT's beer-recommender essay. Four layers, per-beer LLM-inferred flavour DNA, three production tests — a misclassified pale lager, a misread pump clip, a stale tap list — and the visualisation symmetry that lets the same eight beer dimensions render as either a pentagon or a graphic equaliser." />
+  <meta name="description" content="The engineering follow-up to PINtPOINT's beer-recommender essay. Four layers, per-beer LLM-inferred flavour DNA, and three production tests — a misclassified pale lager, a misread pump clip, and a stale tap list — each of which surfaced something worth fixing." />
   <link rel="icon" type="image/png" href="../favicon.png" />
   <link rel="canonical" href="https://pintpoint.co.uk/blog/under-the-hood-how-pintdexter-picks-your-pint.html" />
   <link rel="alternate" type="application/rss+xml" title="PINtPRESS" href="https://pintpoint.co.uk/blog/feed.xml" />
@@ -143,7 +143,7 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>20 May 2026 · Updated 4 June 2026 · Engineering · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
+    <p class="meta"><span class="category essay">Essay</span>20 May 2026 · Updated 3 June 2026 · Engineering · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
     <h1>Under the Hood: <em>How PINtDEXTER Picks Your Pint</em></h1>
 
     <p class="lede">An <a href="beer-recommendation-systems-what-most-get-wrong.html">earlier essay</a> argued for predicting the pint rather than the rating. That piece was about the user side of the recommender — how PINtPOINT learns what you like. This one is the other side: how each beer gets a shape worth recommending. Four layers, a per-beer DNA built from controlled metadata rather than marketing copy, and three production tests — a misclassified pale lager, a misread pump clip, and a stale tap list — each of which surfaced something worth fixing.</p>
@@ -212,26 +212,6 @@
 
     <p>Haley puts Layer 4's case bluntly: <em>"There's no point in training your recommender to know what type of IPA your user is apt to like… if she has to fly 3000 miles to buy it."</em> Even from within the collaborative-filtering paradigm, the location anchor is the dominant factor. PINtDEXTER takes that further — Layer 4 isn't just "near you" but "on the bar at the room you're sitting in tonight."</p>
 
-    <h2>Showing the pint</h2>
-
-    <p>The four layers above decide which beer to pick. The next question is how to <em>show</em> it — which turned out to be its own design problem.</p>
-
-    <p>Beer DNA renders one of two visualisations: a five-axis <span class="highlight">TastePentagon</span> radar with a personality strip beneath, or an eight-column <span class="highlight">FlavourEqualizer</span> styled after the audio-EQ meter idiom Stan Hieronymus champions. The toggle is preference, not data trade — both views carry the same eight dimensions (five core comparison axes — Sweet · Bitter · Sour · Body · Strength — plus three adaptive personality slots). The equaliser ships as default in the brand teal because it scans cleaner on the side-by-side comparison surfaces (tap lists, Head-to-Head); the radar wins for the single-beer detail card where the silhouette becomes a recognisable signature, and for the H2H card badge where the closed shape reads at thumbnail size.</p>
-
-    <p>The personality slots are where the chart gets opinionated. Each beer gets up to three labels drawn from a pool of ten:</p>
-
-    <ul>
-      <li><span class="highlight">Hop family</span> — Hoppy, Citrusy, Tropical, Piney, Floral</li>
-      <li><span class="highlight">Malt family</span> — Malty, Toasty, Roasty</li>
-      <li><span class="highlight">Fruit family</span> — Fruity, Juicy</li>
-    </ul>
-
-    <p>The four-way hop split matters because the modern UK beer scene has a real lexical distinction between bright-citrus character (Citra, Cascade, Centennial, Amarillo) and juice-led tropical character (Galaxy, Mosaic, Nelson Sauvin, Sabro). Calling both <em>Hoppy</em> would discard a discrimination the drinker already makes. So a Cascade pale ale renders CITRUSY, a Galaxy/Mosaic NEIPA renders TROPICAL, a Simcoe WCIPA renders PINEY, a Saaz pilsner renders FLORAL.</p>
-
-    <p>Slot count is variable. A NEIPA scoring zero on malt simply doesn't render a malt column; the chart shrinks. Showing a 0-height bar labelled MALTY for a Citra IPA wastes pixels and reads as confusingly present — better to omit. The five fixed axes always render so the comparison spine is intact, regardless of beer.</p>
-
-    <p>Two paths pick a slot's label. The first is keyword-derived (varietal names in the beer's name or style — "Galaxy DDH" → TROPICAL, "Cascade Pale" → CITRUSY, "Imperial Stout" → ROASTY). Deterministic, free, runs on every render, covers most beers whose names give away their hop bill. The second is LLM-inferred: the same Haiku pass that scores the eight main axes also scores six sub-axis intensities (citrusy, tropical, piney, floral, toasty, roasty) and stores them as a JSONB column on the inference row. The LLM path is the catch for beers whose names give no hint — Pentrich's <em>A&amp;E</em> tells you nothing about its hops; given <em>"Pentrich Brewing, IPA – Other, 7.2%"</em> the model still infers a personality. When both signals exist, the LLM wins for sub-scores at three or higher. The threshold guards against overriding a sensible default with weak noise.</p>
-
     <h2>The Amstel case</h2>
 
     <p>In mid-May 2026, a quiet bug surfaced. A drinker whose profile pointed firmly at pale ales was being served Amstel as an 83% match. That should never have happened. Amstel is a pale lager, not a pale ale.</p>
@@ -272,7 +252,6 @@
       <li><span class="highlight">Community review text and ratings.</span> Per Haley, ratings carry the noise of every check-in's circumstance — freshness, temperature, drinking order, mood. Aggregation smooths some of it on famous beers; the rest of the catalogue can't rely on it.</li>
       <li><span class="highlight">The Untappd pump-clip descriptor.</span> Per the Steam Town case, this is human-uploaded marketing copy regularly inconsistent with the recipe. Visible to the drinker, invisible to the recommender.</li>
       <li><span class="highlight">Specific aroma tasting notes.</span> Per Hieronymus, "apricot, jam, guava, and jackfruit" doesn't transfer between palates. The pentagon scores broader shape: hoppy, fruity, bitter, sweet, roast, tart — axes any two drinkers can agree on.</li>
-      <li><span class="highlight">LLM judgment on a strict category.</span> The drinkability bucket (Session / Standard / Strong / Boozy) is derived mechanically from ABV cutoffs — 4.6%, 5.8%, 7.5% — not from the LLM's read of the beer. The prompt teaches the cutoff; the code enforces it after the LLM returns. Belt and braces. Even when the model picks a label that "feels right" for the beer's intensity, the code overrides if the cutoff disagrees. Eliminates the class where <em>Punchy. STANDARD</em> reads as a self-contradiction for a 7.2% IPA the model wanted to call sessionable.</li>
     </ul>
 
     <p>And one thing it doesn't claim: that there's a single best beer for any drinker. The pick is a sharper match given what's actually on the bar in the room you're sitting in tonight. Walk into a different pub and the same recommender, same user, returns a different pick. That's by design.</p>
