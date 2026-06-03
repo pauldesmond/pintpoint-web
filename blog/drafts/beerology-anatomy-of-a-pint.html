@@ -82,7 +82,59 @@
     <p class="meta"><span class="category essay">Essay</span>DRAFT · TBD May 2026 · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
     <h1>Beerology — <em>The Anatomy of a Pint</em></h1>
 
-    <p class="draft-note">DRAFT v4 · 2026-06-03. Gold-highlighted text marks additions from the visualisation-work review pass — the Hieronymus + Haley intellectual scaffolding, the Beerology-vs-Pentagon-vs-Equaliser three-view positioning, the drinker-cues / drinkability-bucket sibling pattern, the four-questions / sour-axis honesty pass, and the Bosko worked example. Bosko scores now reflect an in-person verification pass (Paul, 2026-06-03): pine/citrus/caramel, high bitterness but distinctly sweeter/maltier/fuller than a pale ale; hops Mosaic/Simcoe/Citra. Cross-link pass to other essays is the only remaining step before publish.</p>
+    <p class="draft-note">DRAFT v4 · 2026-06-03. Gold-highlighted text marks additions from the visualisation-work review pass — the Hieronymus + Haley intellectual scaffolding, the Beerology-vs-Pentagon-vs-Equaliser three-view positioning, the drinker-cues / drinkability-bucket sibling pattern, the four-questions / sour-axis / yeast-axis honesty pass, the aroma/taste/mouthfeel bridge, and the Bosko worked example. Bosko scores now reflect an in-person verification pass (Paul, 2026-06-03): pine/citrus/caramel, high bitterness but distinctly sweeter/maltier/fuller than a pale ale; hops Mosaic/Simcoe/Citra. Cross-link pass for the live trio is done; the only remaining gates before publish are (a) the accompanying image and (b) the publish-time quartet touch — see HTML comment below for the exact steps.</p>
+
+    <!-- ============================================================
+         PUBLISH-TIME CHECKLIST (read this first if you're about to ship Beerology)
+         ============================================================
+
+         The live trio (Why / How / What's-in-it) currently carries a
+         "Companion essays" footer with THREE rows. The moment this
+         file moves out of drafts/, those footers go stale (they'll
+         omit the capstone) AND Beerology will have no companion
+         footer at all (one-way trips in from the trio). Both gaps
+         must be closed in the SAME commit as the publish move.
+
+         The two-fours collision risk (Sophie, 2026-06-03):
+           - The footer talks about FOUR ESSAYS (Why/How/What's-in-it/Feel).
+           - The body of THIS essay talks about FOUR QUESTIONS
+             (style/popularity/fit/feel — see "What this isn't").
+           - These are different fours and don't map cleanly. Keep the
+             footer framing as "Companion essays" (no count word) so
+             the two fours don't blur. Reader counts four rows and
+             draws the conclusion themselves; the body's "four questions"
+             stays unambiguous.
+
+         Pre-staged publish-time steps:
+
+         1. git mv blog/drafts/beerology-anatomy-of-a-pint.html
+                   blog/beerology-anatomy-of-a-pint.html
+         2. Update the footer template in ALL THREE live pieces — add
+            a fourth row:
+              <li><strong>Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — the drinking experience</li>
+            Keep the existing "Companion essays" header (no count word).
+         3. Add the same four-row footer block to THIS file (Beerology),
+            with the "Feel" row marked as "← you're reading" (non-linked,
+            teal marker). Use the exact same <aside class="series-links">
+            block as the trio; only the "you're reading" row changes.
+         4. Re-read this essay's "What this isn't" bullet about the four
+            questions with fresh eyes. The footer's "four essays" and
+            the body's "four questions" should both land cleanly without
+            the reader having to disambiguate. If they don't, the body
+            wording wins (it's the older / more load-bearing claim) and
+            the footer becomes "Companion essays in the series" or
+            similar to retreat from the four-count.
+         5. Strip this DRAFT v4 draft-note paragraph entirely.
+         6. Decide whether to keep the .new-edit gold highlights as a
+            "what's new in v4" reader cue, or strip them for a clean
+            publish (recommended: strip — they were review markup, not
+            permanent emphasis). Search the file for class="new-edit"
+            and class is "new-edit" and remove the wrapping <span>/<li>
+            class attributes, keeping the inner text.
+         7. Strip this HTML comment.
+         8. Single commit, push.
+         ============================================================ -->
+
 
     <p class="lede">You're at the bar. Four taps. You have about 800 milliseconds before someone else makes the call. The existing language for picking between those four pints — star ratings, flavour-wheel categories, hop varieties listed off a chalkboard — none of it is built for the decision you're actually making. This is a different one: what does each of these beers <em>feel like to drink</em>?</p>
 
