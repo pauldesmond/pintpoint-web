@@ -1904,6 +1904,338 @@ pintpoint.co.uk · © 2026 PINtPOINT
 
 ---
 
+# Blog: Pick the Right Pint — the four-essay guide to PINtPOINT
+
+Source: https://pintpoint.co.uk/blog/pick-the-right-pint.html
+
+PINtPOINT
+
+About
+
+Features
+
+Venues
+
+Blog
+
+Screenshots
+
+Guide2 June 2026 · By Sophie Ro
+
+Four essays. Four subjects. One orbit.
+
+PINtPOINT — the pub-and-beer discovery app — has four essays in orbit around its recommender, PINtDEXTER. They cover the problem it's solving, the engine that solves it, the ingredients worth knowing about, and what drinking the result actually feels like. Same orbit, four different subjects. Start anywhere, but start with the question you actually have.
+
+The four subjects
+
+1
+
+Problem
+
+Why the usual approach is broken.
+
+2
+
+Engine
+
+How PINtDEXTER works instead.
+
+3
+
+Ingredients
+
+Hop flavour vocabulary, in plain English.
+
+4
+
+Experience
+
+What drinking the result feels like.
+
+Where to start
+
+Is this app for me?
+
+Start with Problem, then jump to Experience. The first explains what's wrong with how most beer apps recommend; the last shows what a useful answer to should I order this? actually looks like.
+
+How does it actually work?
+
+Start with Problem, then Engine. The first frames the gap in beer-recommender design; the second is the engineering essay on how PINtDEXTER closes it.
+
+I just want a better pint right now.
+
+Start with Ingredients, then Experience. The first gives you the vocabulary to read a tap list with confidence; the second gives you a reading method for the pint in front of you.
+
+The four essays
+
+1 · Problem
+
+Beer Recommendation Systems: What Most Get Wrong
+
+Why collaborative-filtering recommenders — the ones built on top of Untappd ratings or RateBeer reviews — keep producing the same disappointing pours. Cold start, popularity bias, geography-blindness. A response to two public academic attempts, and the design constraint PINtPOINT optimises against instead.
+
+2 · Engine
+
+Under the Hood: How PINtDEXTER Picks Your Pint
+
+The engineering essay. Sip-or-Skip and Head-to-Head as preference-elicitation; the Beer DNA inferred per beer by LLM; the TastePentagon and FlavourEqualizer as the two visualisations of fit; the cross-family fermentation override that catches mislabelled styles. How the layers stack.
+
+3 · Ingredients
+
+The Drinker's Guide to Hops
+
+A practical taxonomy for the ingredient that does most of the personality work in modern beer. Six teaching categories (citrus, tropical, pine & resin, stone fruit & berry, floral & herbal, earthy & spicy), the chemistry behind them, and per-variety cards for the hops you'll actually meet on a tap list — the vocabulary you'll need to read a recommendation or steer one.
+
+4 · Experience
+
+Beerology: Anatomy of a Pint
+
+A reading method for the pint in front of you. Eight axes — Body, Bitterness, Sweetness, Roast, Fruit, Finish, Softness, Complexity — plus drinker cues, a drinkability bucket, and one plain-English "what it feels like" sentence per beer. Tuned for the beers you'll actually find on most tap lists; honest about the sour and Belgian-yeast styles it doesn't cover.
+
+Source material
+
+Ethan Haley — Untappd as a recommender (RPubs, 2021). The argument that ratings are noise-dominated and location is the honest signal.
+
+Stan Hieronymus — Another way to think about hop presence (Appellation Beer). The "tyranny of the tasting note" framing.
+
+NYC Data Science — NINKASI (2020). Collaborative-filtering attempt that the Problem essay responds to.
+
+Beer-writing pillars referenced across the arc: Martyn Cornell, Roger Protz, Randy Mosher, Garrett Oliver's Oxford Companion to Beer, the BJCP style guidelines.
+
+# Blog: Beerology — The Anatomy of a Pint
+
+Source: https://pintpoint.co.uk/blog/beerology-anatomy-of-a-pint.html
+
+PINtPOINT
+
+About
+
+Features
+
+Venues
+
+Blog
+
+Screenshots
+
+Essay2 June 2026 · By Sophie Ro
+
+Beerology — The Anatomy of a Pint
+
+You're at the bar. Four taps. You have about 800 milliseconds before someone else makes the call. The existing language for picking between those four pints — star ratings, flavour-wheel categories, hop varieties listed off a chalkboard — none of it is built for the decision you're actually making. This is a different one: what does each of these beers feel like to drink?
+
+Should I order this — and what sort of pinting experience
+
+am I signing up for?
+
+What we've been missing
+
+Beer description, as a public discipline, has matured around two questions: what category is this beer in (the flavour wheel) and how good is it (the rating). Both useful in their place. Neither answers the bar-decision question. A 4.2-star NEIPA tells you it's well-liked. A "tropical / juicy / pillowy" tasting note tells you what's in the glass. Neither tells you whether this is a first-pint or a third-pint beer, whether it'll keep up with food, whether it'll wear you out by 10pm. The decision-shape of a pint is missing from the vocabulary.
+
+Two writers have been picking at the same problem from different angles. Stan Hieronymus — author of For the Love of Hops — borrows Eric Asimov's phrase the tyranny of the tasting note: "When somebody starts describing 'aromas of apricot, jam, guava, and jackfruit' there's little chance another drinker will get that." Specific aroma descriptors are personal; they don't transfer. Ethan Haley's 2019 essay on Untappd as a recommender approaches the rating side just as bluntly: "beer ratings are very noisy, given the circumstances of check-ins" — freshness, glassware, what the drinker had immediately before, the company, the weather. Aggregation smooths some of it on famous beers; the rest of the catalogue can't rely on it. Hieronymus is sceptical of the language we use about beer; Haley is sceptical of the scores we attach to it. Both leave a vacuum where the question this piece is built around still sits — what kind of pinting am I signing up for?
+
+The closest existing framework — the sommelier's palate map, an entry/mid-palate/finish/aftertaste arc through the mouth — gets at it from one direction. Beerology starts there and builds a glanceable card.
+
+A quick note on the science
+
+The tongue map (sweet at the tip, bitter at the back, the diagram in every Edwardian biology textbook) is debunked: taste receptors are everywhere on the tongue. The palate map — the time-and-space arc of a sip through the mouth — is real and is what trained tasters reference. Beerology's data lives there. The Victorian anatomical-poster aesthetic that wraps it is a deliberate visual joke, never a truth claim. Anatomical-museum-print on the outside, palate-mapping on the inside.
+
+The first reading
+
+Pressure Drop Bosko — West Coast IPA, 6.5% ABV. A London-brewed WCIPA that's become a benchmark for the style in the UK, available on cask and keg widely. Hopped with Mosaic, Simcoe and Citra — three of the C-hop pantheon, doing pine, citrus and tropical work over a caramel-malt spine.
+
+Body 6 — distinctly fuller than a pale ale; not haze-pillowy, but more weight on the palate than the lean WCIPA stereotype suggests.
+
+Bitterness 7 — high; the C-hop bittering charge does its work without tipping into abrasion.
+
+Sweetness 4 — noticeable caramel-malt sweetness; sweeter than the pale ale it sits next to on the bar.
+
+Roast 3 — caramel and biscuit, not coffee. The kilned side of the malt spectrum, not the dark side.
+
+Fruit 6 — citrus and pine resin from the Mosaic-Simcoe-Citra stack; tropical notes traceable but pine and grapefruit dominate.
+
+Finish 7 — long and bitter, but the malt body keeps it from drying out the way a leaner WCIPA does.
+
+Softness 4 — still WCIPA-edged on the front, but the extra malt rounds the corners off the bitterness.
+
+Complexity 7 — three hop varieties stacking citrus, pine and tropical over a caramel-malt spine; layered without being maximalist.
+
+Drinker cues: Stands up to dinner · Beer-geek default · Better cold · UK benchmark for the style.
+
+Drinkability: Strong — mechanical from 6.5% ABV (the 5.8–7.4% band); a row below the cues, lower-resolution by design.
+
+What it feels like: a West Coast IPA with more malt weight than the lean stereotype lets on — pine and grapefruit on the front, a caramel-malt spine underneath, bitterness that lingers without scouring. The kind of pint that earns the second pour.
+
+Beerology verdict: reference-grade. The WCIPA most other UK WCIPAs are accidentally trying to be.
+
+Read against the other formats: Untappd has Bosko around 4.0 — well-liked but not famous, the kind of score that tells you almost nothing about whether it suits the moment. A flavour-wheel reading would slot it under "American IPA / West Coast" — accurate, useless for picking. The brewery's own copy goes hard on hop varietals. None of those signals tell you it's the pint to start your evening with, that it'll outpace fried food, that you should drink it before the smoothie sours and the dessert stouts. The Beerology card does — in eight numbers, four cues, and a sentence.
+
+The bit that's new: drinker cues
+
+Almost everything else on a Beerology card is a refinement of vocabulary that already exists — body, bitterness, sweetness, roast, fruit, finish are familiar to anyone who's read a tasting note. The new layer is the row of drinker cues: short phrases that describe what the beer does to your evening, not what it contains. First-pint friendly. Session-safe. Fireside. All-nighter risk. Show-offy. Better on the second.
+
+This is the part rating frameworks structurally can't reach. A 1-5 score can't tell you a beer is contemplative, only that the average drinker liked it. A flavour wheel can't tell you a beer is meal-proof, only what category it belongs to. The drinker cues are the closest available language for the question the bar-decision actually turns on: what kind of pinting am I signing up for?
+
+Three or four cues per beer. Not a checklist — a curation. The wrong cue is worse than no cue, so the cues that don't fire stay quiet.
+
+There's a quieter cousin to the drinker cues already running inside PINtPOINT: the drinkability bucket the recommender attaches to every beer — Session, Standard, Strong, Boozy. Those are mechanical, ABV-derived, single-dimensional; you'd struggle to write a Beerology cue from one. The cue is what the bucket reaches for and can't quite touch — a label that combines strength, body, finish length and complexity into a phrase the drinker uses without thinking. Cues are buckets with subtext.
+
+How the card is built
+
+The eight axes do the quantitative work: Body, Bitterness, Sweetness, Roast, Fruit, Finish, Softness, Complexity, each 1–10. The shape across those eight is the beer's skeleton — deliberately a different axis set from the recommender's in-app visualisations. If you already think about beer in terms of aroma, taste and mouthfeel, the eight sit quite naturally on top: Body and Softness describe mouthfeel; Bitterness, Sweetness, Roast and Fruit capture most of the flavour picture; Finish lingers at the end; Complexity is what makes the whole thing feel simple or layered. The drinker cues sit underneath. The anatomical-poster wrapper (first-contact sweetness, mid-palate spread, finish grip, aftertaste echo) does the visual register. One "what it feels like" sentence, in plain English, is the soul. One closing Beerology verdict line ties it.
+
+PINtPOINT ships two recommender visualisations alongside Beerology, both built on a shared 5-axis core (Sweet · Bitter · Sour · Body · Strength): a TastePentagon radar for the brand-mark single-beer view, and a FlavourEqualizer that adds three "personality" columns picked per beer — a NEIPA reads three hop/fruit notes (e.g. Citrusy · Tropical · Juicy), a stout three malt notes (e.g. Roasty · Malty · Toasty), labels floating across families by score rather than a fixed slot per family. Both visualisations answer the recommender's question — is this beer's shape close to my preferred shape? — at thumbnail and tap-list density. Beerology's eight axes share three with the core (Body · Bitterness · Sweetness), drop two (both Sour and Strength sit outside this axis set by design — Sour because Beerology is scoped to the hop/malt mainstream (see below); Strength because the gut-take line carries it), and add five decision-relevant ones (Roast · Fruit · Finish · Softness · Complexity). Different question, different scale, different chart. Three views, one beer.
+
+What this isn't
+
+Not new sensory science. The eight axes are descended from generations of beer-writing — Cornell, Protz, Mosher, BJCP. We've reshuffled, not discovered.
+
+Not a sour-beer framework. The axes are built for the hop/malt mainstream — IPAs, lagers, stouts, browns, the bulk of what's on a UK pub draught list. Gose, lambic, Berliner Weisse and other acidity-led styles need their own vocabulary; this card will under-report them.
+
+Not built for yeast-led styles. Phenolic and ester-driven character — the banana/clove of a witbier, the pepper-and-funk of a saison, the candy-dried-fruit signature of Belgian dubbels and tripels — doesn't have a dedicated axis here. The card will read a saison as "fruity, medium-bodied, slightly tart" and miss what defines the style. Same shape of limitation as the sour gap above: a future lever, not a pedantic omission.
+
+Not a tongue-map revival. The tongue map is bogus and we know it. The anatomy aesthetic is a wink.
+
+Not replacing other flavour viz. Flavour wheels answer what style. Star ratings answer how popular. PINtPOINT's recommender answers is this for me — the fit-question gets two renderings, the TastePentagon (silhouette for single-beer recognition) and the FlavourEqualizer (vertical bars for side-by-side comparison). Beerology answers what does drinking it feel like. Four questions — style, popularity, fit, feel — none sufficient alone.
+
+Serious enough to trust, funny enough to remember.
+
+Untappd asks how good. The flavour wheel asks what style.
+
+Beerology asks what it feels like to drink.
+
+Source material:
+
+Under the Hood: How PINtDEXTER Picks Your Pint — the engineering essay this builds on; where the per-beer flavour data comes from.
+
+Another way to think about hop presence — Stan Hieronymus, Appellation Beer. The "tyranny of the tasting note" framing borrowed from Eric Asimov; case for shape and impact over specific aroma descriptors.
+
+Untappd as a recommender — Ethan Haley, 2019. Argument that beer ratings are noise-dominated by check-in circumstance; location is the dominant honest signal.
+
+# Blog: Under the Hood: How PINtDEXTER Picks Your Pint
+
+Source: https://pintpoint.co.uk/blog/under-the-hood-how-pintdexter-picks-your-pint.html
+
+PINtPOINT
+
+About
+
+Features
+
+Venues
+
+Blog
+
+Screenshots
+
+Essay20 May 2026 · Engineering · By Sophie Ro
+
+Under the Hood: How PINtDEXTER Picks Your Pint
+
+An earlier essay argued for predicting the pint rather than the rating. That piece was about the user side of the recommender — how PINtPOINT learns what you like. This one is the other side: how each beer gets a shape worth recommending. It comes down to four layers, a per-beer DNA, and the misclassified pale lager that exposed the most recent fix.
+
+A recommender is only as good as what it knows about the thing it's recommending.
+
+The default answer, and where it breaks on beer
+
+The dominant approach for the last fifteen years is collaborative filtering — factor a user-by-item rating matrix and predict missing ratings. Netflix made it famous; the cleanest beer example is ŷhat's June 2013 item-item R prototype on 1.5M BeerAdvocate reviews.
+
+The ŷhat post is honest about what makes the approach work. Their worked example pits Fat Tire against Michelob Ultra and Dale's Pale Ale: Fat Tire fans rate Dale's similarly and Michelob lower, and the recommender quantifies the difference. Intuitive — on those three beers. The catch is in the filter: they only considered beers with 500+ reviews, and the demo ran on the 20 most-reviewed beers in the dataset.
+
+That threshold isn't a footnote, it's the design speaking. Collaborative filtering needs density. The UK alone releases more than a hundred new beers a week, and most never accumulate that volume. Cold start hits twice — new users have no history, new beers have no community signal — and the fallback in both cases is popularity, which is a ranked list of famous things rather than a recommendation.
+
+The other half of the field, suddenly cheap
+
+The alternative is content-based recommendation: score items by their own features. Pandora's the canonical version — paid musicologists labelling every song before the recommender saw it. Beautiful in theory, historically prohibitive for a catalogue the size of beer.
+
+There's a quiet ten-year arc worth naming. The ŷhat post said, of the BeerAdvocate review text: "the text does provide some excellent opportunities for analysis, we're going to focus only on the ratings." They threw it away. A decade later, Nishant Kushwaha's 2023 prototype went back and did exactly the analysis they'd skipped — feeding the review text through an LLM to extract attributes per beer. Clever, but the features still depended on how much the community had written about the beer. Cold start in disguise.
+
+What changed in 2025–2026 is that asking an LLM to label the beer itself — not its discussion — became cheap enough to be a practical catalogue step rather than a research luxury. Pandora's labelling problem became a script that runs overnight, with no community discourse required.
+
+What goes into a beer's DNA
+
+Each row in the catalogue gets the following inferred features, plus the ABV and declared style that came from the source data:
+
+Hoppy — aroma and flavour from hops (citrus, pine, tropical, floral). Not bitterness.
+
+Bitter — palate bite from boil hops; the lingering, drying side of hop chemistry.
+
+Sweet — residual sugar, lactose, caramel malt, fruit sweetness.
+
+Fruity — juicy, estery, tropical, stone-fruit. Whether the source is hops, yeast, or adjuncts.
+
+Roast — malt character of any colour: biscuit and toffee at the pale end, coffee and cocoa at the dark end.
+
+Tart — sour or acidic, from wild fermentation or fruit puree.
+
+Body — light, medium, or full.
+
+Fermentation family — ale, lager, mixed, wild, cider, or mead. The one that matters most for cross-style mistakes.
+
+Five axes become the visual signature in the app — Sweet, Sour, Body, Bitter, and Strength (the last derived from ABV). The TastePentagon renders them on a beer's detail card and in compact list views: a five-pointed silhouette built to recognise at thumbnail size.
+
+The same five anchor a second view. The FlavourEqualizer swaps the silhouette for eight vertical columns — the five fixed axes (Bitter, Sweet, Sour, Body, ABV) plus three adaptive personality slots that float across hop, malt, and fruit families by score. A NEIPA might surface Citrusy, Tropical, and Juicy; a stout, Roasty, Chocolatey, and Malty. The pentagon answers is this beer my shape at a glance; the equaliser answers it side-by-side — vertical bars that compare cleanly when two beers sit next to each other in Head-to-Head. The four hop labels are a compressed view of the richer six-category teaching taxonomy covered separately in The Drinker's Guide to Hops.
+
+The four layers, end to end
+
+PINtDEXTER stacks four signals. Each answers a different question. Take any one out and recommendations get worse in a different direction.
+
+Preference capture — Sip-or-Skip binary swipes and Head-to-Head pair rounds. Forced choices, not free-form ratings. Output: a soft style profile after about ten interactions.
+
+Sliders (TUNeDEXTER) — the user can take direct control of five flavour sliders plus body and strength when the inferred profile is wrong. The app never overrides explicit slider settings; preference learning is suggestion, not law.
+
+Per-beer DNA — the LLM-scored content features above. Independent of any user. Cached per beer, re-run only when we explicitly backfill or invalidate.
+
+Availability filter — recent tap-list activity at venues near you, drawn from Untappd's public feeds. The recommendation is grounded in a specific bar's recent pours, not a beer name plucked from a global catalogue.
+
+Layers 1 and 2 are the user side. Layer 3 is the beer side. Layer 4 is the world side. The cross-product is what gets surfaced.
+
+The Amstel case
+
+In mid-May 2026, a quiet bug surfaced. A drinker whose profile pointed firmly at pale ales was being served Amstel as an 83% match. That should never have happened. Amstel is a pale lager, not a pale ale.
+
+The trace took about an hour. The beer had been ingested with its style set to "Pale Ale" — the source data was simply wrong. PINtDEXTER's cross-family penalty existed and worked correctly, but it depended on a lookup from declared style to fermentation family. The style said pale ale. The lookup said ale. So the penalty for serving a lager to an ale drinker never fired.
+
+The interesting part was that the system already had the right instinct. The LLM's own rationale described the beer as "a mainstream European lager-leaning pale, clean and restrained despite 'Pale Ale' label." The system knew. The recommender wasn't asking.
+
+The fix was straightforward: give the LLM an explicit family axis and prefer that value when it disagrees with the style-derived one. Once that override existed, the score corrected immediately — not just for this beer, but for the broader class of category-drift errors scattered through the catalogue, from cider misfiled as fruit beer to lambic misfiled as Belgian ale.
+
+That is a small change that fixes a whole class of bug, which is about the nicest thing you can say about an engineering fix.
+
+What we're not claiming
+
+None of this means content-based recommendation is new, or that PINtPOINT invented LLM feature extraction. The contribution is narrower: feature extraction from the beer's own metadata rather than from community discussion, combined with a four-layer pipeline tied to what's been pouring recently at venues nearby — not a global catalogue, not a leaderboard.
+
+Most beer recommenders predict ratings.
+
+PINtPOINT picks the pint that's on the bar.
+
+Frequently asked questions
+
+What if the LLM gets a beer's profile wrong?
+
+Three corrective layers sit on top. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And confidence influences scoring — low-signal beers (no specific cue from name or brewery) get treated more cautiously in ranking. Mis-extractions still happen, but they get caught by the architecture rather than escaping into the recommendation silently.
+
+How quickly does a brand-new beer become recommendable?
+
+Usually within a day or two of the beer being publicly listed somewhere — sometimes longer. The point is that the recommendation shape doesn't depend on community ratings accumulating first: once a beer is in our catalogue with style and ABV, the LLM can score it without waiting for anyone to write about it.
+
+What are PINtDEXTER's four layers?
+
+Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override directly with five flavour sliders plus body and strength (TUNeDEXTER). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 scores those features against what's been pouring recently at venues near you.
+
+What is the fermentation-family override?
+
+Two beers with similar flavour numbers can taste fundamentally different if one is an ale and one is a lager — yeast character, finish dryness, and clean-versus-estery profile diverge sharply across fermentation families. PINtDEXTER applies a 0.5x penalty to cross-family matches. The family was originally derived from the beer's declared style; that broke when a beer's style was wrong (Amstel labelled "Pale Ale" but actually a pale lager). The LLM now scores fermentation family directly per beer, overriding the style-derived value when they disagree.
+
+Source material:
+
+Beer Recommendation Systems: What Most Get Wrong — the earlier PINtPOINT essay this follows up.
+
+A Beer Recommendation System Made With R — David Smith / ŷhat, June 2013. Item-item collaborative filtering on 1.5M BeerAdvocate reviews; ratings only.
+
+Beer Recommendation Engine: Harnessing the Power of LLMs and Embeddings — Nishant Kushwaha, 2023. LLM-based attribute extraction from community review text.
+
 # Blog: The Drinker's Guide to Hops
 
 Source: https://pintpoint.co.uk/blog/hops-what-each-one-tastes-like.html
@@ -2432,409 +2764,6 @@ Privacy Policy
 Contact
 
 Chelmsford Beer Mile route and branding © the original site authors at chelmsfordbeermile.co.uk. This page is an independent companion guide with their tip-of-the-hat in mind.
-
-© 2026 PINtPOINT
-
----
-
-# Blog: A Love Letter to San Diego
-
-Source: https://pintpoint.co.uk/blog/san-diego-ipa-capital-love-letter.html
-
-PINtPOINT
-
-About
-Features
-Venues
-Blog
-Screenshots
-
-Love letter9 April 2026 · San Diego, California
-
-A Love Letter to San Diego: How a Navy Town Became the IPA Capital of the World
-
-San Diego is, quietly, the most important craft-beer city in the world. Not the biggest — Portland, Denver, London and Copenhagen can all claim more breweries per square mile. But ask any serious beer drinker where the modern IPA lives, and the answer lands in the same place. The West Coast IPA was not invented in San Diego. It was perfected there.
-
-Companion piece: this essay has a twin on the opposite side of the world — a love letter to Melbourne, the city that built its craft-beer capital bar-first rather than brewery-first. Two routes, same destination.
-
-This is a love letter from a long way away — written from the UK, where we drink Southern Californian hop character reinterpreted by local breweries every week, and where the words "West Coast IPA" on a tap badge still carry weight. San Diego earned that weight. Here is how.
-
-"The modern IPA didn't start in San Diego.
-It grew up there."
-
-The conditions
-
-In 1989 California changed its brewpub law, and in the same year Karl Strauss Brewing opened downtown. The timing matters: San Diego, before this, was not a beer town. It was a US Navy city with decent weather, Mexican food, and a fairly staid drinking scene dominated by macro lager and sun-addled tourism. What it also had — less visibly — was:
-
-A strong homebrew community that had been meeting at places like QUAFF (Quality Ale and Fermentation Fraternity) through the 1980s, quietly sharpening palates and brewing skill before the commercial scene existed.
-
-Abundant year-round sun — which, in a city of beer gardens and taproom patios, turns the bar into a social default rather than a winter retreat.
-
-Cheap industrial real estate in neighbourhoods like Miramar, Kearny Mesa and North Park that could absorb large brewing operations without Bay Area rents.
-
-Californian water chemistry that's mineral-soft enough to carry the bright, bitter hop bills West Coast IPA demands.
-
-Every craft-beer city has two or three of those. San Diego had all four.
-
-The founding wave
-
-1989
-
-Karl Strauss Brewing Company opens downtown
-
-The godfather. Launched as a brewpub in Columbia Street the same year California legalised the format. For nearly a decade Karl Strauss was essentially the San Diego craft scene on its own, shipping pale ales and amber ales that educated a city of lager drinkers on what beer could taste like. Everyone who came later had at some point stood at a Karl Strauss bar.
-
-1996
-
-Stone Brewing & Ballast Point, same year
-
-Both founded within months of each other, both destined to become global brands. Stone shipped Arrogant Bastard (1997) and the namesake Stone IPA (1997), leaned hard into confrontational branding, and defined "big hops, bigger attitude" as a San Diego posture. Ballast Point opened out of a home-brew shop on Linda Vista Road and built quietly for ten years before Sculpin IPA (released 2005) turned them into a household craft name and, eventually, a $1 billion acquisition.
-
-Pizza Port (brewpub on Solana Beach) also opened around this period and incubated an outsize number of the brewers who later founded their own breweries — the San Diego equivalent of a beer-world finishing school.
-
-Late 1990s — Mid 2000s
-
-The hop arms race
-
-The second wave — AleSmith, Green Flash, Mike Hess, Lost Abbey/Port Brewing — pushed the hop character harder and drier. Beers like Green Flash West Coast IPA (2008) and AleSmith IPA weren't just flavourful — they were exemplars, the ones other brewers worldwide tasted and cribbed from. San Diego's calling card became what brewers called "IBU stacking": bittering charge, flavour charge, and massive late-kettle and dry-hop additions piled together for a beer that was simultaneously aggressive and clean.
-
-By the middle of the 2000s San Diego breweries were hauling medals out of the Great American Beer Festival and the World Beer Cup with enough regularity that IPA Capital of the World stopped being marketing and started being description.
-
-2010s
-
-Neighbourhood breweries and the North Park scene
-
-What changed in the 2010s wasn't the style — it was the geography. Societe Brewing (2012), North Park Beer Co (2016), Modern Times, Pure Project (originally Carlsbad, North Park taproom 2018) — a generation of neighbourhood-scale breweries opened in walkable districts rather than industrial parks, turning places like North Park into beer destinations in their own right. A visitor can now land in San Diego, take a rideshare to University Avenue, and drink the entire arc of West Coast IPA evolution within two square miles.
-
-What the West Coast IPA actually is
-
-The style is defined more by restraint than excess — which feels counter-intuitive for a beer known for throwing hops at the problem. A well-made West Coast IPA has:
-
-Bright clarity. Not hazy. If your pint is cloudy, you're drinking a New England IPA, which is a different style entirely.
-
-A dry finish. The malt bill is lean on purpose. A sweet West Coast IPA is a broken West Coast IPA.
-
-Resinous, piney, grapefruit-pith hop character. Classic hops: Cascade, Centennial, Simcoe, Chinook, Columbus. Newer hops (Citra, Mosaic) push into tropical territory but still in a dry frame.
-
-Firm bitterness. IBUs that would feel aggressive in other styles — 55 to 80 is typical — are right at home here.
-
-6.5–7.5% ABV. Above that you're in DIPA/imperial territory; below is pale ale.
-
-The San Diego interpretation of all five of those is the reference version. Every "West Coast IPA" tap badge you see in a UK pub, a Melbourne bar, or a Tokyo bottle shop is, whether the brewer realises it or not, a letter home to Mission Boulevard.
-
-Where to drink the legacy today
-
-PINtPOINT currently tracks 30+ San Diego venues with live tap lists. A starter selection, roughly by neighbourhood:
-
-AleSmith Brewing Miramar · flagship taproom
-Societe Brewing Clairemont Mesa · hop reference
-North Park Beer Co. University Ave · neighbourhood anchor
-Mike Hess Brewing North Park · Grim Ave taproom
-Pure Project North Park El Cajon Blvd · wild + hoppy
-Modern Times Flavordome Mission Valley · alt-craft
-Kilowatt Brewing Clairemont Mesa · small-batch
-True North Tavern North Park · craft bar
-West Coast Tavern University Ave · all-rounder
-Public House La Jolla La Jolla · coast-facing
-
-The full roster with live tap data sits on the Venues page and in the app's radar view.
-
-The only honest critique
-
-San Diego's long dominance came with a cost. The city's hop-forward, bitter, dry aesthetic was so overwhelming through the 2000s that a lot of American drinkers — especially a generation of newer craft drinkers — associated "IPA" exclusively with aggressive bitterness. When the New England / Hazy IPA style exploded out of Vermont in the mid-2010s, its softness and tropical juice character felt, to some, like permission to enjoy hoppy beer without the palate bruise.
-
-The corrective was healthy. Great breweries in San Diego now make both — Societe's hazy lineup is excellent alongside their West Coast back catalogue — and the two styles coexist rather than compete.
-
-But the love letter is still to the West Coast IPA, and San Diego is where it lives.
-
-Pine resin, grapefruit pith, sea air.
-San Diego built that.
-
-A short itinerary for a visitor
-
-If you have one evening in San Diego and want to experience the scene rather than chase specific breweries, here's the fastest route:
-
-Start in North Park. Walk University Avenue between about 28th and 32nd streets. You'll pass four or five beer-forward venues within ten minutes.
-
-Middle stop: Societe or AleSmith. Both are short rideshares from downtown. Societe for the neighbourhood-brewery feel; AleSmith for the pilgrimage to a West Coast IPA flagship.
-
-End coast-facing. Public House La Jolla, or anywhere in Ocean Beach. The final pint in view of the Pacific is the ritual the city has built around itself.
-
-Frequently asked questions
-
-Why is San Diego called the IPA Capital of the World?
-
-A wave of breweries founded in the 1990s — Karl Strauss (1989), Stone (1996), Ballast Point (1996), AleSmith, Pizza Port, Green Flash — codified a specific hop-forward, dry, bitter IPA style and won national and international competition medals consistently through the 2000s. The style they built, West Coast IPA, was copied worldwide, but San Diego is where it was defined.
-
-What is a West Coast IPA?
-
-A dry, bitter, aromatic IPA built on resinous, citrusy American hops (Cascade, Centennial, Simcoe, Chinook, Columbus) with a lean malt bill that lets the hops dominate. Typical ABV 6.5–7.5%. Clarity: bright, not hazy. Flavour: grapefruit pith, pine resin, sea air.
-
-Which San Diego brewery started it all?
-
-Karl Strauss (1989) is the oldest modern-era San Diego craft brewery. But the style's defining punch arrived a few years later: Stone Brewing and Ballast Point both launched in 1996, and within a decade their approach had become the city's signature.
-
-Where should I drink craft beer when visiting San Diego today?
-
-Start in North Park — the highest concentration of independent breweries and beer-led bars in the city. AleSmith in Miramar for a flagship visit. La Jolla or Ocean Beach for coast-facing taprooms. PINtPOINT tracks 30+ venues live with tap-list filtering.
-
-Is San Diego still the IPA Capital, or has Vermont taken over?
-
-Different styles. Vermont is the reference for New England / Hazy IPA. San Diego remains the reference for West Coast IPA. The two coexist; most serious craft drinkers value both. San Diego's claim is style-specific, not genre-wide.
-
-How many craft breweries are there in San Diego?
-
-Over 150 active craft breweries sit within San Diego County, making it one of the most densely-brewed metro areas in the US. PINtPOINT currently tracks around 30 of the key city-of-San-Diego venues with live tap lists.
-
-San Diego didn't set out to be a beer capital. It ended up as one because a handful of people in the late 1980s and 1990s decided to brew the hoppiest, cleanest, brightest beer they could — and because a lot of very good drinkers showed up to support them. The rest of us got West Coast IPA as a gift.
-
-Headed there? The full tap list is a tap away.
-
-Explore San Diego in PINtPOINT
-
-Home
-Features
-Venues
-How to find beer near you
-vs Untappd
-All blog posts
-Contact
-
-Karl Strauss, Stone, Ballast Point, AleSmith, Societe, North Park Beer Co, Mike Hess, Pure Project, Modern Times, and the other breweries named here are trademarks of their respective owners. This article is independent editorial, not affiliated with any brewery.
-
-© 2026 PINtPOINT
-
----
-
-# Blog: A Love Letter to Melbourne
-
-Source: https://pintpoint.co.uk/blog/melbourne-bar-culture-love-letter.html
-
-PINtPOINT
-
-About
-Features
-Venues
-Blog
-Screenshots
-
-Love letter16 April 2026 · Melbourne, Victoria
-
-A Love Letter to Melbourne: The City That Built a Craft-Beer Scene on Bars, Not Breweries
-
-There are two routes to a craft-beer capital. San Diego took one. Melbourne took the other.
-
-San Diego, as we wrote earlier this week, built its reputation on breweries. Karl Strauss, Stone, Ballast Point, AleSmith — the names that define West Coast IPA are brewing companies whose taprooms became pilgrimage sites. The bar, in that model, is downstream: a place that pours what the breweries make.
-
-Melbourne's scene is structured the other way round. The bar is the hero. Breweries exist — Mountain Goat since 1997, Moon Dog since 2010, Stomping Ground, Bodriggy, CBCo, Molly Rose, Venom — but what gives Melbourne its distinctive craft-beer identity isn't any of those names. It's Catfish, The Local Taphouse, Hippo Bottle & Bar, Cookie, Forester's Hall, Boilermaker House and a couple of dozen more. Bars whose entire identity is the curation, not the brewing.
-
-Punch Drink's guide to Melbourne's craft-beer bars opens with the line that does all the work: "Melbourne is now home to more craft breweries than tram stops, and a crop of excellent bars have grown up to support the ever-growing scene." That's not a throwaway. That sentence describes a scene that genuinely inverts the American model.
-
-San Diego built its craft capital brewery-first.
-Melbourne built its bar-first.
-
-Companion piece: this essay is the twin of our love letter to San Diego. If you read one, read the other — they tell the same story about two cities that solved the same problem from opposite ends.
-
-Why it came out this way
-
-Three conditions shaped Melbourne's bar-first path. None of them were inevitable; all of them matter.
-
-Trams. Melbourne is one of the few major cities in the world where moving between neighbourhoods is frictionless on public transport. When every tram stop is a potential bar, the bar becomes the atomic unit of drinking culture, not the destination brewery.
-
-Laneway culture. The CBD's small-bar licensing revolution in the 2000s created hundreds of tiny, curated drinking rooms tucked into alleys off the main streets. The form factor — small room, shortish list, strong personality — is perfect for rotating-tap craft-beer bars specifically.
-
-Fitzroy, Collingwood, Abbotsford, Brunswick. A string of inner northern suburbs with cheap warehouse space (by CBD standards), high foot traffic, and demographics weighted toward the kind of people who care whether the keg they're drinking was tapped this week. Bars clustered here organically, and the network effects compounded.
-
-San Diego had industrial parks and year-round sun. Melbourne had trams and laneways. The weather and real estate shaped the scene as much as anyone's stated intentions did.
-
-The founding wave
-
-1997
-
-Mountain Goat Brewing, Richmond
-
-Australia's earliest independent craft-beer pioneer to survive into the modern era. Two mates brewing in a Richmond warehouse, hand-bottling, distributing locally. By the time they were acquired by Asahi in 2015 they'd educated a generation of Melbourne drinkers on what an independent Australian beer could be. Mountain Goat's taproom in Richmond remains open and continues to feel like where this story starts.
-
-2007
-
-The Local Taphouse opens in St Kilda
-
-The single most important Melbourne bar opening in the craft-beer chronology. The Local Taphouse was one of the first venues in Australia to build a bar entirely around craft beer — a rotating 20-tap line, 100+ bottles in the fridge, a rooftop garden with a fireplace for Melbourne winters. It wasn't a pub with craft beer in it. It was a craft-beer room with a pub wrapped around it. Every Fitzroy and Collingwood bar that came after is a reply to Local Taphouse's original question: what if the bar was the whole point?
-
-2010
-
-Moon Dog, Abbotsford
-
-Three friends in a warehouse in Abbotsford making beers that nobody else was making — a 40% ABV beer aged on caramelised figs and Madeira, a weisse with jelly snakes, eventually an imperial stout matured on vintage port barrels for 18 months. Moon Dog became the brewery that taught Melbourne to expect weirdness from its craft breweries, not just technical competence. The Abbotsford home-base also pulled tourism into a suburb that previously had none.
-
-2016
-
-Stomping Ground, Collingwood
-
-A purpose-built brewery-plus-beer-hall in a converted industrial building on Gipps Street. Stomping Ground is what happens when you combine brewery and bar in one building but keep the bar's soul — a 30+ tap wall, their own production visible through glass, and a food menu that treats beer pairing seriously. Their city-centre Beer Hall (Sydney-centric readers, imagine a BrewDog taproom scaled up by 3x and given actual taste) extended the model into the CBD.
-
-The geography
-
-Four clusters make up Melbourne's craft-beer map. Any of them is a legitimate afternoon. All four together is roughly a weekend. Trams connect everything.
-
-Cluster 1 — Fitzroy & Collingwood
-
-The beating heart of the scene
-
-Dense, walkable, with bars and taprooms within a kilometre of each other. This is where the "Melbourne beer night" genre was invented. Brunswick Street for the vinyl-bar/Catfish end, Smith Street for the bottle-shop-bar/Hippo end, Gipps Street for the Stomping Ground-scale brewery-bar.
-
-Go: The Catfish,
-Hippo Bottle & Bar,
-Stomping Ground,
-Molly Rose Brewery,
-Redwood Tasting Room.
-
-Cluster 2 — Abbotsford & Richmond
-
-Where the breweries live
-
-Slightly further east, the production-brewery cluster. Moon Dog's home base in Abbotsford, Mountain Goat's originating taproom in Richmond, Bodriggy and CBCo not far away. If you want to drink at breweries rather than in bars, you come here.
-
-Go: Moon Dog World (Abbotsford), Mountain Goat (Richmond),
-CBCo Brewing (further south at Port Melbourne),
-Pirate Life South Melbourne.
-
-Cluster 3 — The CBD & its laneways
-
-Curation as a core competency
-
-The laneway bars do a very specific thing extremely well — small rooms, ruthlessly curated tap lists, strong food. Cookie is the classic first stop for a CBD beer evening. Boilermaker House does whisky-and-beer about as elegantly as anywhere in the world. Arbory Afloat turns into a floating bar on the Yarra in summer, which is a deeply Melbourne thing to do with a beer list.
-
-Go: Boilermaker House,
-Garden State Hotel,
-Captain Melville,
-Arbory Bar & Eatery / Arbory Afloat (summer),
-Imperial Hotel,
-The Mitre Tavern.
-
-Cluster 4 — St Kilda & the south
-
-Where the story starts
-
-Less dense but containing The Local Taphouse, which is effectively the foundation stone of the whole movement. Worth the tram ride south for that one venue alone; layer in the beach-side atmosphere and it becomes a legitimate afternoon.
-
-Go: The Local Taphouse,
-The Drunken Poet (West Melbourne, technically a different direction — but worth pairing on a CBD night).
-
-What makes a Melbourne bar a Melbourne bar
-
-Strip away the marketing and the good Melbourne craft-beer bars do the same four things:
-
-High rotation. Tap lists turn over weekly, sometimes daily. A bar that keeps the same 20 beers on all year has failed the test. The promise is that if you come back next Saturday, something on the wall will be new.
-
-Curation with a point of view. The selection isn't random. Catfish's vinyl-only music pairs with a very specific kind of tap list. Hippo's bottle-shop angle means the draft selection complements the fridge. Boilermaker's whisky programme dictates that the beer list leans toward things that can hold their own next to a spirit.
-
-Beer-led food. Not afterthought food. Catfish has a Philly cheesesteak counter; Cookie has a proper Thai menu; Garden State Hotel is effectively a restaurant-plus-beer-hall. Food isn't beer's supporting cast — it's the other half of the evening.
-
-Room personality. No Melbourne bar looks like another Melbourne bar. Catfish is 1890s boarding-house with tube TVs and vinyl. Boilermaker is wood-panelled whisky-library. Cookie is a first-floor converted Curtain House. Forester's Hall is an actual dance hall. The room matters — the beer is the reason, but the room is the memory.
-
-No one bar does all four perfectly, but every great Melbourne bar does at least three.
-
-The honest critique
-
-Melbourne's bar-first model has a shadow side worth naming. Because the bars set the pace, individual breweries have less of a single-producer cultural footprint than in San Diego or Portland — the national-brand craft breweries that come out of Melbourne (Stomping Ground, Moon Dog, Mountain Goat, Bodriggy) are excellent but none has quite the genre-defining status that, say, Stone IPA or AleSmith Speedway Stout hold in the US.
-
-The bars compensate for this gap — and arguably are the thing that makes Melbourne's scene Melbourne's rather than a regional-scale imitation of something American. But if your love of craft beer is organised around pilgrimage to specific producers, Melbourne can feel slightly diffuse. You're drinking in Melbourne, not at Moon Dog.
-
-The fix is to embrace that. The pilgrimage in Melbourne is the bar crawl, not the brewery tour.
-
-Melbourne isn't a collection of breweries.
-It's a collection of rooms.
-
-A one-day visitor itinerary
-
-If you have a single Saturday and want to taste what the city does best, this is the route most Melbourne craft-beer drinkers would roughly endorse:
-
-Afternoon in Fitzroy/Collingwood. Start at Catfish on Brunswick Street, walk east to Smith Street for Hippo Bottle & Bar, finish at Stomping Ground on Gipps Street for the big-room feel before dinner.
-
-Dinner in the CBD laneways. Cookie (if you can get in) or Garden State Hotel. Craft-beer-aware food that doesn't treat the beer list as an afterthought.
-
-Late evening at Boilermaker House or back to a neighbourhood bar. If it's Fri/Sat and you want late, Forester's Hall in Collingwood keeps the craft tap list running past when almost every other venue has closed its kitchen.
-
-If you have Sunday spare, get to St Kilda. The Local Taphouse. The scene started here; close the loop by drinking where it began.
-
-Where to start on PINtPOINT
-
-We currently track 37 Melbourne-area venues with live tap lists. A curated entry point:
-
-The Local Taphouse St Kilda · the founding venue
-The Catfish Fitzroy · vinyl-only, weekly rotation
-Hippo Bottle & Bar Collingwood · bottle shop + drinking room
-Stomping Ground Collingwood · brewery & beer hall
-Molly Rose Brewery Collingwood · hip neighbourhood brewery
-Boilermaker House CBD · whisky-and-beer
-Garden State Hotel CBD · restaurant + beer hall
-Captain Melville CBD · craft-forward inner-city
-Arbory Afloat Yarra River · summer-only floating bar
-Redwood Tasting Room Fitzroy North · small-batch tasting
-
-The full roster with live tap data is on the Venues page and the app's radar view.
-
-A final word, if you're visiting
-
-The one mistake most visitors make in Melbourne is treating the bar scene as if it were Portland's or San Diego's — expecting brewery names to be the organising principle. They're not. Walk into a great Melbourne bar, don't look at the beer list first, look at the room. Then look at what's on the wall. Then order a half of something that's been on for less than a week. That's the algorithm. It runs the same everywhere in the city.
-
-In San Diego, you remember the breweries.
-In Melbourne, you remember the bars.
-
-Frequently asked questions
-
-Why is Melbourne known for craft beer?
-
-Melbourne's reputation is bar-driven rather than brewery-driven. The Local Taphouse (2007), Catfish, Cookie, Hippo Bottle & Bar, Boilermaker House and Forester's Hall run rotating, curated tap lists that function as daily-refreshed menus rather than brewery showcases. Punch Drink summarises it: "Melbourne is now home to more craft breweries than tram stops, and a crop of excellent bars have grown up to support the ever-growing scene."
-
-What's the difference between Melbourne and San Diego craft beer scenes?
-
-Structural. San Diego is brewery-first — Karl Strauss, Stone, Ballast Point defined the West Coast IPA style through their own brewing, and bars followed. Melbourne is bar-first — independent, curation-driven venues rotate beers from across Victoria, Australia and the world. A great San Diego beer afternoon is a brewery tour; a great Melbourne one is a bar crawl.
-
-Which neighbourhoods should I visit for craft beer in Melbourne?
-
-Four clusters. Fitzroy/Collingwood is the dense walkable heart. Abbotsford/Richmond holds the production-brewery footprint. The CBD laneways do the curation-first small-bar thing. St Kilda has The Local Taphouse — the scene's founding venue.
-
-What's the best craft beer bar in Melbourne?
-
-Subjective, but consensus picks are The Local Taphouse (St Kilda — the original), Catfish (Fitzroy — vinyl-only, weekly-rotating), Hippo Bottle & Bar (Collingwood — bottle-shop drinking room), Boilermaker House (CBD — whisky-and-beer), and Forester's Hall (Collingwood — largest craft tap count in Australia). All do curated rotating tap lists in very different atmospheres.
-
-Is Melbourne the craft-beer capital of Australia?
-
-By most measures, yes. Brisbane has more breweries per capita and Sydney has inner-suburb density, but Melbourne has both breadth (breweries across Abbotsford, Collingwood, Port Melbourne, Brunswick, Richmond) and the specialist bar depth (60+ craft-focused venues in the metro area).
-
-When did Melbourne's craft-beer scene take off?
-
-Mountain Goat (Richmond, 1997) is the country's earliest major independent craft microbrewery. Bar culture followed roughly a decade later: The Local Taphouse opened in St Kilda in 2007 and treated craft beer as the whole reason for existing. Moon Dog (2010) and Stomping Ground (2016) extended the scene into modern form.
-
-Source material:
-
-Punch Drink — The Best Craft Beer Bars in Melbourne. Source of the guiding thesis line.
-
-City Unscripted — Best places to drink craft beer in Melbourne. Local-insider guide by Chris Wyness.
-
-Beer Crawl Australia — Melbourne brewery map. Geographic reference for the brewery clusters.
-
-Wanderlog — Best Melbourne breweries and craft beer. Visitor-oriented roundup.
-
-Urban Adventures — Craft beer lovers' guide to Melbourne. Walking-tour-adjacent framing.
-
-TripAdvisor — Melbourne craft beer activities. Tourist-consensus ranking.
-
-Melbourne's gift to craft beer is the idea that the bar is a product. Not the room that sells the product — the actual product. When that idea is taken seriously, you end up with a scene that can't be copied by just cloning the same breweries somewhere else. The magic is in how the pints are put together, not in the names on the taps.
-
-Worth at least one weekend.
-
-Explore Melbourne on PINtPOINT
-
-Home
-Venues
-All blog posts
-Companion: San Diego
-Contact
-
-The Local Taphouse, Catfish, Hippo, Cookie, Boilermaker House, Forester's Hall, Stomping Ground, Moon Dog, Mountain Goat, Garden State Hotel and every other venue named here are trademarks of their respective owners. This article is independent editorial, not affiliated with any bar or brewery.
 
 © 2026 PINtPOINT
 
