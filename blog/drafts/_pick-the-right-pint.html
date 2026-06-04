@@ -6,6 +6,7 @@
   <meta name="apple-itunes-app" content="app-id=6760611613">
   <title>Pick the right pint — the four-essay guide to PINtPOINT</title>
   <meta name="description" content="A guide to PINtPOINT's four essays on choosing the right pint: the problem, the engine, the ingredients, the experience. Same orbit, four different subjects." />
+  <meta name="robots" content="noindex,nofollow" />
   <link rel="icon" type="image/png" href="../../favicon.png" />
   <link rel="canonical" href="https://pintpoint.co.uk/blog/pick-the-right-pint.html" />
   <link rel="alternate" type="application/rss+xml" title="PINtPRESS" href="https://pintpoint.co.uk/blog/feed.xml" />
@@ -164,10 +165,12 @@
               (same pattern for under-the-hood-…, hops-…, beerology-…)
          4. Add the arc-line <p> block (wording above) above the
             <aside class="series-links"> in all four essays.
-         5. Strip this file's DRAFT <p class="meta"> paragraph (keep author
+         5. Strip the noindex meta tag in the head (matches existing draft
+            convention; gets removed on publish so the page actually indexes).
+         6. Strip this file's DRAFT <p class="meta"> paragraph (keep author
             byline; just drop "DRAFT").
-         6. Strip this HTML comment.
-         7. Spot-check published page in browser: nav, all six outbound links,
+         7. Strip this HTML comment.
+         8. Spot-check published page in browser: nav, all six outbound links,
             arc grid collapses to 2x2 on mobile, back-links from all four
             essays land on the hub.
          ============================================================ -->

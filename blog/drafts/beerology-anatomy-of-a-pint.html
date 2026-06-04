@@ -6,6 +6,7 @@
   <meta name="apple-itunes-app" content="app-id=6760611613">
   <title>Beerology — The Anatomy of a Pint</title>
   <meta name="description" content="A better way to picture what a beer actually feels like to drink. The format, the first reading, and why it helps decide between four taps in 800ms." />
+  <meta name="robots" content="noindex,nofollow" />
   <link rel="icon" type="image/png" href="../../favicon.png" />
   <link rel="canonical" href="https://pintpoint.co.uk/blog/beerology-anatomy-of-a-pint.html" />
   <link rel="alternate" type="application/rss+xml" title="PINtPRESS" href="https://pintpoint.co.uk/blog/feed.xml" />
@@ -119,17 +120,22 @@
          PROBLEM 3 — relative paths break on the directory move.
            This file lives in /blog/drafts/ and uses ../ to reach
            /blog/ assets and ../../ to reach /. After moving to /blog/,
-           every relative path needs ONE FEWER segment of ../. The
-           lines currently affected (verify before press):
-             line 9     ../../favicon.png   → ../favicon.png
-             lines 71–77 nav links: drop one ../
-             line 221   ../under-the-hood-… → same-dir (Sophie's catch;
-                        this is the editorially-critical one — Beerology
-                        currently links Under the Hood as a forward-reference;
-                        if it breaks, the published capstone has a dead
-                        link to its own engine essay)
-             lines 239–242 footer nav: drop one ../
+           every relative path needs ONE FEWER segment of ../. Affected
+           (descriptive — line numbers are brittle to edits, use grep):
+             favicon <link>          ../../favicon.png   → ../favicon.png
+             top nav <a>s            drop one ../
+             under-the-hood source   ../under-the-hood-… → same-dir
+                                     (Sophie's catch; editorially critical
+                                     — Beerology currently links Under
+                                     the Hood as a forward-reference; if
+                                     it breaks, the published capstone
+                                     has a dead link to its own engine
+                                     essay)
+             footer nav <a>s         drop one ../
            Sweep: grep -n 'href="\.\.\/' on this file before committing.
+           Plus the noindex meta near top — strip it on publish (it's
+           there to keep this draft URL out of search results until
+           the real one exists).
 
          TWO-FOURS COLLISION — resolved (Sophie, 2026-06-03).
            Footer = four ESSAYS (Why/How/What's-in-it/Feel).
