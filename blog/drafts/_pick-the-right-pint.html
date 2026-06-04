@@ -101,14 +101,22 @@
          ============================================================
 
          This hub publishes alongside Beerology — ONE commit, "complete the
-         arc", FIVE files touched:
-           1. Beerology         — drafts/ → blog/, path surgery, footer added
-           2. This hub          — drafts/ → blog/pick-the-right-pint/, essay
-                                  link prefixes, strip _ from filename
-           3. RecSys (live)     — footer gets "Feel · Beerology" 4th row;
-                                  back-link <p> added above footer
+         arc", SEVEN files touched:
+           1. Beerology         — drafts/ → blog/, path surgery, strip drafts
+                                  artifacts (draft-note, HTML comment,
+                                  .new-edit highlights, noindex meta)
+           2. This hub          — drafts/ → blog/pick-the-right-pint/index.html,
+                                  essay link ../ prefixes, strip _ from
+                                  filename, strip drafts artifacts
+           3. RecSys (live)     — existing <aside class="series-links">
+                                  inner content replaced with the full
+                                  4-row+backlink block (see snippet below)
            4. UTH (live)        — same as RecSys
            5. Hops (live)       — same as RecSys
+           6. /sitemap.xml      — two new <url> entries (hub + Beerology)
+           7. /blog/feed.xml    — one new <item> for Beerology
+                                  (hub stays out — navigational guide,
+                                  not an essay; matches Firkin pattern)
 
          Do not publish the hub before Beerology, or the hub links to a
          drafts/ URL on the most important essay (Feel). See Beerology's own

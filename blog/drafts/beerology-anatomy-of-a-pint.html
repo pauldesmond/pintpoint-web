@@ -89,28 +89,25 @@
          PUBLISH-TIME CHECKLIST (read this first if you're about to ship Beerology)
          ============================================================
 
-         This file publishes alongside the HUB PAGE in ONE commit, FIVE files
-         touched. See the publish checklist at the top of
-         /blog/drafts/_pick-the-right-pint.html for the hub's half of the work.
-         The full ship sequence:
+         This file publishes alongside the HUB PAGE in ONE commit, SEVEN
+         files touched. See the publish checklist at the top of
+         /blog/drafts/_pick-the-right-pint.html for the hub's half of the
+         work — exact XML for sitemap + the full 4-row+backlink footer
+         block live there. The full ship sequence:
            1. Beerology         — drafts/ → blog/, path surgery (this checklist)
            2. Hub               — drafts/ → blog/pick-the-right-pint/ (hub checklist)
-           3. RecSys, UTH, Hops — each gets:
-                                    a) "Feel · Beerology" 4th footer row
-                                    b) "↑ Part of Pick the right pint" back-link
-                                       above the footer (snippet in hub checklist)
-           4. Strip both draft notes + both HTML comments + the new-edit gold
-              highlights here. Strip the noindex meta on both files
-              (drafts only — needs to be gone for the published versions
-              to actually index).
-           5. Add both new URLs to /sitemap.xml (hub: 0.9 priority; this
-              essay: 0.85). Add this essay as the newest <item> in
-              /blog/feed.xml (hub does NOT go in the feed — it's a
-              navigational guide, not an essay; matches Firkin pattern).
-              See hub checklist (steps 8-9) for exact XML.
-           6. Single commit, push, browser spot-check (nav, all links,
+           3. RecSys, UTH, Hops — replace existing <aside class="series-links">
+                                  inner content with the full 4-row+backlink
+                                  block (snippet in hub checklist), one
+                                  per-essay tweak for the "you're reading" row
+           4. /sitemap.xml      — two new <url> entries (hub + this essay)
+           5. /blog/feed.xml    — one new <item> for this essay (hub stays out)
+           6. Strip both draft notes + both HTML comments + the .new-edit gold
+              highlights here. Strip the noindex meta on both drafts (must
+              be gone for the published versions to actually index).
+           7. Single commit, push, browser spot-check (nav, all links,
               mobile arc grid, back-links from all four essays land on
-              the hub, sitemap + feed validate).
+              the hub, sitemap + feed validate with xmllint --noout).
 
          Three problems get triggered the moment this file leaves drafts/.
          All must be fixed in the SAME commit as the move, or the
