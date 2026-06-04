@@ -136,24 +136,36 @@
            Expected count: ~8 (essay links appear twice each — in reading
            paths and in essay cards).
 
-         BACK-LINK LINE FOR THE FOUR ESSAYS (refined per reviewer-2 feedback):
-           Insert this <p> immediately above the existing <aside class="series-links">
-           block in all four essays. Same wording in all four:
+         FULL FOUR-ROW + BACKLINK BLOCK (refined: one cohesive aside, not two):
+           Replace the EXISTING <aside class="series-links"> inner content
+           with this — keeps the outer aside wrapper (margin/padding/teal
+           border-left), bumps the row count from 3 to 4, and adds the
+           backlink as a sibling <p> inside the same panel after the ul.
+           One panel, not two stacked elements:
 
-             <p style="text-align:center;font-size:0.85rem;color:var(--muted);margin-top:48px;margin-bottom:-8px">
-               <a href="pick-the-right-pint/" style="color:var(--teal);text-decoration:none">↑ Part of <em>Pick the right pint</em> — the four-essay guide.</a>
-             </p>
+             <p style="margin:0 0 14px;font-size:0.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em">Companion essays</p>
+             <ul style="list-style:none;padding:0;margin:0;font-size:0.95rem;line-height:1.7">
+               <li><strong>Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the usual approach is broken</li>
+               <li><strong>How</strong> · <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engine that does it instead</li>
+               <li><strong>What's in it</strong> · <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> — the ingredient and sensory vocabulary</li>
+               <li><strong>Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — what drinking it feels like</li>
+             </ul>
+             <p style="margin:14px 0 0;font-size:0.85rem"><a href="pick-the-right-pint/" style="color:var(--teal);text-decoration:none">↑ Part of <em>Pick the right pint</em> — the four-essay guide</a></p>
+
+           PER-ESSAY "you're reading" treatment: on each essay, drop the
+           <a> from its own row and append the existing teal marker.
+           e.g. on Under the Hood the How row becomes:
+             <li><strong>How</strong> · Under the Hood: How PINtDEXTER Picks Your Pint — the engine that does it instead <span style="color:var(--teal);font-size:0.85rem;font-weight:600">← you're reading</span></li>
 
            Notes:
-             - Whole line is the link (bigger click target, ↑ glyph is part
-               of the affordance, "↑ Part of X" is conventional back-to-parent UX).
+             - Whole-line backlink (bigger click target, ↑ glyph affords
+               back-to-parent UX, conventional pattern).
              - "Pick the right pint" matches the hub's <title> tag and OG
                title — readers see the connection via browser tab / search
-               snippet, not the page's internal H1 ("Four essays. Four
-               subjects. One orbit.").
+               snippet, not the page's internal H1.
              - href is "pick-the-right-pint/" with trailing slash —
-               same-dir reference from any essay at /blog/[essay].html,
-               resolves to the Firkin-style directory index.
+               same-dir from any essay at /blog/[essay].html, resolves
+               to the Firkin-style directory index.
 
          PRE-STAGED PUBLISH STEPS (one commit, with Beerology):
 
@@ -175,9 +187,35 @@
          6. Strip this file's DRAFT <p class="meta"> paragraph (keep author
             byline; just drop "DRAFT").
          7. Strip this HTML comment.
-         8. Spot-check published page in browser: nav, all six outbound links,
+         8. Add both new URLs to sitemap.xml (entries at the same level as
+            the existing essay entries; use the publish date as <lastmod>):
+              <url>
+                <loc>https://pintpoint.co.uk/blog/pick-the-right-pint/</loc>
+                <lastmod>YYYY-MM-DD</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.9</priority>
+              </url>
+              <url>
+                <loc>https://pintpoint.co.uk/blog/beerology-anatomy-of-a-pint.html</loc>
+                <lastmod>YYYY-MM-DD</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.85</priority>
+              </url>
+            (Priorities mirror existing essays: 0.95 for Hops, 0.85 for
+            RecSys/UTH; the hub gets 0.9 as a high-value navigational
+            page, Beerology gets 0.85 matching essay-tier.)
+
+         9. Add Beerology to /blog/feed.xml as the newest <item>. Use the
+            existing Under-the-Hood entry as a template. Decision: the
+            HUB is a navigational guide, not an essay — does NOT belong
+            in the feed (subscribers expect long-form, not landing pages;
+            Firkin index is also not in the feed). If editorial preference
+            differs, add it too with category="guide".
+
+        10. Spot-check published page in browser: nav, all six outbound links,
             arc grid collapses to 2x2 on mobile, back-links from all four
-            essays land on the hub.
+            essays land on the hub, sitemap and feed both validate
+            (xmllint --noout sitemap.xml; xmllint --noout blog/feed.xml).
          ============================================================ -->
 
     <p class="meta"><span class="category guide">Guide</span>DRAFT · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
