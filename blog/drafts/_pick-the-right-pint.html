@@ -99,48 +99,59 @@
          PUBLISH-TIME CHECKLIST (read this first if you're about to ship the hub)
          ============================================================
 
-         This hub publishes alongside Beerology — they're one "complete the arc"
-         commit. Do not publish the hub before Beerology, or the hub links to a
-         drafts/ URL on the most important essay (Feel).
+         This hub publishes alongside Beerology — ONE commit, "complete the
+         arc". Do not publish the hub before Beerology, or the hub links to a
+         drafts/ URL on the most important essay (Feel). See Beerology's own
+         publish checklist (HTML comment at top of beerology-anatomy-of-a-pint.html)
+         for its half of the work.
 
-         PROBLEM 1 — URL shape decision (deferred from draft time).
-           Two options:
-             (a) /blog/pick-the-right-pint.html       — single file, flat
-             (b) /blog/pick-the-right-pint/index.html — directory, Firkin-style
-           Recommend (b) — matches the Firkin model the page is built against,
-           trailing-slash URL signals "section not document," cleaner for future
-           expansion. If (b), every relative path in this file needs +1 ../
-           segment for assets (../../favicon → ../../../favicon, etc.).
-           If (a), paths stay as-they-are in the draft (drafts/ → blog/ is a
-           same-depth move).
+         DECISIONS LOCKED (Paul, 2026-06-04):
+           1. URL shape:      Firkin-style directory → /blog/pick-the-right-pint/index.html
+           2. Path surgery:   confirmed needed; specifics below
+           3. Back-link:      small "arc" line above each essay's existing footer,
+                              not a fifth footer row
 
-         PROBLEM 2 — relative paths (same shape as Beerology's gotcha).
-           Currently in /blog/drafts/ → moves to /blog/ (option a) or
-           /blog/pick-the-right-pint/ (option b). Sweep with:
-             grep -n 'href="\.\.\/' blog/pick-the-right-pint.html
-           and adjust by the right number of segments for the chosen URL.
+         PATH IMPACT OF FIRKIN-STYLE URL:
+           File depth stays the same (was 2 below root in /blog/drafts/, becomes
+           2 below root in /blog/pick-the-right-pint/). Consequence:
+             - Asset paths (../../favicon, ../../about-pintpoint, ../pubs/, etc.)
+               STAY AS-IS. No change needed.
+             - Essay links currently bare-slug (assuming same-dir) need ONE
+               ../ prefix added — they're moving UP into /blog/, then DOWN to
+               the sibling essay file. Affected lines: every <a href="beer-…"
+               or "under-the-hood-…" or "hops-…" or "beerology-…" in the body.
+           Sweep before committing:
+             grep -nE 'href="(beer-|under-the-|hops-|beerology-)' blog/pick-the-right-pint/index.html
+           Expected count: ~8 (essay links appear twice each — in reading
+           paths and in essay cards).
 
-         PROBLEM 3 — back-link surface on the four essays.
-           After publish, decide whether each of the four essays gets a link
-           to this hub. Two options:
-             (a) Add hub link as a fifth row in the "Companion essays" footer
-                 on all four — symmetrical but adds a non-essay item.
-             (b) Add a small "← This essay is part of a four-piece arc" line
-                 above each essay's existing footer — less footer surface, more
-                 contextually clear.
-           Recommend (b) — preserves the footer's "Companion essays" identity
-           as essay-only, and the upward back-link is what readers want.
+         BACK-LINK LINE FOR THE FOUR ESSAYS:
+           Insert this <p> immediately above the existing <aside class="series-links">
+           block in all four essays. Same wording in all four:
 
-         PRE-STAGED PUBLISH STEPS (one commit, with Beerology's publish):
+             <p style="text-align:center;font-size:0.85rem;color:var(--muted);margin-top:48px;margin-bottom:-8px">
+               This essay is part of <a href="pick-the-right-pint/" style="color:var(--teal)">a four-piece arc</a> on choosing the right pint.
+             </p>
 
-         1. Move + rename per chosen URL option (mv to flat .html or
-            mkdir + mv to dir/index.html).
-         2. Adjust all relative paths (grep sweep per Problem 2).
-         3. Add back-link to all four essays per chosen option (Problem 3).
-         4. Verify Beerology link in this file points to live URL not drafts/.
-         5. Strip this DRAFT meta paragraph and this HTML comment.
-         6. Spot-check published page in browser: nav, all six outbound links,
-            mobile view of arc grid (collapses to 2x2).
+           Note: the link is "pick-the-right-pint/" with trailing slash, same-dir
+           reference from any essay at /blog/[essay].html. Goes to the hub.
+
+         PRE-STAGED PUBLISH STEPS (one commit, with Beerology):
+
+         1. mkdir blog/pick-the-right-pint/
+         2. git mv blog/drafts/_pick-the-right-pint.html blog/pick-the-right-pint/index.html
+         3. Prefix every essay link in this file with "../":
+              href="beer-recommendation-systems-what-most-get-wrong.html"
+                → href="../beer-recommendation-systems-what-most-get-wrong.html"
+              (same pattern for under-the-hood-…, hops-…, beerology-…)
+         4. Add the arc-line <p> block (wording above) above the
+            <aside class="series-links"> in all four essays.
+         5. Strip this file's DRAFT <p class="meta"> paragraph (keep author
+            byline; just drop "DRAFT").
+         6. Strip this HTML comment.
+         7. Spot-check published page in browser: nav, all six outbound links,
+            arc grid collapses to 2x2 on mobile, back-links from all four
+            essays land on the hub.
          ============================================================ -->
 
     <p class="meta"><span class="category guide">Guide</span>DRAFT · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
