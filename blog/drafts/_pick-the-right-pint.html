@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6760611613">
+  <title>Pick the right pint — the four-essay guide to PINtPOINT</title>
+  <meta name="description" content="A guide to PINtPOINT's four essays on choosing the right pint: the problem, the engine, the ingredients, the experience. Same orbit, four different subjects." />
+  <link rel="icon" type="image/png" href="../../favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/blog/pick-the-right-pint.html" />
+  <link rel="alternate" type="application/rss+xml" title="PINtPRESS" href="https://pintpoint.co.uk/blog/feed.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pintpoint.co.uk/blog/pick-the-right-pint.html" />
+  <meta property="og:title" content="Pick the right pint — the four-essay guide to PINtPOINT" />
+  <meta property="og:description" content="Four essays orbit PINtPOINT's recommender: the problem, the engine, the ingredients, the experience. This is the front door." />
+  <meta property="og:image" content="https://pintpoint.co.uk/screenshots/1.7.radar.png" />
+  <meta property="og:image:alt" content="PINtPOINT app showing nearby pubs with recent tap activity on a map of London." />
+  <meta property="fb:app_id" content="1892965231402903" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pick the right pint — the four-essay guide to PINtPOINT" />
+  <meta name="twitter:description" content="Same orbit, four different subjects: the problem, the engine, the ingredients, the experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; }
+    h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 24px; margin-bottom: 10px; color: var(--text); }
+    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    p a { color: var(--teal); }
+    .highlight { color: var(--text); font-weight: 600; }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
+    .category.guide { color: #00D4AA; border: 1px solid rgba(0,212,170,0.4); }
+    .lede { font-size: 1.1rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
+
+    /* Arc grid — four substance-frame panels */
+    .arc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px 0 8px; }
+    .arc-cell { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px 16px; }
+    .arc-cell .arc-num { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--teal); text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+    .arc-cell .arc-word { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 6px; letter-spacing: -0.3px; }
+    .arc-cell .arc-role { font-size: 0.75rem; color: var(--muted); }
+    @media (max-width: 600px) { .arc-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* Reading paths */
+    .paths { display: flex; flex-direction: column; gap: 16px; margin: 16px 0 24px; }
+    .path { background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; padding: 18px 22px; }
+    .path .path-q { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 8px; font-style: italic; }
+    .path .path-route { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+    .path .path-route a { color: var(--teal); }
+
+    /* Essay cards (the longer ones, below) */
+    .essay-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px 26px; margin-bottom: 16px; }
+    .essay-card .ec-role { display: inline-block; font-size: 0.7rem; letter-spacing: 2px; color: var(--teal); text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+    .essay-card .ec-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.3px; }
+    .essay-card .ec-title a { color: var(--text); text-decoration: none; }
+    .essay-card .ec-title a:hover { color: var(--teal); }
+    .essay-card .ec-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 0; }
+
+    .sources { font-size: 0.85rem; color: #666; margin-top: 32px; padding: 16px 20px; background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; }
+    .sources a { color: var(--muted); text-decoration: underline; }
+    .sources ul { margin: 8px 0 0 20px; }
+    .sources li { font-size: 0.85rem; color: #666; line-height: 1.7; margin-bottom: 4px; }
+
+    .cta { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; margin-top: 32px; }
+    .cta:hover { opacity: 0.88; }
+    .closing { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary">
+    <a href="../../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="../../about-pintpoint.html">About</a>
+      <a href="../../features.html">Features</a>
+      <a href="../../pubs/">Venues</a>
+      <a href="../">Blog</a>
+      <a href="../../screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <article class="content">
+
+    <!-- ============================================================
+         PUBLISH-TIME CHECKLIST (read this first if you're about to ship the hub)
+         ============================================================
+
+         This hub publishes alongside Beerology — they're one "complete the arc"
+         commit. Do not publish the hub before Beerology, or the hub links to a
+         drafts/ URL on the most important essay (Feel).
+
+         PROBLEM 1 — URL shape decision (deferred from draft time).
+           Two options:
+             (a) /blog/pick-the-right-pint.html       — single file, flat
+             (b) /blog/pick-the-right-pint/index.html — directory, Firkin-style
+           Recommend (b) — matches the Firkin model the page is built against,
+           trailing-slash URL signals "section not document," cleaner for future
+           expansion. If (b), every relative path in this file needs +1 ../
+           segment for assets (../../favicon → ../../../favicon, etc.).
+           If (a), paths stay as-they-are in the draft (drafts/ → blog/ is a
+           same-depth move).
+
+         PROBLEM 2 — relative paths (same shape as Beerology's gotcha).
+           Currently in /blog/drafts/ → moves to /blog/ (option a) or
+           /blog/pick-the-right-pint/ (option b). Sweep with:
+             grep -n 'href="\.\.\/' blog/pick-the-right-pint.html
+           and adjust by the right number of segments for the chosen URL.
+
+         PROBLEM 3 — back-link surface on the four essays.
+           After publish, decide whether each of the four essays gets a link
+           to this hub. Two options:
+             (a) Add hub link as a fifth row in the "Companion essays" footer
+                 on all four — symmetrical but adds a non-essay item.
+             (b) Add a small "← This essay is part of a four-piece arc" line
+                 above each essay's existing footer — less footer surface, more
+                 contextually clear.
+           Recommend (b) — preserves the footer's "Companion essays" identity
+           as essay-only, and the upward back-link is what readers want.
+
+         PRE-STAGED PUBLISH STEPS (one commit, with Beerology's publish):
+
+         1. Move + rename per chosen URL option (mv to flat .html or
+            mkdir + mv to dir/index.html).
+         2. Adjust all relative paths (grep sweep per Problem 2).
+         3. Add back-link to all four essays per chosen option (Problem 3).
+         4. Verify Beerology link in this file points to live URL not drafts/.
+         5. Strip this DRAFT meta paragraph and this HTML comment.
+         6. Spot-check published page in browser: nav, all six outbound links,
+            mobile view of arc grid (collapses to 2x2).
+         ============================================================ -->
+
+    <p class="meta"><span class="category guide">Guide</span>DRAFT · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
+    <h1>Four essays. Four subjects. <em>One orbit.</em></h1>
+
+    <p class="lede">PINtPOINT's recommender — PINtDEXTER — has four essays in its orbit. They cover the problem it's solving, the engine that solves it, the ingredients worth knowing about, and what drinking the result actually feels like. Same orbit, four different subjects. This is the front door.</p>
+
+    <h2>The arc</h2>
+
+    <div class="arc-grid">
+      <div class="arc-cell">
+        <span class="arc-num">1</span>
+        <div class="arc-word">Problem</div>
+        <div class="arc-role">Why the usual approach is broken.</div>
+      </div>
+      <div class="arc-cell">
+        <span class="arc-num">2</span>
+        <div class="arc-word">Engine</div>
+        <div class="arc-role">How PINtDEXTER works instead.</div>
+      </div>
+      <div class="arc-cell">
+        <span class="arc-num">3</span>
+        <div class="arc-word">Ingredients</div>
+        <div class="arc-role">What's in a hop, in plain English.</div>
+      </div>
+      <div class="arc-cell">
+        <span class="arc-num">4</span>
+        <div class="arc-word">Experience</div>
+        <div class="arc-role">What drinking the result feels like.</div>
+      </div>
+    </div>
+
+    <h2>Where to start</h2>
+
+    <div class="paths">
+      <div class="path">
+        <div class="path-q">Is this app for me?</div>
+        <div class="path-route">Start with <a href="beer-recommendation-systems-what-most-get-wrong.html">Problem</a>, then jump to <a href="beerology-anatomy-of-a-pint.html">Experience</a>. The first explains what's wrong with how most beer apps recommend; the last shows what a recommendation that actually answers <em>should I order this?</em> looks like.</div>
+      </div>
+      <div class="path">
+        <div class="path-q">How does it actually work?</div>
+        <div class="path-route">Start with <a href="beer-recommendation-systems-what-most-get-wrong.html">Problem</a>, then <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Engine</a>. The first frames the gap in beer-recommender design; the second is the engineering essay on how PINtDEXTER closes it.</div>
+      </div>
+      <div class="path">
+        <div class="path-q">I just want a better pint right now.</div>
+        <div class="path-route">Start with <a href="hops-what-each-one-tastes-like.html">Ingredients</a>, then <a href="beerology-anatomy-of-a-pint.html">Experience</a>. The first gives you the vocabulary to read a tap list with confidence; the second gives you a reading method for the pint in front of you.</div>
+      </div>
+    </div>
+
+    <h2>The four essays</h2>
+
+    <div class="essay-card">
+      <span class="ec-role">1 · Problem</span>
+      <div class="ec-title"><a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a></div>
+      <p class="ec-desc">Why collaborative-filtering recommenders — the ones built on top of Untappd ratings or RateBeer reviews — keep producing the same disappointing pours. Cold start, popularity bias, geography-blindness. A response to two public academic attempts, and the design constraint PINtPOINT optimises against instead.</p>
+    </div>
+
+    <div class="essay-card">
+      <span class="ec-role">2 · Engine</span>
+      <div class="ec-title"><a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a></div>
+      <p class="ec-desc">The engineering essay. Sip-or-Skip and Head-to-Head as preference-elicitation; the Beer DNA inferred per beer by LLM; the TastePentagon and FlavourEqualizer as the two visualisations of fit; the cross-family fermentation override that fixed the Amstel-as-pale-ale bug. How the layers stack.</p>
+    </div>
+
+    <div class="essay-card">
+      <span class="ec-role">3 · Ingredients</span>
+      <div class="ec-title"><a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a></div>
+      <p class="ec-desc">A practical taxonomy for the ingredient that does most of the personality work in modern beer. Six teaching categories (citrus, tropical, pine &amp; resin, stone fruit &amp; berry, floral &amp; herbal, earthy &amp; spicy), the chemistry behind them, and per-variety cards for the hops you'll actually meet on a tap list.</p>
+    </div>
+
+    <div class="essay-card">
+      <span class="ec-role">4 · Experience</span>
+      <div class="ec-title"><a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a></div>
+      <p class="ec-desc">A reading method for the pint in front of you. Eight axes — Body, Bitterness, Sweetness, Roast, Fruit, Finish, Softness, Complexity — plus drinker cues, a drinkability bucket, and one plain-English "what it feels like" sentence per beer. Built for the hop/malt mainstream; honest about what it doesn't cover.</p>
+    </div>
+
+    <div class="sources">
+      <strong>Selected source material across the arc:</strong>
+      <ul>
+        <li><a href="https://www.rpubs.com/ebhtra/758377" target="_blank" rel="noopener noreferrer">Ethan Haley — <em>Untappd as a recommender</em></a> (RPubs, 2021). The argument that ratings are noise-dominated and location is the honest signal.</li>
+        <li><a href="https://appellationbeer.com/blog/another-way-to-think-about-hop-presence/" target="_blank" rel="noopener noreferrer">Stan Hieronymus — <em>Another way to think about hop presence</em></a> (Appellation Beer). The "tyranny of the tasting note" framing.</li>
+        <li><a href="https://nycdatascience.com/blog/student-works/ninkasi-beer-recommender-system/" target="_blank" rel="noopener noreferrer">NYC Data Science — <em>NINKASI</em></a> (2020). Collaborative-filtering attempt that the Problem essay responds to.</li>
+        <li>Beer-writing pillars referenced across the arc: Martyn Cornell, Roger Protz, Randy Mosher, Garrett Oliver's <em>Oxford Companion to Beer</em>, the BJCP style guidelines.</li>
+      </ul>
+    </div>
+
+    <div class="closing">
+      <a href="https://apps.apple.com/app/pintpoint/id6760611613" class="cta">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Try PINtPOINT
+      </a>
+    </div>
+  </article>
+
+  <footer>
+    <div class="links">
+      <a href="../../index.html">Home</a>
+      <a href="../../features.html">Features</a>
+      <a href="../../screenshots.html">Screenshots</a>
+      <a href="../../privacy-policy.html">Privacy Policy</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+</body>
+</html>
