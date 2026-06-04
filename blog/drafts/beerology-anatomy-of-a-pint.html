@@ -88,14 +88,19 @@
          PUBLISH-TIME CHECKLIST (read this first if you're about to ship Beerology)
          ============================================================
 
-         This file publishes alongside the HUB PAGE in ONE commit — see the
-         publish checklist at the top of /blog/drafts/_pick-the-right-pint.html
-         for the hub's half of the work. The full ship sequence:
-           a. Beerology moves drafts/ → blog/ + path surgery (this checklist)
-           b. Hub moves drafts/ → blog/pick-the-right-pint/ (its checklist)
-           c. Four-essay companion footers get the "Feel" row added (this)
-           d. Four-essay back-link to hub gets added (hub's checklist)
-           e. Strip both draft notes + both HTML comments, single commit, push.
+         This file publishes alongside the HUB PAGE in ONE commit, FIVE files
+         touched. See the publish checklist at the top of
+         /blog/drafts/_pick-the-right-pint.html for the hub's half of the work.
+         The full ship sequence:
+           1. Beerology         — drafts/ → blog/, path surgery (this checklist)
+           2. Hub               — drafts/ → blog/pick-the-right-pint/ (hub checklist)
+           3. RecSys, UTH, Hops — each gets:
+                                    a) "Feel · Beerology" 4th footer row
+                                    b) "↑ Part of Pick the right pint" back-link
+                                       above the footer (snippet in hub checklist)
+           4. Strip both draft notes + both HTML comments + the new-edit gold
+              highlights here.
+           5. Single commit, push, browser spot-check.
 
          Three problems get triggered the moment this file leaves drafts/.
          All must be fixed in the SAME commit as the move, or the

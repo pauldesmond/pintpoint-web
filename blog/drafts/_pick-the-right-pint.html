@@ -100,10 +100,20 @@
          ============================================================
 
          This hub publishes alongside Beerology — ONE commit, "complete the
-         arc". Do not publish the hub before Beerology, or the hub links to a
+         arc", FIVE files touched:
+           1. Beerology         — drafts/ → blog/, path surgery, footer added
+           2. This hub          — drafts/ → blog/pick-the-right-pint/, essay
+                                  link prefixes, strip _ from filename
+           3. RecSys (live)     — footer gets "Feel · Beerology" 4th row;
+                                  back-link <p> added above footer
+           4. UTH (live)        — same as RecSys
+           5. Hops (live)       — same as RecSys
+
+         Do not publish the hub before Beerology, or the hub links to a
          drafts/ URL on the most important essay (Feel). See Beerology's own
          publish checklist (HTML comment at top of beerology-anatomy-of-a-pint.html)
-         for its half of the work.
+         for its half of the work; this file covers the hub-side work plus
+         the back-link snippet that touches all four essays.
 
          DECISIONS LOCKED (Paul, 2026-06-04):
            1. URL shape:      Firkin-style directory → /blog/pick-the-right-pint/index.html
@@ -125,16 +135,24 @@
            Expected count: ~8 (essay links appear twice each — in reading
            paths and in essay cards).
 
-         BACK-LINK LINE FOR THE FOUR ESSAYS:
+         BACK-LINK LINE FOR THE FOUR ESSAYS (refined per reviewer-2 feedback):
            Insert this <p> immediately above the existing <aside class="series-links">
            block in all four essays. Same wording in all four:
 
              <p style="text-align:center;font-size:0.85rem;color:var(--muted);margin-top:48px;margin-bottom:-8px">
-               This essay is part of <a href="pick-the-right-pint/" style="color:var(--teal)">a four-piece arc</a> on choosing the right pint.
+               <a href="pick-the-right-pint/" style="color:var(--teal);text-decoration:none">↑ Part of <em>Pick the right pint</em> — the four-essay guide.</a>
              </p>
 
-           Note: the link is "pick-the-right-pint/" with trailing slash, same-dir
-           reference from any essay at /blog/[essay].html. Goes to the hub.
+           Notes:
+             - Whole line is the link (bigger click target, ↑ glyph is part
+               of the affordance, "↑ Part of X" is conventional back-to-parent UX).
+             - "Pick the right pint" matches the hub's <title> tag and OG
+               title — readers see the connection via browser tab / search
+               snippet, not the page's internal H1 ("Four essays. Four
+               subjects. One orbit.").
+             - href is "pick-the-right-pint/" with trailing slash —
+               same-dir reference from any essay at /blog/[essay].html,
+               resolves to the Firkin-style directory index.
 
          PRE-STAGED PUBLISH STEPS (one commit, with Beerology):
 
@@ -189,7 +207,7 @@
     <div class="paths">
       <div class="path">
         <div class="path-q">Is this app for me?</div>
-        <div class="path-route">Start with <a href="beer-recommendation-systems-what-most-get-wrong.html">Problem</a>, then jump to <a href="beerology-anatomy-of-a-pint.html">Experience</a>. The first explains what's wrong with how most beer apps recommend; the last shows what a recommendation that actually answers <em>should I order this?</em> looks like.</div>
+        <div class="path-route">Start with <a href="beer-recommendation-systems-what-most-get-wrong.html">Problem</a>, then jump to <a href="beerology-anatomy-of-a-pint.html">Experience</a>. The first explains what's wrong with how most beer apps recommend; the last shows what a useful answer to <em>should I order this?</em> actually looks like.</div>
       </div>
       <div class="path">
         <div class="path-q">How does it actually work?</div>
