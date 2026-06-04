@@ -6,7 +6,7 @@
   <meta name="apple-itunes-app" content="app-id=6760611613">
   <title>Pick the right pint — the four-essay guide to PINtPOINT</title>
   <meta name="description" content="A guide to PINtPOINT's four essays on choosing the right pint: the problem, the engine, the ingredients, the experience. Same orbit, four different subjects." />
-  <meta name="robots" content="noindex,nofollow" />
+  
   <link rel="icon" type="image/png" href="../../favicon.png" />
   <link rel="canonical" href="https://pintpoint.co.uk/blog/pick-the-right-pint/" />
   <link rel="alternate" type="application/rss+xml" title="PINtPRESS" href="https://pintpoint.co.uk/blog/feed.xml" />
@@ -14,8 +14,8 @@
   <meta property="og:url" content="https://pintpoint.co.uk/blog/pick-the-right-pint/" />
   <meta property="og:title" content="Pick the right pint — the four-essay guide to PINtPOINT" />
   <meta property="og:description" content="Four essays orbit PINtPOINT's recommender: the problem, the engine, the ingredients, the experience. This is the front door." />
-  <meta property="og:image" content="https://pintpoint.co.uk/screenshots/1.7.radar.png" />
-  <meta property="og:image:alt" content="PINtPOINT app showing nearby pubs with recent tap activity on a map of London." />
+  <meta property="og:image" content="https://pintpoint.co.uk/screenshots/pick-the-right-pint-pintpress.png" />
+  <meta property="og:image:alt" content="PINtPRESS infographic — 'Pick the right pint': PINtPOINT app radar showing nearby pubs with style match scores (West Coast IPA, Pilsner, Cask Bitter highlighted), with three feature cues — know what's on tap, find the right pub, match the beer you want." />
   <meta property="fb:app_id" content="1892965231402903" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Pick the right pint — the four-essay guide to PINtPOINT" />
@@ -96,137 +96,8 @@
 
   <article class="content">
 
-    <!-- ============================================================
-         PUBLISH-TIME CHECKLIST (read this first if you're about to ship the hub)
-         ============================================================
 
-         This hub publishes alongside Beerology — ONE commit, "complete the
-         arc", SEVEN files touched:
-           1. Beerology         — drafts/ → blog/, path surgery, strip drafts
-                                  artifacts (draft-note, HTML comment,
-                                  .new-edit highlights, noindex meta)
-           2. This hub          — drafts/ → blog/pick-the-right-pint/index.html,
-                                  essay link ../ prefixes, strip _ from
-                                  filename, strip drafts artifacts
-           3. RecSys (live)     — existing <aside class="series-links">
-                                  inner content replaced with the full
-                                  4-row+backlink block (see snippet below)
-           4. UTH (live)        — same as RecSys
-           5. Hops (live)       — same as RecSys
-           6. /sitemap.xml      — two new <url> entries (hub + Beerology)
-           7. /blog/feed.xml    — one new <item> for Beerology
-                                  (hub stays out — navigational guide,
-                                  not an essay; matches Firkin pattern)
-
-         Do not publish the hub before Beerology, or the hub links to a
-         drafts/ URL on the most important essay (Feel). See Beerology's own
-         publish checklist (HTML comment at top of beerology-anatomy-of-a-pint.html)
-         for its half of the work; this file covers the hub-side work plus
-         the back-link snippet that touches all four essays.
-
-         DECISIONS LOCKED (Paul, 2026-06-04):
-           1. URL shape:      Firkin-style directory → /blog/pick-the-right-pint/index.html
-           2. Path surgery:   confirmed needed; specifics below
-           3. Back-link:      small "arc" line above each essay's existing footer,
-                              not a fifth footer row
-
-         PATH IMPACT OF FIRKIN-STYLE URL:
-           File depth stays the same (was 2 below root in /blog/drafts/, becomes
-           2 below root in /blog/pick-the-right-pint/). Consequence:
-             - Asset paths (../../favicon, ../../about-pintpoint, ../pubs/, etc.)
-               STAY AS-IS. No change needed.
-             - Essay links currently bare-slug (assuming same-dir) need ONE
-               ../ prefix added — they're moving UP into /blog/, then DOWN to
-               the sibling essay file. Affected lines: every <a href="beer-…"
-               or "under-the-hood-…" or "hops-…" or "beerology-…" in the body.
-           Sweep before committing:
-             grep -nE 'href="(beer-|under-the-|hops-|beerology-)' blog/pick-the-right-pint/index.html
-           Expected count: ~8 (essay links appear twice each — in reading
-           paths and in essay cards).
-
-         FULL FOUR-ROW + BACKLINK BLOCK (refined: one cohesive aside, not two):
-           Replace the EXISTING <aside class="series-links"> inner content
-           with this — keeps the outer aside wrapper (margin/padding/teal
-           border-left), bumps the row count from 3 to 4, and adds the
-           backlink as a sibling <p> inside the same panel after the ul.
-           One panel, not two stacked elements:
-
-             <p style="margin:0 0 14px;font-size:0.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em">Companion essays</p>
-             <ul style="list-style:none;padding:0;margin:0;font-size:0.95rem;line-height:1.7">
-               <li><strong>Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the usual approach is broken</li>
-               <li><strong>How</strong> · <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engine that does it instead</li>
-               <li><strong>What's in it</strong> · <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> — the ingredient and sensory vocabulary</li>
-               <li><strong>Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — what drinking it feels like</li>
-             </ul>
-             <p style="margin:14px 0 0;font-size:0.85rem"><a href="pick-the-right-pint/" style="color:var(--teal);text-decoration:none">↑ Part of <em>Pick the right pint</em> — the four-essay guide</a></p>
-
-           PER-ESSAY "you're reading" treatment: on each essay, drop the
-           <a> from its own row and append the existing teal marker.
-           e.g. on Under the Hood the How row becomes:
-             <li><strong>How</strong> · Under the Hood: How PINtDEXTER Picks Your Pint — the engine that does it instead <span style="color:var(--teal);font-size:0.85rem;font-weight:600">← you're reading</span></li>
-
-           Notes:
-             - Whole-line backlink (bigger click target, ↑ glyph affords
-               back-to-parent UX, conventional pattern).
-             - "Pick the right pint" matches the hub's <title> tag and OG
-               title — readers see the connection via browser tab / search
-               snippet, not the page's internal H1.
-             - href is "pick-the-right-pint/" with trailing slash —
-               same-dir from any essay at /blog/[essay].html, resolves
-               to the Firkin-style directory index.
-
-         PRE-STAGED PUBLISH STEPS (one commit, with Beerology):
-
-         1. mkdir blog/pick-the-right-pint/
-         2. git mv blog/drafts/_pick-the-right-pint.html blog/pick-the-right-pint/index.html
-         3. Prefix every essay link in this file with "../":
-              href="beer-recommendation-systems-what-most-get-wrong.html"
-                → href="../beer-recommendation-systems-what-most-get-wrong.html"
-              (same pattern for under-the-hood-…, hops-…, beerology-…)
-         4. Add the arc-line <p> block (wording above) above the
-            <aside class="series-links"> in all four essays.
-         5. Strip the noindex meta tag in the head (matches existing draft
-            convention; gets removed on publish so the page actually indexes).
-            While in the head: verify canonical + og:url + any twitter URL
-            all read https://pintpoint.co.uk/blog/pick-the-right-pint/
-            (directory form, trailing slash — NOT the .html file form).
-            Sweep: grep -n 'pick-the-right-pint\.html' on this file should
-            return ZERO matches in the live published version.
-         6. Strip this file's DRAFT <p class="meta"> paragraph (keep author
-            byline; just drop "DRAFT").
-         7. Strip this HTML comment.
-         8. Add both new URLs to sitemap.xml (entries at the same level as
-            the existing essay entries; use the publish date as <lastmod>):
-              <url>
-                <loc>https://pintpoint.co.uk/blog/pick-the-right-pint/</loc>
-                <lastmod>YYYY-MM-DD</lastmod>
-                <changefreq>monthly</changefreq>
-                <priority>0.9</priority>
-              </url>
-              <url>
-                <loc>https://pintpoint.co.uk/blog/beerology-anatomy-of-a-pint.html</loc>
-                <lastmod>YYYY-MM-DD</lastmod>
-                <changefreq>monthly</changefreq>
-                <priority>0.85</priority>
-              </url>
-            (Priorities mirror existing essays: 0.95 for Hops, 0.85 for
-            RecSys/UTH; the hub gets 0.9 as a high-value navigational
-            page, Beerology gets 0.85 matching essay-tier.)
-
-         9. Add Beerology to /blog/feed.xml as the newest <item>. Use the
-            existing Under-the-Hood entry as a template. Decision: the
-            HUB is a navigational guide, not an essay — does NOT belong
-            in the feed (subscribers expect long-form, not landing pages;
-            Firkin index is also not in the feed). If editorial preference
-            differs, add it too with category="guide".
-
-        10. Spot-check published page in browser: nav, all six outbound links,
-            arc grid collapses to 2x2 on mobile, back-links from all four
-            essays land on the hub, sitemap and feed both validate
-            (xmllint --noout sitemap.xml; xmllint --noout blog/feed.xml).
-         ============================================================ -->
-
-    <p class="meta"><span class="category guide">Guide</span>DRAFT · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
+    <p class="meta"><span class="category guide">Guide</span>2 June 2026 · By <a href="/about-pintpoint.html" rel="author">Sophie Ro</a></p>
     <h1>Four essays. Four subjects. <em>One orbit.</em></h1>
 
     <p class="lede">PINtPOINT — the pub-and-beer discovery app — has four essays in orbit around its recommender, PINtDEXTER. They cover the problem it's solving, the engine that solves it, the ingredients worth knowing about, and what drinking the result actually feels like. Same orbit, four different subjects. Start anywhere, but start with the question you actually have.</p>
@@ -261,15 +132,15 @@
     <div class="paths">
       <div class="path">
         <div class="path-q">Is this app for me?</div>
-        <div class="path-route">Start with <a href="beer-recommendation-systems-what-most-get-wrong.html">Problem</a>, then jump to <a href="beerology-anatomy-of-a-pint.html">Experience</a>. The first explains what's wrong with how most beer apps recommend; the last shows what a useful answer to <em>should I order this?</em> actually looks like.</div>
+        <div class="path-route">Start with <a href="../beer-recommendation-systems-what-most-get-wrong.html">Problem</a>, then jump to <a href="../beerology-anatomy-of-a-pint.html">Experience</a>. The first explains what's wrong with how most beer apps recommend; the last shows what a useful answer to <em>should I order this?</em> actually looks like.</div>
       </div>
       <div class="path">
         <div class="path-q">How does it actually work?</div>
-        <div class="path-route">Start with <a href="beer-recommendation-systems-what-most-get-wrong.html">Problem</a>, then <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Engine</a>. The first frames the gap in beer-recommender design; the second is the engineering essay on how PINtDEXTER closes it.</div>
+        <div class="path-route">Start with <a href="../beer-recommendation-systems-what-most-get-wrong.html">Problem</a>, then <a href="../under-the-hood-how-pintdexter-picks-your-pint.html">Engine</a>. The first frames the gap in beer-recommender design; the second is the engineering essay on how PINtDEXTER closes it.</div>
       </div>
       <div class="path">
         <div class="path-q">I just want a better pint right now.</div>
-        <div class="path-route">Start with <a href="hops-what-each-one-tastes-like.html">Ingredients</a>, then <a href="beerology-anatomy-of-a-pint.html">Experience</a>. The first gives you the vocabulary to read a tap list with confidence; the second gives you a reading method for the pint in front of you.</div>
+        <div class="path-route">Start with <a href="../hops-what-each-one-tastes-like.html">Ingredients</a>, then <a href="../beerology-anatomy-of-a-pint.html">Experience</a>. The first gives you the vocabulary to read a tap list with confidence; the second gives you a reading method for the pint in front of you.</div>
       </div>
     </div>
 
@@ -277,25 +148,25 @@
 
     <div class="essay-card">
       <span class="ec-role">1 · Problem</span>
-      <div class="ec-title"><a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a></div>
+      <div class="ec-title"><a href="../beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a></div>
       <p class="ec-desc">Why collaborative-filtering recommenders — the ones built on top of Untappd ratings or RateBeer reviews — keep producing the same disappointing pours. Cold start, popularity bias, geography-blindness. A response to two public academic attempts, and the design constraint PINtPOINT optimises against instead.</p>
     </div>
 
     <div class="essay-card">
       <span class="ec-role">2 · Engine</span>
-      <div class="ec-title"><a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a></div>
+      <div class="ec-title"><a href="../under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a></div>
       <p class="ec-desc">The engineering essay. Sip-or-Skip and Head-to-Head as preference-elicitation; the Beer DNA inferred per beer by LLM; the TastePentagon and FlavourEqualizer as the two visualisations of fit; the cross-family fermentation override that fixed the Amstel-as-pale-ale bug. How the layers stack.</p>
     </div>
 
     <div class="essay-card">
       <span class="ec-role">3 · Ingredients</span>
-      <div class="ec-title"><a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a></div>
+      <div class="ec-title"><a href="../hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a></div>
       <p class="ec-desc">A practical taxonomy for the ingredient that does most of the personality work in modern beer. Six teaching categories (citrus, tropical, pine &amp; resin, stone fruit &amp; berry, floral &amp; herbal, earthy &amp; spicy), the chemistry behind them, and per-variety cards for the hops you'll actually meet on a tap list.</p>
     </div>
 
     <div class="essay-card">
       <span class="ec-role">4 · Experience</span>
-      <div class="ec-title"><a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a></div>
+      <div class="ec-title"><a href="../beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a></div>
       <p class="ec-desc">A reading method for the pint in front of you. Eight axes — Body, Bitterness, Sweetness, Roast, Fruit, Finish, Softness, Complexity — plus drinker cues, a drinkability bucket, and one plain-English "what it feels like" sentence per beer. Tuned for the beers you'll actually find on most tap lists; honest about the sour and Belgian-yeast styles it doesn't cover.</p>
     </div>
 
