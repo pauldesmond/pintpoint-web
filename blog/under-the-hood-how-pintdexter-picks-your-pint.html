@@ -69,7 +69,7 @@
       {
         "@type": "Question",
         "name": "What is the fermentation-family override?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Two beers with similar flavour numbers can taste fundamentally different if one is an ale and one is a lager — yeast character, finish dryness, and clean-versus-estery profile diverge sharply across fermentation families. PINtDEXTER applies a 0.5x penalty to cross-family matches. The family was originally derived from the beer's declared style; that broke when a beer's style was wrong (Amstel labelled 'Pale Ale' but actually a pale lager). The LLM now scores fermentation family directly per beer, overriding the style-derived value when they disagree." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The LLM scores fermentation family directly per beer, overriding the style-derived family when the two disagree — so a 0.5x cross-family penalty still fires on rows where the source style was wrong." }
       }
     ]
   }
@@ -189,17 +189,9 @@
 
     <p>Layers 1 and 2 are the <em>user</em> side. Layer 3 is the <em>beer</em> side. Layer 4 is the <em>world</em> side. The cross-product is what gets surfaced.</p>
 
-    <h2>The Amstel case</h2>
+    <h2>When the source data is wrong</h2>
 
-    <p>In mid-May 2026, a quiet bug surfaced. A drinker whose profile pointed firmly at pale ales was being served Amstel as an 83% match. That should never have happened. Amstel is a pale lager, not a pale ale.</p>
-
-    <p>The trace took about an hour. The beer had been ingested with its style set to "Pale Ale" — the source data was simply wrong. PINtDEXTER's cross-family penalty existed and worked correctly, but it depended on a lookup from declared style to fermentation family. The style said pale ale. The lookup said ale. So the penalty for serving a lager to an ale drinker never fired.</p>
-
-    <p>The interesting part was that the system already had the right instinct. The LLM's own rationale described the beer as "a mainstream European lager-leaning pale, clean and restrained despite 'Pale Ale' label." The system knew. The recommender wasn't asking.</p>
-
-    <p>The fix was straightforward: give the LLM an explicit family axis and prefer that value when it disagrees with the style-derived one. Once that override existed, the score corrected immediately — not just for this beer, but for the broader class of category-drift errors scattered through the catalogue, from cider misfiled as fruit beer to lambic misfiled as Belgian ale.</p>
-
-    <p>That is a small change that fixes a whole class of bug, which is about the nicest thing you can say about an engineering fix.</p>
+    <p>One category-drift bug worth flagging: a beer ingested with a wrong style tag (a pale lager labelled "Pale Ale") was bypassing PINtDEXTER's cross-family penalty because the family was derived from the style, not measured directly. The fix was to give the LLM an explicit family axis and trust it over the style-derived value when they disagree — a small change that corrects the specific case and a whole class of similar mislabels, from cider misfiled as fruit beer to lambic misfiled as Belgian ale.</p>
 
     <h2>What we're not claiming</h2>
 
@@ -223,7 +215,7 @@
       </details>
       <details class="faq-item">
         <summary>What is the fermentation-family override?</summary>
-        <p>Two beers with similar flavour numbers can taste fundamentally different if one is an ale and one is a lager — yeast character, finish dryness, and clean-versus-estery profile diverge sharply across fermentation families. PINtDEXTER applies a 0.5x penalty to cross-family matches. The family was originally derived from the beer's declared style; that broke when a beer's style was wrong (Amstel labelled "Pale Ale" but actually a pale lager). The LLM now scores fermentation family directly per beer, overriding the style-derived value when they disagree.</p>
+        <p>The LLM scores fermentation family directly per beer, overriding the style-derived family when the two disagree — so a 0.5x cross-family penalty still fires on rows where the source style was wrong.</p>
       </details>
     </div>
 
