@@ -296,7 +296,7 @@
         </div>
         <div class="hop-explorer-hint">filter ↓ then tap a hop →</div>
       </div>
-      <div class="hop-filter-row" id="hop-filter-row" role="radiogroup" aria-label="Filter hops by flavour category">
+      <div class="hop-filter-row" id="hop-filter-row" role="group" aria-label="Filter hops by flavour category">
         <button class="hop-filter" data-cat="all" aria-pressed="true">All 25</button>
         <button class="hop-filter" data-cat="Citrus" aria-pressed="false">Citrus</button>
         <button class="hop-filter" data-cat="Tropical" aria-pressed="false">Tropical</button>
@@ -305,10 +305,10 @@
         <button class="hop-filter" data-cat="Floral" aria-pressed="false">Floral</button>
         <button class="hop-filter" data-cat="Earthy" aria-pressed="false">Earthy</button>
       </div>
-      <div class="hop-chip-grid" id="hop-chip-grid" role="radiogroup" aria-label="Choose a hop"></div>
+      <div class="hop-chip-grid" id="hop-chip-grid" role="group" aria-label="Choose a hop"></div>
       <div class="hop-explorer-body">
         <div class="hex-stage">
-          <svg viewBox="0 0 320 320" role="img" aria-label="Hexagon radar for the selected hop">
+          <svg viewBox="0 0 320 320" role="img" id="hex-svg" aria-label="Hexagon radar for the selected hop">
             <g id="hex-grid-g"></g>
             <g id="hex-axes-g"></g>
             <polygon id="hex-shape" class="hex-shape" points=""></polygon>
@@ -316,7 +316,7 @@
             <g id="hex-labels-g"></g>
           </svg>
         </div>
-        <div class="hop-detail" id="hop-detail">
+        <div class="hop-detail" id="hop-detail" aria-live="polite" aria-atomic="true">
           <h4 id="hop-detail-name">—</h4>
           <div class="hop-origin" id="hop-detail-origin"></div>
           <p class="hop-blurb" id="hop-detail-blurb">Choose a hop to see its 6-axis flavour signature.</p>
@@ -747,6 +747,8 @@
         vertsG.appendChild(c);
       }
       shape.setAttribute('points', pts.join(' '));
+      var svg = document.getElementById('hex-svg');
+      if (svg) svg.setAttribute('aria-label', 'Hexagon radar for ' + hop.n);
       document.getElementById('hop-detail-name').textContent = hop.n;
       document.getElementById('hop-detail-origin').textContent = hop.o;
       document.getElementById('hop-detail-blurb').textContent = hop.d;

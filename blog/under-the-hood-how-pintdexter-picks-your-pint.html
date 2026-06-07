@@ -224,7 +224,7 @@
         </div>
         <div class="fig-hint">tap a beer →</div>
       </div>
-      <div class="beerchips" id="pent-chips" role="radiogroup" aria-label="Choose a beer to view its TastePentagon">
+      <div class="beerchips" id="pent-chips" role="group" aria-label="Choose a beer to view its TastePentagon">
         <button class="beerchip" data-pent="0" aria-pressed="true">Landlord</button>
         <button class="beerchip" data-pent="1" aria-pressed="false">Steady Rolling Man</button>
         <button class="beerchip" data-pent="2" aria-pressed="false">Axe Edge</button>
@@ -233,7 +233,7 @@
         <button class="beerchip" data-pent="5" aria-pressed="false">Broken Dream</button>
       </div>
       <div class="pent-stage">
-        <svg viewBox="0 0 260 260" role="img" aria-label="TastePentagon for the selected beer">
+        <svg viewBox="0 0 260 260" role="img" id="pent-svg" aria-label="TastePentagon for the selected beer">
           <g id="pent-grid-g"></g>
           <g id="pent-axes-g"></g>
           <polygon id="pent-shape" class="pent-shape" points=""></polygon>
@@ -241,7 +241,7 @@
           <g id="pent-labels-g"></g>
         </svg>
       </div>
-      <p class="pent-caption" id="pent-caption">A pale-led IPA: high hoppy, moderate bitter and fruity, low sweet, no roast.</p>
+      <p class="pent-caption" id="pent-caption" aria-live="polite" aria-atomic="true">A pale-led IPA: high hoppy, moderate bitter and fruity, low sweet, no roast.</p>
     </figure>
 
     <!-- ── Interactive figure 2: Head-to-Head FlavourEqualizer ────── -->
@@ -255,24 +255,28 @@
       </div>
       <div class="h2h-grid">
         <div class="h2h-col">
-          <div class="beerchips" data-h2h="a" role="radiogroup" aria-label="Beer A">
+          <div class="beerchips" data-h2h="a" role="group" aria-label="Beer A">
             <button class="beerchip" data-h2h-a="0" aria-pressed="true">Landlord</button>
             <button class="beerchip" data-h2h-a="1" aria-pressed="false">Steady Rolling Man</button>
             <button class="beerchip" data-h2h-a="2" aria-pressed="false">Axe Edge</button>
           </div>
-          <h4 id="h2h-a-name">Landlord</h4>
-          <div class="h2h-meta" id="h2h-a-meta">Timothy Taylor's · Pale Ale - English · 4.3%</div>
-          <div class="h2h-bars" id="h2h-a-bars"></div>
+          <div aria-live="polite" aria-atomic="true">
+            <h4 id="h2h-a-name">Landlord</h4>
+            <div class="h2h-meta" id="h2h-a-meta">Timothy Taylor's · Pale Ale - English · 4.3%</div>
+            <div class="h2h-bars" id="h2h-a-bars"></div>
+          </div>
         </div>
         <div class="h2h-col">
-          <div class="beerchips" data-h2h="b" role="radiogroup" aria-label="Beer B">
+          <div class="beerchips" data-h2h="b" role="group" aria-label="Beer B">
             <button class="beerchip" data-h2h-b="4" aria-pressed="true">The Porter</button>
             <button class="beerchip" data-h2h-b="5" aria-pressed="false">Broken Dream</button>
             <button class="beerchip" data-h2h-b="3" aria-pressed="false">Stone Enjoy By</button>
           </div>
-          <h4 id="h2h-b-name">The Porter</h4>
-          <div class="h2h-meta" id="h2h-b-meta">Anspach &amp; Hobday · Porter · 6.7%</div>
-          <div class="h2h-bars" id="h2h-b-bars"></div>
+          <div aria-live="polite" aria-atomic="true">
+            <h4 id="h2h-b-name">The Porter</h4>
+            <div class="h2h-meta" id="h2h-b-meta">Anspach &amp; Hobday · Porter · 6.7%</div>
+            <div class="h2h-bars" id="h2h-b-bars"></div>
+          </div>
         </div>
       </div>
       <p class="pent-caption" style="margin-top: 16px;">Same five axes; structural twins (e.g. two American IPAs) line up across the rows. Cross-family pairs (Landlord vs The Porter) show the swap: hop and fruit bars vs roast bars high.</p>
@@ -455,6 +459,8 @@
         vertsG.appendChild(c);
       }
       shape.setAttribute('points', pts.join(' '));
+      var svg = document.getElementById('pent-svg');
+      if (svg) svg.setAttribute('aria-label', 'TastePentagon for ' + beer.name);
       var cap = document.getElementById('pent-caption');
       if (cap) cap.textContent = beer.caption;
     }

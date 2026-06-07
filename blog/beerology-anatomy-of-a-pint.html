@@ -159,7 +159,7 @@
         </div>
         <div class="beerology-hint">tap a beer →</div>
       </div>
-      <div class="beerology-chips" id="oct-chips" role="radiogroup" aria-label="Choose a beer">
+      <div class="beerology-chips" id="oct-chips" role="group" aria-label="Choose a beer">
         <button class="beerology-chip" data-oct="0" aria-pressed="true">Bosko (WCIPA)</button>
         <button class="beerology-chip" data-oct="1" aria-pressed="false">Steady Rolling Man (NEIPA)</button>
         <button class="beerology-chip" data-oct="2" aria-pressed="false">Broken Dream (Stout)</button>
@@ -169,7 +169,7 @@
       </div>
       <div class="oct-body">
         <div class="oct-stage">
-          <svg viewBox="0 0 360 360" role="img" aria-label="Beerology 8-axis octagon for the selected beer">
+          <svg viewBox="0 0 360 360" role="img" id="oct-svg" aria-label="Beerology 8-axis octagon">
             <g id="oct-grid-g"></g>
             <g id="oct-axes-g"></g>
             <polygon id="oct-shape" class="oct-shape" points=""></polygon>
@@ -177,7 +177,7 @@
             <g id="oct-labels-g"></g>
           </svg>
         </div>
-        <div class="oct-detail">
+        <div class="oct-detail" aria-live="polite" aria-atomic="true">
           <h4 id="oct-name">—</h4>
           <div class="oct-meta" id="oct-meta">—</div>
           <div class="oct-cues" id="oct-cues"></div>
@@ -362,6 +362,10 @@
         vertsG.appendChild(c);
       }
       shape.setAttribute('points', pts.join(' '));
+      // Update SVG aria-label so screen readers announce which beer's
+      // shape is being shown (a11y P2 fix 2026-06-07).
+      var svg = document.getElementById('oct-svg');
+      if (svg) svg.setAttribute('aria-label', 'Beerology 8-axis octagon for ' + beer.name);
       document.getElementById('oct-name').textContent = beer.name;
       document.getElementById('oct-meta').textContent = beer.meta;
       var cuesEl = document.getElementById('oct-cues');

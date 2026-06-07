@@ -231,14 +231,14 @@
         <div class="venue-hint">switch profile ↓</div>
       </div>
       <p class="venue-sub">Below: a real tap list from <strong>Chelmsford Brewing Company</strong> (10 beers pouring as of this morning) scored against four reader profiles. Tap a profile, watch the ranking re-sort. The same beer doesn't win every time. That's the geography-blindness fix.</p>
-      <div class="profile-chips" id="profile-chips" role="radiogroup" aria-label="Choose a reader profile">
+      <div class="profile-chips" id="profile-chips" role="group" aria-label="Choose a reader profile">
         <button class="profile-chip" data-profile="0" aria-pressed="true">Hop-forward IPA drinker</button>
         <button class="profile-chip" data-profile="1" aria-pressed="false">Roast-led stout drinker</button>
         <button class="profile-chip" data-profile="2" aria-pressed="false">Pale-ale moderate</button>
         <button class="profile-chip" data-profile="3" aria-pressed="false">Sour / wild curious</button>
         <button class="profile-chip" data-profile="4" aria-pressed="false">Neutral newbie</button>
       </div>
-      <div class="tap-list" id="tap-list"></div>
+      <div class="tap-list" id="tap-list" aria-live="polite" aria-atomic="true" aria-label="Ranked tap list for the selected reader profile"></div>
       <p class="venue-caption">Real beers, real LLM-inferred axes (the same data the live app uses). Match% uses the recommender's actual flavour-distance formula simplified for blog inline use. The %s shift; the top pick changes. That's the point.</p>
     </figure>
 
