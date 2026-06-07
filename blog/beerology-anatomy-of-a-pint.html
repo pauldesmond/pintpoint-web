@@ -185,6 +185,7 @@
           <p class="oct-feel" id="oct-feel">—</p>
         </div>
       </div>
+      <p class="pent-caption" style="margin-top: 16px; font-size: 0.78rem; color: var(--muted); font-style: italic;">All 8 axis values are LLM-computed by the same model that scores beers in the live app (Haiku 4.5, Phase A-3 prompt — Body / Bitter / Sweet / Roast / Fruit from the main 6 axes, Finish / Softness / Complexity from the experience axes added 2026-06-07). Drinker cues and the "what it feels like" line are editorial — the system can score the structure of a beer, but the gut-take phrasing is still a human job.</p>
     </figure>
 
     <h2>The bit that's new: drinker cues</h2>
@@ -274,34 +275,40 @@
     var AXIS_SHORT = ['BODY','BITTER','SWEET','ROAST','FRUIT','FINISH','SOFT','COMPLEX'];
 
     // Each beer: 8 axis scores (1-10) + meta + drinker cues + drinkability + feel-line
+    // All 8 axis values below are LLM-computed from beer_flavour_inferences
+    // (Haiku 4.5, Phase A-3 prompt). Body/Bitterness/Sweetness/Roast/Fruit
+    // are the main 6 axes mapped 0-5 → 1-10. Finish/Softness/Complexity
+    // are Phase A-3 sub-axes scored explicitly per beer (no longer
+    // editorial — 2026-06-07 prompt extension). Drinker cues + feel-line
+    // remain editorial prose written to anchor the chart in plain English.
     var BEERS = [
-      { name: 'Pressure Drop Bosko', meta: 'West Coast IPA · 6.5%',
-        s: [6,7,4,3,6,7,4,7],
+      { name: 'Pressure Drop Bosko', meta: 'IPA · 6.5%',
+        s: [5,8,2,0,8,6,4,6],
         cues: ['Stands up to dinner','Beer-geek default','Better cold','UK WCIPA benchmark'],
         drink: 'Strong',
         feel: 'A West Coast IPA with more malt weight than the lean stereotype lets on — pine and grapefruit on the front, a caramel-malt spine underneath, bitterness that lingers without scouring.' },
-      { name: 'DEYA Steady Rolling Man', meta: 'New England Pale · 5.2%',
-        s: [7,3,4,2,8,4,9,6],
+      { name: 'DEYA Steady Rolling Man', meta: 'IPA · 5.2%',
+        s: [5,6,2,0,6,4,6,4],
         cues: ['Hop-soft','Pillowy','First-pint','Side-of-pizza'],
         drink: 'Standard',
         feel: 'Maximum juice, minimum bite. Like drinking the smell of fresh-squeezed tangerine; the bitterness barely registers because the haze-pillow swallows it.' },
       { name: 'Broken Dream', meta: 'Oatmeal Stout · Siren · 6.5%',
-        s: [9,5,7,9,2,5,7,8],
+        s: [8,4,4,8,0,6,8,6],
         cues: ['Pudding-adjacent','Slow drinker','Best at end','Coffee-and-cream'],
         drink: 'Strong',
         feel: 'Roasted-coffee depth softened by oat-pillow body. The kind of pint you nurse — drink it fast and the roast tires you out by half.' },
-      { name: "Timothy Taylor's Landlord", meta: 'English Pale Ale · 4.3%',
-        s: [5,6,4,2,4,6,7,6],
+      { name: "Timothy Taylor's Landlord", meta: 'Pale Ale - English · 4.3%',
+        s: [5,6,2,6,2,6,6,4],
         cues: ['Cask-defining','Pub default','Session-friendly','Marmalade orange'],
         drink: 'Standard',
         feel: 'The English pale ale benchmark — soft biscuit malt, restrained English-hop marmalade from Goldings, bitterness that lingers gently rather than scours. Built to be the third pint, not the first conversation-starter.' },
-      { name: 'Anspach & Hobday The Porter', meta: 'English Porter · 6.7%',
-        s: [8,4,4,9,1,5,8,7],
+      { name: 'Anspach & Hobday The Porter', meta: 'Porter - English · 6.7%',
+        s: [8,6,2,8,0,8,6,6],
         cues: ['No-fruit','Winter beer','Cigar-pairing','Slow first-pint'],
         drink: 'Strong',
         feel: 'Burnt-toast-and-chocolate roast, with no fruit register to lighten it. A reading-in-an-armchair beer — full-bodied, contemplative, deliberately not refreshing.' },
       { name: 'Buxton Axe Edge', meta: 'Double IPA · 6.8%',
-        s: [7,8,3,2,8,9,3,8],
+        s: [5,8,2,0,6,8,4,6],
         cues: ['Wear-you-out','One-and-done','Geek favourite','Sit-down beer'],
         drink: 'Strong',
         feel: 'A maximalist DIPA — bittering charge intense, hop oil oily, finish drying. Drink one and the rest of the night is downhill. Built for the first 90 minutes.' }
