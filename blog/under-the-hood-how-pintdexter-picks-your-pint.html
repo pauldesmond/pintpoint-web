@@ -225,7 +225,7 @@
         <div class="fig-hint">tap a beer →</div>
       </div>
       <div class="beerchips" id="pent-chips" role="radiogroup" aria-label="Choose a beer to view its TastePentagon">
-        <button class="beerchip" data-pent="0" aria-pressed="true">Jaipur</button>
+        <button class="beerchip" data-pent="0" aria-pressed="true">Landlord</button>
         <button class="beerchip" data-pent="1" aria-pressed="false">Steady Rolling Man</button>
         <button class="beerchip" data-pent="2" aria-pressed="false">Axe Edge</button>
         <button class="beerchip" data-pent="3" aria-pressed="false">Stone Enjoy By</button>
@@ -256,12 +256,12 @@
       <div class="h2h-grid">
         <div class="h2h-col">
           <div class="beerchips" data-h2h="a" role="radiogroup" aria-label="Beer A">
-            <button class="beerchip" data-h2h-a="0" aria-pressed="true">Jaipur</button>
+            <button class="beerchip" data-h2h-a="0" aria-pressed="true">Landlord</button>
             <button class="beerchip" data-h2h-a="1" aria-pressed="false">Steady Rolling Man</button>
             <button class="beerchip" data-h2h-a="2" aria-pressed="false">Axe Edge</button>
           </div>
-          <h4 id="h2h-a-name">Jaipur</h4>
-          <div class="h2h-meta" id="h2h-a-meta">Thornbridge · IPA · 5.9%</div>
+          <h4 id="h2h-a-name">Landlord</h4>
+          <div class="h2h-meta" id="h2h-a-meta">Timothy Taylor's · Pale Ale - English · 4.3%</div>
           <div class="h2h-bars" id="h2h-a-bars"></div>
         </div>
         <div class="h2h-col">
@@ -275,7 +275,7 @@
           <div class="h2h-bars" id="h2h-b-bars"></div>
         </div>
       </div>
-      <p class="pent-caption" style="margin-top: 16px;">Same five axes; structural twins (e.g. two American IPAs) line up across the rows. Cross-family pairs (Jaipur vs The Porter) show the swap: hop bars high vs roast bars high.</p>
+      <p class="pent-caption" style="margin-top: 16px;">Same five axes; structural twins (e.g. two American IPAs) line up across the rows. Cross-family pairs (Landlord vs The Porter) show the swap: hop and fruit bars vs roast bars high.</p>
     </figure>
 
     <h2>The four layers, end to end</h2>
@@ -383,8 +383,8 @@
 
     // Real catalogue rows. Axes are 0-5 scale (matches LLM inference output).
     var BEERS = [
-      { name:'Jaipur',              brewery:'Thornbridge',       style:'IPA',                  abv:5.9, hoppy:4, bitter:3, sweet:1, fruity:3, roast:0, body:'medium',
-        caption:'English IPA with American hops: high hoppy, balanced bitter, low sweet.' },
+      { name:'Landlord',            brewery:"Timothy Taylor's",  style:'Pale Ale - English',   abv:4.3, hoppy:3, bitter:3, sweet:2, fruity:2, roast:0, body:'medium',
+        caption:'The English pale ale benchmark: moderate hoppy, balanced bitter, soft malt sweetness, classic Goldings character.' },
       { name:'Steady Rolling Man',  brewery:'DEYA',              style:'IPA (Pale)',           abv:5.2, hoppy:5, bitter:2, sweet:1, fruity:4, roast:0, body:'medium',
         caption:'Cult New England pale: maximum hoppy and fruity, soft bitter, dry sweet.' },
       { name:'Axe Edge',            brewery:'Buxton',            style:'Double IPA',           abv:6.8, hoppy:5, bitter:4, sweet:1, fruity:4, roast:0, body:'medium',
@@ -505,7 +505,7 @@
         });
       });
     });
-    renderH2H('a', 0); // Jaipur
+    renderH2H('a', 0); // Landlord
     renderH2H('b', 4); // The Porter
   })();
   </script>
