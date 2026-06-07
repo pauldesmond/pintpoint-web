@@ -54,7 +54,7 @@
       {
         "@type": "Question",
         "name": "What if the LLM gets a beer's profile wrong?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Three corrective layers sit on top of the inferred profile. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And confidence influences scoring — low-signal beers get treated more cautiously in ranking. Mis-extractions still happen but get caught by the architecture rather than escaping into the recommendation silently." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Four corrective layers sit on top of the inferred profile. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. The style-contextual resolver scopes the override to the user's dominant style family so cross-family beers aren't punished for being a different shape. And confidence influences scoring — low-signal beers get treated more cautiously in ranking. Mis-extractions still happen but get caught by the architecture rather than escaping into the recommendation silently." }
       },
       {
         "@type": "Question",
@@ -64,7 +64,7 @@
       {
         "@type": "Question",
         "name": "What are PINtDEXTER's four layers?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override directly with five flavour sliders plus body and strength (TUNeDEXTER). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 scores those features against what's been pouring recently at venues near the user." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override directly with five flavour sliders plus body and strength (TUNeDEXTER); the resolver applies that tuning per style family rather than globally, so the override sticks to the user's dominant style without spilling onto unrelated styles (per-family slider UI is a future slice). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 scores those features against what's been pouring recently at venues near the user." }
       },
       {
         "@type": "Question",
@@ -86,7 +86,14 @@
     .content { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
     h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
     h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; }
+    /* Numbered thesis-form section headings (2026-06-07).
+       Auto-numbering via counter; the FAQ H2 is excluded so it doesn't
+       get a section number that wouldn't make sense for an accordion. */
+    .content { counter-reset: section; }
+    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; counter-increment: section; }
+    h2::before { content: counter(section, decimal-leading-zero) " · "; color: var(--teal); font-family: 'SF Mono', Menlo, monospace; font-weight: 700; font-size: 0.85em; letter-spacing: 0.05em; }
+    .faq h2, .faq h2::before { counter-increment: none; }
+    .faq h2::before { content: ''; }
     h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 24px; margin-bottom: 10px; color: var(--text); }
     p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
     article a, article a:visited, main a, main a:visited { color: var(--teal); }
@@ -119,6 +126,38 @@
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
     @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+
+    /* ─── Interactive figures (2026-06-07) ─────────────────────────
+       TastePentagon + Head-to-Head FlavourEqualizer + beer-chip picker.
+       Vanilla SVG + vanilla JS. No deps. Real catalogue beer data.
+       Mirrors PINtPOINT's in-app BEER DNA chart so a blog reader can
+       feel the recommendation paradigm before signing up. */
+    .fig-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 32px 0; }
+    .fig-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    .fig-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal); }
+    .fig-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--text); }
+    .fig-hint { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); }
+    .beerchips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 18px; }
+    .beerchip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; cursor: pointer; transition: all .18s ease; }
+    .beerchip:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .beerchip[aria-pressed="true"] { color: #000; background: var(--teal); border-color: var(--teal); }
+    .pent-stage { display: flex; justify-content: center; padding: 8px 0; }
+    .pent-stage svg { width: 100%; max-width: 320px; height: auto; }
+    .pent-grid { fill: none; stroke: var(--border); stroke-width: 1; }
+    .pent-axis { stroke: var(--border); stroke-width: 1; }
+    .pent-shape { fill: rgba(0,212,170,0.18); stroke: var(--teal); stroke-width: 2; stroke-linejoin: round; transition: all .6s cubic-bezier(.34,1.2,.5,1); filter: drop-shadow(0 0 12px rgba(0,212,170,0.4)); }
+    .pent-vert { fill: var(--teal); transition: all .6s cubic-bezier(.34,1.2,.5,1); }
+    .pent-label { font-family: 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.08em; fill: var(--muted); text-transform: uppercase; }
+    .pent-caption { font-size: 0.85rem; color: var(--muted); text-align: center; margin-top: 8px; line-height: 1.5; }
+    /* Head-to-Head equaliser */
+    .h2h-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .h2h-col h4 { font-size: 0.85rem; color: var(--text); margin-bottom: 6px; font-weight: 700; }
+    .h2h-col .h2h-meta { font-size: 0.75rem; color: var(--muted); margin-bottom: 12px; font-family: 'SF Mono', Menlo, monospace; }
+    .h2h-bars { display: grid; grid-template-columns: 56px 1fr; gap: 6px 10px; align-items: center; }
+    .h2h-axis { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .h2h-bar-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+    .h2h-bar-fill { height: 100%; background: var(--teal); border-radius: 4px; transition: width .5s cubic-bezier(.34,1.2,.5,1); }
+    @media (max-width: 600px) { .h2h-grid { grid-template-columns: 1fr; } .pent-label { font-size: 9px; } }
   </style>
 </head>
 <body>
@@ -176,13 +215,76 @@
 
     <p>The same five anchor a second view. The <span class="highlight">FlavourEqualizer</span> swaps the silhouette for eight vertical columns — the five fixed axes (Bitter, Sweet, Sour, Body, ABV) plus three adaptive personality slots that float across hop, malt, and fruit families by score. A NEIPA might surface Citrusy, Tropical, and Juicy; a stout, Roasty, Chocolatey, and Malty. The pentagon answers <em>is this beer my shape</em> at a glance; the equaliser answers it side-by-side — vertical bars that compare cleanly when two beers sit next to each other in Head-to-Head. The four hop labels are a compressed view of the richer six-category teaching taxonomy covered separately in <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a>.</p>
 
+    <!-- ── Interactive figure 1: TastePentagon ─────────────────────── -->
+    <figure class="fig-block" id="taste-pentagon-fig">
+      <div class="fig-head">
+        <div>
+          <div class="fig-kicker">Interactive · TastePentagon</div>
+          <div class="fig-title">Is this beer my shape?</div>
+        </div>
+        <div class="fig-hint">tap a beer →</div>
+      </div>
+      <div class="beerchips" id="pent-chips" role="radiogroup" aria-label="Choose a beer to view its TastePentagon">
+        <button class="beerchip" data-pent="0" aria-pressed="true">Jaipur</button>
+        <button class="beerchip" data-pent="1" aria-pressed="false">Steady Rolling Man</button>
+        <button class="beerchip" data-pent="2" aria-pressed="false">Axe Edge</button>
+        <button class="beerchip" data-pent="3" aria-pressed="false">Stone Enjoy By</button>
+        <button class="beerchip" data-pent="4" aria-pressed="false">The Porter</button>
+        <button class="beerchip" data-pent="5" aria-pressed="false">Broken Dream</button>
+      </div>
+      <div class="pent-stage">
+        <svg viewBox="0 0 260 260" role="img" aria-label="TastePentagon for the selected beer">
+          <g id="pent-grid-g"></g>
+          <g id="pent-axes-g"></g>
+          <polygon id="pent-shape" class="pent-shape" points=""></polygon>
+          <g id="pent-verts-g"></g>
+          <g id="pent-labels-g"></g>
+        </svg>
+      </div>
+      <p class="pent-caption" id="pent-caption">A pale-led IPA: high hoppy, moderate bitter and fruity, low sweet, no roast.</p>
+    </figure>
+
+    <!-- ── Interactive figure 2: Head-to-Head FlavourEqualizer ────── -->
+    <figure class="fig-block" id="head-to-head-fig">
+      <div class="fig-head">
+        <div>
+          <div class="fig-kicker">Interactive · Head-to-Head</div>
+          <div class="fig-title">Side-by-side DNA comparison</div>
+        </div>
+        <div class="fig-hint">pick two beers ↓</div>
+      </div>
+      <div class="h2h-grid">
+        <div class="h2h-col">
+          <div class="beerchips" data-h2h="a" role="radiogroup" aria-label="Beer A">
+            <button class="beerchip" data-h2h-a="0" aria-pressed="true">Jaipur</button>
+            <button class="beerchip" data-h2h-a="1" aria-pressed="false">Steady Rolling Man</button>
+            <button class="beerchip" data-h2h-a="2" aria-pressed="false">Axe Edge</button>
+          </div>
+          <h4 id="h2h-a-name">Jaipur</h4>
+          <div class="h2h-meta" id="h2h-a-meta">Thornbridge · IPA · 5.9%</div>
+          <div class="h2h-bars" id="h2h-a-bars"></div>
+        </div>
+        <div class="h2h-col">
+          <div class="beerchips" data-h2h="b" role="radiogroup" aria-label="Beer B">
+            <button class="beerchip" data-h2h-b="4" aria-pressed="true">The Porter</button>
+            <button class="beerchip" data-h2h-b="5" aria-pressed="false">Broken Dream</button>
+            <button class="beerchip" data-h2h-b="3" aria-pressed="false">Stone Enjoy By</button>
+          </div>
+          <h4 id="h2h-b-name">The Porter</h4>
+          <div class="h2h-meta" id="h2h-b-meta">Anspach &amp; Hobday · Porter · 6.7%</div>
+          <div class="h2h-bars" id="h2h-b-bars"></div>
+        </div>
+      </div>
+      <p class="pent-caption" style="margin-top: 16px;">Same five axes; structural twins (e.g. two American IPAs) line up across the rows. Cross-family pairs (Jaipur vs The Porter) show the swap: hop bars high vs roast bars high.</p>
+    </figure>
+
     <h2>The four layers, end to end</h2>
 
     <p>PINtDEXTER stacks four signals. Each answers a different question. Take any one out and recommendations get worse in a different direction.</p>
 
     <ol style="margin: 20px 0 28px 24px;">
       <li style="margin-bottom: 14px"><span class="highlight">Preference capture</span> — Sip-or-Skip binary swipes and Head-to-Head pair rounds. Forced choices, not free-form ratings. Output: a soft style profile after about ten interactions.</li>
-      <li style="margin-bottom: 14px"><span class="highlight">Sliders (TUNeDEXTER)</span> — the user can take direct control of five flavour sliders plus body and strength when the inferred profile is wrong. The app never overrides explicit slider settings; preference learning is suggestion, not law.</li>
+      <li style="margin-bottom: 14px"><span class="highlight">Sliders (TUNeDEXTER)</span> — the user can take direct control of five flavour sliders plus body and strength when the inferred profile is wrong. Preference learning is suggestion, not law. The resolver applies that tuning per style family rather than globally, so a max-bitter / zero-fruit IPA tuning doesn't punish a Red Ale for being red-ale-shaped — cross-family beers score against per-family baselines instead. (Per-family slider UI is a future TUNeDEXTER slice; the resolver handles the scoping internally for now.)</li>
       <li style="margin-bottom: 14px"><span class="highlight">Per-beer DNA</span> — the LLM-scored content features above. Independent of any user. Cached per beer, re-run only when we explicitly backfill or invalidate.</li>
       <li><span class="highlight">Availability filter</span> — recent tap-list activity at venues near you, drawn from Untappd's public feeds. The recommendation is grounded in a specific bar's recent pours, not a beer name plucked from a global catalogue.</li>
     </ol>
@@ -192,6 +294,14 @@
     <h2>When the source data is wrong</h2>
 
     <p>One category-drift bug worth flagging: a beer ingested with a wrong style tag (a pale lager labelled "Pale Ale") was bypassing PINtDEXTER's cross-family penalty because the family was derived from the style, not measured directly. The fix was to give the LLM an explicit family axis and trust it over the style-derived value when they disagree — a small change that corrects the specific case and a whole class of similar mislabels, from cider misfiled as fruit beer to lambic misfiled as Belgian ale.</p>
+
+    <h2>When the model overreaches</h2>
+
+    <p>The other class of failure is the model being internally consistent but user-wrong. The recent example: a user tuned TUNeDEXTER to <em>max bitter, zero fruit</em> — expressing their West Coast IPA preference — and the recommender started rendering a 100% match on an American Pale Ale that happened to land at the same axis coordinates as the user's saved vector. The math was right; the framing was wrong. The user wasn't claiming to want max bitter / zero fruit <em>from every beer</em>. They were claiming it from IPAs.</p>
+
+    <p>The fix runs at the resolver. The user's flavour vector now applies only when the beer is in the user's dominant style family. Cross-family beers score against per-family baselines — a Red Ale gets resolved against a sensible Red Ale shape, a Porter against a Porter shape, and so on. The resolver supports per-family overrides internally (a later TUNeDEXTER slice will expose them as sliders); for now the baselines stand in. The end result: tuning hard for one style doesn't silently punish every other style the user might still enjoy.</p>
+
+    <p>Three smaller honesty changes ship alongside. Match percentages are capped at 99% — the model can't know any human's taste to one-percent precision, so claiming a perfect match reads as overclaim even when the math agrees. A worst-axis cap prevents a perfect body match from papering over a large flavour disagreement on any single axis. And tapping the match chip in the app now expands a per-axis breakdown, so a user looking at "40%" can see which axis the model thinks is misaligned without leaving the beer detail screen.</p>
 
     <h2>What we're not claiming</h2>
 
@@ -203,7 +313,7 @@
       <h2>Frequently asked questions</h2>
       <details class="faq-item">
         <summary>What if the LLM gets a beer's profile wrong?</summary>
-        <p>Three corrective layers sit on top. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. And confidence influences scoring — low-signal beers (no specific cue from name or brewery) get treated more cautiously in ranking. Mis-extractions still happen, but they get caught by the architecture rather than escaping into the recommendation silently.</p>
+        <p>Four corrective layers sit on top. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. The style-contextual resolver scopes the override to the user's dominant style family so cross-family beers aren't punished for being a different shape. And confidence influences scoring — low-signal beers (no specific cue from name or brewery) get treated more cautiously in ranking. Mis-extractions still happen, but they get caught by the architecture rather than escaping into the recommendation silently.</p>
       </details>
       <details class="faq-item">
         <summary>How quickly does a brand-new beer become recommendable?</summary>
@@ -211,7 +321,7 @@
       </details>
       <details class="faq-item">
         <summary>What are PINtDEXTER's four layers?</summary>
-        <p>Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override directly with five flavour sliders plus body and strength (TUNeDEXTER). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 scores those features against what's been pouring recently at venues near you.</p>
+        <p>Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override directly with five flavour sliders plus body and strength (TUNeDEXTER); the resolver applies that tuning per style family rather than globally, so the override sticks to the user's dominant style without spilling onto unrelated styles (per-family slider UI is a future slice). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 scores those features against what's been pouring recently at venues near you.</p>
       </details>
       <details class="faq-item">
         <summary>What is the fermentation-family override?</summary>
@@ -257,5 +367,147 @@
     </div>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
+
+  <!-- ─── Interactive figures script (2026-06-07) ────────────────
+       Vanilla JS. Inline beer data from PINtPOINT's Supabase as of
+       this date — real catalogue beers with full Phase A-2 LLM
+       inferences. Pentagon computes 5 vertex coords from beer axes;
+       Head-to-Head renders 5 horizontal bars per beer side-by-side. -->
+  <script>
+  (function() {
+    // 5-axis projection used by both figures: hoppy, bitter, sweet, fruity, roast.
+    // Tart omitted (~0 for every chosen beer) to keep the pentagon a clean
+    // 5-pointed shape rather than a 6-pointed star with one dead vertex.
+    var AXES = ['hoppy','bitter','sweet','fruity','roast'];
+    var AXIS_LABELS = ['HOPPY','BITTER','SWEET','FRUITY','ROAST'];
+
+    // Real catalogue rows. Axes are 0-5 scale (matches LLM inference output).
+    var BEERS = [
+      { name:'Jaipur',              brewery:'Thornbridge',       style:'IPA',                  abv:5.9, hoppy:4, bitter:3, sweet:1, fruity:3, roast:0, body:'medium',
+        caption:'English IPA with American hops: high hoppy, balanced bitter, low sweet.' },
+      { name:'Steady Rolling Man',  brewery:'DEYA',              style:'IPA (Pale)',           abv:5.2, hoppy:5, bitter:2, sweet:1, fruity:4, roast:0, body:'medium',
+        caption:'Cult New England pale: maximum hoppy and fruity, soft bitter, dry sweet.' },
+      { name:'Axe Edge',            brewery:'Buxton',            style:'Double IPA',           abv:6.8, hoppy:5, bitter:4, sweet:1, fruity:4, roast:0, body:'medium',
+        caption:'Imperial pale-led DIPA: max hoppy, big bitter, juicy fruit, dry finish.' },
+      { name:'Stone Enjoy By',      brewery:'Stone Brewing',     style:'Imperial / Double IPA',abv:9.4, hoppy:5, bitter:4, sweet:1, fruity:4, roast:0, body:'full',
+        caption:'West Coast imperial: huge hoppy + bitter, juicy fruit, full body.' },
+      { name:'The Porter',          brewery:'Anspach & Hobday',  style:'Porter (English)',     abv:6.7, hoppy:1, bitter:3, sweet:1, fruity:0, roast:4, body:'full',
+        caption:'Roast-led English porter: low hoppy, no fruit, big roast and body.' },
+      { name:'Broken Dream',        brewery:'Siren Craft Brew',  style:'Oatmeal Stout',        abv:6.5, hoppy:1, bitter:2, sweet:3, fruity:1, roast:4, body:'full',
+        caption:'Coffee-noted stout: high roast, soft sweetness from oats, full body.' }
+    ];
+
+    // ── TastePentagon ───────────────────────────────────────────
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var CENTER = 130, MAX_R = 100; // 5 levels × 20px = 100 max radius
+    // Vertex angles: start at top (-90°), go clockwise every 72°
+    function vertex(axisIndex, value0to5) {
+      var angleRad = (-Math.PI / 2) + axisIndex * (2 * Math.PI / 5);
+      var r = (value0to5 / 5) * MAX_R;
+      return [CENTER + r * Math.cos(angleRad), CENTER + r * Math.sin(angleRad)];
+    }
+
+    // Build grid rings + axis lines + labels (one-time on mount)
+    var gridG = document.getElementById('pent-grid-g');
+    var axesG = document.getElementById('pent-axes-g');
+    var labelsG = document.getElementById('pent-labels-g');
+    if (gridG && axesG && labelsG) {
+      for (var ring = 1; ring <= 5; ring++) {
+        var pts = [];
+        for (var ax = 0; ax < 5; ax++) pts.push(vertex(ax, ring).join(','));
+        var poly = document.createElementNS(SVG_NS, 'polygon');
+        poly.setAttribute('class', 'pent-grid');
+        poly.setAttribute('points', pts.join(' '));
+        gridG.appendChild(poly);
+      }
+      for (var ax2 = 0; ax2 < 5; ax2++) {
+        var endpt = vertex(ax2, 5);
+        var line = document.createElementNS(SVG_NS, 'line');
+        line.setAttribute('class', 'pent-axis');
+        line.setAttribute('x1', CENTER); line.setAttribute('y1', CENTER);
+        line.setAttribute('x2', endpt[0]); line.setAttribute('y2', endpt[1]);
+        axesG.appendChild(line);
+        // Label slightly past the outermost vertex
+        var labelPt = vertex(ax2, 5.6);
+        var text = document.createElementNS(SVG_NS, 'text');
+        text.setAttribute('class', 'pent-label');
+        text.setAttribute('x', labelPt[0]); text.setAttribute('y', labelPt[1]);
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('dominant-baseline', 'middle');
+        text.textContent = AXIS_LABELS[ax2];
+        labelsG.appendChild(text);
+      }
+    }
+
+    function renderPentagon(beerIndex) {
+      var beer = BEERS[beerIndex];
+      var shape = document.getElementById('pent-shape');
+      var vertsG = document.getElementById('pent-verts-g');
+      if (!shape || !vertsG || !beer) return;
+      var pts = [];
+      vertsG.innerHTML = '';
+      for (var i = 0; i < 5; i++) {
+        var v = vertex(i, beer[AXES[i]]);
+        pts.push(v.join(','));
+        var c = document.createElementNS(SVG_NS, 'circle');
+        c.setAttribute('class', 'pent-vert');
+        c.setAttribute('cx', v[0]); c.setAttribute('cy', v[1]); c.setAttribute('r', 4);
+        vertsG.appendChild(c);
+      }
+      shape.setAttribute('points', pts.join(' '));
+      var cap = document.getElementById('pent-caption');
+      if (cap) cap.textContent = beer.caption;
+    }
+
+    // Pentagon chip wiring
+    var pentChips = document.querySelectorAll('#pent-chips .beerchip');
+    pentChips.forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        pentChips.forEach(function(c) { c.setAttribute('aria-pressed', 'false'); });
+        chip.setAttribute('aria-pressed', 'true');
+        renderPentagon(parseInt(chip.getAttribute('data-pent'), 10));
+      });
+    });
+    renderPentagon(0); // initial
+
+    // ── Head-to-Head FlavourEqualizer ───────────────────────────
+    function renderH2H(side, beerIndex) {
+      var beer = BEERS[beerIndex];
+      if (!beer) return;
+      var nameEl = document.getElementById('h2h-' + side + '-name');
+      var metaEl = document.getElementById('h2h-' + side + '-meta');
+      var barsEl = document.getElementById('h2h-' + side + '-bars');
+      if (!nameEl || !metaEl || !barsEl) return;
+      nameEl.textContent = beer.name;
+      metaEl.textContent = beer.brewery + ' · ' + beer.style + ' · ' + beer.abv + '%';
+      barsEl.innerHTML = '';
+      for (var i = 0; i < 5; i++) {
+        var axisLabel = document.createElement('div');
+        axisLabel.className = 'h2h-axis';
+        axisLabel.textContent = AXIS_LABELS[i];
+        var track = document.createElement('div');
+        track.className = 'h2h-bar-track';
+        var fill = document.createElement('div');
+        fill.className = 'h2h-bar-fill';
+        fill.style.width = (beer[AXES[i]] / 5 * 100) + '%';
+        track.appendChild(fill);
+        barsEl.appendChild(axisLabel);
+        barsEl.appendChild(track);
+      }
+    }
+    ['a','b'].forEach(function(side) {
+      var chips = document.querySelectorAll('[data-h2h-' + side + ']');
+      chips.forEach(function(chip) {
+        chip.addEventListener('click', function() {
+          chips.forEach(function(c) { c.setAttribute('aria-pressed', 'false'); });
+          chip.setAttribute('aria-pressed', 'true');
+          renderH2H(side, parseInt(chip.getAttribute('data-h2h-' + side), 10));
+        });
+      });
+    });
+    renderH2H('a', 0); // Jaipur
+    renderH2H('b', 4); // The Porter
+  })();
+  </script>
 </body>
 </html>

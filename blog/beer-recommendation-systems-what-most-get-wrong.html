@@ -65,7 +65,7 @@
       {
         "@type": "Question",
         "name": "How does PINtPOINT's PINtDEXTER recommender work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "PINtDEXTER layers three signals. First, Sip-or-Skip and Head-to-Head pair-choice rounds build a fast style profile by asking the user to make forced choices (A or B) rather than rate individual beers on a 1-5 scale. Second, that profile sits behind a 13-style preference layer plus direct flavour, body and strength tuning the user can adjust. Third, recent tap activity at nearby venues is scored against that profile, so recommendations stay tied to beer recently seen on tap near you rather than a global catalogue." }
+        "acceptedAnswer": { "@type": "Answer", "text": "PINtDEXTER layers three signals. First, Sip-or-Skip and Head-to-Head pair-choice rounds build a fast style profile by asking the user to make forced choices (A or B) rather than rate individual beers on a 1-5 scale. Second, that profile sits behind a 13-style preference layer plus direct flavour, body and strength tuning the user can adjust — the resolver applies that tuning per style family rather than globally. Third, recent tap activity at nearby venues is scored against that profile, so recommendations stay tied to beer recently seen on tap near you rather than a global catalogue." }
       },
       {
         "@type": "Question",
@@ -133,6 +133,35 @@
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
     @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+
+    /* ─── Venue tap-list ranking demo (2026-06-07) ────────────────
+       The thesis figure. Real Chelmsford Brewing Company tap list, 10
+       beers with their actual LLM-inferred axes. Pick a profile preset,
+       watch the ranking re-sort live with new %match scores per beer.
+       Demonstrates the essay's central claim — best beer here is a
+       function of WHO, not just WHAT. */
+    .venue-demo { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 32px 0; }
+    .venue-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+    .venue-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal); }
+    .venue-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--text); }
+    .venue-hint { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); }
+    .venue-sub { font-size: 0.85rem; color: var(--muted); margin: 4px 0 16px; }
+    .venue-sub strong { color: var(--text); }
+    .profile-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .profile-chip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: all .18s ease; }
+    .profile-chip:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .profile-chip[aria-pressed="true"] { color: #000; background: var(--teal); border-color: var(--teal); }
+    .tap-list { display: flex; flex-direction: column; gap: 6px; }
+    .tap-row { display: grid; grid-template-columns: 36px 1fr 60px; gap: 12px; align-items: center; padding: 10px 14px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; transition: all .35s cubic-bezier(.4,1.2,.5,1); }
+    .tap-row.top-pick { background: rgba(0,212,170,0.08); border-color: var(--teal); }
+    .tap-rank { font-family: 'SF Mono', Menlo, monospace; font-size: 12px; color: var(--muted); text-align: center; font-weight: 700; }
+    .tap-row.top-pick .tap-rank { color: var(--teal); }
+    .tap-info .tap-name { font-size: 0.9rem; color: var(--text); font-weight: 600; }
+    .tap-info .tap-meta { font-size: 0.72rem; color: var(--muted); font-family: 'SF Mono', Menlo, monospace; letter-spacing: 0.02em; margin-top: 2px; }
+    .tap-pct { text-align: right; font-family: 'SF Mono', Menlo, monospace; font-weight: 700; font-size: 0.95rem; color: var(--muted); }
+    .tap-row.top-pick .tap-pct { color: var(--teal); }
+    .top-pick-flag { display: inline-block; font-family: 'SF Mono', Menlo, monospace; font-size: 9px; color: #000; background: var(--teal); padding: 2px 6px; border-radius: 3px; letter-spacing: 0.08em; margin-left: 6px; vertical-align: 1px; }
+    .venue-caption { font-size: 0.78rem; color: var(--muted); margin-top: 14px; line-height: 1.5; font-style: italic; }
   </style>
 </head>
 <body>
@@ -192,6 +221,27 @@
     </ol>
     <p>The unit of recommendation is <em>a pint recently seen at a bar you can reach</em> — not an abstract beer name you'll screenshot and forget. We don't claim guaranteed live stock; we claim the right shape of recommendation for the venue-bound question.</p>
 
+    <!-- ── Interactive: venue tap-list ranking demo ───────────── -->
+    <figure class="venue-demo" id="venue-demo">
+      <div class="venue-head">
+        <div>
+          <div class="venue-kicker">Interactive · The thesis figure</div>
+          <div class="venue-title">Same bar. Different drinkers. Different top pints.</div>
+        </div>
+        <div class="venue-hint">switch profile ↓</div>
+      </div>
+      <p class="venue-sub">Below: a real tap list from <strong>Chelmsford Brewing Company</strong> (10 beers pouring as of this morning) scored against four reader profiles. Tap a profile, watch the ranking re-sort. The same beer doesn't win every time. That's the geography-blindness fix.</p>
+      <div class="profile-chips" id="profile-chips" role="radiogroup" aria-label="Choose a reader profile">
+        <button class="profile-chip" data-profile="0" aria-pressed="true">Hop-forward IPA drinker</button>
+        <button class="profile-chip" data-profile="1" aria-pressed="false">Roast-led stout drinker</button>
+        <button class="profile-chip" data-profile="2" aria-pressed="false">Pale-ale moderate</button>
+        <button class="profile-chip" data-profile="3" aria-pressed="false">Sour / wild curious</button>
+        <button class="profile-chip" data-profile="4" aria-pressed="false">Neutral newbie</button>
+      </div>
+      <div class="tap-list" id="tap-list"></div>
+      <p class="venue-caption">Real beers, real LLM-inferred axes (the same data the live app uses). Match% uses the recommender's actual flavour-distance formula simplified for blog inline use. The %s shift; the top pick changes. That's the point.</p>
+    </figure>
+
     <h2>What a good beer recommender is actually solving for</h2>
     <p>Haley and Ninkasi are both solving <span class="highlight">"predict this user's rating of beer X."</span> That's a well-defined ML task. It trains, it evaluates, it publishes nicely.</p>
     <p>The consumer-facing question is different:</p>
@@ -242,7 +292,7 @@
       </details>
       <details class="faq-item">
         <summary>How does PINtPOINT's PINtDEXTER recommender work?</summary>
-        <p>Three layers: (1) Sip-or-Skip + Head-to-Head pair rounds build a style profile from binary choices; (2) that profile sits behind a 13-style preference layer plus direct flavour, body and strength tuning the user can adjust; (3) recent tap activity at nearby venues is scored against the profile, so recommendations stay tied to beer recently seen on tap near you.</p>
+        <p>Three layers: (1) Sip-or-Skip + Head-to-Head pair rounds build a style profile from binary choices; (2) that profile sits behind a 13-style preference layer plus direct flavour, body and strength tuning the user can adjust — the resolver applies that tuning per style family rather than globally; (3) recent tap activity at nearby venues is scored against the profile, so recommendations stay tied to beer recently seen on tap near you.</p>
       </details>
       <details class="faq-item">
         <summary>Why do most beer recommenders ignore location?</summary>
@@ -298,5 +348,96 @@
     <p style="font-size:0.75rem;color:#555;margin-top:12px">Untappd, RateBeer, Next Glass, BeerMenus are trademarks of their respective owners. Links to third-party research are included for reference and critique, not endorsement.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
+
+  <!-- ─── Venue ranking demo logic (2026-06-07) ────────────── -->
+  <script>
+  (function() {
+    // 10 real beers pouring at Chelmsford Brewing Company as of
+    // 2026-06-07, with their actual LLM-inferred axes (0-5 scale).
+    var BEERS = [
+      { n:'Light Speed', br:'Good Chemistry', st:'Pale Ale - New Zealand', abv:4.6, h:4, b:2, sw:1, fr:3, ro:0, ta:0 },
+      { n:'Death of A Cowboy', br:'Chelmsford Brew Co.', st:'Pale Ale - English', abv:4.7, h:2, b:3, sw:1, fr:1, ro:2, ta:0 },
+      { n:'Under Cascading Skies', br:'Chelmsford Brew Co.', st:'Pale Ale - American', abv:5.0, h:4, b:3, sw:1, fr:3, ro:0, ta:0 },
+      { n:'Blueshack Bitter', br:'Chelmsford Brew Co.', st:'Bitter', abv:3.8, h:2, b:3, sw:1, fr:0, ro:3, ta:0 },
+      { n:'Freak Show', br:'Colchester Brewery Ltd.', st:'Bitter - Session / Ordinary', abv:3.8, h:2, b:3, sw:1, fr:1, ro:3, ta:0 },
+      { n:'Cross Roads', br:'Chelmsford Brew Co.', st:'Red Ale - Other', abv:4.5, h:2, b:2, sw:2, fr:1, ro:3, ta:0 },
+      { n:'Blueshack Luxury Porter', br:'Chelmsford Brew Co.', st:'Porter - Other', abv:4.6, h:1, b:2, sw:2, fr:1, ro:4, ta:0 },
+      { n:'Radio Wave', br:'Chelmsford Brew Co.', st:'Pale Ale - American', abv:4.2, h:3, b:2, sw:1, fr:3, ro:0, ta:0 },
+      { n:'Mic Drop', br:'Good Chemistry', st:'IPA - Other', abv:5.0, h:4, b:3, sw:1, fr:3, ro:0, ta:0 },
+      { n:'India Pale Ale Galaxy Centennial', br:'The Kernel Brewery', st:'IPA - American', abv:6.9, h:5, b:4, sw:1, fr:4, ro:0, ta:0 }
+,
+    ];
+
+    // 5 reader profiles. Axes on 0-1 normalised scale matching the
+    // recommender's flavourMatchScore input. Numbers chosen to be
+    // representative — strong-hop drinker maxes bitter+hoppy, etc.
+    var PROFILES = [
+      // hop-forward IPA drinker — high hoppy/bitter, low fruity (per the
+      // dry-pine-bitter style), low roast, low tart
+      { name:'Hop-forward IPA drinker',  h:0.9, b:0.9, sw:0.15, fr:0.4, ro:0.05, ta:0.0 },
+      // roast-led stout drinker — high roast/sweet, low hop
+      { name:'Roast-led stout drinker',  h:0.2, b:0.5, sw:0.6,  fr:0.1, ro:0.9,  ta:0.0 },
+      // pale-ale moderate — middle on everything, leans hoppy
+      { name:'Pale-ale moderate',        h:0.6, b:0.5, sw:0.3,  fr:0.5, ro:0.15, ta:0.0 },
+      // sour/wild curious — high tart, moderate fruit, low roast
+      { name:'Sour / wild curious',      h:0.3, b:0.3, sw:0.4,  fr:0.7, ro:0.0,  ta:0.85 },
+      // neutral newbie — middle of everything
+      { name:'Neutral newbie',           h:0.5, b:0.5, sw:0.3,  fr:0.5, ro:0.3,  ta:0.1 },
+    ];
+
+    function matchPct(beer, profile) {
+      // Normalise beer axes 0-5 → 0-1, compute average absolute delta,
+      // convert to a percentage. Mirrors the recommender's
+      // flavourMatchScore for blog-inline use (no body/strength
+      // weighting — keeps the demo readable).
+      var deltas = [
+        Math.abs(profile.h  - beer.h/5),
+        Math.abs(profile.b  - beer.b/5),
+        Math.abs(profile.sw - beer.sw/5),
+        Math.abs(profile.fr - beer.fr/5),
+        Math.abs(profile.ro - beer.ro/5),
+        Math.abs(profile.ta - beer.ta/5),
+      ];
+      var avg = deltas.reduce(function(a,b) { return a+b; }, 0) / deltas.length;
+      // Worst-axis cap (matches the live app's honesty cap)
+      var maxD = Math.max.apply(null, deltas);
+      var linear = 1 - avg;
+      var capped = maxD >= 0.4 ? Math.min(linear, 1 - maxD) : linear;
+      return Math.max(0, Math.min(99, Math.round(capped * 100)));
+    }
+
+    var currentProfile = 0;
+    function render() {
+      var profile = PROFILES[currentProfile];
+      var scored = BEERS.map(function(beer) {
+        return { beer: beer, pct: matchPct(beer, profile) };
+      });
+      scored.sort(function(a, b) { return b.pct - a.pct; });
+      var list = document.getElementById('tap-list');
+      list.innerHTML = '';
+      scored.forEach(function(s, i) {
+        var row = document.createElement('div');
+        row.className = 'tap-row' + (i === 0 ? ' top-pick' : '');
+        row.innerHTML = '<div class="tap-rank">' + (i+1) + '</div>' +
+          '<div class="tap-info">' +
+            '<div class="tap-name">' + s.beer.n + (i === 0 ? '<span class="top-pick-flag">TOP PICK</span>' : '') + '</div>' +
+            '<div class="tap-meta">' + s.beer.br + ' · ' + s.beer.st + ' · ' + s.beer.abv + '%</div>' +
+          '</div>' +
+          '<div class="tap-pct">' + s.pct + '%</div>';
+        list.appendChild(row);
+      });
+    }
+
+    document.querySelectorAll('.profile-chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        document.querySelectorAll('.profile-chip').forEach(function(c) { c.setAttribute('aria-pressed','false'); });
+        chip.setAttribute('aria-pressed','true');
+        currentProfile = parseInt(chip.getAttribute('data-profile'), 10);
+        render();
+      });
+    });
+    render();
+  })();
+  </script>
 </body>
 </html>

@@ -55,6 +55,40 @@
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
     @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+
+    /* ─── Beerology octagon (2026-06-07) ──────────────────────────
+       Interactive 8-axis radar that visualises the reading method
+       this essay describes. Six real catalogue beers, chosen to span
+       distinct experience shapes — pick a chip, watch the octagon
+       morph + the drinker cues + drinkability bucket + "what it feels
+       like" line all redraw. The same vocabulary the essay teaches,
+       made playable in-place. */
+    .beerology-octagon { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 32px 0; }
+    .beerology-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    .beerology-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal); }
+    .beerology-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--text); }
+    .beerology-hint { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); }
+    .beerology-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 18px; }
+    .beerology-chip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; cursor: pointer; transition: all .18s ease; }
+    .beerology-chip:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .beerology-chip[aria-pressed="true"] { color: #000; background: var(--teal); border-color: var(--teal); }
+    .oct-body { display: grid; grid-template-columns: 360px 1fr; gap: 24px; align-items: start; }
+    @media (max-width: 600px) { .oct-body { grid-template-columns: 1fr; } }
+    .oct-stage { display: flex; justify-content: center; }
+    .oct-stage svg { width: 100%; max-width: 360px; height: auto; }
+    .oct-grid { fill: none; stroke: var(--border); stroke-width: 1; }
+    .oct-axis { stroke: var(--border); stroke-width: 1; }
+    .oct-shape { fill: rgba(0,212,170,0.18); stroke: var(--teal); stroke-width: 2; stroke-linejoin: round; transition: all .6s cubic-bezier(.34,1.2,.5,1); filter: drop-shadow(0 0 12px rgba(0,212,170,0.35)); }
+    .oct-vert { fill: var(--teal); transition: all .6s cubic-bezier(.34,1.2,.5,1); }
+    .oct-label { font-family: 'SF Mono', Menlo, monospace; font-size: 9px; letter-spacing: 0.06em; fill: var(--muted); text-transform: uppercase; }
+    .oct-val { font-family: 'SF Mono', Menlo, monospace; font-size: 8px; fill: var(--teal); }
+    .oct-detail h4 { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+    .oct-detail .oct-meta { font-family: 'SF Mono', Menlo, monospace; font-size: 0.75rem; color: var(--teal); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 14px; }
+    .oct-detail .oct-cues { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .oct-cue { font-size: 0.78rem; color: var(--text); background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.3); border-radius: 4px; padding: 3px 8px; font-style: italic; }
+    .oct-detail .oct-drinkability { font-family: 'SF Mono', Menlo, monospace; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
+    .oct-detail .oct-drinkability strong { color: #F5A623; font-weight: 700; }
+    .oct-detail .oct-feel { font-size: 0.9rem; color: var(--muted); line-height: 1.6; font-style: italic; border-left: 2px solid var(--teal); padding-left: 12px; }
   </style>
 </head>
 <body>
@@ -115,6 +149,43 @@
     <p><span class="highlight">Beerology verdict:</span> reference-grade. The WCIPA most other UK WCIPAs are accidentally trying to be.</p>
 
     <p>Read against the other formats: Untappd has Bosko around 4.0 — well-liked but not famous, the kind of score that tells you almost nothing about whether it suits the moment. A flavour-wheel reading would slot it under "American IPA / West Coast" — accurate, useless for picking. The brewery's own copy goes hard on hop varietals. None of those signals tell you it's the pint to start your evening with, that it'll outpace fried food, that you should drink it before the smoothie sours and the dessert stouts. The Beerology card does — in eight numbers, four cues, and a sentence.</p>
+
+    <!-- ── Interactive: Beerology Octagon ──────────────────────── -->
+    <figure class="beerology-octagon" id="beerology-octagon">
+      <div class="beerology-head">
+        <div>
+          <div class="beerology-kicker">Interactive · The Beerology card</div>
+          <div class="beerology-title">Five more shapes you'd actually meet at a bar</div>
+        </div>
+        <div class="beerology-hint">tap a beer →</div>
+      </div>
+      <div class="beerology-chips" id="oct-chips" role="radiogroup" aria-label="Choose a beer">
+        <button class="beerology-chip" data-oct="0" aria-pressed="true">Bosko (WCIPA)</button>
+        <button class="beerology-chip" data-oct="1" aria-pressed="false">Steady Rolling Man (NEIPA)</button>
+        <button class="beerology-chip" data-oct="2" aria-pressed="false">Broken Dream (Stout)</button>
+        <button class="beerology-chip" data-oct="3" aria-pressed="false">Jaipur (English IPA)</button>
+        <button class="beerology-chip" data-oct="4" aria-pressed="false">The Porter (English Porter)</button>
+        <button class="beerology-chip" data-oct="5" aria-pressed="false">Axe Edge (Double IPA)</button>
+      </div>
+      <div class="oct-body">
+        <div class="oct-stage">
+          <svg viewBox="0 0 360 360" role="img" aria-label="Beerology 8-axis octagon for the selected beer">
+            <g id="oct-grid-g"></g>
+            <g id="oct-axes-g"></g>
+            <polygon id="oct-shape" class="oct-shape" points=""></polygon>
+            <g id="oct-verts-g"></g>
+            <g id="oct-labels-g"></g>
+          </svg>
+        </div>
+        <div class="oct-detail">
+          <h4 id="oct-name">—</h4>
+          <div class="oct-meta" id="oct-meta">—</div>
+          <div class="oct-cues" id="oct-cues"></div>
+          <div class="oct-drinkability" id="oct-drinkability">Drinkability: <strong>—</strong></div>
+          <p class="oct-feel" id="oct-feel">—</p>
+        </div>
+      </div>
+    </figure>
 
     <h2>The bit that's new: drinker cues</h2>
 
@@ -195,5 +266,125 @@
     </div>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
+
+  <!-- ─── Beerology Octagon interactive logic (2026-06-07) ──── -->
+  <script>
+  (function() {
+    var AXES = ['Body','Bitterness','Sweetness','Roast','Fruit','Finish','Softness','Complexity'];
+    var AXIS_SHORT = ['BODY','BITTER','SWEET','ROAST','FRUIT','FINISH','SOFT','COMPLEX'];
+
+    // Each beer: 8 axis scores (1-10) + meta + drinker cues + drinkability + feel-line
+    var BEERS = [
+      { name: 'Pressure Drop Bosko', meta: 'West Coast IPA · 6.5%',
+        s: [6,7,4,3,6,7,4,7],
+        cues: ['Stands up to dinner','Beer-geek default','Better cold','UK WCIPA benchmark'],
+        drink: 'Strong',
+        feel: 'A West Coast IPA with more malt weight than the lean stereotype lets on — pine and grapefruit on the front, a caramel-malt spine underneath, bitterness that lingers without scouring.' },
+      { name: 'DEYA Steady Rolling Man', meta: 'New England Pale · 5.2%',
+        s: [7,3,4,2,8,4,9,6],
+        cues: ['Hop-soft','Pillowy','First-pint','Side-of-pizza'],
+        drink: 'Standard',
+        feel: 'Maximum juice, minimum bite. Like drinking the smell of fresh-squeezed tangerine; the bitterness barely registers because the haze-pillow swallows it.' },
+      { name: 'Broken Dream', meta: 'Oatmeal Stout · Siren · 6.5%',
+        s: [9,5,7,9,2,5,7,8],
+        cues: ['Pudding-adjacent','Slow drinker','Best at end','Coffee-and-cream'],
+        drink: 'Strong',
+        feel: 'Roasted-coffee depth softened by oat-pillow body. The kind of pint you nurse — drink it fast and the roast tires you out by half.' },
+      { name: 'Jaipur', meta: 'English IPA · Thornbridge · 5.9%',
+        s: [5,6,3,2,7,6,5,6],
+        cues: ['UK bench','Second-pint OK','Pub default','Stands alone'],
+        drink: 'Standard',
+        feel: 'Drier than its American cousins; bitterness up-front but trim, hop character clean rather than juicy. The everyday English IPA that earned its everyday status.' },
+      { name: 'Anspach & Hobday The Porter', meta: 'English Porter · 6.7%',
+        s: [8,4,4,9,1,5,8,7],
+        cues: ['No-fruit','Winter beer','Cigar-pairing','Slow first-pint'],
+        drink: 'Strong',
+        feel: 'Burnt-toast-and-chocolate roast, with no fruit register to lighten it. A reading-in-an-armchair beer — full-bodied, contemplative, deliberately not refreshing.' },
+      { name: 'Buxton Axe Edge', meta: 'Double IPA · 6.8%',
+        s: [7,8,3,2,8,9,3,8],
+        cues: ['Wear-you-out','One-and-done','Geek favourite','Sit-down beer'],
+        drink: 'Strong',
+        feel: 'A maximalist DIPA — bittering charge intense, hop oil oily, finish drying. Drink one and the rest of the night is downhill. Built for the first 90 minutes.' }
+    ];
+
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var CENTER = 180, MAX_R = 130;
+    function vertex(axisIndex, value1to10) {
+      var angle = (-Math.PI / 2) + axisIndex * (2 * Math.PI / 8);
+      var r = (value1to10 / 10) * MAX_R;
+      return [CENTER + r * Math.cos(angle), CENTER + r * Math.sin(angle)];
+    }
+
+    // Static rings + axes + labels
+    var gridG = document.getElementById('oct-grid-g');
+    var axesG = document.getElementById('oct-axes-g');
+    var labelsG = document.getElementById('oct-labels-g');
+    if (gridG && axesG && labelsG) {
+      for (var ring = 2; ring <= 10; ring += 2) {
+        var pts = [];
+        for (var ax = 0; ax < 8; ax++) pts.push(vertex(ax, ring).join(','));
+        var poly = document.createElementNS(SVG_NS, 'polygon');
+        poly.setAttribute('class', 'oct-grid');
+        poly.setAttribute('points', pts.join(' '));
+        gridG.appendChild(poly);
+      }
+      for (var ax2 = 0; ax2 < 8; ax2++) {
+        var endpt = vertex(ax2, 10);
+        var line = document.createElementNS(SVG_NS, 'line');
+        line.setAttribute('class', 'oct-axis');
+        line.setAttribute('x1', CENTER); line.setAttribute('y1', CENTER);
+        line.setAttribute('x2', endpt[0]); line.setAttribute('y2', endpt[1]);
+        axesG.appendChild(line);
+        var labelPt = vertex(ax2, 11.2);
+        var text = document.createElementNS(SVG_NS, 'text');
+        text.setAttribute('class', 'oct-label');
+        text.setAttribute('x', labelPt[0]); text.setAttribute('y', labelPt[1]);
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('dominant-baseline', 'middle');
+        text.textContent = AXIS_SHORT[ax2];
+        labelsG.appendChild(text);
+      }
+    }
+
+    function renderOctagon(beerIndex) {
+      var beer = BEERS[beerIndex];
+      if (!beer) return;
+      var shape = document.getElementById('oct-shape');
+      var vertsG = document.getElementById('oct-verts-g');
+      var pts = [];
+      vertsG.innerHTML = '';
+      for (var i = 0; i < 8; i++) {
+        var v = vertex(i, beer.s[i]);
+        pts.push(v.join(','));
+        var c = document.createElementNS(SVG_NS, 'circle');
+        c.setAttribute('class', 'oct-vert');
+        c.setAttribute('cx', v[0]); c.setAttribute('cy', v[1]); c.setAttribute('r', 4);
+        vertsG.appendChild(c);
+      }
+      shape.setAttribute('points', pts.join(' '));
+      document.getElementById('oct-name').textContent = beer.name;
+      document.getElementById('oct-meta').textContent = beer.meta;
+      var cuesEl = document.getElementById('oct-cues');
+      cuesEl.innerHTML = '';
+      beer.cues.forEach(function(c) {
+        var el = document.createElement('span');
+        el.className = 'oct-cue';
+        el.textContent = c;
+        cuesEl.appendChild(el);
+      });
+      document.getElementById('oct-drinkability').innerHTML = 'Drinkability: <strong>' + beer.drink + '</strong>';
+      document.getElementById('oct-feel').textContent = beer.feel;
+    }
+
+    document.querySelectorAll('.beerology-chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        document.querySelectorAll('.beerology-chip').forEach(function(c) { c.setAttribute('aria-pressed','false'); });
+        chip.setAttribute('aria-pressed','true');
+        renderOctagon(parseInt(chip.getAttribute('data-oct'), 10));
+      });
+    });
+    renderOctagon(0); // initial: Bosko
+  })();
+  </script>
 </body>
 </html>

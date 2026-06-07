@@ -80,6 +80,19 @@
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
     @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+
+    /* ─── Interactive path picker (2026-06-07) ────────────────────
+       Turns the existing 3 static "Where to start" paths into a
+       tap-to-light reader-route. Light addition — preserves the
+       original prose intact, just adds the picker affordance. */
+    .path-picker-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 20px; }
+    .path-persona { font-family: 'SF Mono', Menlo, monospace; font-size: 12px; letter-spacing: 0.02em; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: all .18s ease; }
+    .path-persona:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .path-persona[aria-pressed="true"] { color: #000; background: var(--teal); border-color: var(--teal); }
+    .paths .path { transition: all .25s ease; }
+    .paths.has-active .path:not(.path--lit) { opacity: 0.35; }
+    .paths .path--lit { border-left: 3px solid var(--teal); padding-left: 14px; margin-left: -17px; background: rgba(0,212,170,0.04); border-radius: 0 8px 8px 0; }
+    .paths .path--lit .path-q::before { content: '→ '; color: var(--teal); font-weight: 700; }
   </style>
 </head>
 <body>
@@ -129,16 +142,24 @@
 
     <h2>Where to start</h2>
 
-    <div class="paths">
-      <div class="path">
+    <p>Three reader-types, three reading routes. Tap one to light its path through the set:</p>
+
+    <div class="path-picker-row" role="radiogroup" aria-label="Which reader are you?">
+      <button class="path-persona" data-path="curious" aria-pressed="false">Curious about the app</button>
+      <button class="path-persona" data-path="builder" aria-pressed="false">Building / interested in how it works</button>
+      <button class="path-persona" data-path="drinker" aria-pressed="false">Want a better pint tonight</button>
+    </div>
+
+    <div class="paths" id="paths-container">
+      <div class="path" data-path-id="curious">
         <div class="path-q">Is this app for me?</div>
         <div class="path-route">Start with <a href="beer-recommendation-systems-what-most-get-wrong.html">Problem</a>, then jump to <a href="beerology-anatomy-of-a-pint.html">Experience</a>. The first explains what's wrong with how most beer apps recommend; the last shows what a useful answer to <em>should I order this?</em> actually looks like.</div>
       </div>
-      <div class="path">
+      <div class="path" data-path-id="builder">
         <div class="path-q">How does it actually work?</div>
         <div class="path-route">Start with <a href="beer-recommendation-systems-what-most-get-wrong.html">Problem</a>, then <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Engine</a>. The first frames the gap in beer-recommender design; the second is the engineering essay on how PINtDEXTER closes it.</div>
       </div>
-      <div class="path">
+      <div class="path" data-path-id="drinker">
         <div class="path-q">I just want a better pint right now.</div>
         <div class="path-route">Start with <a href="hops-what-each-one-tastes-like.html">Ingredients</a>, then <a href="beerology-anatomy-of-a-pint.html">Experience</a>. The first gives you the vocabulary to read a tap list with confidence; the second gives you a reading method for the pint in front of you.</div>
       </div>
@@ -198,5 +219,31 @@
     </div>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
+
+  <!-- Path-picker interactive logic (2026-06-07) -->
+  <script>
+  (function() {
+    var personas = document.querySelectorAll('.path-persona');
+    var paths = document.querySelectorAll('.paths .path');
+    var container = document.getElementById('paths-container');
+    personas.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var pathId = btn.getAttribute('data-path');
+        var alreadyActive = btn.getAttribute('aria-pressed') === 'true';
+        personas.forEach(function(b) { b.setAttribute('aria-pressed', 'false'); });
+        paths.forEach(function(p) { p.classList.remove('path--lit'); });
+        if (alreadyActive) {
+          container.classList.remove('has-active');
+          return;
+        }
+        btn.setAttribute('aria-pressed', 'true');
+        container.classList.add('has-active');
+        paths.forEach(function(p) {
+          if (p.getAttribute('data-path-id') === pathId) p.classList.add('path--lit');
+        });
+      });
+    });
+  })();
+  </script>
 </body>
 </html>

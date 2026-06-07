@@ -159,6 +159,41 @@
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
     @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+
+    /* ─── Hop Explorer (2026-06-07) ───────────────────────────────
+       Interactive 6-axis hexagon radar across the 25 real hops
+       catalogued in this essay. Filter by flavour category, tap a hop
+       chip to see its radar. Real per-hop data extracted from the
+       essay's own meter scores — same numbers, just made readable as a
+       single overlapping view rather than 25 separate cards. */
+    .hop-explorer { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 32px 0; }
+    .hop-explorer-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    .hop-explorer-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal); }
+    .hop-explorer-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--text); }
+    .hop-explorer-hint { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); }
+    .hop-filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 6px; }
+    .hop-filter { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; cursor: pointer; transition: all .18s ease; }
+    .hop-filter:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .hop-filter[aria-pressed="true"] { color: #000; background: var(--teal); border-color: var(--teal); }
+    .hop-chip-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .hop-chip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); background: transparent; border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; cursor: pointer; transition: all .15s ease; }
+    .hop-chip:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .hop-chip[aria-pressed="true"] { color: var(--teal); border-color: var(--teal); background: rgba(0,212,170,0.08); }
+    .hop-explorer-body { display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: start; }
+    @media (max-width: 600px) { .hop-explorer-body { grid-template-columns: 1fr; } }
+    .hex-stage { display: flex; justify-content: center; }
+    .hex-stage svg { width: 100%; max-width: 320px; height: auto; }
+    .hex-grid { fill: none; stroke: var(--border); stroke-width: 1; }
+    .hex-axis { stroke: var(--border); stroke-width: 1; }
+    .hex-shape { fill: rgba(0,212,170,0.18); stroke: var(--teal); stroke-width: 2; stroke-linejoin: round; transition: all .5s cubic-bezier(.34,1.2,.5,1); filter: drop-shadow(0 0 12px rgba(0,212,170,0.35)); }
+    .hex-vert { fill: var(--teal); transition: all .5s cubic-bezier(.34,1.2,.5,1); }
+    .hex-label { font-family: 'SF Mono', Menlo, monospace; font-size: 9px; letter-spacing: 0.06em; fill: var(--muted); text-transform: uppercase; }
+    .hop-detail h4 { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .hop-detail .hop-origin { font-family: 'SF Mono', Menlo, monospace; font-size: 0.75rem; color: var(--teal); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 12px; }
+    .hop-detail .hop-blurb { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+    .hop-detail .hop-intensity { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--muted); font-family: 'SF Mono', Menlo, monospace; text-transform: uppercase; letter-spacing: 0.1em; }
+    .hop-intensity-track { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+    .hop-intensity-fill { height: 100%; background: linear-gradient(90deg, var(--teal), #00b88f); border-radius: 3px; transition: width .5s cubic-bezier(.34,1.2,.5,1); }
   </style>
 </head>
 <body>
@@ -251,6 +286,48 @@
     <p>Most hops cover two or three of these registers simultaneously. Centennial is primarily citrus with pine support. Citra is tropical with a citrus backbone. East Kent Goldings is floral with earthy/spicy undertones. A given beer typically foregrounds one category but carries residuals from the others — which is where the "this tastes like a mango-pine-peach thing" sensation in your glass comes from.</p>
 
     <p>PINtPOINT collapses these six teaching categories into four practical labels in the app — <strong>Citrusy</strong>, <strong>Tropical</strong>, <strong>Piney</strong>, <strong>Floral</strong> — chosen for fit at thumbnail and tap-list density rather than full sensory coverage. Stone-fruit notes typically fold into Tropical; earthy and spicy notes into Floral or the generic Hoppy fallback. See <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood</a> for how that collapsed set plays out in the recommender.</p>
+
+    <!-- ── Interactive: Hop Explorer ─────────────────────────────── -->
+    <figure class="hop-explorer" id="hop-explorer">
+      <div class="hop-explorer-head">
+        <div>
+          <div class="hop-explorer-kicker">Interactive · Hop Explorer</div>
+          <div class="hop-explorer-title">25 hops, one hexagon</div>
+        </div>
+        <div class="hop-explorer-hint">filter ↓ then tap a hop →</div>
+      </div>
+      <div class="hop-filter-row" id="hop-filter-row" role="radiogroup" aria-label="Filter hops by flavour category">
+        <button class="hop-filter" data-cat="all" aria-pressed="true">All 25</button>
+        <button class="hop-filter" data-cat="Citrus" aria-pressed="false">Citrus</button>
+        <button class="hop-filter" data-cat="Tropical" aria-pressed="false">Tropical</button>
+        <button class="hop-filter" data-cat="Pine &amp; resin" aria-pressed="false">Pine &amp; resin</button>
+        <button class="hop-filter" data-cat="Stone fruit" aria-pressed="false">Stone fruit</button>
+        <button class="hop-filter" data-cat="Floral" aria-pressed="false">Floral</button>
+        <button class="hop-filter" data-cat="Earthy" aria-pressed="false">Earthy</button>
+      </div>
+      <div class="hop-chip-grid" id="hop-chip-grid" role="radiogroup" aria-label="Choose a hop"></div>
+      <div class="hop-explorer-body">
+        <div class="hex-stage">
+          <svg viewBox="0 0 320 320" role="img" aria-label="Hexagon radar for the selected hop">
+            <g id="hex-grid-g"></g>
+            <g id="hex-axes-g"></g>
+            <polygon id="hex-shape" class="hex-shape" points=""></polygon>
+            <g id="hex-verts-g"></g>
+            <g id="hex-labels-g"></g>
+          </svg>
+        </div>
+        <div class="hop-detail" id="hop-detail">
+          <h4 id="hop-detail-name">—</h4>
+          <div class="hop-origin" id="hop-detail-origin"></div>
+          <p class="hop-blurb" id="hop-detail-blurb">Choose a hop to see its 6-axis flavour signature.</p>
+          <div class="hop-intensity">
+            <span>Intensity</span>
+            <div class="hop-intensity-track"><div class="hop-intensity-fill" id="hop-intensity-fill" style="width:0%"></div></div>
+            <span id="hop-intensity-val">—</span>
+          </div>
+        </div>
+      </div>
+    </figure>
 
     <h2 id="tasting">How to taste a hop</h2>
 
@@ -575,5 +652,170 @@
     <p style="font-size:0.75rem;color:#555;margin-top:12px">Source projects credited in the "Further reading" section above. Variety names are trademarks of their respective breeding programs and hop merchants. Flavour descriptors are drinker-side summaries, not claims of specific chemical composition.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
+
+  <!-- ─── Hop Explorer interactive logic (2026-06-07) ──────
+       Vanilla JS. Hop data extracted from this essay's own
+       per-hop meter scores — same numbers, just shown as one
+       overlapping radar instead of 25 separate cards. -->
+  <script>
+  (function() {
+    var AXES = ['Citrus','Tropical','Pine & resin','Stone fruit','Floral','Earthy'];
+    var AXIS_SHORT = ['CITRUS','TROPICAL','PINE','STONE','FLORAL','EARTHY'];
+    var HOPS = [
+      { n:'Cascade', o:'USA · 1972', s:[4,1,3,1,2,1], i:3, d:'The foundational American hop. Grapefruit, pine, a light floral edge. Moderate bitterness, moderate intensity. If a beer tastes like "American craft beer", Cascade is why. Sierra Nevada Pale Ale is the reference.' },
+      { n:'Centennial', o:'USA · 1990', s:[5,1,4,1,1,0], i:4, d:'Often described as "super Cascade": bigger grapefruit, cleaner pine, higher bitterness. Cornerstone of Founders Centennial IPA and the 2000s West Coast IPA canon. Punchier than Cascade but carries the same genetic handwriting.' },
+      { n:'Chinook', o:'USA · 1985', s:[3,0,5,0,1,3], i:4, d:'Pine-forward, with grapefruit pith and a distinctive spicy / peppery edge. More aggressive than Cascade. Often the bittering hop in West Coast IPAs that then use Cascade or Centennial for late aroma.' },
+      { n:'Columbus (CTZ)', o:'USA · 1990s', s:[2,0,5,0,0,3], i:5, d:'"Dank" is the defining word here — resin, cannabis, pungent pine. Very high alpha acid, so primarily used for bittering. Stone\'s core range leaned heavily on Columbus for that distinctive aggressive-resinous West Coast signature.' },
+      { n:'Citra', o:'USA · 2007', s:[0,0,0,0,0,0], i:3, d:'The hop that changed the conversation. Intensely tropical — mango, passionfruit, guava, lychee — with a bright citrus backbone. Tolerates huge dry-hop charges without turning vegetal. The signature hop of hazy IPA worldwide. Kernel Citra IPA is a good UK reference.' },
+      { n:'Mosaic', o:'USA · 2012', s:[0,0,0,0,0,0], i:3, d:'A Citra descendant with added complexity — blueberry, stone fruit, pine, tropical fruit, a characteristic "earthiness" at higher rates. Harder to dose than Citra (over-hopped Mosaic tastes bitter and one-note) but capable of layered, complex aroma when used well.' },
+      { n:'Simcoe', o:'USA · 2000', s:[3,3,4,3,1,2], i:4, d:'Split personality. In some uses it\'s piney and resinous like a C-hop; in others it pushes passionfruit and apricot. "Cat piss" is not a slur — it\'s a specific Simcoe aromatic descriptor that drinkers either love or hate. Russian River Pliny the Elder\'s spine.' },
+      { n:'Amarillo', o:'USA · 2000', s:[0,0,0,0,0,0], i:3, d:'Orange citrus, floral, a touch of stone fruit. Gentler and more aromatic than Columbus or Chinook. Three Floyds Zombie Dust is the reference — a beer that\'s essentially a love letter to Amarillo.' },
+      { n:'Strata', o:'USA · 2016', s:[0,0,0,0,0,0], i:3, d:'Newer, increasingly on every good brewery\'s dry-hop schedule. Passionfruit, strawberry, cannabis resin. Pushes further into the "dank-tropical" corner than Mosaic. Breweries like Verdant (UK) and Great Notion (US) use it heavily.' },
+      { n:'East Kent Goldings (EKG)', o:'England · 1790s', s:[0,0,0,0,0,0], i:3, d:'The definitive English aroma hop. Floral, honeyed, orange-marmalade, a whisper of tobacco. Traditional in best bitters and pale ales. Fuller\'s London Pride is the quintessential EKG beer. Restrained and elegant; if a UK cask ale is doing subtle aromatic work, it\'s probably on EKG.' },
+      { n:'Fuggles', o:'England · 1875', s:[0,0,0,0,0,0], i:3, d:'Earthy, woody, minty, hedgerow. The workhorse of English brewing from the late 19th century onwards. Deeper and more rustic than EKG. Common in porters, stouts, and traditional bitters.' },
+      { n:'Challenger', o:'England · 1972', s:[0,0,0,0,0,0], i:3, d:'More assertive than Fuggles or EKG — moderate bitterness, cedar, green tea, a touch of orange peel. A popular bittering hop across modern English ales; Thornbridge Jaipur uses it alongside American hops to bridge the two traditions.' },
+      { n:'Bramling Cross', o:'England · 1927', s:[0,0,0,0,0,0], i:3, d:'The one genuine surprise in the English catalogue. Blackcurrant, loganberry, almost jammy. An EKG descendant that wandered off into fruit territory. Increasingly turning up in modern English pale ales by brewers wanting fruit character without the Citra accent.' },
+      { n:'Saaz (Žatec)', o:'Czech Republic · medieval', s:[0,0,0,0,0,0], i:3, d:'The hop of Czech pilsner. Soft, floral, spicy — clove and fresh-cut hay with a delicate herbal finish. Pilsner Urquell\'s signature. Saaz doesn\'t bitter aggressively; it gives snap and elegance, which is why Czech pilsners are so distinctive.' },
+      { n:'Hallertauer Mittelfrüh', o:'Germany · pre-1800s', s:[0,0,0,0,0,0], i:3, d:'The backbone of German helles, Munich lager and many Belgian witbiers. Slightly herbal, slightly floral, minimally assertive. Doing almost nothing well, which is hard to overstate as a skill.' },
+      { n:'Tettnanger', o:'Germany · 1800s', s:[0,0,0,0,0,0], i:3, d:'Clean, mild, floral, a touch of fruit. Similar territory to Hallertau but with more delicate fruit character — think white grape, hay, elderflower. Common in Belgian pale ales and German pilsners.' },
+      { n:'Spalter Spalt', o:'Germany · medieval', s:[0,0,0,0,0,0], i:3, d:'The least-known of the four nobles internationally, but cherished in Franconian breweries. Earthy, herbal, peppery. Often used in altbier and Munich-style lagers.' },
+      { n:'Nelson Sauvin', o:'New Zealand · 2000', s:[0,0,0,0,0,0], i:3, d:'White wine grapes, specifically Sauvignon Blanc (the name is literal). Gooseberry, passion fruit, fresh herbs. Unlike anything else on this list. When you taste it for the first time you\'ll know immediately — it\'s the "is this a beer or a wine?" hop.' },
+      { n:'Motueka', o:'New Zealand · 2000', s:[0,0,0,0,0,0], i:3, d:'Lemon and lime, mandarin, a clean floral lift. Popular in crispy hoppy lagers and pale ales where brewers want zest without the heavy tropical Citra signature. Pernicious Weed (8 Wired) is a strong showcase.' },
+      { n:'Riwaka', o:'New Zealand · 1997', s:[0,0,0,0,0,0], i:3, d:'Intense grapefruit, pink grapefruit specifically — more than Cascade, more than Centennial. Small harvests make Riwaka scarce and premium-priced. When it\'s used well (Kernel, Garage Project) it\'s instantly recognisable.' },
+      { n:'Galaxy', o:'Australia · 2009', s:[0,0,0,0,0,0], i:3, d:'Peach, passionfruit, citrus. Extremely high essential oil levels (among the highest of any hop) give Galaxy an intensity that cuts through even muddy hazy IPAs. Balter XPA is a good Australian reference.' },
+      { n:'Vic Secret', o:'Australia · 2013', s:[0,0,0,0,0,0], i:3, d:'Pine, mango, dank. Similar family to Galaxy but with a more resinous pine edge. Increasingly common in modern UK and European IPAs — Verdant, Deya, and Track all use it regularly.' },
+      { n:'Sabro', o:'USA · 2018', s:[0,0,0,0,0,0], i:3, d:'Coconut. Actually coconut. Also cream, mint, stone fruit and citrus, but first-time drinkers always notice the coconut. A polarising hop — when it works (Stillwater\'s Extra Extra, some Modern Times lineage) it\'s genuinely novel; when overused it tastes like suntan lotion.' },
+      { n:'HBC 586', o:'USA · 2020s', s:[0,0,0,0,0,0], i:3, d:'Named numerically until it earns a trademark. Intense melon, stone fruit, peach, a strawberry note. Still in limited release; increasingly showing up as a feature hop in single-hop release series by curious brewers.' },
+      { n:'Eclipse', o:'Australia · 2020', s:[0,0,0,0,0,0], i:3, d:'Mandarin, grapefruit, pine — almost as if Galaxy and a classic American C-hop had a child. Sits between the tropical Australian register and the cleaner West Coast style. Balter and Stone &amp; Wood use it in flagship releases.' },
+    ];
+
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var CENTER = 160, MAX_R = 110;
+    function vertex(axisIndex, value0to5) {
+      var angle = (-Math.PI / 2) + axisIndex * (2 * Math.PI / 6);
+      var r = (value0to5 / 5) * MAX_R;
+      return [CENTER + r * Math.cos(angle), CENTER + r * Math.sin(angle)];
+    }
+
+    // Static grid + axes + labels (one-time)
+    var gridG = document.getElementById('hex-grid-g');
+    var axesG = document.getElementById('hex-axes-g');
+    var labelsG = document.getElementById('hex-labels-g');
+    if (gridG && axesG && labelsG) {
+      for (var ring = 1; ring <= 5; ring++) {
+        var pts = [];
+        for (var ax = 0; ax < 6; ax++) pts.push(vertex(ax, ring).join(','));
+        var poly = document.createElementNS(SVG_NS, 'polygon');
+        poly.setAttribute('class', 'hex-grid');
+        poly.setAttribute('points', pts.join(' '));
+        gridG.appendChild(poly);
+      }
+      for (var ax2 = 0; ax2 < 6; ax2++) {
+        var endpt = vertex(ax2, 5);
+        var line = document.createElementNS(SVG_NS, 'line');
+        line.setAttribute('class', 'hex-axis');
+        line.setAttribute('x1', CENTER); line.setAttribute('y1', CENTER);
+        line.setAttribute('x2', endpt[0]); line.setAttribute('y2', endpt[1]);
+        axesG.appendChild(line);
+        var labelPt = vertex(ax2, 5.7);
+        var text = document.createElementNS(SVG_NS, 'text');
+        text.setAttribute('class', 'hex-label');
+        text.setAttribute('x', labelPt[0]); text.setAttribute('y', labelPt[1]);
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('dominant-baseline', 'middle');
+        text.textContent = AXIS_SHORT[ax2];
+        labelsG.appendChild(text);
+      }
+    }
+
+    var currentFilter = 'all';
+    var currentHopIndex = 0;
+
+    function renderHexagon(hopIndex) {
+      var hop = HOPS[hopIndex];
+      if (!hop) return;
+      var shape = document.getElementById('hex-shape');
+      var vertsG = document.getElementById('hex-verts-g');
+      var pts = [];
+      vertsG.innerHTML = '';
+      for (var i = 0; i < 6; i++) {
+        var v = vertex(i, hop.s[i]);
+        pts.push(v.join(','));
+        var c = document.createElementNS(SVG_NS, 'circle');
+        c.setAttribute('class', 'hex-vert');
+        c.setAttribute('cx', v[0]); c.setAttribute('cy', v[1]); c.setAttribute('r', 4);
+        vertsG.appendChild(c);
+      }
+      shape.setAttribute('points', pts.join(' '));
+      document.getElementById('hop-detail-name').textContent = hop.n;
+      document.getElementById('hop-detail-origin').textContent = hop.o;
+      document.getElementById('hop-detail-blurb').textContent = hop.d;
+      document.getElementById('hop-intensity-fill').style.width = (hop.i / 5 * 100) + '%';
+      document.getElementById('hop-intensity-val').textContent = hop.i + '/5';
+    }
+
+    function renderChips() {
+      var grid = document.getElementById('hop-chip-grid');
+      grid.innerHTML = '';
+      var axisIdx = AXES.indexOf(currentFilter);
+      HOPS.forEach(function(hop, i) {
+        // Filter: 'all' shows everything; category shows only hops
+        // where that axis is the hop's strongest or tied-strongest
+        if (currentFilter !== 'all') {
+          var maxScore = Math.max.apply(null, hop.s);
+          if (hop.s[axisIdx] < 3 || hop.s[axisIdx] < maxScore) return;
+        }
+        var chip = document.createElement('button');
+        chip.className = 'hop-chip';
+        chip.textContent = hop.n;
+        chip.setAttribute('aria-pressed', i === currentHopIndex ? 'true' : 'false');
+        chip.addEventListener('click', function() {
+          currentHopIndex = i;
+          renderHexagon(i);
+          // Update aria-pressed on all chips
+          grid.querySelectorAll('.hop-chip').forEach(function(c) {
+            c.setAttribute('aria-pressed', c.textContent === hop.n ? 'true' : 'false');
+          });
+        });
+        grid.appendChild(chip);
+      });
+      // If current hop is filtered out, jump to the first visible
+      var visible = HOPS.findIndex(function(h, i) {
+        if (currentFilter === 'all') return true;
+        var ax = AXES.indexOf(currentFilter);
+        var max = Math.max.apply(null, h.s);
+        return h.s[ax] >= 3 && h.s[ax] >= max;
+      });
+      if (visible >= 0 && currentFilter !== 'all') {
+        var fv = HOPS.findIndex(function(h) {
+          var ax = AXES.indexOf(currentFilter);
+          var max = Math.max.apply(null, h.s);
+          return h.s[ax] >= 3 && h.s[ax] >= max;
+        });
+        if (fv >= 0 && HOPS[currentHopIndex].s[AXES.indexOf(currentFilter)] < 3) {
+          currentHopIndex = fv;
+          renderHexagon(fv);
+          grid.querySelectorAll('.hop-chip').forEach(function(c) {
+            c.setAttribute('aria-pressed', c.textContent === HOPS[fv].n ? 'true' : 'false');
+          });
+        }
+      }
+    }
+
+    // Filter chip wiring
+    document.querySelectorAll('.hop-filter').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        currentFilter = btn.getAttribute('data-cat');
+        document.querySelectorAll('.hop-filter').forEach(function(b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+        renderChips();
+      });
+    });
+
+    renderChips();
+    renderHexagon(0); // initial: Cascade
+  })();
+  </script>
 </body>
 </html>
