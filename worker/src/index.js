@@ -23,11 +23,12 @@ const SUPABASE_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/venue
 const CRAWL_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/crawl-page';
 const BEER_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/beer-page';
 const OG_BEER_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/og-beer';
+const OG_VENUE_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/og-venue';
 const ABOUT_CANONICAL = 'https://pintpoint.co.uk/about-pintpoint.html';
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
 // the edge function's rendering or slug-resolution logic).
-const CACHE_VERSION = 'v11';
+const CACHE_VERSION = 'v12';
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
@@ -104,6 +105,40 @@ export default {
       }
       // Everything else (.html files, drafts, images, the index) → origin
       return fetch(request);
+    }
+
+    // /og/venue/<slug>.png → proxy to the og-venue edge function.
+    if (pathname.startsWith('/og/venue/')) {
+      let slug = pathname.slice('/og/venue/'.length);
+      if (slug.endsWith('.png')) slug = slug.slice(0, -4);
+      if (!slug || !/^[a-z0-9-]+$/i.test(slug)) {
+        return new Response('Bad request', { status: 400 });
+      }
+      const cacheUrl = new URL(request.url);
+      cacheUrl.searchParams.set('_cv', CACHE_VERSION);
+      const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
+      const ogCache = caches.default;
+      const cached = await ogCache.match(cacheKey);
+      if (cached) return cached;
+
+      const upstream = new URL(OG_VENUE_FN);
+      upstream.searchParams.set('slug', slug);
+      const resp = await fetch(upstream.toString(), { method: 'GET' });
+      if (resp.status === 404) {
+        return new Response('Not found', { status: 404, headers: { 'Cache-Control': 'no-store' } });
+      }
+      if (!resp.ok) return new Response('Upstream error', { status: 502 });
+      const buf = await resp.arrayBuffer();
+      const out = new Response(buf, {
+        status: 200,
+        headers: {
+          'Content-Type': 'image/png',
+          'Cache-Control': resp.headers.get('Cache-Control') || 'public, max-age=600, s-maxage=86400',
+          'X-Rendered-By': 'pintpoint-og-worker',
+        },
+      });
+      ctx.waitUntil(ogCache.put(cacheKey, out.clone()));
+      return out;
     }
 
     // /og/beer/<slug>.png → proxy to the og-beer edge function. PNG share
