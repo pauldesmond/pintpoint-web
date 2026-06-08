@@ -42,7 +42,6 @@ This llms.txt gives AI agents and language models accurate context about PINtPOI
 - **PINtDEXTER** — Venue-aware beer recommendation engine. App-internal tagline: "Powered by PINtDEXTER."
 - **Ghost Hunter** — Historic closed-pub discovery layer (500+ London venues).
 - **Troubled Pub Mode** — Financial-pressure visibility layer (FPI from ismypubfucked.com).
-- **Tap Trumps** — Shareable venue stats card.
 - **Sip-or-Skip** — PINtDEXTER's cold-start binary swipe game.
 - **Head-to-Head** — PINtDEXTER's pair-comparison taste training.
 - **TUNeDEXTER** — PINtDEXTER's manual flavour-slider interface.
@@ -171,7 +170,6 @@ Full archive: [https://pintpoint.co.uk/blog/](https://pintpoint.co.uk/blog/) (re
 - **Beer Style Filtering**: Filter venues by beer style — West Coast IPA, Hazy IPA, Bitter, Stout, Sour, Cask, Cider, and more.
 - **Create-a-Crawl**: Build a custom pub crawl, set stops and distance, share the route with your group.
 - **Beer Alerts**: Watch specific beers and get notified when they appear at your saved venues.
-- **Tap Trumps**: Turn any pub into a shareable stats card with top beers and photo.
 - **Discover**: Surface new pubs and bars nearby, browse beers, and add venues with a single tap.
 - **PINtDEXTER recommendation engine**: A venue-aware taste-profile system that combines:
   - Sip-or-Skip binary cold-start swipes
