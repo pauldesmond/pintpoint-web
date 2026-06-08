@@ -22,11 +22,12 @@
 const SUPABASE_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/venue-page';
 const CRAWL_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/crawl-page';
 const BEER_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/beer-page';
+const OG_BEER_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/og-beer';
 const ABOUT_CANONICAL = 'https://pintpoint.co.uk/about-pintpoint.html';
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
 // the edge function's rendering or slug-resolution logic).
-const CACHE_VERSION = 'v10';
+const CACHE_VERSION = 'v11';
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
@@ -103,6 +104,41 @@ export default {
       }
       // Everything else (.html files, drafts, images, the index) → origin
       return fetch(request);
+    }
+
+    // /og/beer/<slug>.png → proxy to the og-beer edge function. PNG share
+    // card rendered server-side via Satori + resvg-wasm. Long CDN cache.
+    if (pathname.startsWith('/og/beer/')) {
+      let slug = pathname.slice('/og/beer/'.length);
+      if (slug.endsWith('.png')) slug = slug.slice(0, -4);
+      if (!slug || !/^[a-z0-9-]+$/i.test(slug)) {
+        return new Response('Bad request', { status: 400 });
+      }
+      const ogCacheUrl = new URL(request.url);
+      ogCacheUrl.searchParams.set('_cv', CACHE_VERSION);
+      const ogCacheKey = new Request(ogCacheUrl.toString(), { method: 'GET' });
+      const ogCache = caches.default;
+      const cachedOg = await ogCache.match(ogCacheKey);
+      if (cachedOg) return cachedOg;
+
+      const ogUpstream = new URL(OG_BEER_FN);
+      ogUpstream.searchParams.set('slug', slug);
+      const ogResp = await fetch(ogUpstream.toString(), { method: 'GET' });
+      if (ogResp.status === 404) {
+        return new Response('Not found', { status: 404, headers: { 'Cache-Control': 'no-store' } });
+      }
+      if (!ogResp.ok) return new Response('Upstream error', { status: 502 });
+      const ogBuf = await ogResp.arrayBuffer();
+      const resp = new Response(ogBuf, {
+        status: 200,
+        headers: {
+          'Content-Type': 'image/png',
+          'Cache-Control': ogResp.headers.get('Cache-Control') || 'public, max-age=600, s-maxage=86400',
+          'X-Rendered-By': 'pintpoint-og-worker',
+        },
+      });
+      ctx.waitUntil(ogCache.put(ogCacheKey, resp.clone()));
+      return resp;
     }
 
     // /beers/<slug> → proxy to the beer-page edge function.
