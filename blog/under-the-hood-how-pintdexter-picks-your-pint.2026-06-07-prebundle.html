@@ -118,8 +118,8 @@
     .faq-item[open] summary::after { content: '\2212'; }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item p { margin-top: 10px; }
-    a.cta { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; margin-top: 32px; }
-    a.cta:hover { opacity: 0.88; }
+    .cta { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; margin-top: 32px; }
+    .cta:hover { opacity: 0.88; }
     .closing { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
     footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
     footer a { color: var(--muted); text-decoration: none; }
@@ -224,16 +224,16 @@
         </div>
         <div class="fig-hint">tap a beer →</div>
       </div>
-      <div class="beerchips" id="pent-chips" role="group" aria-label="Choose a beer to view its TastePentagon">
-        <button class="beerchip" data-pent="0" aria-pressed="true">Landlord</button>
+      <div class="beerchips" id="pent-chips" role="radiogroup" aria-label="Choose a beer to view its TastePentagon">
+        <button class="beerchip" data-pent="0" aria-pressed="true">Jaipur</button>
         <button class="beerchip" data-pent="1" aria-pressed="false">Steady Rolling Man</button>
         <button class="beerchip" data-pent="2" aria-pressed="false">Axe Edge</button>
-        <button class="beerchip" data-pent="3" aria-pressed="false">Keller Pils</button>
+        <button class="beerchip" data-pent="3" aria-pressed="false">Stone Enjoy By</button>
         <button class="beerchip" data-pent="4" aria-pressed="false">The Porter</button>
         <button class="beerchip" data-pent="5" aria-pressed="false">Broken Dream</button>
       </div>
       <div class="pent-stage">
-        <svg viewBox="0 0 260 260" role="img" id="pent-svg" aria-label="TastePentagon for the selected beer">
+        <svg viewBox="0 0 260 260" role="img" aria-label="TastePentagon for the selected beer">
           <g id="pent-grid-g"></g>
           <g id="pent-axes-g"></g>
           <polygon id="pent-shape" class="pent-shape" points=""></polygon>
@@ -241,7 +241,7 @@
           <g id="pent-labels-g"></g>
         </svg>
       </div>
-      <p class="pent-caption" id="pent-caption" aria-live="polite" aria-atomic="true">A pale-led IPA: high hoppy, moderate bitter and fruity, low sweet, no roast.</p>
+      <p class="pent-caption" id="pent-caption">A pale-led IPA: high hoppy, moderate bitter and fruity, low sweet, no roast.</p>
     </figure>
 
     <!-- ── Interactive figure 2: Head-to-Head FlavourEqualizer ────── -->
@@ -255,31 +255,27 @@
       </div>
       <div class="h2h-grid">
         <div class="h2h-col">
-          <div class="beerchips" data-h2h="a" role="group" aria-label="Beer A">
-            <button class="beerchip" data-h2h-a="0" aria-pressed="true">Landlord</button>
+          <div class="beerchips" data-h2h="a" role="radiogroup" aria-label="Beer A">
+            <button class="beerchip" data-h2h-a="0" aria-pressed="true">Jaipur</button>
             <button class="beerchip" data-h2h-a="1" aria-pressed="false">Steady Rolling Man</button>
             <button class="beerchip" data-h2h-a="2" aria-pressed="false">Axe Edge</button>
           </div>
-          <div aria-live="polite" aria-atomic="true">
-            <h4 id="h2h-a-name">Landlord</h4>
-            <div class="h2h-meta" id="h2h-a-meta">Timothy Taylor's · Pale Ale - English · 4.3%</div>
-            <div class="h2h-bars" id="h2h-a-bars"></div>
-          </div>
+          <h4 id="h2h-a-name">Jaipur</h4>
+          <div class="h2h-meta" id="h2h-a-meta">Thornbridge · IPA · 5.9%</div>
+          <div class="h2h-bars" id="h2h-a-bars"></div>
         </div>
         <div class="h2h-col">
-          <div class="beerchips" data-h2h="b" role="group" aria-label="Beer B">
+          <div class="beerchips" data-h2h="b" role="radiogroup" aria-label="Beer B">
             <button class="beerchip" data-h2h-b="4" aria-pressed="true">The Porter</button>
             <button class="beerchip" data-h2h-b="5" aria-pressed="false">Broken Dream</button>
-            <button class="beerchip" data-h2h-b="3" aria-pressed="false">Keller Pils</button>
+            <button class="beerchip" data-h2h-b="3" aria-pressed="false">Stone Enjoy By</button>
           </div>
-          <div aria-live="polite" aria-atomic="true">
-            <h4 id="h2h-b-name">The Porter</h4>
-            <div class="h2h-meta" id="h2h-b-meta">Anspach &amp; Hobday · Porter · 6.7%</div>
-            <div class="h2h-bars" id="h2h-b-bars"></div>
-          </div>
+          <h4 id="h2h-b-name">The Porter</h4>
+          <div class="h2h-meta" id="h2h-b-meta">Anspach &amp; Hobday · Porter · 6.7%</div>
+          <div class="h2h-bars" id="h2h-b-bars"></div>
         </div>
       </div>
-      <p class="pent-caption" style="margin-top: 16px;">Same five axes; structural twins (e.g. two American IPAs) line up across the rows. Cross-family pairs (Landlord vs The Porter) show the swap: hop and fruit bars vs roast bars high.</p>
+      <p class="pent-caption" style="margin-top: 16px;">Same five axes; structural twins (e.g. two American IPAs) line up across the rows. Cross-family pairs (Jaipur vs The Porter) show the swap: hop bars high vs roast bars high.</p>
     </figure>
 
     <h2>The four layers, end to end</h2>
@@ -345,10 +341,10 @@
     <aside class="series-links" style="margin-top:56px;padding:24px 28px;background:var(--card);border-left:2px solid var(--teal);border-radius:4px">
       <p style="margin:0 0 14px;font-size:0.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em">Companion essays</p>
       <ul style="list-style:none;padding:0;margin:0;font-size:0.95rem;line-height:1.7">
-        <li><strong style="color:#C0A340">Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the usual approach is broken</li>
-        <li><strong style="color:#C0A340">How</strong> · Under the Hood: How PINtDEXTER Picks Your Pint — the engine that does it instead <span style="color:var(--teal);font-size:0.85rem;font-weight:600">← you're reading</span></li>
-        <li><strong style="color:#C0A340">What's in it</strong> · <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> — the ingredient and sensory vocabulary</li>
-        <li><strong style="color:#C0A340">Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — what drinking it feels like</li>
+        <li><strong>Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the usual approach is broken</li>
+        <li><strong>How</strong> · Under the Hood: How PINtDEXTER Picks Your Pint — the engine that does it instead <span style="color:var(--teal);font-size:0.85rem;font-weight:600">← you're reading</span></li>
+        <li><strong>What's in it</strong> · <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> — the ingredient and sensory vocabulary</li>
+        <li><strong>Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — what drinking it feels like</li>
       </ul>
       <p style="margin:14px 0 0;font-size:0.85rem"><a href="pick-the-right-pint.html" style="color:#C0A340;text-decoration:none">↑ Part of <em>Pick the right pint</em> — the four-essay guide</a></p>
     </aside>
@@ -387,14 +383,14 @@
 
     // Real catalogue rows. Axes are 0-5 scale (matches LLM inference output).
     var BEERS = [
-      { name:'Landlord',            brewery:"Timothy Taylor's",  style:'Pale Ale - English',   abv:4.3, hoppy:3, bitter:3, sweet:2, fruity:2, roast:0, body:'medium',
-        caption:'The English pale ale benchmark: moderate hoppy, balanced bitter, soft malt sweetness, classic Goldings character.' },
+      { name:'Jaipur',              brewery:'Thornbridge',       style:'IPA',                  abv:5.9, hoppy:4, bitter:3, sweet:1, fruity:3, roast:0, body:'medium',
+        caption:'English IPA with American hops: high hoppy, balanced bitter, low sweet.' },
       { name:'Steady Rolling Man',  brewery:'DEYA',              style:'IPA (Pale)',           abv:5.2, hoppy:5, bitter:2, sweet:1, fruity:4, roast:0, body:'medium',
         caption:'Cult New England pale: maximum hoppy and fruity, soft bitter, dry sweet.' },
       { name:'Axe Edge',            brewery:'Buxton',            style:'Double IPA',           abv:6.8, hoppy:5, bitter:4, sweet:1, fruity:4, roast:0, body:'medium',
         caption:'Imperial pale-led DIPA: max hoppy, big bitter, juicy fruit, dry finish.' },
-      { name:'Keller Pils',         brewery:'Lost & Grounded',   style:'Pilsner',              abv:4.8, hoppy:3, bitter:3, sweet:1, fruity:1, roast:0, body:'medium',
-        caption:'Bristol-brewed unfiltered Pilsner: clean low-everything shape — modest hops, modest bitter, no fruit or roast. Not every good beer is an IPA-shaped starburst.' },
+      { name:'Stone Enjoy By',      brewery:'Stone Brewing',     style:'Imperial / Double IPA',abv:9.4, hoppy:5, bitter:4, sweet:1, fruity:4, roast:0, body:'full',
+        caption:'West Coast imperial: huge hoppy + bitter, juicy fruit, full body.' },
       { name:'The Porter',          brewery:'Anspach & Hobday',  style:'Porter (English)',     abv:6.7, hoppy:1, bitter:3, sweet:1, fruity:0, roast:4, body:'full',
         caption:'Roast-led English porter: low hoppy, no fruit, big roast and body.' },
       { name:'Broken Dream',        brewery:'Siren Craft Brew',  style:'Oatmeal Stout',        abv:6.5, hoppy:1, bitter:2, sweet:3, fruity:1, roast:4, body:'full',
@@ -459,8 +455,6 @@
         vertsG.appendChild(c);
       }
       shape.setAttribute('points', pts.join(' '));
-      var svg = document.getElementById('pent-svg');
-      if (svg) svg.setAttribute('aria-label', 'TastePentagon for ' + beer.name);
       var cap = document.getElementById('pent-caption');
       if (cap) cap.textContent = beer.caption;
     }
@@ -511,7 +505,7 @@
         });
       });
     });
-    renderH2H('a', 0); // Landlord
+    renderH2H('a', 0); // Jaipur
     renderH2H('b', 4); // The Porter
   })();
   </script>
