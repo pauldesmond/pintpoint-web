@@ -37,15 +37,14 @@
     {
       "name": "Troubled Pub Mode (England & Wales)",
       "description": "Highlights pubs under financial pressure on the radar, using the FPI (Financial Pressure Index) data from ismypubfucked.com. Helps drinkers support at-risk locals."
-    },
     }
   ],
   "audience": "Craft beer drinkers, real-ale drinkers, pub regulars, visitors wanting a trustworthy local recommendation, and anyone looking for a specific beer style near them.",
   "geographic_scope": {
     "primary": "United Kingdom",
     "international": ["United States", "Spain", "Australia", "Germany", "Japan", "New Zealand", "Norway", "Canada", "Poland"],
-    "country_count": "40+",
-    "venue_count_tracked": "1000+"
+    "country_count": "49",
+    "venue_count_tracked": "1,776+"
   },
   "pricing": {
     "model": "Annual subscription",
@@ -73,5 +72,5 @@
     "founder": "independent UK developer",
     "founded_year": 2026
   },
-  "last_updated": "2026-04-28"
+  "last_updated": "2026-06-10"
 }

@@ -25,8 +25,8 @@
     { "name": "Android", "store": "Direct APK (sideload)", "url": "https://pintpoint.co.uk/download", "note": "Not distributed via Google Play" }
   ],
   "coverage": {
-    "venues_tracked": 1091,
-    "countries": 40,
+    "venues_tracked": 1776,
+    "countries": 49,
     "primary_regions": ["United Kingdom", "United States", "Australia", "Spain", "Germany", "Japan", "New Zealand", "Norway", "Canada", "Poland"]
   },
   "core_features": [
@@ -68,5 +68,5 @@
   "contact": {
     "email": "hello@pintpoint.co.uk"
   },
-  "last_updated": "2026-04-20"
+  "last_updated": "2026-06-10"
 }

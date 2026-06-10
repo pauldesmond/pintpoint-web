@@ -11,7 +11,7 @@
       "type": "markdown",
       "description": "Find craft beer pubs and breweries near a location, with live tap-list data.",
       "url": "https://pintpoint.co.uk/.well-known/agent-skills/find-pub-nearby/SKILL.md",
-      "sha256": "59d0cc12bcad66dd8ca96516fddbb9c48c1dafc6d5c8567c7c6fa4becb13457a"
+      "sha256": "74588beefb4b3917ff35bee2ee9d75465bcd70d70570810525d6e0600f240a5e"
     },
     {
       "name": "view-venue-taps",
@@ -25,7 +25,7 @@
       "type": "markdown",
       "description": "Download and install the PINtPOINT mobile app on iOS (App Store) or Android (sideload APK).",
       "url": "https://pintpoint.co.uk/.well-known/agent-skills/get-pintpoint/SKILL.md",
-      "sha256": "68a83bdde94249879435dd90539e7c1195797e9953d92afa3ff80bddbcbae309"
+      "sha256": "76abb8d780f48c9fcbde65eb36666f9ba0ee3371880f69139f45b085c4b6a584"
     }
   ]
 }
