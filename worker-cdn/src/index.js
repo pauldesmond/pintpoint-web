@@ -29,6 +29,12 @@ export default {
     }
     const key = url.pathname.slice('/photos/'.length);
     if (!key) return new Response('Not found', { status: 404 });
+    // Storage object paths only — reject traversal and unexpected chars before
+    // building the upstream URL, mirroring the main worker's slug validation.
+    // (url.pathname is already percent-decoded, so this catches %2e%2e too.)
+    if (key.includes('..') || !/^[A-Za-z0-9/_.-]+$/.test(key)) {
+      return new Response('Not found', { status: 404 });
+    }
 
     // Build a cache key that includes the cache version so we can bust
     // without renaming files. Keep it stable across query strings —

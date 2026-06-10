@@ -10,6 +10,9 @@
 User-agent: *
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
+# Unpublished editorial drafts and working notes — not for indexing.
+# (Enforced at the edge too: the worker returns 404 for /blog/drafts/*.)
+Disallow: /blog/drafts/
 
 # Allow AI search/assistant crawlers (these surface your site in AI answers)
 User-agent: GPTBot

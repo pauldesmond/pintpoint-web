@@ -62,6 +62,12 @@ export default {
     // Pass through: /blog/, /blog/index.html, /blog/<slug>.html, /blog/<dir>/...
     if (pathname.startsWith('/blog/')) {
       const tail = pathname.slice('/blog/'.length);
+      // Unpublished drafts + working notes live under /blog/drafts/. robots.txt
+      // disallows them, but robots is advisory — return a hard 404 at the edge so
+      // the .md notes / generator script can't be fetched by path-guessing.
+      if (tail === 'drafts' || tail.startsWith('drafts/')) {
+        return new Response('Not found', { status: 404 });
+      }
       // Bare single-segment slug (a-z 0-9 hyphens, no extension, no slash) → redirect
       if (/^[a-z0-9-]+$/.test(tail)) {
         const canonical = new URL(url);
