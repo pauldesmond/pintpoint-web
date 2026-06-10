@@ -35,6 +35,44 @@ const CACHE_VERSION = 'v13';
 // live tap lists, long for ghosts etc.) — this is belt-and-braces.
 const DEFAULT_CACHE_CONTROL = 'public, max-age=600, s-maxage=3600';
 
+// Shared proxy for the OG share-image routes (/og/venue/, /og/beer/). Both
+// render a PNG card via an edge function with identical cache/validate/proxy
+// logic — only the path prefix and upstream fn differ. Kept as one function
+// so a fix (e.g. the untappd_id-class invariants the edge fns share) can't be
+// applied to one route and forgotten on the other.
+async function serveOgImage(request, ctx, prefix, fnUrl) {
+  let slug = new URL(request.url).pathname.slice(prefix.length);
+  if (slug.endsWith('.png')) slug = slug.slice(0, -4);
+  if (!slug || !/^[a-z0-9-]+$/i.test(slug)) {
+    return new Response('Bad request', { status: 400 });
+  }
+  const cacheUrl = new URL(request.url);
+  cacheUrl.searchParams.set('_cv', CACHE_VERSION);
+  const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
+  const ogCache = caches.default;
+  const cached = await ogCache.match(cacheKey);
+  if (cached) return cached;
+
+  const upstream = new URL(fnUrl);
+  upstream.searchParams.set('slug', slug);
+  const resp = await fetch(upstream.toString(), { method: 'GET' });
+  if (resp.status === 404) {
+    return new Response('Not found', { status: 404, headers: { 'Cache-Control': 'no-store' } });
+  }
+  if (!resp.ok) return new Response('Upstream error', { status: 502 });
+  const buf = await resp.arrayBuffer();
+  const out = new Response(buf, {
+    status: 200,
+    headers: {
+      'Content-Type': 'image/png',
+      'Cache-Control': resp.headers.get('Cache-Control') || 'public, max-age=600, s-maxage=86400',
+      'X-Rendered-By': 'pintpoint-og-worker',
+    },
+  });
+  ctx.waitUntil(ogCache.put(cacheKey, out.clone()));
+  return out;
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -113,73 +151,13 @@ export default {
       return fetch(request);
     }
 
-    // /og/venue/<slug>.png → proxy to the og-venue edge function.
+    // OG share-image routes — both proxy a PNG card from an edge function
+    // (Satori + resvg-wasm server-side render). Shared logic in serveOgImage.
     if (pathname.startsWith('/og/venue/')) {
-      let slug = pathname.slice('/og/venue/'.length);
-      if (slug.endsWith('.png')) slug = slug.slice(0, -4);
-      if (!slug || !/^[a-z0-9-]+$/i.test(slug)) {
-        return new Response('Bad request', { status: 400 });
-      }
-      const cacheUrl = new URL(request.url);
-      cacheUrl.searchParams.set('_cv', CACHE_VERSION);
-      const cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
-      const ogCache = caches.default;
-      const cached = await ogCache.match(cacheKey);
-      if (cached) return cached;
-
-      const upstream = new URL(OG_VENUE_FN);
-      upstream.searchParams.set('slug', slug);
-      const resp = await fetch(upstream.toString(), { method: 'GET' });
-      if (resp.status === 404) {
-        return new Response('Not found', { status: 404, headers: { 'Cache-Control': 'no-store' } });
-      }
-      if (!resp.ok) return new Response('Upstream error', { status: 502 });
-      const buf = await resp.arrayBuffer();
-      const out = new Response(buf, {
-        status: 200,
-        headers: {
-          'Content-Type': 'image/png',
-          'Cache-Control': resp.headers.get('Cache-Control') || 'public, max-age=600, s-maxage=86400',
-          'X-Rendered-By': 'pintpoint-og-worker',
-        },
-      });
-      ctx.waitUntil(ogCache.put(cacheKey, out.clone()));
-      return out;
+      return serveOgImage(request, ctx, '/og/venue/', OG_VENUE_FN);
     }
-
-    // /og/beer/<slug>.png → proxy to the og-beer edge function. PNG share
-    // card rendered server-side via Satori + resvg-wasm. Long CDN cache.
     if (pathname.startsWith('/og/beer/')) {
-      let slug = pathname.slice('/og/beer/'.length);
-      if (slug.endsWith('.png')) slug = slug.slice(0, -4);
-      if (!slug || !/^[a-z0-9-]+$/i.test(slug)) {
-        return new Response('Bad request', { status: 400 });
-      }
-      const ogCacheUrl = new URL(request.url);
-      ogCacheUrl.searchParams.set('_cv', CACHE_VERSION);
-      const ogCacheKey = new Request(ogCacheUrl.toString(), { method: 'GET' });
-      const ogCache = caches.default;
-      const cachedOg = await ogCache.match(ogCacheKey);
-      if (cachedOg) return cachedOg;
-
-      const ogUpstream = new URL(OG_BEER_FN);
-      ogUpstream.searchParams.set('slug', slug);
-      const ogResp = await fetch(ogUpstream.toString(), { method: 'GET' });
-      if (ogResp.status === 404) {
-        return new Response('Not found', { status: 404, headers: { 'Cache-Control': 'no-store' } });
-      }
-      if (!ogResp.ok) return new Response('Upstream error', { status: 502 });
-      const ogBuf = await ogResp.arrayBuffer();
-      const resp = new Response(ogBuf, {
-        status: 200,
-        headers: {
-          'Content-Type': 'image/png',
-          'Cache-Control': ogResp.headers.get('Cache-Control') || 'public, max-age=600, s-maxage=86400',
-          'X-Rendered-By': 'pintpoint-og-worker',
-        },
-      });
-      ctx.waitUntil(ogCache.put(ogCacheKey, resp.clone()));
-      return resp;
+      return serveOgImage(request, ctx, '/og/beer/', OG_BEER_FN);
     }
 
     // /beers/<slug> → proxy to the beer-page edge function.
