@@ -51,13 +51,13 @@ jobs:
       - name: Check for changes
         id: diff
         run: |
-          if git diff --quiet -- sitemap.xml pubs/index.html; then
+          if git diff --quiet -- sitemap.xml pubs/index.html ai/counts.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No changes."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Changed files:"
-            git diff --stat -- sitemap.xml pubs/index.html
+            git diff --stat -- sitemap.xml pubs/index.html ai/counts.json
           fi
 
       - name: Commit and push
@@ -65,8 +65,8 @@ jobs:
         run: |
           git config user.name  "pintpoint-sitemap-bot"
           git config user.email "noreply@pintpoint.co.uk"
-          git add sitemap.xml pubs/index.html
-          git commit -m "sitemap + pubs index: nightly regeneration from Supabase"
+          git add sitemap.xml pubs/index.html ai/counts.json
+          git commit -m "sitemap + pubs index + counts: nightly regeneration from Supabase"
           git push
 
       - name: Ping IndexNow (streaming, one URL per request)

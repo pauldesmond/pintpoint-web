@@ -16,6 +16,7 @@ const staticUrls = [
   { loc: '/', lastmod: TODAY, changefreq: 'weekly', priority: '1.0' },
   { loc: '/llms.txt', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
   { loc: '/llms-full.txt', lastmod: TODAY, changefreq: 'weekly', priority: '0.85' },
+  { loc: '/ai/counts.json', lastmod: TODAY, changefreq: 'daily', priority: '0.5' },
   { loc: '/download', lastmod: TODAY, changefreq: 'weekly', priority: '0.95' },
   { loc: '/pubs/', lastmod: TODAY, changefreq: 'weekly', priority: '0.95' },
   { loc: '/features.html', lastmod: '2026-04-13', changefreq: 'monthly', priority: '0.8' },
@@ -37,6 +38,8 @@ const staticUrls = [
   { loc: '/blog/blackhorse-beer-mile-4th-birthday.html', lastmod: '2026-05-01', changefreq: 'weekly', priority: '0.95' },
   { loc: '/blog/radio-city-7-deadly-sins.html', lastmod: '2026-05-02', changefreq: 'weekly', priority: '0.95' },
   { loc: '/blog/the-whippet-ec2-liverpool-street-opens.html', lastmod: '2026-06-06', changefreq: 'weekly', priority: '0.95' },
+  { loc: '/blog/the-sparkler-question.html', lastmod: '2026-06-06', changefreq: 'monthly', priority: '0.85' },
+  { loc: '/blog/mild-half-to-half-a-percent.html', lastmod: '2026-06-06', changefreq: 'monthly', priority: '0.85' },
   { loc: '/firkin/', lastmod: TODAY, changefreq: 'monthly', priority: '0.95' },
   { loc: '/privacy-policy.html', lastmod: TODAY, changefreq: 'yearly', priority: '0.3' },
   { loc: '/about-pintpoint.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
@@ -230,6 +233,33 @@ async function fetchLiveTapCountsByVenue() {
   }
 }
 
+// Exact row count for a table via PostgREST's count=exact header. Used to
+// keep the AI-discovery layer's headline figures (venues, beers) honest:
+// these drifted badly when hand-maintained (beers read "3,000+" against a
+// real 17k catalogue), so the nightly build now writes them from source.
+async function fetchExactCount(table, filters = {}) {
+  const endpoint = new URL(`/rest/v1/${table}`, supabaseUrl);
+  endpoint.searchParams.set('select', 'id');
+  for (const [k, v] of Object.entries(filters)) endpoint.searchParams.set(k, v);
+  const response = await fetch(endpoint, {
+    headers: {
+      apikey: serviceRoleKey,
+      Authorization: `Bearer ${serviceRoleKey}`,
+      Prefer: 'count=exact',
+      Range: '0-0',
+    },
+  });
+  if (!response.ok && response.status !== 206) {
+    const body = await response.text();
+    throw new Error(`Supabase ${table} count failed: HTTP ${response.status} ${body.slice(0, 300)}`);
+  }
+  // content-range: "0-0/1776"
+  const cr = response.headers.get('content-range') || '';
+  const total = Number(cr.split('/')[1]);
+  if (!Number.isFinite(total)) throw new Error(`Could not parse ${table} count from content-range "${cr}"`);
+  return total;
+}
+
 function renderUrl({ loc, lastmod, changefreq, priority }) {
   return [
     '  <url>',
@@ -241,13 +271,32 @@ function renderUrl({ loc, lastmod, changefreq, priority }) {
   ].join('\n');
 }
 
-const [venues, liveTapCounts, curatedGhosts, crawlPages] = await Promise.all([
+const [venues, liveTapCounts, curatedGhosts, crawlPages, beerCount] = await Promise.all([
   fetchVenues(),
   fetchLiveTapCountsByVenue(),
   fetchCuratedGhosts(),
   listCrawlPages(),
+  fetchExactCount('beers'),
 ]);
 const totalVenues = venues.length;
+
+// Machine-readable headline figures, regenerated nightly from source so the
+// AI-discovery layer (llms.txt, ai/*.json) can be reconciled against ground
+// truth instead of drifting. venues_live + beers are counted here; countries
+// is stable and stays hand-maintained in the prose files.
+//   NOTE: this writes the canonical numbers; the prose files are not yet
+//   auto-rewritten from it. If counts.json and the prose disagree, counts.json
+//   is right and the prose is stale — reconcile the prose (or wire an
+//   auto-rewrite step) when the gap is material.
+await import('node:fs/promises').then(({ writeFile }) => writeFile(
+  new URL('../ai/counts.json', import.meta.url),
+  JSON.stringify({
+    venues_live: totalVenues,
+    beers: beerCount,
+    generated_at: TODAY,
+    source: 'nightly Supabase count via scripts/generate-sitemap.mjs',
+  }, null, 2) + '\n',
+));
 const indexableVenues = venues.filter(v => (liveTapCounts.get(v.id) ?? 0) >= MIN_LIVE_BEERS);
 const venueUrls = indexableVenues
   .map((venue) => {
