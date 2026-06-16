@@ -61,6 +61,11 @@ for url in urls:
     if len(urls) > 10:
         time.sleep(0.05)
 
-print(f"Done — {ok} ok, {fail} failed.")
-sys.exit(0 if fail == 0 else 1)
+# Tolerate transient failures (network jitter, slow cold-cache pages on the
+# IndexNow endpoint, individual venue pages briefly slow to respond). Real
+# breakage = many failures; one or two is noise we shouldn't alarm on.
+# Threshold: 1% of submitted URLs, or 2, whichever is greater.
+threshold = max(2, len(urls) // 100)
+print(f"Done — {ok} ok, {fail} failed (tolerance: {threshold}).")
+sys.exit(0 if fail <= threshold else 1)
 PY
