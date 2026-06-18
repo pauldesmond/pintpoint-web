@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6760611613">
+  <title>PINtPOINT Goes to the World Cup. Sort of. — A World Cup Beer Map, Built From the Pub End</title>
+  <meta name="description" content="A UK-based beer app starts mapping decent bars, breweries and taprooms around the 16 World Cup 2026 host stadiums across the USA, Canada and Mexico. Living, collaborative, and very much a first pass." />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="PINtPOINT Goes to the World Cup. Sort of." />
+  <meta property="og:description" content="A World Cup Beer Map, Built From the Pub End. Beer-friendly venues around the 16 host stadiums across the USA, Canada and Mexico." />
+  <meta property="og:image" content="https://pintpoint.co.uk/screenshots/1.7.radar.png" />
+  <meta property="og:image:alt" content="PINtPOINT app radar overlaid on a North America map showing host-stadium clusters." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .draft-banner { background: var(--amber); color: #000; text-align: center; padding: 8px 16px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; }
+    .content { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+    h1 { font-size: clamp(1.9rem, 4.6vw, 2.6rem); font-weight: 900; letter-spacing: -1.2px; line-height: 1.16; margin-bottom: 8px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    .subtitle { font-size: clamp(1.05rem, 2.2vw, 1.25rem); font-weight: 600; color: var(--muted); letter-spacing: -0.2px; line-height: 1.4; margin-bottom: 22px; }
+    h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.4px; margin-top: 44px; margin-bottom: 14px; }
+    h3 { font-size: 1.0rem; font-weight: 700; color: var(--text); margin-top: 26px; margin-bottom: 8px; letter-spacing: 0.3px; }
+    p { font-size: 0.97rem; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+    article a, article a:visited { color: var(--teal); }
+    .highlight { color: var(--text); font-weight: 600; }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 28px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; color: var(--amber); border: 1px solid rgba(192,163,64,0.4); }
+    .lede { font-size: 1.12rem; color: var(--text); line-height: 1.65; margin-bottom: 18px; font-weight: 500; }
+    .question { text-align: center; margin: 26px 0 14px; }
+    .question .line { font-size: 1.25rem; font-weight: 700; color: var(--teal); line-height: 1.5; }
+    .stadium-grid { margin: 22px 0 6px; }
+    .stadium-grid .country { margin-top: 22px; font-size: 0.95rem; font-weight: 700; color: var(--text); letter-spacing: 0.2px; }
+    .stadium-grid ul { list-style: none; margin: 8px 0 6px; padding: 0; }
+    .stadium-grid li { font-size: 0.93rem; color: var(--muted); line-height: 1.6; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .stadium-grid li strong { color: var(--text); font-weight: 600; }
+    .examples { background: rgba(0,212,170,0.05); border: 1px solid rgba(0,212,170,0.18); border-radius: 10px; padding: 18px 22px; margin: 22px 0; }
+    .examples p { color: var(--text); margin-bottom: 0; }
+    .examples strong { color: var(--teal); }
+    .metlife-callout { background: rgba(192,163,64,0.08); border: 1px solid rgba(192,163,64,0.3); border-radius: 10px; padding: 18px 22px; margin: 22px 0; }
+    .metlife-callout p { color: var(--text); margin-bottom: 0; }
+    .metlife-callout strong { color: var(--amber); }
+    .ask-list { margin: 22px 0; }
+    .ask-list p { font-size: 1.0rem; color: var(--text); margin-bottom: 12px; line-height: 1.55; }
+    .ask-list p strong { color: var(--teal); font-weight: 700; }
+    .closer { margin-top: 32px; }
+    .closer p { font-size: 1.05rem; color: var(--text); line-height: 1.65; margin-bottom: 10px; font-weight: 500; }
+    a.cta { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 14px 28px; border-radius: 14px; text-decoration: none; margin-top: 24px; }
+    a.cta:hover { opacity: 0.88; }
+    .cta-card { margin-top: 36px; padding: 24px; border: 1px solid var(--border); background: var(--card); border-radius: 12px; }
+    .cta-card p { font-size: 1.05rem; color: var(--text); margin-bottom: 16px; }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 60px; } }
+  </style>
+</head>
+<body>
+  <div class="draft-banner">DRAFT — not for publication. Preview only.</div>
+  <nav aria-label="Primary">
+    <a href="/" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="/about-pintpoint.html">About</a>
+      <a href="/features.html">Features</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/blog/">Blog</a>
+      <a href="/screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <article class="content">
+    <p class="meta"><span class="category">Note</span>Draft · 18 June 2026 · Target publish: Sat 20 June 2026 · By <a href="/about-pintpoint.html" rel="author">PINtPOINT</a></p>
+
+    <h1>PINtPOINT Goes to the <em>World Cup</em>. Sort of.</h1>
+    <p class="subtitle">A World Cup Beer Map, Built From the Pub End</p>
+
+    <p class="lede">England have played their first World Cup game, avoided immediate national crisis, and given us the excuse we needed to do something mildly ridiculous: start mapping where to drink around the 2026 host stadiums.</p>
+
+    <p>Because the real tournament question is not only who starts on the left, or whether anyone can survive added time without a minor breakdown.</p>
+
+    <div class="question">
+      <div class="line">It is: where do you go before kick-off?</div>
+    </div>
+
+    <p>Where's a decent taproom near the stadium? What's close enough to walk, good enough to bother with, and not just the first sponsored plastic-cup lager queue you stumble into?</p>
+
+    <p>That's where PINtPOINT comes in.</p>
+
+    <p>We're building a match-day beer layer for the World Cup: bars, pubs, breweries and taprooms around the host stadiums in the USA, Canada and Mexico. Not a definitive guide handed down from a committee. More a living beer map: part scouting report, part pub crawl, part <em>surely someone nearby knows somewhere better than this</em>.</p>
+
+    <p>The idea is simple: open PINtPOINT near a host city, see what's around, and find somewhere worth drinking before or after the match.</p>
+
+    <h2>The 16 host stadiums</h2>
+
+    <p>We've started mapping venues around all sixteen, some more confidently than others:</p>
+
+    <div class="stadium-grid">
+      <div class="country">🇺🇸 United States</div>
+      <ul>
+        <li>Mercedes-Benz Stadium, <strong>Atlanta</strong></li>
+        <li>Gillette Stadium, <strong>Boston / Foxborough</strong></li>
+        <li>AT&amp;T Stadium, <strong>Dallas / Arlington</strong></li>
+        <li>NRG Stadium, <strong>Houston</strong></li>
+        <li>Arrowhead Stadium, <strong>Kansas City</strong></li>
+        <li>SoFi Stadium, <strong>Los Angeles</strong></li>
+        <li>Hard Rock Stadium, <strong>Miami</strong></li>
+        <li>MetLife Stadium, <strong>New York / New Jersey</strong></li>
+        <li>Lincoln Financial Field, <strong>Philadelphia</strong></li>
+        <li>Levi's Stadium, <strong>San Francisco Bay Area</strong></li>
+        <li>Lumen Field, <strong>Seattle</strong></li>
+      </ul>
+
+      <div class="country">🇨🇦 Canada</div>
+      <ul>
+        <li>BMO Field, <strong>Toronto</strong></li>
+        <li>BC Place, <strong>Vancouver</strong></li>
+      </ul>
+
+      <div class="country">🇲🇽 Mexico</div>
+      <ul>
+        <li>Estadio Akron, <strong>Guadalajara</strong></li>
+        <li>Estadio Azteca, <strong>Mexico City</strong></li>
+        <li>Estadio BBVA, <strong>Monterrey</strong></li>
+      </ul>
+    </div>
+
+    <h2>Some are easy. Some are honest hard work.</h2>
+
+    <p>Some cities already make this easy.</p>
+
+    <div class="examples">
+      <p><strong>Atlanta</strong> has Atlantucky Brewing a short walk from Mercedes-Benz Stadium. <strong>Seattle</strong> has Elysian Fields practically breathing on Lumen Field. <strong>Philadelphia</strong> has Victory Beer Hall and Chickie's &amp; Pete's right by Lincoln Financial Field. <strong>Vancouver</strong> has Batch on Plaza and Tap &amp; Barrel near BC Place. <strong>Toronto</strong> has Left Field Brewery — Liberty Village within striking distance of BMO Field.</p>
+    </div>
+
+    <p>Other cities are more of a treasure hunt.</p>
+
+    <p><span class="highlight">Dallas</span> and the <span class="highlight">Bay Area</span> are classic North American distance problems: the stadium may be there, but the good beer might involve wheels, planning, and a slightly optimistic definition of "nearby." Russian River is 82 miles from Levi's Stadium. That isn't a typo. It's a confession that Bay Area sports geography and Bay Area beer geography were drawn by different cartographers.</p>
+
+    <p><span class="highlight">Mexico City</span>, <span class="highlight">Guadalajara</span> and <span class="highlight">Monterrey</span> bring a different kind of promise: less familiar to a UK-based app, but exactly the sort of place where local knowledge matters more than any algorithm we point at Google Maps from a desk in England.</p>
+
+    <div class="metlife-callout">
+      <p>And <strong>MetLife</strong> is, at the time of writing, conspicuously thin. If you know what to drink near East Rutherford that isn't the obvious thing, this is your moment to educate us.</p>
+    </div>
+
+    <h2>Why a "living" map and not a guide</h2>
+
+    <p>PINtPOINT should not pretend to know every great beer stop near every stadium. Not yet. Maybe not ever. The useful version of this is collaborative.</p>
+
+    <div class="ask-list">
+      <p>If you live near a host city, if you're travelling for a match, if you know the taproom everyone should go to, <strong>send it in</strong>.</p>
+      <p>If we've missed somewhere brilliant, <strong>tell us</strong>.</p>
+      <p>If we've listed somewhere that looks good on a map but is absolutely not where you'd send a thirsty football fan, <strong>definitely tell us</strong>.</p>
+    </div>
+
+    <p>We'll fold the best local knowledge into the map as it improves.</p>
+
+    <p>This is a first pass. A pub-end view of the World Cup. A way to turn "where shall we go?" into something better than opening a generic maps app and hoping the nearest place with "bar" in the name isn't terrible.</p>
+
+    <p>We're based in the UK, so yes, building a North American World Cup beer map from over here is mildly ridiculous. But PINtPOINT has always been about the same simple instinct: beer tastes better when there's a bit of discovery in it.</p>
+
+    <div class="closer">
+      <p>So if you're heading to a match, open PINtPOINT.</p>
+      <p>Find somewhere nearby.</p>
+      <p>Add what we missed.</p>
+      <p>And help us make the World Cup beer map better before the next round catches us offside again.</p>
+    </div>
+
+    <div class="cta-card">
+      <p><strong>Know a great bar near a World Cup stadium? Put it on the PINtPOINT map.</strong></p>
+      <a href="https://apps.apple.com/app/pintpoint/id6760611613" class="cta">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Open PINtPOINT
+      </a>
+    </div>
+  </article>
+
+  <footer>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/blog/">All blog posts</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+    </div>
+    <p style="font-size:0.75rem;color:#555;margin-top:12px">"FIFA" and "World Cup" are trademarks of FIFA. This article is independent editorial, not affiliated with FIFA or any official partner. References to "World Cup host cities/stadiums" describe the tournament's host venues.</p>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+</body>
+</html>
