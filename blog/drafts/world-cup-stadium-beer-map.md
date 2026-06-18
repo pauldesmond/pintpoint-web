@@ -86,7 +86,7 @@ Find somewhere nearby.
 
 Add what we missed.
 
-And help us make the World Cup beer map better before the next round catches us offside again.
+And help us make the World Cup beer map better before the next fixture catches us offside again.
 
 ---
 
