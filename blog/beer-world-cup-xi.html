@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6760611613">
+  <title>Beer World Cup XI: 48 Nations, Real Fixtures, Stupidly Serious Beer Results</title>
+  <meta name="description" content="Every country in the World Cup gets a beer squad. Real fixtures. Beer results. Help us pick the squads." />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Beer World Cup XI" />
+  <meta property="og:description" content="48 nations. Real fixtures. Beer results. Every country gets a squad. Help us pick them." />
+  <meta property="og:image" content="https://pintpoint.co.uk/screenshots/1.7.radar.png" />
+  <meta property="og:image:alt" content="Beer World Cup XI — 48 nations, real fixtures, beer results." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .draft-banner { background: var(--amber); color: #000; text-align: center; padding: 8px 16px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; }
+    .content { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+    h1 { font-size: clamp(1.9rem, 4.6vw, 2.6rem); font-weight: 900; letter-spacing: -1.2px; line-height: 1.16; margin-bottom: 8px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    .subtitle { font-size: clamp(1.05rem, 2.2vw, 1.25rem); font-weight: 600; color: var(--muted); letter-spacing: -0.2px; line-height: 1.4; margin-bottom: 22px; }
+    h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.4px; margin-top: 44px; margin-bottom: 14px; }
+    p { font-size: 0.97rem; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+    article a, article a:visited { color: var(--teal); }
+    .highlight { color: var(--text); font-weight: 600; }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 28px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; color: var(--amber); border: 1px solid rgba(192,163,64,0.4); }
+    .lede { font-size: 1.12rem; color: var(--text); line-height: 1.65; margin-bottom: 18px; font-weight: 500; }
+    .tagline { text-align: center; margin: 32px 0 24px; padding: 22px 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .tagline .line { font-size: 1.4rem; font-weight: 800; color: var(--teal); letter-spacing: -0.4px; line-height: 1.3; }
+    .tagline .foot { margin-top: 10px; font-size: 0.95rem; color: var(--text); font-weight: 500; }
+    blockquote.pull { margin: 22px 0; padding: 18px 22px; background: rgba(0,212,170,0.06); border-left: 3px solid var(--teal); border-radius: 6px; font-size: 1.1rem; font-weight: 600; color: var(--text); line-height: 1.55; }
+    ul, ol { margin: 14px 0 22px 20px; }
+    li { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 6px; }
+    .judging-panel { margin: 22px 0; padding: 18px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; }
+    .judging-panel h3 { font-size: 0.85rem; font-weight: 700; color: var(--teal); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+    .judging-panel ul { margin: 0 0 0 18px; }
+    .selection-ask { background: rgba(192,163,64,0.07); border: 1px solid rgba(192,163,64,0.3); border-radius: 10px; padding: 18px 22px; margin: 22px 0; }
+    .selection-ask p { color: var(--text); margin-bottom: 0; }
+    .selection-ask strong { color: var(--amber); }
+    .closer { margin-top: 32px; }
+    .closer p { font-size: 1.05rem; color: var(--text); line-height: 1.65; margin-bottom: 10px; font-weight: 500; }
+    a.cta { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 14px 28px; border-radius: 14px; text-decoration: none; margin-top: 24px; }
+    a.cta:hover { opacity: 0.88; }
+    .cta-card { margin-top: 36px; padding: 24px; border: 1px solid var(--border); background: var(--card); border-radius: 12px; }
+    .cta-card p { font-size: 1.05rem; color: var(--text); margin-bottom: 16px; }
+    .cta-help { font-size: 0.88rem; color: var(--muted); margin-top: 14px; margin-bottom: 0; line-height: 1.7; }
+    .cta-help strong { color: var(--text); font-weight: 600; }
+    .cta-help a { color: var(--teal); }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 60px; } }
+  </style>
+</head>
+<body>
+  <div class="draft-banner">DRAFT — not for publication. Preview only.</div>
+  <nav aria-label="Primary">
+    <a href="/" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="/about-pintpoint.html">About</a>
+      <a href="/features.html">Features</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/blog/">Blog</a>
+      <a href="/screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <article class="content">
+    <p class="meta"><span class="category">Note</span>Draft · 19 June 2026 · By <a href="/about-pintpoint.html" rel="author">PINtPOINT</a></p>
+
+    <h1>Beer <em>World Cup XI</em></h1>
+    <p class="subtitle">48 nations. Real fixtures. Stupidly serious beer results.</p>
+
+    <p class="lede">The World Cup has 48 nations. Obviously, each one needs a beer squad.</p>
+
+    <p>So here's the bad idea: what if countries competed by beer instead of football?</p>
+
+    <p>Not official. Not scientific. Not sensible. But absolutely worth arguing about.</p>
+
+    <p>Welcome to Beer World Cup XI.</p>
+
+    <h2>The premise</h2>
+
+    <p>Every country in the World Cup gets a beer squad.</p>
+
+    <p>The tournament follows the real fixtures. The football teams play on the pitch. The beers play in the pub.</p>
+
+    <div class="tagline">
+      <div class="line">Real fixtures. Beer results.</div>
+      <div class="foot">When two countries meet, their beers go head-to-head.</div>
+    </div>
+
+    <p>Some results will be obvious. Some will be controversial. Some will probably require a steward's inquiry and another round.</p>
+
+    <p>That is the point.</p>
+
+    <h2>Why a squad?</h2>
+
+    <p>One beer per country is too easy, and usually unfair.</p>
+
+    <p>Some countries have obvious flagship lagers. Some have deep brewing cultures. Some have brilliant local beers that never get mentioned. Some are genuinely hard to scout from here.</p>
+
+    <p>So every country gets a squad.</p>
+
+    <p>That gives us room for:</p>
+
+    <ul>
+      <li>obvious national icons</li>
+      <li>proper local favourites</li>
+      <li>craft contenders</li>
+      <li>old-school lagers</li>
+      <li>controversial omissions</li>
+      <li>emergency call-ups</li>
+      <li>reader nominations</li>
+    </ul>
+
+    <p>Belgium are going to have absurd depth. Germany will be organised. The USA will be impossible to reduce to a clean selection. England will have plenty of options and still find a way to make selection stressful.</p>
+
+    <p>This is football heritage, but with bottle caps.</p>
+
+    <h2>How the tournament works</h2>
+
+    <p>The rule is simple:</p>
+
+    <blockquote class="pull">Real fixtures. Beer results.</blockquote>
+
+    <p>When two countries meet in the World Cup, we pick beers from each nation's squad and judge the matchup.</p>
+
+    <p>The judging is half-serious, which is to say: serious enough to cause arguments, not serious enough to require a governing body.</p>
+
+    <div class="judging-panel">
+      <h3>Beers can win on</h3>
+      <ul>
+        <li>overall quality</li>
+        <li>style execution</li>
+        <li>distinctiveness</li>
+        <li>drinkability</li>
+        <li>national relevance</li>
+        <li>availability</li>
+        <li>squad depth</li>
+        <li>pub debate factor</li>
+      </ul>
+    </div>
+
+    <p>The deciding question:</p>
+
+    <blockquote class="pull">If these two beers met in a neutral pub, which one would you rather drink?</blockquote>
+
+    <p>That's the whole game.</p>
+
+    <h2>The opening XI</h2>
+
+    <p>To show how this works, we've picked an example selection.</p>
+
+    <p>This is not the final tournament list. It is not the official squad. It is not immune from abuse. It is an opening selection designed to start the argument.</p>
+
+    <p>Example call-ups include beers from <span class="highlight">Argentina</span>, the <span class="highlight">USA</span>, <span class="highlight">Japan</span>, <span class="highlight">Belgium</span>, <span class="highlight">Germany</span>, <span class="highlight">Czechia / Czech Republic</span>, <span class="highlight">Portugal</span>, <span class="highlight">Spain</span>, <span class="highlight">Morocco</span>, <span class="highlight">Colombia</span> and <span class="highlight">Uruguay</span>.</p>
+
+    <p>Some are iconic. Some are there for balance. Some are already under review by the imaginary selection committee.</p>
+
+    <p>You can argue with us. In fact, please do.</p>
+
+    <h2>The selection headaches</h2>
+
+    <p>This is where it gets interesting.</p>
+
+    <p>Some countries are easy to scout badly and hard to scout well. Anyone can name the obvious lager. That does not mean it deserves the captain's armband.</p>
+
+    <p>Some countries have too much depth. Belgium could probably field three squads and still complain about the bench. Germany will expect tactical discipline. The USA has regional chaos disguised as choice.</p>
+
+    <p>Some countries need help. Imports are patchy. Local classics are hard to verify. Availability changes. A beer might be culturally obvious but practically impossible to find.</p>
+
+    <p>So the squads will evolve.</p>
+
+    <p>There will be call-ups. There will be omissions. There will be substitutions. There will definitely be someone saying we picked the wrong Belgian.</p>
+
+    <p>Good.</p>
+
+    <h2>Help pick the squads</h2>
+
+    <p>This only works if people argue with it.</p>
+
+    <p>Tell us what your country should call up.</p>
+
+    <div class="selection-ask">
+      <p>We want <strong>national classics</strong>, <strong>local heroes</strong>, <strong>craft picks</strong>, <strong>supermarket legends</strong>, <strong>hard-to-find cult beers</strong>, <strong>beers available outside their home country</strong>, <strong>controversial omissions</strong> — and anything that deserves a place in the squad.</p>
+    </div>
+
+    <p>If your country has been lazily represented by one boring lager for too long, this is your moment.</p>
+
+    <h2>What comes next</h2>
+
+    <p>We'll start building the full squads country by country, group by group.</p>
+
+    <p>Then the real fixtures begin.</p>
+
+    <div class="closer">
+      <p>Every country gets a squad.</p>
+      <p>Every fixture gets a beer result.</p>
+      <p>Every decision can be argued with.</p>
+    </div>
+
+    <p style="margin-top: 28px;">If you're actually going to a match, use the <a href="/blog/world-cup-stadium-beer-map.html">Stadium Beer Map</a>. This is the nonsense version where beers play football.</p>
+
+    <div class="cta-card">
+      <p><strong>Help your country pick its beer squad. Send us your call-ups.</strong></p>
+      <a href="mailto:hello@pintpoint.co.uk?subject=Beer%20World%20Cup%20XI%20call-up" class="cta">
+        Send your call-ups
+      </a>
+      <p class="cta-help">Email <a href="mailto:hello@pintpoint.co.uk?subject=Beer%20World%20Cup%20XI%20call-up">hello@pintpoint.co.uk</a> with your country, the beers you'd call up, and one line of justification for each. Reader nominations get folded into the squads as we build them out.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/blog/">All blog posts</a>
+      <a href="/blog/world-cup-stadium-beer-map.html">Stadium Beer Map</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+    </div>
+    <p style="font-size:0.75rem;color:#555;margin-top:12px">"FIFA" and "World Cup" are trademarks of FIFA. This article is independent editorial, not affiliated with FIFA, national football teams, breweries, or any official partner. References to "World Cup" describe the tournament's qualifying nations.</p>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+</body>
+</html>
