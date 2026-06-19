@@ -41,6 +41,13 @@
     .tagline .line { font-size: 1.4rem; font-weight: 800; color: var(--teal); letter-spacing: -0.4px; line-height: 1.3; }
     .tagline .foot { margin-top: 10px; font-size: 0.95rem; color: var(--text); font-weight: 500; }
     blockquote.pull { margin: 22px 0; padding: 18px 22px; background: rgba(0,212,170,0.06); border-left: 3px solid var(--teal); border-radius: 6px; font-size: 1.1rem; font-weight: 600; color: var(--text); line-height: 1.55; }
+    .match-card { margin: 22px 0; padding: 22px 24px; background: var(--card); border: 1px solid var(--teal); border-radius: 12px; }
+    .match-card .stage { font-size: 0.7rem; font-weight: 700; color: var(--teal); letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 10px; }
+    .match-card .teams { font-size: 1.25rem; font-weight: 800; color: var(--text); margin-bottom: 4px; letter-spacing: -0.3px; }
+    .match-card .beers { font-size: 0.95rem; color: var(--muted); margin-bottom: 14px; font-weight: 500; }
+    .match-card .caption { font-size: 0.95rem; color: var(--text); margin-bottom: 10px; line-height: 1.55; }
+    .match-card .var-line { font-size: 0.85rem; color: var(--amber); font-style: italic; margin-bottom: 12px; letter-spacing: 0.2px; }
+    .match-card .result { font-size: 1rem; font-weight: 700; color: var(--teal); padding-top: 12px; border-top: 1px solid var(--border); }
     ul, ol { margin: 14px 0 22px 20px; }
     li { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 6px; }
     .judging-panel { margin: 22px 0; padding: 18px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; }
@@ -142,7 +149,16 @@
 
     <blockquote class="pull">Real fixtures. Beer results.</blockquote>
 
-    <p>When two countries meet in the World Cup, we pick beers from each nation's squad and judge the matchup.</p>
+    <p>When two countries meet in the World Cup, we pick beers from each nation's squad and judge the matchup. Like this:</p>
+
+    <div class="match-card">
+      <div class="stage">Group Stage</div>
+      <div class="teams">Germany v Mexico</div>
+      <div class="beers">Augustiner Helles v Modelo Especial</div>
+      <div class="caption">Germany wins on structure. Mexico dominates airport availability.</div>
+      <div class="var-line">PUB VAR: Drinkability checked. Result stands.</div>
+      <div class="result">Beer result: Germany 2-1 Mexico</div>
+    </div>
 
     <p>The judging is half-serious, which is to say: serious enough to cause arguments, not serious enough to require a governing body.</p>
 
@@ -175,7 +191,7 @@
       <ul>
         <li><strong>Pub VAR.</strong> The referee. Reviews disputed results, applies availability penalties, upholds drinkability appeals.</li>
         <li><strong>The Selection Committee.</strong> Squad authority. Denies requests to leave out world-class beers. Picks unpopular substitutes. Refuses to explain itself.</li>
-        <li><strong>The Pint Desk.</strong> Analyst voice. Match of the Day pundit energy. Round-by-round commentary, narrative arcs, post-bracket cold takes.</li>
+        <li><strong>The Pint Desk.</strong> Analyst voice. Match of the Day pundit energy, but with worse hydration. Round-by-round commentary, narrative arcs, post-bracket cold takes.</li>
       </ul>
     </div>
 
