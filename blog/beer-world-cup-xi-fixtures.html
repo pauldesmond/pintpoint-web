@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6760611613">
+  <title>Beer World Cup XI: Fixtures & Results — Live Campaign Board</title>
+  <meta name="description" content="Live campaign board for Beer World Cup XI. Upcoming beer fixtures matched to real World Cup 2026 fixtures, completed beer results, and squad status across the tournament." />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/blog/beer-world-cup-xi-fixtures.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://pintpoint.co.uk/blog/beer-world-cup-xi-fixtures.html" />
+  <meta property="og:title" content="Beer World Cup XI: Fixtures & Results" />
+  <meta property="og:description" content="Live campaign board. Upcoming beer fixtures, completed beer results, squad status. The football teams play on the pitch. The beers play in the pub." />
+  <meta property="og:image" content="https://pintpoint.co.uk/blog/images/beer-world-cup-xi-infographic-v1.jpg" />
+  <meta property="og:image:alt" content="Beer World Cup XI infographic — 11 beer bottles arranged on a football pitch." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+    h1 { font-size: clamp(1.9rem, 4.6vw, 2.6rem); font-weight: 900; letter-spacing: -1.2px; line-height: 1.16; margin-bottom: 8px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    .subtitle { font-size: clamp(1.05rem, 2.2vw, 1.25rem); font-weight: 600; color: var(--muted); letter-spacing: -0.2px; line-height: 1.4; margin-bottom: 22px; }
+    h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.4px; margin-top: 44px; margin-bottom: 14px; }
+    p { font-size: 0.97rem; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+    article a, article a:visited { color: var(--teal); }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 28px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; color: var(--amber); border: 1px solid rgba(192,163,64,0.4); }
+    .live-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; color: var(--teal); border: 1px solid rgba(0,212,170,0.4); background: rgba(0,212,170,0.06); }
+    .lede { font-size: 1.08rem; color: var(--text); line-height: 1.6; margin-bottom: 18px; font-weight: 500; }
+    .fixture-list { margin: 18px 0 8px; padding: 0; list-style: none; }
+    .fixture-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+    .fixture-list li:first-child { border-top: 1px solid var(--border); }
+    .fixture-date { font-size: 0.78rem; font-weight: 600; color: var(--muted); letter-spacing: 0.3px; min-width: 130px; }
+    .fixture-teams { flex: 1 1 220px; font-size: 1rem; font-weight: 700; color: var(--text); letter-spacing: -0.2px; }
+    .fixture-status { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+    .status-scouting { color: var(--amber); border: 1px solid rgba(192,163,64,0.5); background: rgba(192,163,64,0.08); }
+    .status-pending { color: var(--muted); border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); }
+    .status-reveal { color: var(--teal); border: 1px solid rgba(0,212,170,0.5); background: rgba(0,212,170,0.08); }
+    .status-review { color: var(--amber); border: 1px solid rgba(192,163,64,0.5); background: rgba(192,163,64,0.08); }
+    .empty-state { padding: 28px 22px; border: 1px dashed var(--border); border-radius: 10px; color: var(--muted); font-style: italic; text-align: center; margin: 18px 0; }
+    .squad-status { margin: 18px 0; padding: 0; list-style: none; }
+    .squad-status li { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .squad-status li:first-child { border-top: 1px solid var(--border); }
+    .squad-country { font-size: 1rem; font-weight: 700; color: var(--text); flex: 0 0 140px; }
+    .squad-note { font-size: 0.9rem; color: var(--muted); flex: 1; line-height: 1.5; }
+    .cross-link-card { margin-top: 36px; padding: 20px 22px; border: 1px solid var(--border); background: var(--card); border-radius: 12px; }
+    .cross-link-card p { font-size: 0.95rem; color: var(--text); margin-bottom: 0; }
+    .cross-link-card a { color: var(--teal); font-weight: 600; }
+    .updated-line { font-size: 0.82rem; color: #666; margin-bottom: 24px; }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 60px; } .fixture-date { min-width: 100%; margin-bottom: 4px; } .squad-country { flex-basis: 100%; } }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary">
+    <a href="/" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="/about-pintpoint.html">About</a>
+      <a href="/features.html">Features</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/blog/">Blog</a>
+      <a href="/screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <article class="content">
+    <p class="meta"><span class="live-badge">Live Board</span><span class="category">Feature</span>Beer World Cup XI · Updated daily</p>
+
+    <h1>Beer World Cup XI: <em>Fixtures &amp; Results</em></h1>
+    <p class="subtitle">Live campaign board — upcoming beer fixtures, completed beer results, squad status</p>
+
+    <p class="lede">This is where the campaign lives. The fixtures track the real World Cup 2026 schedule. The results land here as each beer matchup is judged. Squads update as they're revealed and as <a href="/blog/beer-world-cup-xi.html">Pub VAR, the Selection Committee and The Pint Desk</a> rule on disputed picks.</p>
+
+    <p class="updated-line">Page last updated: 19 June 2026. Times shown in your local timezone (UK kick-off as fallback).</p>
+
+    <h2>Upcoming beer fixtures</h2>
+
+    <ul class="fixture-list">
+      <li>
+        <time class="fixture-date local-time" datetime="2026-06-19T22:00:00Z">Fri 19 Jun, 11pm UK</time>
+        <span class="fixture-teams">Scotland v Morocco</span>
+        <span class="fixture-status status-scouting">Squad scouting</span>
+      </li>
+      <li>
+        <time class="fixture-date local-time" datetime="2026-06-20T00:30:00Z">Sat 20 Jun, 1.30am UK</time>
+        <span class="fixture-teams">Brazil v Haiti</span>
+        <span class="fixture-status status-pending">Pending</span>
+      </li>
+      <li>
+        <time class="fixture-date local-time" datetime="2026-06-20T17:00:00Z">Sat 20 Jun, 6pm UK</time>
+        <span class="fixture-teams">Netherlands v Sweden</span>
+        <span class="fixture-status status-pending">Pending</span>
+      </li>
+      <li>
+        <time class="fixture-date local-time" datetime="2026-06-20T20:00:00Z">Sat 20 Jun, 9pm UK</time>
+        <span class="fixture-teams">Germany v Ivory Coast</span>
+        <span class="fixture-status status-pending">Pending</span>
+      </li>
+      <li>
+        <time class="fixture-date local-time" datetime="2026-06-23T20:00:00Z">Tue 23 Jun, 9pm UK</time>
+        <span class="fixture-teams">England v Ghana</span>
+        <span class="fixture-status status-reveal">England reveal planned</span>
+      </li>
+      <li>
+        <time class="fixture-date local-time" datetime="2026-06-24T22:00:00Z">Wed 24 Jun, 11pm UK</time>
+        <span class="fixture-teams">Scotland v Brazil</span>
+        <span class="fixture-status status-review">Scotland under review</span>
+      </li>
+      <li>
+        <time class="fixture-date local-time" datetime="2026-06-27T21:00:00Z">Sat 27 Jun, 10pm UK</time>
+        <span class="fixture-teams">Panama v England</span>
+        <span class="fixture-status status-pending">Pending</span>
+      </li>
+    </ul>
+
+    <p style="font-size: 0.82rem; color: #666; margin-top: 8px;">Source: <a href="https://www.skysports.com/football/news/11095/13481245/world-cup-2026-fixture-schedule-and-uk-kick-off-times-day-by-day-breakdown-of-all-104-matches-including-england-scotland">Sky Sports day-by-day schedule</a> · <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/scores-fixtures">FIFA live fixtures</a>.</p>
+
+    <h2>Completed beer results</h2>
+
+    <div class="empty-state">
+      No results yet. Match cards will be linked here as fixtures conclude and the beer results are called.
+    </div>
+
+    <h2>Squad status</h2>
+
+    <ul class="squad-status">
+      <li>
+        <span class="squad-country">England</span>
+        <span class="squad-note">Reveal planned. Selection Committee in session.</span>
+      </li>
+      <li>
+        <span class="squad-country">Scotland</span>
+        <span class="squad-note">Provisional squad named. Under review for the Brazil fixture.</span>
+      </li>
+      <li>
+        <span class="squad-country">Ghana</span>
+        <span class="squad-note">Provisional. Pub VAR running availability checks on import beers.</span>
+      </li>
+      <li>
+        <span class="squad-country">Morocco</span>
+        <span class="squad-note">Needs scouting. Open to reader nominations.</span>
+      </li>
+    </ul>
+
+    <p style="margin-top: 22px;">Squad pages will appear on the <a href="/blog/beer-world-cup-xi-line-ups.html">All Country Line-Ups</a> page as they land. To nominate beers for any country's squad, email <a href="mailto:hello@pintpoint.co.uk?subject=Beer%20World%20Cup%20XI%20squad%20nomination">hello@pintpoint.co.uk</a> with your picks and one line of justification each.</p>
+
+    <div class="cross-link-card">
+      <p><strong>New here?</strong> Start with the <a href="/blog/beer-world-cup-xi.html">Beer World Cup XI manifesto</a> — the premise, the judging logic, and the officials. Or open the <a href="/blog/world-cup-stadium-beer-map.html">Stadium Beer Map</a> if you're actually trying to find a pint near a host stadium.</p>
+    </div>
+  </article>
+
+  <footer>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/blog/">All blog posts</a>
+      <a href="/blog/beer-world-cup-xi.html">Beer World Cup XI</a>
+      <a href="/blog/beer-world-cup-xi-line-ups.html">Line-Ups</a>
+      <a href="/blog/world-cup-stadium-beer-map.html">Stadium Beer Map</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+    </div>
+    <p style="font-size:0.75rem;color:#555;margin-top:12px">"FIFA" and "World Cup" are trademarks of FIFA. This article is independent editorial, not affiliated with FIFA, national football teams, breweries, or any official partner. References to "World Cup" describe the football tournament and its participating nations.</p>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+
+  <script>
+    // Convert fixture times from UTC datetime attrs to reader's local timezone.
+    // Progressive enhancement: if JS is disabled, the static UK kick-off times
+    // remain visible inside the <time> elements as the fallback content.
+    document.querySelectorAll('.local-time').forEach((el) => {
+      const dt = new Date(el.dateTime);
+      if (isNaN(dt.getTime())) return;
+      el.textContent = new Intl.DateTimeFormat(undefined, {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short',
+        hour: 'numeric',
+        minute: '2-digit',
+        timeZoneName: 'short',
+      }).format(dt);
+    });
+  </script>
+</body>
+</html>
