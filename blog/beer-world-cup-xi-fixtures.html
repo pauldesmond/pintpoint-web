@@ -89,6 +89,9 @@
     .tonight-card ul { margin: 12px 0 6px 18px; }
     .tonight-card li { font-size: 0.93rem; color: var(--text); line-height: 1.6; margin-bottom: 4px; }
     .tonight-card .footnote { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-bottom: 0; }
+    .tonight-card .squad-block { margin: 16px 0 14px; }
+    .tonight-card .squad-country { font-size: 0.95rem; font-weight: 800; color: var(--teal); margin-bottom: 6px; letter-spacing: -0.2px; }
+    .tonight-card .squad-block + .squad-block { padding-top: 14px; border-top: 1px solid var(--border); }
     .cross-link-card { margin-top: 36px; padding: 20px 22px; border: 1px solid var(--border); background: var(--card); border-radius: 12px; }
     .cross-link-card p { font-size: 0.95rem; color: var(--text); margin-bottom: 0; }
     .cross-link-card a { color: var(--teal); font-weight: 600; }
@@ -126,17 +129,35 @@
     <div class="tonight-card">
       <div class="tonight-label">⚽ Tonight's fixture · soft launch</div>
       <div class="tonight-headline">Scotland v Morocco — the Selection Committee is in emergency session.</div>
-      <p>Scotland's provisional Beer World Cup XI is warming up: lager heritage, stout depth, and several breweries already demanding a recount. Provisional call-ups under consideration:</p>
-      <ul>
-        <li>Tennent's Lager</li>
-        <li>BrewDog Punk IPA</li>
-        <li>Innis &amp; Gunn Original</li>
-        <li>Harviestoun Schiehallion</li>
-        <li>Williams Bros Joker IPA</li>
-        <li>Orkney Dark Island</li>
-        <li>Tempest Brave New World</li>
-      </ul>
-      <p>Morocco are currently making Pub VAR check the import rules. Full XI to follow if the Selection Committee survives the Morocco scouting meeting.</p>
+
+      <div class="squad-block">
+        <div class="squad-country">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</div>
+        <p>Lager heritage, stout depth, and several breweries already demanding a recount. Provisional call-ups under consideration:</p>
+        <ul>
+          <li>Tennent's Lager</li>
+          <li>BrewDog Punk IPA</li>
+          <li>Innis &amp; Gunn Original</li>
+          <li>Harviestoun Schiehallion</li>
+          <li>Williams Bros Joker IPA</li>
+          <li>Orkney Dark Island</li>
+          <li>Tempest Brave New World</li>
+        </ul>
+      </div>
+
+      <div class="squad-block">
+        <div class="squad-country">🇲🇦 Morocco</div>
+        <p>Desert-heat pilsner core, citrus reinforcement from the Casablanca line, and Pub VAR currently reviewing two locally-brewed internationals for eligibility. Provisional call-ups:</p>
+        <ul>
+          <li>Casablanca Premium Lager</li>
+          <li>Flag Spéciale</li>
+          <li>Stork Premiere</li>
+          <li>Casablanca Citron</li>
+          <li>Castel Beer</li>
+          <li>Bavaroise</li>
+        </ul>
+        <p class="footnote">⚖️ Pub VAR eligibility review pending: Heineken and Pelforth Ambrée — both brewed locally in Morocco under contract, native-squad ruling expected before kickoff.</p>
+      </div>
+
       <p class="footnote">First official beer result coming after the match. Match card will land here.</p>
     </div>
 
