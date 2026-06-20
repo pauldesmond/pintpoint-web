@@ -134,6 +134,39 @@
     show(idx);
   }
 
+  /* ------------------------------------------------------ Venue grid filter
+   * Stadium Beer Map only. Each .bwc-filter-btn has data-filter="all|us|ca|mx".
+   * Each .bwc-venue has data-country="us|ca|mx". Click a button → hide venues
+   * whose country doesn't match. "all" shows everything. JS-off: all visible. */
+  function wireVenueFilter(container) {
+    var buttons = container.querySelectorAll('.bwc-filter-btn');
+    var venues = container.querySelectorAll('.bwc-venue');
+    if (!buttons.length || !venues.length) return;
+    function apply(filter) {
+      venues.forEach(function (v) {
+        var match = filter === 'all' || v.getAttribute('data-country') === filter;
+        // Inline style.display + [hidden] for the same belt-and-braces reasons
+        // as wireCycler: cache-staleness can't break the swap.
+        v.style.display = match ? '' : 'none';
+        if (match) v.removeAttribute('hidden');
+        else       v.setAttribute('hidden', '');
+      });
+      buttons.forEach(function (b) {
+        var on = b.getAttribute('data-filter') === filter;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { apply(b.getAttribute('data-filter') || 'all'); });
+    });
+    // Initial: respect .active in markup, else 'all'
+    var startFilter = 'all';
+    buttons.forEach(function (b) { if (b.classList.contains('active')) startFilter = b.getAttribute('data-filter') || 'all'; });
+    container.setAttribute('data-js', 'ready');
+    apply(startFilter);
+  }
+
   /* -------------------------------------------------------------- Print fix
    * Native <details> keeps its body display:none when closed, and that
    * persists in print even with @media print overrides in most browsers.
@@ -170,6 +203,7 @@
       { selector: '.bwc-officials-tabs', fn: wireTabs, name: 'officials tabs' },
       { selector: '.bwc-stepper',        fn: wireTabs, name: 'roadmap stepper' },
       { selector: '.bwc-match-cycler',   fn: wireCycler, name: 'match cycler' },
+      { selector: '.bwc-venue-filter',   fn: wireVenueFilter, name: 'venue filter' },
     ];
     ranks.forEach(function (r) {
       document.querySelectorAll(r.selector).forEach(function (el) {

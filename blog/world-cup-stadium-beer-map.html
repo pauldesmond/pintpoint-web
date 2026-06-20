@@ -94,6 +94,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="bwc.css?v=3" />
+  <script src="bwc.js?v=3" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
@@ -166,115 +168,154 @@
     <h1>World Cup 2026 <em>Stadium Beer Map</em></h1>
     <p class="subtitle">Help us find good beer near the grounds</p>
 
-    <p class="lede">The World Cup is here, across 16 host stadiums in North America. We mapped the bars, pubs, breweries, taprooms, bottle shops and beer gardens that can actually help fans before or after a match.</p>
+    <div class="bwc">
 
-    <div class="question">
-      <div class="line">It's a first pass, not the final whistle.</div>
-    </div>
+      <p class="lede">The World Cup is here, across 16 host stadiums in North America. We mapped the bars, pubs, breweries, taprooms, bottle shops and beer gardens that can actually help fans before or after a match.</p>
 
-    <p>Some host areas came together cleanly. Some are awkward. Some still need proper local knowledge before we'd trust the map. That's where you come in.</p>
+      <div class="question">
+        <div class="line">It's a first pass, not the final whistle.</div>
+      </div>
 
-    <h2>The 16 host stadiums</h2>
+      <p>Some host areas came together cleanly. Some are awkward. Some still need proper local knowledge before we'd trust the map. That's where you come in.</p>
 
-    <p>PINtPOINT now covers venues around every World Cup 2026 host stadium:</p>
+      <h2>The 16 host stadiums</h2>
 
-    <div class="stadium-grid">
-      <div class="country">🇺🇸 United States</div>
-      <ul>
-        <li>Mercedes-Benz Stadium, <strong>Atlanta</strong></li>
-        <li>Gillette Stadium, <strong>Boston / Foxborough</strong></li>
-        <li>AT&amp;T Stadium, <strong>Dallas / Arlington</strong></li>
-        <li>NRG Stadium, <strong>Houston</strong></li>
-        <li>Arrowhead Stadium, <strong>Kansas City</strong></li>
-        <li>SoFi Stadium, <strong>Los Angeles / Inglewood</strong></li>
-        <li>Hard Rock Stadium, <strong>Miami Gardens</strong></li>
-        <li>MetLife Stadium, <strong>New York / New Jersey</strong></li>
-        <li>Lincoln Financial Field, <strong>Philadelphia</strong></li>
-        <li>Levi's Stadium, <strong>San Francisco Bay Area / Santa Clara</strong></li>
-        <li>Lumen Field, <strong>Seattle</strong></li>
+      <p>PINtPOINT now covers venues around every World Cup 2026 host stadium. Each card carries a scouting status — filter by host country.</p>
+
+      <div class="bwc-venue-filter">
+        <div class="bwc-filter" role="group" aria-label="Filter by host country">
+          <button type="button" class="bwc-filter-btn active" data-filter="all" aria-pressed="true">All 16</button>
+          <button type="button" class="bwc-filter-btn"        data-filter="us"  aria-pressed="false">USA · 11</button>
+          <button type="button" class="bwc-filter-btn"        data-filter="ca"  aria-pressed="false">Canada · 2</button>
+          <button type="button" class="bwc-filter-btn"        data-filter="mx"  aria-pressed="false">Mexico · 3</button>
+        </div>
+
+        <ul class="bwc-legend" aria-label="Scouting-status legend">
+          <li><span class="dot ok" aria-hidden="true"></span>Mapped</li>
+          <li><span class="dot first" aria-hidden="true"></span>First pass</li>
+          <li><span class="dot scouting" aria-hidden="true"></span>Needs scouting</li>
+          <li><span class="dot help" aria-hidden="true"></span>Help wanted</li>
+        </ul>
+
+        <div class="bwc-venues">
+          <article class="bwc-venue" data-country="us">
+            <div class="v-top"><span class="v-cc">USA</span><span class="v-state ok">Mapped</span></div>
+            <div class="v-city">Atlanta</div>
+            <div class="v-stadium">Mercedes-Benz Stadium</div>
+          </article>
+          <article class="bwc-venue" data-country="us">
+            <div class="v-top"><span class="v-cc">USA</span><span class="v-state ok">Mapped</span></div>
+            <div class="v-city">Seattle</div>
+            <div class="v-stadium">Lumen Field</div>
+          </article>
+          <article class="bwc-venue" data-country="us">
+            <div class="v-top"><span class="v-cc">USA</span><span class="v-state ok">Mapped</span></div>
+            <div class="v-city">Philadelphia</div>
+            <div class="v-stadium">Lincoln Financial Field</div>
+          </article>
+          <article class="bwc-venue" data-country="us">
+            <div class="v-top"><span class="v-cc">USA</span><span class="v-state first">First pass</span></div>
+            <div class="v-city">Boston / Foxborough</div>
+            <div class="v-stadium">Gillette Stadium</div>
+          </article>
+          <article class="bwc-venue" data-country="us">
+            <div class="v-top"><span class="v-cc">USA</span><span class="v-state first">First pass</span></div>
+            <div class="v-city">Houston</div>
+            <div class="v-stadium">NRG Stadium</div>
+          </article>
+          <article class="bwc-venue" data-country="us">
+            <div class="v-top"><span class="v-cc">USA</span><span class="v-state first">First pass</span></div>
+            <div class="v-city">Kansas City</div>
+            <div class="v-stadium">Arrowhead Stadium</div>
+          </article>
+          <article class="bwc-venue" data-country="us">
+            <div class="v-top"><span class="v-cc">USA</span><span class="v-state first">First pass</span></div>
+            <div class="v-city">Los Angeles / Inglewood</div>
+            <div class="v-stadium">SoFi Stadium</div>
+          </article>
+          <article class="bwc-venue" data-country="us">
+            <div class="v-top"><span class="v-cc">USA</span><span class="v-state first">First pass</span></div>
+            <div class="v-city">Miami Gardens</div>
+            <div class="v-stadium">Hard Rock Stadium</div>
+          </article>
+          <article class="bwc-venue" data-country="us">
+            <div class="v-top"><span class="v-cc">USA</span><span class="v-state scouting">Needs scouting</span></div>
+            <div class="v-city">Dallas / Arlington</div>
+            <div class="v-stadium">AT&amp;T Stadium</div>
+          </article>
+          <article class="bwc-venue" data-country="us">
+            <div class="v-top"><span class="v-cc">USA</span><span class="v-state scouting">Needs scouting</span></div>
+            <div class="v-city">San Francisco Bay / Santa Clara</div>
+            <div class="v-stadium">Levi's Stadium</div>
+          </article>
+          <article class="bwc-venue help" data-country="us">
+            <div class="v-top"><span class="v-cc">USA</span><span class="v-state help">Help wanted</span></div>
+            <div class="v-city">New York / New Jersey</div>
+            <div class="v-stadium">MetLife Stadium · East Rutherford</div>
+          </article>
+          <article class="bwc-venue" data-country="ca">
+            <div class="v-top"><span class="v-cc">CAN</span><span class="v-state ok">Mapped</span></div>
+            <div class="v-city">Toronto</div>
+            <div class="v-stadium">BMO Field</div>
+          </article>
+          <article class="bwc-venue" data-country="ca">
+            <div class="v-top"><span class="v-cc">CAN</span><span class="v-state ok">Mapped</span></div>
+            <div class="v-city">Vancouver</div>
+            <div class="v-stadium">BC Place</div>
+          </article>
+          <article class="bwc-venue" data-country="mx">
+            <div class="v-top"><span class="v-cc">MEX</span><span class="v-state scouting">Needs scouting</span></div>
+            <div class="v-city">Guadalajara</div>
+            <div class="v-stadium">Estadio Akron</div>
+          </article>
+          <article class="bwc-venue" data-country="mx">
+            <div class="v-top"><span class="v-cc">MEX</span><span class="v-state scouting">Needs scouting</span></div>
+            <div class="v-city">Mexico City</div>
+            <div class="v-stadium">Estadio Azteca</div>
+          </article>
+          <article class="bwc-venue" data-country="mx">
+            <div class="v-top"><span class="v-cc">MEX</span><span class="v-state scouting">Needs scouting</span></div>
+            <div class="v-city">Monterrey</div>
+            <div class="v-stadium">Estadio BBVA</div>
+          </article>
+        </div>
+
+        <div class="bwc-scout-callout">
+          <p><strong>MetLife</strong> is the loudest help-wanted flag. New York has no shortage of places to drink — East Rutherford is the harder question. Dallas/Arlington, the Bay Area and all three Mexico hosts also need proper local scouting. World Cup host geography is messy: "Dallas" might mean Arlington, "San Francisco" might mean Santa Clara, "New York" might mean East Rutherford. The name on the fixture list and the reality on the ground are not always the same thing.</p>
+        </div>
+      </div>
+
+      <h2>What counts as useful?</h2>
+
+      <p>For the Stadium Beer Map, we kept places a travelling fan could realistically use before or after a match. The aim was simple — help fans find somewhere decent near the ground. Not just "a bar somewhere in the city". Not a generic search result. Not a famous place that looks good on a list but makes no sense on matchday.</p>
+
+      <ul class="bwc-chips" aria-label="What counts as useful">
+        <li>walk, transit or short ride</li>
+        <li>beer-relevant</li>
+        <li>better than the nearest "bar"</li>
+        <li>not a city-centre fake</li>
+        <li>scouted, not searched</li>
       </ul>
 
-      <div class="country">🇨🇦 Canada</div>
-      <ul>
-        <li>BMO Field, <strong>Toronto</strong></li>
-        <li>BC Place, <strong>Vancouver</strong></li>
-      </ul>
+      <p>That last one matters. The map isn't finished. The scouting file is open — and the tournament is the test.</p>
 
-      <div class="country">🇲🇽 Mexico</div>
-      <ul>
-        <li>Estadio Akron, <strong>Guadalajara</strong></li>
-        <li>Estadio Azteca, <strong>Mexico City</strong></li>
-        <li>Estadio BBVA, <strong>Monterrey</strong></li>
-      </ul>
+      <h2>Help complete the map</h2>
+
+      <p>Local knowledge beats a lazy list every time. If you know a great bar, brewery, taproom, bottle shop or beer garden near a World Cup host stadium, add it to PINtPOINT. If something on the map looks wrong, tell us. If the obvious recommendation is miles away and useless on matchday, tell us that too.</p>
+
+      <div class="bwc-nomination" aria-label="Add a venue or send a tip">
+        <p class="bwc-nom-headline">Know a great bar near a World Cup stadium?</p>
+        <p class="bwc-nom-blurb">Two ways in: open PINtPOINT near the stadium and add the venue yourself, or email us a tip and we'll add it for you.</p>
+        <pre class="bwc-nom-template"><span class="key">Venue:</span>     <span class="hint">e.g. The Brick Store Pub</span>
+<span class="key">Host city:</span> <span class="hint">e.g. Atlanta</span>
+<span class="key">Why:</span>       <span class="hint">one line — what makes it worth a stop on matchday</span></pre>
+        <a href="https://apps.apple.com/app/pintpoint/id6760611613" class="bwc-nom-cta">Open PINtPOINT</a>
+        <p class="bwc-nom-help">In the app: tap <strong>+</strong> on the Venues screen, or use <strong>Discover</strong> near the stadium. Or email <a href="mailto:hello@pintpoint.co.uk?subject=World%20Cup%20venue%20suggestion">hello@pintpoint.co.uk</a> with the venue name, host city and a sentence on what makes it worth a stop.</p>
+      </div>
+
+      <p style="margin-top: 32px; font-size: 0.9rem;">Separately, we're also running a <a href="/blog/beer-world-cup-xi.html">Beer World Cup XI</a>. That one is for arguments. This map is for finding somewhere decent before kick-off.</p>
+
     </div>
-
-    <p>The aim was simple: help fans find somewhere decent near the ground.</p>
-
-    <p>Not just "a bar somewhere in the city". Not a generic search result. Not a famous place that looks good on a list but makes no sense on matchday.</p>
-
-    <p>We were looking for beer stops that are actually useful.</p>
-
-    <h2>What counts as useful?</h2>
-
-    <p>For the Stadium Beer Map, we kept places a travelling fan could realistically use before or after a match:</p>
-
-    <ul>
-      <li>close enough to the stadium, or realistic enough by transit, walk or short ride</li>
-      <li>beer-relevant: bars, pubs, breweries, taprooms, bottle shops and beer gardens</li>
-      <li>better than the nearest generic "bar" result</li>
-      <li>not a great city-centre venue pretending to be near the ground</li>
-    </ul>
-
-    <p>That last one matters.</p>
-
-    <p>World Cup host geography is messy. "Dallas" might mean Arlington. "San Francisco" might mean Santa Clara. "New York / New Jersey" might mean East Rutherford. The name on the fixture list and the reality on the ground are not always the same thing.</p>
-
-    <p>That is exactly why the map needs local knowledge.</p>
-
-    <h2>Scouting notes</h2>
-
-    <p>Some host areas landed cleanly.</p>
-
-    <div class="examples">
-      <p><strong>Atlanta</strong> and <strong>Seattle</strong> came through with obvious first-pass options near the grounds. <strong>Philadelphia</strong>, <strong>Vancouver</strong> and <strong>Toronto</strong> did too.</p>
-    </div>
-
-    <p>Others were geography traps.</p>
-
-    <p><span class="highlight">Dallas / Arlington</span> and the <span class="highlight">Bay Area</span> reminded us that "host city" and "walkable stadium beer" are not the same thing. A brilliant beer city can still have a stadium area that needs proper scouting.</p>
-
-    <p><span class="highlight">Mexico City</span>, <span class="highlight">Guadalajara</span> and <span class="highlight">Monterrey</span> are exactly where local knowledge matters most. Search results are one thing. Knowing where a fan should actually go before kick-off is another.</p>
-
-    <div class="metlife-callout">
-      <p><strong>MetLife</strong> is still the loudest help-wanted flag. New York has no shortage of places to drink. East Rutherford is the harder question.</p>
-    </div>
-
-    <p>That's the point of this project.</p>
-
-    <p>The map isn't finished. The scouting file is open — and the tournament is the test.</p>
-
-    <h2>Help complete the map</h2>
-
-    <div class="ask-list">
-      <p>If you know a great bar, brewery, taproom, bottle shop or beer garden near a World Cup host stadium, <strong>add it to PINtPOINT</strong>.</p>
-      <p>If something on the map looks wrong, <strong>tell us</strong>.</p>
-      <p>If the obvious recommendation is miles away and useless on matchday, <strong>tell us that too</strong>.</p>
-    </div>
-
-    <p>Local knowledge beats a lazy list every time.</p>
-
-    <p>Help us complete the World Cup beer map. Open PINtPOINT near a host stadium and add the bars, breweries, taprooms and bottle shops we've missed.</p>
-
-    <div class="cta-card">
-      <p><strong>Know a great bar near a World Cup stadium? Add it to PINtPOINT.</strong></p>
-      <a href="https://apps.apple.com/app/pintpoint/id6760611613" class="cta">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Open PINtPOINT
-      </a>
-      <p class="cta-help">In the app: tap <strong>+</strong> on the Venues screen to add a venue, or use <strong>Discover</strong> near the stadium and confirm what's pouring. Or email us at <a href="mailto:hello@pintpoint.co.uk?subject=World%20Cup%20venue%20suggestion">hello@pintpoint.co.uk</a> with the venue name, host city, and a sentence on what makes it worth a stop — we'll add it for you.</p>
-    </div>
-
-    <p style="margin-top: 32px; font-size: 0.9rem;">Separately, we're also planning a <a href="/blog/beer-world-cup-xi.html">Beer World Cup XI</a>. That one is for arguments. This map is for finding somewhere decent before kick-off.</p>
   </article>
 
   <footer>

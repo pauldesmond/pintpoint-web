@@ -169,6 +169,50 @@
 .bwc-opening-xi dd { font-size: 0.92rem; font-weight: 600; color: var(--text); margin: 0; }
 .bwc-opening-xi .bwc-oxi-note { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
 
+/* --- Stadium Beer Map — filterable venue grid --------------------------- */
+.bwc-venues { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0; }
+@media (max-width: 860px) { .bwc-venues { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .bwc-venues { grid-template-columns: 1fr; } }
+.bwc-venue { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px 14px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; transition: border-color .15s, transform .15s; }
+.bwc-venue:hover { border-color: var(--teal); transform: translateY(-1px); }
+.bwc-venue.help { border-color: var(--amber); background: linear-gradient(180deg, rgba(192,163,64,0.10), transparent 65%); }
+.bwc-venue .v-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.bwc-venue .v-cc { font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.2px; color: var(--muted); }
+.bwc-venue .v-city { font-weight: 800; font-size: 1.05rem; color: var(--text); letter-spacing: -0.3px; line-height: 1.15; }
+.bwc-venue .v-stadium { font-size: 0.82rem; color: var(--muted); line-height: 1.35; }
+.bwc-venue .v-state { font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
+.bwc-venue .v-state.ok       { background: rgba(0,212,170,0.15); color: var(--teal); }
+.bwc-venue .v-state.first    { background: rgba(0,212,170,0.08); color: var(--teal); border: 1px solid rgba(0,212,170,0.25); }
+.bwc-venue .v-state.scouting { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid var(--border); }
+.bwc-venue .v-state.help     { background: rgba(192,163,64,0.18); color: var(--amber); }
+
+/* Filter pills (used on Stadium Map; small variant of jump-chips) */
+.bwc-filter { display: flex; gap: 6px; margin: 18px 0 10px; flex-wrap: wrap; }
+.bwc-filter-btn { cursor: pointer; background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.6px; line-height: 1; transition: all .15s; }
+.bwc-filter-btn:hover { color: var(--text); border-color: var(--muted); }
+.bwc-filter-btn.active { color: var(--teal); border-color: var(--teal); background: rgba(0,212,170,0.10); }
+.bwc-filter-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+/* Filter degrades gracefully — print and JS-off both keep all cards visible */
+@media print {
+  .bwc-filter { display: none !important; }
+  .bwc-venue[hidden] { display: flex !important; }
+}
+
+/* Legend strip under filter */
+.bwc-legend { display: flex; gap: 14px; flex-wrap: wrap; margin: 6px 0 14px; padding: 0; font-size: 0.74rem; color: var(--muted); list-style: none; }
+.bwc-legend li { display: flex; align-items: center; gap: 6px; }
+.bwc-legend .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.bwc-legend .dot.ok       { background: var(--teal); }
+.bwc-legend .dot.first    { background: rgba(0,212,170,0.4); border: 1px solid var(--teal); }
+.bwc-legend .dot.scouting { background: var(--border); border: 1px solid var(--muted); }
+.bwc-legend .dot.help     { background: var(--amber); }
+
+/* MetLife / call-out strip on Stadium Map */
+.bwc-scout-callout { margin: 18px 0 22px; padding: 16px 20px; border-left: 4px solid var(--amber); background: rgba(192,163,64,0.08); border-radius: 4px; }
+.bwc-scout-callout strong { color: var(--amber); }
+.bwc-scout-callout p { font-size: 0.94rem; color: var(--text); line-height: 1.55; margin: 0; }
+
 /* --- Squad card (country line-up component) ------------------------------ */
 .bwc-squad { margin: 18px 0; padding: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card); }
 .bwc-squad .bwc-squad-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 16px; background: rgba(0,212,170,0.06); border-bottom: 1px solid var(--border); }
