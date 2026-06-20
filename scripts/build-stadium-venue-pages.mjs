@@ -103,10 +103,48 @@ async function fetchNearbyVenues(stadium) {
     .slice(0, MAX_VENUES);
 }
 
+// --- /pubs/<slug> URL convention ----------------------------------------
+// Mirrors scripts/generate-sitemap.mjs:slugify / cleanCityForSlug /
+// canonicalSlug exactly. The static venue pages on pintpoint.co.uk are
+// built by that algorithm; using anything else (including untappd_slug)
+// produces 404s.
+function slugifyForUrl(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/['']/g, '')
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+function cleanCityForSlug(value) {
+  return String(value || '')
+    .replace(/\s+[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}\b/i, '')  // UK postcode
+    .replace(/,\s*(UK|USA|GB|US)\s*$/i, '')
+    .trim();
+}
 function venueSlug(v) {
-  // PINtPOINT slug convention for /pubs/<slug>
-  if (v.untappd_slug) return v.untappd_slug;
-  return v.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const name = slugifyForUrl(v.name);
+  const city = slugifyForUrl(cleanCityForSlug(v.city));
+  return city ? `${name}-${city}` : name;
+}
+
+// Probe the live /pubs/<slug> edge function for a venue's canonical slug.
+// The site serves venue pages dynamically via a Supabase edge function,
+// not as static HTML, so the sitemap is NOT the authority — the edge
+// function will render any venue that's in the DB. But the edge function
+// returns the "venue not found" page (HTTP 200, no <title>) when the slug
+// it computes from the DB doesn't match what we're sending. So we probe.
+async function probeVenueSlug(slug) {
+  try {
+    const r = await fetch(`https://pintpoint.co.uk/pubs/${slug}`);
+    if (!r.ok) return false;
+    const body = await r.text();
+    // "Live Tap List" appears in the title of every successfully-rendered
+    // venue page. The 404 page has no title.
+    return body.includes('— Live Tap List | PINtPOINT');
+  } catch {
+    return false;
+  }
 }
 
 function escapeHtml(s) {
@@ -335,20 +373,38 @@ ${STADIUMS.map((s) => `      <a class="row" href="/blog/world-cup-venues/${s.slu
 
 (async () => {
   if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
+
+  // Probe each venue's canonical slug against the live edge function
+  // (parallel, with a cap). Drop venues whose page returns "not found" —
+  // happens when our slugify differs from the edge function's, or when
+  // a venue was deleted/renamed between insert and now.
+  console.log('  Pulling venues + probing edge function for /pubs/<slug> resolution...\n');
   const counts = {};
+  let totalDropped = 0;
   for (const s of STADIUMS) {
     process.stdout.write(`  ${s.city.padEnd(38)} `);
-    const venues = await fetchNearbyVenues(s);
+    const raw = await fetchNearbyVenues(s);
+
+    // Probe each candidate's canonical slug in parallel (concurrency limit
+    // is implicit via Promise.all + Node's fetch agent — fine for ≤50).
+    const probes = await Promise.all(
+      raw.map(async (v) => ({ v, ok: await probeVenueSlug(venueSlug(v)) }))
+    );
+    const venues = probes.filter((p) => p.ok).map((p) => p.v);
+    const dropped = raw.length - venues.length;
+    totalDropped += dropped;
+
     const html = renderStadiumPage(s, venues);
     fs.writeFileSync(path.join(OUT_DIR, `${s.slug}.html`), html);
     counts[s.slug] = venues.length;
     const closest = venues[0] ? `closest: ${venues[0].name} (${fmtDistance(venues[0].distance_km)})` : '(none in radius)';
-    console.log(`${String(venues.length).padStart(3)} venues  ${closest}`);
+    const dropTag = dropped > 0 ? ` (-${dropped} 404)` : '';
+    console.log(`${String(venues.length).padStart(3)} venues${dropTag}  ${closest}`);
   }
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), renderIndexPage(counts));
   console.log(`\nWrote ${STADIUMS.length + 1} pages → ${OUT_DIR}`);
   const total = Object.values(counts).reduce((a, b) => a + b, 0);
-  console.log(`Total venue rows across all pages: ${total}`);
+  console.log(`Total venue rows across all pages: ${total}${totalDropped ? ` (${totalDropped} dropped — edge function returned 404 for canonical slug)` : ''}`);
 
   // Patch the parent Stadium Map page so each city card shows its venue
   // count in brackets. Keeps the numbers in sync as new venues land.
