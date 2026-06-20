@@ -258,6 +258,69 @@
 .bwc-squad dd { color: var(--text); margin: 0; font-weight: 500; }
 @media (max-width: 600px) { .bwc-squad dl { grid-template-columns: 1fr; gap: 2px 0; } .bwc-squad dt { margin-top: 6px; } }
 
+/* --- Responsive shell (BWC desktop width pass) --------------------------
+ * The page-level <style> caps .content at max-width: 760px — perfect for
+ * mobile reading flow, too narrow for desktop campaign modules (match
+ * deck, follow module, fixture list, venue grid, officials trio,
+ * roadmap). Adding .bwc-shell to <article class="content"> on BWC pages
+ * lifts the shell to ~1120px on desktop while keeping prose blocks
+ * narrow for readability.
+ *
+ * Pattern (per Paul's spec):
+ *   <article class="content bwc-shell">    ← 1120px desktop
+ *     <p class="meta">...</p>              ← stays 760px
+ *     <h1>...</h1>                          ← stays 760px
+ *     <p class="subtitle">...</p>          ← stays 760px
+ *     <div class="bwc">
+ *       <p class="lede">...</p>            ← stays 760px (prose)
+ *       <div class="bwc-follow">...</div>  ← full 1120px (campaign module)
+ *       <div class="bwc-match-deck">...    ← full 1120px (campaign module)
+ *     </div>
+ *   </article>
+ *
+ * Mobile: .content's existing media query already shrinks padding;
+ * shell width collapses to (100vw - 32px) via the min() expression.
+ */
+article.bwc-shell { max-width: min(100% - 32px, 1120px); }
+
+/* Page header: meta + h1 + subtitle stay narrow for article reading flow */
+article.bwc-shell > .meta,
+article.bwc-shell > h1,
+article.bwc-shell > .subtitle,
+article.bwc-shell > .updated-line { max-width: 760px; margin-left: auto; margin-right: auto; }
+
+/* Prose-shaped children of .bwc stay narrow for reading flow.
+   Listed by element/class explicitly so it's clear what gets narrow
+   treatment vs what gets the wider shell width. */
+.bwc > p,
+.bwc > h2,
+.bwc > h3,
+.bwc > .bwc-chips,
+.bwc > .bwc-rule,
+.bwc > .bwc-pullquote,
+.bwc > .bwc-chant,
+.bwc > .bwc-points-note,
+.bwc > .bwc-loaded-callout,
+.bwc > .bwc-opening-xi-toggle,
+.bwc > .bwc-cta-pair,
+.bwc > .bwc-nomination,
+.bwc > .bwc-squad-toggle,
+.bwc > figure { max-width: 760px; margin-left: auto; margin-right: auto; }
+
+/* Wide-by-default children of .bwc (no narrow rule = full shell width):
+   .bwc-follow, .bwc-match-deck, .bwc-match-cycler, .bwc-fixture-list,
+   .bwc-venues, .bwc-stepper, .bwc-officials-tabs, .bwc-scout-callout,
+   .bwc-venue-filter — these are the campaign furniture, intended wide. */
+
+/* Inside a squad-toggle (Line-Ups), once expanded, the dl content stays
+   narrow for line-length comfort. Header bar stays at 760. */
+.bwc-squad-toggle .bwc-squad dl { max-width: 720px; margin-inline: auto; }
+
+/* Public utility classes per Paul's spec — usable explicitly if any
+   future module wants to opt into a specific width. */
+.bwc-copy { max-width: 760px; margin-inline: auto; }
+.bwc-wide { width: 100%; max-width: none; }
+
 /* --- Loaded / Fat Les voice layer ---------------------------------------
  * The framework above is the controlled magazine. These three components
  * are the noisy magazine pull-out — terrace chant, mock-serious authority,
