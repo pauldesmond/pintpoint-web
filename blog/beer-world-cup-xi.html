@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-itunes-app" content="app-id=6760611613">
   <title>Beer World Cup XI: 48 Nations, Real Fixtures, Stupidly Serious Beer Results</title>
-  <meta name="description" content="Every country in the World Cup gets a beer squad. Real fixtures. Beer results. A serialised editorial tournament running alongside the real one — squad reveals, match cards, knockout brackets, a hero final, post-tournament awards. Help us pick the squads." />
+  <meta name="description" content="Beer World Cup XI: 48 nations, a beer squad each, real fixtures drive every matchup. A serialised editorial tournament running alongside the real World Cup 2026 — squad reveals, live match cards, knockout bracket, hero final, post-tournament awards. Pub VAR overrules; the Selection Committee refuses to explain itself. Help pick the squads." />
   <meta name="robots" content="index,follow" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <meta property="og:type" content="article" />
@@ -77,6 +77,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="bwc.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
@@ -152,82 +153,108 @@
 
     <h1>Beer <em>World Cup XI</em></h1>
     <p class="subtitle">48 nations. Real fixtures. Stupidly serious beer results.</p>
-    <p class="updated-line">Follow the tournament on X: <a href="https://x.com/hashtag/BeerWorldCupXI" target="_blank" rel="noopener">#BeerWorldCupXI</a>.</p>
 
-    <p class="lede">The World Cup has 48 nations. Obviously, each one needs a beer squad.</p>
+    <div class="bwc">
 
-    <p>So here's the bad idea: what if countries competed by beer instead of football?</p>
+      <p class="lede">The World Cup has 48 nations. Obviously, each one needs a beer squad. So here's the bad idea: what if countries competed by beer instead of football? Not official. Not scientific. Not sensible. But absolutely worth arguing about.</p>
 
-    <p>Not official. Not scientific. Not sensible. But absolutely worth arguing about.</p>
+      <p>Welcome to Beer World Cup XI.</p>
 
-    <p>Welcome to Beer World Cup XI.</p>
+      <nav class="bwc-jump" aria-label="In-page contents">
+        <a href="#premise">Premise</a>
+        <a href="#why-squad">Why a squad</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#officials">Officials</a>
+        <a href="#opening-xi">Opening XI</a>
+        <a href="#headaches">Selection headaches</a>
+        <a href="#help-pick">Help pick</a>
+        <a href="#coming">What's coming</a>
+      </nav>
 
-    <figure style="margin: 28px 0;">
-      <img src="images/beer-world-cup-xi-infographic-v1.jpg" alt="Beer World Cup XI infographic — an example starting XI of 11 beer bottles arranged on a football pitch, one per nation: Brazil Antarctica, USA Sierra Nevada, Japan Sapporo, Belgium Orval, Germany Weihenstephaner, England Camden Hells, Spain Estrella Damm, France Kronenbourg 1664, Italy Birra Moretti L'Autentica, Morocco Casablanca, Uruguay Patricia. Headline: 48 nations. Real fixtures. Beer results. Every country gets a squad. Millions of opinions." loading="lazy" style="width:100%;height:auto;border-radius:8px;display:block;border:1px solid var(--border);" />
-      <figcaption style="margin-top:10px;font-size:0.82rem;color:var(--muted);line-height:1.5;text-align:center;">An example XI. First draft, not final selection.</figcaption>
-    </figure>
+      <div class="bwc-follow" aria-label="Follow the tournament">
+        <div class="bwc-follow-label">Follow the tournament</div>
+        <ul>
+          <li><a href="/blog/beer-world-cup-xi-fixtures.html"><span class="bwc-chip">Live</span>Fixtures &amp; Results</a></li>
+          <li><a href="/blog/beer-world-cup-xi-line-ups.html"><span class="bwc-chip">XI</span>Country Line-Ups</a></li>
+          <li><a href="/blog/world-cup-stadium-beer-map.html"><span class="bwc-chip map">Map</span>Stadium Beer Map</a></li>
+          <li><a href="https://x.com/hashtag/BeerWorldCupXI" target="_blank" rel="noopener"><span class="bwc-chip tag">#</span>BeerWorldCupXI on X</a></li>
+        </ul>
+      </div>
 
-    <h2>The premise</h2>
+      <figure style="margin: 28px 0;">
+        <img src="images/beer-world-cup-xi-infographic-v1.jpg" alt="Beer World Cup XI infographic — an example starting XI of 11 beer bottles arranged on a football pitch, one per nation: Brazil Antarctica, USA Sierra Nevada, Japan Sapporo, Belgium Orval, Germany Weihenstephaner, England Camden Hells, Spain Estrella Damm, France Kronenbourg 1664, Italy Birra Moretti L'Autentica, Morocco Casablanca, Uruguay Patricia. Headline: 48 nations. Real fixtures. Beer results. Every country gets a squad. Millions of opinions." loading="lazy" style="width:100%;height:auto;border-radius:8px;display:block;border:1px solid var(--border);" />
+        <figcaption style="margin-top:10px;font-size:0.82rem;color:var(--muted);line-height:1.5;text-align:center;">An example XI. First draft, not final selection.</figcaption>
+      </figure>
 
-    <p>Every country in the World Cup gets a beer squad.</p>
+      <div class="bwc-opening-xi" aria-label="Example opening XI text version">
+        <div class="bwc-oxi-label">Example Opening XI · text version</div>
+        <dl>
+          <div><dt>🇧🇷 Brazil</dt><dd>Antarctica</dd></div>
+          <div><dt>🇺🇸 USA</dt><dd>Sierra Nevada</dd></div>
+          <div><dt>🇯🇵 Japan</dt><dd>Sapporo</dd></div>
+          <div><dt>🇧🇪 Belgium</dt><dd>Orval</dd></div>
+          <div><dt>🇩🇪 Germany</dt><dd>Weihenstephaner</dd></div>
+          <div><dt>🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</dt><dd>Camden Hells</dd></div>
+          <div><dt>🇪🇸 Spain</dt><dd>Estrella Damm</dd></div>
+          <div><dt>🇫🇷 France</dt><dd>Kronenbourg 1664</dd></div>
+          <div><dt>🇮🇹 Italy</dt><dd>Birra Moretti L'Autentica</dd></div>
+          <div><dt>🇲🇦 Morocco</dt><dd>Casablanca</dd></div>
+          <div><dt>🇺🇾 Uruguay</dt><dd>Patricia</dd></div>
+        </dl>
+        <p class="bwc-oxi-note">First draft, not final selection. Argue with us via <a href="#help-pick">Help pick the squads</a> below.</p>
+      </div>
 
-    <p>The tournament follows the real fixtures. The football teams play on the pitch. The beers play in the pub.</p>
+      <h2 id="premise">The premise</h2>
 
-    <div class="tagline">
-      <div class="line">Real fixtures. Beer results.</div>
-      <div class="foot">When two countries meet, their beers go head-to-head.</div>
-    </div>
+      <p>Every country in the World Cup gets a beer squad. The tournament follows the real fixtures. The football teams play on the pitch. The beers play in the pub.</p>
 
-    <p>Some results will be obvious. Some will be controversial. Some will probably require a steward's inquiry and another round.</p>
+      <blockquote class="bwc-pullquote">Real fixtures. Beer results.</blockquote>
+      <p style="text-align: center; font-size: 0.88rem; color: var(--muted); margin-top: -14px; margin-bottom: 22px;">When two countries meet, their beers go head-to-head.</p>
 
-    <p>That is the point.</p>
+      <p>Some results will be obvious. Some will be controversial. Some will probably require a steward's inquiry and another round. That is the point.</p>
 
-    <h2>Why a squad?</h2>
+      <h2 id="why-squad">Why a squad?</h2>
 
-    <p>One beer per country is too easy, and usually unfair.</p>
+      <p>One beer per country is too easy, and usually unfair. Some countries have obvious flagship lagers. Some have deep brewing cultures. Some have brilliant local beers that never get mentioned. Some are genuinely hard to scout from here.</p>
 
-    <p>Some countries have obvious flagship lagers. Some have deep brewing cultures. Some have brilliant local beers that never get mentioned. Some are genuinely hard to scout from here.</p>
+      <p>So every country gets a squad. That gives us room for:</p>
 
-    <p>So every country gets a squad.</p>
+      <ul class="bwc-chips" aria-label="What a squad covers">
+        <li>national icons</li>
+        <li>local favourites</li>
+        <li>craft contenders</li>
+        <li>old-school lagers</li>
+        <li>controversial omissions</li>
+        <li>emergency call-ups</li>
+        <li>reader nominations</li>
+      </ul>
 
-    <p>That gives us room for:</p>
+      <p>Belgium are going to have absurd depth. Germany will be organised. The USA will be impossible to reduce to a clean selection. England will have plenty of options and still find a way to make selection stressful.</p>
 
-    <ul>
-      <li>obvious national icons</li>
-      <li>proper local favourites</li>
-      <li>craft contenders</li>
-      <li>old-school lagers</li>
-      <li>controversial omissions</li>
-      <li>emergency call-ups</li>
-      <li>reader nominations</li>
-    </ul>
+      <p>This is football heritage, but with bottle caps.</p>
 
-    <p>Belgium are going to have absurd depth. Germany will be organised. The USA will be impossible to reduce to a clean selection. England will have plenty of options and still find a way to make selection stressful.</p>
+      <h2 id="how-it-works">How the tournament works</h2>
 
-    <p>This is football heritage, but with bottle caps.</p>
+      <p>When two countries meet in the World Cup, we pick beers from each nation's squad and judge the matchup. Like this:</p>
 
-    <h2>How the tournament works</h2>
+      <div class="bwc-match" aria-label="Example match card">
+        <div class="bwc-match-header">
+          <span class="bwc-match-stage">Group Stage · Worked example</span>
+          <span class="bwc-match-status example">Example</span>
+        </div>
+        <div class="bwc-match-body">
+          <p class="bwc-match-teams">🇩🇪 Germany v Mexico 🇲🇽</p>
+          <p class="bwc-match-beers">Augustiner Helles <span class="vs">v</span> Modelo Especial</p>
+          <p class="bwc-match-caption">Germany wins on structure. Mexico dominates airport availability.</p>
+          <p class="bwc-match-var"><strong>Pub VAR</strong> Drinkability checked. Result stands.</p>
+          <p class="bwc-match-result">Germany 2 – 1 Mexico</p>
+        </div>
+      </div>
 
-    <p>The rule is simple:</p>
+      <p>The judging is half-serious, which is to say: serious enough to cause arguments, not serious enough to require a governing body.</p>
 
-    <blockquote class="pull">Real fixtures. Beer results.</blockquote>
-
-    <p>When two countries meet in the World Cup, we pick beers from each nation's squad and judge the matchup. Like this:</p>
-
-    <div class="match-card">
-      <div class="stage">Group Stage</div>
-      <div class="teams">Germany v Mexico</div>
-      <div class="beers">Augustiner Helles v Modelo Especial</div>
-      <div class="caption">Germany wins on structure. Mexico dominates airport availability.</div>
-      <div class="var-line">PUB VAR: Drinkability checked. Result stands.</div>
-      <div class="result">Beer result: Germany 2-1 Mexico</div>
-    </div>
-
-    <p>The judging is half-serious, which is to say: serious enough to cause arguments, not serious enough to require a governing body.</p>
-
-    <div class="judging-panel">
-      <h3>Beers can win on</h3>
-      <ul>
+      <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 22px; margin-bottom: 8px;">Beers can win on</p>
+      <ul class="bwc-chips" aria-label="Judging criteria">
         <li>overall quality</li>
         <li>style execution</li>
         <li>distinctiveness</li>
@@ -237,103 +264,100 @@
         <li>squad depth</li>
         <li>pub debate factor</li>
       </ul>
-    </div>
 
-    <p>The deciding question:</p>
+      <div class="bwc-rule">
+        <strong class="bwc-rule-label">The deciding rule</strong>
+        If these two beers met in a neutral pub, which one would you rather drink?
+      </div>
 
-    <blockquote class="pull">If these two beers met in a neutral pub, which one would you rather drink?</blockquote>
+      <p>That's the whole game.</p>
 
-    <p>That's the whole game.</p>
+      <h2 id="officials">Who's running this thing?</h2>
 
-    <h2>Who's running this thing?</h2>
+      <p>Three recurring authorities will appear across the tournament. They will overrule each other. They will agree on nothing.</p>
 
-    <p>Three recurring authorities will appear across the tournament. They will overrule each other. They will agree on nothing.</p>
+      <div class="bwc-officials" aria-label="The tournament officials">
+        <article class="bwc-official">
+          <div class="bwc-official-name">Pub VAR</div>
+          <div class="bwc-official-role">The referee</div>
+          <p class="bwc-official-voice">Reviews disputed results, applies availability penalties, upholds drinkability appeals.</p>
+          <p class="bwc-official-rules"><strong>Overrules:</strong> beer verdicts, contract-brewing eligibility, anyone who says "but the rules of beer."</p>
+        </article>
+        <article class="bwc-official">
+          <div class="bwc-official-name">The Selection Committee</div>
+          <div class="bwc-official-role">Squad authority</div>
+          <p class="bwc-official-voice">Denies requests to leave out world-class beers. Picks unpopular substitutes. Refuses to explain itself.</p>
+          <p class="bwc-official-rules"><strong>Overrules:</strong> public opinion, reader nominations, the captain's armband.</p>
+        </article>
+        <article class="bwc-official">
+          <div class="bwc-official-name">The Pint Desk</div>
+          <div class="bwc-official-role">Analyst voice</div>
+          <p class="bwc-official-voice">Match of the Day pundit energy, but with worse hydration.</p>
+          <p class="bwc-official-rules"><strong>Overrules:</strong> nobody. Provides round-by-round commentary, narrative arcs, post-bracket cold takes.</p>
+        </article>
+      </div>
 
-    <div class="judging-panel">
-      <h3>The Officials</h3>
-      <ul>
-        <li><strong>Pub VAR.</strong> The referee. Reviews disputed results, applies availability penalties, upholds drinkability appeals.</li>
-        <li><strong>The Selection Committee.</strong> Squad authority. Denies requests to leave out world-class beers. Picks unpopular substitutes. Refuses to explain itself.</li>
-        <li><strong>The Pint Desk.</strong> Analyst voice. Match of the Day pundit energy, but with worse hydration. Round-by-round commentary, narrative arcs, post-bracket cold takes.</li>
-      </ul>
-    </div>
+      <p>The whole conceit is loosely based on a distant memory of a Beer World Cup that Loaded magazine ran in the 1990s. We cannot find the issue. The Crisps and Vodka tournaments do survive — along with a few more insalubrious items — so the format definitely existed.</p>
 
-    <p>The whole conceit is loosely based on a distant memory of a Beer World Cup that Loaded magazine ran in the 1990s. We cannot find the issue. The Crisps and Vodka tournaments do survive — along with a few more insalubrious items — so the format definitely existed.</p>
+      <p>Beers will also be <span class="highlight">disqualified</span> mid-tournament where appropriate. Krispy Ice was struck out of a Loaded bracket in 1997 for being "the worst thing I've ever tasted." We respect the ruling.</p>
 
-    <p>Beers will also be <span class="highlight">disqualified</span> mid-tournament where appropriate. Krispy Ice was struck out of a Loaded bracket in 1997 for being "the worst thing I've ever tasted." We respect the ruling.</p>
+      <h2 id="opening-xi">The opening XI</h2>
 
-    <h2>The opening XI</h2>
+      <p>To show how this works, we've picked an example selection — the eleven countries and beers in the infographic above. It is not the final tournament list. It is not the official squad. It is not immune from abuse. It is an opening selection designed to start the argument.</p>
 
-    <p>To show how this works, we've picked an example selection.</p>
+      <p>Some are iconic. Some are there for balance. Some are already under review by the imaginary selection committee. You can argue with us. In fact, please do.</p>
 
-    <p>This is not the final tournament list. It is not the official squad. It is not immune from abuse. It is an opening selection designed to start the argument.</p>
+      <h2 id="headaches">The selection headaches</h2>
 
-    <p>Example call-ups include beers from <span class="highlight">Argentina</span>, the <span class="highlight">USA</span>, <span class="highlight">Japan</span>, <span class="highlight">Belgium</span>, <span class="highlight">Germany</span>, <span class="highlight">Czechia</span>, <span class="highlight">Portugal</span>, <span class="highlight">Spain</span>, <span class="highlight">Morocco</span>, <span class="highlight">Colombia</span> and <span class="highlight">Uruguay</span>.</p>
+      <p>This is where it gets interesting.</p>
 
-    <p>Some are iconic. Some are there for balance. Some are already under review by the imaginary selection committee.</p>
+      <p>Some countries are easy to scout badly and hard to scout well. Anyone can name the obvious lager. That does not mean it deserves the captain's armband.</p>
 
-    <p>You can argue with us. In fact, please do.</p>
+      <p>Some countries have too much depth. Belgium could probably field three squads and still complain about the bench. Germany will expect tactical discipline. The USA has regional chaos disguised as choice.</p>
 
-    <h2>The selection headaches</h2>
+      <p>Some countries need help. Imports are patchy. Local classics are hard to verify. Availability changes. A beer might be culturally obvious but practically impossible to find.</p>
 
-    <p>This is where it gets interesting.</p>
+      <p>So the squads will evolve. There will be call-ups. There will be omissions. There will be substitutions. There will definitely be someone saying we picked the wrong Belgian. Good.</p>
 
-    <p>Some countries are easy to scout badly and hard to scout well. Anyone can name the obvious lager. That does not mean it deserves the captain's armband.</p>
+      <h2 id="help-pick">Help pick the squads</h2>
 
-    <p>Some countries have too much depth. Belgium could probably field three squads and still complain about the bench. Germany will expect tactical discipline. The USA has regional chaos disguised as choice.</p>
+      <p>This only works if people argue with it. Tell us what your country should call up — national classics, local heroes, craft picks, supermarket legends, hard-to-find cult beers, beers available outside their home country, controversial omissions, anything that deserves a place in the squad. If your country has been lazily represented by one boring lager for too long, this is your moment.</p>
 
-    <p>Some countries need help. Imports are patchy. Local classics are hard to verify. Availability changes. A beer might be culturally obvious but practically impossible to find.</p>
+      <div class="bwc-nomination" aria-label="Send your call-ups">
+        <p class="bwc-nom-headline">Send your call-ups</p>
+        <p class="bwc-nom-blurb">Email <a href="mailto:hello@pintpoint.co.uk?subject=Beer%20World%20Cup%20XI%20call-up">hello@pintpoint.co.uk</a> with your country and the beers you'd put in the squad. One short line of justification per beer is plenty.</p>
+        <pre class="bwc-nom-template"><span class="key">Country:</span> <span class="hint">e.g. Belgium</span>
+<span class="key">Beer:</span>    <span class="hint">e.g. Saison Dupont</span>
+<span class="key">Why:</span>     <span class="hint">one line — what it earns its squad place on</span>
 
-    <p>So the squads will evolve.</p>
+<span class="hint">Add as many beers as you like. Each one gets its own short justification.</span></pre>
+        <a href="mailto:hello@pintpoint.co.uk?subject=Beer%20World%20Cup%20XI%20call-up&amp;body=Country%3A%20%0ABeer%3A%20%0AWhy%3A%20%0A" class="bwc-nom-cta">Send your call-ups</a>
+        <p class="bwc-nom-help">Reader nominations get folded into the squads as we build them out. Pub VAR will probably overrule us at least once.</p>
+      </div>
 
-    <p>There will be call-ups. There will be omissions. There will be substitutions. There will definitely be someone saying we picked the wrong Belgian.</p>
+      <h2 id="coming">What's coming</h2>
 
-    <p>Good.</p>
+      <p>This is the entry point. The rest of the tournament rolls out across the real World Cup 2026 window:</p>
 
-    <h2>Help pick the squads</h2>
+      <ol class="bwc-status-board" aria-label="Tournament roadmap">
+        <li><span class="bwc-status-pill live">Live</span><div class="bwc-status-text"><strong>Squad reveals</strong><span>48 countries in scouting-report format. Seed status, manager's problem, likely starters, wildcard, selection controversy.</span></div></li>
+        <li><span class="bwc-status-pill live">Live</span><div class="bwc-status-text"><strong>Group-stage match cards</strong><span>One matchup, one caption, one verdict. Already on the <a href="/blog/beer-world-cup-xi-fixtures.html">Fixtures board</a> for USA v Australia and Scotland v Morocco.</span></div></li>
+        <li><span class="bwc-status-pill coming">Coming</span><div class="bwc-status-text"><strong>Knockout bracket</strong><span>Round of 32, Quarter-Finals, Semi-Finals, The Final. Visual pages with the same authority as the 1997 magazine spreads they're descended from.</span></div></li>
+        <li><span class="bwc-status-pill coming">Coming</span><div class="bwc-status-text"><strong>The Final</strong><span>Staged as a trophy ceremony. Hero winner page, runner-up visible, completely over-serious match report.</span></div></li>
+        <li><span class="bwc-status-pill coming">Coming</span><div class="bwc-status-text"><strong>Post-tournament awards</strong><span>Golden Pint, Shock Exit, Best Pub Beer, People's Champion and VAR Robbery Of The Tournament.</span></div></li>
+      </ol>
 
-    <p>This only works if people argue with it.</p>
+      <p>Reader nominations get folded into the squads as we build them out. Pub VAR will probably overrule us at least once. The Pint Desk will absolutely have opinions about it.</p>
 
-    <p>Tell us what your country should call up.</p>
+      <div class="bwc-cta-pair" style="margin-top: 26px;">
+        <a href="/blog/beer-world-cup-xi-fixtures.html">View the Fixtures board →</a>
+        <a href="/blog/beer-world-cup-xi-line-ups.html" class="secondary">See all Country Line-Ups →</a>
+      </div>
 
-    <div class="selection-ask">
-      <p>We want <strong>national classics</strong>, <strong>local heroes</strong>, <strong>craft picks</strong>, <strong>supermarket legends</strong>, <strong>hard-to-find cult beers</strong>, <strong>beers available outside their home country</strong>, <strong>controversial omissions</strong> — and anything that deserves a place in the squad.</p>
-    </div>
+      <blockquote class="bwc-pullquote">Disciplined bracket. Absurd authority. Tiny verdicts. Fake gravitas. Real pub arguments.</blockquote>
 
-    <p>If your country has been lazily represented by one boring lager for too long, this is your moment.</p>
+      <p style="margin-top: 22px;">If you're actually going to a match, use the <a href="/blog/world-cup-stadium-beer-map.html">Stadium Beer Map</a>. This is the nonsense version where beers play football.</p>
 
-    <h2>What's coming</h2>
-
-    <p>This is the entry point. The rest of the tournament will roll out across the real World Cup window:</p>
-
-    <ol>
-      <li><strong>Squad reveals</strong> — 48 countries, each in scouting-report format. Seed status, manager's problem, likely starters, wildcard, selection controversy.</li>
-      <li><strong>Group stage match cards</strong> — one matchup, one caption, one verdict. Recurring social format, every fixture.</li>
-      <li><strong>Knockout brackets</strong> — Round of 32, Quarter-Finals, Semi-Finals, The Final. Visual pages with the same authority as the 1997 magazine spreads they're descended from.</li>
-      <li><strong>The Final</strong> — staged as a trophy ceremony. Hero winner page, runner-up visible, completely over-serious match report.</li>
-      <li><strong>Post-tournament awards</strong> — Golden Pint, Shock Exit, Best Pub Beer, People's Champion and VAR Robbery Of The Tournament.</li>
-    </ol>
-
-    <p>Reader nominations get folded into the squads as we build them out. Pub VAR will probably overrule us at least once. The Pint Desk will absolutely have opinions about it.</p>
-
-    <p style="margin-top: 22px;">See upcoming <a href="/blog/beer-world-cup-xi-fixtures.html">Beer World Cup XI fixtures and results</a> for the live campaign board. Country squads land on the <a href="/blog/beer-world-cup-xi-line-ups.html">All Country Line-Ups</a> page as they're announced.</p>
-
-    <div class="closer">
-      <p>Every country gets a squad.</p>
-      <p>Every fixture gets a beer result.</p>
-      <p>Every decision can be argued with.</p>
-    </div>
-
-    <blockquote class="pull">Disciplined bracket. Absurd authority. Tiny verdicts. Fake gravitas. Real pub arguments.</blockquote>
-
-    <p style="margin-top: 28px;">If you're actually going to a match, use the <a href="/blog/world-cup-stadium-beer-map.html">Stadium Beer Map</a>. This is the nonsense version where beers play football.</p>
-
-    <div class="cta-card">
-      <p><strong>Help your country pick its beer squad. Send us your call-ups.</strong></p>
-      <a href="mailto:hello@pintpoint.co.uk?subject=Beer%20World%20Cup%20XI%20call-up" class="cta">
-        Send your call-ups
-      </a>
-      <p class="cta-help">Email <a href="mailto:hello@pintpoint.co.uk?subject=Beer%20World%20Cup%20XI%20call-up">hello@pintpoint.co.uk</a> with your country, the beers you'd call up, and one line of justification for each. Reader nominations get folded into the squads as we build them out.</p>
     </div>
   </article>
 

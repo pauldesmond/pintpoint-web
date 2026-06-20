@@ -1,0 +1,129 @@
+/* ---------------------------------------------------------------------------
+ * Beer World Cup XI — shared campaign components
+ * Scope: everything below is scoped under .bwc so it cannot leak into the
+ * rest of PINtPOINT. Pages: beer-world-cup-xi.html (manifesto),
+ * beer-world-cup-xi-fixtures.html, beer-world-cup-xi-line-ups.html.
+ *
+ * The campaign components below are designed to make the three pages feel
+ * like one tournament hub. Voice and copy live in the markup; styling
+ * lives here.
+ * ---------------------------------------------------------------------------
+ */
+
+/* The wrapper just exists so we have a scope handle — no layout. */
+.bwc { }
+
+/* --- Jump strip (in-page nav under intro) --------------------------------- */
+.bwc-jump { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px 0 18px; margin: 0 0 22px; border-bottom: 1px solid var(--border); font-size: 0.78rem; }
+.bwc-jump a { color: var(--muted); text-decoration: none; padding: 4px 10px; border-radius: 999px; background: var(--card); border: 1px solid var(--border); transition: all .15s; }
+.bwc-jump a:hover { color: var(--teal); border-color: var(--teal); }
+.bwc-jump a:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+/* --- Follow the tournament module ----------------------------------------- */
+.bwc-follow { margin: 22px 0; padding: 16px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; }
+.bwc-follow .bwc-follow-label { font-size: 0.7rem; font-weight: 700; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+.bwc-follow ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.bwc-follow li { font-size: 0.93rem; }
+.bwc-follow a { color: var(--text); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; padding: 4px 0; }
+.bwc-follow a:hover { color: var(--teal); }
+.bwc-follow a:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.bwc-follow .bwc-chip { font-size: 0.62rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; background: rgba(0,212,170,0.15); color: var(--teal); }
+.bwc-follow .bwc-chip.map { background: rgba(192,163,64,0.15); color: var(--amber); }
+.bwc-follow .bwc-chip.tag { background: rgba(255,255,255,0.06); color: var(--muted); }
+
+/* --- CTA pair (two main next-step buttons) -------------------------------- */
+.bwc-cta-pair { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0; }
+.bwc-cta-pair a { flex: 1 1 220px; padding: 14px 18px; background: var(--teal); color: #0d1117; text-decoration: none; border-radius: 8px; font-weight: 800; text-align: center; letter-spacing: -0.2px; transition: transform .1s; }
+.bwc-cta-pair a:hover { transform: translateY(-1px); }
+.bwc-cta-pair a:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.bwc-cta-pair a.secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+.bwc-cta-pair a.secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+/* --- Match card (the canonical .bwc-match component) ---------------------- */
+.bwc-match { margin: 22px 0; padding: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card); }
+.bwc-match .bwc-match-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 16px; background: rgba(0,212,170,0.06); border-bottom: 1px solid var(--border); }
+.bwc-match .bwc-match-stage { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); }
+.bwc-match .bwc-match-status { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+.bwc-match .bwc-match-status.ft       { background: rgba(0,212,170,0.15); color: var(--teal); }
+.bwc-match .bwc-match-status.example  { background: rgba(192,163,64,0.15); color: var(--amber); }
+.bwc-match .bwc-match-status.live     { background: rgba(255,92,92,0.18); color: #ff7373; }
+.bwc-match .bwc-match-status.coming   { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); }
+.bwc-match .bwc-match-status.scouting { background: rgba(192,163,64,0.12); color: var(--amber); border: 1px solid rgba(192,163,64,0.4); }
+.bwc-match .bwc-match-body { padding: 18px 20px; }
+.bwc-match .bwc-match-teams { font-size: 1.05rem; font-weight: 800; color: var(--text); letter-spacing: -0.2px; margin: 0 0 4px; }
+.bwc-match .bwc-match-beers { font-size: 0.95rem; color: var(--muted); margin: 0 0 14px; line-height: 1.5; }
+.bwc-match .bwc-match-beers .vs { color: var(--teal); font-weight: 700; padding: 0 6px; }
+.bwc-match .bwc-match-caption { font-size: 0.93rem; color: var(--text); line-height: 1.6; margin: 0 0 14px; }
+.bwc-match .bwc-match-var { padding: 10px 14px; border-left: 3px solid var(--amber); background: rgba(192,163,64,0.08); border-radius: 4px; font-size: 0.9rem; color: var(--text); margin: 0 0 14px; line-height: 1.55; }
+.bwc-match .bwc-match-var strong { color: var(--amber); letter-spacing: 1.5px; font-size: 0.72rem; text-transform: uppercase; display: inline-block; margin-right: 6px; }
+.bwc-match .bwc-match-result { font-size: 1.1rem; font-weight: 800; font-family: 'SF Mono', Menlo, Monaco, monospace; color: var(--text); padding: 12px 14px; background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.25); border-radius: 6px; text-align: center; letter-spacing: 0.4px; margin: 0; }
+.bwc-match .bwc-match-result.pending { color: var(--muted); background: rgba(255,255,255,0.03); border-color: var(--border); font-weight: 600; }
+
+/* Squad blocks inside a .bwc-match (used by Fixtures cards with both XIs) */
+.bwc-match .bwc-match-squads { display: grid; grid-template-columns: 1fr; gap: 14px; padding: 0 20px 18px; }
+.bwc-match .bwc-match-squad-block { padding-top: 14px; border-top: 1px solid var(--border); }
+.bwc-match .bwc-match-squad-block:first-child { border-top: none; padding-top: 0; }
+.bwc-match .bwc-match-squad-country { font-size: 0.92rem; font-weight: 800; color: var(--teal); margin-bottom: 6px; letter-spacing: -0.2px; }
+.bwc-match .bwc-match-squad-intro { font-size: 0.92rem; color: var(--text); line-height: 1.55; margin: 0 0 10px; }
+.bwc-match .bwc-match-squad-list { margin: 8px 0 6px 18px; padding: 0; }
+.bwc-match .bwc-match-squad-list li { font-size: 0.9rem; color: var(--text); line-height: 1.55; margin-bottom: 3px; }
+.bwc-match .bwc-match-squad-footnote { font-size: 0.83rem; color: var(--muted); font-style: italic; margin-top: 6px; line-height: 1.55; }
+
+/* --- Officials cards (three compact, side-by-side on desktop) ------------- */
+.bwc-officials { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 18px 0 22px; }
+.bwc-official { padding: 16px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; display: flex; flex-direction: column; }
+.bwc-official .bwc-official-name { font-size: 0.95rem; font-weight: 800; color: var(--teal); margin-bottom: 2px; letter-spacing: -0.2px; }
+.bwc-official .bwc-official-role { font-size: 0.68rem; font-weight: 700; color: var(--muted); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px; }
+.bwc-official .bwc-official-voice { font-size: 0.88rem; color: var(--text); line-height: 1.55; margin-bottom: 8px; }
+.bwc-official .bwc-official-rules { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin-top: auto; padding-top: 8px; border-top: 1px dashed var(--border); }
+.bwc-official .bwc-official-rules strong { color: var(--text); font-weight: 600; }
+
+/* --- Status board (roadmap with status pills) ----------------------------- */
+.bwc-status-board { margin: 18px 0 22px; padding: 0; border: 1px solid var(--border); border-radius: 10px; background: var(--card); overflow: hidden; list-style: none; }
+.bwc-status-board > li { display: grid; grid-template-columns: 92px 1fr; gap: 14px; align-items: start; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+.bwc-status-board > li:last-child { border-bottom: none; }
+.bwc-status-pill { font-size: 0.66rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; text-align: center; align-self: start; justify-self: start; white-space: nowrap; }
+.bwc-status-pill.live   { background: rgba(0,212,170,0.18); color: var(--teal); }
+.bwc-status-pill.coming { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid var(--border); }
+.bwc-status-text strong { font-size: 0.95rem; font-weight: 800; color: var(--text); display: block; margin-bottom: 2px; }
+.bwc-status-text span { color: var(--muted); font-size: 0.88rem; line-height: 1.5; display: block; }
+
+/* --- Mono chips (squad slots, judging criteria) --------------------------- */
+.bwc-chips { list-style: none; padding: 0; margin: 14px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.bwc-chips li { padding: 5px 11px; font-size: 0.82rem; font-family: 'SF Mono', Menlo, Monaco, monospace; color: var(--text); background: var(--card); border: 1px solid var(--border); border-radius: 4px; letter-spacing: 0.2px; }
+
+/* --- Pull-quote (motto / manifesto lines, big) --------------------------- */
+.bwc-pullquote { margin: 30px 0; padding: 28px 24px; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); font-size: 1.35rem; font-weight: 800; color: var(--teal); letter-spacing: -0.3px; line-height: 1.3; font-style: normal; }
+
+/* --- Rule callout (actual mechanic readers need to remember) ------------- */
+.bwc-rule { margin: 18px 0; padding: 16px 20px; border-left: 4px solid var(--teal); background: rgba(0,212,170,0.06); border-radius: 4px; font-size: 1.02rem; color: var(--text); line-height: 1.55; font-weight: 500; }
+.bwc-rule strong.bwc-rule-label { color: var(--teal); display: block; font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; font-weight: 700; }
+
+/* --- Nomination CTA (the one clear "help pick" block) -------------------- */
+.bwc-nomination { margin: 28px 0; padding: 22px 24px; background: var(--card); border: 1px solid var(--teal); border-radius: 12px; }
+.bwc-nomination .bwc-nom-headline { font-size: 1.05rem; font-weight: 800; color: var(--text); margin: 0 0 8px; letter-spacing: -0.2px; }
+.bwc-nomination .bwc-nom-blurb { font-size: 0.94rem; color: var(--text); line-height: 1.55; margin: 0 0 14px; }
+.bwc-nomination .bwc-nom-template { padding: 14px 16px; background: rgba(0,0,0,0.25); border: 1px solid var(--border); border-radius: 6px; font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.82rem; color: var(--text); line-height: 1.7; margin: 0 0 16px; white-space: pre-wrap; }
+.bwc-nomination .bwc-nom-template .key { color: var(--teal); font-weight: 700; }
+.bwc-nomination .bwc-nom-template .hint { color: var(--muted); font-style: italic; }
+.bwc-nomination .bwc-nom-cta { display: inline-block; padding: 12px 22px; background: var(--teal); color: #0d1117; text-decoration: none; border-radius: 8px; font-weight: 800; font-size: 0.95rem; transition: transform .1s; }
+.bwc-nomination .bwc-nom-cta:hover { transform: translateY(-1px); }
+.bwc-nomination .bwc-nom-cta:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.bwc-nomination .bwc-nom-help { font-size: 0.82rem; color: var(--muted); margin: 10px 0 0; line-height: 1.55; }
+
+/* --- Opening XI text-fallback list ---------------------------------------- */
+.bwc-opening-xi { margin: 14px 0 22px; padding: 16px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; }
+.bwc-opening-xi .bwc-oxi-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+.bwc-opening-xi dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 4px 16px; margin: 0; }
+.bwc-opening-xi dl > div { display: flex; gap: 8px; align-items: baseline; padding: 3px 0; }
+.bwc-opening-xi dt { font-size: 0.88rem; color: var(--muted); flex: 0 0 auto; min-width: 92px; }
+.bwc-opening-xi dd { font-size: 0.92rem; font-weight: 600; color: var(--text); margin: 0; }
+.bwc-opening-xi .bwc-oxi-note { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+
+/* --- Mobile fall-backs ---------------------------------------------------- */
+@media (max-width: 600px) {
+  .bwc-status-board > li { grid-template-columns: 1fr; gap: 6px; }
+  .bwc-pullquote { font-size: 1.15rem; padding: 22px 18px; }
+  .bwc-officials { grid-template-columns: 1fr; }
+  .bwc-opening-xi dl { grid-template-columns: 1fr; }
+}
