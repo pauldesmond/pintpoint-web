@@ -153,8 +153,11 @@
 .bwc-match-cycler { position: relative; margin: 22px 0; }
 .bwc-cycler-controls { display: none; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 8px 4px; }
 .bwc-match-cycler[data-js="ready"] .bwc-cycler-controls { display: flex; }
-.bwc-match-cycler[data-js="ready"] > .bwc-match { display: none; }
-.bwc-match-cycler[data-js="ready"] > .bwc-match.active { display: block; }
+/* Hide non-active cards. !important so nothing — cached rules, late stylesheets,
+   inline styles — can override. wireCycler also sets the native [hidden]
+   attribute as a second defence (browser UA stylesheet handles that). */
+.bwc-match-cycler[data-js="ready"] > .bwc-match { display: none !important; }
+.bwc-match-cycler[data-js="ready"] > .bwc-match.active { display: block !important; }
 .bwc-cycler-nav { display: flex; gap: 8px; }
 .bwc-cycler-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 7px 14px; border-radius: 8px; font-size: 0.84rem; cursor: pointer; font-family: inherit; font-weight: 600; line-height: 1; }
 .bwc-cycler-btn:hover:not(:disabled) { border-color: var(--teal); color: var(--teal); }

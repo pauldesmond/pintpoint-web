@@ -97,8 +97,14 @@
     function show(i) {
       idx = (i + cards.length) % cards.length;
       cards.forEach(function (card, ci) {
-        card.classList.toggle('active', ci === idx);
-        card.setAttribute('aria-hidden', ci === idx ? 'false' : 'true');
+        var on = ci === idx;
+        card.classList.toggle('active', on);
+        card.setAttribute('aria-hidden', on ? 'false' : 'true');
+        // Native [hidden] attribute — browser UA stylesheet hides these without
+        // needing any custom CSS rule. Same pattern as wireTabs(). This is what
+        // actually drives the visual swap; .active is just a styling hook.
+        if (on) card.removeAttribute('hidden');
+        else    card.setAttribute('hidden', '');
       });
       dots.forEach(function (dot, di) {
         var on = di === idx;
