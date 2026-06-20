@@ -220,6 +220,31 @@
 .bwc-scout-callout strong { color: var(--amber); }
 .bwc-scout-callout p { font-size: 0.94rem; color: var(--text); line-height: 1.55; margin: 0; }
 
+/* --- Squad <details> disclosure (Line-Ups page) -------------------------- */
+/* Each country squad lives inside <details class="bwc-squad-toggle"> so only
+   the country header + status pill is visible by default. Click to expand
+   for the full scouting report. Native <details>, no JS. Print: forced open. */
+.bwc-squad-toggle { margin: 10px 0; }
+.bwc-squad-toggle > summary { cursor: pointer; padding: 14px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: space-between; gap: 12px; list-style: none; transition: border-color .15s; }
+.bwc-squad-toggle > summary::-webkit-details-marker { display: none; }
+.bwc-squad-toggle > summary:hover { border-color: var(--teal); }
+.bwc-squad-toggle > summary:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.bwc-squad-toggle[open] > summary { border-radius: 10px 10px 0 0; border-bottom-color: transparent; }
+.bwc-squad-toggle .bwc-st-left { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1 1 auto; }
+.bwc-squad-toggle .bwc-st-country { font-size: 1.0rem; font-weight: 800; color: var(--text); letter-spacing: -0.2px; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; }
+.bwc-squad-toggle .bwc-st-status { font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 8px; border-radius: 999px; white-space: nowrap; flex: 0 0 auto; }
+.bwc-squad-toggle .bwc-st-status.ok       { background: rgba(0,212,170,0.15); color: var(--teal); }
+.bwc-squad-toggle .bwc-st-status.honest   { background: rgba(0,212,170,0.08); color: var(--teal); border: 1px solid rgba(0,212,170,0.25); }
+.bwc-squad-toggle .bwc-st-status.thin     { background: rgba(192,163,64,0.12); color: var(--amber); border: 1px solid rgba(192,163,64,0.4); }
+.bwc-squad-toggle .bwc-st-chev { color: var(--teal); transition: transform .2s; font-size: 0.8rem; line-height: 1; flex: 0 0 auto; }
+.bwc-squad-toggle[open] .bwc-st-chev { transform: rotate(180deg); }
+.bwc-squad-toggle .bwc-squad { margin: 0; border-top: 0; border-radius: 0 0 10px 10px; }
+@media print {
+  .bwc-squad-toggle:not([open]) > .bwc-squad { display: block !important; }
+  .bwc-squad-toggle > summary { display: none !important; }
+  .bwc-squad-toggle .bwc-squad { border-radius: 10px; border-top: 1px solid var(--border); }
+}
+
 /* --- Squad card (country line-up component) ------------------------------ */
 .bwc-squad { margin: 18px 0; padding: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card); }
 .bwc-squad .bwc-squad-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 16px; background: rgba(0,212,170,0.06); border-bottom: 1px solid var(--border); }

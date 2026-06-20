@@ -63,7 +63,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="bwc.css" />
+  <link rel="stylesheet" href="bwc.css?v=4" />
+  <script src="bwc.js?v=4" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
@@ -134,38 +135,301 @@
         </ul>
       </div>
 
-      <h2>Example squad — the format</h2>
-
-      <p>Each country page reads like this:</p>
-
-      <article class="bwc-squad" aria-label="Example squad format — Belgium">
-        <div class="bwc-squad-header">
-          <span class="bwc-squad-country">🇧🇪 Belgium</span>
-          <span class="bwc-squad-status example">Illustrative · not final</span>
-        </div>
-        <dl>
-          <dt>Seed status</dt>
-          <dd>Tournament favourite</dd>
-          <dt>Manager's problem</dt>
-          <dd>Too much depth</dd>
-          <dt>Likely starters</dt>
-          <dd>Orval, Duvel, Saison Dupont, Rochefort</dd>
-          <dt>Wildcard</dt>
-          <dd>Cantillon Gueuze</dd>
-          <dt>Selection controversy</dt>
-          <dd>Leaving out half the country</dd>
-          <dt>Pub VAR watching</dt>
-          <dd>Whether Trappist beers count as a separate competition</dd>
-        </dl>
-      </article>
-
-      <p>This is an illustrative example — not Belgium's locked squad. Actual squads roll out alongside the real fixtures.</p>
-
       <h2>Squads as they land</h2>
 
-      <div class="empty-state">
-        No country squads published here yet. Squad nominations for the campaign-selected countries (USA, Australia, Scotland, Morocco, plus Phase 1 covering Brazil, Turkey, Paraguay, Netherlands, Sweden, Germany, Ivory Coast, Ecuador, Curaçao, England, Ghana, Panama, Haiti) are drafted; reveal cards land here ahead of each fixture.<br /><br />
-        Next reveal: England, planned ahead of the group-stage opener against Ghana on Tuesday 23 June.
+      <p>Tap any country to expand the full scouting report. Squads update as Pub VAR rules on disputed picks, the Selection Committee changes its mind, and reader nominations get folded in.</p>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇧🇷 Brazil</span><span class="bwc-st-status ok">XI · Locked</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Brazil scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Tournament contender — bench depth both ways</dd>
+            <dt>Manager's problem</dt><dd>Can't fit modern craft and heritage into one XI</dd>
+            <dt>Likely starters</dt><dd>Brahma Chopp, Antarctica Original, Bohemia Pilsen (1853), Eisenbahn Pilsen</dd>
+            <dt>Wildcard</dt><dd>Wäls Petroleum — Belo Horizonte imperial-stout heavyweight</dd>
+            <dt>Selection controversy</dt><dd>Cervejaria Avós, Dádiva and three other modern-craft picks lost to heritage. Committee adjourned to a botequim and lost quorum.</dd>
+            <dt>Pub VAR watching</dt><dd>Heineken Brasil, Stella Artois Brasil and Devassa all locally brewed at Heineken Araraquara — eligibility pending</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇩🇪 Germany</span><span class="bwc-st-status ok">XI · Locked</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Germany scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Group-of-death seed — 1500 years of brewing tradition</dd>
+            <dt>Manager's problem</dt><dd>Several brewers physically attended selection demanding their inclusion</dd>
+            <dt>Likely starters</dt><dd>Weihenstephaner Hefeweißbier (captain, 1040 AD), Augustiner Helles, Paulaner Salvator, Schneider Aventinus</dd>
+            <dt>Wildcard</dt><dd>Schlenkerla Märzen — Bamberg rauchbier, smoke incarnate</dd>
+            <dt>Selection controversy</dt><dd>Beck's, Krombacher, Warsteiner, Veltins and Hofbräu Weisse all caused arguments. Selection meeting abandoned after 17 hours and reconvened at Hofbräuhaus.</dd>
+            <dt>Pub VAR watching</dt><dd>The Reinheitsgebot is not technically an eligibility law but Pub VAR keeps quoting it</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</span><span class="bwc-st-status ok">XI · Locked</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="England scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Tournament heavyweight — opposite problem to Haiti's</dd>
+            <dt>Manager's problem</dt><dd>Too much depth. Cask heritage and modern craft fight for every spot</dd>
+            <dt>Likely starters</dt><dd>Fuller's London Pride (captain), Greene King IPA, Adnams Ghost Ship, Timothy Taylor's Landlord</dd>
+            <dt>Wildcard</dt><dd>Cloudwater DIPA — Manchester modern craft heavyweight</dd>
+            <dt>Selection controversy</dt><dd>Theakston Old Peculier, Hook Norton Old Hooky, Pressure Drop Pale Fire, Kernel Table Beer, Wild Beer Pogo, Burning Sky Plateau and DEYA Steady Rolling Man all caused arguments. Selection Committee declined to take questions.</dd>
+            <dt>Pub VAR watching</dt><dd>Boddingtons (Mancunian heritage, contract-brewed in Belgium since the 2005 Strangeways closure) — committee tabled indefinitely. Carling and Stella Artois UK ruled foreign-parent — blocked.</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇳🇱 Netherlands</span><span class="bwc-st-status ok">XI · Locked</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Netherlands scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Heritage lager weight (Heineken's gravity well) plus a serious modern craft scene</dd>
+            <dt>Manager's problem</dt><dd>How many Heineken sub-brands count as Netherlands picks?</dd>
+            <dt>Likely starters</dt><dd>Heineken Original (captain), Amstel Lager, Grolsch Premium Pilsner, La Trappe Tripel</dd>
+            <dt>Wildcard</dt><dd>De Molen Hel &amp; Verdoemenis — Bodegraven imperial-stout heavyweight</dd>
+            <dt>Selection controversy</dt><dd>Bavaria, Hertog Jan Karakter, Brouwerij Kees! Mosaic Imperial, Oedipus Mannenliefde, Maximus IPA all caused arguments. Brouwerij 't IJ Zatte made the XI; the bench is two pages.</dd>
+            <dt>Pub VAR watching</dt><dd>Westmalle Trappist ruled BELGIAN despite the language overlap — blocked. Pub VAR also queried whether Heineken (global megabrand) still counts as Dutch — ruled YES on Amsterdam HQ.</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇸🇪 Sweden</span><span class="bwc-st-status ok">XI · Locked</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Sweden scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Heritage lager AND world-class modern craft — rare combination</dd>
+            <dt>Manager's problem</dt><dd>Omnipollo and Stigbergets give the modern bench teeth few teams can match — finding XI room around the heritage names</dd>
+            <dt>Likely starters</dt><dd>Norrlands Guld (captain), Spendrups Pilsner, Omnipollo Magic Number, Stigbergets West Coast IPA</dd>
+            <dt>Wildcard</dt><dd>Närke Kaggen Stormaktsporter — cult barrel-aged imperial porter</dd>
+            <dt>Selection controversy</dt><dd>Dugges Idjit, Beerbliotek Wonderboy and Stigbergets Ghost in the Machine all caused arguments. Mikkeller (Danish, ineligible despite Swedish operations) was the longest argument of all.</dd>
+            <dt>Pub VAR watching</dt><dd>Carlsberg Sverige ruled ineligible — Danish parent, contract brewed</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇺🇸 USA</span><span class="bwc-st-status ok">XI · Played</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="USA scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Tournament favourite. Birthplace of the West Coast IPA.</dd>
+            <dt>Manager's problem</dt><dd>USA selection meeting abandoned after 14 hours</dd>
+            <dt>Likely starters</dt><dd>Sierra Nevada Pale Ale, Stone IPA, Russian River Pliny the Elder, Bell's Two Hearted Ale</dd>
+            <dt>Wildcard</dt><dd>Florida Man (Cigar City) — listed as impact substitute after being asked to remove the shark tooth necklace before entering play</dd>
+            <dt>Selection controversy</dt><dd>Oberon Ale, Lagunitas IPA, Sam Adams Boston Lager, Budweiser, PBR, Coors Banquet and Goose Island Bourbon County all remain under review</dd>
+            <dt>Played</dt><dd>USA 2-0 Australia on the pitch · USA on (PINt)POINTS in the pub</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇦🇺 Australia</span><span class="bwc-st-status ok">XI · Played</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Australia scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Coopers heritage + serious modern craft bench</dd>
+            <dt>Manager's problem</dt><dd>Australia are arguing over heritage versus hop-forward modernity</dd>
+            <dt>Likely starters</dt><dd>Coopers Pale Ale, Coopers Sparkling Ale, Stone &amp; Wood Pacific Ale, Hawkers West Coast IPA</dd>
+            <dt>Wildcard</dt><dd>Mountain Culture Cult IPA — NSW modern craft breakthrough</dd>
+            <dt>Selection controversy</dt><dd>Range, Feral Biggie Juice, Mountain Goat, Tooheys New, James Boag and XXXX Gold all caused arguments. The committee ruled the modern IPA scene strong but not enough.</dd>
+            <dt>Played</dt><dd>USA 2-0 Australia on the pitch · USA on (PINt)POINTS in the pub</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</span><span class="bwc-st-status ok">XI · Played</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Scotland scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Lager heritage + modern craft + stout depth</dd>
+            <dt>Manager's problem</dt><dd>Several breweries already demanding a recount</dd>
+            <dt>Likely starters</dt><dd>Tennent's Lager, BrewDog Punk IPA, Innis &amp; Gunn Original, Harviestoun Schiehallion</dd>
+            <dt>Wildcard</dt><dd>Tempest Brave New World — late Selection Committee Tweedbank pick</dd>
+            <dt>Selection controversy</dt><dd>Williams Bros Joker IPA and Orkney Dark Island made the XI; the bench is full of arguments</dd>
+            <dt>Played</dt><dd>Scotland 0-1 Morocco on the pitch · Scotland on (PINt)POINTS — Pub VAR ruled Heineken and Pelforth Ambrée ineligible as foreign-brewed contract pours</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇹🇷 Turkey</span><span class="bwc-st-status honest">Honest XI · Played</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Turkey scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Efes heritage anchored + small but real craft scene with teeth</dd>
+            <dt>Manager's problem</dt><dd>Carlsberg/Heineken contract brewing is the eligibility minefield</dd>
+            <dt>Likely starters</dt><dd>Efes Pilsen (captain), Bomonti Filtresiz, Pablos Brewing IPA, Gara Guzu Black Bear</dd>
+            <dt>Wildcard</dt><dd>Efes Dark — old-school dark-lager pick</dd>
+            <dt>Selection controversy</dt><dd>Marmara Beer, Mojo IPA and Pablos Reserve all caused arguments</dd>
+            <dt>Played</dt><dd>Turkey 0-1 Paraguay on the pitch · Turkey on (PINt)POINTS — Tuborg Türk and Heineken Türkiye ruled ineligible</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇪🇨 Ecuador</span><span class="bwc-st-status honest">Honest XI</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Ecuador scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Pilsener heritage anchored, real modern craft depth via Quito</dd>
+            <dt>Manager's problem</dt><dd>50/50 split between old and new — finding XI room for both</dd>
+            <dt>Likely starters</dt><dd>Pilsener (Cervecería Nacional, captain since 1913), Club Premium, Bandido Brewing Quito Cream Ale, Sabai Sabai Andean Pale Ale</dd>
+            <dt>Wildcard</dt><dd>Bandido Brewing Capuchino Stout — coffee-stout pick with an award shelf</dd>
+            <dt>Selection controversy</dt><dd>Selection Committee gave Bandido captaincy-bench consideration; the heritage side wasn't having it</dd>
+            <dt>Pub VAR watching</dt><dd>Quilmes Ecuador (Argentine parent), Heineken Ecuador (contract), Corona Ecuador (Mexican parent) — all under review</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇵🇦 Panama</span><span class="bwc-st-status honest">Honest XI</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Panama scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Heritage-lager spine backed by La Rana Dorada's modern taprooms</dd>
+            <dt>Manager's problem</dt><dd>La Rana Dorada essentially carries the modern bench solo</dd>
+            <dt>Likely starters</dt><dd>Balboa (captain), Atlas, Soberana, La Rana Dorada Pale Ale</dd>
+            <dt>Wildcard</dt><dd>La Rana Dorada IPA — craft IPA flagship</dd>
+            <dt>Selection controversy</dt><dd>Committee asked Pub VAR if "one brewery's portfolio" can constitute a squad. Pub VAR went quiet.</dd>
+            <dt>Pub VAR watching</dt><dd>Heineken Panama, Corona Panamá (Mexican parent), Tecate Panama — all under review</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇵🇾 Paraguay</span><span class="bwc-st-status thin">Thin · honest · Played</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Paraguay scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Pilsen carries the country</dd>
+            <dt>Manager's problem</dt><dd>Pilsen, Pilsen Premium, Pilsen Ice and Pilsen-adjacent Munich Lager is one beer with paperwork, not a squad</dd>
+            <dt>Likely starters</dt><dd>Pilsen (heritage captain), Pilsen Premium, Brahma Paraguay, Sajonia Bier Schwarz</dd>
+            <dt>Wildcard</dt><dd>Bayern (Paraguay) — German-style local lager</dd>
+            <dt>Selection controversy</dt><dd>Selection Committee gives Pilsen its due rather than padding with rumour. Bench respectfully short.</dd>
+            <dt>Played</dt><dd>Turkey 0-1 Paraguay on the pitch · Turkey on (PINt)POINTS in the pub</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇲🇦 Morocco</span><span class="bwc-st-status thin">Thin · honest · Played</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Morocco scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Desert-heat pilsner core + Casablanca citrus reinforcement</dd>
+            <dt>Manager's problem</dt><dd>Pub VAR reviewing two locally-brewed internationals for eligibility</dd>
+            <dt>Likely starters</dt><dd>Casablanca Premium Lager, Flag Spéciale, Stork Première, Castel Beer</dd>
+            <dt>Wildcard</dt><dd>Casablanca Citron — shandy-style beachside refresher</dd>
+            <dt>Selection controversy</dt><dd>Bavaroise made the XI; the squad is honestly six deep</dd>
+            <dt>Played</dt><dd>Scotland 0-1 Morocco on the pitch · Scotland on (PINt)POINTS — Heineken and Pelforth Ambrée ruled ineligible as foreign-contract pours</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇬🇭 Ghana</span><span class="bwc-st-status thin">Thin · honest</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Ghana scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Star Beer heritage anchored, established lager bench, Pub VAR's eligibility book on Guinness FES Ghana reaches volume II</dd>
+            <dt>Manager's problem</dt><dd>Modern craft bench is thin; honest 8 not 11</dd>
+            <dt>Likely starters</dt><dd>Star Beer (captain, Guinness Ghana brewery), Club Premium Lager, Guinness Foreign Extra Stout (Ghana), Castle Milk Stout</dd>
+            <dt>Wildcard</dt><dd>Star Radler — citrus shandy variant</dd>
+            <dt>Selection controversy</dt><dd>Selection Committee respected the thin squad rather than inventing depth from rumour</dd>
+            <dt>Pub VAR watching</dt><dd>Guinness FES (Ghana) — brewed locally by Guinness Ghana since 1971, eligibility ruling pending. Heineken Ghana and Stone Lager Premium also under review.</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇨🇮 Ivory Coast</span><span class="bwc-st-status thin">Thin · honest</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Ivory Coast scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>Ivoire is genuine heritage. The rest of the squad is foreign-contract.</dd>
+            <dt>Manager's problem</dt><dd>Pub VAR's Ivory Coast eligibility file is the longest of any country so far</dd>
+            <dt>Likely starters</dt><dd>Ivoire (captain, Solibra), Bock CI, Castel Côte d'Ivoire, Brassivoire</dd>
+            <dt>Wildcard</dt><dd>Tuborg CI — Carlsberg under contract, eligibility minefield</dd>
+            <dt>Selection controversy</dt><dd>Ivoire ruled unambiguously native. Everything else is "review pending pending."</dd>
+            <dt>Pub VAR watching</dt><dd>Most "Ivorian" beers are foreign brands brewed under contract by Brassivoire (SAB-Miller) or Solibra (Castel)</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇨🇼 Curaçao</span><span class="bwc-st-status thin">Thin · honest</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Curaçao scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>One beer with heritage. The Selection Committee respects this.</dd>
+            <dt>Manager's problem</dt><dd>The squad is, honestly, one beer</dd>
+            <dt>Likely starters</dt><dd>Amstel Bright — locally brewed at Amstel Brewery Willemstad since 1960. The only Amstel beer brewed outside the Netherlands.</dd>
+            <dt>Wildcard</dt><dd>Polar Pilsen — Venezuelan but ubiquitous; eligibility ruled NO</dd>
+            <dt>Selection controversy</dt><dd>Bench respectfully thin. Pub VAR opens another Amstel Bright.</dd>
+            <dt>Pub VAR watching</dt><dd>Amstel Bright's locally-brewed-since-1960 status: ruled YES, older than most countries' independence</dd>
+          </dl>
+        </article>
+      </details>
+
+      <details class="bwc-squad-toggle">
+        <summary>
+          <span class="bwc-st-left"><span class="bwc-st-country">🇭🇹 Haiti</span><span class="bwc-st-status thin">Thin · honest · Played</span></span>
+          <span class="bwc-st-chev" aria-hidden="true">▾</span>
+        </summary>
+        <article class="bwc-squad" aria-label="Haiti scouting report">
+          <dl>
+            <dt>Seed status</dt><dd>The committee found six honest beers, three eligibility hearings, and no reason to pretend otherwise</dd>
+            <dt>Manager's problem</dt><dd>Prestige carries the entire squad</dd>
+            <dt>Likely starters</dt><dd>Prestige — captain, vice-captain, brewer, kit-man, manager and dog. The only beer.</dd>
+            <dt>Wildcard</dt><dd>Prestige Cosecha Privada — anniversary special-edition reinforcement</dd>
+            <dt>Selection controversy</dt><dd>Selection Committee respectfully declined to invent an 8-beer bench from craft rumour</dd>
+            <dt>Played</dt><dd>Brazil 3-0 Haiti on the pitch · Brazil on (PINt)POINTS — Prestige carried the squad with belief, but Brazil's bench was deeper both ways</dd>
+          </dl>
+        </article>
+      </details>
+
+      <div class="bwc-scout-callout" style="margin-top: 26px;">
+        <p>17 country squads now revealed. The other 31 World Cup nations land here as their fixtures approach — Spain, Portugal, Belgium, Argentina and France lead the panic-meter; Iran, Iraq and Saudi Arabia are the Pub-VAR eligibility centrepieces.</p>
       </div>
 
       <div class="bwc-nomination" aria-label="Nominate beers for a country squad">
