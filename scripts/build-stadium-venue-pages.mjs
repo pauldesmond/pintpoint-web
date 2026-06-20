@@ -263,6 +263,13 @@ function renderIndexPage(stadiumCounts) {
   <meta name="description" content="Per-stadium beer venue lists for all 16 World Cup 2026 hosts. Each page lists nearby bars, pubs, breweries and taprooms sorted by walking distance from the ground." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://pintpoint.co.uk/blog/world-cup-venues/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://pintpoint.co.uk/blog/world-cup-venues/" />
+  <meta property="og:title" content="World Cup 2026 venues by stadium — PINtPOINT" />
+  <meta property="og:description" content="Per-stadium beer venue lists for all 16 World Cup 2026 hosts. Each page lists nearby bars, pubs, breweries and taprooms sorted by walking distance from the ground." />
+  <meta property="og:image" content="https://pintpoint.co.uk/blog/images/stadium-beer-map-infographic-v1.jpg" />
+  <meta property="og:image:alt" content="World Cup 2026 Stadium Beer Map — a grid of all 16 host stadiums with city and stadium names." />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
