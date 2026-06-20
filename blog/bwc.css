@@ -258,6 +258,45 @@
 .bwc-squad dd { color: var(--text); margin: 0; font-weight: 500; }
 @media (max-width: 600px) { .bwc-squad dl { grid-template-columns: 1fr; gap: 2px 0; } .bwc-squad dt { margin-top: 6px; } }
 
+/* --- Match deck (Fixtures page horizontal swipe carousel) ---------------- */
+/* Horizontal scroll-snap container. One match card visible at a time;
+   native touch swipe on mobile, prev/next + dots for desktop. JS-off:
+   horizontal scroll still works because CSS scroll-snap is native.
+   Print: stack vertically with all cards visible. */
+.bwc-match-deck { position: relative; margin: 22px 0; }
+.bwc-match-deck .bwc-deck-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+.bwc-match-deck .bwc-deck-track {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.bwc-match-deck .bwc-deck-track::-webkit-scrollbar { display: none; }
+.bwc-match-deck .bwc-deck-track > .bwc-match { flex: 0 0 100%; scroll-snap-align: start; margin: 0; min-width: 0; }
+.bwc-match-deck .bwc-deck-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 8px 4px; flex-wrap: wrap; }
+.bwc-match-deck .bwc-deck-nav { display: flex; gap: 8px; }
+.bwc-match-deck .bwc-deck-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 16px; border-radius: 8px; font-size: 0.84rem; cursor: pointer; font-family: inherit; font-weight: 600; line-height: 1; }
+.bwc-match-deck .bwc-deck-btn:hover:not(:disabled) { border-color: var(--teal); color: var(--teal); }
+.bwc-match-deck .bwc-deck-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.bwc-match-deck .bwc-deck-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.bwc-match-deck .bwc-deck-dots { display: flex; gap: 8px; align-items: center; }
+.bwc-match-deck .bwc-deck-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; padding: 0; transition: background .15s, transform .15s; }
+.bwc-match-deck .bwc-deck-dot.active { background: var(--teal); transform: scale(1.15); }
+.bwc-match-deck .bwc-deck-dot:hover { background: var(--muted); }
+.bwc-match-deck .bwc-deck-dot.active:hover { background: var(--teal); }
+.bwc-match-deck .bwc-deck-dot:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.bwc-match-deck .bwc-deck-label { font-size: 0.78rem; color: var(--muted); font-family: 'SF Mono', Menlo, Monaco, monospace; letter-spacing: 0.4px; }
+
+@media print {
+  .bwc-match-deck .bwc-deck-track { display: block !important; overflow: visible !important; }
+  .bwc-match-deck .bwc-deck-track > .bwc-match { flex: none !important; width: auto !important; margin-bottom: 22px !important; }
+  .bwc-match-deck .bwc-deck-controls { display: none !important; }
+}
+
 /* --- Match cycler (manifesto worked-example, multi-card carousel) -------- */
 /* JS-off: all cards render visible (acceptance criterion). JS-on: only the
    active card visible; previous/next + dots controls appear. */

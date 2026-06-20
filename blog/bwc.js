@@ -81,6 +81,79 @@
     activate(startIdx, false);
   }
 
+  /* ------------------------------------------------------ Match-deck pattern
+   * Horizontal scroll-snap container with prev/next + dot navigation +
+   * "n of N" label. The CSS scroll-snap is what actually drives the swipe
+   * behaviour (native, touch-friendly). JS adds:
+   *   - prev/next button → scrollTo on the previous/next sibling card
+   *   - dot click → scrollTo on the matching card
+   *   - IntersectionObserver on each card → updates the active dot + label
+   *     when the user scrolls/swipes, so the indicator stays in sync. */
+  function wireMatchDeck(container) {
+    var track = container.querySelector('.bwc-deck-track');
+    var cards = track ? track.querySelectorAll(':scope > .bwc-match') : [];
+    if (!track || cards.length <= 1) return;
+    var prevBtn = container.querySelector('.bwc-deck-prev');
+    var nextBtn = container.querySelector('.bwc-deck-next');
+    var dots = container.querySelectorAll('.bwc-deck-dot');
+    var label = container.querySelector('.bwc-deck-label');
+    var idx = 0;
+
+    function setActive(i) {
+      idx = Math.max(0, Math.min(cards.length - 1, i));
+      dots.forEach(function (dot, di) {
+        var on = di === idx;
+        dot.classList.toggle('active', on);
+        dot.setAttribute('aria-selected', on ? 'true' : 'false');
+        dot.setAttribute('tabindex', on ? '0' : '-1');
+      });
+      if (label) label.textContent = 'Match ' + (idx + 1) + ' of ' + cards.length;
+      if (prevBtn) prevBtn.disabled = idx === 0;
+      if (nextBtn) nextBtn.disabled = idx === cards.length - 1;
+    }
+
+    function scrollToCard(i) {
+      var target = cards[Math.max(0, Math.min(cards.length - 1, i))];
+      if (!target) return;
+      // Use scrollLeft directly rather than scrollIntoView to avoid the page
+      // jumping vertically when the card isn't already in the viewport.
+      track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { scrollToCard(idx - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { scrollToCard(idx + 1); });
+    dots.forEach(function (dot, di) {
+      dot.addEventListener('click', function () { scrollToCard(di); });
+      dot.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); scrollToCard(idx + 1); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); scrollToCard(idx - 1); }
+      });
+    });
+
+    // IntersectionObserver keeps the dot/label in sync with whatever the
+    // user is actually viewing — including after a touch swipe, a scrollbar
+    // drag, or arrow-key scrolling on the track.
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        // Pick the entry with the largest visible ratio. Native scroll-snap
+        // means usually only one card is fully visible, but during a scroll
+        // we want the dot to track the most-visible card.
+        var best = null;
+        entries.forEach(function (e) {
+          if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
+        });
+        if (best && best.intersectionRatio > 0.55) {
+          var i = Array.prototype.indexOf.call(cards, best.target);
+          if (i >= 0 && i !== idx) setActive(i);
+        }
+      }, { root: track, threshold: [0.5, 0.75, 1.0] });
+      cards.forEach(function (c) { io.observe(c); });
+    }
+
+    container.setAttribute('data-js', 'ready');
+    setActive(0);
+  }
+
   /* ----------------------------------------------------- Match-cycler pattern
    * Cycles through .bwc-match cards inside a .bwc-match-cycler.
    * Controls: prev / next buttons + per-card dots. No auto-rotate.
@@ -214,6 +287,7 @@
       { selector: '.bwc-officials-tabs', fn: wireTabs, name: 'officials tabs' },
       { selector: '.bwc-stepper',        fn: wireTabs, name: 'roadmap stepper' },
       { selector: '.bwc-match-cycler',   fn: wireCycler, name: 'match cycler' },
+      { selector: '.bwc-match-deck',     fn: wireMatchDeck, name: 'match deck' },
       { selector: '.bwc-venue-filter',   fn: wireVenueFilter, name: 'venue filter' },
       { selector: '.bwc-day-filter',     fn: wireFilter,      name: 'day filter' },
     ];
