@@ -180,11 +180,16 @@
 .bwc-venues { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0; }
 @media (max-width: 860px) { .bwc-venues { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 540px) { .bwc-venues { grid-template-columns: 1fr; } }
-.bwc-venue { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px 14px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; }
-/* No :hover state — these cards aren't currently clickable; the link-like
-   hover affordance promises an interaction that isn't wired up yet. When
-   per-stadium venue-list pages land, restore the hover and wrap the .bwc-
-   venue article in an <a> with the route. */
+/* .bwc-venue is now an <a> linking to /blog/world-cup-venues/<slug>.html.
+   Reset link inheritance so the card chrome doesn't pick up the page-level
+   `article a { color: teal }` rule. */
+.bwc-venue,
+.bwc-venue:link,
+.bwc-venue:visited { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px 14px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; color: var(--text); text-decoration: none; transition: border-color .15s, transform .15s; }
+.bwc-venue:hover { border-color: var(--teal); transform: translateY(-1px); }
+.bwc-venue:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.bwc-venue .v-city { color: var(--text); }
+.bwc-venue:hover .v-city { color: var(--teal); }
 .bwc-venue .v-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
 .bwc-venue .v-cc { font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.2px; color: var(--muted); }
 .bwc-venue .v-city { font-weight: 800; font-size: 1.05rem; color: var(--text); letter-spacing: -0.3px; line-height: 1.15; }

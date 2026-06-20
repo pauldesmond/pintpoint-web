@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6760611613">
+  <title>Beer near BC Place (Vancouver) — World Cup 2026 Stadium Beer Map · PINtPOINT</title>
+  <meta name="description" content="40 venues within 15 km near BC Place, host of the 2026 FIFA World Cup in Vancouver. Bars, pubs, breweries, taprooms and bottle shops sorted by walking distance from the ground." />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/blog/world-cup-venues/vancouver.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://pintpoint.co.uk/blog/world-cup-venues/vancouver.html" />
+  <meta property="og:title" content="Beer near BC Place (Vancouver)" />
+  <meta property="og:description" content="40 venues within 15 km sorted by walking distance from the ground." />
+  <meta property="og:image" content="https://pintpoint.co.uk/blog/images/stadium-beer-map-infographic-v1.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pintpoint.co.uk/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://pintpoint.co.uk/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "World Cup 2026 Stadium Beer Map", "item": "https://pintpoint.co.uk/blog/world-cup-stadium-beer-map.html" },
+      { "@type": "ListItem", "position": 4, "name": "Vancouver" }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../bwc.css?v=9" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+    h1 { font-size: clamp(1.7rem, 4vw, 2.3rem); font-weight: 900; letter-spacing: -1px; line-height: 1.18; margin-bottom: 8px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    .subtitle { font-size: clamp(1.0rem, 2vw, 1.15rem); font-weight: 600; color: var(--muted); letter-spacing: -0.2px; line-height: 1.4; margin-bottom: 22px; }
+    p { font-size: 0.97rem; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+    article a, article a:visited { color: var(--teal); }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 28px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; color: var(--amber); border: 1px solid rgba(192,163,64,0.4); }
+    .breadcrumb { font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--teal); }
+    /* Per-stadium venue row */
+    .bwc-venue-list { margin: 22px 0; }
+    .bwc-venue-row { display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; }
+    .bwc-venue-row:hover { border-color: var(--teal); }
+    .bwc-venue-row-meta { flex: 1 1 auto; min-width: 0; }
+    .bwc-venue-row-name { display: block; font-weight: 800; font-size: 1.0rem; color: var(--text); letter-spacing: -0.2px; text-decoration: none; line-height: 1.25; }
+    .bwc-venue-row-name:hover { color: var(--teal); }
+    .bwc-venue-row-sub { font-size: 0.8rem; color: var(--muted); line-height: 1.4; margin-top: 3px; }
+    .bwc-venue-row-dist { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex: 0 0 auto; }
+    .bwc-venue-row-dist .d-mi { font-family: 'SF Mono', Menlo, Monaco, monospace; font-weight: 800; font-size: 0.95rem; color: var(--teal); letter-spacing: 0.2px; line-height: 1; }
+    .bwc-venue-row-dist .d-km { font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.4px; line-height: 1; }
+    .bwc-venue-row-dist .d-walk { font-size: 0.74rem; color: var(--muted); text-decoration: none; margin-top: 2px; }
+    .bwc-venue-row-dist .d-walk:hover { color: var(--teal); }
+    .empty-state { padding: 26px 22px; border: 1px dashed var(--border); border-radius: 10px; color: var(--muted); font-style: italic; text-align: center; line-height: 1.6; }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 60px; } .bwc-venue-row { gap: 10px; padding: 12px 14px; } .bwc-venue-row-name { font-size: 0.92rem; } }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary">
+    <a href="/" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="/about-pintpoint.html">About</a>
+      <a href="/features.html">Features</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/blog/">Blog</a>
+      <a href="/screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <article class="content">
+    <p class="breadcrumb"><a href="/blog/">Blog</a> · <a href="/blog/world-cup-stadium-beer-map.html">Stadium Beer Map</a> · Vancouver</p>
+    <p class="meta"><span class="category">Guide</span>CAN · World Cup 2026</p>
+
+    <h1>Beer near <em>BC Place</em></h1>
+    <p class="subtitle">Vancouver · 40 venues within 15 km, sorted by walking distance from the ground</p>
+
+    <p>Bars, pubs, breweries, taprooms and bottle shops within 15 km of BC Place. Tap any venue for the full PINtPOINT page, or hit <strong>Walk →</strong> to open Google Maps walking directions from the stadium.</p>
+
+    <div class="bwc-venue-list">
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/batch-on-plaza">Batch on Plaza</a>
+            <div class="bwc-venue-row-sub">Plaza of Nations · 764 Pacific Blvd, Vancouver, BC</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">0.9k ft</span>
+            <span class="d-km">265 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.275,-123.1093&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/devils-elbow-ale-and-smoke-house">Devil&#39;s Elbow Ale and Smoke House</a>
+            <div class="bwc-venue-row-sub">562 Beatty St, Vancouver · 562 Beatty St, Vancouver, BC V6B 2L3, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.3k ft</span>
+            <span class="d-km">404 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2802091,-123.1097658&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/the-magnet">The Magnet</a>
+            <div class="bwc-venue-row-sub">309 W Pender St, Vancouver · 309 W Pender St, Vancouver, BC V6B 1T3, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">2.1k ft</span>
+            <span class="d-km">633 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2824808,-123.1110867&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/tap-barrel">Tap &amp; Barrel - Olympic Village</a>
+            <div class="bwc-venue-row-sub">Olympic Village · 75 Athletes Way, Vancouver, BC V5Y 0B5</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">2.1k ft</span>
+            <span class="d-km">639 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2715,-123.1083&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/the-pint-public-house">The Pint Public House</a>
+            <div class="bwc-venue-row-sub">Downtown · 455 Abbott St, Vancouver, BC V6B 2L2</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">2.2k ft</span>
+            <span class="d-km">685 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2826,-123.1085&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/yaletown-brewing-co">Yaletown Brewing Co</a>
+            <div class="bwc-venue-row-sub">Yaletown · 1111 Mainland St, Vancouver, BC V6B 5P2</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">2.4k ft</span>
+            <span class="d-km">735 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2754,-123.1216&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/the-lennox-pub">The Lennox Pub</a>
+            <div class="bwc-venue-row-sub">800 Granville St, Vancouver · 800 Granville St, Vancouver, BC V6Z 1K3, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">2.5k ft</span>
+            <span class="d-km">754 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2811111,-123.1197222&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/craft-beer-market">Craft Beer Market</a>
+            <div class="bwc-venue-row-sub">Olympic Village · 85 W 1st Ave, Vancouver, BC V5Y 0C4</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">2.5k ft</span>
+            <span class="d-km">774 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.271,-123.1058&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/dublin-calling">Dublin Calling</a>
+            <div class="bwc-venue-row-sub">900 Granville St, Vancouver · 900 Granville St, Vancouver, BC V6Z 1L2, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">2.6k ft</span>
+            <span class="d-km">793 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2800873,-123.1213981&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/the-515-bar">The 515 Bar</a>
+            <div class="bwc-venue-row-sub">Segal Graduate School of Business, 521 Seymour St, Vancouver · 521 Seymour St, Vancouver, BC V6B 1V5, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">2.6k ft</span>
+            <span class="d-km">808 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.283842,-123.1144244&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/malones-taphouse">Malone&#39;s Taphouse</a>
+            <div class="bwc-venue-row-sub">Segal Graduate School of Business, 608 W Pender St, Vancouver · 608 W Pender St, Vancouver, BC V6B 1V8, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">2.7k ft</span>
+            <span class="d-km">827 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2840609,-123.1141799&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/steamworks-brewing-co">Steamworks Brewpub</a>
+            <div class="bwc-venue-row-sub">375 Water St, Vancouver · 375 Water St, Vancouver, BC V6B 1B8, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">3.0k ft</span>
+            <span class="d-km">900 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2848803,-123.1109429&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/six-acres">Six Acres</a>
+            <div class="bwc-venue-row-sub">203 Carrall St, Vancouver · 203 Carrall St, Vancouver, BC V6B 2J2, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">3.0k ft</span>
+            <span class="d-km">901 m</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2833649,-123.1044224&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/brewhall">BREWHALL</a>
+            <div class="bwc-venue-row-sub">97 E, 97 E 2nd Ave, Vancouver · 97 E 2nd Ave, Vancouver, BC V5T 0E3, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">3.3k ft</span>
+            <span class="d-km">1.0 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2694506,-123.1035175&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/lions-pub">Lions Pub</a>
+            <div class="bwc-venue-row-sub">888 W Cordova St, Vancouver · 888 W Cordova St, Vancouver, BC V6C 0A7, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">3.8k ft</span>
+            <span class="d-km">1.1 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.286936,-123.114673&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/alibi-room">Alibi Room</a>
+            <div class="bwc-venue-row-sub">157 Alexander St, Vancouver · 157 Alexander St, Vancouver, BC V6A 1B8, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">3.8k ft</span>
+            <span class="d-km">1.2 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2842507,-123.1002689&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/faculty-brewing-co">Faculty Brewing Co.</a>
+            <div class="bwc-venue-row-sub">Mount Pleasant · 1830 Ontario St, Vancouver, BC V5T 2W6</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">4.0k ft</span>
+            <span class="d-km">1.2 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2683,-123.1014&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/r-and-b-brewing">R&amp;B Brewing</a>
+            <div class="bwc-venue-row-sub">Mount Pleasant · 54 E 4th Ave, Vancouver, BC V5T 1E7</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">4.3k ft</span>
+            <span class="d-km">1.3 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.267,-123.102&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/tap-barrel-convention-centre">Tap &amp; Barrel - Convention Centre</a>
+            <div class="bwc-venue-row-sub">Coal Harbour · 1055 Canada Pl, Ste 76, Vancouver, BC V6C 0C3</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">4.5k ft</span>
+            <span class="d-km">1.4 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.289,-123.1155&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/brassneck-brewery">Brassneck Brewery</a>
+            <div class="bwc-venue-row-sub">2148 Main St, Vancouver · 2148 Main St, Vancouver, BC V5T 3C5, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">4.8k ft</span>
+            <span class="d-km">1.5 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2657712,-123.1006185&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/33-brewing-experiment">33 Brewing Experiment</a>
+            <div class="bwc-venue-row-sub">25 W 8th Ave, Vancouver · 25 W 8th Ave, Vancouver, BC V5Y 1M8, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">4.9k ft</span>
+            <span class="d-km">1.5 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2639351,-123.1055096&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/33-acres-brewing-company">33 Acres Brewing Company</a>
+            <div class="bwc-venue-row-sub">15 W 8th Ave, Vancouver · 15 W 8th Ave, Vancouver, BC V5Y 1M8, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">4.9k ft</span>
+            <span class="d-km">1.5 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2639299,-123.1053388&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/steamworks-mount-pleasant">Steamworks Mount Pleasant</a>
+            <div class="bwc-venue-row-sub">2275 Main St, Vancouver · 2275 Main St, Vancouver, BC V5T 0K2, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">5.0k ft</span>
+            <span class="d-km">1.5 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2649991,-123.1011871&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/main-street-brewing-co">Main Street Brewing Co.</a>
+            <div class="bwc-venue-row-sub">261 E 7th Ave, Vancouver · 261 E 7th Ave, Vancouver, BC V5T 0B8, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.0 mi</span>
+            <span class="d-km">1.6 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2646765,-123.0992152&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/score-on-davie">Score on Davie</a>
+            <div class="bwc-venue-row-sub">1262 Davie St, Vancouver · 1262 Davie St, Vancouver, BC V6E 1N3, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.1 mi</span>
+            <span class="d-km">1.8 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.282288,-123.13468&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/tap-barrel-bridges">Tap &amp; Barrel Bridges</a>
+            <div class="bwc-venue-row-sub">Granville Island · 1696 Duranleau St, Vancouver, BC V6H 3S4</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.1 mi</span>
+            <span class="d-km">1.8 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2729,-123.1359&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/granville-island-brewing">Granville Island Brewing</a>
+            <div class="bwc-venue-row-sub">1441 Cartwright St, Vancouver · 1441 Cartwright St, Vancouver, BC V6H 0A3, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.2 mi</span>
+            <span class="d-km">1.9 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.270502,-123.135661&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/strathcona-beer-company">Strathcona Beer Company</a>
+            <div class="bwc-venue-row-sub">895 E Hastings St, Vancouver · 895 E Hastings St, Vancouver, BC V6A 1R8, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.2 mi</span>
+            <span class="d-km">2.0 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2812549,-123.0850595&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/luppolo-brewing-company">Luppolo Brewing Co.</a>
+            <div class="bwc-venue-row-sub">1123 Venables St, Vancouver · 1123 Venables St, Vancouver, BC V6A 2E3, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.4 mi</span>
+            <span class="d-km">2.3 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2770333,-123.0806274&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/brewing-august">Brewing August</a>
+            <div class="bwc-venue-row-sub">1614 W 3rd Ave, Vancouver · 1614 W 3rd Ave, Vancouver, BC V6J 1K2, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.4 mi</span>
+            <span class="d-km">2.3 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2687405,-123.1413009&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/craft-beer-market-english-bay">CRAFT Beer Market English Bay</a>
+            <div class="bwc-venue-row-sub">1795 Beach Ave, Vancouver · 1795 Beach Ave, Vancouver, BC V6G 1Y9, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.5 mi</span>
+            <span class="d-km">2.5 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2867494,-123.1422399&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/superflux-beer-company">Superflux Beer Company</a>
+            <div class="bwc-venue-row-sub">505 Clark Dr, Vancouver · 505 Clark Dr, Vancouver, BC V5L 3H6, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.6 mi</span>
+            <span class="d-km">2.5 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2801561,-123.0775631&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/strange-fellows-brewing">Strange Fellows Brewing</a>
+            <div class="bwc-venue-row-sub">1345 Clark Dr, Vancouver · 1345 Clark Dr, Vancouver, BC V5L 3K9, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.6 mi</span>
+            <span class="d-km">2.5 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2725703,-123.0777551&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/off-the-rail-brewing-co">Off The Rail Brewing</a>
+            <div class="bwc-venue-row-sub">1351 Adanac St, Vancouver · 1351 Adanac St, Vancouver, BC V5L 2C4, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.6 mi</span>
+            <span class="d-km">2.6 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2778058,-123.0760297&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/bomber-brewing">Bomber Brewing</a>
+            <div class="bwc-venue-row-sub">East Vancouver · 1488 Adanac St, Vancouver, BC V5L 2C1</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.7 mi</span>
+            <span class="d-km">2.8 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2774,-123.0735&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/penthouse-suite-927">Temporal Artisan Ales</a>
+            <div class="bwc-venue-row-sub">1507 Powell St, Vancouver Canada, BC · 1507 Powell St, Vancouver, BC V5L 4X5, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.8 mi</span>
+            <span class="d-km">2.9 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2835965,-123.0737676&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/slow-hand-beer-company">Slow Hand Beer Company</a>
+            <div class="bwc-venue-row-sub">1507 Powell St, Vancouver · 1507 Powell St, Vancouver, BC V5L 3L1, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.8 mi</span>
+            <span class="d-km">2.9 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2834235,-123.0736603&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/storm-brewing">Storm Brewing</a>
+            <div class="bwc-venue-row-sub">Commercial Drive · 310 Commercial Dr, Vancouver, BC V5L 4H2</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.9 mi</span>
+            <span class="d-km">3.0 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2785,-123.0701&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/stanley-park-brewing-restaurant-and-brewpub">Stanley Park Brewing Restaurant &amp; Brewpub</a>
+            <div class="bwc-venue-row-sub">8901 Stanley Park Dr, Vancouver · 8901 Stanley Park Dr, Vancouver, BC V6G 3E2, Canada</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">1.9 mi</span>
+            <span class="d-km">3.1 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2923231,-123.1464802&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+
+        <article class="bwc-venue-row">
+          <div class="bwc-venue-row-meta">
+            <a class="bwc-venue-row-name" href="/pubs/container-brewing">Container Brewing</a>
+            <div class="bwc-venue-row-sub">East Vancouver · 1216 Franklin St, Vancouver, BC V5L 1P3</div>
+          </div>
+          <div class="bwc-venue-row-dist">
+            <span class="d-mi">2.4 mi</span>
+            <span class="d-km">3.9 km</span>
+            <a class="d-walk" href="https://www.google.com/maps/dir/?api=1&origin=49.2768,-123.1117&destination=49.2825,-123.0589&travelmode=walking" target="_blank" rel="noopener">Walk →</a>
+          </div>
+        </article>
+    </div>
+
+    <p style="margin-top: 32px; font-size: 0.88rem;">Know a venue we missed? Open <strong>PINtPOINT</strong> near the ground and tap <strong>+</strong>, or email <a href="mailto:hello@pintpoint.co.uk?subject=Venue%20near%20BC%20Place">hello@pintpoint.co.uk</a> with the name, address and one line on what makes it worth the walk.</p>
+
+    <p style="margin-top: 22px; font-size: 0.85rem;">← <a href="/blog/world-cup-stadium-beer-map.html">All 16 World Cup host stadiums</a></p>
+  </article>
+
+  <footer>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/blog/world-cup-stadium-beer-map.html">Stadium Beer Map</a>
+      <a href="/blog/beer-world-cup-xi.html">Beer World Cup XI</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+    </div>
+    <p style="font-size:0.75rem;color:#555;margin-top:12px">"FIFA" and "World Cup" are trademarks of FIFA. This page is independent editorial, not affiliated with FIFA, national football teams, breweries, or any official partner.</p>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+</body>
+</html>
