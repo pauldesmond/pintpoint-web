@@ -123,6 +123,36 @@
     show(idx);
   }
 
+  /* -------------------------------------------------------------- Print fix
+   * Native <details> keeps its body display:none when closed, and that
+   * persists in print even with @media print overrides in most browsers.
+   * Before-print: open every closed details, remember which ones we touched.
+   * After-print: close exactly those again. Belt-and-braces matchMedia
+   * fallback for browsers that fire only one or the other event. */
+  function setupPrintFix() {
+    var openedByPrint = [];
+    function openAll() {
+      openedByPrint = Array.prototype.slice.call(
+        document.querySelectorAll('details:not([open])')
+      );
+      openedByPrint.forEach(function (d) { d.setAttribute('open', ''); });
+    }
+    function closeRestored() {
+      openedByPrint.forEach(function (d) { d.removeAttribute('open'); });
+      openedByPrint = [];
+    }
+    window.addEventListener('beforeprint', openAll);
+    window.addEventListener('afterprint', closeRestored);
+    if (window.matchMedia) {
+      var mql = window.matchMedia('print');
+      if (mql && typeof mql.addEventListener === 'function') {
+        mql.addEventListener('change', function (e) {
+          if (e.matches) openAll(); else closeRestored();
+        });
+      }
+    }
+  }
+
   /* ------------------------------------------------------------------ Bootstrap */
   function init() {
     var ranks = [
@@ -136,6 +166,8 @@
         catch (err) { console.warn('[bwc] init failed for ' + r.name, err); }
       });
     });
+    try { setupPrintFix(); }
+    catch (err) { console.warn('[bwc] print-fix setup failed', err); }
   }
 
   if (document.readyState === 'loading') {

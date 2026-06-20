@@ -231,7 +231,10 @@
 .bwc-opening-xi-toggle[open] > summary { border-radius: 10px 10px 0 0; border-bottom-color: transparent; }
 .bwc-opening-xi-toggle .bwc-opening-xi { margin: 0; border-top: 0; border-radius: 0 0 10px 10px; }
 @media print {
-  .bwc-opening-xi-toggle > summary { display: none; }
+  /* Belt-and-braces with bwc.js setupPrintFix(): force the body open via
+     CSS in case JS is off, OR a browser ignores beforeprint events. */
+  .bwc-opening-xi-toggle:not([open]) > .bwc-opening-xi { display: block !important; }
+  .bwc-opening-xi-toggle > summary { display: none !important; }
   .bwc-opening-xi-toggle .bwc-opening-xi { border-radius: 10px; border-top: 1px solid var(--border); }
 }
 
