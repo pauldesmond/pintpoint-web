@@ -2,7 +2,7 @@
 /**
  * Build per-stadium venue pages for the Beer World Cup XI Stadium Map.
  * One HTML page per host stadium, listing nearby PINtPOINT venues sorted
- * by walking distance from the stadium. Pages live at
+ * by straight-line distance from the stadium. Pages live at
  * /blog/world-cup-venues/<slug>.html and link to /pubs/<slug> for each
  * venue.
  *
@@ -63,12 +63,15 @@ function haversineKm(lat1, lng1, lat2, lng2) {
 }
 
 function fmtDistance(km) {
-  // Show miles for US, km elsewhere. The Stadium Map page reads US-centric
-  // so this stays consistent with the existing pre-match-walkability framing.
-  // (Could be improved with per-stadium country flag but not worth the
-  // complication.)
+  // Imperial. Feet only when genuinely on the doorstep (<0.1 mi = ~528 ft);
+  // miles with one decimal everywhere else. Avoids both "0.5k ft" (the
+  // spreadsheet-y form) and "3900 ft" (technically correct, but nobody
+  // talks like that).
   const mi = km * 0.6213711922;
-  if (mi < 1) return `${(mi * 5280 / 1000).toFixed(1)}k ft`;  // sub-mile = feet
+  if (mi < 0.1) {
+    const ft = Math.round((mi * 5280) / 10) * 10;  // round to nearest 10 ft
+    return `${ft} ft`;
+  }
   return `${mi.toFixed(1)} mi`;
 }
 
@@ -139,14 +142,14 @@ function renderStadiumPage(stadium, venues) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-itunes-app" content="app-id=6760611613">
   <title>Beer near ${escapeHtml(stadium.stadium)} (${escapeHtml(stadium.city)}) — World Cup 2026 Stadium Beer Map · PINtPOINT</title>
-  <meta name="description" content="${counter} near ${escapeHtml(stadium.stadium)}, host of the 2026 FIFA World Cup in ${escapeHtml(stadium.city)}. Bars, pubs, breweries, taprooms and bottle shops sorted by walking distance from the ground." />
+  <meta name="description" content="${counter} near ${escapeHtml(stadium.stadium)}, host of the 2026 FIFA World Cup in ${escapeHtml(stadium.city)}. Bars, pubs, breweries, taprooms and bottle shops sorted by straight-line distance from the ground." />
   <meta name="robots" content="index,follow" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="canonical" href="https://pintpoint.co.uk/blog/world-cup-venues/${stadium.slug}.html" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://pintpoint.co.uk/blog/world-cup-venues/${stadium.slug}.html" />
   <meta property="og:title" content="Beer near ${escapeHtml(stadium.stadium)} (${escapeHtml(stadium.city)})" />
-  <meta property="og:description" content="${counter} sorted by walking distance from the ground." />
+  <meta property="og:description" content="${counter} sorted by straight-line distance from the ground." />
   <meta property="og:image" content="https://pintpoint.co.uk/blog/images/stadium-beer-map-infographic-v1.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <script type="application/ld+json">
@@ -222,9 +225,9 @@ function renderStadiumPage(stadium, venues) {
     <p class="meta"><span class="category">Guide</span>${escapeHtml(stadium.country_label)} · World Cup 2026</p>
 
     <h1>Beer near <em>${escapeHtml(stadium.stadium)}</em></h1>
-    <p class="subtitle">${escapeHtml(stadium.city)} · ${counter}, sorted by walking distance from the ground</p>
+    <p class="subtitle">${escapeHtml(stadium.city)} · ${counter}, sorted by straight-line distance from the ground</p>
 
-    <p>Bars, pubs, breweries, taprooms and bottle shops within ${RADIUS_KM} km of ${escapeHtml(stadium.stadium)}. Tap any venue for the full PINtPOINT page, or hit <strong>Walk →</strong> to open Google Maps walking directions from the stadium.</p>
+    <p>Bars, pubs, breweries, taprooms and bottle shops within ${RADIUS_KM} km of ${escapeHtml(stadium.stadium)}, sorted by straight-line distance from the ground. Tap any venue for the full PINtPOINT page, or hit <strong>Walk →</strong> for true Google Maps walking directions — handy when the river, the freeway or the stadium fence is in the way.</p>
 
     <div class="bwc-venue-list">
 ${venues.length === 0
@@ -260,13 +263,13 @@ function renderIndexPage(stadiumCounts) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>World Cup 2026 venue guides by stadium — PINtPOINT</title>
-  <meta name="description" content="Per-stadium beer venue lists for all 16 World Cup 2026 hosts. Each page lists nearby bars, pubs, breweries and taprooms sorted by walking distance from the ground." />
+  <meta name="description" content="Per-stadium beer venue lists for all 16 World Cup 2026 hosts. Each page lists nearby bars, pubs, breweries and taprooms sorted by straight-line distance from the ground." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://pintpoint.co.uk/blog/world-cup-venues/" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://pintpoint.co.uk/blog/world-cup-venues/" />
   <meta property="og:title" content="World Cup 2026 venues by stadium — PINtPOINT" />
-  <meta property="og:description" content="Per-stadium beer venue lists for all 16 World Cup 2026 hosts. Each page lists nearby bars, pubs, breweries and taprooms sorted by walking distance from the ground." />
+  <meta property="og:description" content="Per-stadium beer venue lists for all 16 World Cup 2026 hosts. Each page lists nearby bars, pubs, breweries and taprooms sorted by straight-line distance from the ground." />
   <meta property="og:image" content="https://pintpoint.co.uk/blog/images/stadium-beer-map-infographic-v1.jpg" />
   <meta property="og:image:alt" content="World Cup 2026 Stadium Beer Map — a grid of all 16 host stadiums with city and stadium names." />
   <meta name="twitter:card" content="summary_large_image" />
@@ -310,7 +313,7 @@ function renderIndexPage(stadiumCounts) {
   <article class="content">
     <h1>World Cup 2026 venues by stadium</h1>
     <p class="subtitle">Pick a host. Get the nearest beer.</p>
-    <p>Per-stadium beer venue lists for all 16 World Cup 2026 hosts. Each page lists nearby bars, pubs, breweries and taprooms sorted by walking distance from the ground.</p>
+    <p>Per-stadium beer venue lists for all 16 World Cup 2026 hosts. Each page lists nearby bars, pubs, breweries and taprooms sorted by straight-line distance from the ground.</p>
     <div class="grid">
 ${STADIUMS.map((s) => `      <a class="row" href="/blog/world-cup-venues/${s.slug}.html">
         <div>
