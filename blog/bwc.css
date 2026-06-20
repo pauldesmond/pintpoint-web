@@ -262,15 +262,16 @@
 
 /* --- BWC shell width (single consistent column) -------------------------
  * Page-level <style> caps .content at max-width: 760px. That's tight on
- * desktop. Adding .bwc-shell to <article class="content"> on BWC pages
- * lifts the column to ~920px — slightly more generous, but ONE width.
+ * desktop. .bwc-shell lifts the column to ~920px on desktop only.
  *
- * Mixed-lane attempt (skinny prose + wide modules) was reverted —
- * page felt visually incoherent. One consistent tournament-programme
- * column is the right answer.
+ * Mobile/tablet (<880px viewport): NO override. The page-level .content
+ * rule continues to apply, preserving the existing mobile behaviour
+ * (article fills viewport with 20px padding each side, no extra gutter).
  *
- * Mobile: width: min() collapses to (100vw - 32px). No regression. */
-article.bwc-shell { max-width: min(100% - 32px, 920px); }
+ * Desktop only: lift to 920px. Single consistent column — not mixed-lane. */
+@media (min-width: 880px) {
+  article.bwc-shell { max-width: 920px; }
+}
 
 /* --- Loaded / Fat Les voice layer ---------------------------------------
  * The framework above is the controlled magazine. These three components
