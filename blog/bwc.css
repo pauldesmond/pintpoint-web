@@ -258,6 +258,38 @@
 .bwc-squad dd { color: var(--text); margin: 0; font-weight: 500; }
 @media (max-width: 600px) { .bwc-squad dl { grid-template-columns: 1fr; gap: 2px 0; } .bwc-squad dt { margin-top: 6px; } }
 
+/* --- Loaded / Fat Les voice layer ---------------------------------------
+ * The framework above is the controlled magazine. These three components
+ * are the noisy magazine pull-out — terrace chant, mock-serious authority,
+ * pub-table certainty. Use sparingly: ~10 total across the three pages.
+ *
+ * Palette: amber default for most callouts, red for the loudest "shout"
+ * variant. Hard-edged borders (radius: 4px) so they read as magazine
+ * pull-outs rather than soft-corner product cards. Mono-uppercase eyebrows
+ * with wide letter-spacing for the tabloid section-header feel. */
+
+/* Chant strip — used once per page at the intro for swagger/rhythm */
+.bwc-chant { margin: 16px 0 24px; padding: 20px 22px; background: linear-gradient(180deg, rgba(192,163,64,0.10), transparent 90%); border-top: 3px solid var(--amber); border-bottom: 1px solid var(--border); text-align: center; }
+.bwc-chant p { font-size: 1.12rem; font-weight: 800; color: var(--text); line-height: 1.45; margin: 0; letter-spacing: -0.3px; text-wrap: balance; }
+.bwc-chant strong { color: var(--amber); font-weight: 900; }
+
+/* Loaded callout — recurring authority interruption */
+.bwc-loaded-callout { margin: 22px 0; padding: 16px 20px 18px; background: rgba(192,163,64,0.08); border: 2px solid var(--amber); border-radius: 4px; }
+.bwc-loaded-callout .bwc-lc-eyebrow { font-family: 'SF Mono', Menlo, Monaco, monospace; font-weight: 800; font-size: 0.72rem; letter-spacing: 2.4px; text-transform: uppercase; color: var(--amber); margin-bottom: 8px; display: block; }
+.bwc-loaded-callout p { font-size: 1.0rem; font-weight: 700; color: var(--text); line-height: 1.5; margin: 0; letter-spacing: -0.2px; text-wrap: balance; }
+.bwc-loaded-callout p + p { margin-top: 8px; font-weight: 600; }
+
+/* Shout variant — louder, red, used for PUB VAR CHECK / SHOCK rulings */
+.bwc-loaded-callout.shout { background: rgba(255,92,92,0.10); border-color: #ff5c5c; }
+.bwc-loaded-callout.shout .bwc-lc-eyebrow { color: #ff7373; }
+
+/* Quiet variant — dark, mock-serious, used for the very controlled rulings */
+.bwc-loaded-callout.quiet { background: rgba(0,0,0,0.4); border-color: rgba(255,255,255,0.2); }
+.bwc-loaded-callout.quiet .bwc-lc-eyebrow { color: var(--muted); }
+
+/* Match-card strapline — verdict-first, oversized, italic, magazine pull-quote */
+.bwc-match-strapline { font-size: 1.18rem; font-weight: 900; font-style: italic; color: var(--amber); line-height: 1.25; margin: 0 0 14px; letter-spacing: -0.4px; text-wrap: balance; }
+
 /* --- (PINt)POINTS explainer line (Fixtures page intro) ------------------- */
 .bwc-points-note { margin: 14px 0 22px; padding: 12px 16px; border-left: 3px solid var(--teal); background: rgba(0,212,170,0.05); border-radius: 4px; font-size: 0.92rem; color: var(--text); line-height: 1.55; }
 .bwc-points-note strong { color: var(--teal); font-weight: 800; letter-spacing: -0.2px; }
