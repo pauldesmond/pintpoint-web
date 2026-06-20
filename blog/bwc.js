@@ -41,6 +41,10 @@
       panels.forEach(function (panel, i) {
         if (!panel) return;
         var on = i === idx;
+        // Inline style.display wins over any stylesheet rule, including
+        // !important from other origins. Belt-and-braces with [hidden] +
+        // [data-active] so style hooks still work.
+        panel.style.display = on ? '' : 'none';
         if (on) {
           panel.removeAttribute('hidden');
           panel.setAttribute('data-active', 'true');
@@ -98,11 +102,12 @@
       idx = (i + cards.length) % cards.length;
       cards.forEach(function (card, ci) {
         var on = ci === idx;
+        // Inline style.display wins over every stylesheet rule unconditionally.
+        // This is what actually drives the visual swap; [hidden], .active and
+        // aria-hidden are kept in sync for styling hooks + accessibility.
+        card.style.display = on ? '' : 'none';
         card.classList.toggle('active', on);
         card.setAttribute('aria-hidden', on ? 'false' : 'true');
-        // Native [hidden] attribute — browser UA stylesheet hides these without
-        // needing any custom CSS rule. Same pattern as wireTabs(). This is what
-        // actually drives the visual swap; .active is just a styling hook.
         if (on) card.removeAttribute('hidden');
         else    card.setAttribute('hidden', '');
       });

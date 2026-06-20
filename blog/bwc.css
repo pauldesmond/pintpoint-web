@@ -47,10 +47,16 @@
 
 /* --- CTA pair (two main next-step buttons) -------------------------------- */
 .bwc-cta-pair { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0; }
-.bwc-cta-pair a { flex: 1 1 220px; padding: 14px 18px; background: var(--teal); color: #0d1117; text-decoration: none; border-radius: 8px; font-weight: 800; text-align: center; letter-spacing: -0.2px; transition: transform .1s; }
+/* :link and :visited explicit so page-level `article a:visited { color: teal }`
+   rule can't beat us and produce green-text-on-green-background. */
+.bwc-cta-pair a,
+.bwc-cta-pair a:link,
+.bwc-cta-pair a:visited { flex: 1 1 220px; padding: 14px 18px; background: var(--teal); color: #0d1117; text-decoration: none; border-radius: 8px; font-weight: 800; text-align: center; letter-spacing: -0.2px; transition: transform .1s; }
 .bwc-cta-pair a:hover { transform: translateY(-1px); }
 .bwc-cta-pair a:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
-.bwc-cta-pair a.secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+.bwc-cta-pair a.secondary,
+.bwc-cta-pair a.secondary:link,
+.bwc-cta-pair a.secondary:visited { background: var(--card); color: var(--text); border: 1px solid var(--border); }
 .bwc-cta-pair a.secondary:hover { border-color: var(--teal); color: var(--teal); }
 
 /* --- Match card (the canonical .bwc-match component) ---------------------- */
@@ -120,7 +126,9 @@
 .bwc-nomination .bwc-nom-template { padding: 14px 16px; background: rgba(0,0,0,0.25); border: 1px solid var(--border); border-radius: 6px; font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.82rem; color: var(--text); line-height: 1.7; margin: 0 0 16px; white-space: pre-wrap; }
 .bwc-nomination .bwc-nom-template .key { color: var(--teal); font-weight: 700; }
 .bwc-nomination .bwc-nom-template .hint { color: var(--muted); font-style: italic; }
-.bwc-nomination .bwc-nom-cta { display: inline-block; padding: 12px 22px; background: var(--teal); color: #0d1117; text-decoration: none; border-radius: 8px; font-weight: 800; font-size: 0.95rem; transition: transform .1s; }
+.bwc-nomination .bwc-nom-cta,
+.bwc-nomination .bwc-nom-cta:link,
+.bwc-nomination .bwc-nom-cta:visited { display: inline-block; padding: 12px 22px; background: var(--teal); color: #0d1117; text-decoration: none; border-radius: 8px; font-weight: 800; font-size: 0.95rem; transition: transform .1s; }
 .bwc-nomination .bwc-nom-cta:hover { transform: translateY(-1px); }
 .bwc-nomination .bwc-nom-cta:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 .bwc-nomination .bwc-nom-help { font-size: 0.82rem; color: var(--muted); margin: 10px 0 0; line-height: 1.55; }
