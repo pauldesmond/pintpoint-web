@@ -78,6 +78,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="bwc.css" />
+  <script src="bwc.js" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
@@ -186,23 +187,26 @@
         <figcaption style="margin-top:10px;font-size:0.82rem;color:var(--muted);line-height:1.5;text-align:center;">An example XI. First draft, not final selection.</figcaption>
       </figure>
 
-      <div class="bwc-opening-xi" aria-label="Example opening XI text version">
-        <div class="bwc-oxi-label">Example Opening XI · text version</div>
-        <dl>
-          <div><dt>🇧🇷 Brazil</dt><dd>Antarctica</dd></div>
-          <div><dt>🇺🇸 USA</dt><dd>Sierra Nevada</dd></div>
-          <div><dt>🇯🇵 Japan</dt><dd>Sapporo</dd></div>
-          <div><dt>🇧🇪 Belgium</dt><dd>Orval</dd></div>
-          <div><dt>🇩🇪 Germany</dt><dd>Weihenstephaner</dd></div>
-          <div><dt>🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</dt><dd>Camden Hells</dd></div>
-          <div><dt>🇪🇸 Spain</dt><dd>Estrella Damm</dd></div>
-          <div><dt>🇫🇷 France</dt><dd>Kronenbourg 1664</dd></div>
-          <div><dt>🇮🇹 Italy</dt><dd>Birra Moretti L'Autentica</dd></div>
-          <div><dt>🇲🇦 Morocco</dt><dd>Casablanca</dd></div>
-          <div><dt>🇺🇾 Uruguay</dt><dd>Patricia</dd></div>
-        </dl>
-        <p class="bwc-oxi-note">First draft, not final selection. Argue with us via <a href="#help-pick">Help pick the squads</a> below.</p>
-      </div>
+      <details class="bwc-opening-xi-toggle">
+        <summary>See an example starting XI · text version</summary>
+        <div class="bwc-opening-xi">
+          <div class="bwc-oxi-label">Example Opening XI</div>
+          <dl>
+            <div><dt>🇧🇷 Brazil</dt><dd>Antarctica</dd></div>
+            <div><dt>🇺🇸 USA</dt><dd>Sierra Nevada</dd></div>
+            <div><dt>🇯🇵 Japan</dt><dd>Sapporo</dd></div>
+            <div><dt>🇧🇪 Belgium</dt><dd>Orval</dd></div>
+            <div><dt>🇩🇪 Germany</dt><dd>Weihenstephaner</dd></div>
+            <div><dt>🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</dt><dd>Camden Hells</dd></div>
+            <div><dt>🇪🇸 Spain</dt><dd>Estrella Damm</dd></div>
+            <div><dt>🇫🇷 France</dt><dd>Kronenbourg 1664</dd></div>
+            <div><dt>🇮🇹 Italy</dt><dd>Birra Moretti L'Autentica</dd></div>
+            <div><dt>🇲🇦 Morocco</dt><dd>Casablanca</dd></div>
+            <div><dt>🇺🇾 Uruguay</dt><dd>Patricia</dd></div>
+          </dl>
+          <p class="bwc-oxi-note">First draft, not final selection. Argue with us via <a href="#help-pick">Help pick the squads</a> below.</p>
+        </div>
+      </details>
 
       <h2 id="premise">The premise</h2>
 
@@ -237,18 +241,63 @@
 
       <p>When two countries meet in the World Cup, we pick beers from each nation's squad and judge the matchup. Like this:</p>
 
-      <div class="bwc-match" aria-label="Example match card">
-        <div class="bwc-match-header">
-          <span class="bwc-match-stage">Group Stage · Worked example</span>
-          <span class="bwc-match-status example">Example</span>
+      <div class="bwc-match-cycler" aria-label="Example match cards — cycle through three">
+
+        <article class="bwc-match active" aria-label="Worked example 1: Germany v Mexico">
+          <div class="bwc-match-header">
+            <span class="bwc-match-stage">Group Stage · Worked example</span>
+            <span class="bwc-match-status example">Example</span>
+          </div>
+          <div class="bwc-match-body">
+            <p class="bwc-match-teams">🇩🇪 Germany v Mexico 🇲🇽</p>
+            <p class="bwc-match-beers">Augustiner Helles <span class="vs">v</span> Modelo Especial</p>
+            <p class="bwc-match-caption">Germany wins on structure. Mexico dominates airport availability.</p>
+            <p class="bwc-match-var"><strong>Pub VAR</strong> Drinkability checked. Result stands.</p>
+            <p class="bwc-match-result">Germany 2 – 1 Mexico</p>
+          </div>
+        </article>
+
+        <article class="bwc-match" aria-label="Worked example 2: Belgium v Argentina">
+          <div class="bwc-match-header">
+            <span class="bwc-match-stage">Group Stage · Worked example</span>
+            <span class="bwc-match-status example">Example</span>
+          </div>
+          <div class="bwc-match-body">
+            <p class="bwc-match-teams">🇧🇪 Belgium v Argentina 🇦🇷</p>
+            <p class="bwc-match-beers">Orval <span class="vs">v</span> Quilmes Cristal</p>
+            <p class="bwc-match-caption">Belgium's Trappist bench against Argentina's heritage lager. The Selection Committee asked Pub VAR to declare Belgium ineligible for being too good. Appeal denied.</p>
+            <p class="bwc-match-var"><strong>Pub VAR</strong> Beers must compete with the squad they brought.</p>
+            <p class="bwc-match-result">Belgium 3 – 0 Argentina</p>
+          </div>
+        </article>
+
+        <article class="bwc-match" aria-label="Worked example 3: Japan v Italy">
+          <div class="bwc-match-header">
+            <span class="bwc-match-stage">Group Stage · Worked example</span>
+            <span class="bwc-match-status example">Example</span>
+          </div>
+          <div class="bwc-match-body">
+            <p class="bwc-match-teams">🇯🇵 Japan v Italy 🇮🇹</p>
+            <p class="bwc-match-beers">Sapporo <span class="vs">v</span> Birra Moretti L'Autentica</p>
+            <p class="bwc-match-caption">Two heritage premium lagers in a quiet final-third matchup. The Pint Desk called it the closest decision of the round.</p>
+            <p class="bwc-match-var"><strong>Pub VAR</strong> Decision upheld on availability.</p>
+            <p class="bwc-match-result">Japan 1 – 0 Italy</p>
+          </div>
+        </article>
+
+        <div class="bwc-cycler-controls" aria-label="Cycle through worked examples">
+          <div class="bwc-cycler-nav">
+            <button type="button" class="bwc-cycler-btn bwc-cycler-prev" aria-label="Previous example">← Prev</button>
+            <button type="button" class="bwc-cycler-btn bwc-cycler-next" aria-label="Next example">Next →</button>
+          </div>
+          <div class="bwc-cycler-dots" role="tablist" aria-label="Jump to example">
+            <button type="button" class="bwc-cycler-dot active" aria-label="Example 1: Germany v Mexico" aria-selected="true"></button>
+            <button type="button" class="bwc-cycler-dot" aria-label="Example 2: Belgium v Argentina" aria-selected="false"></button>
+            <button type="button" class="bwc-cycler-dot" aria-label="Example 3: Japan v Italy" aria-selected="false"></button>
+          </div>
+          <span class="bwc-cycler-label">Example 1 of 3</span>
         </div>
-        <div class="bwc-match-body">
-          <p class="bwc-match-teams">🇩🇪 Germany v Mexico 🇲🇽</p>
-          <p class="bwc-match-beers">Augustiner Helles <span class="vs">v</span> Modelo Especial</p>
-          <p class="bwc-match-caption">Germany wins on structure. Mexico dominates airport availability.</p>
-          <p class="bwc-match-var"><strong>Pub VAR</strong> Drinkability checked. Result stands.</p>
-          <p class="bwc-match-result">Germany 2 – 1 Mexico</p>
-        </div>
+
       </div>
 
       <p>The judging is half-serious, which is to say: serious enough to cause arguments, not serious enough to require a governing body.</p>
@@ -276,25 +325,32 @@
 
       <p>Three recurring authorities will appear across the tournament. They will overrule each other. They will agree on nothing.</p>
 
-      <div class="bwc-officials" aria-label="The tournament officials">
-        <article class="bwc-official">
-          <div class="bwc-official-name">Pub VAR</div>
-          <div class="bwc-official-role">The referee</div>
-          <p class="bwc-official-voice">Reviews disputed results, applies availability penalties, upholds drinkability appeals.</p>
-          <p class="bwc-official-rules"><strong>Overrules:</strong> beer verdicts, contract-brewing eligibility, anyone who says "but the rules of beer."</p>
-        </article>
-        <article class="bwc-official">
-          <div class="bwc-official-name">The Selection Committee</div>
-          <div class="bwc-official-role">Squad authority</div>
-          <p class="bwc-official-voice">Denies requests to leave out world-class beers. Picks unpopular substitutes. Refuses to explain itself.</p>
-          <p class="bwc-official-rules"><strong>Overrules:</strong> public opinion, reader nominations, the captain's armband.</p>
-        </article>
-        <article class="bwc-official">
-          <div class="bwc-official-name">The Pint Desk</div>
-          <div class="bwc-official-role">Analyst voice</div>
-          <p class="bwc-official-voice">Match of the Day pundit energy, but with worse hydration.</p>
-          <p class="bwc-official-rules"><strong>Overrules:</strong> nobody. Provides round-by-round commentary, narrative arcs, post-bracket cold takes.</p>
-        </article>
+      <div class="bwc-officials-tabs" aria-label="The tournament officials">
+        <div class="bwc-officials-tablist" role="tablist" aria-label="Choose an official">
+          <button type="button" role="tab" class="bwc-officials-tab" id="tab-pub-var"   aria-controls="panel-pub-var"   aria-selected="true">Pub VAR</button>
+          <button type="button" role="tab" class="bwc-officials-tab" id="tab-selection" aria-controls="panel-selection" aria-selected="false" tabindex="-1">The Selection Committee</button>
+          <button type="button" role="tab" class="bwc-officials-tab" id="tab-pint"      aria-controls="panel-pint"      aria-selected="false" tabindex="-1">The Pint Desk</button>
+        </div>
+        <div class="bwc-officials">
+          <article class="bwc-official" id="panel-pub-var" role="tabpanel" aria-labelledby="tab-pub-var" data-active="true">
+            <div class="bwc-official-name">Pub VAR</div>
+            <div class="bwc-official-role">The referee</div>
+            <p class="bwc-official-voice">Reviews disputed results, applies availability penalties, upholds drinkability appeals.</p>
+            <p class="bwc-official-rules"><strong>Overrules:</strong> beer verdicts, contract-brewing eligibility, anyone who says "but the rules of beer."</p>
+          </article>
+          <article class="bwc-official" id="panel-selection" role="tabpanel" aria-labelledby="tab-selection" data-active="false">
+            <div class="bwc-official-name">The Selection Committee</div>
+            <div class="bwc-official-role">Squad authority</div>
+            <p class="bwc-official-voice">Denies requests to leave out world-class beers. Picks unpopular substitutes. Refuses to explain itself.</p>
+            <p class="bwc-official-rules"><strong>Overrules:</strong> public opinion, reader nominations, the captain's armband.</p>
+          </article>
+          <article class="bwc-official" id="panel-pint" role="tabpanel" aria-labelledby="tab-pint" data-active="false">
+            <div class="bwc-official-name">The Pint Desk</div>
+            <div class="bwc-official-role">Analyst voice</div>
+            <p class="bwc-official-voice">Match of the Day pundit energy, but with worse hydration.</p>
+            <p class="bwc-official-rules"><strong>Overrules:</strong> nobody. Provides round-by-round commentary, narrative arcs, post-bracket cold takes.</p>
+          </article>
+        </div>
       </div>
 
       <p>The whole conceit is loosely based on a distant memory of a Beer World Cup that Loaded magazine ran in the 1990s. We cannot find the issue. The Crisps and Vodka tournaments do survive — along with a few more insalubrious items — so the format definitely existed.</p>
@@ -339,13 +395,51 @@
 
       <p>This is the entry point. The rest of the tournament rolls out across the real World Cup 2026 window:</p>
 
-      <ol class="bwc-status-board" aria-label="Tournament roadmap">
-        <li><span class="bwc-status-pill live">Live</span><div class="bwc-status-text"><strong>Squad reveals</strong><span>48 countries in scouting-report format. Seed status, manager's problem, likely starters, wildcard, selection controversy.</span></div></li>
-        <li><span class="bwc-status-pill live">Live</span><div class="bwc-status-text"><strong>Group-stage match cards</strong><span>One matchup, one caption, one verdict. Already on the <a href="/blog/beer-world-cup-xi-fixtures.html">Fixtures board</a> for USA v Australia and Scotland v Morocco.</span></div></li>
-        <li><span class="bwc-status-pill coming">Coming</span><div class="bwc-status-text"><strong>Knockout bracket</strong><span>Round of 32, Quarter-Finals, Semi-Finals, The Final. Visual pages with the same authority as the 1997 magazine spreads they're descended from.</span></div></li>
-        <li><span class="bwc-status-pill coming">Coming</span><div class="bwc-status-text"><strong>The Final</strong><span>Staged as a trophy ceremony. Hero winner page, runner-up visible, completely over-serious match report.</span></div></li>
-        <li><span class="bwc-status-pill coming">Coming</span><div class="bwc-status-text"><strong>Post-tournament awards</strong><span>Golden Pint, Shock Exit, Best Pub Beer, People's Champion and VAR Robbery Of The Tournament.</span></div></li>
-      </ol>
+      <div class="bwc-stepper" aria-label="Tournament roadmap">
+        <div class="bwc-stepper-bar" role="tablist" aria-label="Tournament phases">
+          <button type="button" role="tab" class="bwc-stepper-tab" id="step-tab-0" aria-controls="step-panel-0" aria-selected="true"  data-status="live">
+            <span class="num">1</span><span class="label">Squad reveals</span><span class="pip" aria-hidden="true"></span>
+          </button>
+          <button type="button" role="tab" class="bwc-stepper-tab" id="step-tab-1" aria-controls="step-panel-1" aria-selected="false" tabindex="-1" data-status="live">
+            <span class="num">2</span><span class="label">Match cards</span><span class="pip" aria-hidden="true"></span>
+          </button>
+          <button type="button" role="tab" class="bwc-stepper-tab" id="step-tab-2" aria-controls="step-panel-2" aria-selected="false" tabindex="-1" data-status="coming">
+            <span class="num">3</span><span class="label">Knockouts</span><span class="pip" aria-hidden="true"></span>
+          </button>
+          <button type="button" role="tab" class="bwc-stepper-tab" id="step-tab-3" aria-controls="step-panel-3" aria-selected="false" tabindex="-1" data-status="coming">
+            <span class="num">4</span><span class="label">The Final</span><span class="pip" aria-hidden="true"></span>
+          </button>
+          <button type="button" role="tab" class="bwc-stepper-tab" id="step-tab-4" aria-controls="step-panel-4" aria-selected="false" tabindex="-1" data-status="coming">
+            <span class="num">5</span><span class="label">Awards</span><span class="pip" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div class="bwc-stepper-panel" id="step-panel-0" role="tabpanel" aria-labelledby="step-tab-0" data-active="true">
+          <span class="bwc-stepper-panel-status live">Live</span>
+          <h3>Squad reveals</h3>
+          <p>48 countries in scouting-report format. Seed status, manager's problem, likely starters, wildcard, selection controversy. The reveal cards land on the <a href="/blog/beer-world-cup-xi-line-ups.html">Country Line-Ups</a> page.</p>
+        </div>
+        <div class="bwc-stepper-panel" id="step-panel-1" role="tabpanel" aria-labelledby="step-tab-1" data-active="false">
+          <span class="bwc-stepper-panel-status live">Live</span>
+          <h3>Group-stage match cards</h3>
+          <p>One matchup, one caption, one verdict. Already on the <a href="/blog/beer-world-cup-xi-fixtures.html">Fixtures board</a> for USA v Australia and Scotland v Morocco.</p>
+        </div>
+        <div class="bwc-stepper-panel" id="step-panel-2" role="tabpanel" aria-labelledby="step-tab-2" data-active="false">
+          <span class="bwc-stepper-panel-status coming">Coming</span>
+          <h3>Knockout bracket</h3>
+          <p>Round of 32, Quarter-Finals, Semi-Finals, The Final. Visual pages with the same authority as the 1997 magazine spreads they're descended from.</p>
+        </div>
+        <div class="bwc-stepper-panel" id="step-panel-3" role="tabpanel" aria-labelledby="step-tab-3" data-active="false">
+          <span class="bwc-stepper-panel-status coming">Coming</span>
+          <h3>The Final</h3>
+          <p>Staged as a trophy ceremony. Hero winner page, runner-up visible, completely over-serious match report.</p>
+        </div>
+        <div class="bwc-stepper-panel" id="step-panel-4" role="tabpanel" aria-labelledby="step-tab-4" data-active="false">
+          <span class="bwc-stepper-panel-status coming">Coming</span>
+          <h3>Post-tournament awards</h3>
+          <p>Golden Pint, Shock Exit, Best Pub Beer, People's Champion and VAR Robbery Of The Tournament.</p>
+        </div>
+      </div>
 
       <p>Reader nominations get folded into the squads as we build them out. Pub VAR will probably overrule us at least once. The Pint Desk will absolutely have opinions about it.</p>
 
