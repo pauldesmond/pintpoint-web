@@ -190,6 +190,8 @@
 .bwc-venue:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 .bwc-venue .v-city { color: var(--text); }
 .bwc-venue:hover .v-city { color: var(--teal); }
+.bwc-venue .v-count { font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.75rem; font-weight: 600; color: var(--muted); letter-spacing: 0.3px; margin-left: 6px; }
+.bwc-venue:hover .v-count { color: var(--teal); }
 .bwc-venue .v-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
 .bwc-venue .v-cc { font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.2px; color: var(--muted); }
 .bwc-venue .v-city { font-weight: 800; font-size: 1.05rem; color: var(--text); letter-spacing: -0.3px; line-height: 1.15; }

@@ -339,6 +339,22 @@ ${STADIUMS.map((s) => `      <a class="row" href="/blog/world-cup-venues/${s.slu
   console.log(`\nWrote ${STADIUMS.length + 1} pages → ${OUT_DIR}`);
   const total = Object.values(counts).reduce((a, b) => a + b, 0);
   console.log(`Total venue rows across all pages: ${total}`);
+
+  // Patch the parent Stadium Map page so each city card shows its venue
+  // count in brackets. Keeps the numbers in sync as new venues land.
+  const stadiumMapPath = path.join(REPO, 'blog', 'world-cup-stadium-beer-map.html');
+  let mapSrc = fs.readFileSync(stadiumMapPath, 'utf8');
+  const citySlug = Object.fromEntries(STADIUMS.map((s) => [s.city, s.slug]));
+  // Replace `<div class="v-city">CITY</div>` (with optional existing
+  // <span class="v-count">) with `<div class="v-city">CITY <span class="v-count">(N)</span></div>`
+  mapSrc = mapSrc.replace(/<div class="v-city">([^<]+?)(?:\s*<span class="v-count">[^<]+<\/span>)?<\/div>/g, (m, city) => {
+    const slug = citySlug[city.trim()];
+    if (!slug) return m;
+    const n = counts[slug] ?? 0;
+    return `<div class="v-city">${city.trim()} <span class="v-count">(${n})</span></div>`;
+  });
+  fs.writeFileSync(stadiumMapPath, mapSrc);
+  console.log(`Patched Stadium Map venue cards with counts.`);
 })().catch((err) => {
   console.error('FATAL:', err.message);
   process.exit(1);
