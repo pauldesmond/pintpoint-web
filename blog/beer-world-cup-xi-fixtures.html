@@ -46,6 +46,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="bwc.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
@@ -126,92 +127,113 @@
     <h1>Beer World Cup XI: <em>Fixtures &amp; Results</em></h1>
     <p class="subtitle">Live campaign board — upcoming beer fixtures, completed beer results, squad status</p>
 
-    <p class="lede">This is where the campaign lives. The fixtures track the real World Cup 2026 schedule. The results land here as each beer matchup is judged. Squads update as they're revealed and as <a href="/blog/beer-world-cup-xi.html">Pub VAR, the Selection Committee and The Pint Desk</a> rule on disputed picks.</p>
+    <div class="bwc">
 
-    <p class="updated-line">Page last updated: 19 June 2026. Times shown in your local timezone (UK kick-off as fallback).</p>
-    <p class="updated-line">Follow the tournament on X: <a href="https://x.com/hashtag/BeerWorldCupXI" target="_blank" rel="noopener">#BeerWorldCupXI</a>.</p>
+      <p class="lede">This is where the campaign lives. The fixtures track the real World Cup 2026 schedule. The results land here as each beer matchup is judged. Squads update as they're revealed and as <a href="/blog/beer-world-cup-xi.html#officials">Pub VAR, the Selection Committee and The Pint Desk</a> rule on disputed picks.</p>
 
-    <div class="tonight-card crisis-card">
-      <div class="tonight-label">⚖️ Match card · USA take it on (PINt)POINTS</div>
-      <div class="tonight-headline">USA 2-0 Australia on the pitch. USA take it on (PINt)POINTS in the pub.</div>
+      <p class="updated-line">Page last updated: 19 June 2026. Times shown in your local timezone (UK kick-off as fallback).</p>
 
-      <div class="squad-block">
-        <div class="squad-country">🇦🇺 Australia · provisional call-ups</div>
+      <div class="bwc-follow" aria-label="Follow the tournament">
+        <div class="bwc-follow-label">Follow the tournament</div>
         <ul>
-          <li>Coopers Pale Ale</li>
-          <li>Coopers Sparkling Ale</li>
-          <li>Victoria Bitter</li>
-          <li>Carlton Draught</li>
-          <li>Little Creatures Pale Ale</li>
-          <li>Stone &amp; Wood Pacific Ale</li>
-          <li>Mountain Culture Cult IPA</li>
-          <li>BentSpoke Crankshaft IPA</li>
-          <li>Pirate Life Mosaic IPA</li>
-          <li>Hawkers West Coast IPA</li>
-          <li>Balter XPA</li>
-        </ul>
-        <p class="footnote">⚖️ Pub VAR notes: Range, Feral Biggie Juice, Mountain Goat, Tooheys New, James Boag and XXXX Gold all caused arguments. The committee ruled that Australia's modern IPA scene is strong, but not enough to overcome the USA's hop legacy.</p>
-      </div>
-
-      <div class="squad-block">
-        <div class="squad-country">🇺🇸 USA · provisional call-ups</div>
-        <ul>
-          <li>Sierra Nevada Pale Ale</li>
-          <li>Stone IPA</li>
-          <li>Russian River Pliny the Elder</li>
-          <li>Bell's Two Hearted Ale</li>
-          <li>Hardywood Great Return</li>
-          <li>Gigantic IPA</li>
-          <li>New Belgium Fat Tire</li>
-          <li>Founders KBS</li>
-          <li>Allagash White</li>
-          <li>Dogfish Head 90 Minute IPA</li>
-          <li>Anchor Steam</li>
-        </ul>
-        <p class="footnote">⚖️ Pub VAR notes: Florida Man by Cigar City is listed as an impact substitute after being asked to remove the shark tooth necklace before entering play. Oberon Ale, Lagunitas IPA, Sam Adams Boston Lager, Budweiser, PBR, Coors Banquet and Goose Island Bourbon County remain under review.</p>
-      </div>
-
-      <p class="selection-status"><strong>Match verdict:</strong> Australia had a proper squad — Coopers brought the heritage, while Mountain Culture, BentSpoke, Pirate Life and Hawkers made the selectors nervous. But against Sierra Nevada, Stone, Pliny, Two Hearted and the birthplace of the West Coast IPA, the USA take it on (PINt)POINTS.</p>
-
-      <p class="footnote">Verdict locked.</p>
-    </div>
-
-    <div class="tonight-card">
-      <div class="tonight-label">⚖️ Match card · Scotland win on (PINt)POINTS</div>
-      <div class="tonight-headline">Scotland 0-1 Morocco on the pitch. Scotland win on (PINt)POINTS in the pub.</div>
-
-      <div class="squad-block">
-        <div class="squad-country">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</div>
-        <p>Lager heritage, stout depth, and several breweries already demanding a recount. Provisional call-ups under consideration:</p>
-        <ul>
-          <li>Tennent's Lager</li>
-          <li>BrewDog Punk IPA</li>
-          <li>Innis &amp; Gunn Original</li>
-          <li>Harviestoun Schiehallion</li>
-          <li>Williams Bros Joker IPA</li>
-          <li>Orkney Dark Island</li>
-          <li>Tempest Brave New World</li>
+          <li><a href="/blog/beer-world-cup-xi.html"><span class="bwc-chip tag">Hub</span>Manifesto</a></li>
+          <li><a href="/blog/beer-world-cup-xi-line-ups.html"><span class="bwc-chip">XI</span>Country Line-Ups</a></li>
+          <li><a href="/blog/world-cup-stadium-beer-map.html"><span class="bwc-chip map">Map</span>Stadium Beer Map</a></li>
+          <li><a href="https://x.com/hashtag/BeerWorldCupXI" target="_blank" rel="noopener"><span class="bwc-chip tag">#</span>BeerWorldCupXI on X</a></li>
         </ul>
       </div>
 
-      <div class="squad-block">
-        <div class="squad-country">🇲🇦 Morocco</div>
-        <p>Desert-heat pilsner core, citrus reinforcement from the Casablanca line, and Pub VAR currently reviewing two locally-brewed internationals for eligibility. Provisional call-ups:</p>
-        <ul>
-          <li>Casablanca Premium Lager</li>
-          <li>Flag Spéciale</li>
-          <li>Stork Premiere</li>
-          <li>Casablanca Citron</li>
-          <li>Castel Beer</li>
-          <li>Bavaroise</li>
-        </ul>
-        <p class="footnote">⚖️ Pub VAR eligibility review pending: Heineken and Pelforth Ambrée — both brewed locally in Morocco under contract, native-squad ruling expected before kickoff.</p>
-      </div>
+      <article class="bwc-match" aria-label="USA v Australia match card">
+        <div class="bwc-match-header">
+          <span class="bwc-match-stage">Group Stage · Match card</span>
+          <span class="bwc-match-status ft">FT · (PINt)POINTS</span>
+        </div>
+        <div class="bwc-match-body">
+          <p class="bwc-match-teams">🇺🇸 USA v Australia 🇦🇺</p>
+          <p class="bwc-match-beers">USA 2 – 0 Australia on the pitch <span class="vs">·</span> USA take it on (PINt)POINTS in the pub</p>
+          <p class="bwc-match-caption">Australia had a proper squad — Coopers brought the heritage, while Mountain Culture, BentSpoke, Pirate Life and Hawkers made the selectors nervous. But against Sierra Nevada, Stone, Pliny, Two Hearted and the birthplace of the West Coast IPA, the USA take it on (PINt)POINTS.</p>
+          <p class="bwc-match-var"><strong>Pub VAR</strong> Verdict locked. Hop legacy ruling stands.</p>
+          <p class="bwc-match-result">🇺🇸 USA win on (PINt)POINTS</p>
+        </div>
+        <div class="bwc-match-squads">
+          <div class="bwc-match-squad-block">
+            <div class="bwc-match-squad-country">🇦🇺 Australia · provisional call-ups</div>
+            <ul class="bwc-match-squad-list">
+              <li>Coopers Pale Ale</li>
+              <li>Coopers Sparkling Ale</li>
+              <li>Victoria Bitter</li>
+              <li>Carlton Draught</li>
+              <li>Little Creatures Pale Ale</li>
+              <li>Stone &amp; Wood Pacific Ale</li>
+              <li>Mountain Culture Cult IPA</li>
+              <li>BentSpoke Crankshaft IPA</li>
+              <li>Pirate Life Mosaic IPA</li>
+              <li>Hawkers West Coast IPA</li>
+              <li>Balter XPA</li>
+            </ul>
+            <p class="bwc-match-squad-footnote">⚖️ Pub VAR notes: Range, Feral Biggie Juice, Mountain Goat, Tooheys New, James Boag and XXXX Gold all caused arguments. The committee ruled that Australia's modern IPA scene is strong, but not enough to overcome the USA's hop legacy.</p>
+          </div>
+          <div class="bwc-match-squad-block">
+            <div class="bwc-match-squad-country">🇺🇸 USA · provisional call-ups</div>
+            <ul class="bwc-match-squad-list">
+              <li>Sierra Nevada Pale Ale</li>
+              <li>Stone IPA</li>
+              <li>Russian River Pliny the Elder</li>
+              <li>Bell's Two Hearted Ale</li>
+              <li>Hardywood Great Return</li>
+              <li>Gigantic IPA</li>
+              <li>New Belgium Fat Tire</li>
+              <li>Founders KBS</li>
+              <li>Allagash White</li>
+              <li>Dogfish Head 90 Minute IPA</li>
+              <li>Anchor Steam</li>
+            </ul>
+            <p class="bwc-match-squad-footnote">⚖️ Pub VAR notes: Florida Man by Cigar City is listed as an impact substitute after being asked to remove the shark tooth necklace before entering play. Oberon Ale, Lagunitas IPA, Sam Adams Boston Lager, Budweiser, PBR, Coors Banquet and Goose Island Bourbon County remain under review.</p>
+          </div>
+        </div>
+      </article>
 
-      <p class="selection-status" style="background: rgba(0,212,170,0.10); border-left: 3px solid var(--teal); padding: 12px 14px; border-radius: 6px; margin: 14px 0 10px; font-size: 0.95rem; line-height: 1.6;"><strong style="color: var(--teal);">Match verdict:</strong> Scotland conceded inside 72 seconds at Gillette Stadium and never recovered the qualification path. The Selection Committee deliberated considerably longer and reached the opposite verdict. Scotland's bench — BrewDog, Tempest, Harviestoun, Orkney, Innis &amp; Gunn, Williams Bros and Tennent's heritage — outranged Morocco's six broadly-similar pale lagers. Pub VAR ruled Heineken and Pelforth Ambrée ineligible as foreign-brewed contract pours. Scotland win on (PINt)POINTS.</p>
-
-      <p class="footnote">Verdict locked.</p>
-    </div>
+      <article class="bwc-match" aria-label="Scotland v Morocco match card">
+        <div class="bwc-match-header">
+          <span class="bwc-match-stage">Group Stage · Match card</span>
+          <span class="bwc-match-status ft">FT · (PINt)POINTS</span>
+        </div>
+        <div class="bwc-match-body">
+          <p class="bwc-match-teams">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland v Morocco 🇲🇦</p>
+          <p class="bwc-match-beers">Scotland 0 – 1 Morocco on the pitch <span class="vs">·</span> Scotland win on (PINt)POINTS in the pub</p>
+          <p class="bwc-match-caption">Scotland conceded inside 72 seconds at Gillette Stadium and never recovered the qualification path. The Selection Committee deliberated considerably longer and reached the opposite verdict. Scotland's bench — BrewDog, Tempest, Harviestoun, Orkney, Innis &amp; Gunn, Williams Bros and Tennent's heritage — outranged Morocco's six broadly-similar pale lagers.</p>
+          <p class="bwc-match-var"><strong>Pub VAR</strong> Heineken and Pelforth Ambrée ruled ineligible as foreign-brewed contract pours.</p>
+          <p class="bwc-match-result">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland win on (PINt)POINTS</p>
+        </div>
+        <div class="bwc-match-squads">
+          <div class="bwc-match-squad-block">
+            <div class="bwc-match-squad-country">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</div>
+            <p class="bwc-match-squad-intro">Lager heritage, stout depth, and several breweries already demanding a recount. Provisional call-ups under consideration:</p>
+            <ul class="bwc-match-squad-list">
+              <li>Tennent's Lager</li>
+              <li>BrewDog Punk IPA</li>
+              <li>Innis &amp; Gunn Original</li>
+              <li>Harviestoun Schiehallion</li>
+              <li>Williams Bros Joker IPA</li>
+              <li>Orkney Dark Island</li>
+              <li>Tempest Brave New World</li>
+            </ul>
+          </div>
+          <div class="bwc-match-squad-block">
+            <div class="bwc-match-squad-country">🇲🇦 Morocco</div>
+            <p class="bwc-match-squad-intro">Desert-heat pilsner core, citrus reinforcement from the Casablanca line, and Pub VAR currently reviewing two locally-brewed internationals for eligibility. Provisional call-ups:</p>
+            <ul class="bwc-match-squad-list">
+              <li>Casablanca Premium Lager</li>
+              <li>Flag Spéciale</li>
+              <li>Stork Premiere</li>
+              <li>Casablanca Citron</li>
+              <li>Castel Beer</li>
+              <li>Bavaroise</li>
+            </ul>
+            <p class="bwc-match-squad-footnote">⚖️ Pub VAR eligibility review pending: Heineken and Pelforth Ambrée — both brewed locally in Morocco under contract, native-squad ruling expected before kickoff.</p>
+          </div>
+        </div>
+      </article>
 
     <h2>Upcoming beer fixtures</h2>
 
@@ -289,8 +311,10 @@
 
     <p style="margin-top: 22px;">Squad pages will appear on the <a href="/blog/beer-world-cup-xi-line-ups.html">All Country Line-Ups</a> page as they land. To nominate beers for any country's squad, email <a href="mailto:hello@pintpoint.co.uk?subject=Beer%20World%20Cup%20XI%20squad%20nomination">hello@pintpoint.co.uk</a> with your picks and one line of justification each.</p>
 
-    <div class="cross-link-card">
-      <p><strong>New here?</strong> Start with the <a href="/blog/beer-world-cup-xi.html">Beer World Cup XI manifesto</a> — the premise, the judging logic, and the officials. Or open the <a href="/blog/world-cup-stadium-beer-map.html">Stadium Beer Map</a> if you're actually trying to find a pint near a host stadium.</p>
+      <div class="cross-link-card">
+        <p><strong>New here?</strong> Start with the <a href="/blog/beer-world-cup-xi.html">Beer World Cup XI manifesto</a> — the premise, the judging logic, and the officials. Or open the <a href="/blog/world-cup-stadium-beer-map.html">Stadium Beer Map</a> if you're actually trying to find a pint near a host stadium.</p>
+      </div>
+
     </div>
   </article>
 

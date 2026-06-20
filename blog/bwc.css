@@ -120,6 +120,19 @@
 .bwc-opening-xi dd { font-size: 0.92rem; font-weight: 600; color: var(--text); margin: 0; }
 .bwc-opening-xi .bwc-oxi-note { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
 
+/* --- Squad card (country line-up component) ------------------------------ */
+.bwc-squad { margin: 18px 0; padding: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card); }
+.bwc-squad .bwc-squad-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 16px; background: rgba(0,212,170,0.06); border-bottom: 1px solid var(--border); }
+.bwc-squad .bwc-squad-country { font-size: 1rem; font-weight: 800; color: var(--text); letter-spacing: -0.2px; }
+.bwc-squad .bwc-squad-status { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; white-space: nowrap; background: rgba(192,163,64,0.15); color: var(--amber); }
+.bwc-squad .bwc-squad-status.example { background: rgba(192,163,64,0.15); color: var(--amber); }
+.bwc-squad .bwc-squad-status.locked  { background: rgba(0,212,170,0.18); color: var(--teal); }
+.bwc-squad .bwc-squad-status.scouting{ background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid var(--border); }
+.bwc-squad dl { display: grid; grid-template-columns: 160px 1fr; gap: 8px 16px; padding: 16px 20px; margin: 0; font-size: 0.92rem; line-height: 1.55; }
+.bwc-squad dt { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; padding-top: 1px; }
+.bwc-squad dd { color: var(--text); margin: 0; font-weight: 500; }
+@media (max-width: 600px) { .bwc-squad dl { grid-template-columns: 1fr; gap: 2px 0; } .bwc-squad dt { margin-top: 6px; } }
+
 /* --- Mobile fall-backs ---------------------------------------------------- */
 @media (max-width: 600px) {
   .bwc-status-board > li { grid-template-columns: 1fr; gap: 6px; }

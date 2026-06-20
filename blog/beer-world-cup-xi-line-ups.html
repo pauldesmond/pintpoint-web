@@ -46,6 +46,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="bwc.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
@@ -101,41 +102,71 @@
 
     <h1>Beer World Cup XI: <em>All Country Line-Ups</em></h1>
     <p class="subtitle">Squad announcements, country by country</p>
-    <p class="updated-line">Follow the tournament on X: <a href="https://x.com/hashtag/BeerWorldCupXI" target="_blank" rel="noopener">#BeerWorldCupXI</a>.</p>
 
-    <p class="lede">This is where each country's squad lives. Seed status, manager's problem, likely starters, wildcards, selection controversies — football scouting reports, not beer encyclopaedia entries. Squads land here as they're revealed, and update when <a href="/blog/beer-world-cup-xi.html">Pub VAR, the Selection Committee or The Pint Desk</a> rule on disputed picks.</p>
+    <div class="bwc">
 
-    <h2>Example squad — the format</h2>
+      <p class="lede">This is where each country's squad lives. Seed status, manager's problem, likely starters, wildcards, selection controversies — football scouting reports, not beer encyclopaedia entries. Squads land here as they're revealed, and update when <a href="/blog/beer-world-cup-xi.html#officials">Pub VAR, the Selection Committee or The Pint Desk</a> rule on disputed picks.</p>
 
-    <p>Each country page reads like this:</p>
+      <div class="bwc-follow" aria-label="Follow the tournament">
+        <div class="bwc-follow-label">Follow the tournament</div>
+        <ul>
+          <li><a href="/blog/beer-world-cup-xi.html"><span class="bwc-chip tag">Hub</span>Manifesto</a></li>
+          <li><a href="/blog/beer-world-cup-xi-fixtures.html"><span class="bwc-chip">Live</span>Fixtures &amp; Results</a></li>
+          <li><a href="/blog/world-cup-stadium-beer-map.html"><span class="bwc-chip map">Map</span>Stadium Beer Map</a></li>
+          <li><a href="https://x.com/hashtag/BeerWorldCupXI" target="_blank" rel="noopener"><span class="bwc-chip tag">#</span>BeerWorldCupXI on X</a></li>
+        </ul>
+      </div>
 
-    <div class="squad-card">
-      <div class="country">🇧🇪 Belgium</div>
-      <dl>
-        <dt>Seed status</dt>
-        <dd>Tournament favourite</dd>
-        <dt>Manager's problem</dt>
-        <dd>Too much depth</dd>
-        <dt>Likely starters</dt>
-        <dd>Orval, Duvel, Saison Dupont, Rochefort</dd>
-        <dt>Wildcard</dt>
-        <dd>Cantillon Gueuze</dd>
-        <dt>Selection controversy</dt>
-        <dd>Leaving out half the country</dd>
-      </dl>
-    </div>
+      <h2>Example squad — the format</h2>
 
-    <p>This is an illustrative example — not Belgium's locked squad. Actual squads roll out alongside the real fixtures.</p>
+      <p>Each country page reads like this:</p>
 
-    <h2>Squads as they land</h2>
+      <article class="bwc-squad" aria-label="Example squad format — Belgium">
+        <div class="bwc-squad-header">
+          <span class="bwc-squad-country">🇧🇪 Belgium</span>
+          <span class="bwc-squad-status example">Illustrative · not final</span>
+        </div>
+        <dl>
+          <dt>Seed status</dt>
+          <dd>Tournament favourite</dd>
+          <dt>Manager's problem</dt>
+          <dd>Too much depth</dd>
+          <dt>Likely starters</dt>
+          <dd>Orval, Duvel, Saison Dupont, Rochefort</dd>
+          <dt>Wildcard</dt>
+          <dd>Cantillon Gueuze</dd>
+          <dt>Selection controversy</dt>
+          <dd>Leaving out half the country</dd>
+          <dt>Pub VAR watching</dt>
+          <dd>Whether Trappist beers count as a separate competition</dd>
+        </dl>
+      </article>
 
-    <div class="empty-state">
-      No country squads published yet. The first reveal is England, planned ahead of their group-stage opener against Ghana on Tuesday 23 June.<br /><br />
-      To nominate beers for your country's squad, email <a href="mailto:hello@pintpoint.co.uk?subject=Beer%20World%20Cup%20XI%20squad%20nomination">hello@pintpoint.co.uk</a> with the picks and one line of justification each.
-    </div>
+      <p>This is an illustrative example — not Belgium's locked squad. Actual squads roll out alongside the real fixtures.</p>
 
-    <div class="cross-link-card">
-      <p>Want to know what's next? The <a href="/blog/beer-world-cup-xi-fixtures.html">Fixtures &amp; Results</a> page is the live campaign board. Or start with the <a href="/blog/beer-world-cup-xi.html">Beer World Cup XI manifesto</a> if you've not read the premise yet.</p>
+      <h2>Squads as they land</h2>
+
+      <div class="empty-state">
+        No country squads published here yet. Squad nominations for the campaign-selected countries (USA, Australia, Scotland, Morocco, plus Phase 1 covering Brazil, Türkiye, Paraguay, Netherlands, Sweden, Germany, Ivory Coast, Ecuador, Curaçao, England, Ghana, Panama, Haiti) are drafted; reveal cards land here ahead of each fixture.<br /><br />
+        Next reveal: England, planned ahead of the group-stage opener against Ghana on Tuesday 23 June.
+      </div>
+
+      <div class="bwc-nomination" aria-label="Nominate beers for a country squad">
+        <p class="bwc-nom-headline">Nominate beers for your country</p>
+        <p class="bwc-nom-blurb">Reader nominations get folded into the squads as they're revealed. Email <a href="mailto:hello@pintpoint.co.uk?subject=Beer%20World%20Cup%20XI%20squad%20nomination">hello@pintpoint.co.uk</a> with your country and the beers you'd put in the squad. One short line of justification per beer.</p>
+        <pre class="bwc-nom-template"><span class="key">Country:</span> <span class="hint">e.g. Belgium</span>
+<span class="key">Beer:</span>    <span class="hint">e.g. Saison Dupont</span>
+<span class="key">Why:</span>     <span class="hint">one line — what it earns its squad place on</span>
+
+<span class="hint">Add as many beers as you like. Each one gets its own short justification.</span></pre>
+        <a href="mailto:hello@pintpoint.co.uk?subject=Beer%20World%20Cup%20XI%20squad%20nomination&amp;body=Country%3A%20%0ABeer%3A%20%0AWhy%3A%20%0A" class="bwc-nom-cta">Send your nominations</a>
+      </div>
+
+      <div class="bwc-cta-pair" style="margin-top: 26px;">
+        <a href="/blog/beer-world-cup-xi-fixtures.html">View the Fixtures board →</a>
+        <a href="/blog/beer-world-cup-xi.html" class="secondary">Read the manifesto →</a>
+      </div>
+
     </div>
   </article>
 
