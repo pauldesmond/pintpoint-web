@@ -76,6 +76,13 @@
 .bwc-match .bwc-match-status.live     { background: rgba(255,92,92,0.18); color: #ff7373; }
 .bwc-match .bwc-match-status.coming   { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); }
 .bwc-match .bwc-match-status.scouting { background: rgba(192,163,64,0.12); color: var(--amber); border: 1px solid rgba(192,163,64,0.4); }
+.bwc-match .bwc-match-status.upset    { background: rgba(192,163,64,0.18); color: var(--amber); border: 1px solid var(--amber); }
+/* Upset modifier: gold border + glow on the match card itself, signals
+   "lost on the pitch, won in the pub" — the campaign's editorial-moat hook. */
+.bwc-match.upset { border-color: var(--amber); box-shadow: 0 0 0 1px rgba(192,163,64,0.25); }
+.bwc-match.upset .bwc-match-header { background: rgba(192,163,64,0.08); }
+.bwc-match.upset .bwc-match-stage { color: var(--amber); }
+.bwc-match.upset .bwc-match-result { background: rgba(192,163,64,0.10); border-color: rgba(192,163,64,0.35); }
 .bwc-match .bwc-match-body { padding: 18px 20px; }
 .bwc-match .bwc-match-teams { font-size: 1.05rem; font-weight: 800; color: var(--text); letter-spacing: -0.2px; margin: 0 0 4px; }
 .bwc-match .bwc-match-beers { font-size: 0.95rem; color: var(--muted); margin: 0 0 14px; line-height: 1.5; }

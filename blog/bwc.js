@@ -134,22 +134,30 @@
     show(idx);
   }
 
-  /* ------------------------------------------------------ Venue grid filter
-   * Stadium Beer Map only. Each .bwc-filter-btn has data-filter="all|us|ca|mx".
-   * Each .bwc-venue has data-country="us|ca|mx". Click a button → hide venues
-   * whose country doesn't match. "all" shows everything. JS-off: all visible. */
-  function wireVenueFilter(container) {
+  /* --------------------------------------------------- Filterable list/grid
+   * Generic — used for Stadium Map venue filter (data-country) AND Fixtures
+   * day filter (data-when). The button container reads data-target=".selector"
+   * to know which items to filter, and data-attr="country|when" to know which
+   * attribute on the items to compare against the button's data-filter. */
+  function wireFilter(container) {
     var buttons = container.querySelectorAll('.bwc-filter-btn');
-    var venues = container.querySelectorAll('.bwc-venue');
-    if (!buttons.length || !venues.length) return;
+    if (!buttons.length) return;
+    var targetSel = container.getAttribute('data-target');
+    var attr = container.getAttribute('data-attr') || 'country';
+    // Default scope: same container. Fixtures filter uses data-target to
+    // reach into the sibling .bwc-fixture-list / individual .bwc-venue cards.
+    var scope = targetSel ? document : container;
+    var items = targetSel ? scope.querySelectorAll(targetSel) : container.querySelectorAll('.bwc-venue');
+    if (!items.length) return;
+
     function apply(filter) {
-      venues.forEach(function (v) {
-        var match = filter === 'all' || v.getAttribute('data-country') === filter;
-        // Inline style.display + [hidden] for the same belt-and-braces reasons
-        // as wireCycler: cache-staleness can't break the swap.
-        v.style.display = match ? '' : 'none';
-        if (match) v.removeAttribute('hidden');
-        else       v.setAttribute('hidden', '');
+      items.forEach(function (item) {
+        var match = filter === 'all' || item.getAttribute('data-' + attr) === filter;
+        // Inline style.display + [hidden]: same belt-and-braces as wireCycler.
+        // Reads as '' (empty string = inherit display) when shown, 'none' when hidden.
+        item.style.display = match ? '' : 'none';
+        if (match) item.removeAttribute('hidden');
+        else       item.setAttribute('hidden', '');
       });
       buttons.forEach(function (b) {
         var on = b.getAttribute('data-filter') === filter;
@@ -160,12 +168,15 @@
     buttons.forEach(function (b) {
       b.addEventListener('click', function () { apply(b.getAttribute('data-filter') || 'all'); });
     });
-    // Initial: respect .active in markup, else 'all'
     var startFilter = 'all';
     buttons.forEach(function (b) { if (b.classList.contains('active')) startFilter = b.getAttribute('data-filter') || 'all'; });
     container.setAttribute('data-js', 'ready');
     apply(startFilter);
   }
+
+  // Backwards-compatible alias for the Stadium Map markup that came before
+  // this filter was generalised. data-attr defaults to 'country'.
+  function wireVenueFilter(container) { return wireFilter(container); }
 
   /* -------------------------------------------------------------- Print fix
    * Native <details> keeps its body display:none when closed, and that
@@ -204,6 +215,7 @@
       { selector: '.bwc-stepper',        fn: wireTabs, name: 'roadmap stepper' },
       { selector: '.bwc-match-cycler',   fn: wireCycler, name: 'match cycler' },
       { selector: '.bwc-venue-filter',   fn: wireVenueFilter, name: 'venue filter' },
+      { selector: '.bwc-day-filter',     fn: wireFilter,      name: 'day filter' },
     ];
     ranks.forEach(function (r) {
       document.querySelectorAll(r.selector).forEach(function (el) {
