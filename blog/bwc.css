@@ -146,6 +146,15 @@
   margin-top: 2px;
 }
 
+/* .scored: football has been played, beer verdict not yet written.
+   Distinguishes 'tournament reality is in' from 'we've also got an opinion'.
+   Visually solid (no dashed border, full opacity, score visible) but no
+   teal background tint or trophy stamp — those belong to .played. */
+.bwc-m.scored {
+  background: rgba(255,255,255,0.02);
+  border-color: var(--border);
+}
+
 .bwc-m.played {
   background: rgba(0,212,170,0.04);
   border-color: rgba(0,212,170,0.25);
