@@ -160,6 +160,17 @@
   border-color: rgba(0,212,170,0.25);
 }
 
+/* .predicted: kicks off later, we've called the beer winner pre-match.
+   Amber palette to distinguish a pub-pick prediction from a settled
+   verdict — readers shouldn't mistake a punt for a result. */
+.bwc-m.predicted {
+  background: rgba(192,163,64,0.04);
+  border-color: rgba(192,163,64,0.3);
+  border-style: dashed;
+}
+.bwc-m.predicted .bwc-m-winner { color: var(--amber); }
+.bwc-m.predicted .bwc-m-score { color: var(--amber); }
+
 .bwc-m.blank {
   opacity: 0.5;
   background: rgba(255,255,255,0.015);
