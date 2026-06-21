@@ -202,7 +202,6 @@
   gap: 8px;
   min-height: 96px;
 }
-.bwc-sq.filed { border-color: rgba(0,212,170,0.2); }
 .bwc-sq.iran { border-color: rgba(192,163,64,0.45); background: linear-gradient(180deg, rgba(192,163,64,0.06), var(--card) 60%); }
 
 .bwc-sq-h {
@@ -215,18 +214,16 @@
 .bwc-sq-h .flag { font-size: 1.15rem; }
 .bwc-sq-h .name { font-weight: 800; color: var(--text); font-size: 0.96rem; letter-spacing: -0.2px; }
 
-.bwc-sq-dl {
-  display: grid;
-  grid-template-columns: 50px 1fr;
-  row-gap: 4px;
-  column-gap: 10px;
-  font-size: 0.82rem;
-  line-height: 1.45;
+.bwc-sq-beers {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text);
+  font-weight: 500;
+  padding: 2px 0;
+  flex: 1;
 }
-.bwc-sq-dl dt { color: var(--muted); font-weight: 700; font-size: 0.7rem; letter-spacing: 1.2px; text-transform: uppercase; padding-top: 1px; }
-.bwc-sq-dl dd { color: var(--text); }
 
-.bwc-sq-arg {
+.bwc-sq-note {
   font-size: 0.82rem;
   line-height: 1.45;
   color: var(--muted);
@@ -235,7 +232,7 @@
   padding-top: 6px;
   border-top: 1px dashed var(--border);
 }
-.bwc-sq.iran .bwc-sq-arg { color: var(--amber); font-style: normal; font-weight: 600; }
+.bwc-sq.iran .bwc-sq-note { color: var(--amber); font-style: normal; font-weight: 600; }
 
 
 /* === STADIUM MAP — VENUE CARDS ==============================================
