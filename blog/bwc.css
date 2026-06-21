@@ -202,7 +202,9 @@
   gap: 8px;
   min-height: 96px;
 }
-.bwc-sq.iran { border-color: rgba(192,163,64,0.45); background: linear-gradient(180deg, rgba(192,163,64,0.06), var(--card) 60%); }
+/* Iran was previously gold-bordered as a v1 "centrepiece" signal; dropped
+   because the signal was undecodable without a key. Editorial weight now
+   lives entirely in the tile's note line. */
 
 .bwc-sq-h {
   display: flex;
@@ -232,7 +234,6 @@
   padding-top: 6px;
   border-top: 1px dashed var(--border);
 }
-.bwc-sq.iran .bwc-sq-note { color: var(--amber); font-style: normal; font-weight: 600; }
 
 
 /* === STADIUM MAP — VENUE CARDS ==============================================
