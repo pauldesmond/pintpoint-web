@@ -100,10 +100,24 @@ export default {
     // Pass through: /blog/, /blog/index.html, /blog/<slug>.html, /blog/<dir>/...
     if (pathname.startsWith('/blog/')) {
       const tail = pathname.slice('/blog/'.length);
-      // Unpublished drafts + working notes live under /blog/drafts/. robots.txt
-      // disallows them, but robots is advisory — return a hard 404 at the edge so
-      // the .md notes / generator script can't be fetched by path-guessing.
-      if (tail === 'drafts' || tail.startsWith('drafts/')) {
+      // Unpublished drafts + working notes live under /blog/drafts/.
+      // - HTML drafts: pass through to origin so the rendered post can be
+      //   previewed at the live URL with real CSS/webfonts. Inject
+      //   X-Robots-Tag: noindex,nofollow at the edge so search engines won't
+      //   pick them up even if a draft's <meta> robots happens to be missing.
+      // - Everything else under drafts/ (markdown notes, generator scripts,
+      //   archive sub-dirs etc): hard-404 — robots.txt is advisory and we
+      //   don't want working notes reachable by path-guessing.
+      if (tail === 'drafts' || tail === 'drafts/') {
+        return new Response('Not found', { status: 404 });
+      }
+      if (tail.startsWith('drafts/')) {
+        if (tail.endsWith('.html')) {
+          const upstream = await fetch(request);
+          const headers = new Headers(upstream.headers);
+          headers.set('X-Robots-Tag', 'noindex, nofollow');
+          return new Response(upstream.body, { status: upstream.status, statusText: upstream.statusText, headers });
+        }
         return new Response('Not found', { status: 404 });
       }
       // Bare single-segment slug (a-z 0-9 hyphens, no extension, no slash) → redirect
