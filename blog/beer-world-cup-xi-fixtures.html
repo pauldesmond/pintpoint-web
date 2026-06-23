@@ -74,9 +74,20 @@
       <p class="key">TONIGHT <b>🔮 PUB PICK</b> · PLAYED <b>🏆 BEER WINNER</b> · SCORED / PUB VERDICT PENDING · UPCOMING — BLANK</p>
     </header>
 
-    <div class="bwc-wall">
+    <div class="bwc-filters" role="region" aria-label="Filter matches">
+      <div class="bwc-filter-row" role="tablist" aria-label="Filter by group">
+        <button class="bwc-chip is-active" data-filter="group" data-value="all">All Groups</button>
+        <button class="bwc-chip" data-filter="group" data-value="a">A</button><button class="bwc-chip" data-filter="group" data-value="b">B</button><button class="bwc-chip" data-filter="group" data-value="c">C</button><button class="bwc-chip" data-filter="group" data-value="d">D</button><button class="bwc-chip" data-filter="group" data-value="e">E</button><button class="bwc-chip" data-filter="group" data-value="f">F</button><button class="bwc-chip" data-filter="group" data-value="g">G</button><button class="bwc-chip" data-filter="group" data-value="h">H</button><button class="bwc-chip" data-filter="group" data-value="i">I</button><button class="bwc-chip" data-filter="group" data-value="j">J</button><button class="bwc-chip" data-filter="group" data-value="k">K</button><button class="bwc-chip" data-filter="group" data-value="l">L</button>
+      </div>
+      <div class="bwc-filter-row" role="tablist" aria-label="Filter by day">
+        <button class="bwc-chip is-active" data-filter="day" data-value="all">All Days</button>
+        <button class="bwc-chip" data-filter="day" data-value="1">Day 1</button><button class="bwc-chip" data-filter="day" data-value="2">Day 2</button><button class="bwc-chip" data-filter="day" data-value="3">Day 3</button><button class="bwc-chip" data-filter="day" data-value="4">Day 4</button><button class="bwc-chip" data-filter="day" data-value="5">Day 5</button><button class="bwc-chip" data-filter="day" data-value="6">Day 6</button><button class="bwc-chip" data-filter="day" data-value="7">Day 7</button><button class="bwc-chip" data-filter="day" data-value="8">Day 8</button><button class="bwc-chip" data-filter="day" data-value="9">Day 9</button><button class="bwc-chip" data-filter="day" data-value="10">Day 10</button><button class="bwc-chip" data-filter="day" data-value="11">Day 11</button><button class="bwc-chip" data-filter="day" data-value="12">Day 12</button><button class="bwc-chip" data-filter="day" data-value="13">Day 13</button><button class="bwc-chip" data-filter="day" data-value="14">Day 14</button><button class="bwc-chip" data-filter="day" data-value="15">Day 15</button><button class="bwc-chip" data-filter="day" data-value="16">Day 16</button><button class="bwc-chip" data-filter="day" data-value="17">Day 17</button><button class="bwc-chip" data-filter="day" data-value="18">Day 18</button>
+      </div>
+    </div>
 
-      <section class="bwc-group" id="group-a">
+    <div class="bwc-deck-wrap"><div class="bwc-wall bwc-deck">
+
+      <section class="bwc-group" id="group-a" data-group="a">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group A</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🇲🇽</span> Mexico</li>
@@ -85,16 +96,16 @@
           <li><span class="flag">🇨🇿</span> Czech Republic</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇿🇦</span> RSA</span><span class="bwc-m-score">2–0</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇰🇷</span> KOR <em>v</em> <span class="flag">🇨🇿</span> CZE</span><span class="bwc-m-score">2–1</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇰🇷</span> KOR</span><span class="bwc-m-score">1–0</span></li>
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇿🇦</span> RSA <em>v</em> <span class="flag">🇨🇿</span> CZE</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 CZECH REPUBLIC</span><span class="bwc-m-verdict">1–1 football score, but Czech lager heritage is brutal in a pub tribunal.</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇨🇿</span> CZE</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇿🇦</span> RSA <em>v</em> <span class="flag">🇰🇷</span> KOR</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m scored" data-day="1"><span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇿🇦</span> RSA</span><span class="bwc-m-score">2–0</span></li>
+          <li class="bwc-m scored" data-day="2"><span class="bwc-m-teams"><span class="flag">🇰🇷</span> KOR <em>v</em> <span class="flag">🇨🇿</span> CZE</span><span class="bwc-m-score">2–1</span></li>
+          <li class="bwc-m scored" data-day="9"><span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇰🇷</span> KOR</span><span class="bwc-m-score">1–0</span></li>
+          <li class="bwc-m played" data-day="8"><span class="bwc-m-teams"><span class="flag">🇿🇦</span> RSA <em>v</em> <span class="flag">🇨🇿</span> CZE</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 CZECH REPUBLIC</span><span class="bwc-m-verdict">1–1 football score, but Czech lager heritage is brutal in a pub tribunal.</span></li>
+          <li class="bwc-m blank" data-day="15"><span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇨🇿</span> CZE</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="15"><span class="bwc-m-teams"><span class="flag">🇿🇦</span> RSA <em>v</em> <span class="flag">🇰🇷</span> KOR</span><span class="bwc-m-status">—</span></li>
         </ol>
       </section>
 
-      <section class="bwc-group" id="group-b">
+      <section class="bwc-group" id="group-b" data-group="b">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group B</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🇨🇦</span> Canada</li>
@@ -103,16 +114,16 @@
           <li><span class="flag">🇨🇭</span> Switzerland</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇧🇦</span> BIH</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 CANADA</span><span class="bwc-m-verdict">Canada has volume; Bosnia has the better "one pub swears by it" feel. Slight Canada.</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇶🇦</span> QAT <em>v</em> <span class="flag">🇨🇭</span> SUI</span><span class="bwc-m-score">1–1</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇶🇦</span> QAT</span><span class="bwc-m-score">6–0</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇧🇦</span> BIH <em>v</em> <span class="flag">🇨🇭</span> SUI</span><span class="bwc-m-score">1–4</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇨🇭</span> SUI</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇧🇦</span> BIH <em>v</em> <span class="flag">🇶🇦</span> QAT</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m played" data-day="2"><span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇧🇦</span> BIH</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 CANADA</span><span class="bwc-m-verdict">Canada has volume; Bosnia has the better "one pub swears by it" feel. Slight Canada.</span></li>
+          <li class="bwc-m scored" data-day="3"><span class="bwc-m-teams"><span class="flag">🇶🇦</span> QAT <em>v</em> <span class="flag">🇨🇭</span> SUI</span><span class="bwc-m-score">1–1</span></li>
+          <li class="bwc-m scored" data-day="8"><span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇶🇦</span> QAT</span><span class="bwc-m-score">6–0</span></li>
+          <li class="bwc-m scored" data-day="8"><span class="bwc-m-teams"><span class="flag">🇧🇦</span> BIH <em>v</em> <span class="flag">🇨🇭</span> SUI</span><span class="bwc-m-score">1–4</span></li>
+          <li class="bwc-m blank" data-day="14"><span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇨🇭</span> SUI</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="14"><span class="bwc-m-teams"><span class="flag">🇧🇦</span> BIH <em>v</em> <span class="flag">🇶🇦</span> QAT</span><span class="bwc-m-status">—</span></li>
         </ol>
       </section>
 
-      <section class="bwc-group" id="group-c">
+      <section class="bwc-group" id="group-c" data-group="c">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group C</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🇧🇷</span> Brazil</li>
@@ -121,16 +132,16 @@
           <li><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> Scotland</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🇭🇹</span> HAI</span><span class="bwc-m-score">3–0</span><span class="bwc-m-winner">🏆 BRAZIL</span><span class="bwc-m-verdict">Haiti brought belief. Brazil brought an entire brewery system.</span></li>
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇲🇦</span> MAR <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 SCOTLAND</span><span class="bwc-m-verdict">Morocco won the football. Scotland won the malt inquiry.</span></li>
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🇲🇦</span> MAR</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 BRAZIL</span><span class="bwc-m-verdict">Brazil probably wins, but Morocco makes it awkward with Casablanca/Flag energy.</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇭🇹</span> HAI <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span><span class="bwc-m-score">0–1</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇲🇦</span> MAR <em>v</em> <span class="flag">🇭🇹</span> HAI</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m played" data-day="10"><span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🇭🇹</span> HAI</span><span class="bwc-m-score">3–0</span><span class="bwc-m-winner">🏆 BRAZIL</span><span class="bwc-m-verdict">Haiti brought belief. Brazil brought an entire brewery system.</span></li>
+          <li class="bwc-m played" data-day="9"><span class="bwc-m-teams"><span class="flag">🇲🇦</span> MAR <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 SCOTLAND</span><span class="bwc-m-verdict">Morocco won the football. Scotland won the malt inquiry.</span></li>
+          <li class="bwc-m played" data-day="3"><span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🇲🇦</span> MAR</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 BRAZIL</span><span class="bwc-m-verdict">Brazil probably wins, but Morocco makes it awkward with Casablanca/Flag energy.</span></li>
+          <li class="bwc-m scored" data-day="4"><span class="bwc-m-teams"><span class="flag">🇭🇹</span> HAI <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span><span class="bwc-m-score">0–1</span></li>
+          <li class="bwc-m blank" data-day="14"><span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="14"><span class="bwc-m-teams"><span class="flag">🇲🇦</span> MAR <em>v</em> <span class="flag">🇭🇹</span> HAI</span><span class="bwc-m-status">—</span></li>
         </ol>
       </section>
 
-      <section class="bwc-group" id="group-d">
+      <section class="bwc-group" id="group-d" data-group="d">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group D</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🇺🇸</span> USA</li>
@@ -139,16 +150,16 @@
           <li><span class="flag">🇹🇷</span> Turkey</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇦🇺</span> AUS</span><span class="bwc-m-score">2–0</span><span class="bwc-m-winner">🏆 USA</span><span class="bwc-m-verdict">America brought hops. Australia brought a decent pub argument. The hops won.</span></li>
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇹🇷</span> TUR <em>v</em> <span class="flag">🇵🇾</span> PAR</span><span class="bwc-m-score">0–1</span><span class="bwc-m-winner">🏆 TURKEY</span><span class="bwc-m-verdict">Paraguay had Pilsen four times. Turkey had an argument and somehow won it.</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇹🇷</span> TUR</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇵🇾</span> PAR <em>v</em> <span class="flag">🇦🇺</span> AUS</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇵🇾</span> PAR</span><span class="bwc-m-score">4–1</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇹🇷</span> TUR <em>v</em> <span class="flag">🇦🇺</span> AUS</span><span class="bwc-m-score">0–2</span></li>
+          <li class="bwc-m played" data-day="9"><span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇦🇺</span> AUS</span><span class="bwc-m-score">2–0</span><span class="bwc-m-winner">🏆 USA</span><span class="bwc-m-verdict">America brought hops. Australia brought a decent pub argument. The hops won.</span></li>
+          <li class="bwc-m played" data-day="10"><span class="bwc-m-teams"><span class="flag">🇹🇷</span> TUR <em>v</em> <span class="flag">🇵🇾</span> PAR</span><span class="bwc-m-score">0–1</span><span class="bwc-m-winner">🏆 TURKEY</span><span class="bwc-m-verdict">Paraguay had Pilsen four times. Turkey had an argument and somehow won it.</span></li>
+          <li class="bwc-m blank" data-day="16"><span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇹🇷</span> TUR</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="16"><span class="bwc-m-teams"><span class="flag">🇵🇾</span> PAR <em>v</em> <span class="flag">🇦🇺</span> AUS</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m scored" data-day="3"><span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇵🇾</span> PAR</span><span class="bwc-m-score">4–1</span></li>
+          <li class="bwc-m scored" data-day="4"><span class="bwc-m-teams"><span class="flag">🇹🇷</span> TUR <em>v</em> <span class="flag">🇦🇺</span> AUS</span><span class="bwc-m-score">0–2</span></li>
         </ol>
       </section>
 
-      <section class="bwc-group" id="group-e">
+      <section class="bwc-group" id="group-e" data-group="e">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group E</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🇩🇪</span> Germany</li>
@@ -157,16 +168,16 @@
           <li><span class="flag">🇪🇨</span> Ecuador</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇨🇼</span> CUW</span><span class="bwc-m-score">7–1</span><span class="bwc-m-winner">🏆 GERMANY</span><span class="bwc-m-verdict">7–1 on the pitch, and Weihenstephaner doesn't do mercy.</span></li>
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇨🇮</span> CIV <em>v</em> <span class="flag">🇪🇨</span> ECU</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 IVORY COAST</span><span class="bwc-m-verdict">Feels like a scruffy narrow beer win, not a classic.</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇨🇮</span> CIV</span><span class="bwc-m-score">2–1</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇨🇼</span> CUW <em>v</em> <span class="flag">🇪🇨</span> ECU</span><span class="bwc-m-score">0–0</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇪🇨</span> ECU</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇨🇮</span> CIV <em>v</em> <span class="flag">🇨🇼</span> CUW</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m played" data-day="4"><span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇨🇼</span> CUW</span><span class="bwc-m-score">7–1</span><span class="bwc-m-winner">🏆 GERMANY</span><span class="bwc-m-verdict">7–1 on the pitch, and Weihenstephaner doesn't do mercy.</span></li>
+          <li class="bwc-m played" data-day="5"><span class="bwc-m-teams"><span class="flag">🇨🇮</span> CIV <em>v</em> <span class="flag">🇪🇨</span> ECU</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 IVORY COAST</span><span class="bwc-m-verdict">Feels like a scruffy narrow beer win, not a classic.</span></li>
+          <li class="bwc-m scored" data-day="10"><span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇨🇮</span> CIV</span><span class="bwc-m-score">2–1</span></li>
+          <li class="bwc-m scored" data-day="11"><span class="bwc-m-teams"><span class="flag">🇨🇼</span> CUW <em>v</em> <span class="flag">🇪🇨</span> ECU</span><span class="bwc-m-score">0–0</span></li>
+          <li class="bwc-m blank" data-day="15"><span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇪🇨</span> ECU</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="15"><span class="bwc-m-teams"><span class="flag">🇨🇮</span> CIV <em>v</em> <span class="flag">🇨🇼</span> CUW</span><span class="bwc-m-status">—</span></li>
         </ol>
       </section>
 
-      <section class="bwc-group" id="group-f">
+      <section class="bwc-group" id="group-f" data-group="f">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group F</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🇳🇱</span> Netherlands</li>
@@ -175,16 +186,16 @@
           <li><span class="flag">🇹🇳</span> Tunisia</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇸🇪</span> SWE</span><span class="bwc-m-score">5–1</span><span class="bwc-m-winner">🏆 NETHERLANDS</span><span class="bwc-m-verdict">Dutch beer depth beats Swedish competence.</span></li>
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇯🇵</span> JPN <em>v</em> <span class="flag">🇹🇳</span> TUN</span><span class="bwc-m-score">4–0</span><span class="bwc-m-winner">🏆 JAPAN</span><span class="bwc-m-verdict">Clean, weird, technically excellent. Japan by tidy paperwork.</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇯🇵</span> JPN</span><span class="bwc-m-score">2–2</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇸🇪</span> SWE <em>v</em> <span class="flag">🇹🇳</span> TUN</span><span class="bwc-m-score">5–1</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇹🇳</span> TUN</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇸🇪</span> SWE <em>v</em> <span class="flag">🇯🇵</span> JPN</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m played" data-day="10"><span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇸🇪</span> SWE</span><span class="bwc-m-score">5–1</span><span class="bwc-m-winner">🏆 NETHERLANDS</span><span class="bwc-m-verdict">Dutch beer depth beats Swedish competence.</span></li>
+          <li class="bwc-m played" data-day="11"><span class="bwc-m-teams"><span class="flag">🇯🇵</span> JPN <em>v</em> <span class="flag">🇹🇳</span> TUN</span><span class="bwc-m-score">4–0</span><span class="bwc-m-winner">🏆 JAPAN</span><span class="bwc-m-verdict">Clean, weird, technically excellent. Japan by tidy paperwork.</span></li>
+          <li class="bwc-m scored" data-day="4"><span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇯🇵</span> JPN</span><span class="bwc-m-score">2–2</span></li>
+          <li class="bwc-m scored" data-day="5"><span class="bwc-m-teams"><span class="flag">🇸🇪</span> SWE <em>v</em> <span class="flag">🇹🇳</span> TUN</span><span class="bwc-m-score">5–1</span></li>
+          <li class="bwc-m blank" data-day="16"><span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇹🇳</span> TUN</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="16"><span class="bwc-m-teams"><span class="flag">🇸🇪</span> SWE <em>v</em> <span class="flag">🇯🇵</span> JPN</span><span class="bwc-m-status">—</span></li>
         </ol>
       </section>
 
-      <section class="bwc-group" id="group-g">
+      <section class="bwc-group" id="group-g" data-group="g">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group G</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🇧🇪</span> Belgium</li>
@@ -193,16 +204,16 @@
           <li><span class="flag">🇳🇿</span> New Zealand</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇪🇬</span> EGY</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 BELGIUM</span><span class="bwc-m-verdict">Belgium wins unless ruled ineligible for being too obviously Belgian.</span></li>
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇮🇷</span> IRN <em>v</em> <span class="flag">🇳🇿</span> NZL</span><span class="bwc-m-score">2–2</span><span class="bwc-m-winner">🏆 IRAN</span><span class="bwc-m-verdict">Not because it's stronger, but because Pub VAR loves a difficult file.</span></li>
-          <li class="bwc-m predicted"><span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇮🇷</span> IRN</span><span class="bwc-m-score">⏰ TONIGHT</span><span class="bwc-m-winner">🔮 BELGIUM</span><span class="bwc-m-verdict">Iran brought a legal hearing. Belgium brought a cellar.</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇪🇬</span> EGY <em>v</em> <span class="flag">🇳🇿</span> NZL</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇳🇿</span> NZL</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇪🇬</span> EGY <em>v</em> <span class="flag">🇮🇷</span> IRN</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m played" data-day="5"><span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇪🇬</span> EGY</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 BELGIUM</span><span class="bwc-m-verdict">Belgium wins unless ruled ineligible for being too obviously Belgian.</span></li>
+          <li class="bwc-m played" data-day="6"><span class="bwc-m-teams"><span class="flag">🇮🇷</span> IRN <em>v</em> <span class="flag">🇳🇿</span> NZL</span><span class="bwc-m-score">2–2</span><span class="bwc-m-winner">🏆 IRAN</span><span class="bwc-m-verdict">Not because it's stronger, but because Pub VAR loves a difficult file.</span></li>
+          <li class="bwc-m predicted" data-day="11"><span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇮🇷</span> IRN</span><span class="bwc-m-score">⏰ TONIGHT</span><span class="bwc-m-winner">🔮 BELGIUM</span><span class="bwc-m-verdict">Iran brought a legal hearing. Belgium brought a cellar.</span></li>
+          <li class="bwc-m blank" data-day="12"><span class="bwc-m-teams"><span class="flag">🇪🇬</span> EGY <em>v</em> <span class="flag">🇳🇿</span> NZL</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="17"><span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇳🇿</span> NZL</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="17"><span class="bwc-m-teams"><span class="flag">🇪🇬</span> EGY <em>v</em> <span class="flag">🇮🇷</span> IRN</span><span class="bwc-m-status">—</span></li>
         </ol>
       </section>
 
-      <section class="bwc-group" id="group-h">
+      <section class="bwc-group" id="group-h" data-group="h">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group H</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🇪🇸</span> Spain</li>
@@ -211,16 +222,16 @@
           <li><span class="flag">🇺🇾</span> Uruguay</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇨🇻</span> CPV</span><span class="bwc-m-score">0–0</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇸🇦</span> KSA <em>v</em> <span class="flag">🇺🇾</span> URU</span><span class="bwc-m-score">1–1</span></li>
-          <li class="bwc-m predicted"><span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇸🇦</span> KSA</span><span class="bwc-m-score">⏰ TONIGHT</span><span class="bwc-m-winner">🔮 SPAIN</span><span class="bwc-m-verdict">Spain passed it around the fridge for ninety minutes.</span></li>
-          <li class="bwc-m predicted"><span class="bwc-m-teams"><span class="flag">🇺🇾</span> URU <em>v</em> <span class="flag">🇨🇻</span> CPV</span><span class="bwc-m-score">⏰ TONIGHT</span><span class="bwc-m-winner">🔮 URUGUAY</span><span class="bwc-m-verdict">Strela scored early. Uruguay's bench finished the pint.</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇺🇾</span> URU</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇨🇻</span> CPV <em>v</em> <span class="flag">🇸🇦</span> KSA</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m scored" data-day="5"><span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇨🇻</span> CPV</span><span class="bwc-m-score">0–0</span></li>
+          <li class="bwc-m scored" data-day="5"><span class="bwc-m-teams"><span class="flag">🇸🇦</span> KSA <em>v</em> <span class="flag">🇺🇾</span> URU</span><span class="bwc-m-score">1–1</span></li>
+          <li class="bwc-m predicted" data-day="11"><span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇸🇦</span> KSA</span><span class="bwc-m-score">⏰ TONIGHT</span><span class="bwc-m-winner">🔮 SPAIN</span><span class="bwc-m-verdict">Spain passed it around the fridge for ninety minutes.</span></li>
+          <li class="bwc-m predicted" data-day="11"><span class="bwc-m-teams"><span class="flag">🇺🇾</span> URU <em>v</em> <span class="flag">🇨🇻</span> CPV</span><span class="bwc-m-score">⏰ TONIGHT</span><span class="bwc-m-winner">🔮 URUGUAY</span><span class="bwc-m-verdict">Strela scored early. Uruguay's bench finished the pint.</span></li>
+          <li class="bwc-m blank" data-day="17"><span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇺🇾</span> URU</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="17"><span class="bwc-m-teams"><span class="flag">🇨🇻</span> CPV <em>v</em> <span class="flag">🇸🇦</span> KSA</span><span class="bwc-m-status">—</span></li>
         </ol>
       </section>
 
-      <section class="bwc-group" id="group-i">
+      <section class="bwc-group" id="group-i" data-group="i">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group I</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🇫🇷</span> France</li>
@@ -229,16 +240,16 @@
           <li><span class="flag">🇳🇴</span> Norway</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇸🇳</span> SEN</span><span class="bwc-m-score">3–1</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇮🇶</span> IRQ <em>v</em> <span class="flag">🇳🇴</span> NOR</span><span class="bwc-m-score">1–4</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇮🇶</span> IRQ</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇸🇳</span> SEN <em>v</em> <span class="flag">🇳🇴</span> NOR</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇳🇴</span> NOR</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇸🇳</span> SEN <em>v</em> <span class="flag">🇮🇶</span> IRQ</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m scored" data-day="6"><span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇸🇳</span> SEN</span><span class="bwc-m-score">3–1</span></li>
+          <li class="bwc-m scored" data-day="6"><span class="bwc-m-teams"><span class="flag">🇮🇶</span> IRQ <em>v</em> <span class="flag">🇳🇴</span> NOR</span><span class="bwc-m-score">1–4</span></li>
+          <li class="bwc-m blank" data-day="12"><span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇮🇶</span> IRQ</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="13"><span class="bwc-m-teams"><span class="flag">🇸🇳</span> SEN <em>v</em> <span class="flag">🇳🇴</span> NOR</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="16"><span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇳🇴</span> NOR</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="16"><span class="bwc-m-teams"><span class="flag">🇸🇳</span> SEN <em>v</em> <span class="flag">🇮🇶</span> IRQ</span><span class="bwc-m-status">—</span></li>
         </ol>
       </section>
 
-      <section class="bwc-group" id="group-j">
+      <section class="bwc-group" id="group-j" data-group="j">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group J</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🇦🇷</span> Argentina</li>
@@ -247,16 +258,16 @@
           <li><span class="flag">🇯🇴</span> Jordan</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇩🇿</span> ALG</span><span class="bwc-m-score">3–0</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇦🇹</span> AUT <em>v</em> <span class="flag">🇯🇴</span> JOR</span><span class="bwc-m-score">3–1</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇦🇹</span> AUT</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇩🇿</span> ALG <em>v</em> <span class="flag">🇯🇴</span> JOR</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇯🇴</span> JOR</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇩🇿</span> ALG <em>v</em> <span class="flag">🇦🇹</span> AUT</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m scored" data-day="7"><span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇩🇿</span> ALG</span><span class="bwc-m-score">3–0</span></li>
+          <li class="bwc-m scored" data-day="7"><span class="bwc-m-teams"><span class="flag">🇦🇹</span> AUT <em>v</em> <span class="flag">🇯🇴</span> JOR</span><span class="bwc-m-score">3–1</span></li>
+          <li class="bwc-m blank" data-day="12"><span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇦🇹</span> AUT</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="13"><span class="bwc-m-teams"><span class="flag">🇩🇿</span> ALG <em>v</em> <span class="flag">🇯🇴</span> JOR</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="18"><span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇯🇴</span> JOR</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="18"><span class="bwc-m-teams"><span class="flag">🇩🇿</span> ALG <em>v</em> <span class="flag">🇦🇹</span> AUT</span><span class="bwc-m-status">—</span></li>
         </ol>
       </section>
 
-      <section class="bwc-group" id="group-k">
+      <section class="bwc-group" id="group-k" data-group="k">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group K</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🇵🇹</span> Portugal</li>
@@ -265,16 +276,16 @@
           <li><span class="flag">🇨🇴</span> Colombia</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇨🇩</span> COD</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 PORTUGAL</span><span class="bwc-m-verdict">Portugal should win, but 1–1 football score gives this "committee stared at two fridges for too long" energy.</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇺🇿</span> UZB <em>v</em> <span class="flag">🇨🇴</span> COL</span><span class="bwc-m-score">1–3</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇺🇿</span> UZB</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇨🇩</span> COD <em>v</em> <span class="flag">🇨🇴</span> COL</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇨🇴</span> COL</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇨🇩</span> COD <em>v</em> <span class="flag">🇺🇿</span> UZB</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m played" data-day="7"><span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇨🇩</span> COD</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 PORTUGAL</span><span class="bwc-m-verdict">Portugal should win, but 1–1 football score gives this "committee stared at two fridges for too long" energy.</span></li>
+          <li class="bwc-m scored" data-day="8"><span class="bwc-m-teams"><span class="flag">🇺🇿</span> UZB <em>v</em> <span class="flag">🇨🇴</span> COL</span><span class="bwc-m-score">1–3</span></li>
+          <li class="bwc-m blank" data-day="13"><span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇺🇿</span> UZB</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="14"><span class="bwc-m-teams"><span class="flag">🇨🇩</span> COD <em>v</em> <span class="flag">🇨🇴</span> COL</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="18"><span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇨🇴</span> COL</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="18"><span class="bwc-m-teams"><span class="flag">🇨🇩</span> COD <em>v</em> <span class="flag">🇺🇿</span> UZB</span><span class="bwc-m-status">—</span></li>
         </ol>
       </section>
 
-      <section class="bwc-group" id="group-l">
+      <section class="bwc-group" id="group-l" data-group="l">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group L</span></header>
         <ul class="bwc-group-teams">
           <li><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> England</li>
@@ -283,15 +294,18 @@
           <li><span class="flag">🇵🇦</span> Panama</li>
         </ul>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇭🇷</span> CRO</span><span class="bwc-m-score">4–2</span><span class="bwc-m-winner">🏆 ENGLAND</span><span class="bwc-m-verdict">Boddingtons/heritage Pub VAR nonsense survives one more round.</span></li>
-          <li class="bwc-m scored"><span class="bwc-m-teams"><span class="flag">🇬🇭</span> GHA <em>v</em> <span class="flag">🇵🇦</span> PAN</span><span class="bwc-m-score">1–0</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇬🇭</span> GHA</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇭🇷</span> CRO <em>v</em> <span class="flag">🇵🇦</span> PAN</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇵🇦</span> PAN</span><span class="bwc-m-status">—</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇭🇷</span> CRO <em>v</em> <span class="flag">🇬🇭</span> GHA</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m played" data-day="7"><span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇭🇷</span> CRO</span><span class="bwc-m-score">4–2</span><span class="bwc-m-winner">🏆 ENGLAND</span><span class="bwc-m-verdict">Boddingtons/heritage Pub VAR nonsense survives one more round.</span></li>
+          <li class="bwc-m scored" data-day="8"><span class="bwc-m-teams"><span class="flag">🇬🇭</span> GHA <em>v</em> <span class="flag">🇵🇦</span> PAN</span><span class="bwc-m-score">1–0</span></li>
+          <li class="bwc-m blank" data-day="13"><span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇬🇭</span> GHA</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="14"><span class="bwc-m-teams"><span class="flag">🇭🇷</span> CRO <em>v</em> <span class="flag">🇵🇦</span> PAN</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="17"><span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇵🇦</span> PAN</span><span class="bwc-m-status">—</span></li>
+          <li class="bwc-m blank" data-day="17"><span class="bwc-m-teams"><span class="flag">🇭🇷</span> CRO <em>v</em> <span class="flag">🇬🇭</span> GHA</span><span class="bwc-m-status">—</span></li>
         </ol>
       </section>
 
+    </div>
+      <div class="bwc-deck-dots" aria-hidden="true"><button class="bwc-deck-dot" data-dot="0" aria-label="Group A"></button><button class="bwc-deck-dot" data-dot="1" aria-label="Group B"></button><button class="bwc-deck-dot" data-dot="2" aria-label="Group C"></button><button class="bwc-deck-dot" data-dot="3" aria-label="Group D"></button><button class="bwc-deck-dot" data-dot="4" aria-label="Group E"></button><button class="bwc-deck-dot" data-dot="5" aria-label="Group F"></button><button class="bwc-deck-dot" data-dot="6" aria-label="Group G"></button><button class="bwc-deck-dot" data-dot="7" aria-label="Group H"></button><button class="bwc-deck-dot" data-dot="8" aria-label="Group I"></button><button class="bwc-deck-dot" data-dot="9" aria-label="Group J"></button><button class="bwc-deck-dot" data-dot="10" aria-label="Group K"></button><button class="bwc-deck-dot" data-dot="11" aria-label="Group L"></button></div>
+      <div class="bwc-deck-counter" aria-live="polite"><span id="bwcDeckCurrent">A</span> / <span id="bwcDeckTotal">L</span></div>
     </div>
 
     <p style="text-align:center;margin-top:36px;font-size:0.86rem;color:var(--muted);">← <a href="/blog/beer-world-cup-xi.html" style="color:var(--teal);">Manifesto</a> · <a href="/blog/beer-world-cup-xi-line-ups.html" style="color:var(--teal);">Squads</a> · <a href="/blog/world-cup-stadium-beer-map.html" style="color:var(--teal);">Stadium Beer Map</a></p>
@@ -307,5 +321,103 @@
     <p style="font-size:0.72rem;color:#555;margin-top:10px">Real football results from the actual 2026 FIFA World Cup. Beer rulings are editorial, not affiliated with FIFA or any brewery.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
+
+<script>
+(function(){
+  var deck = document.querySelector('.bwc-deck');
+  var dots = document.querySelectorAll('.bwc-deck-dot');
+  var current = document.getElementById('bwcDeckCurrent');
+  var chips = document.querySelectorAll('.bwc-chip');
+  if (!deck) return;
+
+  var GROUP_LETTERS = ['A','B','C','D','E','F','G','H','I','J','K','L'];
+
+  // --- Filter state ---
+  var filter = { group: 'all', day: 'all' };
+
+  function applyFilter() {
+    var groups = deck.querySelectorAll('.bwc-group');
+    groups.forEach(function(g) {
+      var grpKey = g.getAttribute('data-group');
+      var matchesGroup = (filter.group === 'all' || filter.group === grpKey);
+
+      // For Day filter, hide individual match rows and check if any remain visible
+      var rows = g.querySelectorAll('.bwc-m');
+      var visibleRows = 0;
+      rows.forEach(function(r) {
+        var d = r.getAttribute('data-day');
+        var matchesDay = (filter.day === 'all' || filter.day === d);
+        r.classList.toggle('is-hidden', !matchesDay);
+        if (matchesDay) visibleRows++;
+      });
+
+      // Hide whole group card if no matches OR group filter excludes it
+      var showGroup = matchesGroup && visibleRows > 0;
+      g.classList.toggle('is-hidden', !showGroup);
+    });
+
+    // Show/hide dots based on visible groups
+    var visibleGroups = Array.from(deck.querySelectorAll('.bwc-group')).filter(function(g) { return !g.classList.contains('is-hidden'); });
+    dots.forEach(function(dot) {
+      var idx = parseInt(dot.getAttribute('data-dot'), 10);
+      var grp = deck.querySelectorAll('.bwc-group')[idx];
+      dot.classList.toggle('is-hidden', grp.classList.contains('is-hidden'));
+    });
+    deck.scrollTo({left: 0, behavior: 'auto'});
+    updateDotActive();
+  }
+
+  function updateDotActive() {
+    if (!current) return;
+    var groups = deck.querySelectorAll('.bwc-group');
+    var scrollMid = deck.scrollLeft + deck.clientWidth / 2;
+    var closestIdx = 0;
+    var closestDist = Infinity;
+    groups.forEach(function(g, i) {
+      if (g.classList.contains('is-hidden')) return;
+      var rect = g.getBoundingClientRect();
+      var centre = g.offsetLeft + g.offsetWidth / 2;
+      var dist = Math.abs(centre - scrollMid);
+      if (dist < closestDist) { closestDist = dist; closestIdx = i; }
+    });
+    dots.forEach(function(d, i) { d.classList.toggle('is-active', i === closestIdx); });
+    current.textContent = GROUP_LETTERS[closestIdx] || 'A';
+  }
+
+  // --- Chip click ---
+  chips.forEach(function(c) {
+    c.addEventListener('click', function() {
+      var k = c.getAttribute('data-filter');
+      var v = c.getAttribute('data-value');
+      filter[k] = v;
+      // Toggle active state within this row
+      var row = c.closest('.bwc-filter-row');
+      row.querySelectorAll('.bwc-chip').forEach(function(x) { x.classList.remove('is-active'); });
+      c.classList.add('is-active');
+      applyFilter();
+    });
+  });
+
+  // --- Dot click ---
+  dots.forEach(function(d) {
+    d.addEventListener('click', function() {
+      var idx = parseInt(d.getAttribute('data-dot'), 10);
+      var grp = deck.querySelectorAll('.bwc-group')[idx];
+      if (grp) deck.scrollTo({left: grp.offsetLeft, behavior: 'smooth'});
+    });
+  });
+
+  // --- Scroll sync ---
+  var rafPending = false;
+  deck.addEventListener('scroll', function() {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(function() { updateDotActive(); rafPending = false; });
+  }, {passive: true});
+
+  updateDotActive();
+})();
+</script>
+
 </body>
 </html>

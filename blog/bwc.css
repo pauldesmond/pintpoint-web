@@ -41,13 +41,109 @@
  * and the six match rows. Played matches show the verdict; blank matches
  * show a dash + faded styling. */
 
+/* Wall = horizontal scroll-snap deck. One group card per snap point on
+   mobile; 2 on tablet; 3 on desktop. Same data, much less vertical
+   scrolling. Native swipe on touch devices. */
 .bwc-wall {
   display: grid;
   gap: 14px;
-  grid-template-columns: 1fr;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 4px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
 }
-@media (min-width: 720px)  { .bwc-wall { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1080px) { .bwc-wall { grid-template-columns: 1fr 1fr 1fr; } }
+.bwc-wall::-webkit-scrollbar { display: none; }
+.bwc-wall > .bwc-group { scroll-snap-align: start; min-width: 0; }
+@media (min-width: 720px)  { .bwc-wall { grid-auto-columns: calc(50% - 7px); } }
+@media (min-width: 1080px) { .bwc-wall { grid-auto-columns: calc(33.333% - 9.33px); } }
+
+/* JS-off / print: fall back to vertical stack so all 12 groups are
+   readable without the swipe scaffold. */
+@media print {
+  .bwc-wall { display: grid; grid-template-columns: 1fr; grid-auto-flow: row; grid-auto-columns: auto; overflow: visible; }
+  .bwc-deck-dots, .bwc-deck-counter, .bwc-filters { display: none !important; }
+}
+
+.bwc-deck-wrap { display: flex; flex-direction: column; gap: 10px; }
+
+/* Filter chips — two rows: groups (A–L) + days (1–18). Horizontal
+   scrollable on narrow screens to avoid wrapping into a tall block. */
+.bwc-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 18px 0 14px;
+}
+.bwc-filter-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 2px 0;
+}
+.bwc-filter-row::-webkit-scrollbar { display: none; }
+.bwc-chip {
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 6px 12px;
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: color .12s, border-color .12s, background-color .12s;
+  white-space: nowrap;
+}
+.bwc-chip:hover { color: var(--text); border-color: var(--teal); }
+.bwc-chip.is-active {
+  color: var(--text);
+  border-color: var(--teal);
+  background: rgba(0,212,170,0.10);
+}
+
+/* Hidden rows / groups (used by JS filter). Keeping in DOM rather than
+   removing so toggling is fast. */
+.bwc-group.is-hidden,
+.bwc-m.is-hidden,
+.bwc-deck-dot.is-hidden { display: none !important; }
+
+/* Dots indicator — small dots below the deck, one per group card.
+   Filled = active group in the viewport. */
+.bwc-deck-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 6px 0 4px;
+  flex-wrap: wrap;
+}
+.bwc-deck-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: var(--border);
+  cursor: pointer;
+  transition: background-color .12s, transform .12s;
+}
+.bwc-deck-dot:hover { background: var(--muted); }
+.bwc-deck-dot.is-active { background: var(--teal); transform: scale(1.3); }
+
+.bwc-deck-counter {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+  font-family: 'SF Mono', Menlo, Monaco, monospace;
+}
 
 .bwc-group {
   background: var(--card);
