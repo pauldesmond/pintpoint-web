@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="bwc.css?v=17" />
+  <link rel="stylesheet" href="bwc.css?v=24" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
@@ -56,8 +56,17 @@
       <p class="sub">A few star beers. One line on the team. Grouped A through L.</p>
     </header>
 
-    <div class="bwc-squads">
+    <div class="bwc-filters" role="region" aria-label="Filter squads">
+      <div class="bwc-filter-row" role="tablist" aria-label="Filter by group">
+        <button class="bwc-chip is-active" data-filter="group" data-value="all">All Groups</button>
+        <button class="bwc-chip" data-filter="group" data-value="a">A</button><button class="bwc-chip" data-filter="group" data-value="b">B</button><button class="bwc-chip" data-filter="group" data-value="c">C</button><button class="bwc-chip" data-filter="group" data-value="d">D</button><button class="bwc-chip" data-filter="group" data-value="e">E</button><button class="bwc-chip" data-filter="group" data-value="f">F</button><button class="bwc-chip" data-filter="group" data-value="g">G</button><button class="bwc-chip" data-filter="group" data-value="h">H</button><button class="bwc-chip" data-filter="group" data-value="i">I</button><button class="bwc-chip" data-filter="group" data-value="j">J</button><button class="bwc-chip" data-filter="group" data-value="k">K</button><button class="bwc-chip" data-filter="group" data-value="l">L</button>
+      </div>
+    </div>
 
+    <div class="bwc-deck-wrap">
+    <div class="bwc-squads bwc-deck">
+
+      <section class="bwc-sq-card" data-group="a">
       <h2 class="bwc-sq-group">Group A</h2>
       <div class="bwc-sq-row">
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇲🇽</span><span class="name">Mexico</span></div><p class="bwc-sq-beers">Corona Extra · Modelo Especial · Pacifico Clara · Negra Modelo · Bohemia</p><div class="bwc-sq-note">Heritage giant. The world drinks Mexican lager and doesn't always know which one.</div></article>
@@ -65,7 +74,9 @@
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇰🇷</span><span class="name">South Korea</span></div><p class="bwc-sq-beers">Cass Fresh · Hite Extra Cold · Terra · Magpie Porter</p><div class="bwc-sq-note">Macro core. Craft scene quietly arriving from Seoul and Jeju.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇨🇿</span><span class="name">Czech Republic</span></div><p class="bwc-sq-beers">Pilsner Urquell · Budvar (Budweiser Budvar) · Staropramen · Kozel · Bernard</p><div class="bwc-sq-note">Invented the pilsner. Still owns the format.</div></article>
       </div>
+      </section>
 
+      <section class="bwc-sq-card" data-group="b">
       <h2 class="bwc-sq-group">Group B</h2>
       <div class="bwc-sq-row">
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇨🇦</span><span class="name">Canada</span></div><p class="bwc-sq-beers">Molson Canadian · Labatt 50 · Moosehead Lager · Unibroue La Fin du Monde · Steam Whistle Pilsner</p><div class="bwc-sq-note">Macro spine. Unibroue stealing every man-of-the-match award.</div></article>
@@ -73,7 +84,9 @@
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇶🇦</span><span class="name">Qatar</span></div><p class="bwc-sq-beers">Amstel 0.0 · Heineken 0.0 · Moussy</p><div class="bwc-sq-note">Alcohol restricted. Squad runs on non-alcoholic imports.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇨🇭</span><span class="name">Switzerland</span></div><p class="bwc-sq-beers">Feldschlösschen · Cardinal · Calanda · BFM Abbaye de Saint Bon-Chien</p><div class="bwc-sq-note">Macro lagers anchored. BFM does the heavy craft lifting.</div></article>
       </div>
+      </section>
 
+      <section class="bwc-sq-card" data-group="c">
       <h2 class="bwc-sq-group">Group C</h2>
       <div class="bwc-sq-row">
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇧🇷</span><span class="name">Brazil</span></div><p class="bwc-sq-beers">Brahma Chopp · Bohemia 1853 · Eisenbahn Pilsen · Wäls Petroleum</p><div class="bwc-sq-note">Committee adjourned to a botequim and lost quorum.</div></article>
@@ -81,7 +94,9 @@
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇭🇹</span><span class="name">Haiti</span></div><p class="bwc-sq-beers">Prestige · Prestige Cosecha Privada</p><div class="bwc-sq-note">One beer with conviction is still one beer.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="name">Scotland</span></div><p class="bwc-sq-beers">Tennent's Lager · BrewDog Punk IPA · Harviestoun Schiehallion · Tempest Brave New World</p><div class="bwc-sq-note">Heineken and Pelforth Ambrée struck — foreign contract pours.</div></article>
       </div>
+      </section>
 
+      <section class="bwc-sq-card" data-group="d">
       <h2 class="bwc-sq-group">Group D</h2>
       <div class="bwc-sq-row">
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇺🇸</span><span class="name">USA</span></div><p class="bwc-sq-beers">Sierra Nevada Pale Ale · Pliny the Elder · Heady Topper · King JJJuliusss · Hardywood Great Return</p><div class="bwc-sq-note">Hop legacy ruling stands. Two Hearted and Florida Man can wait their turn.</div></article>
@@ -89,7 +104,9 @@
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇦🇺</span><span class="name">Australia</span></div><p class="bwc-sq-beers">Coopers Pale Ale · Stone &amp; Wood Pacific · Mountain Culture Cult IPA · Hawkers West Coast IPA</p><div class="bwc-sq-note">Modern craft strong, hop legacy stronger.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇹🇷</span><span class="name">Turkey</span></div><p class="bwc-sq-beers">Efes Pilsen · Bomonti Filtresiz · Gara Guzu Black Bear · Efes Dark</p><div class="bwc-sq-note">Tuborg Türk and Heineken Türkiye contract-struck.</div></article>
       </div>
+      </section>
 
+      <section class="bwc-sq-card" data-group="e">
       <h2 class="bwc-sq-group">Group E</h2>
       <div class="bwc-sq-row">
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇩🇪</span><span class="name">Germany</span></div><p class="bwc-sq-beers">Weihenstephaner Hefeweißbier · Augustiner Helles · Schneider Aventinus · Schlenkerla Märzen</p><div class="bwc-sq-note">Reinheitsgebot keeps being cited as eligibility law. It isn't.</div></article>
@@ -97,7 +114,9 @@
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇨🇮</span><span class="name">Ivory Coast</span></div><p class="bwc-sq-beers">Ivoire (Solibra) · Tuborg CI</p><div class="bwc-sq-note">Pub VAR's longest file. Ivoire native; everything else "pending pending".</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇪🇨</span><span class="name">Ecuador</span></div><p class="bwc-sq-beers">Pilsener (1913) · Club Premium · Bandido Andean Pale · Bandido Capuchino Stout</p><div class="bwc-sq-note">Heritage side wouldn't release captaincy.</div></article>
       </div>
+      </section>
 
+      <section class="bwc-sq-card" data-group="f">
       <h2 class="bwc-sq-group">Group F</h2>
       <div class="bwc-sq-row">
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇳🇱</span><span class="name">Netherlands</span></div><p class="bwc-sq-beers">Heineken Original · La Trappe Tripel · Brouwerij 't IJ Zatte · De Molen Hel &amp; Verdoemenis</p><div class="bwc-sq-note">Westmalle ruled Belgian despite language overlap.</div></article>
@@ -105,7 +124,9 @@
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇸🇪</span><span class="name">Sweden</span></div><p class="bwc-sq-beers">Norrlands Guld · Omnipollo Magic Number · Stigbergets West Coast IPA · Närke Kaggen Stormaktsporter</p><div class="bwc-sq-note">Mikkeller ruled Danish. Longest argument of selection night.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇹🇳</span><span class="name">Tunisia</span></div><p class="bwc-sq-beers">Celtia · 33 Export</p><div class="bwc-sq-note">Celtia carries the country. Honest 2.</div></article>
       </div>
+      </section>
 
+      <section class="bwc-sq-card" data-group="g">
       <h2 class="bwc-sq-group">Group G</h2>
       <div class="bwc-sq-row">
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇧🇪</span><span class="name">Belgium</span></div><p class="bwc-sq-beers">Westvleteren 12 · Orval · Duvel · Westmalle Tripel · Rochefort 10 · Cantillon Fou' Foune</p><div class="bwc-sq-note">Abbey asked the committee not to mention Westvleteren. The committee outvoted the abbey.</div></article>
@@ -113,7 +134,9 @@
         <article class="bwc-sq iran"><div class="bwc-sq-h"><span class="flag">🇮🇷</span><span class="name">Iran</span></div><p class="bwc-sq-beers">Delster · Istak · Hofbräu Persia (Tehran) · Argo Tehran (1928–1979, ghost call-up)</p><div class="bwc-sq-note">Diaspora counts. Non-alcoholic counts. Heritage counts. Volume III still open.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇳🇿</span><span class="name">New Zealand</span></div><p class="bwc-sq-beers">Steinlager Classic · Speight's Gold Medal Ale · Tui East India Pale Ale · Garage Project Hāpi Daze · 8 Wired Hopwired IPA</p><div class="bwc-sq-note">Heritage trio plus craft fireworks. Garage Project is the wildcard you want.</div></article>
       </div>
+      </section>
 
+      <section class="bwc-sq-card" data-group="h">
       <h2 class="bwc-sq-group">Group H</h2>
       <div class="bwc-sq-row">
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇪🇸</span><span class="name">Spain</span></div><p class="bwc-sq-beers">Estrella Damm · Mahou Cinco Estrellas · Alhambra Reserva 1925 · La Pirata Black Block</p><div class="bwc-sq-note">World thinks Spanish beer is "Estrella with jamón". World is wrong.</div></article>
@@ -121,7 +144,9 @@
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇸🇦</span><span class="name">Saudi Arabia</span></div><p class="bwc-sq-beers">Moussy · Holsten Vital · Barbican</p><div class="bwc-sq-note">Alcohol prohibited. Squad is the non-alcoholic aisle of every Riyadh supermarket.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇺🇾</span><span class="name">Uruguay</span></div><p class="bwc-sq-beers">Pilsen Uruguay · Patricia · Zillertal · Cabesas Bier APA</p><div class="bwc-sq-note">Macro three-pack, Cabesas adding craft teeth.</div></article>
       </div>
+      </section>
 
+      <section class="bwc-sq-card" data-group="i">
       <h2 class="bwc-sq-group">Group I</h2>
       <div class="bwc-sq-row">
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇫🇷</span><span class="name">France</span></div><p class="bwc-sq-beers">Kronenbourg 1664 · Pelforth Brune · Jenlain Ambrée · Brasserie Thiriez Extra</p><div class="bwc-sq-note">Three regional brewing traditions in a trench coat.</div></article>
@@ -129,7 +154,9 @@
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇮🇶</span><span class="name">Iraq</span></div><p class="bwc-sq-beers">Diyala · Farida</p><div class="bwc-sq-note">Limited domestic scene. Honest 2.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇳🇴</span><span class="name">Norway</span></div><p class="bwc-sq-beers">Ringnes · Mack Bayer · Aass Bock · Nøgne Ø #100 · Lervig Lucky Jack</p><div class="bwc-sq-note">Heritage macros plus Nøgne Ø and Lervig — both world-class on craft form.</div></article>
       </div>
+      </section>
 
+      <section class="bwc-sq-card" data-group="j">
       <h2 class="bwc-sq-group">Group J</h2>
       <div class="bwc-sq-row">
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇦🇷</span><span class="name">Argentina</span></div><p class="bwc-sq-beers">Quilmes Cristal · Patagonia Amber · Antares Honey · Strange Brewing Doble Cordobesa</p><div class="bwc-sq-note">AB InBev owns roughly half of all available eligibility arguments.</div></article>
@@ -137,7 +164,9 @@
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇦🇹</span><span class="name">Austria</span></div><p class="bwc-sq-beers">Stiegl Goldbräu · Gösser · Ottakringer · Schremser · Trumer Pils</p><div class="bwc-sq-note">Quietly excellent. Stiegl and Trumer would walk into most XIs.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇯🇴</span><span class="name">Jordan</span></div><p class="bwc-sq-beers">Carakale · Petra</p><div class="bwc-sq-note">Carakale is the craft pioneer. Petra is the macro foil.</div></article>
       </div>
+      </section>
 
+      <section class="bwc-sq-card" data-group="k">
       <h2 class="bwc-sq-group">Group K</h2>
       <div class="bwc-sq-row">
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇵🇹</span><span class="name">Portugal</span></div><p class="bwc-sq-beers">Super Bock · Sagres · Coral (Madeira) · Letra B</p><div class="bwc-sq-note">Captaincy unresolved. Dressing room divided. Cristal still complaining.</div></article>
@@ -145,15 +174,21 @@
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇺🇿</span><span class="name">Uzbekistan</span></div><p class="bwc-sq-beers">Sarbast · Pulsar</p><div class="bwc-sq-note">Limited but present. Sarbast leads.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇨🇴</span><span class="name">Colombia</span></div><p class="bwc-sq-beers">Aguila · Club Colombia · Costeña · Bogotá Beer Company Cajicá Honey Ale</p><div class="bwc-sq-note">Macro trio with BBC's craft programme behind.</div></article>
       </div>
+      </section>
 
+      <section class="bwc-sq-card" data-group="l">
       <h2 class="bwc-sq-group">Group L</h2>
       <div class="bwc-sq-row">
-        <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="name">England</span></div><p class="bwc-sq-beers">Fuller's London Pride · Timothy Taylor's Landlord · Draught Bass · Harvey's Sussex Best · Boddingtons (cask)</p><div class="bwc-sq-note">Cask mad. Boddingtons reinstated — cask version on the bar at The Whippet, EC2. Greene King and Cloudwater cut for not pulling their weight.</div></article>
+        <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="name">England</span></div><p class="bwc-sq-beers">Fuller's London Pride · Timothy Taylor's Landlord · Draught Bass · Harvey's Sussex Best</p><div class="bwc-sq-note">Warm. Flat. Hand-pulled. Reads like a fault sheet anywhere else — and the one beer category no other country bothers to compete in.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇭🇷</span><span class="name">Croatia</span></div><p class="bwc-sq-beers">Karlovačko · Ožujsko · Pan · Velebitsko</p><div class="bwc-sq-note">Karlovačko and Ožujsko are the long-running derby. Velebitsko the regional cult pick.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇬🇭</span><span class="name">Ghana</span></div><p class="bwc-sq-beers">Star Beer (Guinness Ghana) · Club Premium · Guinness FES (Ghana) · Star Radler</p><div class="bwc-sq-note">Honest 8, not 11. Guinness FES eligibility book volume II.</div></article>
         <article class="bwc-sq"><div class="bwc-sq-h"><span class="flag">🇵🇦</span><span class="name">Panama</span></div><p class="bwc-sq-beers">Balboa · Atlas · La Rana Dorada Pale · La Rana Dorada IPA</p><div class="bwc-sq-note">Committee asked Pub VAR if one brewery's portfolio counts. Pub VAR went quiet.</div></article>
       </div>
+      </section>
 
+    </div>
+      <div class="bwc-deck-dots" aria-hidden="true"><button class="bwc-deck-dot" data-dot="0" aria-label="Group A"></button><button class="bwc-deck-dot" data-dot="1" aria-label="Group B"></button><button class="bwc-deck-dot" data-dot="2" aria-label="Group C"></button><button class="bwc-deck-dot" data-dot="3" aria-label="Group D"></button><button class="bwc-deck-dot" data-dot="4" aria-label="Group E"></button><button class="bwc-deck-dot" data-dot="5" aria-label="Group F"></button><button class="bwc-deck-dot" data-dot="6" aria-label="Group G"></button><button class="bwc-deck-dot" data-dot="7" aria-label="Group H"></button><button class="bwc-deck-dot" data-dot="8" aria-label="Group I"></button><button class="bwc-deck-dot" data-dot="9" aria-label="Group J"></button><button class="bwc-deck-dot" data-dot="10" aria-label="Group K"></button><button class="bwc-deck-dot" data-dot="11" aria-label="Group L"></button></div>
+      <div class="bwc-deck-counter" aria-live="polite"><span id="bwcDeckCurrent">A</span> / <span id="bwcDeckTotal">L</span></div>
     </div>
 
     <p style="text-align:center;margin-top:36px;font-size:0.86rem;color:var(--muted);">← <a href="/blog/beer-world-cup-xi.html" style="color:var(--teal);">Manifesto</a> · <a href="/blog/beer-world-cup-xi-fixtures.html" style="color:var(--teal);">Wall chart</a> · <a href="/blog/world-cup-stadium-beer-map.html" style="color:var(--teal);">Stadium Beer Map</a></p>
@@ -169,5 +204,73 @@
     <p style="font-size:0.72rem;color:#555;margin-top:10px">Squad selections are editorial. Brewery ownership and contract-brewing relationships referenced are publicly stated. Beer rulings are not legally binding. Probably.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
+
+<script>
+(function(){
+  var deck = document.querySelector('.bwc-squads.bwc-deck');
+  var dots = document.querySelectorAll('.bwc-deck-dot');
+  var current = document.getElementById('bwcDeckCurrent');
+  var chips = document.querySelectorAll('.bwc-chip');
+  if (!deck) return;
+  var GROUP_LETTERS = ['A','B','C','D','E','F','G','H','I','J','K','L'];
+  var filter = { group: 'all' };
+
+  function applyFilter() {
+    var cards = deck.querySelectorAll('.bwc-sq-card');
+    cards.forEach(function(c) {
+      var grp = c.getAttribute('data-group');
+      c.classList.toggle('is-hidden', filter.group !== 'all' && filter.group !== grp);
+    });
+    dots.forEach(function(dot, i) {
+      dot.classList.toggle('is-hidden', cards[i] && cards[i].classList.contains('is-hidden'));
+    });
+    deck.scrollTo({left: 0, behavior: 'auto'});
+    updateDotActive();
+  }
+
+  function updateDotActive() {
+    if (!current) return;
+    var cards = deck.querySelectorAll('.bwc-sq-card');
+    var scrollMid = deck.scrollLeft + deck.clientWidth / 2;
+    var closestIdx = 0, closestDist = Infinity;
+    cards.forEach(function(c, i) {
+      if (c.classList.contains('is-hidden')) return;
+      var centre = c.offsetLeft + c.offsetWidth / 2;
+      var dist = Math.abs(centre - scrollMid);
+      if (dist < closestDist) { closestDist = dist; closestIdx = i; }
+    });
+    dots.forEach(function(d, i) { d.classList.toggle('is-active', i === closestIdx); });
+    current.textContent = GROUP_LETTERS[closestIdx] || 'A';
+  }
+
+  chips.forEach(function(c) {
+    c.addEventListener('click', function() {
+      var v = c.getAttribute('data-value');
+      filter.group = v;
+      c.parentElement.querySelectorAll('.bwc-chip').forEach(function(x){ x.classList.remove('is-active'); });
+      c.classList.add('is-active');
+      applyFilter();
+    });
+  });
+
+  dots.forEach(function(d) {
+    d.addEventListener('click', function() {
+      var idx = parseInt(d.getAttribute('data-dot'), 10);
+      var c = deck.querySelectorAll('.bwc-sq-card')[idx];
+      if (c) deck.scrollTo({left: c.offsetLeft, behavior: 'smooth'});
+    });
+  });
+
+  var rafPending = false;
+  deck.addEventListener('scroll', function(){
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(function(){ updateDotActive(); rafPending = false; });
+  }, {passive: true});
+
+  updateDotActive();
+})();
+</script>
+
 </body>
 </html>

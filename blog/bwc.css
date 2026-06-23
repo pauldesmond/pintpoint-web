@@ -288,6 +288,54 @@
 
 .bwc-squads { display: flex; flex-direction: column; gap: 6px; }
 
+/* When .bwc-squads is also .bwc-deck, switch to horizontal scroll-snap
+   like the fixtures wall. Each .bwc-sq-card becomes a snap point. */
+.bwc-squads.bwc-deck {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 4px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+.bwc-squads.bwc-deck::-webkit-scrollbar { display: none; }
+.bwc-squads.bwc-deck > .bwc-sq-card { scroll-snap-align: start; min-width: 0; }
+@media (min-width: 720px)  { .bwc-squads.bwc-deck { grid-auto-columns: calc(50% - 7px); } }
+@media (min-width: 1080px) { .bwc-squads.bwc-deck { grid-auto-columns: calc(33.333% - 9.33px); } }
+@media print {
+  .bwc-squads.bwc-deck { display: flex; flex-direction: column; overflow: visible; }
+}
+
+.bwc-sq-card {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bwc-sq-card .bwc-sq-group {
+  margin: 0 0 6px;
+  padding-bottom: 4px;
+}
+.bwc-sq-card .bwc-sq-row {
+  /* Inside a card, the 4 tiles stack vertically so all 4 squads of
+     the group are readable in one scroll-snap viewport on mobile. */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 0;
+}
+@media (min-width: 1080px) {
+  /* On 3-card desktop view each card is narrow — keep tiles stacked. */
+  .bwc-sq-card .bwc-sq-row { display: flex; flex-direction: column; }
+}
+
 .bwc-sq-group {
   font-size: 0.72rem;
   font-weight: 800;
