@@ -140,6 +140,41 @@
     .bracket .caption { font-style: italic; color: var(--muted); font-size: 0.92rem; margin-bottom: 10px; }
     .bracket ul { margin: 0; padding-left: 22px; color: var(--text); font-size: 0.93rem; }
     .bracket ul li { margin-bottom: 4px; }
+
+    /* Horizontal round-deck — swipe between rounds */
+    .rounds-deck-wrap { margin: 24px -24px; padding: 0 24px; }
+    .rounds-deck {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      padding-bottom: 12px;
+    }
+    .round-card {
+      flex: 0 0 86%;
+      max-width: 360px;
+      scroll-snap-align: start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 720px) {
+      .round-card { flex-basis: 320px; }
+    }
+    .round-card .round-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
+    .round-card .round-title { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 6px; letter-spacing: -0.2px; }
+    .round-card .round-count { font-size: 0.78rem; color: var(--muted); margin-bottom: 12px; }
+    .round-card .round-caption { font-style: italic; color: var(--muted); font-size: 0.85rem; line-height: 1.45; margin-bottom: 14px; padding: 8px 10px; background: rgba(255,255,255,0.025); border-left: 2px solid var(--border); border-radius: 0 6px 6px 0; }
+    .round-card ol { margin: 0; padding-left: 24px; color: var(--text); font-size: 0.88rem; line-height: 1.55; }
+    .round-card ol li { margin-bottom: 4px; }
+    .round-card ol li strong { color: var(--gold); font-weight: 700; }
+    .round-card ol li em { color: var(--muted); font-style: italic; font-size: 0.82rem; }
+    .deck-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
     table.scoring { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.92rem; background: var(--card); border-radius: 12px; overflow: hidden; }
     table.scoring th, table.scoring td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
     table.scoring th { background: rgba(255,255,255,0.04); color: var(--amber); font-weight: 700; font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; }
@@ -220,122 +255,161 @@
       </tbody>
     </table>
 
-    <h2>The semi-finals</h2>
+    <h2>The full bracket</h2>
 
-    <p>Two ties, both decided on the panel's "sophisticated scoring system" introduced in the quarter-finals "because the panel was too plastered to get their names right, let alone tell the difference between lagers":</p>
-
-    <div class="bracket">
-      <h3>Semi-final 1 · Molson v Kronenbourg 1664</h3>
-      <p class="caption">"I've just come round here cos I heard there was a load of free beers."</p>
-      <p>Winner: <strong>Molson</strong></p>
-    </div>
+    <p>Six rounds, 62 lagers entering, one Budvar at the end. Swipe through the rounds below — each card shows that round's pairings with the winner highlighted. The drunk-panel captions track the descent.</p>
 
     <div class="bracket">
-      <h3>Semi-final 2 · Coors v Budvar</h3>
-      <p>Winner: <strong>Budvar</strong></p>
+      <h3>The 62 entrants</h3>
+      <p>Amstel · Bear · Becks · Bintang · Boags · Brahma · Breaker · Budvar · Budweiser · Carling Black Label · Carlsberg · Carlsberg Ice · Coors · Corona · DAB · Elephant · Falcon · Fosters · Fosters Ice · Gilde Pils · Gold Label · Grolsch · Heineken · Holsten Pils · Kaltenberg Pils · Kirin · Kronenbourg 1664 · Labatts · Labatts Ice · Lion · Lone Star · Lowenbrau · Lowenbrau (again, eh?) · Lowenbrau Pils · McEwan's · Michelob · Miller · Molson · Newquay Steam · Oranjeboom · Peroni · Quartz · Red Stripe · Rolling Rock · Sagres · Samuel Adams · San Miguel · Sapporo · Shanghai · Skol · Sol · Special Brew · Steinlager · Stella Dry · Super Bock · Tennent's Extra · Tennent's Gold · Tennent's Pilsner · Tooheys · VB · Wicked · XXXX (Castlemaine)</p>
+      <p class="caption" style="font-style:italic;color:var(--muted);margin-top:8px;">Lowenbrau appears three times: Pils (on draft, glass), the standard can, and a second can the panel themselves labelled "(again, eh?)".</p>
     </div>
 
-    <h2>The quarter-finals</h2>
+    <div class="rounds-deck-wrap" role="region" aria-label="Tournament bracket — swipe between rounds">
+      <div class="rounds-deck">
 
-    <p>Four ties scored on design and taste only — drunk arrived for the final:</p>
+        <div class="round-card">
+          <div class="round-label">Round 1</div>
+          <div class="round-title">First round</div>
+          <div class="round-count">62 entrants → 32 advance · 31 pairings</div>
+          <p class="round-caption">"You're not gonna drink all those tonight are you?"</p>
+          <ol>
+            <li>Labatts Ice • <strong>Sapporo</strong></li>
+            <li>Bear • <strong>Sol</strong></li>
+            <li>Tennent's Pilsner • <strong>Molson</strong></li>
+            <li>Oranjeboom • <strong>Elephant</strong></li>
+            <li>Sagres • <strong>Fosters Ice</strong></li>
+            <li>Skol • <strong>Becks</strong></li>
+            <li>Fosters • <strong>Newquay Steam</strong></li>
+            <li>Corona • <strong>Michelob</strong></li>
+            <li>Carlsberg Ice • <strong>Gilde Pils</strong></li>
+            <li>Lone Star • <strong>Grolsch</strong></li>
+            <li>Bintang • <strong>Boags</strong></li>
+            <li>Labatts • <strong>Coors</strong></li>
+            <li>Lowenbrau Pils • <strong>Red Stripe</strong></li>
+            <li>Carlsberg • <strong>San Miguel</strong></li>
+            <li>Stella Dry • <strong>Lion</strong></li>
+            <li>Quartz • <strong>Steinlager</strong></li>
+            <li>Special Brew • <strong>Rolling Rock</strong></li>
+            <li>Tennent's Gold • <strong>McEwan's</strong></li>
+            <li>Brahma • <strong>Breaker</strong></li>
+            <li><strong>Holsten Pils</strong> • <strong>Miller</strong> <em>(both advance)</em></li>
+            <li>Kirin • <strong>Heineken</strong></li>
+            <li>Wicked • <strong>Kaltenberg Pils</strong></li>
+            <li>Gold Label • <strong>Lowenbrau</strong></li>
+            <li><strong>Budvar</strong> • <strong>Tooheys</strong> <em>(both advance)</em></li>
+            <li>Carling Black Label • <strong>XXXX</strong> (Castlemaine)</li>
+            <li><strong>VB</strong> • <strong>Lowenbrau</strong> <em>(both advance)</em></li>
+            <li>Shanghai • <strong>Amstel</strong></li>
+            <li>Samuel Adams • <strong>Kronenbourg 1664</strong></li>
+            <li>Falcon • <strong>Peroni</strong></li>
+            <li>Super Bock • <strong>Budweiser</strong></li>
+            <li>Tennent's Extra • DAB <em>(neither advanced)</em></li>
+          </ol>
+        </div>
 
+        <div class="round-card">
+          <div class="round-label">Round 2</div>
+          <div class="round-title">Second round</div>
+          <div class="round-count">32 entrants → 16 advance · 16 pairings</div>
+          <p class="round-caption">"In half an hour he's going to have more beer than he can cope with."</p>
+          <ol>
+            <li>Sol • <strong>Sapporo</strong></li>
+            <li>Elephant • <strong>Molson</strong></li>
+            <li><strong>Budweiser</strong> • <strong>Holsten Pils</strong> <em>(both advance)</em></li>
+            <li>Gilde Pils • <strong>Michelob</strong></li>
+            <li>Grolsch • <strong>Steinlager</strong></li>
+            <li>Kaltenberg Pils • <strong>Breaker</strong></li>
+            <li>Amstel • <strong>Kronenbourg 1664</strong></li>
+            <li>Peroni • Boags <em>(neither advanced)</em></li>
+            <li>McEwan's • <strong>Lion</strong></li>
+            <li>Heineken • <strong>Tooheys</strong></li>
+            <li>XXXX (Castlemaine) • <strong>Budvar</strong></li>
+            <li>VB • <strong>Fosters Ice</strong></li>
+            <li>Becks • <strong>Newquay Steam</strong></li>
+            <li>Red Stripe • <strong>Coors</strong></li>
+            <li>San Miguel • <strong>Rolling Rock</strong></li>
+            <li>Lowenbrau • <strong>Miller</strong></li>
+          </ol>
+        </div>
+
+        <div class="round-card">
+          <div class="round-label">Round 3</div>
+          <div class="round-title">Third round</div>
+          <div class="round-count">16 entrants → 8 advance · 8 pairings</div>
+          <p class="round-caption">"We've got to start drinking properly. We've gotta start drinking a lot more."</p>
+          <ol>
+            <li>Sapporo • <strong>Budweiser</strong></li>
+            <li>Lion • <strong>Molson</strong></li>
+            <li>Tooheys • <strong>Fosters Ice</strong></li>
+            <li>Michelob • <strong>Budvar</strong></li>
+            <li>Steinlager • <strong>Rolling Rock</strong></li>
+            <li>Breaker • <strong>Newquay Steam</strong></li>
+            <li>Miller • <strong>Coors</strong></li>
+            <li>Holsten Pils • <strong>Kronenbourg 1664</strong></li>
+          </ol>
+        </div>
+
+        <div class="round-card">
+          <div class="round-label">Last eight</div>
+          <div class="round-title">Quarter-finals</div>
+          <div class="round-count">8 entrants → 4 advance · 4 pairings</div>
+          <p class="round-caption">"I shouldn't be adjudicating any more I've had too much lager."</p>
+          <ol>
+            <li>Fosters Ice • <strong>Molson</strong> (84)</li>
+            <li>Rolling Rock • <strong>Budvar</strong> (108)</li>
+            <li>Newquay Steam • <strong>Kronenbourg 1664</strong> (82)</li>
+            <li>Budweiser • <strong>Coors</strong> (54)</li>
+          </ol>
+          <p style="font-size:0.8rem;color:var(--muted);margin-top:10px;">QF totals (design + taste). The "sophisticated scoring system" the panel introduced because they were "too plastered to tell the difference between lagers."</p>
+        </div>
+
+        <div class="round-card">
+          <div class="round-label">Semi-finals</div>
+          <div class="round-title">Semi-finals</div>
+          <div class="round-count">4 entrants → 2 advance · 2 pairings</div>
+          <p class="round-caption">"I've just come round here cos I heard there was a load of free beers."</p>
+          <ol>
+            <li>Kronenbourg 1664 • <strong>Molson</strong></li>
+            <li>Coors • <strong>Budvar</strong></li>
+          </ol>
+        </div>
+
+        <div class="round-card" style="background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(192,163,64,0.03)); border-color: rgba(255,215,0,0.3);">
+          <div class="round-label" style="color:var(--gold);">Final</div>
+          <div class="round-title">The final</div>
+          <div class="round-count">2 entrants · 1 winner</div>
+          <p class="round-caption">"We're all fuckin' around and this is really important."</p>
+          <ol>
+            <li>Molson (98) • <strong>Budvar (178)</strong></li>
+          </ol>
+          <p style="font-size:0.8rem;color:var(--muted);margin-top:10px;">Final scoring used three axes: design / taste / drunk. Budvar: 57 / 59 / 62. Molson: 25 / 45 / 28. "The winner is Budvar by a very long way."</p>
+        </div>
+
+      </div>
+      <p class="deck-hint">← swipe →</p>
+    </div>
+
+    <h3>Quarter-final scoring</h3>
     <table class="scoring">
       <thead><tr><th>Brand</th><th class="num">Design</th><th class="num">Taste</th><th class="num">Total</th></tr></thead>
       <tbody>
         <tr><td class="win">Molson</td><td class="num">51</td><td class="num">33</td><td class="num win"><strong>84</strong></td></tr>
-        <tr><td class="win">1664 (Kronenbourg)</td><td class="num">47</td><td class="num">35</td><td class="num win"><strong>82</strong></td></tr>
+        <tr><td class="win">Kronenbourg 1664</td><td class="num">47</td><td class="num">35</td><td class="num win"><strong>82</strong></td></tr>
         <tr><td class="win">Budvar</td><td class="num">51</td><td class="num">57</td><td class="num win"><strong>108</strong></td></tr>
         <tr><td class="win">Coors</td><td class="num">22</td><td class="num">32</td><td class="num win"><strong>54</strong></td></tr>
       </tbody>
     </table>
 
-    <p class="caption" style="font-style:italic;color:var(--muted);">All four QF winners advanced to the semi-finals. Drunk wasn't added as a scoring axis until the final.</p>
-
-    <h2>The full bracket</h2>
-
-    <p>Six rounds, 62 lagers entering, one Budvar at the end. The panel adjudicated each round and the captions track their descent into intoxication.</p>
-
-    <h3>Round structure</h3>
+    <h3>Final scoring</h3>
     <table class="scoring">
-      <thead><tr><th>Round</th><th class="num">Entering</th><th class="num">Leaving</th><th>Caption</th></tr></thead>
+      <thead><tr><th>Brand</th><th class="num">Design</th><th class="num">Taste</th><th class="num">Drunk</th><th class="num">Total</th></tr></thead>
       <tbody>
-        <tr><td>First round</td><td class="num">62</td><td class="num">32</td><td><em>"You're not gonna drink all those tonight are you?"</em></td></tr>
-        <tr><td>Second round</td><td class="num">32</td><td class="num">16</td><td><em>"In half an hour he's going to have more beer than he can cope with."</em></td></tr>
-        <tr><td>Third round</td><td class="num">16</td><td class="num">8</td><td><em>"We've got to start drinking properly. We've gotta start drinking a lot more."</em></td></tr>
-        <tr><td>Last eight</td><td class="num">8</td><td class="num">4</td><td><em>"I shouldn't be adjudicating any more I've had too much lager."</em></td></tr>
-        <tr><td>Semi-finals</td><td class="num">4</td><td class="num">2</td><td><em>"I've just come round here cos I heard there was a load of free beers."</em></td></tr>
-        <tr><td>Final</td><td class="num">2</td><td class="num">1</td><td><em>"We're all fuckin' around and this is really important."</em></td></tr>
+        <tr><td>Molson</td><td class="num">25</td><td class="num">45</td><td class="num">28</td><td class="num">98</td></tr>
+        <tr><td class="win">Budvar</td><td class="num">57</td><td class="num">59</td><td class="num">62</td><td class="num win"><strong>178</strong></td></tr>
       </tbody>
     </table>
 
-    <h3>The 62 entrants</h3>
-
-    <p>Listed as transcribed from the bracket pages on pages 4–6 of the supplement. Names follow the labels printed below each bottle photograph.</p>
-
-    <div class="bracket">
-      <h3>The 62 entrants</h3>
-      <p>Amstel · Bear · Becks · Bintang · Boags · Brahma · Breaker · Budvar · Budweiser · Carling Black Label · Carlsberg · Carlsberg Ice · Coors · Corona · DAB · Elephant · Falcon · Fosters · Fosters Ice · Gilde Pils · Gold Label · Grolsch · Heineken · Holsten Pils · Kaltenberg Pils · Kirin · Kronenbourg 1664 · Labatts · Labatts Ice · Lion · Lone Star · Lowenbrau · Lowenbrau (again, eh?) · Lowenbrau Pils · McEwans · Michelob · Miller · Molson · Newquay Steam · Orangeboom · Peroni · Quartz · Red Stripe · Rolling Rock · Sagres · Samuel Adams · San Miguel · Sapporo · Shanghai · Skol · Sol · Special Brew · Steinlager · Stella Dry · Super Bock · Tennents Extra · Tennents Gold · Tennents Pilsner · Tooheys · VB · Wicked · XXXX</p>
-      <p class="caption" style="font-style:italic;color:var(--muted);margin-top:8px;">All 62 first-round entrants. Lowenbrau appears three times: Pils (on draft, glass), the standard can, and a second can the panel themselves labelled "(again, eh?)".</p>
-    </div>
-
-    <h3>First-round pairings (31 matches)</h3>
-    <p>Listed in the order they appear across the bracket spread, left page then right page. Winners will be filled in once the round-two cohort is cross-referenced — whichever name from each pair advances to round two is the winner.</p>
-
-    <div class="bracket">
-      <h3>Left page · 14 pairings</h3>
-      <ol>
-        <li>Labatts Ice • Sapporo → <strong>Sapporo</strong></li>
-        <li>Sol • Bear → <strong>Sol</strong></li>
-        <li>Molson • Tennent's Pilsner → <strong>Molson</strong></li>
-        <li>Elephant • Oranjeboom → <strong>Elephant</strong></li>
-        <li>Fosters Ice • Sagres → <strong>Fosters Ice</strong></li>
-        <li>Skol • Becks → <strong>Becks</strong></li>
-        <li>Newquay Steam • Fosters → <strong>Newquay Steam</strong></li>
-        <li>Corona • Michelob → <strong>Michelob</strong></li>
-        <li>Carlsberg Ice • Gilde Pils → <strong>Gilde Pils</strong></li>
-        <li>Lone Star • Grolsch → <strong>Grolsch</strong></li>
-        <li>Bintang • Boags → <strong>Boags</strong></li>
-        <li>Coors • Labatts → <strong>Coors</strong></li>
-        <li>Lowenbrau Pils • Red Stripe → <strong>Red Stripe</strong></li>
-        <li>San Miguel • Carlsberg → <strong>San Miguel</strong></li>
-      </ol>
-    </div>
-
-    <div class="bracket">
-      <h3>Right page · 17 pairings</h3>
-      <ol start="15">
-        <li>Lion • Stella Dry → <strong>Lion</strong></li>
-        <li>Steinlager • Quartz → <strong>Steinlager</strong></li>
-        <li>Rolling Rock • Special Brew → <strong>Rolling Rock</strong></li>
-        <li>Tennent's Gold • McEwan's → <strong>McEwan's</strong></li>
-        <li>Breaker • Brahma → <strong>Breaker</strong></li>
-        <li>Holsten Pils • Miller → <strong>both advance</strong></li>
-        <li>Kirin • Heineken → <strong>Heineken</strong></li>
-        <li>Kaltenberg Pils • Wicked → <strong>Kaltenberg Pils</strong></li>
-        <li>Lowenbrau • Gold Label → <strong>Lowenbrau</strong></li>
-        <li>Budvar • Tooheys → <strong>both advance</strong></li>
-        <li>XXXX (Castlemaine) • Carling Black Label → <strong>XXXX</strong></li>
-        <li>VB • Lowenbrau → <strong>both advance</strong></li>
-        <li>Shanghai • Amstel → <strong>Amstel</strong></li>
-        <li>Kronenbourg 1664 • Samuel Adams → <strong>Kronenbourg 1664</strong></li>
-        <li>Peroni • Falcon → <strong>Peroni</strong></li>
-        <li>Budweiser • Super Bock → <strong>Budweiser</strong></li>
-        <li>Tennent's Extra • DAB</li>
-      </ol>
-      <p class="caption" style="font-style:italic;color:var(--muted);margin-top:8px;">A handful of pairs show both bottles advancing ("drinkable draws" the panel couldn't separate) and one pair (Tennent's Extra v DAB) sent neither through. Counts roughly approximate the 32-advancer round-two cohort; the panel's bookkeeping was unsentimental.</p>
-    </div>
-
-    <p class="caption" style="font-style:italic;color:var(--muted);">Note: Lowenbrau appears twice in the first round — once as <strong>Lowenbrau Pils</strong> (poured on draft in a glass) and once as plain <strong>Lowenbrau</strong> (in a can, not Pils). The panel themselves flagged the recurrence with a deadpan label "(again, eh?)" — but both entries are legitimate, two different presentations of the brand.</p>
-
-    <h3>The last eight</h3>
-    <p>The eight lagers that survived round three and went into the quarter-finals: <strong>Molson</strong>, <strong>Foster's Ice</strong>, <strong>Budvar</strong>, <strong>Rolling Rock</strong>, <strong>Coors</strong>, <strong>Newquay Steam</strong>, <strong>Kronenbourg 1664</strong>, <strong>Holsten Pils</strong>. (Order/pairings transcribed from the bracket; subject to verification.)</p>
-
-    <h3>The semi-finals</h3>
-    <p>Semi-final 1: <strong>Molson</strong> v Kronenbourg 1664 — Molson advances.<br />
-    Semi-final 2: Coors v <strong>Budvar</strong> — Budvar advances.</p>
-
-    <h3>The final</h3>
-    <p><strong>Budvar</strong> 178 — 98 Molson. Scored on design, taste and drunk.</p>
 
     <h2>Wait — what about Steinlager and Castle and Tiger?</h2>
 
