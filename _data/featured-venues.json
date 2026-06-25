@@ -6,8 +6,20 @@
     { "name": "The Whippet", "city": "London" }
   ],
   "rotation_pool": [
-    { "name": "Capitan Amargo", "city": "Granada" },
-    { "name": "The Ale House", "city": "Chelmsford" },
-    { "name": "The Catfish", "city": "Fitzroy" }
+    { "name": "Capitan Amargo",             "city": "Granada"   },
+    { "name": "The Ale House",              "city": "Chelmsford"},
+    { "name": "The Catfish",                "city": "Fitzroy"   },
+    { "name": "The Bell",                   "city": "Ingatestone"},
+    { "name": "The Wenlock Arms",           "city": "London"    },
+    { "name": "The Bolter",                 "city": "London"    },
+    { "name": "Brouwerij 't IJ",            "city": "Amsterdam" },
+    { "name": "Mike Hess Brewing",          "city": "North Park, San Diego" },
+    { "name": "The George Inn",             "city": "London"    },
+    { "name": "The Spaniards Inn",          "city": "London"    },
+    { "name": "The Lamb",                   "city": "London"    },
+    { "name": "Ye Grapes",                  "city": "London"    },
+    { "name": "Harp",                       "city": "London"    },
+    { "name": "The Marble Arch",            "city": "Manchester"},
+    { "name": "Sheffield Tap",              "city": "Sheffield" }
   ]
 }
