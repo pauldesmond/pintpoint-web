@@ -1,11 +1,13 @@
 {
-  "_comment": "Hand-picked featured venues for the top of pubs/index.html. Read by scripts/generate-pubs-index.mjs — these render first (positions 1–6), then the script auto-fills positions 7–20 from the most-recently-updated venues in Supabase. The JSON-LD ItemList on the same page is generated from this same source, so what humans see and what Google sees stay in sync. To add or replace a featured venue, edit this file and re-run the script (or wait for the nightly workflow). Order in this array is the order shown on the page.",
-  "featured": [
+  "_comment": "Editorial picks for the top of pubs/index.html. Read by scripts/generate-pubs-index.mjs. Two tiers:\n  * stable[]         — ALWAYS visible, in this order, at positions 1-N. The page's flagship trio — what you most want a first-time visitor to see no matter when they land. Keep this small (3 is good).\n  * rotation_pool[]  — A curated set of editor's-pick venues. The script picks 3 daily, deterministically seeded by the date, and shows them immediately after the stable trio. The same 3 show all day; tomorrow you'll see a different 3. Grow this list freely — bigger pool = more rotation. 15-20 entries is the sweet spot.\nPositions after stable+rotation are auto-filled from Supabase by shuffling the 40 most-recently-updated venues with full data (see fetchRecentVenues() in the script).\nThe JSON-LD ItemList on the same page is regenerated from the top 6 visible venues (stable + daily-rotated) so what humans see and what Google sees stay in sync.\nTo add or replace a venue, edit this file and either run scripts/generate-pubs-index.mjs locally or wait for the nightly 03:17 UTC cron.",
+  "stable": [
     { "name": "Radio City Social", "city": "Chelmsford" },
     { "name": "The Rake", "city": "London" },
+    { "name": "The Whippet", "city": "London" }
+  ],
+  "rotation_pool": [
     { "name": "Capitan Amargo", "city": "Granada" },
     { "name": "The Ale House", "city": "Chelmsford" },
-    { "name": "The Whippet EC2", "city": "London" },
     { "name": "The Catfish", "city": "Fitzroy" }
   ]
 }
