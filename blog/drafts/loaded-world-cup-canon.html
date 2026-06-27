@@ -125,6 +125,30 @@
     footer a { color: var(--muted); text-decoration: none; border-bottom: none; }
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 22px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
+    /* Swipeable canon deck — same pattern as the rounds-deck on the Lager'lympics page */
+    .cups-deck-wrap { margin: 24px -24px 8px; padding: 0 24px; }
+    .cups-deck {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      padding-bottom: 14px;
+      align-items: stretch;
+    }
+    .cups-deck .cup {
+      flex: 0 0 88%;
+      max-width: 480px;
+      scroll-snap-align: start;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 720px) {
+      .cups-deck .cup { flex-basis: 460px; }
+    }
+    .deck-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin: 0 0 32px; }
     @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 56px; } .canon-table th, .canon-table td { padding: 8px 10px; font-size: 0.8rem; } }
   </style>
 </head>
@@ -193,6 +217,9 @@
     <p>At least ten further editions follow in our canon below; more in the archive yet to be transcribed.</p>
 
     <h2>The canon, in chronological order</h2>
+
+    <div class="cups-deck-wrap" role="region" aria-label="Loaded World Cup canon — swipe between editions">
+      <div class="cups-deck">
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 01</span><span class="cup-issue"><em>Loaded</em> #5 · September 1994</span></div>
@@ -299,6 +326,10 @@
       <div class="winner"><span class="lbl">Winner</span><span class="name">T-Bone Steak</span> (all-cow final v Roast Beef)</div>
       <blockquote class="pullquote" style="margin-top:14px;">"Take note, Frenchmen &mdash; from now on, we English shall no longer be known as <em>Les Rostbifs</em>, we wish to be called <em>Les T-Bones</em>."<cite>&mdash; Chris Burke, Meat World Cup, <em>Loaded</em> #81, January 2001</cite></blockquote>
     </article>
+
+      </div>
+    </div>
+    <p class="deck-hint">&larr; swipe through all twelve editions &rarr;</p>
 
     <h2>The through-lines</h2>
 
