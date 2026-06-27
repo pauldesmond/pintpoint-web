@@ -149,6 +149,24 @@
       .cups-deck .cup { flex-basis: 460px; }
     }
     .deck-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin: 0 0 32px; }
+    /* Collapsible body so all cup cards have a uniform compact height */
+    .cup-details { margin: 6px 0 12px; }
+    .cup-details summary {
+      cursor: pointer;
+      list-style: none;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+    }
+    .cup-details summary::-webkit-details-marker { display: none; }
+    .cup-details summary::before { content: '+ '; display: inline-block; width: 1.2em; }
+    .cup-details[open] summary::before { content: '− '; }
+    .cup-details summary:hover { color: var(--text); }
+    .cup-details > p, .cup-details > blockquote { margin-top: 10px; }
     @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 56px; } .canon-table th, .canon-table td { padding: 8px 10px; font-size: 0.8rem; } }
   </style>
 </head>
@@ -224,107 +242,143 @@
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 01</span><span class="cup-issue"><em>Loaded</em> #5 · September 1994</span></div>
       <h3>The Crisp World Cup</h3>
-      <p class="byline">Story: Adam Levi · panel: James Brown, Tim Southwell, Martin Deeson, Adam Levi, Filthy Clarke. Subtitle: <em>"snack of the day"</em>.</p>
-      <p>The format's first run. 64 crisps in a knockout bracket, scored across six categories (strip / realism of flavour / sandwich compatibility / crunchability / dinner substitute / feelgood factor). Round captions track the panel's slide: <em>"Is there any tomato? No, the Italians didn't qualify"</em> &rarr; <em>"Reminds me of Babe Ruth / Beirut more like"</em> &rarr; <em>"Take these Smiths away, they're absolute a*se"</em>. The semi-finals are Walkers Cream Cheese &amp; Chives v Walkers Beef &amp; Onion, and Pringles Lights v McCoys Chilli. The final is decided by an external adjudication panel of <strong>The Vatican, The White House and Quentin Crisp</strong>.</p>
       <div class="winner"><span class="lbl">Winner</span><span class="name">McCoys Chilli</span> (final v Walkers Cream Cheese &amp; Chives)</div>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Story: Adam Levi · panel: James Brown, Tim Southwell, Martin Deeson, Adam Levi, Filthy Clarke. Subtitle: <em>"snack of the day"</em>.</p>
+        <p>The format's first run. 64 crisps in a knockout bracket, scored across six categories (strip / realism of flavour / sandwich compatibility / crunchability / dinner substitute / feelgood factor). Round captions track the panel's slide: <em>"Is there any tomato? No, the Italians didn't qualify"</em> &rarr; <em>"Reminds me of Babe Ruth / Beirut more like"</em> &rarr; <em>"Take these Smiths away, they're absolute a*se"</em>. The semi-finals are Walkers Cream Cheese &amp; Chives v Walkers Beef &amp; Onion, and Pringles Lights v McCoys Chilli. The final is decided by an external adjudication panel of <strong>The Vatican, The White House and Quentin Crisp</strong>.</p>
+      </details>
     </article>
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 02</span><span class="cup-issue"><em>Loaded</em> #8 · December 1994 ("Scorchio" cover)</span></div>
       <h3>The Washing Powder World Cup</h3>
-      <p class="byline">Story: <strong>James Brown</strong> · photos: Chris Floyd &amp; Damian Smyth. Subhead: <em>"Ever willing to face any challenge in the name of science and the truth, loaded just had to find out which powder washes whiter."</em></p>
-      <p>The format's first stunt-discipline edition (and the first one the editor himself wrote up). The whole staff dons white vests and brand-new Levi 501s and proceeds to dirty them maximally: <em>"Puddle jumping, mud fights, orienteering, and football in white vests and brand new Levi 501s. All in the name of research."</em> Diving header competitions, playground ice-slides into troughs of mouldy leaves, mud-pie fights in horse tracks. Olympic gold-medallist swimmer Adrian Moorhouse drives past as the team change at the end of his road and swerves his car in shock. Once the whites are sufficiently destroyed they're driven back to the assistant editor's house for stage two: the food stains &mdash; ketchup, Lea &amp; Perrins, chilli sauce, red wine, ashtray contents, several prawn dansaks and chicken tikka masalas. Then the launderette: <strong>eight finalists</strong> chosen from fifteen brands (after eliminating Domestos, Colgate toothpaste, dishwasher powder, Fairy Liquid washing powder ("I thought they only did washing-up liquid?") and the Safeway own-brand for being design-undercut by Tesco). Final lineup: Happy Shopper, Radion, Surf, Daz, Tesco, Persil, Ariel, and the wild card <strong>Down To Earth</strong> (£4.29/2kg, "dolphins on bag, obviously for environmentally friendly yuppies"). Two-axis scoring &mdash; Woodland Caper out of ten, Food &amp; Wine Cocktail out of ten. Persil collapses ("Shocking middle-order collapse from market heavyweight"); Ariel underperforms on the curry stain.</p>
       <div class="winner"><span class="lbl">Winner</span><span class="name">Down To Earth</span> (14/20 total &mdash; Woodland 8, Food &amp; Wine 6)</div>
-      <blockquote class="pullquote" style="margin-top:14px;">"The bloody dolphins scooped it!! And the upshot is? Just don't bother washing your clothes."<cite>&mdash; James Brown, Washing Powder World Cup, <em>Loaded</em> #8, December 1994</cite></blockquote>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Story: <strong>James Brown</strong> · photos: Chris Floyd &amp; Damian Smyth. Subhead: <em>"Ever willing to face any challenge in the name of science and the truth, loaded just had to find out which powder washes whiter."</em></p>
+        <p>The format's first stunt-discipline edition (and the first one the editor himself wrote up). The whole staff dons white vests and brand-new Levi 501s and proceeds to dirty them maximally: <em>"Puddle jumping, mud fights, orienteering, and football in white vests and brand new Levi 501s. All in the name of research."</em> Diving header competitions, playground ice-slides into troughs of mouldy leaves, mud-pie fights in horse tracks. Olympic gold-medallist swimmer Adrian Moorhouse drives past as the team change at the end of his road and swerves his car in shock. Once the whites are sufficiently destroyed they're driven back to the assistant editor's house for stage two: the food stains &mdash; ketchup, Lea &amp; Perrins, chilli sauce, red wine, ashtray contents, several prawn dansaks and chicken tikka masalas. Then the launderette: <strong>eight finalists</strong> chosen from fifteen brands (after eliminating Domestos, Colgate toothpaste, dishwasher powder, Fairy Liquid washing powder ("I thought they only did washing-up liquid?") and the Safeway own-brand for being design-undercut by Tesco). Final lineup: Happy Shopper, Radion, Surf, Daz, Tesco, Persil, Ariel, and the wild card <strong>Down To Earth</strong> (£4.29/2kg, "dolphins on bag, obviously for environmentally friendly yuppies"). Two-axis scoring &mdash; Woodland Caper out of ten, Food &amp; Wine Cocktail out of ten. Persil collapses ("Shocking middle-order collapse from market heavyweight"); Ariel underperforms on the curry stain.</p>
+        <blockquote class="pullquote" style="margin-top:14px;">"The bloody dolphins scooped it!! And the upshot is? Just don't bother washing your clothes."<cite>&mdash; James Brown, Washing Powder World Cup, <em>Loaded</em> #8, December 1994</cite></blockquote>
+      </details>
     </article>
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 03</span><span class="cup-issue"><em>Loaded</em> #12 · April 1995 (supplement)</span></div>
       <h3>The Lager'lympics</h3>
-      <p class="byline">Published in <em>What's For Tea Love?</em>, the magazine's first food-and-drink supplement.</p>
-      <p>62 lagers (framed in the editorial as 64 &mdash; <em>Loaded</em> kept the founding magic number even when the field was thin). Six rounds, drunk-panel adjudication, scoring across design / taste / drunk. Final 178&ndash;98. Documented in full on our dedicated reference page; this is the one the magazine's own archive doesn't carry.</p>
       <div class="winner"><span class="lbl">Winner</span><span class="name">Budvar</span> (Budweiser Budvar, Czech Republic; beat Molson 178&ndash;98 in the final)</div>
-      <p style="margin-top:12px;font-size:0.88rem;"><a href="/blog/loaded-lager-olympics-1995.html">&rarr; Full bracket, scoring tables and provenance</a></p>
+      <p style="margin-top:8px;font-size:0.88rem;"><a href="/blog/loaded-lager-olympics-1995.html">&rarr; Full bracket, scoring tables and provenance</a></p>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Published in <em>What's For Tea Love?</em>, the magazine's first food-and-drink supplement.</p>
+        <p>62 lagers (framed in the editorial as 64 &mdash; <em>Loaded</em> kept the founding magic number even when the field was thin). Six rounds, drunk-panel adjudication, scoring across design / taste / drunk. Final 178&ndash;98. Documented in full on our dedicated reference page; this is the one the magazine's own archive doesn't carry.</p>
+      </details>
     </article>
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 04</span><span class="cup-issue"><em>Loaded</em> #19 · November 1995 ("Wicked Willie" cover)</span></div>
       <h3>The Cereals World Cup</h3>
-      <p class="byline">Story: <strong>"The Loafer"</strong> &mdash; pseudonym for the writer; panel: James, Les, Mike, Phil, The Loafer. Headline: <em>"THE BREAKFAST OF power"</em>.</p>
-      <p>Origin story: Jim in the office one quiet day says <em>"breakfasts have never been the same since they stopped doing Golden Nuggets"</em>; before he can finish the sentence the others have committed him to a tournament. 35 cereals bought at Sainsbury's Whitechapel (the receipt is reproduced on the page: total &pound;52.30 cash) and whittled to a straight 32 for the first round &mdash; though they had to send someone out to buy Corn Flakes because <em>"we forgot to buy bloody Corn Flakes"</em>. The format pivots into proper scoring categories from the last eight onwards: image, second helping, taste, good start to the day, appearance, odour, texture. Final: <strong>Ricicles v Crunchy Nut Cornflakes</strong>. The point totals are too close to call &mdash; Ricicles 125, Crunchy Nut Cornflakes 122 &mdash; so it goes to a show-of-hands. The piece names the Crisp World Cup precedent explicitly for the recurring authority-figure gag:</p>
-      <blockquote class="pullquote">"We think about phoning The Pope again like we did for the Crisp World Cup, but he won't know. It'll be decided on a show of hands."<cite>&mdash; The Loafer, Cereals World Cup, <em>Loaded</em> #19, November 1995</cite></blockquote>
-      <p>Ricicles takes it 3&ndash;2.</p>
       <div class="winner"><span class="lbl">Winner</span><span class="name">Ricicles</span> (final v Crunchy Nut Cornflakes; 3&ndash;2 show of hands after 125&ndash;122 scoring deadlock)</div>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Story: <strong>"The Loafer"</strong> &mdash; pseudonym for the writer; panel: James, Les, Mike, Phil, The Loafer. Headline: <em>"THE BREAKFAST OF power"</em>.</p>
+        <p>Origin story: Jim in the office one quiet day says <em>"breakfasts have never been the same since they stopped doing Golden Nuggets"</em>; before he can finish the sentence the others have committed him to a tournament. 35 cereals bought at Sainsbury's Whitechapel (the receipt is reproduced on the page: total &pound;52.30 cash) and whittled to a straight 32 for the first round &mdash; though they had to send someone out to buy Corn Flakes because <em>"we forgot to buy bloody Corn Flakes"</em>. The format pivots into proper scoring categories from the last eight onwards: image, second helping, taste, good start to the day, appearance, odour, texture. Final: <strong>Ricicles v Crunchy Nut Cornflakes</strong>. The point totals are too close to call &mdash; Ricicles 125, Crunchy Nut Cornflakes 122 &mdash; so it goes to a show-of-hands. The piece names the Crisp World Cup precedent explicitly for the recurring authority-figure gag:</p>
+        <blockquote class="pullquote">"We think about phoning The Pope again like we did for the Crisp World Cup, but he won't know. It'll be decided on a show of hands."<cite>&mdash; The Loafer, Cereals World Cup, <em>Loaded</em> #19, November 1995</cite></blockquote>
+        <p>Ricicles takes it 3&ndash;2.</p>
+      </details>
     </article>
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 05</span><span class="cup-issue"><em>Loaded</em> #20 · December 1995 (Suggs cover)</span></div>
       <h3>The Vodka World Cup</h3>
-      <p class="byline">Story: Phil Robinson &mdash; his first known World Cup byline; he becomes the format's recurring late-canon writer (Toast 1997, Booze 1998).</p>
-      <p>33 vodkas in a knockout. The conceit is that <strong>James Brown the editor &mdash; "James the Editor", who is presiding &mdash; visibly morphs into Captain Mainwaring as the night progresses</strong>, surrounded by twelve <em>"gattered Private Pykes"</em> (the office). Later in the night he morphs again, this time into Gordon of Khartoum facing the native hordes. The conceit is Phil Robinson's writerly device, not a costumed bit. (Arthur Lowe had been dead since 1982 in any case.) Cast also includes <strong>"Stringfellow's Mark"</strong> joining the team mid-event, a cleaner-judge corps recruited from the office cleaners, and a guest cameo from a bowl of Stringfellow's vodka jelly entered as a novelty contestant. The "Ein Berliner" sick-bin makes its first appearance; it returns three years later in the Booze WC. Tanqueray Sterling (a vodka, despite the name) reaches the final stages before the throw-up rule is invented to break the deadlock &mdash; <em>"We'll sit here and pass the bottle round until someone throws up. And whoever throws up, whatever they're drinking gets booted out and we've got a winner."</em> The verdict ultimately comes from a more reliable source: <em>"Stoli Cristall won because some bloke wrote it down on a piece of paper. Bright spark."</em></p>
       <div class="winner"><span class="lbl">Winner</span><span class="name">Stoli Cristall</span> (decided by piece-of-paper verdict)</div>
-      <blockquote class="pullquote" style="margin-top:14px;">"The <em>loaded</em> Dad's Army Vodka World Cup. That's a lot of vodka. And I'll tell you one thing for nothing, the Russians can have it back. One. Two. Three. Altogether now: 'Who do you think you are kidding Mr Yeltsin if you think old Innngluuunds duuuuuunnnnnnya...'"<cite>&mdash; Phil Robinson, Vodka World Cup, <em>Loaded</em> #20, December 1995</cite></blockquote>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Story: Phil Robinson &mdash; his first known World Cup byline; he becomes the format's recurring late-canon writer (Toast 1997, Booze 1998).</p>
+        <p>33 vodkas in a knockout. The conceit is that <strong>James Brown the editor &mdash; "James the Editor", who is presiding &mdash; visibly morphs into Captain Mainwaring as the night progresses</strong>, surrounded by twelve <em>"gattered Private Pykes"</em> (the office). Later in the night he morphs again, this time into Gordon of Khartoum facing the native hordes. The conceit is Phil Robinson's writerly device, not a costumed bit. (Arthur Lowe had been dead since 1982 in any case.) Cast also includes <strong>"Stringfellow's Mark"</strong> joining the team mid-event, a cleaner-judge corps recruited from the office cleaners, and a guest cameo from a bowl of Stringfellow's vodka jelly entered as a novelty contestant. The "Ein Berliner" sick-bin makes its first appearance; it returns three years later in the Booze WC. Tanqueray Sterling (a vodka, despite the name) reaches the final stages before the throw-up rule is invented to break the deadlock &mdash; <em>"We'll sit here and pass the bottle round until someone throws up. And whoever throws up, whatever they're drinking gets booted out and we've got a winner."</em> The verdict ultimately comes from a more reliable source: <em>"Stoli Cristall won because some bloke wrote it down on a piece of paper. Bright spark."</em></p>
+        <blockquote class="pullquote" style="margin-top:14px;">"The <em>loaded</em> Dad's Army Vodka World Cup. That's a lot of vodka. And I'll tell you one thing for nothing, the Russians can have it back. One. Two. Three. Altogether now: 'Who do you think you are kidding Mr Yeltsin if you think old Innngluuunds duuuuuunnnnnnya...'"<cite>&mdash; Phil Robinson, Vodka World Cup, <em>Loaded</em> #20, December 1995</cite></blockquote>
+      </details>
     </article>
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 06</span><span class="cup-issue"><em>Loaded</em> #34 · February 1997 (Jack Dee cover)</span></div>
       <h3>The 1997 Toast Olympics</h3>
-      <p class="byline">Story: Phil Robinson. Splash: <em>"spread 'em"</em>. Subhead: <em>"Modern man survives for weeks on a diet of just toast and the odd drink. So loaded decided to pit slice against slice and find the greatest toast of all."</em></p>
-      <p>34 loaves from the supermarkets &mdash; "money", gingerbread men, and bagels disqualified for not properly being toast &mdash; whittled to twelve for the bracket proper. Categories rotate as the rounds progress: round one is butter-take and taste; the quarter-finals add "compatibility with a winter's evening" and "bloat-you-up-ability"; the semi-finals add the smell-of-bread-against-the-face test and (genuinely) "resistance to an average golf swing" as a measure of robustness. The Traditional Wholemeal, the semis report, could "knock a dog unconscious" with a hard enough hit. Robinson's signature Mainwaring conceit reappears &mdash; <em>"James the editor once again assumes a Captain Mainwaring role in the proceedings and orders the rabble back so a more empirical tasting can begin."</em> Final three: <strong>Pain de Campagne</strong> v <strong>White Crusty Loaf</strong> v <strong>Soft Granary Malted</strong>.</p>
       <div class="winner"><span class="lbl">Gold</span><span class="name">Pain de Campagne</span> ("The Emperor") &middot; <strong>Silver:</strong> White Crusty Bloomer ("Churchill") &middot; <strong>Bronze:</strong> Soft Granary Malted Brown Bread ("I could live on this")</div>
-      <blockquote class="pullquote" style="margin-top:14px;">"It's crisp, holds the butter like a fine crumpet, but without collapsing. It also has a sublime nutty crust you can rip off with your teeth, plus a dough so succulent and fragrant a little mouse princess could sleep in it. An Emperor among toast. The winner!"<cite>&mdash; Phil Robinson, Toast Olympics, <em>Loaded</em> #34, February 1997</cite></blockquote>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Story: Phil Robinson. Splash: <em>"spread 'em"</em>. Subhead: <em>"Modern man survives for weeks on a diet of just toast and the odd drink. So loaded decided to pit slice against slice and find the greatest toast of all."</em></p>
+        <p>34 loaves from the supermarkets &mdash; "money", gingerbread men, and bagels disqualified for not properly being toast &mdash; whittled to twelve for the bracket proper. Categories rotate as the rounds progress: round one is butter-take and taste; the quarter-finals add "compatibility with a winter's evening" and "bloat-you-up-ability"; the semi-finals add the smell-of-bread-against-the-face test and (genuinely) "resistance to an average golf swing" as a measure of robustness. The Traditional Wholemeal, the semis report, could "knock a dog unconscious" with a hard enough hit. Robinson's signature Mainwaring conceit reappears &mdash; <em>"James the editor once again assumes a Captain Mainwaring role in the proceedings and orders the rabble back so a more empirical tasting can begin."</em> Final three: <strong>Pain de Campagne</strong> v <strong>White Crusty Loaf</strong> v <strong>Soft Granary Malted</strong>.</p>
+        <blockquote class="pullquote" style="margin-top:14px;">"It's crisp, holds the butter like a fine crumpet, but without collapsing. It also has a sublime nutty crust you can rip off with your teeth, plus a dough so succulent and fragrant a little mouse princess could sleep in it. An Emperor among toast. The winner!"<cite>&mdash; Phil Robinson, Toast Olympics, <em>Loaded</em> #34, February 1997</cite></blockquote>
+      </details>
     </article>
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 07</span><span class="cup-issue"><em>Loaded</em> · August 1997</span></div>
       <h3>The Ice Lolly World Cup</h3>
-      <p class="byline">Story: Rowan Chernin. Subtitle: <em>"loaded's quest for a real mother sucker"</em>.</p>
-      <p>By the second round the panel has lost the plot. Magnums "get scared and melt into streaky goo". The Mr Men refuse to leave their wrappers. Jason, the Irish production editor, takes an elastic band to the glasses and drops his Solero. Derek &mdash; the other office Irish bloke &mdash; declares the Bubble Gum Showtime "deliberately tastes of gonorrhoea". An open-window elastic-band war breaks out; Jon "Missing" Link, art editor, picks up a chair and smashes it through a closed window. <em>"It's a lethal cocktail,"</em> shouts Mick, swinging a plastic bin. Krispy Ice is <strong>disqualified</strong> outright as the worst thing the panel has ever tasted.</p>
       <div class="winner"><span class="lbl">Medal table</span><span class="name">1st Calippo</span> &middot; 2nd Bounty &middot; 3rd Twister</div>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Story: Rowan Chernin. Subtitle: <em>"loaded's quest for a real mother sucker"</em>.</p>
+        <p>By the second round the panel has lost the plot. Magnums "get scared and melt into streaky goo". The Mr Men refuse to leave their wrappers. Jason, the Irish production editor, takes an elastic band to the glasses and drops his Solero. Derek &mdash; the other office Irish bloke &mdash; declares the Bubble Gum Showtime "deliberately tastes of gonorrhoea". An open-window elastic-band war breaks out; Jon "Missing" Link, art editor, picks up a chair and smashes it through a closed window. <em>"It's a lethal cocktail,"</em> shouts Mick, swinging a plastic bin. Krispy Ice is <strong>disqualified</strong> outright as the worst thing the panel has ever tasted.</p>
+      </details>
     </article>
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 08</span><span class="cup-issue"><em>Loaded</em> #51 · July 1998</span></div>
       <h3>The Booze World Cup</h3>
-      <p class="byline">Story: Phil Robinson · photos: Antony Medley. Subtitle: <em>"Don't feel the spirit, drink it"</em>.</p>
-      <p>Spirits-only knockout; the sick-bin is back, this time labelled <strong>"WORLD CUP SICK BIN &mdash; EIN BERLINER"</strong>, the same gag from the Vodka WC four years earlier. The round names map the panel's physical decline: <em>"You can't drink that much, you'll be sick"</em> &rarr; <em>"Let's get this finished"</em> &rarr; <em>"Everything is horrible, nothing is nice"</em> &rarr; <em>"I went to the toilet and I couldn't p*ss"</em> &rarr; <em>"My teeth itch &mdash; I'm going home"</em>. Iran, Morocco, Tunisia and Saudi Arabia are out at the first hurdle because <em>"you can't run the Booze World Cup if you only drink Vimto"</em> [sic]. The final pits Linie Aquavit against Beefeater London Distilled Dry Gin; both are declared to "taste like w*nk". The verdict comes by exhaustion, not preference.</p>
       <div class="winner"><span class="lbl">Winner</span><span class="name">Beefeater Gin</span> (England; final v Linie Aquavit, Norway)</div>
-      <blockquote class="pullquote" style="margin-top:14px;">"We wanted David Niven in a bottle, what we've got is David Icke."<cite>&mdash; Booze World Cup, Loaded #51 · July 1998</cite></blockquote>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Story: Phil Robinson · photos: Antony Medley. Subtitle: <em>"Don't feel the spirit, drink it"</em>.</p>
+        <p>Spirits-only knockout; the sick-bin is back, this time labelled <strong>"WORLD CUP SICK BIN &mdash; EIN BERLINER"</strong>, the same gag from the Vodka WC four years earlier. The round names map the panel's physical decline: <em>"You can't drink that much, you'll be sick"</em> &rarr; <em>"Let's get this finished"</em> &rarr; <em>"Everything is horrible, nothing is nice"</em> &rarr; <em>"I went to the toilet and I couldn't p*ss"</em> &rarr; <em>"My teeth itch &mdash; I'm going home"</em>. Iran, Morocco, Tunisia and Saudi Arabia are out at the first hurdle because <em>"you can't run the Booze World Cup if you only drink Vimto"</em> [sic]. The final pits Linie Aquavit against Beefeater London Distilled Dry Gin; both are declared to "taste like w*nk". The verdict comes by exhaustion, not preference.</p>
+        <blockquote class="pullquote" style="margin-top:14px;">"We wanted David Niven in a bottle, what we've got is David Icke."<cite>&mdash; Booze World Cup, Loaded #51 · July 1998</cite></blockquote>
+      </details>
     </article>
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 09</span><span class="cup-issue"><em>Loaded</em> #72 · April 2000</span></div>
       <h3>The Stockings World Cup</h3>
-      <p class="byline">Story: Rowan Chernin · photos: Stephen Perry. Subtitle: <em>"32 qualifiers played over 64 legs, but only one winner"</em>.</p>
-      <p>Modelled openly on the antecedent: <em>"First they invented sliced bread, then man walked on the moon, and then came the Bra World Cup. Then nothing else happened for a couple of months. And now &hellip; the Stockings World Cup."</em> Knockout across 32 brands worn by models, judged in person. Wolford takes Sensuous in the final &mdash; the magazine catches the brand's design heritage neatly: <em>"Stockings were originally a woman-covering device designed around the time of the Great Plague to keep the rickets free of fleas."</em></p>
       <div class="winner"><span class="lbl">Winner</span><span class="name">Wolford</span> (final v Sensuous)</div>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Story: Rowan Chernin · photos: Stephen Perry. Subtitle: <em>"32 qualifiers played over 64 legs, but only one winner"</em>.</p>
+        <p>Modelled openly on the antecedent: <em>"First they invented sliced bread, then man walked on the moon, and then came the Bra World Cup. Then nothing else happened for a couple of months. And now &hellip; the Stockings World Cup."</em> Knockout across 32 brands worn by models, judged in person. Wolford takes Sensuous in the final &mdash; the magazine catches the brand's design heritage neatly: <em>"Stockings were originally a woman-covering device designed around the time of the Great Plague to keep the rickets free of fleas."</em></p>
+      </details>
     </article>
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 10</span><span class="cup-issue"><em>Loaded</em> #74 · June 2000</span></div>
       <h3>The Art World Cup</h3>
-      <p class="byline">Story: Johnny Cigarettes · photos: Antony Medley. <strong>Hosted by Tony Hart.</strong></p>
-      <p>32 paintings, run as a knockout. The intro sets the production design exactly right: <em>"Take 32 paintings, one art telly genius, a bunch of ignorant <em>loaded</em> berks and a big box full of cravats."</em> Tony Hart &mdash; aged 75, decades into national-treasure status &mdash; is pictured holding the eventual winner. A "Charity Shop Dog Painting" wildcard reaches the quarter-finals before being beaten by Toulouse-Lautrec. The final pits Klimt against Degas. Klimt's <em>The Three Ages of Woman</em> (1905) is declared "now officially the best painting in the whole world".</p>
       <div class="winner"><span class="lbl">Winner</span><span class="name">Gustav Klimt</span> &mdash; <em>The Three Ages of Woman</em> (1905)</div>
-      <blockquote class="pullquote" style="margin-top:14px;">"Picasso hasn't captured angst. He's just captured a woman with a filling biting into an ice lolly."<cite>&mdash; Mick, Loaded panel, Art WC</cite></blockquote>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Story: Johnny Cigarettes · photos: Antony Medley. <strong>Hosted by Tony Hart.</strong></p>
+        <p>32 paintings, run as a knockout. The intro sets the production design exactly right: <em>"Take 32 paintings, one art telly genius, a bunch of ignorant <em>loaded</em> berks and a big box full of cravats."</em> Tony Hart &mdash; aged 75, decades into national-treasure status &mdash; is pictured holding the eventual winner. A "Charity Shop Dog Painting" wildcard reaches the quarter-finals before being beaten by Toulouse-Lautrec. The final pits Klimt against Degas. Klimt's <em>The Three Ages of Woman</em> (1905) is declared "now officially the best painting in the whole world".</p>
+        <blockquote class="pullquote" style="margin-top:14px;">"Picasso hasn't captured angst. He's just captured a woman with a filling biting into an ice lolly."<cite>&mdash; Mick, Loaded panel, Art WC</cite></blockquote>
+      </details>
     </article>
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 11</span><span class="cup-issue"><em>Loaded</em> #79 · November 2000 (Hollyoaks cover)</span></div>
       <h3>The Sex Toy World Cup</h3>
-      <p class="byline">Story: Will Storr · photos: Alan McFadden &amp; Mark Kinge. Strapline: "Loaded Sex Awards".</p>
-      <p>32 contraptions, £1,628.24 of merchandise gathered from Harmony Sex Shop and passiononline.co.uk, bracketed in a Soho-style knockout. Entrants include the Letha Weapons doll (£439), John Holmes Realistic C*ck, Spank Paddle, Hustler Dual Vibrator, Chasey Lain Cyberskin, Rotating Laser C*ck ("Princess Leia's dream weapon", £94.55), Five Gates of Hell c*ck-strap, the Honey Bee strap-on with its "Stinger" pipe, the Double Header ("two-eyed trouser snake"), and the Parachute Ball Stretcher ("Soft landings for small b*llocks"). Mock-serious matchup captions: <em>"Are we allowed to touch the poodles?"</em> &middot; <em>"The Spread Eagle becomes roadkill"</em> &middot; <em>"Big skin-sock swallows Polly"</em> &middot; <em>"Revenge of the killer snake"</em>. Semi-finals: <strong>Jessica v Honey Bee</strong> (Jessie stings the Bee) and <strong>Vibrating Panty v Double Header</strong> (the bi-bonced f*ck monster doesn't get it). Final: <strong>Jessica v Vibrating Panty</strong>. Vibrating Panty wins on novelty, versatility and "labour-saving" appeal, with a pub-table scene as the verdict copy &mdash; girlfriend at the bar wearing the remote-controlled knickers, fella at the table with the remote, ordering Stellas under increasingly compromised circumstances.</p>
       <div class="winner"><span class="lbl">Winner</span><span class="name">Vibrating Panty</span> (&pound;65, Remote Control Discreet T-Back Panty &mdash; final v Jessica)</div>
-      <blockquote class="pullquote" style="margin-top:14px;">"'Err...I... errrr... oof, Jesus... ahhhhhhh... Stellaaaaaaaah...'"<cite>&mdash; Will Storr, Sex Toy World Cup, <em>Loaded</em> #79, November 2000</cite></blockquote>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Story: Will Storr · photos: Alan McFadden &amp; Mark Kinge. Strapline: "Loaded Sex Awards".</p>
+        <p>32 contraptions, £1,628.24 of merchandise gathered from Harmony Sex Shop and passiononline.co.uk, bracketed in a Soho-style knockout. Entrants include the Letha Weapons doll (£439), John Holmes Realistic C*ck, Spank Paddle, Hustler Dual Vibrator, Chasey Lain Cyberskin, Rotating Laser C*ck ("Princess Leia's dream weapon", £94.55), Five Gates of Hell c*ck-strap, the Honey Bee strap-on with its "Stinger" pipe, the Double Header ("two-eyed trouser snake"), and the Parachute Ball Stretcher ("Soft landings for small b*llocks"). Mock-serious matchup captions: <em>"Are we allowed to touch the poodles?"</em> &middot; <em>"The Spread Eagle becomes roadkill"</em> &middot; <em>"Big skin-sock swallows Polly"</em> &middot; <em>"Revenge of the killer snake"</em>. Semi-finals: <strong>Jessica v Honey Bee</strong> (Jessie stings the Bee) and <strong>Vibrating Panty v Double Header</strong> (the bi-bonced f*ck monster doesn't get it). Final: <strong>Jessica v Vibrating Panty</strong>. Vibrating Panty wins on novelty, versatility and "labour-saving" appeal, with a pub-table scene as the verdict copy &mdash; girlfriend at the bar wearing the remote-controlled knickers, fella at the table with the remote, ordering Stellas under increasingly compromised circumstances.</p>
+        <blockquote class="pullquote" style="margin-top:14px;">"'Err...I... errrr... oof, Jesus... ahhhhhhh... Stellaaaaaaaah...'"<cite>&mdash; Will Storr, Sex Toy World Cup, <em>Loaded</em> #79, November 2000</cite></blockquote>
+      </details>
     </article>
 
     <article class="cup">
       <div class="cup-head"><span class="cup-num">Edition 12</span><span class="cup-issue"><em>Loaded</em> #81 · January 2001</span></div>
       <h3>The Meat World Cup</h3>
-      <p class="byline">Story: Chris Burke · photos: Antony Medley. <strong>Presided over by Mark Gatiss in character as Hilary Briss</strong>, the sinister ginger butcher from <em>The League of Gentlemen</em>. Gary, head chef at London restaurant Christopher's, on cooking duty.</p>
-      <p>18 cuts staged at a long table "like the disciples from the Last Supper", with a raised pig's head pride of place. The framing is creationist butchery: <em>"It all started, as many things did, in the Garden of Eden. 'Not apple again,' complained Adam to his other half. 'Sod that, I want my rib back.'"</em> The rules: <strong>no poultry</strong> ("p*ofs' meat") and <strong>no offal</strong>, though external bits qualify as fair game and endangered species are encouraged. Notable round-one matchups: Pigs' Tails v Mutton (mutton wins); Veal v Lamb Chops ("they strangle little baby cows and fill them full of Tippex then put them in a cardboard box," explains Hilary); Boiled Ham v Ox Tongue ("It's been in someone's mouth"); Wild Boar v Rabbit ("Rabbit's like bland turkey," then the table descends into turkey-w*nking discourse); Venison v Ostrich; Crocodile v Kangaroo; and <strong>Bacon v Hilary Briss's own "Special Stuff"</strong> &mdash; the nosebleed-inducing Royston Vasey product, source unknown. Bacon wins it. The quarter-finals deliver a three-way Venison / Bacon / Kangaroo decided by Hilary's casting line <em>"Bacon makes children smile"</em>. Semi-finals: Beef beats Hilary's beloved Ham; T-Bone beats Bacon. <strong>All-cow final: T-Bone v Roast Beef.</strong> T-Bone takes it.</p>
       <div class="winner"><span class="lbl">Winner</span><span class="name">T-Bone Steak</span> (all-cow final v Roast Beef)</div>
-      <blockquote class="pullquote" style="margin-top:14px;">"Take note, Frenchmen &mdash; from now on, we English shall no longer be known as <em>Les Rostbifs</em>, we wish to be called <em>Les T-Bones</em>."<cite>&mdash; Chris Burke, Meat World Cup, <em>Loaded</em> #81, January 2001</cite></blockquote>
+      <details class="cup-details">
+        <summary>Read the bracket</summary>
+        <p class="byline">Story: Chris Burke · photos: Antony Medley. <strong>Presided over by Mark Gatiss in character as Hilary Briss</strong>, the sinister ginger butcher from <em>The League of Gentlemen</em>. Gary, head chef at London restaurant Christopher's, on cooking duty.</p>
+        <p>18 cuts staged at a long table "like the disciples from the Last Supper", with a raised pig's head pride of place. The framing is creationist butchery: <em>"It all started, as many things did, in the Garden of Eden. 'Not apple again,' complained Adam to his other half. 'Sod that, I want my rib back.'"</em> The rules: <strong>no poultry</strong> ("p*ofs' meat") and <strong>no offal</strong>, though external bits qualify as fair game and endangered species are encouraged. Notable round-one matchups: Pigs' Tails v Mutton (mutton wins); Veal v Lamb Chops ("they strangle little baby cows and fill them full of Tippex then put them in a cardboard box," explains Hilary); Boiled Ham v Ox Tongue ("It's been in someone's mouth"); Wild Boar v Rabbit ("Rabbit's like bland turkey," then the table descends into turkey-w*nking discourse); Venison v Ostrich; Crocodile v Kangaroo; and <strong>Bacon v Hilary Briss's own "Special Stuff"</strong> &mdash; the nosebleed-inducing Royston Vasey product, source unknown. Bacon wins it. The quarter-finals deliver a three-way Venison / Bacon / Kangaroo decided by Hilary's casting line <em>"Bacon makes children smile"</em>. Semi-finals: Beef beats Hilary's beloved Ham; T-Bone beats Bacon. <strong>All-cow final: T-Bone v Roast Beef.</strong> T-Bone takes it.</p>
+        <blockquote class="pullquote" style="margin-top:14px;">"Take note, Frenchmen &mdash; from now on, we English shall no longer be known as <em>Les Rostbifs</em>, we wish to be called <em>Les T-Bones</em>."<cite>&mdash; Chris Burke, Meat World Cup, <em>Loaded</em> #81, January 2001</cite></blockquote>
+      </details>
     </article>
 
       </div>
