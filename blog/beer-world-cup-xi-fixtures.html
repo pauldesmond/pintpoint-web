@@ -31,33 +31,61 @@
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="bwc.css?v=27" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Anton&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="bwc.css?v=32" />
+  <script src="bwc-follow.js?v=1" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; background-image: radial-gradient(#161d27 1px, transparent 1px); background-size: 22px 22px; }
+    nav.site { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; background: var(--bg); }
     .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
     .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 1180px; margin: 0 auto; padding: 40px 24px 64px; }
-    .hdr { max-width: 720px; margin: 0 auto 28px; text-align: center; }
-    h1 { font-size: clamp(1.8rem, 4.5vw, 2.4rem); font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 8px; text-transform: uppercase; }
-    h1 em { color: var(--teal); font-style: normal; }
-    .sub { font-size: 0.95rem; color: var(--muted); font-weight: 500; margin-bottom: 10px; }
-    .key { display: inline-flex; gap: 12px; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; padding: 8px 14px; border: 1px solid var(--border); border-radius: 99px; }
-    .key b { color: var(--teal); font-weight: 700; }
+    nav.site a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav.site a:hover { color: var(--text); }
+    .content { max-width: 1180px; margin: 0 auto; padding: 24px 24px 64px; }
+
+    /* Hero — Claude Design steal */
+    .bwc-hero { text-align: center; padding: 28px 0 22px; max-width: 760px; margin: 0 auto; }
+    .bwc-hero__mark { display: flex; justify-content: center; margin-bottom: 14px; }
+    .bwc-hero__eyebrow { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.34em; color: var(--teal); text-transform: uppercase; }
+    .bwc-hero__title { font-family: 'Anton', 'Inter', sans-serif; font-weight: 400; font-size: clamp(2.6rem, 8.4vw, 5.4rem); line-height: 0.9; letter-spacing: 0.01em; margin: 10px 0 0; color: var(--text); text-transform: uppercase; }
+    .bwc-hero__title span { color: var(--teal); }
+    .bwc-hero__tagline { max-width: 540px; margin: 14px auto 0; font-size: 0.96rem; line-height: 1.55; color: var(--muted); }
+    .bwc-hero__stats { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 7px 16px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 0.75rem; color: #7d968f; letter-spacing: 0.04em; text-transform: uppercase; }
+    .bwc-hero__sep { color: #2a3340; }
+    .bwc-hero__live { color: var(--teal); }
+
+    /* Sticky view tabs container — sits below hero, above content.
+       Strong background + shadow so it visually pops off the page when
+       it sticks. Without this it just reads as more content. */
+    .bwc-stage {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(13, 17, 23, 0.96);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      margin: 14px -24px 0;
+      padding: 6px 24px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 18px -16px rgba(0, 0, 0, 0.85);
+    }
+    .bwc-stage-inner { max-width: 1180px; margin: 0 auto; }
+
     footer { text-align: center; padding: 36px 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--muted); margin-top: 24px; }
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 22px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 28px 16px 56px; } }
+
+    @media (max-width: 600px) { nav.site { padding: 16px 20px; } .content { padding: 18px 16px 56px; } .bwc-stage { margin: 6px -16px 0; padding: 0 16px; } }
+    @media print { .bwc-stage { position: static; background: transparent; backdrop-filter: none; } }
   </style>
 </head>
 <body>
-  <nav aria-label="Primary">
+  <nav class="site" aria-label="Primary">
     <a href="/" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
     <div style="display:flex;gap:20px;align-items:center">
       <a href="/about-pintpoint.html">About</a>
@@ -68,238 +96,1395 @@
   </nav>
 
   <article class="content">
-    <header class="hdr">
-      <h1>Wall <em>Chart</em></h1>
-      <p class="sub">48 nations. 12 groups. 72 group-stage matches. The beer verdict gets stamped in as each one finishes.</p>
-      <p class="key">PLAYED <b>🏆 BEER WINNER</b> · SCORED / PUB VERDICT PENDING · UPCOMING — BLANK</p>
+    <header class="bwc-hero">
+      <div class="bwc-hero__mark" aria-hidden="true">
+        <svg width="52" height="52" viewBox="0 0 50 50" fill="none">
+          <circle cx="25" cy="25" r="22.5" stroke="#00d4aa" stroke-width="2.5" />
+          <circle cx="25" cy="25" r="13.5" stroke="#00d4aa" stroke-width="2.5" />
+          <circle cx="25" cy="25" r="4.5" fill="#00d4aa" />
+        </svg>
+      </div>
+      <div class="bwc-hero__eyebrow">PINtPOINT presents</div>
+      <h1 class="bwc-hero__title">Beer World Cup <span>XI</span></h1>
+      <p class="bwc-hero__tagline">Football picks the fixtures. The pub tribunal picks the truth. 48 nations, one cellar, no mercy.</p>
+      <p class="bwc-hero__stats">
+        <span>48 NATIONS</span>
+        <span class="bwc-hero__sep">·</span>
+        <span>12 GROUPS</span>
+        <span class="bwc-hero__sep">·</span>
+        <span>72 GROUP MATCHES</span>
+        <span class="bwc-hero__sep">·</span>
+        <span class="bwc-hero__live">Verdicts stamped as fixtures resolve</span>
+      </p>
     </header>
 
-    <div class="bwc-filters" role="region" aria-label="Filter matches">
-      <div class="bwc-filter-row" role="tablist" aria-label="Filter by group">
-        <button class="bwc-chip is-active" data-filter="group" data-value="all">All Groups</button>
-        <button class="bwc-chip" data-filter="group" data-value="a">A</button><button class="bwc-chip" data-filter="group" data-value="b">B</button><button class="bwc-chip" data-filter="group" data-value="c">C</button><button class="bwc-chip" data-filter="group" data-value="d">D</button><button class="bwc-chip" data-filter="group" data-value="e">E</button><button class="bwc-chip" data-filter="group" data-value="f">F</button><button class="bwc-chip" data-filter="group" data-value="g">G</button><button class="bwc-chip" data-filter="group" data-value="h">H</button><button class="bwc-chip" data-filter="group" data-value="i">I</button><button class="bwc-chip" data-filter="group" data-value="j">J</button><button class="bwc-chip" data-filter="group" data-value="k">K</button><button class="bwc-chip" data-filter="group" data-value="l">L</button>
-      </div>
-      <div class="bwc-filter-row" role="tablist" aria-label="Filter by day">
-        <button class="bwc-chip is-active" data-filter="day" data-value="all">All Days</button>
-        <button class="bwc-chip" data-filter="day" data-value="1">Day 1</button><button class="bwc-chip" data-filter="day" data-value="2">Day 2</button><button class="bwc-chip" data-filter="day" data-value="3">Day 3</button><button class="bwc-chip" data-filter="day" data-value="4">Day 4</button><button class="bwc-chip" data-filter="day" data-value="5">Day 5</button><button class="bwc-chip" data-filter="day" data-value="6">Day 6</button><button class="bwc-chip" data-filter="day" data-value="7">Day 7</button><button class="bwc-chip" data-filter="day" data-value="8">Day 8</button><button class="bwc-chip" data-filter="day" data-value="9">Day 9</button><button class="bwc-chip" data-filter="day" data-value="10">Day 10</button><button class="bwc-chip" data-filter="day" data-value="11">Day 11</button><button class="bwc-chip" data-filter="day" data-value="12">Day 12</button><button class="bwc-chip" data-filter="day" data-value="13">Day 13</button><button class="bwc-chip" data-filter="day" data-value="14">Day 14</button><button class="bwc-chip" data-filter="day" data-value="15">Day 15</button><button class="bwc-chip" data-filter="day" data-value="16">Day 16</button><button class="bwc-chip" data-filter="day" data-value="17">Day 17</button><button class="bwc-chip" data-filter="day" data-value="18">Day 18</button>
-      </div>
-    </div>
+    <!-- View tabs (CSS-only radio-hack). Inputs MUST stay siblings of the
+         .bwc-view-nav and .bwc-view-panel elements so the ~ selectors work. -->
+    <input type="radio" id="v-wall"    name="bwc-view" class="bwc-view-radio" checked aria-hidden="true">
+    <input type="radio" id="v-bracket" name="bwc-view" class="bwc-view-radio" aria-hidden="true">
 
-    <div class="bwc-deck-wrap"><div class="bwc-wall bwc-deck">
+    <div class="bwc-stage"><div class="bwc-stage-inner">
+      <div class="bwc-view-nav" role="tablist" aria-label="View">
+        <label for="v-wall"    class="bwc-view-tab" role="tab">Wall Chart</label>
+        <label for="v-bracket" class="bwc-view-tab" role="tab">Knockout Bracket</label>
+      </div>
+    </div></div>
+
+    <!-- =============================================================
+         WALL CHART PANEL
+         ============================================================= -->
+    <section class="bwc-view-panel" data-view="wall" aria-label="Wall chart">
+
+      <!-- Status filter (CSS-only radio-hack). Same sibling-position rule. -->
+      <input type="radio" id="f-all"      name="bwc-status" class="bwc-status-radio" checked aria-hidden="true">
+      <input type="radio" id="f-played"   name="bwc-status" class="bwc-status-radio" aria-hidden="true">
+      <input type="radio" id="f-upcoming" name="bwc-status" class="bwc-status-radio" aria-hidden="true">
+      <div class="bwc-status-chips" role="tablist" aria-label="Filter by status">
+        <label for="f-all"      class="bwc-status-chip" role="tab">All</label>
+        <label for="f-played"   class="bwc-status-chip" role="tab">Played</label>
+        <label for="f-upcoming" class="bwc-status-chip" role="tab">Upcoming</label>
+      </div>
+
+      <!-- Group jump-chips (unchanged — these were the useful filter row).
+           The 18 Day chips were removed; over-served vs the page payoff. -->
+      <div class="bwc-filters" role="region" aria-label="Jump to group">
+        <div class="bwc-filter-row" role="tablist" aria-label="Filter by group">
+          <button class="bwc-chip is-active" data-filter="group" data-value="all">All Groups</button>
+          <button class="bwc-chip" data-filter="group" data-value="a">A</button><button class="bwc-chip" data-filter="group" data-value="b">B</button><button class="bwc-chip" data-filter="group" data-value="c">C</button><button class="bwc-chip" data-filter="group" data-value="d">D</button><button class="bwc-chip" data-filter="group" data-value="e">E</button><button class="bwc-chip" data-filter="group" data-value="f">F</button><button class="bwc-chip" data-filter="group" data-value="g">G</button><button class="bwc-chip" data-filter="group" data-value="h">H</button><button class="bwc-chip" data-filter="group" data-value="i">I</button><button class="bwc-chip" data-filter="group" data-value="j">J</button><button class="bwc-chip" data-filter="group" data-value="k">K</button><button class="bwc-chip" data-filter="group" data-value="l">L</button>
+        </div>
+      </div>
+
+      <div class="bwc-deck-wrap"><div class="bwc-wall bwc-deck">
 
       <section class="bwc-group" id="group-a" data-group="a">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group A</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🇲🇽</span> Mexico</li>
-          <li><span class="flag">🇿🇦</span> South Africa</li>
-          <li><span class="flag">🇰🇷</span> South Korea</li>
-          <li><span class="flag">🇨🇿</span> Czech Republic</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group A standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🇨🇿</span></span><span class="bwc-st-team">Czech Republic</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+5</span><span class="bwc-st-pts" aria-label="Points">9</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇲🇽</span></span><span class="bwc-st-team">Mexico</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+2</span><span class="bwc-st-pts" aria-label="Points">6</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇿🇦</span></span><span class="bwc-st-team">South Africa</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-3</span><span class="bwc-st-pts" aria-label="Points">3</span><span class="bwc-st-q" aria-label="Qualified (best third)">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇰🇷</span></span><span class="bwc-st-team">South Korea</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-4</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="1"><span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇿🇦</span> RSA</span><span class="bwc-m-score">2–0</span><span class="bwc-m-winner">🏆 MEXICO</span><span class="bwc-m-verdict">Modelo, Pacífico and Bohemia anchor; Castle Lager and Devil's Peak make a tournament of it but Mexico's depth tells.</span></li>
-          <li class="bwc-m played" data-day="2"><span class="bwc-m-teams"><span class="flag">🇰🇷</span> KOR <em>v</em> <span class="flag">🇨🇿</span> CZE</span><span class="bwc-m-score">1–2</span><span class="bwc-m-winner">🏆 CZECH REPUBLIC</span><span class="bwc-m-verdict">Hite and Cass kept it close-ish on the football; Pilsner Urquell invented the style and quietly walked the cellar.</span></li>
-          <li class="bwc-m played" data-day="9"><span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇰🇷</span> KOR</span><span class="bwc-m-score">2–0</span><span class="bwc-m-winner">🏆 MEXICO</span><span class="bwc-m-verdict">Modelo and Pacífico on the bar all night. Cass and Hite politely depart at the final whistle.</span></li>
-          <li class="bwc-m played" data-day="8"><span class="bwc-m-teams"><span class="flag">🇿🇦</span> RSA <em>v</em> <span class="flag">🇨🇿</span> CZE</span><span class="bwc-m-score">0–2</span><span class="bwc-m-winner">🏆 CZECH REPUBLIC</span><span class="bwc-m-verdict">Pilsner Urquell invented the style; Castle Lager respectfully accepted the lesson.</span></li>
-          <li class="bwc-m played" data-day="15"><span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇨🇿</span> CZE</span><span class="bwc-m-score">1–3</span><span class="bwc-m-winner">🏆 CZECH REPUBLIC</span><span class="bwc-m-verdict">Mexico's lager column quietly enthusiastic; Pilsner Urquell, Budvar and Staropramen quietly devastating.</span></li>
-          <li class="bwc-m played" data-day="15"><span class="bwc-m-teams"><span class="flag">🇿🇦</span> RSA <em>v</em> <span class="flag">🇰🇷</span> KOR</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 SOUTH AFRICA</span><span class="bwc-m-verdict">Castle Lager and Devil's Peak hold the bar. Cass and Hite shuffled to the back.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="1">
+            <input type="checkbox" id="m-a-1" class="bwc-m-toggle" aria-hidden="true">
+            <div class="bwc-m-inner">
+              <label for="m-a-1" class="bwc-m-face bwc-m-front">
+                <span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇿🇦</span> RSA</span>
+                <span class="bwc-m-score">2–0</span>
+                <span class="bwc-m-tap">Tap for the cellar ruling</span>
+              </label>
+              <label for="m-a-1" class="bwc-m-face bwc-m-back">
+                <span class="bwc-m-winner">🏆 MEXICO</span>
+                <span class="bwc-m-verdict">Modelo, Pacífico and Bohemia anchor; Castle Lager and Devil's Peak make a tournament of it but Mexico's depth tells.</span>
+                <span class="bwc-m-tap-back">Tap to flip back</span>
+              </label>
+            </div>
+          </li>
+          <li class="bwc-m bwc-m--flip played" data-day="2">
+            <input type="checkbox" id="m-a-2" class="bwc-m-toggle" aria-hidden="true">
+            <div class="bwc-m-inner">
+              <label for="m-a-2" class="bwc-m-face bwc-m-front">
+                <span class="bwc-m-teams"><span class="flag">🇰🇷</span> KOR <em>v</em> <span class="flag">🇨🇿</span> CZE</span>
+                <span class="bwc-m-score">1–2</span>
+                <span class="bwc-m-tap">Tap for the cellar ruling</span>
+              </label>
+              <label for="m-a-2" class="bwc-m-face bwc-m-back">
+                <span class="bwc-m-winner">🏆 CZECH REPUBLIC</span>
+                <span class="bwc-m-verdict">Hite and Cass kept it close-ish on the football; Pilsner Urquell invented the style and quietly walked the cellar.</span>
+                <span class="bwc-m-tap-back">Tap to flip back</span>
+              </label>
+            </div>
+          </li>
+          <li class="bwc-m bwc-m--flip played" data-day="9">
+            <input type="checkbox" id="m-a-3" class="bwc-m-toggle" aria-hidden="true">
+            <div class="bwc-m-inner">
+              <label for="m-a-3" class="bwc-m-face bwc-m-front">
+                <span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇰🇷</span> KOR</span>
+                <span class="bwc-m-score">2–0</span>
+                <span class="bwc-m-tap">Tap for the cellar ruling</span>
+              </label>
+              <label for="m-a-3" class="bwc-m-face bwc-m-back">
+                <span class="bwc-m-winner">🏆 MEXICO</span>
+                <span class="bwc-m-verdict">Modelo and Pacífico on the bar all night. Cass and Hite politely depart at the final whistle.</span>
+                <span class="bwc-m-tap-back">Tap to flip back</span>
+              </label>
+            </div>
+          </li>
+          <li class="bwc-m bwc-m--flip played" data-day="8">
+            <input type="checkbox" id="m-a-4" class="bwc-m-toggle" aria-hidden="true">
+            <div class="bwc-m-inner">
+              <label for="m-a-4" class="bwc-m-face bwc-m-front">
+                <span class="bwc-m-teams"><span class="flag">🇿🇦</span> RSA <em>v</em> <span class="flag">🇨🇿</span> CZE</span>
+                <span class="bwc-m-score">0–2</span>
+                <span class="bwc-m-tap">Tap for the cellar ruling</span>
+              </label>
+              <label for="m-a-4" class="bwc-m-face bwc-m-back">
+                <span class="bwc-m-winner">🏆 CZECH REPUBLIC</span>
+                <span class="bwc-m-verdict">Pilsner Urquell invented the style; Castle Lager respectfully accepted the lesson.</span>
+                <span class="bwc-m-tap-back">Tap to flip back</span>
+              </label>
+            </div>
+          </li>
+          <li class="bwc-m bwc-m--flip played" data-day="15">
+            <input type="checkbox" id="m-a-5" class="bwc-m-toggle" aria-hidden="true">
+            <div class="bwc-m-inner">
+              <label for="m-a-5" class="bwc-m-face bwc-m-front">
+                <span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <em>v</em> <span class="flag">🇨🇿</span> CZE</span>
+                <span class="bwc-m-score">1–3</span>
+                <span class="bwc-m-tap">Tap for the cellar ruling</span>
+              </label>
+              <label for="m-a-5" class="bwc-m-face bwc-m-back">
+                <span class="bwc-m-winner">🏆 CZECH REPUBLIC</span>
+                <span class="bwc-m-verdict">Mexico's lager column quietly enthusiastic; Pilsner Urquell, Budvar and Staropramen quietly devastating.</span>
+                <span class="bwc-m-tap-back">Tap to flip back</span>
+              </label>
+            </div>
+          </li>
+          <li class="bwc-m bwc-m--flip played" data-day="15">
+            <input type="checkbox" id="m-a-6" class="bwc-m-toggle" aria-hidden="true">
+            <div class="bwc-m-inner">
+              <label for="m-a-6" class="bwc-m-face bwc-m-front">
+                <span class="bwc-m-teams"><span class="flag">🇿🇦</span> RSA <em>v</em> <span class="flag">🇰🇷</span> KOR</span>
+                <span class="bwc-m-score">1–0</span>
+                <span class="bwc-m-tap">Tap for the cellar ruling</span>
+              </label>
+              <label for="m-a-6" class="bwc-m-face bwc-m-back">
+                <span class="bwc-m-winner">🏆 SOUTH AFRICA</span>
+                <span class="bwc-m-verdict">Castle Lager and Devil's Peak hold the bar. Cass and Hite shuffled to the back.</span>
+                <span class="bwc-m-tap-back">Tap to flip back</span>
+              </label>
+            </div>
+          </li>
         </ol>
       </section>
 
       <section class="bwc-group" id="group-b" data-group="b">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group B</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🇨🇦</span> Canada</li>
-          <li><span class="flag">🇧🇦</span> Bosnia &amp; Herzegovina</li>
-          <li><span class="flag">🇶🇦</span> Qatar</li>
-          <li><span class="flag">🇨🇭</span> Switzerland</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group B standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🇨🇭</span></span><span class="bwc-st-team">Switzerland</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+4</span><span class="bwc-st-pts" aria-label="Points">9</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇨🇦</span></span><span class="bwc-st-team">Canada</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+5</span><span class="bwc-st-pts" aria-label="Points">6</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇧🇦</span></span><span class="bwc-st-team">Bosnia & Herzegovina</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">0</span><span class="bwc-st-pts" aria-label="Points">3</span><span class="bwc-st-q" aria-label="Qualified (best third)">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇶🇦</span></span><span class="bwc-st-team">Qatar</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-9</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="2"><span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇧🇦</span> BIH</span><span class="bwc-m-score">2–1</span><span class="bwc-m-winner">🏆 CANADA</span><span class="bwc-m-verdict">Molson + Toronto/Vancouver craft outlast Sarajevsko in a slow second half. Volume vs heritage; volume edged it.</span></li>
-          <li class="bwc-m played" data-day="3"><span class="bwc-m-teams"><span class="flag">🇶🇦</span> QAT <em>v</em> <span class="flag">🇨🇭</span> SUI</span><span class="bwc-m-score">0–2</span><span class="bwc-m-winner">🏆 SWITZERLAND</span><span class="bwc-m-verdict">Switzerland's Feldschlösschen + craft scene fills the bar uncontested. Qatar's beer column is Heineken in a courtesy fridge.</span></li>
-          <li class="bwc-m played" data-day="8"><span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇶🇦</span> QAT</span><span class="bwc-m-score">5–0</span><span class="bwc-m-winner">🏆 CANADA</span><span class="bwc-m-verdict">Molson, Labatt and the Toronto/Vancouver craft scene clean Qatar's effective non-entry. Beer/football agree, beer score higher.</span></li>
-          <li class="bwc-m played" data-day="8"><span class="bwc-m-teams"><span class="flag">🇧🇦</span> BIH <em>v</em> <span class="flag">🇨🇭</span> SUI</span><span class="bwc-m-score">1–2</span><span class="bwc-m-winner">🏆 SWITZERLAND</span><span class="bwc-m-verdict">Feldschlösschen, Calanda and the Swiss craft brigade outpour Sarajevsko on volume and variety. Tight on heritage, wider in the cellar.</span></li>
-          <li class="bwc-m played" data-day="14"><span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇨🇭</span> SUI</span><span class="bwc-m-score">1–2</span><span class="bwc-m-winner">🏆 SWITZERLAND</span><span class="bwc-m-verdict">Swiss precision and Feldschlösschen tradition shade Molson Canadian on the pour, just as on the scoreboard.</span></li>
-          <li class="bwc-m played" data-day="14"><span class="bwc-m-teams"><span class="flag">🇧🇦</span> BIH <em>v</em> <span class="flag">🇶🇦</span> QAT</span><span class="bwc-m-score">3–1</span><span class="bwc-m-winner">🏆 BOSNIA & HERZEGOVINA</span><span class="bwc-m-verdict">Sarajevsko has been brewing since 1864. Qatar's beer is Heineken in a courtesy fridge.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="2">
+                      <input type="checkbox" id="m-b-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-b-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇧🇦</span> BIH</span>
+                          <span class="bwc-m-score">2–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-b-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 CANADA</span>
+                          <span class="bwc-m-verdict">Molson + Toronto/Vancouver craft outlast Sarajevsko in a slow second half. Volume vs heritage; volume edged it.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="3">
+                      <input type="checkbox" id="m-b-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-b-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇶🇦</span> QAT <em>v</em> <span class="flag">🇨🇭</span> SUI</span>
+                          <span class="bwc-m-score">0–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-b-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 SWITZERLAND</span>
+                          <span class="bwc-m-verdict">Switzerland's Feldschlösschen + craft scene fills the bar uncontested. Qatar's beer column is Heineken in a courtesy fridge.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="8">
+                      <input type="checkbox" id="m-b-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-b-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇶🇦</span> QAT</span>
+                          <span class="bwc-m-score">5–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-b-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 CANADA</span>
+                          <span class="bwc-m-verdict">Molson, Labatt and the Toronto/Vancouver craft scene clean Qatar's effective non-entry. Beer/football agree, beer score higher.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="8">
+                      <input type="checkbox" id="m-b-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-b-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇧🇦</span> BIH <em>v</em> <span class="flag">🇨🇭</span> SUI</span>
+                          <span class="bwc-m-score">1–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-b-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 SWITZERLAND</span>
+                          <span class="bwc-m-verdict">Feldschlösschen, Calanda and the Swiss craft brigade outpour Sarajevsko on volume and variety. Tight on heritage, wider in the cellar.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="14">
+                      <input type="checkbox" id="m-b-5" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-b-5" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇨🇦</span> CAN <em>v</em> <span class="flag">🇨🇭</span> SUI</span>
+                          <span class="bwc-m-score">1–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-b-5" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 SWITZERLAND</span>
+                          <span class="bwc-m-verdict">Swiss precision and Feldschlösschen tradition shade Molson Canadian on the pour, just as on the scoreboard.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="14">
+                      <input type="checkbox" id="m-b-6" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-b-6" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇧🇦</span> BIH <em>v</em> <span class="flag">🇶🇦</span> QAT</span>
+                          <span class="bwc-m-score">3–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-b-6" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 BOSNIA & HERZEGOVINA</span>
+                          <span class="bwc-m-verdict">Sarajevsko has been brewing since 1864. Qatar's beer is Heineken in a courtesy fridge.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </section>
 
       <section class="bwc-group" id="group-c" data-group="c">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group C</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🇧🇷</span> Brazil</li>
-          <li><span class="flag">🇲🇦</span> Morocco</li>
-          <li><span class="flag">🇭🇹</span> Haiti</li>
-          <li><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> Scotland</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group C standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span></span><span class="bwc-st-team">Scotland</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+6</span><span class="bwc-st-pts" aria-label="Points">9</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇧🇷</span></span><span class="bwc-st-team">Brazil</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+2</span><span class="bwc-st-pts" aria-label="Points">6</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇲🇦</span></span><span class="bwc-st-team">Morocco</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-1</span><span class="bwc-st-pts" aria-label="Points">3</span><span class="bwc-st-q" aria-label="Qualified (best third)">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇭🇹</span></span><span class="bwc-st-team">Haiti</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-7</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="10"><span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🇭🇹</span> HAI</span><span class="bwc-m-score">3–0</span><span class="bwc-m-winner">🏆 BRAZIL</span><span class="bwc-m-verdict">Haiti brought belief. Brazil brought an entire brewery system.</span></li>
-          <li class="bwc-m played" data-day="9"><span class="bwc-m-teams"><span class="flag">🇲🇦</span> MAR <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span><span class="bwc-m-score">0–2</span><span class="bwc-m-winner">🏆 SCOTLAND</span><span class="bwc-m-verdict">Tennent's and Harviestoun walked the malt inquiry. Casablanca/Flag held their own for an hour, then Scottish heritage took over.</span></li>
-          <li class="bwc-m played" data-day="3"><span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🇲🇦</span> MAR</span><span class="bwc-m-score">2–1</span><span class="bwc-m-winner">🏆 BRAZIL</span><span class="bwc-m-verdict">Brahma and Bohemia edge Casablanca and Flag — a tight Atlantic crossing, but Brazilian volume tells late.</span></li>
-          <li class="bwc-m played" data-day="4"><span class="bwc-m-teams"><span class="flag">🇭🇹</span> HAI <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span><span class="bwc-m-score">0–2</span><span class="bwc-m-winner">🏆 SCOTLAND</span><span class="bwc-m-verdict">Tennent's and Harviestoun walk a quiet 90. Prestige battled hard but the malt thesis was always going to tell.</span></li>
-          <li class="bwc-m played" data-day="14"><span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span><span class="bwc-m-score">0–2</span><span class="bwc-m-winner">🏆 SCOTLAND</span><span class="bwc-m-verdict">Tennent's and Harviestoun on the malt thesis. Brazil's lager fleet couldn't answer the cask inquiry.</span></li>
-          <li class="bwc-m played" data-day="14"><span class="bwc-m-teams"><span class="flag">🇲🇦</span> MAR <em>v</em> <span class="flag">🇭🇹</span> HAI</span><span class="bwc-m-score">4–2</span><span class="bwc-m-winner">🏆 MOROCCO</span><span class="bwc-m-verdict">Casablanca and Flag at full strength. Prestige fought; the Casablanca column won the bar.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="10">
+                      <input type="checkbox" id="m-c-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-c-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🇭🇹</span> HAI</span>
+                          <span class="bwc-m-score">3–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-c-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 BRAZIL</span>
+                          <span class="bwc-m-verdict">Haiti brought belief. Brazil brought an entire brewery system.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="9">
+                      <input type="checkbox" id="m-c-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-c-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇲🇦</span> MAR <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span>
+                          <span class="bwc-m-score">0–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-c-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 SCOTLAND</span>
+                          <span class="bwc-m-verdict">Tennent's and Harviestoun walked the malt inquiry. Casablanca/Flag held their own for an hour, then Scottish heritage took over.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="3">
+                      <input type="checkbox" id="m-c-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-c-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🇲🇦</span> MAR</span>
+                          <span class="bwc-m-score">2–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-c-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 BRAZIL</span>
+                          <span class="bwc-m-verdict">Brahma and Bohemia edge Casablanca and Flag — a tight Atlantic crossing, but Brazilian volume tells late.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="4">
+                      <input type="checkbox" id="m-c-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-c-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇭🇹</span> HAI <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span>
+                          <span class="bwc-m-score">0–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-c-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 SCOTLAND</span>
+                          <span class="bwc-m-verdict">Tennent's and Harviestoun walk a quiet 90. Prestige battled hard but the malt thesis was always going to tell.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="14">
+                      <input type="checkbox" id="m-c-5" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-c-5" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <em>v</em> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> SCO</span>
+                          <span class="bwc-m-score">0–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-c-5" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 SCOTLAND</span>
+                          <span class="bwc-m-verdict">Tennent's and Harviestoun on the malt thesis. Brazil's lager fleet couldn't answer the cask inquiry.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="14">
+                      <input type="checkbox" id="m-c-6" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-c-6" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇲🇦</span> MAR <em>v</em> <span class="flag">🇭🇹</span> HAI</span>
+                          <span class="bwc-m-score">4–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-c-6" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 MOROCCO</span>
+                          <span class="bwc-m-verdict">Casablanca and Flag at full strength. Prestige fought; the Casablanca column won the bar.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </section>
 
       <section class="bwc-group" id="group-d" data-group="d">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group D</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🇺🇸</span> USA</li>
-          <li><span class="flag">🇵🇾</span> Paraguay</li>
-          <li><span class="flag">🇦🇺</span> Australia</li>
-          <li><span class="flag">🇹🇷</span> Turkey</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group D standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🇺🇸</span></span><span class="bwc-st-team">USA</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+6</span><span class="bwc-st-pts" aria-label="Points">9</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇦🇺</span></span><span class="bwc-st-team">Australia</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">0</span><span class="bwc-st-pts" aria-label="Points">6</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇵🇾</span></span><span class="bwc-st-team">Paraguay</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-2</span><span class="bwc-st-pts" aria-label="Points">3</span><span class="bwc-st-q" aria-label="Qualified (best third)">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇹🇷</span></span><span class="bwc-st-team">Turkey</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-4</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="9"><span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇦🇺</span> AUS</span><span class="bwc-m-score">2–0</span><span class="bwc-m-winner">🏆 USA</span><span class="bwc-m-verdict">America brought hops. Australia brought a decent pub argument. The hops won.</span></li>
-          <li class="bwc-m played" data-day="10"><span class="bwc-m-teams"><span class="flag">🇹🇷</span> TUR <em>v</em> <span class="flag">🇵🇾</span> PAR</span><span class="bwc-m-score">0–1</span><span class="bwc-m-winner">🏆 TURKEY</span><span class="bwc-m-verdict">Paraguay had Pilsen four times. Turkey had an argument and somehow won it.</span></li>
-          <li class="bwc-m played" data-day="16"><span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇹🇷</span> TUR</span><span class="bwc-m-score">3–1</span><span class="bwc-m-winner">🏆 USA</span><span class="bwc-m-verdict">Anchor Steam, Brooklyn Lager and Sam Adams outclass Efes on heritage. Three goals from three craft pioneers.</span></li>
-          <li class="bwc-m played" data-day="16"><span class="bwc-m-teams"><span class="flag">🇵🇾</span> PAR <em>v</em> <span class="flag">🇦🇺</span> AUS</span><span class="bwc-m-score">0–1</span><span class="bwc-m-winner">🏆 AUSTRALIA</span><span class="bwc-m-verdict">Coopers Sparkling Ale picks the lock on a tight one. Cerveza Pilsen tried for ninety, never quite arrived.</span></li>
-          <li class="bwc-m played" data-day="3"><span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇵🇾</span> PAR</span><span class="bwc-m-score">3–1</span><span class="bwc-m-winner">🏆 USA</span><span class="bwc-m-verdict">Anchor Steam, Brooklyn Lager and Sam Adams outpour Cerveza Pilsen across the night. Three craft pioneers, three goals.</span></li>
-          <li class="bwc-m played" data-day="4"><span class="bwc-m-teams"><span class="flag">🇹🇷</span> TUR <em>v</em> <span class="flag">🇦🇺</span> AUS</span><span class="bwc-m-score">1–2</span><span class="bwc-m-winner">🏆 AUSTRALIA</span><span class="bwc-m-verdict">Coopers Sparkling Ale and the Stone & Wood / Mountain Culture craft column edge Efes on a quietly-confident pour.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="9">
+                      <input type="checkbox" id="m-d-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-d-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇦🇺</span> AUS</span>
+                          <span class="bwc-m-score">2–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-d-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 USA</span>
+                          <span class="bwc-m-verdict">America brought hops. Australia brought a decent pub argument. The hops won.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="10">
+                      <input type="checkbox" id="m-d-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-d-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇹🇷</span> TUR <em>v</em> <span class="flag">🇵🇾</span> PAR</span>
+                          <span class="bwc-m-score">0–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-d-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 TURKEY</span>
+                          <span class="bwc-m-verdict">Paraguay had Pilsen four times. Turkey had an argument and somehow won it.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="16">
+                      <input type="checkbox" id="m-d-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-d-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇹🇷</span> TUR</span>
+                          <span class="bwc-m-score">3–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-d-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 USA</span>
+                          <span class="bwc-m-verdict">Anchor Steam, Brooklyn Lager and Sam Adams outclass Efes on heritage. Three goals from three craft pioneers.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="16">
+                      <input type="checkbox" id="m-d-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-d-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇵🇾</span> PAR <em>v</em> <span class="flag">🇦🇺</span> AUS</span>
+                          <span class="bwc-m-score">0–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-d-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 AUSTRALIA</span>
+                          <span class="bwc-m-verdict">Coopers Sparkling Ale picks the lock on a tight one. Cerveza Pilsen tried for ninety, never quite arrived.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="3">
+                      <input type="checkbox" id="m-d-5" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-d-5" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <em>v</em> <span class="flag">🇵🇾</span> PAR</span>
+                          <span class="bwc-m-score">3–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-d-5" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 USA</span>
+                          <span class="bwc-m-verdict">Anchor Steam, Brooklyn Lager and Sam Adams outpour Cerveza Pilsen across the night. Three craft pioneers, three goals.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="4">
+                      <input type="checkbox" id="m-d-6" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-d-6" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇹🇷</span> TUR <em>v</em> <span class="flag">🇦🇺</span> AUS</span>
+                          <span class="bwc-m-score">1–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-d-6" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 AUSTRALIA</span>
+                          <span class="bwc-m-verdict">Coopers Sparkling Ale and the Stone & Wood / Mountain Culture craft column edge Efes on a quietly-confident pour.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </section>
 
       <section class="bwc-group" id="group-e" data-group="e">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group E</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🇩🇪</span> Germany</li>
-          <li><span class="flag">🇨🇼</span> Curaçao</li>
-          <li><span class="flag">🇨🇮</span> Ivory Coast</li>
-          <li><span class="flag">🇪🇨</span> Ecuador</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group E standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🇩🇪</span></span><span class="bwc-st-team">Germany</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+12</span><span class="bwc-st-pts" aria-label="Points">9</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇨🇮</span></span><span class="bwc-st-team">Ivory Coast</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+1</span><span class="bwc-st-pts" aria-label="Points">6</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇪🇨</span></span><span class="bwc-st-team">Ecuador</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-4</span><span class="bwc-st-pts" aria-label="Points">3</span><span class="bwc-st-q" aria-label="Qualified (best third)">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇨🇼</span></span><span class="bwc-st-team">Curaçao</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-9</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="4"><span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇨🇼</span> CUW</span><span class="bwc-m-score">7–1</span><span class="bwc-m-winner">🏆 GERMANY</span><span class="bwc-m-verdict">7–1 on the pitch, and Weihenstephaner doesn't do mercy.</span></li>
-          <li class="bwc-m played" data-day="5"><span class="bwc-m-teams"><span class="flag">🇨🇮</span> CIV <em>v</em> <span class="flag">🇪🇨</span> ECU</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 IVORY COAST</span><span class="bwc-m-verdict">Feels like a scruffy narrow beer win, not a classic.</span></li>
-          <li class="bwc-m played" data-day="10"><span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇨🇮</span> CIV</span><span class="bwc-m-score">3–1</span><span class="bwc-m-winner">🏆 GERMANY</span><span class="bwc-m-verdict">Augustiner, Weihenstephaner and Schneider Weisse against Bock Solibra. Ivory Coast brought legitimate beer; Germany brought seven hundred years of it.</span></li>
-          <li class="bwc-m played" data-day="11"><span class="bwc-m-teams"><span class="flag">🇨🇼</span> CUW <em>v</em> <span class="flag">🇪🇨</span> ECU</span><span class="bwc-m-score">1–2</span><span class="bwc-m-winner">🏆 ECUADOR</span><span class="bwc-m-verdict">Pilsener and Club Premium edge Curaçao's tourist-bar offering. Ecuador's lager column is older and the cellar deeper.</span></li>
-          <li class="bwc-m played" data-day="15"><span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇪🇨</span> ECU</span><span class="bwc-m-score">5–1</span><span class="bwc-m-winner">🏆 GERMANY</span><span class="bwc-m-verdict">Augustiner, Schneider Weisse and Weihenstephaner remind everyone what 'beer' actually means. Pilsener Pilsener scored one of pride.</span></li>
-          <li class="bwc-m played" data-day="15"><span class="bwc-m-teams"><span class="flag">🇨🇮</span> CIV <em>v</em> <span class="flag">🇨🇼</span> CUW</span><span class="bwc-m-score">2–0</span><span class="bwc-m-winner">🏆 IVORY COAST</span><span class="bwc-m-verdict">Bock Solibra and the local Tuborg variations clear up cleanly. Curaçao still gets the cocktail back home.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="4">
+                      <input type="checkbox" id="m-e-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-e-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇨🇼</span> CUW</span>
+                          <span class="bwc-m-score">7–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-e-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 GERMANY</span>
+                          <span class="bwc-m-verdict">7–1 on the pitch, and Weihenstephaner doesn't do mercy.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="5">
+                      <input type="checkbox" id="m-e-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-e-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇨🇮</span> CIV <em>v</em> <span class="flag">🇪🇨</span> ECU</span>
+                          <span class="bwc-m-score">1–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-e-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 IVORY COAST</span>
+                          <span class="bwc-m-verdict">Feels like a scruffy narrow beer win, not a classic.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="10">
+                      <input type="checkbox" id="m-e-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-e-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇨🇮</span> CIV</span>
+                          <span class="bwc-m-score">3–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-e-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 GERMANY</span>
+                          <span class="bwc-m-verdict">Augustiner, Weihenstephaner and Schneider Weisse against Bock Solibra. Ivory Coast brought legitimate beer; Germany brought seven hundred years of it.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="11">
+                      <input type="checkbox" id="m-e-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-e-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇨🇼</span> CUW <em>v</em> <span class="flag">🇪🇨</span> ECU</span>
+                          <span class="bwc-m-score">1–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-e-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 ECUADOR</span>
+                          <span class="bwc-m-verdict">Pilsener and Club Premium edge Curaçao's tourist-bar offering. Ecuador's lager column is older and the cellar deeper.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="15">
+                      <input type="checkbox" id="m-e-5" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-e-5" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <em>v</em> <span class="flag">🇪🇨</span> ECU</span>
+                          <span class="bwc-m-score">5–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-e-5" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 GERMANY</span>
+                          <span class="bwc-m-verdict">Augustiner, Schneider Weisse and Weihenstephaner remind everyone what 'beer' actually means. Pilsener Pilsener scored one of pride.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="15">
+                      <input type="checkbox" id="m-e-6" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-e-6" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇨🇮</span> CIV <em>v</em> <span class="flag">🇨🇼</span> CUW</span>
+                          <span class="bwc-m-score">2–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-e-6" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 IVORY COAST</span>
+                          <span class="bwc-m-verdict">Bock Solibra and the local Tuborg variations clear up cleanly. Curaçao still gets the cocktail back home.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </section>
 
       <section class="bwc-group" id="group-f" data-group="f">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group F</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🇳🇱</span> Netherlands</li>
-          <li><span class="flag">🇯🇵</span> Japan</li>
-          <li><span class="flag">🇸🇪</span> Sweden</li>
-          <li><span class="flag">🇹🇳</span> Tunisia</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group F standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🇯🇵</span></span><span class="bwc-st-team">Japan</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+6</span><span class="bwc-st-pts" aria-label="Points">9</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇳🇱</span></span><span class="bwc-st-team">Netherlands</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+5</span><span class="bwc-st-pts" aria-label="Points">6</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇸🇪</span></span><span class="bwc-st-team">Sweden</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-2</span><span class="bwc-st-pts" aria-label="Points">3</span><span class="bwc-st-q" aria-label="Qualified (best third)">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇹🇳</span></span><span class="bwc-st-team">Tunisia</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-9</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="10"><span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇸🇪</span> SWE</span><span class="bwc-m-score">5–1</span><span class="bwc-m-winner">🏆 NETHERLANDS</span><span class="bwc-m-verdict">Dutch beer depth beats Swedish competence.</span></li>
-          <li class="bwc-m played" data-day="11"><span class="bwc-m-teams"><span class="flag">🇯🇵</span> JPN <em>v</em> <span class="flag">🇹🇳</span> TUN</span><span class="bwc-m-score">4–0</span><span class="bwc-m-winner">🏆 JAPAN</span><span class="bwc-m-verdict">Clean, weird, technically excellent. Japan by tidy paperwork.</span></li>
-          <li class="bwc-m played" data-day="4"><span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇯🇵</span> JPN</span><span class="bwc-m-score">1–2</span><span class="bwc-m-winner">🏆 JAPAN</span><span class="bwc-m-verdict">Sapporo (1876), Asahi (1889) and Kirin (1907) walk past Heineken and Grolsch on heritage alone. A century-and-a-half tradition tells.</span></li>
-          <li class="bwc-m played" data-day="5"><span class="bwc-m-teams"><span class="flag">🇸🇪</span> SWE <em>v</em> <span class="flag">🇹🇳</span> TUN</span><span class="bwc-m-score">3–0</span><span class="bwc-m-winner">🏆 SWEDEN</span><span class="bwc-m-verdict">Mariestads, Spendrups and Carlsberg Sverige run uncontested. Tunisia's Celtia held the football but the bar was Swedish from the first round.</span></li>
-          <li class="bwc-m played" data-day="16"><span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇹🇳</span> TUN</span><span class="bwc-m-score">3–1</span><span class="bwc-m-winner">🏆 NETHERLANDS</span><span class="bwc-m-verdict">Heineken and Grolsch don't need extra time against Celtia. Three goals, three cleaner pints.</span></li>
-          <li class="bwc-m played" data-day="16"><span class="bwc-m-teams"><span class="flag">🇸🇪</span> SWE <em>v</em> <span class="flag">🇯🇵</span> JPN</span><span class="bwc-m-score">1–2</span><span class="bwc-m-winner">🏆 JAPAN</span><span class="bwc-m-verdict">Sapporo (1876), Asahi (1889) and Kirin (1907) walked past Mariestads with a polite bow. Heritage tells.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="10">
+                      <input type="checkbox" id="m-f-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-f-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇸🇪</span> SWE</span>
+                          <span class="bwc-m-score">5–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-f-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 NETHERLANDS</span>
+                          <span class="bwc-m-verdict">Dutch beer depth beats Swedish competence.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="11">
+                      <input type="checkbox" id="m-f-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-f-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇯🇵</span> JPN <em>v</em> <span class="flag">🇹🇳</span> TUN</span>
+                          <span class="bwc-m-score">4–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-f-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 JAPAN</span>
+                          <span class="bwc-m-verdict">Clean, weird, technically excellent. Japan by tidy paperwork.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="4">
+                      <input type="checkbox" id="m-f-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-f-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇯🇵</span> JPN</span>
+                          <span class="bwc-m-score">1–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-f-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 JAPAN</span>
+                          <span class="bwc-m-verdict">Sapporo (1876), Asahi (1889) and Kirin (1907) walk past Heineken and Grolsch on heritage alone. A century-and-a-half tradition tells.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="5">
+                      <input type="checkbox" id="m-f-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-f-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇸🇪</span> SWE <em>v</em> <span class="flag">🇹🇳</span> TUN</span>
+                          <span class="bwc-m-score">3–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-f-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 SWEDEN</span>
+                          <span class="bwc-m-verdict">Mariestads, Spendrups and Carlsberg Sverige run uncontested. Tunisia's Celtia held the football but the bar was Swedish from the first round.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="16">
+                      <input type="checkbox" id="m-f-5" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-f-5" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <em>v</em> <span class="flag">🇹🇳</span> TUN</span>
+                          <span class="bwc-m-score">3–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-f-5" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 NETHERLANDS</span>
+                          <span class="bwc-m-verdict">Heineken and Grolsch don't need extra time against Celtia. Three goals, three cleaner pints.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="16">
+                      <input type="checkbox" id="m-f-6" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-f-6" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇸🇪</span> SWE <em>v</em> <span class="flag">🇯🇵</span> JPN</span>
+                          <span class="bwc-m-score">1–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-f-6" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 JAPAN</span>
+                          <span class="bwc-m-verdict">Sapporo (1876), Asahi (1889) and Kirin (1907) walked past Mariestads with a polite bow. Heritage tells.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </section>
 
       <section class="bwc-group" id="group-g" data-group="g">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group G</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🇧🇪</span> Belgium</li>
-          <li><span class="flag">🇪🇬</span> Egypt</li>
-          <li><span class="flag">🇮🇷</span> Iran</li>
-          <li><span class="flag">🇳🇿</span> New Zealand</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group G standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🇧🇪</span></span><span class="bwc-st-team">Belgium</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+7</span><span class="bwc-st-pts" aria-label="Points">7</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇪🇬</span></span><span class="bwc-st-team">Egypt</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+3</span><span class="bwc-st-pts" aria-label="Points">7</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-third"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇳🇿</span></span><span class="bwc-st-team">New Zealand</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-3</span><span class="bwc-st-pts" aria-label="Points">3</span><span class="bwc-st-q" aria-label="Third place, eliminated">3</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇮🇷</span></span><span class="bwc-st-team">Iran</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-7</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="5"><span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇪🇬</span> EGY</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 BELGIUM</span><span class="bwc-m-verdict">Belgium wins unless ruled ineligible for being too obviously Belgian.</span></li>
-          <li class="bwc-m played" data-day="6"><span class="bwc-m-teams"><span class="flag">🇮🇷</span> IRN <em>v</em> <span class="flag">🇳🇿</span> NZL</span><span class="bwc-m-score">0–3</span><span class="bwc-m-winner">🏆 NEW ZEALAND</span><span class="bwc-m-verdict">Steinlager, Speight's and Garage Project. Iran's official beer column is non-existent — the cellar trophy heads south.</span></li>
-          <li class="bwc-m played" data-day="11"><span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇮🇷</span> IRN</span><span class="bwc-m-score">3–0</span><span class="bwc-m-winner">🏆 BELGIUM</span><span class="bwc-m-verdict">Iran brought a legal hearing. Belgium brought a cellar.</span></li>
-          <li class="bwc-m played" data-day="12"><span class="bwc-m-teams"><span class="flag">🇪🇬</span> EGY <em>v</em> <span class="flag">🇳🇿</span> NZL</span><span class="bwc-m-score">3–1</span><span class="bwc-m-winner">🏆 EGYPT</span><span class="bwc-m-verdict">Stella holds the bar; Steinlager and Speight's never quite make it out of New Zealand cold storage.</span></li>
-          <li class="bwc-m played" data-day="17"><span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇳🇿</span> NZL</span><span class="bwc-m-score">5–1</span><span class="bwc-m-winner">🏆 BELGIUM</span><span class="bwc-m-verdict">Westvleteren v Steinlager. Football scoreboard and beer tribunal agree, for once.</span></li>
-          <li class="bwc-m played" data-day="17"><span class="bwc-m-teams"><span class="flag">🇪🇬</span> EGY <em>v</em> <span class="flag">🇮🇷</span> IRN</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 EGYPT</span><span class="bwc-m-verdict">Stella (no relation) holds the bar. Iran's official beer is non-existent; the cellar trophy returns to Cairo.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="5">
+                      <input type="checkbox" id="m-g-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-g-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇪🇬</span> EGY</span>
+                          <span class="bwc-m-score">1–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-g-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 BELGIUM</span>
+                          <span class="bwc-m-verdict">Belgium wins unless ruled ineligible for being too obviously Belgian.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="6">
+                      <input type="checkbox" id="m-g-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-g-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇮🇷</span> IRN <em>v</em> <span class="flag">🇳🇿</span> NZL</span>
+                          <span class="bwc-m-score">0–3</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-g-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 NEW ZEALAND</span>
+                          <span class="bwc-m-verdict">Steinlager, Speight's and Garage Project. Iran's official beer column is non-existent — the cellar trophy heads south.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="11">
+                      <input type="checkbox" id="m-g-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-g-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇮🇷</span> IRN</span>
+                          <span class="bwc-m-score">3–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-g-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 BELGIUM</span>
+                          <span class="bwc-m-verdict">Iran brought a legal hearing. Belgium brought a cellar.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="12">
+                      <input type="checkbox" id="m-g-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-g-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇪🇬</span> EGY <em>v</em> <span class="flag">🇳🇿</span> NZL</span>
+                          <span class="bwc-m-score">3–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-g-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 EGYPT</span>
+                          <span class="bwc-m-verdict">Stella holds the bar; Steinlager and Speight's never quite make it out of New Zealand cold storage.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="17">
+                      <input type="checkbox" id="m-g-5" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-g-5" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <em>v</em> <span class="flag">🇳🇿</span> NZL</span>
+                          <span class="bwc-m-score">5–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-g-5" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 BELGIUM</span>
+                          <span class="bwc-m-verdict">Westvleteren v Steinlager. Football scoreboard and beer tribunal agree, for once.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="17">
+                      <input type="checkbox" id="m-g-6" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-g-6" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇪🇬</span> EGY <em>v</em> <span class="flag">🇮🇷</span> IRN</span>
+                          <span class="bwc-m-score">1–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-g-6" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 EGYPT</span>
+                          <span class="bwc-m-verdict">Stella (no relation) holds the bar. Iran's official beer is non-existent; the cellar trophy returns to Cairo.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </section>
 
       <section class="bwc-group" id="group-h" data-group="h">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group H</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🇪🇸</span> Spain</li>
-          <li><span class="flag">🇨🇻</span> Cape Verde</li>
-          <li><span class="flag">🇸🇦</span> Saudi Arabia</li>
-          <li><span class="flag">🇺🇾</span> Uruguay</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group H standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🇪🇸</span></span><span class="bwc-st-team">Spain</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+6</span><span class="bwc-st-pts" aria-label="Points">9</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇺🇾</span></span><span class="bwc-st-team">Uruguay</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+3</span><span class="bwc-st-pts" aria-label="Points">6</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇨🇻</span></span><span class="bwc-st-team">Cape Verde</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-2</span><span class="bwc-st-pts" aria-label="Points">3</span><span class="bwc-st-q" aria-label="Qualified (best third)">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇸🇦</span></span><span class="bwc-st-team">Saudi Arabia</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-7</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="5"><span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇨🇻</span> CPV</span><span class="bwc-m-score">2–0</span><span class="bwc-m-winner">🏆 SPAIN</span><span class="bwc-m-verdict">Estrella Galicia, Mahou and Damm have the bar to themselves. Strela Lager fought; Spain's brewing depth was always too much.</span></li>
-          <li class="bwc-m played" data-day="5"><span class="bwc-m-teams"><span class="flag">🇸🇦</span> KSA <em>v</em> <span class="flag">🇺🇾</span> URU</span><span class="bwc-m-score">0–3</span><span class="bwc-m-winner">🏆 URUGUAY</span><span class="bwc-m-verdict">Pilsen and Patricia walk the bar uncontested. Saudi Arabia delivers a tray of alcohol-free Heineken and quietly withdraws.</span></li>
-          <li class="bwc-m played" data-day="11"><span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇸🇦</span> KSA</span><span class="bwc-m-score">3–0</span><span class="bwc-m-winner">🏆 SPAIN</span><span class="bwc-m-verdict">Spain passed it around the fridge for ninety minutes.</span></li>
-          <li class="bwc-m played" data-day="11"><span class="bwc-m-teams"><span class="flag">🇺🇾</span> URU <em>v</em> <span class="flag">🇨🇻</span> CPV</span><span class="bwc-m-score">2–1</span><span class="bwc-m-winner">🏆 URUGUAY</span><span class="bwc-m-verdict">Strela scored early. Uruguay's bench finished the pint.</span></li>
-          <li class="bwc-m played" data-day="17"><span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇺🇾</span> URU</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 SPAIN</span><span class="bwc-m-verdict">Estrella Galicia, Mahou and Damm find the channel. Patricia and Pilsen drink the consolation.</span></li>
-          <li class="bwc-m played" data-day="17"><span class="bwc-m-teams"><span class="flag">🇨🇻</span> CPV <em>v</em> <span class="flag">🇸🇦</span> KSA</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 CAPE VERDE</span><span class="bwc-m-verdict">Strela Lager handles a tight one. Saudi Arabia delivers an alcohol-free Heineken to the bar and walks out.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="5">
+                      <input type="checkbox" id="m-h-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-h-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇨🇻</span> CPV</span>
+                          <span class="bwc-m-score">2–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-h-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 SPAIN</span>
+                          <span class="bwc-m-verdict">Estrella Galicia, Mahou and Damm have the bar to themselves. Strela Lager fought; Spain's brewing depth was always too much.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="5">
+                      <input type="checkbox" id="m-h-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-h-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇸🇦</span> KSA <em>v</em> <span class="flag">🇺🇾</span> URU</span>
+                          <span class="bwc-m-score">0–3</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-h-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 URUGUAY</span>
+                          <span class="bwc-m-verdict">Pilsen and Patricia walk the bar uncontested. Saudi Arabia delivers a tray of alcohol-free Heineken and quietly withdraws.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="11">
+                      <input type="checkbox" id="m-h-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-h-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇸🇦</span> KSA</span>
+                          <span class="bwc-m-score">3–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-h-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 SPAIN</span>
+                          <span class="bwc-m-verdict">Spain passed it around the fridge for ninety minutes.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="11">
+                      <input type="checkbox" id="m-h-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-h-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇺🇾</span> URU <em>v</em> <span class="flag">🇨🇻</span> CPV</span>
+                          <span class="bwc-m-score">2–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-h-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 URUGUAY</span>
+                          <span class="bwc-m-verdict">Strela scored early. Uruguay's bench finished the pint.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="17">
+                      <input type="checkbox" id="m-h-5" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-h-5" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <em>v</em> <span class="flag">🇺🇾</span> URU</span>
+                          <span class="bwc-m-score">1–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-h-5" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 SPAIN</span>
+                          <span class="bwc-m-verdict">Estrella Galicia, Mahou and Damm find the channel. Patricia and Pilsen drink the consolation.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="17">
+                      <input type="checkbox" id="m-h-6" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-h-6" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇨🇻</span> CPV <em>v</em> <span class="flag">🇸🇦</span> KSA</span>
+                          <span class="bwc-m-score">1–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-h-6" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 CAPE VERDE</span>
+                          <span class="bwc-m-verdict">Strela Lager handles a tight one. Saudi Arabia delivers an alcohol-free Heineken to the bar and walks out.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </section>
 
       <section class="bwc-group" id="group-i" data-group="i">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group I</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🇫🇷</span> France</li>
-          <li><span class="flag">🇸🇳</span> Senegal</li>
-          <li><span class="flag">🇮🇶</span> Iraq</li>
-          <li><span class="flag">🇳🇴</span> Norway</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group I standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🇫🇷</span></span><span class="bwc-st-team">France</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+8</span><span class="bwc-st-pts" aria-label="Points">9</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇳🇴</span></span><span class="bwc-st-team">Norway</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+2</span><span class="bwc-st-pts" aria-label="Points">6</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇸🇳</span></span><span class="bwc-st-team">Senegal</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+2</span><span class="bwc-st-pts" aria-label="Points">3</span><span class="bwc-st-q" aria-label="Qualified (best third)">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇮🇶</span></span><span class="bwc-st-team">Iraq</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-12</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="6"><span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇸🇳</span> SEN</span><span class="bwc-m-score">3–1</span><span class="bwc-m-winner">🏆 FRANCE</span><span class="bwc-m-verdict">Kronenbourg 1664 and Pelforth outflank Gazelle Lager and Flag. Senegal's brewing has real teeth; France has more.</span></li>
-          <li class="bwc-m played" data-day="6"><span class="bwc-m-teams"><span class="flag">🇮🇶</span> IRQ <em>v</em> <span class="flag">🇳🇴</span> NOR</span><span class="bwc-m-score">0–4</span><span class="bwc-m-winner">🏆 NORWAY</span><span class="bwc-m-verdict">Aass Bok, Hansa and Mack Pilsner pour all night. Iraq's official beer column remains as theoretical as ever.</span></li>
-          <li class="bwc-m played" data-day="12"><span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇮🇶</span> IRQ</span><span class="bwc-m-score">3–0</span><span class="bwc-m-winner">🏆 FRANCE</span><span class="bwc-m-verdict">Kronenbourg 1664 takes the captaincy. Iraq's beer column is theoretical at best.</span></li>
-          <li class="bwc-m played" data-day="13"><span class="bwc-m-teams"><span class="flag">🇸🇳</span> SEN <em>v</em> <span class="flag">🇳🇴</span> NOR</span><span class="bwc-m-score">2–3</span><span class="bwc-m-winner">🏆 NORWAY</span><span class="bwc-m-verdict">Aass Bok and Hansa take a tight three-goal thriller. Senegal's Gazelle ran proud.</span></li>
-          <li class="bwc-m played" data-day="16"><span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇳🇴</span> NOR</span><span class="bwc-m-score">4–1</span><span class="bwc-m-winner">🏆 FRANCE</span><span class="bwc-m-verdict">Kronenbourg 1664 and Pelforth handle Hansa and Aass over four flowing minutes. Norway didn't bring enough proper brewers.</span></li>
-          <li class="bwc-m played" data-day="16"><span class="bwc-m-teams"><span class="flag">🇸🇳</span> SEN <em>v</em> <span class="flag">🇮🇶</span> IRQ</span><span class="bwc-m-score">5–0</span><span class="bwc-m-winner">🏆 SENEGAL</span><span class="bwc-m-verdict">Gazelle Lager and Flag run the bar uncontested. Iraq officially serves what they always have: nothing.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="6">
+                      <input type="checkbox" id="m-i-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-i-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇸🇳</span> SEN</span>
+                          <span class="bwc-m-score">3–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-i-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 FRANCE</span>
+                          <span class="bwc-m-verdict">Kronenbourg 1664 and Pelforth outflank Gazelle Lager and Flag. Senegal's brewing has real teeth; France has more.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="6">
+                      <input type="checkbox" id="m-i-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-i-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇮🇶</span> IRQ <em>v</em> <span class="flag">🇳🇴</span> NOR</span>
+                          <span class="bwc-m-score">0–4</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-i-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 NORWAY</span>
+                          <span class="bwc-m-verdict">Aass Bok, Hansa and Mack Pilsner pour all night. Iraq's official beer column remains as theoretical as ever.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="12">
+                      <input type="checkbox" id="m-i-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-i-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇮🇶</span> IRQ</span>
+                          <span class="bwc-m-score">3–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-i-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 FRANCE</span>
+                          <span class="bwc-m-verdict">Kronenbourg 1664 takes the captaincy. Iraq's beer column is theoretical at best.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="13">
+                      <input type="checkbox" id="m-i-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-i-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇸🇳</span> SEN <em>v</em> <span class="flag">🇳🇴</span> NOR</span>
+                          <span class="bwc-m-score">2–3</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-i-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 NORWAY</span>
+                          <span class="bwc-m-verdict">Aass Bok and Hansa take a tight three-goal thriller. Senegal's Gazelle ran proud.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="16">
+                      <input type="checkbox" id="m-i-5" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-i-5" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <em>v</em> <span class="flag">🇳🇴</span> NOR</span>
+                          <span class="bwc-m-score">4–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-i-5" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 FRANCE</span>
+                          <span class="bwc-m-verdict">Kronenbourg 1664 and Pelforth handle Hansa and Aass over four flowing minutes. Norway didn't bring enough proper brewers.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="16">
+                      <input type="checkbox" id="m-i-6" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-i-6" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇸🇳</span> SEN <em>v</em> <span class="flag">🇮🇶</span> IRQ</span>
+                          <span class="bwc-m-score">5–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-i-6" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 SENEGAL</span>
+                          <span class="bwc-m-verdict">Gazelle Lager and Flag run the bar uncontested. Iraq officially serves what they always have: nothing.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </section>
 
       <section class="bwc-group" id="group-j" data-group="j">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group J</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🇦🇷</span> Argentina</li>
-          <li><span class="flag">🇩🇿</span> Algeria</li>
-          <li><span class="flag">🇦🇹</span> Austria</li>
-          <li><span class="flag">🇯🇴</span> Jordan</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group J standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🇦🇹</span></span><span class="bwc-st-team">Austria</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+7</span><span class="bwc-st-pts" aria-label="Points">9</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇦🇷</span></span><span class="bwc-st-team">Argentina</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+3</span><span class="bwc-st-pts" aria-label="Points">6</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇩🇿</span></span><span class="bwc-st-team">Algeria</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-3</span><span class="bwc-st-pts" aria-label="Points">3</span><span class="bwc-st-q" aria-label="Qualified (best third)">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇯🇴</span></span><span class="bwc-st-team">Jordan</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-7</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="7"><span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇩🇿</span> ALG</span><span class="bwc-m-score">3–0</span><span class="bwc-m-winner">🏆 ARGENTINA</span><span class="bwc-m-verdict">Quilmes, Patagonia and Andes do the talking. Tango Lager fought a brave second half but couldn't catch the South American depth.</span></li>
-          <li class="bwc-m played" data-day="7"><span class="bwc-m-teams"><span class="flag">🇦🇹</span> AUT <em>v</em> <span class="flag">🇯🇴</span> JOR</span><span class="bwc-m-score">4–0</span><span class="bwc-m-winner">🏆 AUSTRIA</span><span class="bwc-m-verdict">Stiegl, Gösser, Ottakringer and Edelweiss run a clinic. Jordan's beer infrastructure remains aspirational.</span></li>
-          <li class="bwc-m played" data-day="12"><span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇦🇹</span> AUT</span><span class="bwc-m-score">0–2</span><span class="bwc-m-winner">🏆 AUSTRIA</span><span class="bwc-m-verdict">Quilmes leads the line but Stiegl, Gösser and Ottakringer quietly outpour them at the bar. Austria's bar heritage tells.</span></li>
-          <li class="bwc-m played" data-day="13"><span class="bwc-m-teams"><span class="flag">🇩🇿</span> ALG <em>v</em> <span class="flag">🇯🇴</span> JOR</span><span class="bwc-m-score">2–1</span><span class="bwc-m-winner">🏆 ALGERIA</span><span class="bwc-m-verdict">Tango Lager handles a 2–1; Jordan's beer infrastructure remains aspirational.</span></li>
-          <li class="bwc-m played" data-day="18"><span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇯🇴</span> JOR</span><span class="bwc-m-score">3–1</span><span class="bwc-m-winner">🏆 ARGENTINA</span><span class="bwc-m-verdict">Quilmes, Patagonia and Andes do the talking. Jordan's beer column is more theory than practice.</span></li>
-          <li class="bwc-m played" data-day="18"><span class="bwc-m-teams"><span class="flag">🇩🇿</span> ALG <em>v</em> <span class="flag">🇦🇹</span> AUT</span><span class="bwc-m-score">1–2</span><span class="bwc-m-winner">🏆 AUSTRIA</span><span class="bwc-m-verdict">Stiegl, Gösser and Ottakringer comfortably outpour Tango. Algeria's beer culture is fine; Austria's is older.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="7">
+                      <input type="checkbox" id="m-j-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-j-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇩🇿</span> ALG</span>
+                          <span class="bwc-m-score">3–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-j-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 ARGENTINA</span>
+                          <span class="bwc-m-verdict">Quilmes, Patagonia and Andes do the talking. Tango Lager fought a brave second half but couldn't catch the South American depth.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="7">
+                      <input type="checkbox" id="m-j-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-j-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇦🇹</span> AUT <em>v</em> <span class="flag">🇯🇴</span> JOR</span>
+                          <span class="bwc-m-score">4–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-j-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 AUSTRIA</span>
+                          <span class="bwc-m-verdict">Stiegl, Gösser, Ottakringer and Edelweiss run a clinic. Jordan's beer infrastructure remains aspirational.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="12">
+                      <input type="checkbox" id="m-j-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-j-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇦🇹</span> AUT</span>
+                          <span class="bwc-m-score">0–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-j-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 AUSTRIA</span>
+                          <span class="bwc-m-verdict">Quilmes leads the line but Stiegl, Gösser and Ottakringer quietly outpour them at the bar. Austria's bar heritage tells.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="13">
+                      <input type="checkbox" id="m-j-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-j-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇩🇿</span> ALG <em>v</em> <span class="flag">🇯🇴</span> JOR</span>
+                          <span class="bwc-m-score">2–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-j-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 ALGERIA</span>
+                          <span class="bwc-m-verdict">Tango Lager handles a 2–1; Jordan's beer infrastructure remains aspirational.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="18">
+                      <input type="checkbox" id="m-j-5" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-j-5" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <em>v</em> <span class="flag">🇯🇴</span> JOR</span>
+                          <span class="bwc-m-score">3–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-j-5" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 ARGENTINA</span>
+                          <span class="bwc-m-verdict">Quilmes, Patagonia and Andes do the talking. Jordan's beer column is more theory than practice.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="18">
+                      <input type="checkbox" id="m-j-6" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-j-6" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇩🇿</span> ALG <em>v</em> <span class="flag">🇦🇹</span> AUT</span>
+                          <span class="bwc-m-score">1–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-j-6" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 AUSTRIA</span>
+                          <span class="bwc-m-verdict">Stiegl, Gösser and Ottakringer comfortably outpour Tango. Algeria's beer culture is fine; Austria's is older.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </section>
 
       <section class="bwc-group" id="group-k" data-group="k">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group K</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🇵🇹</span> Portugal</li>
-          <li><span class="flag">🇨🇩</span> DR Congo</li>
-          <li><span class="flag">🇺🇿</span> Uzbekistan</li>
-          <li><span class="flag">🇨🇴</span> Colombia</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group K standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🇵🇹</span></span><span class="bwc-st-team">Portugal</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+6</span><span class="bwc-st-pts" aria-label="Points">7</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇨🇴</span></span><span class="bwc-st-team">Colombia</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+2</span><span class="bwc-st-pts" aria-label="Points">6</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇨🇩</span></span><span class="bwc-st-team">DR Congo</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+1</span><span class="bwc-st-pts" aria-label="Points">4</span><span class="bwc-st-q" aria-label="Qualified (best third)">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇺🇿</span></span><span class="bwc-st-team">Uzbekistan</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-9</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="7"><span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇨🇩</span> COD</span><span class="bwc-m-score">1–1</span><span class="bwc-m-winner">🏆 PORTUGAL</span><span class="bwc-m-verdict">Portugal should win, but 1–1 football score gives this "committee stared at two fridges for too long" energy.</span></li>
-          <li class="bwc-m played" data-day="8"><span class="bwc-m-teams"><span class="flag">🇺🇿</span> UZB <em>v</em> <span class="flag">🇨🇴</span> COL</span><span class="bwc-m-score">1–3</span><span class="bwc-m-winner">🏆 COLOMBIA</span><span class="bwc-m-verdict">Aguila, Club Colombia and Bogotá Beer Company outpour Sarbast Original. Uzbekistan scored one of pride.</span></li>
-          <li class="bwc-m played" data-day="13"><span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇺🇿</span> UZB</span><span class="bwc-m-score">5–0</span><span class="bwc-m-winner">🏆 PORTUGAL</span><span class="bwc-m-verdict">Super Bock at full volume. Sarbast was already in injury time.</span></li>
-          <li class="bwc-m played" data-day="14"><span class="bwc-m-teams"><span class="flag">🇨🇩</span> COD <em>v</em> <span class="flag">🇨🇴</span> COL</span><span class="bwc-m-score">0–1</span><span class="bwc-m-winner">🏆 COLOMBIA</span><span class="bwc-m-verdict">DR Congo's Primus held the centre. Bogotá Beer Company's craft won the bar.</span></li>
-          <li class="bwc-m played" data-day="18"><span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇨🇴</span> COL</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 PORTUGAL</span><span class="bwc-m-verdict">Super Bock and Sagres take a quiet one with style. Colombia's Aguila ran hard but Portugal's bar deeper.</span></li>
-          <li class="bwc-m played" data-day="18"><span class="bwc-m-teams"><span class="flag">🇨🇩</span> COD <em>v</em> <span class="flag">🇺🇿</span> UZB</span><span class="bwc-m-score">3–1</span><span class="bwc-m-winner">🏆 DR CONGO</span><span class="bwc-m-verdict">Primus Lager and Tembo carry the cellar. Uzbekistan's Sarbast Original took the early goal and then drifted.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="7">
+                      <input type="checkbox" id="m-k-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-k-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇨🇩</span> COD</span>
+                          <span class="bwc-m-score">1–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-k-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 PORTUGAL</span>
+                          <span class="bwc-m-verdict">Portugal should win, but 1–1 football score gives this "committee stared at two fridges for too long" energy.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="8">
+                      <input type="checkbox" id="m-k-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-k-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇺🇿</span> UZB <em>v</em> <span class="flag">🇨🇴</span> COL</span>
+                          <span class="bwc-m-score">1–3</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-k-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 COLOMBIA</span>
+                          <span class="bwc-m-verdict">Aguila, Club Colombia and Bogotá Beer Company outpour Sarbast Original. Uzbekistan scored one of pride.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="13">
+                      <input type="checkbox" id="m-k-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-k-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇺🇿</span> UZB</span>
+                          <span class="bwc-m-score">5–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-k-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 PORTUGAL</span>
+                          <span class="bwc-m-verdict">Super Bock at full volume. Sarbast was already in injury time.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="14">
+                      <input type="checkbox" id="m-k-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-k-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇨🇩</span> COD <em>v</em> <span class="flag">🇨🇴</span> COL</span>
+                          <span class="bwc-m-score">0–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-k-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 COLOMBIA</span>
+                          <span class="bwc-m-verdict">DR Congo's Primus held the centre. Bogotá Beer Company's craft won the bar.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="18">
+                      <input type="checkbox" id="m-k-5" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-k-5" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <em>v</em> <span class="flag">🇨🇴</span> COL</span>
+                          <span class="bwc-m-score">1–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-k-5" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 PORTUGAL</span>
+                          <span class="bwc-m-verdict">Super Bock and Sagres take a quiet one with style. Colombia's Aguila ran hard but Portugal's bar deeper.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="18">
+                      <input type="checkbox" id="m-k-6" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-k-6" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇨🇩</span> COD <em>v</em> <span class="flag">🇺🇿</span> UZB</span>
+                          <span class="bwc-m-score">3–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-k-6" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 DR CONGO</span>
+                          <span class="bwc-m-verdict">Primus Lager and Tembo carry the cellar. Uzbekistan's Sarbast Original took the early goal and then drifted.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </section>
 
       <section class="bwc-group" id="group-l" data-group="l">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group L</span></header>
-        <ul class="bwc-group-teams">
-          <li><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> England</li>
-          <li><span class="flag">🇭🇷</span> Croatia</li>
-          <li><span class="flag">🇬🇭</span> Ghana</li>
-          <li><span class="flag">🇵🇦</span> Panama</li>
-        </ul>
+        <ol class="bwc-standings" aria-label="Group L standings">
+            <li class="bwc-st-head" aria-hidden="true">
+              <span class="bwc-st-rank">#</span>
+              <span class="bwc-st-flag"></span>
+              <span class="bwc-st-team">Team</span>
+              <span class="bwc-st-p">P</span>
+              <span class="bwc-st-gd">GD</span>
+              <span class="bwc-st-pts">Pts</span>
+              <span class="bwc-st-q">Q</span>
+            </li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">1</span><span class="bwc-st-flag"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span></span><span class="bwc-st-team">England</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">+5</span><span class="bwc-st-pts" aria-label="Points">9</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">2</span><span class="bwc-st-flag"><span class="flag">🇭🇷</span></span><span class="bwc-st-team">Croatia</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">0</span><span class="bwc-st-pts" aria-label="Points">6</span><span class="bwc-st-q" aria-label="Qualified">Q</span></li>
+            <li class="bwc-st-row is-q"><span class="bwc-st-rank">3</span><span class="bwc-st-flag"><span class="flag">🇬🇭</span></span><span class="bwc-st-team">Ghana</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-1</span><span class="bwc-st-pts" aria-label="Points">3</span><span class="bwc-st-q" aria-label="Qualified (best third)">Q</span></li>
+            <li class="bwc-st-row"><span class="bwc-st-rank">4</span><span class="bwc-st-flag"><span class="flag">🇵🇦</span></span><span class="bwc-st-team">Panama</span><span class="bwc-st-p" aria-label="Played">3</span><span class="bwc-st-gd" aria-label="Goal difference">-4</span><span class="bwc-st-pts" aria-label="Points">0</span><span class="bwc-st-q" aria-label="Eliminated"></span></li>
+          </ol>
         <ol class="bwc-group-matches">
-          <li class="bwc-m played" data-day="7"><span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇭🇷</span> CRO</span><span class="bwc-m-score">4–2</span><span class="bwc-m-winner">🏆 ENGLAND</span><span class="bwc-m-verdict">Boddingtons/heritage Pub VAR nonsense survives one more round.</span></li>
-          <li class="bwc-m played" data-day="8"><span class="bwc-m-teams"><span class="flag">🇬🇭</span> GHA <em>v</em> <span class="flag">🇵🇦</span> PAN</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 GHANA</span><span class="bwc-m-verdict">Club Beer, Star Lager and Castle Milk Stout edge Cerveza Panamá. Tight one — Ghana's tradition has the depth.</span></li>
-          <li class="bwc-m played" data-day="13"><span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇬🇭</span> GHA</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 ENGLAND</span><span class="bwc-m-verdict">Cask Marque held court. Star Lager and Club Beer brought legitimate craft answers; English heritage won the verdict on principle.</span></li>
-          <li class="bwc-m played" data-day="14"><span class="bwc-m-teams"><span class="flag">🇭🇷</span> CRO <em>v</em> <span class="flag">🇵🇦</span> PAN</span><span class="bwc-m-score">1–0</span><span class="bwc-m-winner">🏆 CROATIA</span><span class="bwc-m-verdict">Karlovačko and Pan both showed up. The home end was Croatian.</span></li>
-          <li class="bwc-m played" data-day="17"><span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇵🇦</span> PAN</span><span class="bwc-m-score">2–0</span><span class="bwc-m-winner">🏆 ENGLAND</span><span class="bwc-m-verdict">Draught Bass and Timothy Taylor's Landlord see off Panama Cerveza without breaking sweat. Cask discipline, opening exhibition.</span></li>
-          <li class="bwc-m played" data-day="17"><span class="bwc-m-teams"><span class="flag">🇭🇷</span> CRO <em>v</em> <span class="flag">🇬🇭</span> GHA</span><span class="bwc-m-score">2–1</span><span class="bwc-m-winner">🏆 CROATIA</span><span class="bwc-m-verdict">Karlovačko and Ožujsko on the pour, Star Lager and Club Beer chasing back. 2–1 on the field, 2–1 in the cellar.</span></li>
+          <li class="bwc-m bwc-m--flip played" data-day="7">
+                      <input type="checkbox" id="m-l-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-l-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇭🇷</span> CRO</span>
+                          <span class="bwc-m-score">4–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-l-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 ENGLAND</span>
+                          <span class="bwc-m-verdict">Boddingtons/heritage Pub VAR nonsense survives one more round.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="8">
+                      <input type="checkbox" id="m-l-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-l-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇬🇭</span> GHA <em>v</em> <span class="flag">🇵🇦</span> PAN</span>
+                          <span class="bwc-m-score">1–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-l-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 GHANA</span>
+                          <span class="bwc-m-verdict">Club Beer, Star Lager and Castle Milk Stout edge Cerveza Panamá. Tight one — Ghana's tradition has the depth.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="13">
+                      <input type="checkbox" id="m-l-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-l-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇬🇭</span> GHA</span>
+                          <span class="bwc-m-score">1–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-l-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 ENGLAND</span>
+                          <span class="bwc-m-verdict">Cask Marque held court. Star Lager and Club Beer brought legitimate craft answers; English heritage won the verdict on principle.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="14">
+                      <input type="checkbox" id="m-l-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-l-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇭🇷</span> CRO <em>v</em> <span class="flag">🇵🇦</span> PAN</span>
+                          <span class="bwc-m-score">1–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-l-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 CROATIA</span>
+                          <span class="bwc-m-verdict">Karlovačko and Pan both showed up. The home end was Croatian.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="17">
+                      <input type="checkbox" id="m-l-5" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-l-5" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <em>v</em> <span class="flag">🇵🇦</span> PAN</span>
+                          <span class="bwc-m-score">2–0</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-l-5" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 ENGLAND</span>
+                          <span class="bwc-m-verdict">Draught Bass and Timothy Taylor's Landlord see off Panama Cerveza without breaking sweat. Cask discipline, opening exhibition.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played" data-day="17">
+                      <input type="checkbox" id="m-l-6" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-l-6" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇭🇷</span> CRO <em>v</em> <span class="flag">🇬🇭</span> GHA</span>
+                          <span class="bwc-m-score">2–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-l-6" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 CROATIA</span>
+                          <span class="bwc-m-verdict">Karlovačko and Ožujsko on the pour, Star Lager and Club Beer chasing back. 2–1 on the field, 2–1 in the cellar.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </section>
 
@@ -308,7 +1493,16 @@
       <div class="bwc-deck-counter" aria-live="polite"><span id="bwcDeckCurrent">A</span> / <span id="bwcDeckTotal">L</span></div>
     </div>
 
-    <section class="bwc-round" id="round-of-32" style="max-width: 880px; margin: 56px auto 0; padding: 0 16px;">
+    </section><!-- /.bwc-view-panel[data-view=wall] -->
+
+    <!-- =============================================================
+         KNOCKOUT BRACKET PANEL
+         For now this wraps the existing Round of 32 section. Phase 2
+         will add R16 / QF / SF / FINAL columns with dashed placeholders.
+         ============================================================= -->
+    <section class="bwc-view-panel" data-view="bracket" aria-label="Knockout bracket">
+
+      <section class="bwc-round" id="round-of-32" style="max-width: 880px; margin: 24px auto 0; padding: 0 16px;">
       <header style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap;">
         <span style="font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); font-size: 0.78rem;">Round of 32</span>
         <span style="font-size: 0.82rem; color: var(--muted); font-style: italic;">Group letter in brackets. Each pair feeds the same R16 tie.</span>
@@ -324,69 +1518,176 @@
       <div class="bwc-r32-pair">
         <header><span>R16 Match 1</span><span class="arrow">→</span></header>
         <ol>
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <span class="bwc-r32-grp">(E)</span> <em>v</em> <span class="flag">🇵🇾</span> PAR <span class="bwc-r32-grp">(D)</span></span><span class="bwc-m-score">4–1</span><span class="bwc-m-winner">🏆 GERMANY</span><span class="bwc-m-verdict">Augustiner heritage wraps it up before the bar runs the shootout simulation. Pilsen had energy; the older brewing town settled it.</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <span class="bwc-r32-grp">(I)</span> <em>v</em> <span class="flag">🇸🇪</span> SWE <span class="bwc-r32-grp">(F)</span></span><span class="bwc-m-status">scheduled</span></li>
+          <li class="bwc-m bwc-m--flip played">
+                      <input type="checkbox" id="m-r32-1" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-r32-1" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇩🇪</span> GER <span class="bwc-r32-grp">(E)</span> <em>v</em> <span class="flag">🇵🇾</span> PAR <span class="bwc-r32-grp">(D)</span></span>
+                          <span class="bwc-m-score">4–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-r32-1" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 GERMANY</span>
+                          <span class="bwc-m-verdict">Augustiner heritage wraps it up before the bar runs the shootout simulation. Pilsen had energy; the older brewing town settled it.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇫🇷</span> FRA <span class="bwc-r32-grp">(I)</span> <em>v</em> <span class="flag">🇸🇪</span> SWE <span class="bwc-r32-grp">(F)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">Kronenbourg and Jenlain Ambrée — three French regional traditions in a trench coat — against Sweden's craft new wave. Old-world regional, or the Omnipollo / Stigbergets experiment?</span></li>
         </ol>
       </div>
 
       <div class="bwc-r32-pair">
         <header><span>R16 Match 2</span><span class="arrow">→</span></header>
         <ol>
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇿🇦</span> RSA <span class="bwc-r32-grp">(A)</span> <em>v</em> <span class="flag">🇨🇦</span> CAN <span class="bwc-r32-grp">(B)</span></span><span class="bwc-m-score">0–1</span><span class="bwc-m-winner">🏆 CANADA</span><span class="bwc-m-verdict">Football and beer agree on this one. Molson + the Toronto/Vancouver craft scene clears Castle Lager and Devil's Peak.</span></li>
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <span class="bwc-r32-grp">(F)</span> <em>v</em> <span class="flag">🇲🇦</span> MAR <span class="bwc-r32-grp">(C)</span></span><span class="bwc-m-score">0–2</span><span class="bwc-m-winner">🏆 MOROCCO</span><span class="bwc-m-verdict">Casablanca and Flag had the bar covered from the first whistle. Heineken consults a lawyer; the bar tribunal isn't interested.</span></li>
+          <li class="bwc-m bwc-m--flip played">
+                      <input type="checkbox" id="m-r32-2" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-r32-2" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇿🇦</span> RSA <span class="bwc-r32-grp">(A)</span> <em>v</em> <span class="flag">🇨🇦</span> CAN <span class="bwc-r32-grp">(B)</span></span>
+                          <span class="bwc-m-score">0–1</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-r32-2" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 CANADA</span>
+                          <span class="bwc-m-verdict">Football and beer agree on this one. Molson + the Toronto/Vancouver craft scene clears Castle Lager and Devil's Peak.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m bwc-m--flip played">
+                      <input type="checkbox" id="m-r32-3" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-r32-3" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇳🇱</span> NED <span class="bwc-r32-grp">(F)</span> <em>v</em> <span class="flag">🇲🇦</span> MAR <span class="bwc-r32-grp">(C)</span></span>
+                          <span class="bwc-m-score">0–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-r32-3" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 MOROCCO</span>
+                          <span class="bwc-m-verdict">Casablanca and Flag had the bar covered from the first whistle. Heineken consults a lawyer; the bar tribunal isn't interested.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
         </ol>
       </div>
 
       <div class="bwc-r32-pair">
         <header><span>R16 Match 3</span><span class="arrow">→</span></header>
         <ol>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <span class="bwc-r32-grp">(K)</span> <em>v</em> <span class="flag">🇭🇷</span> CRO <span class="bwc-r32-grp">(L)</span></span><span class="bwc-m-status">scheduled</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <span class="bwc-r32-grp">(H)</span> <em>v</em> <span class="flag">🇦🇹</span> AUT <span class="bwc-r32-grp">(J)</span></span><span class="bwc-m-status">scheduled</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇵🇹</span> POR <span class="bwc-r32-grp">(K)</span> <em>v</em> <span class="flag">🇭🇷</span> CRO <span class="bwc-r32-grp">(L)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">Super Bock vs Sagres still haven't picked a captain. Karlovačko and Ožujsko have been at the same derby for decades. The cellar with the cleaner argument walks the bar.</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇪🇸</span> ESP <span class="bwc-r32-grp">(H)</span> <em>v</em> <span class="flag">🇦🇹</span> AUT <span class="bwc-r32-grp">(J)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">Estrella Damm and Alhambra Reserva 1925 against Austria's quietly-excellent Stiegl and Trumer Pils. Mediterranean volume meets pilsner pedigree — the world thinks Spanish beer is Estrella with jamón, the world is wrong.</span></li>
         </ol>
       </div>
 
       <div class="bwc-r32-pair">
         <header><span>R16 Match 4</span><span class="arrow">→</span></header>
         <ol>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <span class="bwc-r32-grp">(D)</span> <em>v</em> <span class="flag">🇧🇦</span> BIH <span class="bwc-r32-grp">(B)</span></span><span class="bwc-m-status">scheduled</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <span class="bwc-r32-grp">(G)</span> <em>v</em> <span class="flag">🇸🇳</span> SEN <span class="bwc-r32-grp">(I)</span></span><span class="bwc-m-status">scheduled</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇺🇸</span> USA <span class="bwc-r32-grp">(D)</span> <em>v</em> <span class="flag">🇧🇦</span> BIH <span class="bwc-r32-grp">(B)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">American hop legacy (Pliny the Elder, Heady Topper, Hill Farmstead Edward) against Bosnia's Sarajevsko, brewing since 1864. Hops against history; cellar makes the call.</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇧🇪</span> BEL <span class="bwc-r32-grp">(G)</span> <em>v</em> <span class="flag">🇸🇳</span> SEN <span class="bwc-r32-grp">(I)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">Belgium brings the Trappist cathedral — Westvleteren 12, Orval, Rochefort 10, Cantillon Fou' Foune. Senegal brings Gazelle, locally honest. The bar's interest is in the margin, not the result.</span></li>
         </ol>
       </div>
 
       <div class="bwc-r32-pair">
         <header><span>R16 Match 5</span><span class="arrow">→</span></header>
         <ol>
-          <li class="bwc-m played"><span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <span class="bwc-r32-grp">(C)</span> <em>v</em> <span class="flag">🇯🇵</span> JPN <span class="bwc-r32-grp">(F)</span></span><span class="bwc-m-score">1–2</span><span class="bwc-m-winner">🏆 JAPAN</span><span class="bwc-m-verdict">Sapporo (1876), Asahi (1889), Kirin (1907) walked the cellar. Brahma fought; a century-and-a-half tradition gap was decisive.</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇨🇮</span> CIV <span class="bwc-r32-grp">(E)</span> <em>v</em> <span class="flag">🇳🇴</span> NOR <span class="bwc-r32-grp">(I)</span></span><span class="bwc-m-status">scheduled</span></li>
+          <li class="bwc-m bwc-m--flip played">
+                      <input type="checkbox" id="m-r32-4" class="bwc-m-toggle" aria-hidden="true">
+                      <div class="bwc-m-inner">
+                        <label for="m-r32-4" class="bwc-m-face bwc-m-front">
+                          <span class="bwc-m-teams"><span class="flag">🇧🇷</span> BRA <span class="bwc-r32-grp">(C)</span> <em>v</em> <span class="flag">🇯🇵</span> JPN <span class="bwc-r32-grp">(F)</span></span>
+                          <span class="bwc-m-score">1–2</span>
+                          <span class="bwc-m-tap">Tap for the cellar ruling</span>
+                        </label>
+                        <label for="m-r32-4" class="bwc-m-face bwc-m-back">
+                          <span class="bwc-m-winner">🏆 JAPAN</span>
+                          <span class="bwc-m-verdict">Sapporo (1876), Asahi (1889), Kirin (1907) walked the cellar. Brahma fought; a century-and-a-half tradition gap was decisive.</span>
+                          <span class="bwc-m-tap-back">Tap to flip back</span>
+                        </label>
+                      </div>
+                    </li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇨🇮</span> CIV <span class="bwc-r32-grp">(E)</span> <em>v</em> <span class="flag">🇳🇴</span> NOR <span class="bwc-r32-grp">(I)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">Pub VAR's longest case file (Ivoire native, Tuborg CI "pending pending") drawn against a stacked Nordic bench — Ringnes plus Nøgne Ø and Lervig on world-class craft form. Tough night for the Ivorians.</span></li>
         </ol>
       </div>
 
       <div class="bwc-r32-pair">
         <header><span>R16 Match 6</span><span class="arrow">→</span></header>
         <ol>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <span class="bwc-r32-grp">(A)</span> <em>v</em> <span class="flag">🇪🇨</span> ECU <span class="bwc-r32-grp">(E)</span></span><span class="bwc-m-status">scheduled</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <span class="bwc-r32-grp">(L)</span> <em>v</em> <span class="flag">🇨🇩</span> COD <span class="bwc-r32-grp">(K)</span></span><span class="bwc-m-status">scheduled</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇲🇽</span> MEX <span class="bwc-r32-grp">(A)</span> <em>v</em> <span class="flag">🇪🇨</span> ECU <span class="bwc-r32-grp">(E)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">Mexican lager depth — Modelo, Pacífico, Bohemia — against Ecuador's Pilsener-since-1913 heritage column and the Bandido Andean Pale flourish. Volume against pedigree, both deeply honest.</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG <span class="bwc-r32-grp">(L)</span> <em>v</em> <span class="flag">🇨🇩</span> COD <span class="bwc-r32-grp">(K)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">England fields the cask brigade — Fuller's London Pride, Draught Bass, Boddingtons, Harvey's. Warm, flat, hand-pulled; reads like a fault sheet abroad and a speciality in Blighty. DR Congo answers with Primus and the Brassiongo portfolio. Heritage meets the African macro carrier.</span></li>
         </ol>
       </div>
 
       <div class="bwc-r32-pair">
         <header><span>R16 Match 7</span><span class="arrow">→</span></header>
         <ol>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <span class="bwc-r32-grp">(J)</span> <em>v</em> <span class="flag">🇨🇻</span> CPV <span class="bwc-r32-grp">(H)</span></span><span class="bwc-m-status">scheduled</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇦🇺</span> AUS <span class="bwc-r32-grp">(D)</span> <em>v</em> <span class="flag">🇪🇬</span> EGY <span class="bwc-r32-grp">(G)</span></span><span class="bwc-m-status">scheduled</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇦🇷</span> ARG <span class="bwc-r32-grp">(J)</span> <em>v</em> <span class="flag">🇨🇻</span> CPV <span class="bwc-r32-grp">(H)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">Quilmes Cristal plus the Patagonia and Antares craft programme against Cape Verde's Strela — the honest 1. Squad depth against single-beer conviction; nobody envies the Cape Verde captain.</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇦🇺</span> AUS <span class="bwc-r32-grp">(D)</span> <em>v</em> <span class="flag">🇪🇬</span> EGY <span class="bwc-r32-grp">(G)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">Australian modern craft (Coopers Pale, Stone &amp; Wood Pacific, Hawkers WCIPA) against Egypt's Stella — the Egyptian one, no relation, older heritage — plus the Sakara Gold range. Hop legacy meets the older-Stella line.</span></li>
         </ol>
       </div>
 
       <div class="bwc-r32-pair">
         <header><span>R16 Match 8</span><span class="arrow">→</span></header>
         <ol>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇨🇭</span> SUI <span class="bwc-r32-grp">(B)</span> <em>v</em> <span class="flag">🇩🇿</span> ALG <span class="bwc-r32-grp">(J)</span></span><span class="bwc-m-status">scheduled</span></li>
-          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇨🇴</span> COL <span class="bwc-r32-grp">(K)</span> <em>v</em> <span class="flag">🇬🇭</span> GHA <span class="bwc-r32-grp">(L)</span></span><span class="bwc-m-status">scheduled</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇨🇭</span> SUI <span class="bwc-r32-grp">(B)</span> <em>v</em> <span class="flag">🇩🇿</span> ALG <span class="bwc-r32-grp">(J)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">Algeria's two-beer scene (Beaufort, Tango) into Switzerland's Feldschlösschen macro spine with BFM Abbaye de Saint Bon-Chien doing the craft lifting. Conviction against catalogue depth.</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams"><span class="flag">🇨🇴</span> COL <span class="bwc-r32-grp">(K)</span> <em>v</em> <span class="flag">🇬🇭</span> GHA <span class="bwc-r32-grp">(L)</span></span><span class="bwc-m-status">scheduled</span><span class="bwc-m-preview">Colombian macro trio (Aguila, Club Colombia, Costeña) with BBC Cajicá Honey Ale behind, against Ghana's Star Beer plus Guinness FES (Ghana). The Guinness FES eligibility file is the conversation piece — whose Guinness is it really?</span></li>
         </ol>
       </div>
 
       <p style="font-size:0.82rem;color:var(--muted);font-style:italic;margin-top:16px;text-align:center;">Beer rulings published lock-step with real fixtures. Three played, twelve still to play.</p>
-    </section>
+      </section><!-- /#round-of-32 -->
+
+      <section class="bwc-round" id="round-of-16" style="max-width: 880px; margin: 36px auto 0; padding: 0 16px;">
+        <header style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
+          <span style="font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); font-size: 0.78rem;">Round of 16</span>
+          <span style="font-size: 0.82rem; color: var(--muted); font-style: italic;">Winners of R32 face off. The cellar tribunal sits once both sides are settled.</span>
+        </header>
+        <ol class="bwc-knockout">
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R32 M1 <em>v</em> Winner R32 M2</span><span class="bwc-m-status">awaits R32</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R32 M3 <em>v</em> Winner R32 M4</span><span class="bwc-m-status">awaits R32</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R32 M5 <em>v</em> Winner R32 M6</span><span class="bwc-m-status">awaits R32</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R32 M7 <em>v</em> Winner R32 M8</span><span class="bwc-m-status">awaits R32</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R32 M9 <em>v</em> Winner R32 M10</span><span class="bwc-m-status">awaits R32</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R32 M11 <em>v</em> Winner R32 M12</span><span class="bwc-m-status">awaits R32</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R32 M13 <em>v</em> Winner R32 M14</span><span class="bwc-m-status">awaits R32</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R32 M15 <em>v</em> Winner R32 M16</span><span class="bwc-m-status">awaits R32</span></li>
+        </ol>
+      </section>
+
+      <section class="bwc-round" id="quarter-finals" style="max-width: 880px; margin: 28px auto 0; padding: 0 16px;">
+        <header style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
+          <span style="font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); font-size: 0.78rem;">Quarter-finals</span>
+        </header>
+        <ol class="bwc-knockout">
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R16 M1 <em>v</em> Winner R16 M2</span><span class="bwc-m-status">awaits R16</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R16 M3 <em>v</em> Winner R16 M4</span><span class="bwc-m-status">awaits R16</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R16 M5 <em>v</em> Winner R16 M6</span><span class="bwc-m-status">awaits R16</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner R16 M7 <em>v</em> Winner R16 M8</span><span class="bwc-m-status">awaits R16</span></li>
+        </ol>
+      </section>
+
+      <section class="bwc-round" id="semi-finals" style="max-width: 880px; margin: 28px auto 0; padding: 0 16px;">
+        <header style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
+          <span style="font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); font-size: 0.78rem;">Semi-finals</span>
+        </header>
+        <ol class="bwc-knockout">
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner QF1 <em>v</em> Winner QF2</span><span class="bwc-m-status">awaits QF</span></li>
+          <li class="bwc-m blank"><span class="bwc-m-teams">Winner QF3 <em>v</em> Winner QF4</span><span class="bwc-m-status">awaits QF</span></li>
+        </ol>
+      </section>
+
+      <section class="bwc-round" id="final" style="max-width: 880px; margin: 28px auto 36px; padding: 0 16px;">
+        <header style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; flex-wrap: wrap;">
+          <span style="font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); font-size: 0.86rem;">The Final</span>
+          <span style="font-size: 0.82rem; color: var(--muted); font-style: italic;">One cellar. One verdict. The bar's last call.</span>
+        </header>
+        <ol class="bwc-knockout bwc-knockout--final">
+          <li class="bwc-m blank bwc-m--final"><span class="bwc-m-teams">Winner SF1 <em>v</em> Winner SF2</span><span class="bwc-m-status">awaits SF</span></li>
+        </ol>
+      </section>
+
+    </section><!-- /.bwc-view-panel[data-view=bracket] -->
 
     <p style="text-align:center;margin-top:36px;font-size:0.86rem;color:var(--muted);">← <a href="/blog/beer-world-cup-xi.html" style="color:var(--teal);">Manifesto</a> · <a href="/blog/beer-world-cup-xi-line-ups.html" style="color:var(--teal);">Squads</a> · <a href="/blog/world-cup-stadium-beer-map.html" style="color:var(--teal);">Stadium Beer Map</a></p>
   </article>
