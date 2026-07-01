@@ -41,31 +41,31 @@
  * and the six match rows. Played matches show the verdict; blank matches
  * show a dash + faded styling. */
 
-/* Wall = horizontal scroll-snap deck. One group card per snap point on
-   mobile; 2 on tablet; 3 on desktop. Same data, much less vertical
-   scrolling. Native swipe on touch devices. */
+/* Wall = poster grid. All 12 groups visible simultaneously — 3 cols × 4
+   rows on desktop, 2 cols on tablet, single column stack on mobile.
+   The old horizontal-scroll snap deck was a card carousel, not a wall
+   chart; it undercut the "Wall Chart" label. Group cards are compact
+   so the full 12-group grid reads as a poster.
+   Related change: .bwc-deck-dots and .bwc-deck-counter no longer
+   render (see .bwc-deck-dots rule below) — they're meaningless once
+   every group is on screen. */
 .bwc-wall {
   display: grid;
-  gap: 14px;
-  grid-auto-flow: column;
-  grid-auto-columns: 100%;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding: 4px;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: 4px;
+  gap: 10px;
+  grid-template-columns: 1fr;
 }
-.bwc-wall::-webkit-scrollbar { display: none; }
-.bwc-wall > .bwc-group { scroll-snap-align: start; min-width: 0; }
-@media (min-width: 720px)  { .bwc-wall { grid-auto-columns: calc(50% - 7px); } }
-@media (min-width: 1080px) { .bwc-wall { grid-auto-columns: calc(33.333% - 9.33px); } }
+@media (min-width: 700px)  { .bwc-wall { grid-template-columns: 1fr 1fr;      gap: 12px; } }
+@media (min-width: 1040px) { .bwc-wall { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
+.bwc-wall > .bwc-group { min-width: 0; }
 
-/* JS-off / print: fall back to vertical stack so all 12 groups are
-   readable without the swipe scaffold. */
+/* Deck scaffolding retired — the grid shows everything at once. */
+.bwc-deck-dots,
+.bwc-deck-counter { display: none !important; }
+
+/* Print: keep single-column vertical stack for readability on paper. */
 @media print {
-  .bwc-wall { display: grid; grid-template-columns: 1fr; grid-auto-flow: row; grid-auto-columns: auto; overflow: visible; }
-  .bwc-deck-dots, .bwc-deck-counter, .bwc-filters { display: none !important; }
+  .bwc-wall { grid-template-columns: 1fr; gap: 8px; }
+  .bwc-filters { display: none !important; }
 }
 
 .bwc-deck-wrap { display: flex; flex-direction: column; gap: 10px; }
@@ -149,10 +149,10 @@
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 14px 14px 12px;
+  padding: 12px 12px 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .bwc-group-h {
@@ -276,7 +276,7 @@
   counter-reset: m;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
 .bwc-m {
@@ -697,7 +697,7 @@
   border: 0;
   background: transparent;
   perspective: 1200px;
-  min-height: 124px;
+  min-height: 88px;
 }
 
 /* When the group's match list contains flip cards, switch the container
@@ -727,10 +727,10 @@
   grid-area: stack;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 4px 10px;
+  gap: 3px 10px;
   align-items: baseline;
-  padding: 12px 14px;
-  border-radius: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
   cursor: pointer;
   border: 1px solid;
   backface-visibility: hidden;
