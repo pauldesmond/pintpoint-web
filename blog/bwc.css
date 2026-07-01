@@ -888,24 +888,24 @@
   padding: 5px 7px;
   border-radius: 4px;
   cursor: pointer;
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.02);
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.05);
   overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 .bwc-slot-back { transform: rotateY(180deg); }
-/* Played R32 slots: teal border, subtle mint tint. Back gets stronger tint. */
+/* Played R32 slots: teal border + mint tint. Back gets stronger tint. */
 .bwc-slot--played .bwc-slot-front {
-  border-color: rgba(0, 212, 170, 0.55);
-  background: rgba(0, 212, 170, 0.06);
+  border-color: var(--teal);
+  background: rgba(0, 212, 170, 0.10);
 }
 .bwc-slot--played .bwc-slot-back {
-  background: rgba(0, 212, 170, 0.14);
-  border-color: rgba(0, 212, 170, 0.65);
+  background: rgba(0, 212, 170, 0.20);
+  border-color: var(--teal);
 }
 .bwc-slot--previewable .bwc-slot-front { border-style: dashed; }
-.bwc-slot--previewable .bwc-slot-back { background: rgba(255, 255, 255, 0.04); }
+.bwc-slot--previewable .bwc-slot-back { background: rgba(255, 255, 255, 0.06); }
 
 /* Non-flip placeholder slots (R16/QF/SF/FINAL awaiting-feeder cards) —
    render the slot itself as the outlined rectangle. Same fixed cell size. */
@@ -916,8 +916,8 @@
   gap: 2px;
   padding: 5px 7px;
   border-radius: 4px;
-  border: 1.5px dashed rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.02);
+  border: 2px dashed rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.05);
   overflow: hidden;
   cursor: default;
 }
