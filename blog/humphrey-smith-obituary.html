@@ -97,8 +97,11 @@
     .lede { font-size: 1.1rem; color: var(--text); line-height: 1.72; margin-bottom: 24px; font-weight: 500; }
     .rule { border: 0; border-top: 1px solid var(--border); margin: 44px 0 28px; }
     .pubs { margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--border); }
-    .pubs h2 { font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-top: 0; margin-bottom: 6px; }
-    .pubs .intro { font-size: 0.92rem; line-height: 1.55; color: var(--muted); margin-bottom: 18px; }
+    /* Gold treatment on the roster heading + intro — Paul's ask.
+       Uses --amber (#C0A340), the palette gold already established
+       on the BWC page + fixtures column headers. */
+    .pubs h2 { font-size: 1.35rem; letter-spacing: -0.4px; text-transform: none; color: var(--amber); font-weight: 800; margin-top: 0; margin-bottom: 10px; line-height: 1.25; }
+    .pubs .intro { font-size: 0.98rem; line-height: 1.65; color: var(--amber); opacity: 0.9; margin-bottom: 20px; font-weight: 500; }
     .pub-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
     @media (min-width: 520px) { .pub-grid { grid-template-columns: 1fr 1fr; } }
     @media (min-width: 780px) { .pub-grid { grid-template-columns: repeat(3, 1fr); } }
