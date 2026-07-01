@@ -104,14 +104,24 @@
        on the BWC page + fixtures column headers. */
     .pubs h2 { font-size: 1.35rem; letter-spacing: -0.4px; text-transform: none; color: var(--amber); font-weight: 800; margin-top: 0; margin-bottom: 10px; line-height: 1.25; text-align: center; }
     .pubs .intro { font-size: 0.98rem; line-height: 1.65; color: var(--amber); opacity: 0.9; margin: 0 auto 20px; font-weight: 500; text-align: center; max-width: 640px; }
-    .pub-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    @media (min-width: 520px) { .pub-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 780px) { .pub-grid { grid-template-columns: repeat(3, 1fr); } }
+    /* Swipe deck: four panels, each a 3-column grid of pub cards.
+       Swipe on touch; trackpad/click-drag on desktop. Snap to panel edges. */
+    .pub-deck { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 10px; margin: 0 -8px; }
+    .pub-deck::-webkit-scrollbar { display: none; }
+    .pub-panel { scroll-snap-align: start; flex: 0 0 100%; min-width: 0; display: grid; grid-template-columns: 1fr; gap: 8px; padding: 0 8px; }
+    @media (min-width: 520px) { .pub-panel { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 780px) { .pub-panel { grid-template-columns: repeat(3, 1fr); } }
     .pub-card, .pub-card:link, .pub-card:visited { display: block; padding: 14px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; color: var(--text); text-decoration: none; transition: border-color .15s, transform .15s; }
     .pub-card:hover { border-color: var(--teal); transform: translateY(-1px); }
     .pub-card .name { font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 4px; letter-spacing: -0.2px; }
     .pub-card:hover .name { color: var(--teal); }
     .pub-card .loc { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+    /* Small tag distinguishing PINtPOINT-loaded pubs from Untappd-only fallbacks. */
+    .pub-card .via { display: inline-block; margin-top: 6px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 2px 8px; border-radius: 99px; border: 1px solid var(--border); }
+    .pub-card.via-pintpoint .via { color: var(--teal); border-color: rgba(0,212,170,0.3); }
+    /* Swipe-deck dots — visual affordance that there are more panels. */
+    .pub-deck-dots { display: flex; justify-content: center; gap: 8px; margin-top: 4px; }
+    .pub-deck-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
     .sources { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
     .sources h2 { font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-top: 0; margin-bottom: 14px; }
     .sources ul { list-style: none; padding: 0; }
@@ -157,80 +167,202 @@
 
     <section class="pubs">
       <h2>Where to raise an Old Brewery Bitter in London</h2>
-      <p class="intro">Between 1979 and 1984, Humphrey's company bought at least ten historic London pubs — riverfront cottages, City chophouses, a resplendent 19th-century gin palace. It re-christened some of them along the way: the Tudor Rose became the Rose of York, Henekey's Long Bar on High Holborn became the Cittie of Yorke. More recently, serious investment has restored the Princess Louise, the Duke of Argyll, the Fitzroy Tavern and the Windsor Castle to their Victorian selves — the room-off-a-central-bar plan reinstated, cut glass and chandeliers and decorative tiles all back in place. Eighteen London Sam Smith's are on PINtPOINT already with live tap lists. More of the 36-strong estate to come.</p>
-      <div class="pub-grid">
-        <a href="/pubs/the-angel-london" class="pub-card">
-          <div class="name">Angel</div>
-          <div class="loc">Bermondsey · SE16</div>
-        </a>
-        <a href="/pubs/the-blue-posts-london" class="pub-card">
-          <div class="name">Blue Posts</div>
-          <div class="loc">81 Newman Street · Fitzrovia</div>
-        </a>
-        <a href="/pubs/bricklayers-arms-london" class="pub-card">
-          <div class="name">Bricklayers Arms</div>
-          <div class="loc">31 Gresse Street · Fitzrovia</div>
-        </a>
-        <a href="/pubs/captain-kidd-london" class="pub-card">
-          <div class="name">Captain Kidd</div>
-          <div class="loc">108 Wapping High Street · Wapping</div>
-        </a>
-        <a href="/pubs/the-champion-london" class="pub-card">
-          <div class="name">Champion</div>
-          <div class="loc">1 Wellington Place · Fitzrovia</div>
-        </a>
-        <a href="/pubs/the-chandos-london" class="pub-card">
-          <div class="name">Chandos</div>
-          <div class="loc">29 St Martin's Lane · Covent Garden</div>
-        </a>
-        <a href="/pubs/cittie-of-yorke-london" class="pub-card">
-          <div class="name">Cittie of Yorke</div>
-          <div class="loc">22 High Holborn · Chancery Lane</div>
-        </a>
-        <a href="/pubs/crown-and-sugar-loaf-london" class="pub-card">
-          <div class="name">Crown and Sugarloaf</div>
-          <div class="loc">26 Bride Lane · Fleet Street</div>
-        </a>
-        <a href="/pubs/the-duke-of-argyll-london" class="pub-card">
-          <div class="name">Duke of Argyll</div>
-          <div class="loc">37 Brewer Street · Soho</div>
-        </a>
-        <a href="/pubs/fitzroy-tavern-london" class="pub-card">
-          <div class="name">Fitzroy Tavern</div>
-          <div class="loc">16 Charlotte Street · Fitzrovia</div>
-        </a>
-        <a href="/pubs/george-vulture-london" class="pub-card">
-          <div class="name">George &amp; Vulture</div>
-          <div class="loc">Castle Court · Bank</div>
-        </a>
-        <a href="/pubs/john-snow-london" class="pub-card">
-          <div class="name">John Snow</div>
-          <div class="loc">39 Broadwick Street · Soho</div>
-        </a>
-        <a href="/pubs/lyceum-tavern-london" class="pub-card">
-          <div class="name">Lyceum Tavern</div>
-          <div class="loc">354 Strand · Aldwych</div>
-        </a>
-        <a href="/pubs/princess-louise-london" class="pub-card">
-          <div class="name">Princess Louise</div>
-          <div class="loc">208 High Holborn · Holborn</div>
-        </a>
-        <a href="/pubs/town-wharf-isleworth" class="pub-card">
-          <div class="name">Town Wharf</div>
-          <div class="loc">Swan Street · Isleworth</div>
-        </a>
-        <a href="/pubs/the-windsor-castle-london" class="pub-card">
-          <div class="name">Windsor Castle</div>
-          <div class="loc">23 Francis Street · Victoria</div>
-        </a>
-        <a href="/pubs/ye-olde-cheshire-cheese-london" class="pub-card">
-          <div class="name">Ye Olde Cheshire Cheese</div>
-          <div class="loc">145 Fleet Street · Fleet Street</div>
-        </a>
-        <a href="/pubs/ye-olde-swiss-cottage-london" class="pub-card">
-          <div class="name">Ye Olde Swiss Cottage</div>
-          <div class="loc">98 Finchley Road · Swiss Cottage</div>
-        </a>
+      <p class="intro">Between 1979 and 1984, Humphrey's company bought at least ten historic London pubs — riverfront cottages, City chophouses, a resplendent 19th-century gin palace. It re-christened some of them along the way: the Tudor Rose became the Rose of York, Henekey's Long Bar on High Holborn became the Cittie of Yorke. More recently, serious investment has restored the Princess Louise, the Duke of Argyll, the Fitzroy Tavern and the Windsor Castle to their Victorian selves — the room-off-a-central-bar plan reinstated, cut glass and chandeliers and decorative tiles all back in place. The full London estate below — alphabetical, four swipes end to end. Cards go to PINtPOINT where we have a live tap list; to Untappd where we haven't loaded the venue yet.</p>
+      <div class="pub-deck">
+        <div class="pub-panel" id="pub-panel-1">
+          <a href="https://untappd.com/v/anchor-tap/219051" class="pub-card">
+            <div class="name">Anchor Tap</div>
+            <div class="loc">28 Horselydown Lane · Bermondsey</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="https://untappd.com/v/anerley-arms/587440" class="pub-card">
+            <div class="name">Anerley Arms</div>
+            <div class="loc">2 Ridsdale Road · Anerley</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="/pubs/the-angel-london" class="pub-card via-pintpoint">
+            <div class="name">Angel</div>
+            <div class="loc">Bermondsey · SE16</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="https://untappd.com/v/the-angel/117637" class="pub-card">
+            <div class="name">Angel</div>
+            <div class="loc">61 St Giles High Street · St Giles</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="https://untappd.com/v/angel-in-the-fields/13220" class="pub-card">
+            <div class="name">Angel in the Fields</div>
+            <div class="loc">37 Thayer Street · Marylebone</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="/pubs/the-blue-posts-london" class="pub-card via-pintpoint">
+            <div class="name">Blue Posts</div>
+            <div class="loc">81 Newman Street · Fitzrovia</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="/pubs/bricklayers-arms-london" class="pub-card via-pintpoint">
+            <div class="name">Bricklayers Arms</div>
+            <div class="loc">31 Gresse Street · Fitzrovia</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="/pubs/captain-kidd-london" class="pub-card via-pintpoint">
+            <div class="name">Captain Kidd</div>
+            <div class="loc">108 Wapping High Street · Wapping</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="/pubs/the-champion-london" class="pub-card via-pintpoint">
+            <div class="name">Champion</div>
+            <div class="loc">1 Wellington Place · Fitzrovia</div>
+            <span class="via">Live tap list</span>
+          </a>
+        </div>
+        <div class="pub-panel" id="pub-panel-2">
+          <a href="/pubs/the-chandos-london" class="pub-card via-pintpoint">
+            <div class="name">Chandos</div>
+            <div class="loc">29 St Martin's Lane · Covent Garden</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="/pubs/cittie-of-yorke-london" class="pub-card via-pintpoint">
+            <div class="name">Cittie of Yorke</div>
+            <div class="loc">22 High Holborn · Chancery Lane</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="https://untappd.com/v/the-cock-tavern/176056" class="pub-card">
+            <div class="name">Cock</div>
+            <div class="loc">27 Great Portland Street · West End</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="https://untappd.com/v/the-crown/204198" class="pub-card">
+            <div class="name">Crown</div>
+            <div class="loc">51 New Oxford Street · Bloomsbury</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="/pubs/crown-and-sugar-loaf-london" class="pub-card via-pintpoint">
+            <div class="name">Crown and Sugarloaf</div>
+            <div class="loc">26 Bride Lane · Fleet Street</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="https://untappd.com/v/dover-castle/171599" class="pub-card">
+            <div class="name">Dover Castle</div>
+            <div class="loc">43 Weymouth Mews · Marylebone</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="/pubs/the-duke-of-argyll-london" class="pub-card via-pintpoint">
+            <div class="name">Duke of Argyll</div>
+            <div class="loc">37 Brewer Street · Soho</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="https://untappd.com/v/the-eagle/338624" class="pub-card">
+            <div class="name">Eagle</div>
+            <div class="loc">15 Clifton Road · Little Venice</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="https://untappd.com/v/earl-of-lonsdale/160248" class="pub-card">
+            <div class="name">Earl of Lonsdale</div>
+            <div class="loc">277-281 Westbourne Grove · Notting Hill</div>
+            <span class="via">Untappd</span>
+          </a>
+        </div>
+        <div class="pub-panel" id="pub-panel-3">
+          <a href="/pubs/fitzroy-tavern-london" class="pub-card via-pintpoint">
+            <div class="name">Fitzroy Tavern</div>
+            <div class="loc">16 Charlotte Street · Fitzrovia</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="https://untappd.com/v/the-gazebo/319108" class="pub-card">
+            <div class="name">Gazebo</div>
+            <div class="loc">Kings Passage · Kingston upon Thames</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="/pubs/george-vulture-london" class="pub-card via-pintpoint">
+            <div class="name">George &amp; Vulture</div>
+            <div class="loc">Castle Court · Bank</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="https://untappd.com/v/the-glasshouse-stores/80618" class="pub-card">
+            <div class="name">Glasshouse Stores</div>
+            <div class="loc">55 Brewer Street · Soho</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="https://untappd.com/v/horse-groom/201440" class="pub-card">
+            <div class="name">Horse and Groom</div>
+            <div class="loc">128 Great Portland Street · Fitzrovia</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="/pubs/john-snow-london" class="pub-card via-pintpoint">
+            <div class="name">John Snow</div>
+            <div class="loc">39 Broadwick Street · Soho</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="/pubs/lyceum-tavern-london" class="pub-card via-pintpoint">
+            <div class="name">Lyceum Tavern</div>
+            <div class="loc">354 Strand · Aldwych</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="https://untappd.com/v/the-ordnance/1725184" class="pub-card">
+            <div class="name">Ordnance</div>
+            <div class="loc">29 Ordnance Hill · St John's Wood</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="/pubs/princess-louise-london" class="pub-card via-pintpoint">
+            <div class="name">Princess Louise</div>
+            <div class="loc">208 High Holborn · Holborn</div>
+            <span class="via">Live tap list</span>
+          </a>
+        </div>
+        <div class="pub-panel" id="pub-panel-4">
+          <a href="https://untappd.com/v/the-red-lion/72024" class="pub-card">
+            <div class="name">Red Lion</div>
+            <div class="loc">14 Kingly Street · Soho</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="https://untappd.com/v/rising-sun/187457" class="pub-card">
+            <div class="name">Rising Sun</div>
+            <div class="loc">38 Cloth Fair · Barbican</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="https://untappd.com/v/the-rose-of-york/745789" class="pub-card">
+            <div class="name">Rose of York</div>
+            <div class="loc">Petersham Road · Richmond</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="https://untappd.com/v/royal-george/865479" class="pub-card">
+            <div class="name">Royal George</div>
+            <div class="loc">85 Tanner's Hill · Deptford</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="/pubs/town-wharf-isleworth" class="pub-card via-pintpoint">
+            <div class="name">Town Wharf</div>
+            <div class="loc">Swan Street · Isleworth</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="https://untappd.com/v/the-white-horse/185160" class="pub-card">
+            <div class="name">White Horse</div>
+            <div class="loc">45 Rupert Street · Soho</div>
+            <span class="via">Untappd</span>
+          </a>
+          <a href="/pubs/the-windsor-castle-london" class="pub-card via-pintpoint">
+            <div class="name">Windsor Castle</div>
+            <div class="loc">23 Francis Street · Victoria</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="/pubs/ye-olde-cheshire-cheese-london" class="pub-card via-pintpoint">
+            <div class="name">Ye Olde Cheshire Cheese</div>
+            <div class="loc">145 Fleet Street · Fleet Street</div>
+            <span class="via">Live tap list</span>
+          </a>
+          <a href="/pubs/ye-olde-swiss-cottage-london" class="pub-card via-pintpoint">
+            <div class="name">Ye Olde Swiss Cottage</div>
+            <div class="loc">98 Finchley Road · Swiss Cottage</div>
+            <span class="via">Live tap list</span>
+          </a>
+        </div>
+      </div>
+      <div class="pub-deck-dots" aria-hidden="true">
+        <span class="pub-deck-dot"></span>
+        <span class="pub-deck-dot"></span>
+        <span class="pub-deck-dot"></span>
+        <span class="pub-deck-dot"></span>
       </div>
     </section>
 
