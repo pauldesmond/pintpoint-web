@@ -41,30 +41,56 @@
  * and the six match rows. Played matches show the verdict; blank matches
  * show a dash + faded styling. */
 
-/* Wall = poster grid. All 12 groups visible simultaneously — 3 cols × 4
-   rows on desktop, 2 cols on tablet, single column stack on mobile.
-   The old horizontal-scroll snap deck was a card carousel, not a wall
-   chart; it undercut the "Wall Chart" label. Group cards are compact
-   so the full 12-group grid reads as a poster.
-   Related change: .bwc-deck-dots and .bwc-deck-counter no longer
-   render (see .bwc-deck-dots rule below) — they're meaningless once
-   every group is on screen. */
+/* Wall = swipe deck of 4 panels (A–C / D–F / G–I / J–L). Each panel is
+   full-viewport-wide and contains a 3-column grid of its 3 groups.
+   Horizontal scroll-snap so swipes settle on panel boundaries. Chip
+   filter (A–C, D–F, ...) uses anchor links whose targets are panel ids;
+   native scroll + snap handles the jump. No JS needed.
+   Simpler than the previous 3×4 flat grid, and reads as a proper
+   wallchart because each panel = one printable page of 3 groups. */
 .bwc-wall {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 6px;
 }
-@media (min-width: 700px)  { .bwc-wall { grid-template-columns: 1fr 1fr;      gap: 12px; } }
-@media (min-width: 1040px) { .bwc-wall { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
-.bwc-wall > .bwc-group { min-width: 0; }
+.bwc-wall::-webkit-scrollbar { display: none; }
 
-/* Deck scaffolding retired — the grid shows everything at once. */
+.bwc-wall-panel {
+  scroll-snap-align: start;
+  scroll-margin-left: 0;
+  flex: 0 0 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.bwc-wall-panel > .bwc-group { min-width: 0; }
+
+/* Anchor scroll offset — sticky nav sits at top:0, so anchor targets
+   need extra top padding when scrolled to, else they land under the nav. */
+.bwc-wall-panel[id] { scroll-margin-top: 90px; }
+
 .bwc-deck-dots,
 .bwc-deck-counter { display: none !important; }
 
-/* Print: keep single-column vertical stack for readability on paper. */
+/* Print: kill the swipe deck, stack panels vertically, and let each
+   panel's 3-column grid show as-is (or collapse if too narrow for print). */
 @media print {
-  .bwc-wall { grid-template-columns: 1fr; gap: 8px; }
+  .bwc-wall {
+    display: block;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+  .bwc-wall-panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    page-break-inside: avoid;
+    margin-bottom: 16px;
+  }
   .bwc-filters { display: none !important; }
 }
 
@@ -101,8 +127,14 @@
   flex: 0 0 auto;
   transition: color .12s, border-color .12s, background-color .12s;
   white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
-.bwc-chip:hover { color: var(--text); border-color: var(--teal); }
+.bwc-chip:hover,
+.bwc-chip:focus-visible { color: var(--text); border-color: var(--teal); outline: none; }
+:target + * .bwc-chip, /* placeholder */
+.bwc-wall-panel:target ~ .bwc-filters .bwc-chip { }
 .bwc-chip.is-active {
   color: var(--text);
   border-color: var(--teal);

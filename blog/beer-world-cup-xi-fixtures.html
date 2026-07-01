@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Anton&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="bwc.css?v=40" />
+  <link rel="stylesheet" href="bwc.css?v=41" />
   <script src="bwc-follow.js?v=1" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -152,15 +152,18 @@
       <!-- Group jump-chips (unchanged — these were the useful filter row).
            The 18 Day chips were removed; over-served vs the page payoff. -->
       <div class="bwc-filters" role="region" aria-label="Jump to group">
-        <div class="bwc-filter-row" role="tablist" aria-label="Filter by group">
-          <button class="bwc-chip is-active" data-filter="group" data-value="all">All Groups</button>
-          <button class="bwc-chip" data-filter="group" data-value="a">A</button><button class="bwc-chip" data-filter="group" data-value="b">B</button><button class="bwc-chip" data-filter="group" data-value="c">C</button><button class="bwc-chip" data-filter="group" data-value="d">D</button><button class="bwc-chip" data-filter="group" data-value="e">E</button><button class="bwc-chip" data-filter="group" data-value="f">F</button><button class="bwc-chip" data-filter="group" data-value="g">G</button><button class="bwc-chip" data-filter="group" data-value="h">H</button><button class="bwc-chip" data-filter="group" data-value="i">I</button><button class="bwc-chip" data-filter="group" data-value="j">J</button><button class="bwc-chip" data-filter="group" data-value="k">K</button><button class="bwc-chip" data-filter="group" data-value="l">L</button>
+        <div class="bwc-filter-row" role="tablist" aria-label="Jump to group panel">
+          <a href="#panel-abc" class="bwc-chip">A–C</a>
+          <a href="#panel-def" class="bwc-chip">D–F</a>
+          <a href="#panel-ghi" class="bwc-chip">G–I</a>
+          <a href="#panel-jkl" class="bwc-chip">J–L</a>
         </div>
       </div>
 
       <div class="bwc-deck-wrap"><div class="bwc-wall bwc-deck">
 
-      <section class="bwc-group" id="group-a" data-group="a">
+      <div class="bwc-wall-panel" id="panel-abc">
+<section class="bwc-group" id="group-a" data-group="a">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group A</span></header>
         <ol class="bwc-standings" aria-label="Group A standings">
             <li class="bwc-st-head" aria-hidden="true">
@@ -492,8 +495,10 @@
                     </li>
         </ol>
       </section>
+      </div>
 
-      <section class="bwc-group" id="group-d" data-group="d">
+      <div class="bwc-wall-panel" id="panel-def">
+<section class="bwc-group" id="group-d" data-group="d">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group D</span></header>
         <ol class="bwc-standings" aria-label="Group D standings">
             <li class="bwc-st-head" aria-hidden="true">
@@ -825,8 +830,10 @@
                     </li>
         </ol>
       </section>
+      </div>
 
-      <section class="bwc-group" id="group-g" data-group="g">
+      <div class="bwc-wall-panel" id="panel-ghi">
+<section class="bwc-group" id="group-g" data-group="g">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group G</span></header>
         <ol class="bwc-standings" aria-label="Group G standings">
             <li class="bwc-st-head" aria-hidden="true">
@@ -1158,8 +1165,10 @@
                     </li>
         </ol>
       </section>
+      </div>
 
-      <section class="bwc-group" id="group-j" data-group="j">
+      <div class="bwc-wall-panel" id="panel-jkl">
+<section class="bwc-group" id="group-j" data-group="j">
         <header class="bwc-group-h"><span class="bwc-group-tag">Group J</span></header>
         <ol class="bwc-standings" aria-label="Group J standings">
             <li class="bwc-st-head" aria-hidden="true">
@@ -1491,6 +1500,7 @@
                     </li>
         </ol>
       </section>
+      </div>
 
     </div>
       <div class="bwc-deck-dots" aria-hidden="true"><button class="bwc-deck-dot" data-dot="0" aria-label="Group A"></button><button class="bwc-deck-dot" data-dot="1" aria-label="Group B"></button><button class="bwc-deck-dot" data-dot="2" aria-label="Group C"></button><button class="bwc-deck-dot" data-dot="3" aria-label="Group D"></button><button class="bwc-deck-dot" data-dot="4" aria-label="Group E"></button><button class="bwc-deck-dot" data-dot="5" aria-label="Group F"></button><button class="bwc-deck-dot" data-dot="6" aria-label="Group G"></button><button class="bwc-deck-dot" data-dot="7" aria-label="Group H"></button><button class="bwc-deck-dot" data-dot="8" aria-label="Group I"></button><button class="bwc-deck-dot" data-dot="9" aria-label="Group J"></button><button class="bwc-deck-dot" data-dot="10" aria-label="Group K"></button><button class="bwc-deck-dot" data-dot="11" aria-label="Group L"></button></div>
