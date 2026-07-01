@@ -788,7 +788,10 @@
   }
 }
 
-/* --- Knockout rounds (R16, QF, SF, Final) -------------------------------- */
+/* --- Knockout rounds (LEGACY — retained for the old .bwc-knockout /
+ * .bwc-r32-pair markup; bracket panel now uses .bwc-bracket + .bwc-slot
+ * below. These rules are inert on the fixtures page but kept in case
+ * any other bracket-adjacent page still references them.) -------------- */
 .bwc-knockout {
   list-style: none;
   margin: 0;
@@ -799,22 +802,261 @@
 @media (min-width: 640px) {
   .bwc-knockout { grid-template-columns: 1fr 1fr; }
 }
-.bwc-knockout--final {
-  grid-template-columns: 1fr !important;
-  max-width: 480px;
+
+
+/* === MIRRORED BRACKET (fixtures page) ======================================
+ * Nine-column poster shape on desktop:
+ *   R32-L | R16-L | QF-L | SF-L | FINAL | SF-R | QF-R | R16-R | R32-R
+ * Column ORDER mirrors around the FINAL; card contents stay L→R inside
+ * every slot (teams read left-to-right on both sides — no glyph flipping).
+ *
+ * Vertical scaling: 8 base rows. R32 slots span 1 row (8 per side); R16
+ * span 2 (4 per side); QF span 4 (2 per side); SF and FINAL span 8.
+ * That aligns each winner's slot vertically between its two feeders.
+ *
+ * Mobile fallback (<900px): five-column single-side ladder. R32 → R16 →
+ * QF → SF → FINAL, horizontal scroll. Both halves collapse into the same
+ * round column so all 16 R32s stack in column 1, etc.
+ * ----------------------------------------------------------------------- */
+
+.bwc-bracket-caption {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.bwc-bracket {
+  position: relative;
+  display: grid;
+  gap: 6px 4px;
   margin: 0 auto;
+  max-width: 100%;
 }
-.bwc-m--final {
-  border-width: 2px !important;
-  border-color: var(--teal) !important;
-  border-style: solid !important;
-  background: rgba(0, 212, 170, 0.08) !important;
-  box-shadow: 0 10px 28px -18px rgba(0, 212, 170, 0.6);
-  opacity: 1 !important;
-  padding: 14px 16px !important;
+
+/* Column headers (row 1). One per column so labels sit above the round. */
+.bwc-bracket-hd {
+  grid-row: 1;
+  font-family: 'Archivo', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-align: center;
+  padding: 4px 0 8px;
+  border-bottom: 1px solid rgba(192, 163, 64, 0.25);
+  align-self: end;
 }
-.bwc-m--final .bwc-m-teams { font-size: 0.95rem; font-weight: 700; }
-.bwc-m--final .bwc-m-status { color: var(--teal); }
+.bwc-bracket-hd[data-round="FINAL"] {
+  color: var(--teal);
+  border-bottom-color: rgba(0, 212, 170, 0.45);
+}
+
+/* Slot base — flip-card + non-flip variants share these looks. */
+.bwc-slot {
+  display: flex;
+  align-items: stretch;
+  min-height: 56px;
+  position: relative;
+  perspective: 900px;
+}
+.bwc-slot-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+.bwc-slot-inner {
+  display: grid;
+  grid-template-areas: "stack";
+  transform-style: preserve-3d;
+  transition: transform .5s cubic-bezier(.4,.2,.2,1);
+  width: 100%;
+}
+.bwc-slot-toggle:checked + .bwc-slot-inner { transform: rotateY(180deg); }
+.bwc-slot-face {
+  grid-area: stack;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  padding: 7px 9px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--card);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  min-height: inherit;
+}
+.bwc-slot-front { background: var(--card); }
+.bwc-slot-back  { transform: rotateY(180deg); }
+.bwc-slot--played .bwc-slot-front {
+  background: rgba(0, 212, 170, 0.05);
+  border-color: rgba(0, 212, 170, 0.35);
+}
+.bwc-slot--played .bwc-slot-back {
+  background: rgba(0, 212, 170, 0.10);
+  border-color: rgba(0, 212, 170, 0.45);
+}
+.bwc-slot--previewable .bwc-slot-front {
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+.bwc-slot--blank:not(.bwc-slot--previewable) {
+  cursor: default;
+}
+.bwc-slot--blank:not(.bwc-slot--previewable) > .bwc-slot-teams,
+.bwc-slot--blank:not(.bwc-slot--previewable) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  padding: 7px 9px;
+  border-radius: 6px;
+  border: 1px dashed rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.02);
+  min-height: inherit;
+}
+
+.bwc-slot-teams {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  overflow: hidden;
+}
+.bwc-slot-teams em { font-style: normal; color: var(--muted); font-weight: 500; margin: 0 4px; font-size: 0.7rem; }
+.bwc-slot-teams .flag { margin-right: 2px; }
+
+.bwc-slot-score {
+  font-family: 'SF Mono', Menlo, Monaco, monospace;
+  font-weight: 800;
+  font-size: 0.86rem;
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+.bwc-slot-status,
+.bwc-slot-winner {
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.bwc-slot--played .bwc-slot-winner { color: var(--teal); }
+.bwc-slot-verdict,
+.bwc-slot-preview {
+  font-size: 0.7rem;
+  line-height: 1.35;
+  color: var(--text);
+}
+.bwc-slot-preview {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Trophy accent in the centre of the bracket. Positioned via grid area
+   so it sits behind the FINAL slot for a subtle "champion" watermark. */
+.bwc-bracket-trophy {
+  grid-row: 5 / span 4;
+  align-self: center;
+  justify-self: center;
+  font-size: 2.6rem;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bwc-slot-inner { transition: none; }
+}
+
+/* ─── Desktop: 9-column mirror ─── */
+@media (min-width: 900px) {
+  .bwc-bracket {
+    grid-template-columns:
+      minmax(120px, 1.15fr)  /* R32 L */
+      minmax(115px, 1fr)     /* R16 L */
+      minmax(115px, 1fr)     /* QF L */
+      minmax(115px, 1fr)     /* SF L */
+      minmax(140px, 1.25fr)  /* FINAL */
+      minmax(115px, 1fr)     /* SF R */
+      minmax(115px, 1fr)     /* QF R */
+      minmax(115px, 1fr)     /* R16 R */
+      minmax(120px, 1.15fr); /* R32 R */
+    grid-template-rows: auto repeat(8, minmax(64px, auto));
+  }
+  .bwc-slot[data-round="R32"][data-side="left"]  { grid-column: 1; grid-row: span 1; }
+  .bwc-slot[data-round="R16"][data-side="left"]  { grid-column: 2; grid-row: span 2; }
+  .bwc-slot[data-round="QF"][data-side="left"]   { grid-column: 3; grid-row: span 4; }
+  .bwc-slot[data-round="SF"][data-side="left"]   { grid-column: 4; grid-row: span 8; }
+  .bwc-slot[data-round="FINAL"]                    { grid-column: 5; grid-row: span 8; z-index: 1; }
+  .bwc-slot[data-round="SF"][data-side="right"]  { grid-column: 6; grid-row: span 8; }
+  .bwc-slot[data-round="QF"][data-side="right"]  { grid-column: 7; grid-row: span 4; }
+  .bwc-slot[data-round="R16"][data-side="right"] { grid-column: 8; grid-row: span 2; }
+  .bwc-slot[data-round="R32"][data-side="right"] { grid-column: 9; grid-row: span 1; }
+  .bwc-bracket-hd[data-round="R32"][data-side="left"]  { grid-column: 1; }
+  .bwc-bracket-hd[data-round="R16"][data-side="left"]  { grid-column: 2; }
+  .bwc-bracket-hd[data-round="QF"][data-side="left"]   { grid-column: 3; }
+  .bwc-bracket-hd[data-round="SF"][data-side="left"]   { grid-column: 4; }
+  .bwc-bracket-hd[data-round="FINAL"]                    { grid-column: 5; }
+  .bwc-bracket-hd[data-round="SF"][data-side="right"]  { grid-column: 6; }
+  .bwc-bracket-hd[data-round="QF"][data-side="right"]  { grid-column: 7; }
+  .bwc-bracket-hd[data-round="R16"][data-side="right"] { grid-column: 8; }
+  .bwc-bracket-hd[data-round="R32"][data-side="right"] { grid-column: 9; }
+  .bwc-bracket-trophy { grid-column: 5; }
+
+  /* FINAL gets a subtle mint glow. */
+  .bwc-slot[data-round="FINAL"] .bwc-slot-face {
+    border-width: 2px;
+    border-color: var(--teal);
+    background: rgba(0, 212, 170, 0.08);
+    box-shadow: 0 8px 22px -14px rgba(0, 212, 170, 0.55);
+  }
+  .bwc-slot[data-round="FINAL"] .bwc-slot-teams { font-size: 0.86rem; }
+}
+
+/* ─── Mobile fallback: 5-column ladder, single-side, horizontal scroll ─── */
+@media (max-width: 899px) {
+  .bwc-bracket {
+    grid-template-columns: repeat(5, minmax(220px, 1fr));
+    grid-template-rows: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+  .bwc-slot { grid-row: auto; }
+  .bwc-slot[data-round="R32"]  { grid-column: 1; }
+  .bwc-slot[data-round="R16"]  { grid-column: 2; }
+  .bwc-slot[data-round="QF"]   { grid-column: 3; }
+  .bwc-slot[data-round="SF"]   { grid-column: 4; }
+  .bwc-slot[data-round="FINAL"] { grid-column: 5; }
+  .bwc-bracket-hd[data-round="R32"]  { grid-column: 1; grid-row: 1; }
+  .bwc-bracket-hd[data-round="R16"]  { grid-column: 2; grid-row: 1; }
+  .bwc-bracket-hd[data-round="QF"]   { grid-column: 3; grid-row: 1; }
+  .bwc-bracket-hd[data-round="SF"]   { grid-column: 4; grid-row: 1; }
+  .bwc-bracket-hd[data-round="FINAL"] { grid-column: 5; grid-row: 1; }
+  /* Hide duplicate headers — one per round is enough. Use :nth-of-type
+     approximation: hide the *second* SF, QF, R16, R32 headers. */
+  .bwc-bracket-hd[data-round="SF"][data-side="right"],
+  .bwc-bracket-hd[data-round="QF"][data-side="right"],
+  .bwc-bracket-hd[data-round="R16"][data-side="right"],
+  .bwc-bracket-hd[data-round="R32"][data-side="right"] { display: none; }
+  .bwc-bracket-trophy { display: none; }
+}
+
+/* Print: hide the trophy (background image) and let the bracket flow. */
+@media print {
+  .bwc-bracket-trophy { display: none; }
+  .bwc-slot-inner { transform: none !important; }
+  .bwc-slot-back  { transform: none; }
+}
 
 
 /* === FOLLOW-A-TEAM (JS-only progressive enhancement) =======================
