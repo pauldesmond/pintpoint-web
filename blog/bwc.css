@@ -746,17 +746,10 @@
   border-color: rgba(0,212,170,0.45);
   grid-template-columns: 1fr;
 }
+/* Tap hints on wall-chart flip cards — retired. Users discover the flip
+   fast; the hint text was visual noise on the poster-grid layout. */
 .bwc-m-tap,
-.bwc-m-tap-back {
-  grid-column: 1 / -1;
-  font-size: 0.65rem;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-top: 6px;
-  opacity: 0.55;
-}
+.bwc-m-tap-back { display: none; }
 .bwc-m-back .bwc-m-winner { margin-top: 0; }
 .bwc-m-back .bwc-m-verdict {
   font-style: normal;
@@ -836,23 +829,24 @@
   max-width: 100%;
 }
 
-/* Column headers (row 1). One per column so labels sit above the round. */
+/* Column headers (row 1). Muted grey, thin underline — quiet enough to
+   sit as scaffolding rather than shout. Only FINAL breaks colour. */
 .bwc-bracket-hd {
   grid-row: 1;
   font-family: 'Archivo', 'Inter', sans-serif;
-  font-weight: 800;
-  font-size: 0.66rem;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--amber);
+  color: var(--muted);
   text-align: center;
-  padding: 4px 0 8px;
-  border-bottom: 1px solid rgba(192, 163, 64, 0.25);
+  padding: 4px 0 6px;
+  border-bottom: 1px solid var(--border);
   align-self: end;
 }
 .bwc-bracket-hd[data-round="FINAL"] {
   color: var(--teal);
-  border-bottom-color: rgba(0, 212, 170, 0.45);
+  border-bottom-color: rgba(0, 212, 170, 0.35);
 }
 
 /* Slot base — flip-card + non-flip variants share these looks. */
@@ -879,34 +873,39 @@
   width: 100%;
 }
 .bwc-slot-toggle:checked + .bwc-slot-inner { transform: rotateY(180deg); }
+/* Lightness pass: match cells are outlined rectangles, no fills. Borders
+   thin and muted. Only the played state gets a mint tint on the reveal
+   (back face) as feedback that the tap worked. Front stays quiet. */
 .bwc-slot-face {
   grid-area: stack;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 3px;
-  padding: 7px 9px;
-  border-radius: 6px;
+  gap: 2px;
+  padding: 6px 8px;
+  border-radius: 4px;
   cursor: pointer;
   border: 1px solid var(--border);
-  background: var(--card);
+  background: transparent;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   min-height: inherit;
 }
-.bwc-slot-front { background: var(--card); }
 .bwc-slot-back  { transform: rotateY(180deg); }
+/* Played R32 slots: front stays outline-only (matches the ladder tone),
+   back is filled mint to signal the ruling. */
 .bwc-slot--played .bwc-slot-front {
-  background: rgba(0, 212, 170, 0.05);
   border-color: rgba(0, 212, 170, 0.35);
 }
 .bwc-slot--played .bwc-slot-back {
-  background: rgba(0, 212, 170, 0.10);
+  background: rgba(0, 212, 170, 0.08);
   border-color: rgba(0, 212, 170, 0.45);
 }
 .bwc-slot--previewable .bwc-slot-front {
   border-style: dashed;
-  border-color: rgba(255, 255, 255, 0.14);
+}
+.bwc-slot--previewable .bwc-slot-back {
+  background: rgba(255, 255, 255, 0.03);
 }
 .bwc-slot--blank:not(.bwc-slot--previewable) {
   cursor: default;
@@ -916,11 +915,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 3px;
-  padding: 7px 9px;
-  border-radius: 6px;
-  border: 1px dashed rgba(255, 255, 255, 0.10);
-  background: rgba(255, 255, 255, 0.02);
+  gap: 2px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px dashed var(--border);
+  background: transparent;
   min-height: inherit;
 }
 
@@ -977,84 +976,59 @@
   .bwc-slot-inner { transition: none; }
 }
 
-/* ─── Desktop: 9-column mirror ─── */
-@media (min-width: 900px) {
-  .bwc-bracket {
-    grid-template-columns:
-      minmax(120px, 1.15fr)  /* R32 L */
-      minmax(115px, 1fr)     /* R16 L */
-      minmax(115px, 1fr)     /* QF L */
-      minmax(115px, 1fr)     /* SF L */
-      minmax(140px, 1.25fr)  /* FINAL */
-      minmax(115px, 1fr)     /* SF R */
-      minmax(115px, 1fr)     /* QF R */
-      minmax(115px, 1fr)     /* R16 R */
-      minmax(120px, 1.15fr); /* R32 R */
-    grid-template-rows: auto repeat(8, minmax(64px, auto));
-  }
-  .bwc-slot[data-round="R32"][data-side="left"]  { grid-column: 1; grid-row: span 1; }
-  .bwc-slot[data-round="R16"][data-side="left"]  { grid-column: 2; grid-row: span 2; }
-  .bwc-slot[data-round="QF"][data-side="left"]   { grid-column: 3; grid-row: span 4; }
-  .bwc-slot[data-round="SF"][data-side="left"]   { grid-column: 4; grid-row: span 8; }
-  .bwc-slot[data-round="FINAL"]                    { grid-column: 5; grid-row: span 8; z-index: 1; }
-  .bwc-slot[data-round="SF"][data-side="right"]  { grid-column: 6; grid-row: span 8; }
-  .bwc-slot[data-round="QF"][data-side="right"]  { grid-column: 7; grid-row: span 4; }
-  .bwc-slot[data-round="R16"][data-side="right"] { grid-column: 8; grid-row: span 2; }
-  .bwc-slot[data-round="R32"][data-side="right"] { grid-column: 9; grid-row: span 1; }
-  .bwc-bracket-hd[data-round="R32"][data-side="left"]  { grid-column: 1; }
-  .bwc-bracket-hd[data-round="R16"][data-side="left"]  { grid-column: 2; }
-  .bwc-bracket-hd[data-round="QF"][data-side="left"]   { grid-column: 3; }
-  .bwc-bracket-hd[data-round="SF"][data-side="left"]   { grid-column: 4; }
-  .bwc-bracket-hd[data-round="FINAL"]                    { grid-column: 5; }
-  .bwc-bracket-hd[data-round="SF"][data-side="right"]  { grid-column: 6; }
-  .bwc-bracket-hd[data-round="QF"][data-side="right"]  { grid-column: 7; }
-  .bwc-bracket-hd[data-round="R16"][data-side="right"] { grid-column: 8; }
-  .bwc-bracket-hd[data-round="R32"][data-side="right"] { grid-column: 9; }
-  .bwc-bracket-trophy { grid-column: 5; }
+/* ─── Ladder layout (single-side L→R, 5 columns) — unified desktop + mobile
+ * Paul revised the mirror brief after seeing the 1desk chart: the ladder
+ * gets the same "wallchart" identity with half the visual surface. Same
+ * shape at all viewport widths; on narrow screens the container
+ * horizontally scrolls. Base rows scaled to R32 depth (16), with R16 span
+ * 2, QF span 4, SF span 8, FINAL span 16 so each winner slot sits centred
+ * between its two feeders. */
+.bwc-bracket {
+  grid-template-columns: repeat(5, minmax(140px, 1fr));
+  grid-template-rows: auto repeat(16, minmax(38px, auto));
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.bwc-slot[data-round="R32"]  { grid-column: 1; grid-row: span 1; }
+.bwc-slot[data-round="R16"]  { grid-column: 2; grid-row: span 2; }
+.bwc-slot[data-round="QF"]   { grid-column: 3; grid-row: span 4; }
+.bwc-slot[data-round="SF"]   { grid-column: 4; grid-row: span 8; }
+.bwc-slot[data-round="FINAL"] { grid-column: 5; grid-row: span 16; }
+.bwc-bracket-hd[data-round="R32"]   { grid-column: 1; }
+.bwc-bracket-hd[data-round="R16"]   { grid-column: 2; }
+.bwc-bracket-hd[data-round="QF"]    { grid-column: 3; }
+.bwc-bracket-hd[data-round="SF"]    { grid-column: 4; }
+.bwc-bracket-hd[data-round="FINAL"] { grid-column: 5; }
 
-  /* FINAL gets a subtle mint glow. */
-  .bwc-slot[data-round="FINAL"] .bwc-slot-face {
-    border-width: 2px;
-    border-color: var(--teal);
-    background: rgba(0, 212, 170, 0.08);
-    box-shadow: 0 8px 22px -14px rgba(0, 212, 170, 0.55);
-  }
-  .bwc-slot[data-round="FINAL"] .bwc-slot-teams { font-size: 0.86rem; }
+/* Right-side duplicate headers hidden — one per round is enough now that
+   the mirror is gone. */
+.bwc-bracket-hd[data-side="right"] { display: none; }
+
+/* Watermark trophy retired; trophy now sits INSIDE the FINAL cell. */
+.bwc-bracket-trophy { display: none; }
+
+/* Trophy inside the FINAL cell — via ::before so we don't need to touch
+   the render script. */
+.bwc-slot[data-round="FINAL"] .bwc-slot-face::before {
+  content: "🏆";
+  display: block;
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 4px;
+  opacity: 0.9;
 }
 
-/* ─── Mobile fallback: 5-column ladder, single-side, horizontal scroll ─── */
-@media (max-width: 899px) {
-  .bwc-bracket {
-    grid-template-columns: repeat(5, minmax(220px, 1fr));
-    grid-template-rows: auto;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 8px;
-    scrollbar-width: thin;
-  }
-  .bwc-slot { grid-row: auto; }
-  .bwc-slot[data-round="R32"]  { grid-column: 1; }
-  .bwc-slot[data-round="R16"]  { grid-column: 2; }
-  .bwc-slot[data-round="QF"]   { grid-column: 3; }
-  .bwc-slot[data-round="SF"]   { grid-column: 4; }
-  .bwc-slot[data-round="FINAL"] { grid-column: 5; }
-  .bwc-bracket-hd[data-round="R32"]  { grid-column: 1; grid-row: 1; }
-  .bwc-bracket-hd[data-round="R16"]  { grid-column: 2; grid-row: 1; }
-  .bwc-bracket-hd[data-round="QF"]   { grid-column: 3; grid-row: 1; }
-  .bwc-bracket-hd[data-round="SF"]   { grid-column: 4; grid-row: 1; }
-  .bwc-bracket-hd[data-round="FINAL"] { grid-column: 5; grid-row: 1; }
-  /* Hide duplicate headers — one per round is enough. Use :nth-of-type
-     approximation: hide the *second* SF, QF, R16, R32 headers. */
-  .bwc-bracket-hd[data-round="SF"][data-side="right"],
-  .bwc-bracket-hd[data-round="QF"][data-side="right"],
-  .bwc-bracket-hd[data-round="R16"][data-side="right"],
-  .bwc-bracket-hd[data-round="R32"][data-side="right"] { display: none; }
-  .bwc-bracket-trophy { display: none; }
+/* FINAL cell: teal outline, no fill (matches the lightness pass). */
+.bwc-slot[data-round="FINAL"] .bwc-slot-face {
+  border-color: var(--teal);
+  border-width: 1px;
+  background: transparent;
 }
+.bwc-slot[data-round="FINAL"] .bwc-slot-teams { font-size: 0.82rem; }
 
-/* Print: hide the trophy (background image) and let the bracket flow. */
+/* Print: drop the flip transforms so the back is visible next to the front. */
 @media print {
-  .bwc-bracket-trophy { display: none; }
   .bwc-slot-inner { transform: none !important; }
   .bwc-slot-back  { transform: none; }
 }
