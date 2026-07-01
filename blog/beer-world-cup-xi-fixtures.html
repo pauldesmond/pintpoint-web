@@ -24,7 +24,7 @@
     "author": { "@type": "Organization", "name": "PINtPOINT" },
     "publisher": { "@type": "Organization", "name": "PINtPOINT" },
     "datePublished": "2026-06-19",
-    "dateModified": "2026-06-21",
+    "dateModified": "2026-07-01",
     "url": "https://pintpoint.co.uk/blog/beer-world-cup-xi-fixtures.html",
     "image": "https://pintpoint.co.uk/blog/images/beer-world-cup-xi-infographic-v1.jpg",
     "mainEntityOfPage": "https://pintpoint.co.uk/blog/beer-world-cup-xi-fixtures.html"
@@ -33,8 +33,33 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Anton&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="bwc.css?v=41" />
+  <link rel="stylesheet" href="bwc.css?v=42" />
   <script src="bwc-follow.js?v=1" defer></script>
+  <script>
+    // Deep-link hash → snap the swipe deck to the right panel on first load.
+    // Native scrollIntoView fires before the scroll-snap container is aware
+    // of its child dimensions, so #panel-ghi ends up on panel-abc. Wait
+    // for layout, then scroll the .bwc-wall container to the target's left offset.
+    (function () {
+      function snapToHash() {
+        var hash = location.hash;
+        if (!hash || !/^#panel-/.test(hash)) return;
+        var target = document.getElementById(hash.slice(1));
+        var wall = target && target.parentElement;
+        if (!target || !wall || !wall.classList.contains('bwc-wall')) return;
+        // Use scrollLeft on the container (not scrollIntoView) so we don't
+        // affect the outer document scroll position.
+        wall.scrollTo({ left: target.offsetLeft, behavior: 'auto' });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', snapToHash);
+      } else {
+        snapToHash();
+      }
+      // Also snap when the hash changes (user clicks an in-page chip).
+      window.addEventListener('hashchange', snapToHash);
+    })();
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; }

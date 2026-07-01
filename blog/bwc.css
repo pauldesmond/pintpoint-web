@@ -732,12 +732,15 @@
   min-height: 88px;
 }
 
-/* When the group's match list contains flip cards, switch the container
-   to a grid with equal-height rows. Every card in the group ends up the
-   same height as the tallest, so the deck looks uniform. */
+/* When the group's match list contains flip cards, give each row a
+   fixed height. Previous approach used grid-auto-rows: 1fr which
+   sizes each row to the tallest card — that's fine when all cards
+   fit their content, but on narrow-column mobile the tallest card
+   (long team names wrapping) becomes ~200px and drags every card
+   with it. Fixed height keeps the deck uniform at every viewport. */
 .bwc-group-matches:has(.bwc-m--flip) {
   display: grid;
-  grid-auto-rows: 1fr;
+  grid-auto-rows: 88px;
 }
 .bwc-m-toggle {
   position: absolute;
