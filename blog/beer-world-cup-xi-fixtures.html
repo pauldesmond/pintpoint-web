@@ -139,18 +139,14 @@
          ============================================================= -->
     <section class="bwc-view-panel" data-view="wall" aria-label="Tournament tracker">
 
-      <!-- Status filter (CSS-only radio-hack). Same sibling-position rule. -->
-      <input type="radio" id="f-all"      name="bwc-status" class="bwc-status-radio" checked aria-hidden="true">
-      <input type="radio" id="f-played"   name="bwc-status" class="bwc-status-radio" aria-hidden="true">
-      <input type="radio" id="f-upcoming" name="bwc-status" class="bwc-status-radio" aria-hidden="true">
-      <div class="bwc-status-chips" role="tablist" aria-label="Filter by status">
-        <label for="f-all"      class="bwc-status-chip" role="tab">All</label>
-        <label for="f-played"   class="bwc-status-chip" role="tab">Played</label>
-        <label for="f-upcoming" class="bwc-status-chip" role="tab">Upcoming</label>
-      </div>
+      <!-- Status filter (All/Played/Upcoming) retired: every group-stage
+           match is played, so the three chips showed the identical set —
+           dead limb, one less confused thing. If R32/knockout results
+           should ever be filterable, that belongs in the Knockout Stage
+           panel, not here. -->
 
-      <!-- Group jump-chips (unchanged — these were the useful filter row).
-           The 18 Day chips were removed; over-served vs the page payoff. -->
+      <!-- Group jump-chips: 4 range chips (A–C, D–F, G–I, J–L). Anchor
+           links to the swipe-deck panel ids. -->
       <div class="bwc-filters" role="region" aria-label="Jump to group">
         <div class="bwc-filter-row" role="tablist" aria-label="Jump to group panel">
           <a href="#panel-abc" class="bwc-chip">A–C</a>
