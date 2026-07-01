@@ -119,9 +119,13 @@
     /* Small tag distinguishing PINtPOINT-loaded pubs from Untappd-only fallbacks. */
     .pub-card .via { display: inline-block; margin-top: 6px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 2px 8px; border-radius: 99px; border: 1px solid var(--border); }
     .pub-card.via-pintpoint .via { color: var(--teal); border-color: rgba(0,212,170,0.3); }
-    /* Swipe-deck dots — visual affordance that there are more panels. */
-    .pub-deck-dots { display: flex; justify-content: center; gap: 8px; margin-top: 4px; }
-    .pub-deck-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+    /* Swipe-deck dots — clickable panel-nav, tracks the visible panel.
+       The active dot is teal so users can see (a) that the cards swipe
+       and (b) which page they're on. */
+    .pub-deck-dots { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
+    .pub-deck-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); border: 0; padding: 0; cursor: pointer; transition: background-color .15s, transform .15s; opacity: 0.55; }
+    .pub-deck-dot:hover { opacity: 0.9; transform: scale(1.15); }
+    .pub-deck-dot.is-active { background: var(--teal); opacity: 1; transform: scale(1.2); }
     .sources { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
     .sources h2 { font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-top: 0; margin-bottom: 14px; }
     .sources ul { list-style: none; padding: 0; }
@@ -322,13 +326,43 @@
           </a>
         </div>
       </div>
-      <div class="pub-deck-dots" aria-hidden="true">
-        <span class="pub-deck-dot"></span>
-        <span class="pub-deck-dot"></span>
-        <span class="pub-deck-dot"></span>
-        <span class="pub-deck-dot"></span>
+      <div class="pub-deck-dots" role="tablist" aria-label="Pub roster page">
+        <button type="button" class="pub-deck-dot is-active" data-panel="1" aria-label="Page 1 of 4"></button>
+        <button type="button" class="pub-deck-dot" data-panel="2" aria-label="Page 2 of 4"></button>
+        <button type="button" class="pub-deck-dot" data-panel="3" aria-label="Page 3 of 4"></button>
+        <button type="button" class="pub-deck-dot" data-panel="4" aria-label="Page 4 of 4"></button>
       </div>
     </section>
+
+    <script>
+      // Swipe-deck dot tracker: highlight the dot for the visible panel.
+      // Also makes dots clickable to jump. Uses IntersectionObserver on the
+      // deck as root — no scroll-listener spam.
+      (function () {
+        var deck = document.querySelector('.pub-deck');
+        var panels = document.querySelectorAll('.pub-panel');
+        var dots = document.querySelectorAll('.pub-deck-dot');
+        if (!deck || !panels.length || !dots.length) return;
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+              var idx = Array.prototype.indexOf.call(panels, entry.target);
+              dots.forEach(function (dot, i) {
+                dot.classList.toggle('is-active', i === idx);
+              });
+            }
+          });
+        }, { threshold: 0.5, root: deck });
+        panels.forEach(function (panel) { io.observe(panel); });
+        dots.forEach(function (dot, i) {
+          dot.addEventListener('click', function () {
+            var target = panels[i];
+            if (!target) return;
+            deck.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+          });
+        });
+      })();
+    </script>
 
     <section class="sources">
       <h2>Further reading</h2>
