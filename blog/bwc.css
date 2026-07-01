@@ -830,6 +830,7 @@
 .bwc-bracket {
   position: relative;
   display: grid;
+  grid-auto-flow: dense;
   gap: 6px 4px;
   margin: 0 auto;
   max-width: 100%;
