@@ -904,11 +904,12 @@
   background: rgba(0, 212, 170, 0.20);
   border-color: var(--teal);
 }
-.bwc-slot--previewable .bwc-slot-front { border-style: dashed; }
 .bwc-slot--previewable .bwc-slot-back { background: rgba(255, 255, 255, 0.06); }
 
 /* Non-flip placeholder slots (R16/QF/SF/FINAL awaiting-feeder cards) —
-   render the slot itself as the outlined rectangle. Same fixed cell size. */
+   render the slot itself as the outlined rectangle. Same fixed cell size,
+   same solid stroke as everything else — the played/unplayed distinction
+   is carried by border colour, not by dashed vs solid style. */
 .bwc-slot--blank:not(.bwc-slot--previewable) {
   display: flex;
   flex-direction: column;
@@ -916,7 +917,7 @@
   gap: 2px;
   padding: 5px 7px;
   border-radius: 4px;
-  border: 2px dashed rgba(255, 255, 255, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.45);
   background: rgba(255, 255, 255, 0.05);
   overflow: hidden;
   cursor: default;
