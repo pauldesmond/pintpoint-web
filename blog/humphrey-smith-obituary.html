@@ -31,7 +31,7 @@
     "author": { "@type": "Person", "name": "Sophie Ro", "url": "https://pintpoint.co.uk/about-pintpoint.html", "sameAs": ["https://x.com/sophiero84", "https://instagram.com/pint_point", "https://www.tiktok.com/@pintpoint84", "https://www.youtube.com/@SophieRo-l5h", "https://www.reddit.com/user/SophieRo_"], "knowsAbout": ["beer", "British brewing", "pubs", "Samuel Smith's", "Tadcaster"] },
     "publisher": { "@id": "https://pintpoint.co.uk/#organization" },
     "datePublished": "2026-06-30",
-    "dateModified": "2026-06-30",
+    "dateModified": "2026-07-01",
     "url": "https://pintpoint.co.uk/blog/humphrey-smith-obituary.html",
     "image": "https://pintpoint.co.uk/blog/images/humphrey-smith-obituary.jpg",
     "mainEntityOfPage": "https://pintpoint.co.uk/blog/humphrey-smith-obituary.html",
@@ -41,11 +41,15 @@
       { "@type": "Place", "name": "Tadcaster", "sameAs": "https://en.wikipedia.org/wiki/Tadcaster" }
     ],
     "mentions": [
-      { "@type": "BarOrPub", "name": "Ye Olde Cheshire Cheese", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
-      { "@type": "BarOrPub", "name": "Cittie of Yorke", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
-      { "@type": "BarOrPub", "name": "Princess Louise", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
+      { "@type": "BarOrPub", "name": "Ye Olde Cheshire Cheese", "url": "https://pintpoint.co.uk/pubs/ye-olde-cheshire-cheese-london", "address": { "@type": "PostalAddress", "streetAddress": "145 Fleet Street", "addressLocality": "London", "addressCountry": "GB" } },
+      { "@type": "BarOrPub", "name": "Cittie of Yorke", "url": "https://pintpoint.co.uk/pubs/cittie-of-yorke-london", "address": { "@type": "PostalAddress", "streetAddress": "22 High Holborn", "addressLocality": "London", "addressCountry": "GB" } },
+      { "@type": "BarOrPub", "name": "The Princess Louise", "url": "https://pintpoint.co.uk/pubs/princess-louise-london", "address": { "@type": "PostalAddress", "streetAddress": "208 High Holborn", "addressLocality": "London", "addressCountry": "GB" } },
       { "@type": "BarOrPub", "name": "The Chandos", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } },
-      { "@type": "BarOrPub", "name": "Crown & Sugarloaf", "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" } }
+      { "@type": "BarOrPub", "name": "The Crown and Sugarloaf", "url": "https://pintpoint.co.uk/pubs/crown-and-sugar-loaf-london", "address": { "@type": "PostalAddress", "streetAddress": "26 Bride Lane", "addressLocality": "London", "addressCountry": "GB" } },
+      { "@type": "BarOrPub", "name": "The Champion", "url": "https://pintpoint.co.uk/pubs/the-champion-london", "address": { "@type": "PostalAddress", "streetAddress": "1 Wellington Place", "addressLocality": "London", "addressCountry": "GB" } },
+      { "@type": "BarOrPub", "name": "The Captain Kidd", "url": "https://pintpoint.co.uk/pubs/captain-kidd-london", "address": { "@type": "PostalAddress", "streetAddress": "108 Wapping High Street", "addressLocality": "London", "addressCountry": "GB" } },
+      { "@type": "BarOrPub", "name": "Ye Olde Swiss Cottage", "url": "https://pintpoint.co.uk/pubs/ye-olde-swiss-cottage-london", "address": { "@type": "PostalAddress", "streetAddress": "98 Finchley Road", "addressLocality": "London", "addressCountry": "GB" } },
+      { "@type": "BarOrPub", "name": "Town Wharf", "url": "https://pintpoint.co.uk/pubs/town-wharf-isleworth", "address": { "@type": "PostalAddress", "streetAddress": "Swan Street", "addressLocality": "Isleworth", "addressCountry": "GB" } }
     ]
   }
   </script>
@@ -80,6 +84,15 @@
     .category.note { color: #C0A340; border: 1px solid rgba(192,163,64,0.4); }
     .lede { font-size: 1.1rem; color: var(--text); line-height: 1.72; margin-bottom: 24px; font-weight: 500; }
     .rule { border: 0; border-top: 1px solid var(--border); margin: 44px 0 28px; }
+    .pubs { margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .pubs h2 { font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-top: 0; margin-bottom: 6px; }
+    .pubs .intro { font-size: 0.92rem; line-height: 1.55; color: var(--muted); margin-bottom: 18px; }
+    .pub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+    .pub-card, .pub-card:link, .pub-card:visited { display: block; padding: 14px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; color: var(--text); text-decoration: none; transition: border-color .15s, transform .15s; }
+    .pub-card:hover { border-color: var(--teal); transform: translateY(-1px); }
+    .pub-card .name { font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 4px; letter-spacing: -0.2px; }
+    .pub-card:hover .name { color: var(--teal); }
+    .pub-card .loc { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
     .sources { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
     .sources h2 { font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-top: 0; margin-bottom: 14px; }
     .sources ul { list-style: none; padding: 0; }
@@ -120,6 +133,45 @@
     <p>Now he's gone, Samuel Smith's will almost certainly change, whether quickly or by degrees. Some of that will be welcome. Pubs may reopen, the rules may soften, staff may breathe easier, and the whole thing may become less combative. Fair enough. But if the place ends up tidier, friendlier and more commercially sane, it may also lose the thing that made it memorable. Humphrey Smith left behind more than a brewery. He left behind a question: how much of that strange old world survives once the man who kept it in being is no longer there?</p>
 
     <p>That is why his death feels significant. Not because he was lovable, and not because he was always right, but because he was unmistakably himself in a country increasingly run by people and companies that sound, look and behave exactly like each other. British pub culture has lost one of its great awkward customers. It may become easier without him. It will also be less peculiar.</p>
+
+    <section class="pubs">
+      <h2>Where to raise a Old Brewery Bitter in London</h2>
+      <p class="intro">Eight of the London Sam Smith's pubs that live on PINtPOINT with live tap lists. The Angel in Rotherhithe and The George &amp; Vulture at Bank aren't in the app yet — worth a visit anyway.</p>
+      <div class="pub-grid">
+        <a href="/pubs/princess-louise-london" class="pub-card">
+          <div class="name">The Princess Louise</div>
+          <div class="loc">208 High Holborn · Holborn</div>
+        </a>
+        <a href="/pubs/cittie-of-yorke-london" class="pub-card">
+          <div class="name">Cittie of Yorke</div>
+          <div class="loc">22 High Holborn · Chancery Lane</div>
+        </a>
+        <a href="/pubs/the-champion-london" class="pub-card">
+          <div class="name">The Champion</div>
+          <div class="loc">1 Wellington Place · Fitzrovia</div>
+        </a>
+        <a href="/pubs/captain-kidd-london" class="pub-card">
+          <div class="name">The Captain Kidd</div>
+          <div class="loc">108 Wapping High Street · Wapping</div>
+        </a>
+        <a href="/pubs/ye-olde-swiss-cottage-london" class="pub-card">
+          <div class="name">Ye Olde Swiss Cottage</div>
+          <div class="loc">98 Finchley Road · Swiss Cottage</div>
+        </a>
+        <a href="/pubs/crown-and-sugar-loaf-london" class="pub-card">
+          <div class="name">The Crown and Sugarloaf</div>
+          <div class="loc">26 Bride Lane · Fleet Street</div>
+        </a>
+        <a href="/pubs/ye-olde-cheshire-cheese-london" class="pub-card">
+          <div class="name">Ye Olde Cheshire Cheese</div>
+          <div class="loc">145 Fleet Street · Fleet Street</div>
+        </a>
+        <a href="/pubs/town-wharf-isleworth" class="pub-card">
+          <div class="name">Town Wharf</div>
+          <div class="loc">Swan Street · Isleworth</div>
+        </a>
+      </div>
+    </section>
 
     <section class="sources">
       <h2>Further reading</h2>
