@@ -874,7 +874,10 @@
 .bwc-slot-toggle:checked + .bwc-slot-inner { transform: rotateY(180deg); }
 /* Faces fill the slot exactly — position: absolute + inset: 0 so the
    grid cell (fixed 56px) is the source of truth for cell size. Uniform
-   boxes across the whole bracket, regardless of content. */
+   boxes across the whole bracket, regardless of content.
+   Borders are 1.5px at rgba(255,255,255,0.25) — bright enough to define
+   each cell against the dark background without shouting. Previous 1px
+   at .08 was invisible per Paul's review. */
 .bwc-slot-face {
   position: absolute;
   inset: 0;
@@ -885,21 +888,24 @@
   padding: 5px 7px;
   border-radius: 4px;
   cursor: pointer;
-  border: 1px solid var(--border);
-  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.02);
   overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 .bwc-slot-back { transform: rotateY(180deg); }
-/* Played R32 slots: front outline-only, back filled mint for tap feedback. */
-.bwc-slot--played .bwc-slot-front { border-color: rgba(0, 212, 170, 0.35); }
+/* Played R32 slots: teal border, subtle mint tint. Back gets stronger tint. */
+.bwc-slot--played .bwc-slot-front {
+  border-color: rgba(0, 212, 170, 0.55);
+  background: rgba(0, 212, 170, 0.06);
+}
 .bwc-slot--played .bwc-slot-back {
-  background: rgba(0, 212, 170, 0.08);
-  border-color: rgba(0, 212, 170, 0.45);
+  background: rgba(0, 212, 170, 0.14);
+  border-color: rgba(0, 212, 170, 0.65);
 }
 .bwc-slot--previewable .bwc-slot-front { border-style: dashed; }
-.bwc-slot--previewable .bwc-slot-back { background: rgba(255, 255, 255, 0.03); }
+.bwc-slot--previewable .bwc-slot-back { background: rgba(255, 255, 255, 0.04); }
 
 /* Non-flip placeholder slots (R16/QF/SF/FINAL awaiting-feeder cards) —
    render the slot itself as the outlined rectangle. Same fixed cell size. */
@@ -910,8 +916,8 @@
   gap: 2px;
   padding: 5px 7px;
   border-radius: 4px;
-  border: 1px dashed var(--border);
-  background: transparent;
+  border: 1.5px dashed rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.02);
   overflow: hidden;
   cursor: default;
 }
@@ -1054,11 +1060,15 @@
   opacity: 0.9;
 }
 
-/* FINAL cell: teal outline, no fill (matches the lightness pass). */
-.bwc-slot[data-round="FINAL"] .bwc-slot-face {
+/* FINAL cell: bold teal outline + soft glow so the champion slot reads
+   as the destination of the whole bracket. */
+.bwc-slot[data-round="FINAL"] .bwc-slot-face,
+.bwc-slot[data-round="FINAL"].bwc-slot--blank:not(.bwc-slot--previewable) {
   border-color: var(--teal);
-  border-width: 1px;
-  background: transparent;
+  border-width: 2px;
+  border-style: solid;
+  background: rgba(0, 212, 170, 0.06);
+  box-shadow: 0 6px 20px -14px rgba(0, 212, 170, 0.6);
 }
 .bwc-slot[data-round="FINAL"] .bwc-slot-teams { font-size: 0.82rem; }
 
