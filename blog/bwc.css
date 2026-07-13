@@ -1039,24 +1039,31 @@
 
 /* "Read full ›" chip on the back face — the escape hatch for the
    3-line clamp on knockout verdicts. Injected by bwc.js so slot
-   markup stays clean. Stops propagation so it doesn't flip the card. */
+   markup stays clean. Positioned absolutely so it can't be pushed
+   off by the verdict content, styled as a visible pill so it reads
+   as a control at small sizes. Whole back-face is also clickable as
+   a backup affordance — see bwc.js wireSlotOverlay. */
+.bwc-slot-back { cursor: pointer; }
 .bwc-slot-readmore {
-  display: inline-block;
-  margin-top: 6px;
-  padding: 2px 8px 2px 0;
-  font-size: 0.6rem;
-  font-weight: 600;
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  padding: 2px 7px;
+  font-size: 0.68rem;
+  font-weight: 700;
   letter-spacing: 0.03em;
   color: var(--teal);
-  background: none;
-  border: none;
+  background: rgba(0, 212, 170, 0.14);
+  border: 1px solid rgba(0, 212, 170, 0.55);
+  border-radius: 999px;
   cursor: pointer;
-  align-self: flex-start;
-  transition: color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease;
+  z-index: 2;
 }
 .bwc-slot-readmore:hover,
 .bwc-slot-readmore:focus-visible {
-  color: #6ce4c6;
+  background: rgba(0, 212, 170, 0.28);
+  color: #ffffff;
   outline: none;
 }
 

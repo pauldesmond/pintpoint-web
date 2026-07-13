@@ -313,9 +313,22 @@
       document.body.style.overflow = '';
     }
 
-    /* Inject "Read full ›" chip into every back face that has content. */
+    /* Inject "Read full ›" chip into every back face + make the whole
+       back face clickable as a backup affordance. Any click anywhere on
+       the visible verdict opens the modal. preventDefault stops the label
+       from toggling the checkbox (flipping the card) — once the user is
+       on the back face, there's nothing on the front worth returning to,
+       and the modal is what they actually want. */
     var backs = document.querySelectorAll('.bwc-slot--played .bwc-slot-back, .bwc-slot--previewable .bwc-slot-back');
     backs.forEach(function (back) {
+      /* Whole back-face click → modal */
+      back.addEventListener('click', function (e) {
+        e.preventDefault();
+        var slot = back.closest('.bwc-slot');
+        if (slot) open(slot);
+      });
+
+      /* Explicit chip (visible affordance) */
       if (back.querySelector('.bwc-slot-readmore')) return; /* idempotent */
       var chip = document.createElement('button');
       chip.type = 'button';
