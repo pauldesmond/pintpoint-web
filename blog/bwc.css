@@ -1037,6 +1037,100 @@
   font-style: italic;
 }
 
+/* "Read full ›" chip on the back face — the escape hatch for the
+   3-line clamp on knockout verdicts. Injected by bwc.js so slot
+   markup stays clean. Stops propagation so it doesn't flip the card. */
+.bwc-slot-readmore {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 8px 2px 0;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--teal);
+  background: none;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: color 0.15s ease;
+}
+.bwc-slot-readmore:hover,
+.bwc-slot-readmore:focus-visible {
+  color: #6ce4c6;
+  outline: none;
+}
+
+/* Full-verdict overlay — one-per-page modal, populated by JS from
+   whichever slot's chip was tapped. Backdrop click / close / Esc all
+   dismiss. z-index sits above the sticky page nav. */
+.bwc-slot-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 12, 0.86);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: bwc-fadein 0.16s ease-out;
+}
+.bwc-slot-overlay[data-open="true"] { display: flex; }
+@keyframes bwc-fadein { from { opacity: 0; } to { opacity: 1; } }
+
+.bwc-slot-overlay-card {
+  position: relative;
+  background: #0e1a1c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 28px 24px 24px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.bwc-slot-overlay-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.bwc-slot-overlay-close:hover,
+.bwc-slot-overlay-close:focus-visible {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  outline: none;
+}
+.bwc-slot-overlay-match {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.bwc-slot-overlay-winner {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+.bwc-slot-overlay-verdict {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
 /* Trophy accent in the centre of the bracket. Positioned via grid area
    so it sits behind the FINAL slot for a subtle "champion" watermark. */
 .bwc-bracket-trophy {

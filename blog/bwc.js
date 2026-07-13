@@ -281,6 +281,65 @@
     }
   }
 
+  /* ------------------------------------------------------------------ Slot overlay
+     The bracket back-face verdicts truncate to 3 lines to preserve
+     uniform cell sizing. Since knockout rounds don't have a wall-chart
+     home like the group stage does, we inject a "Read full" chip into
+     every played/previewable back face and pop an overlay with the
+     full text. Slot markup stays unchanged — this reads from the DOM. */
+  function wireSlotOverlay() {
+    var overlay = document.getElementById('bwcSlotOverlay');
+    if (!overlay) return;
+    var matchEl   = overlay.querySelector('[data-overlay-match]');
+    var winnerEl  = overlay.querySelector('[data-overlay-winner]');
+    var verdictEl = overlay.querySelector('[data-overlay-verdict]');
+
+    function open(slot) {
+      var num       = (slot.querySelector('.bwc-slot-num')     || {}).textContent || '';
+      var teamsRaw  = (slot.querySelector('.bwc-slot-teams')   || {}).textContent || '';
+      var teams     = teamsRaw.replace(/\s+/g, ' ').trim();
+      var winner    = (slot.querySelector('.bwc-slot-winner')  || {}).textContent || '';
+      var verdictEl2= slot.querySelector('.bwc-slot-verdict') || slot.querySelector('.bwc-slot-preview');
+      var verdict   = verdictEl2 ? verdictEl2.textContent : '';
+
+      matchEl.textContent   = num + (teams ? ' · ' + teams : '');
+      winnerEl.textContent  = winner || (slot.classList.contains('bwc-slot--previewable') ? 'Preview' : '');
+      verdictEl.textContent = verdict;
+      overlay.setAttribute('data-open', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      overlay.setAttribute('data-open', 'false');
+      document.body.style.overflow = '';
+    }
+
+    /* Inject "Read full ›" chip into every back face that has content. */
+    var backs = document.querySelectorAll('.bwc-slot--played .bwc-slot-back, .bwc-slot--previewable .bwc-slot-back');
+    backs.forEach(function (back) {
+      if (back.querySelector('.bwc-slot-readmore')) return; /* idempotent */
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'bwc-slot-readmore';
+      chip.setAttribute('aria-label', 'Read full match report');
+      chip.textContent = 'Read full ›';
+      chip.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var slot = back.closest('.bwc-slot');
+        if (slot) open(slot);
+      });
+      back.appendChild(chip);
+    });
+
+    /* Close bindings — backdrop click, close button, Escape */
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay || e.target.hasAttribute('data-close')) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.getAttribute('data-open') === 'true') close();
+    });
+  }
+
   /* ------------------------------------------------------------------ Bootstrap */
   function init() {
     var ranks = [
@@ -297,6 +356,8 @@
         catch (err) { console.warn('[bwc] init failed for ' + r.name, err); }
       });
     });
+    try { wireSlotOverlay(); }
+    catch (err) { console.warn('[bwc] slot overlay setup failed', err); }
     try { setupPrintFix(); }
     catch (err) { console.warn('[bwc] print-fix setup failed', err); }
   }

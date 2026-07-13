@@ -1954,6 +1954,18 @@
       </div>
         <div class="bwc-bracket-trophy" aria-hidden="true">🏆</div>
       </div>
+
+      <!-- Full-verdict overlay. Populated by bwc.js from whichever slot's
+           "Read full ›" chip fires. One-per-page. -->
+      <div class="bwc-slot-overlay" id="bwcSlotOverlay" role="dialog" aria-modal="true"
+           aria-labelledby="bwcSlotOverlayWinner" data-open="false">
+        <div class="bwc-slot-overlay-card">
+          <button class="bwc-slot-overlay-close" type="button" data-close aria-label="Close">×</button>
+          <div class="bwc-slot-overlay-match" data-overlay-match></div>
+          <div class="bwc-slot-overlay-winner" id="bwcSlotOverlayWinner" data-overlay-winner></div>
+          <div class="bwc-slot-overlay-verdict" data-overlay-verdict></div>
+        </div>
+      </div>
     </section>
 
     <p style="text-align:center;margin-top:36px;font-size:0.86rem;color:var(--muted);">← <a href="/blog/beer-world-cup-xi.html" style="color:var(--teal);">Manifesto</a> · <a href="/blog/beer-world-cup-xi-line-ups.html" style="color:var(--teal);">Squads</a> · <a href="/blog/world-cup-stadium-beer-map.html" style="color:var(--teal);">Stadium Beer Map</a></p>
