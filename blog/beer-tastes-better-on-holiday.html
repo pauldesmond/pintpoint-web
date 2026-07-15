@@ -59,7 +59,9 @@
     .brewtable th { font-family: var(--sans); font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber); border-bottom: 1px solid rgba(192,163,64,0.35); }
     .brewtable td.brand { font-weight: 700; color: var(--text); white-space: nowrap; }
     .brewtable td.abv { font-variant-numeric: tabular-nums; color: rgba(255,255,255,0.8); }
-    blockquote, .pullquote { font-family: var(--serif); font-style: italic; font-size: 1.4rem; line-height: 1.5; margin: 32px 0; padding-left: 24px; border-left: 3px solid var(--amber); color: rgba(255,255,255,0.9); }
+    blockquote, .pullquote { font-family: var(--serif); font-style: italic; font-size: 1.4rem; line-height: 1.5; margin: 32px 0; padding-left: 24px; border-left: 3px solid var(--amber); color: rgba(255,255,255,0.9); scroll-margin-top: 24px; }
+    h1 .asterisk { color: var(--amber); font-size: 0.55em; vertical-align: super; font-family: var(--sans); font-weight: 600; text-decoration: none; margin-left: 2px; border: none; }
+    h1 .asterisk:hover { color: var(--text); }
     blockquote cite { display: block; margin-top: 14px; font-size: 0.85rem; color: var(--muted); font-style: normal; letter-spacing: 0.5px; font-family: var(--sans); }
     .pub-var { background: rgba(0,212,170,0.06); border-left: 3px solid var(--teal); padding: 16px 18px; margin: 24px 0; font-size: 0.96rem; line-height: 1.65; border-radius: 0 8px 8px 0; color: rgba(255,255,255,0.88); }
     .pub-var b { color: var(--teal); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; font-size: 0.78rem; display: block; margin-bottom: 8px; font-family: var(--sans); }
@@ -98,7 +100,7 @@
   <article class="content">
     <p class="meta"><span class="category">Explainer</span>15 July 2026 · By Sophie Ro</p>
 
-    <h1>It's Not Just the Sunshine: <em>Your Holiday Beer Really Is a Different Beer</em></h1>
+    <h1>It's Not Just the Sunshine: <em>Your Holiday<a href="#coda" class="asterisk" aria-label="Footnote: see closing caveat">*</a> Beer Really Is a Different Beer</em></h1>
 
     <div class="lede">
       <p>You've had this feeling. First Estrella of the holiday, six euros, terrace in the shade off Passeig de Gràcia. Perfect. Three weeks later you order the same beer at a pub in Manchester and it is, unmistakably, not the same beer.</p>
@@ -175,7 +177,8 @@
 
     <p>Order it, enjoy it, know what it is. And the next time the memory of a Barcelona terrace disappoints you at a UK bar, it isn't you. It is a different beer.</p>
 
-    <blockquote>
+    <blockquote id="coda">
+      <span style="color: var(--amber); font-family: var(--sans); font-style: normal; font-weight: 700; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 8px;">* The caveat</span>
       Beer tastes better on holiday. Unless you're Spanish, on holiday in the UK, ordering an Estrella.
     </blockquote>
 
