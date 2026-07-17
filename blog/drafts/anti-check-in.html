@@ -45,8 +45,9 @@
     .content { max-width: 1100px; margin: 0 auto; padding: 56px 64px 24px; }
     .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 22px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
     .category { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(0,212,170,0.15); color: var(--teal); border: 1px solid rgba(0,212,170,0.35); }
-    h1 { font-family: var(--serif); font-size: clamp(2.3rem, 5.6vw, 3.5rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-size: clamp(2.3rem, 5.6vw, 3.5rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 10px; }
     h1 em { color: var(--teal); font-style: italic; font-weight: 500; }
+    .deck { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(1.15rem, 2.6vw, 1.35rem); line-height: 1.4; color: rgba(255,255,255,0.7); margin-bottom: 28px; letter-spacing: -0.005em; }
     h2 { font-family: var(--serif); font-size: clamp(1.5rem, 3.4vw, 1.95rem); font-weight: 500; letter-spacing: -0.01em; margin: 44px 0 16px; line-height: 1.2; }
     .content p { margin-bottom: 18px; color: rgba(255,255,255,0.88); font-size: 1.0625rem; line-height: 1.72; }
     a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
@@ -90,14 +91,15 @@
     <p class="meta"><span class="category">Product note</span>17 July 2026 · By Sophie Ro</p>
 
     <h1>The Anti-Check-In: <em>Why We Skip the Feed</em></h1>
+    <p class="deck">Why fresh tap lists shouldn't depend on social posting.</p>
 
     <div class="lede">
       <p>Untappd is a social network first and a beer database second. The two roles are in conflict, and you can see the seam every time you open a pub's tap list and find beers that were poured six months ago listed above the ones on right now.</p>
-      <p>Untappd's tap lists get updated when someone drinks a beer at that pub, opens Untappd, taps <em>check in</em>, picks a beer, rates it, adds a photo, tags a friend, posts it to their feed. Every beer on every tap list is the residue of a public social act. If nobody at the pub feels like broadcasting their pint on a Tuesday night, the tap list rots for a week.</p>
       <p>PINtPOINT now lets you improve any pub's tap list with one tap. No check-in. No feed post. No badge. And critically — no requirement that you actually drank the beer.</p>
     </div>
 
     <h2>The check-in as gatekeeper</h2>
+    <p>Untappd's tap lists get updated when someone drinks a beer at that pub, opens Untappd, taps <em>check in</em>, picks a beer, rates it, adds a photo, tags a friend, posts it to their feed. Every beer on every tap list is the residue of a public social act. If nobody at the pub feels like broadcasting their pint on a Tuesday night, the tap list rots for a week.</p>
     <p>Untappd's data model has a single input event: the check-in. It bundles four separate things — <span class="highlight">"I saw this beer,"</span> <span class="highlight">"I drank this beer,"</span> <span class="highlight">"I have an opinion about it,"</span> and <span class="highlight">"I want my followers to know I drank it"</span> — into one action. That bundling is elegant if the goal is a social network. It's a problem if the goal is a fresh tap list.</p>
     <p>Consider what it excludes. You went to the pub, saw a great cask ale on the handpull, ordered the cask ale, drank the cask ale — but you don't want to check in because your feed is your feed and not everything belongs on it. Untappd's tap list doesn't learn from your visit. You saw six beers on tap, drank one, and could describe every pump clip from memory — Untappd's tap list learns about at most one of them, if you check in.</p>
     <p>Now consider the friend who was with you and had a lager. Their check-in updates the tap list. Yours doesn't. The state of the world according to Untappd is: the pub had one lager on tap that Tuesday. Which is what makes their tap lists look the way they look.</p>
