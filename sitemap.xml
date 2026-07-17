@@ -163,6 +163,24 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://pintpoint.co.uk/blog/anti-check-in.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/blog/beer-tastes-better-on-holiday.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/blog/beer-world-cup-xi-final.html</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://pintpoint.co.uk/firkin/</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
