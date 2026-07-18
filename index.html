@@ -649,9 +649,16 @@
         referrer: document.referrer || null,
         ua: navigator.userAgent || null,
       });
+      // Anon key required by Edge Functions runtime. Defined below in the
+      // recent-sightings block; hoisted here so both fetches use it.
+      var SUPABASE_ANON_LPV = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2b2tza29ldm1jZWtrZ2lnbHBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4ODQ3ODAsImV4cCI6MjA4ODQ2MDc4MH0.mdwX__oAXOr3WwBdWsc7a0esZZoSGovr3S0xkh-gTp8';
       fetch('https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/log-page-view', {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
+        headers: {
+          'Content-Type': 'text/plain',
+          'Authorization': 'Bearer ' + SUPABASE_ANON_LPV,
+          'apikey': SUPABASE_ANON_LPV,
+        },
         body: payload,
       })
         .then(r => r.ok ? r.json() : Promise.reject())
