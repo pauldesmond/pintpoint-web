@@ -673,8 +673,20 @@
     (function() {
       var el = document.getElementById('sightings-list');
       if (!el) return;
-      fetch('https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/recent-sightings')
-        .then(function(r) { return r.json(); })
+      // Supabase Edge Functions require an Authorization header even on
+      // fully-public endpoints. Anon key is safe to embed — it's the
+      // same public JWT baked into every mobile client build.
+      var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2b2tza29ldm1jZWtrZ2lnbHBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4ODQ3ODAsImV4cCI6MjA4ODQ2MDc4MH0.mdwX__oAXOr3WwBdWsc7a0esZZoSGovr3S0xkh-gTp8';
+      fetch('https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/recent-sightings', {
+        headers: { 'Authorization': 'Bearer ' + SUPABASE_ANON, 'apikey': SUPABASE_ANON }
+      })
+        .then(function(r) {
+          // 4xx/5xx bodies parse as JSON too — distinguish an auth /
+          // server error from a genuinely-empty sightings list so we
+          // don't silently render "No recent sightings" on a 401.
+          if (!r.ok) throw new Error('http_' + r.status);
+          return r.json();
+        })
         .then(function(d) {
           if (!d.ok || !d.sightings || !d.sightings.length) {
             el.innerHTML = '<p class="live-feed-empty">No recent sightings — check back soon.</p>';
