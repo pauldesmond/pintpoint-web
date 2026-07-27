@@ -275,19 +275,15 @@
       border-bottom: none;
     }
 
-    /* Collapsed-by-default sections (2026-07-27). */
+    /* Collapsed-by-default sections inside categories. */
     details.feature-section > summary {
       list-style: none;
       cursor: pointer;
       user-select: none;
       -webkit-user-select: none;
-      padding: 0;
     }
     details.feature-section > summary::-webkit-details-marker { display: none; }
     details.feature-section > summary::marker { display: none; }
-    details.feature-section > summary .section-header {
-      margin-bottom: 0;
-    }
     .section-chevron {
       margin-left: auto;
       font-size: 1.5rem;
@@ -301,7 +297,7 @@
       color: var(--teal);
     }
     details.feature-section[open] > summary {
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
 
     .section-header {
@@ -641,536 +637,226 @@
     <p>No map. No clutter. Just the tools that help you decide where to drink, what's on tap, and what's worth the walk.</p>
   </section>
 
-  <!-- ALPHABETICAL FEATURE LIST -->
+  <!-- CATEGORY ACCORDIONS -->
   <div class="categories">
 
-    <details class="feature-section" id="add-beer">
-      <summary class="section-summary">
+    <details class="category">
+      <summary>
+        <div class="cat-emoji">🤝</div>
+        <span class="cat-label">Expand the Map <span class="cat-sub">Add a Beer to the Catalogue · Add Venue · Expand the Map · Log a Beer</span></span>
+        <span class="cat-chevron">›</span>
+      </summary>
+      <div class="cat-body">
+
+        <details class="feature-section" id="add-beer">
+        <summary class="section-summary">
 
         <div class="section-header">
         <div class="section-icon icon-teal">📚</div>
         <h2>Add a Beer to the Catalogue</h2>
         <span class="section-chevron">›</span>
-      </div>
+        </div>
 
-      </summary>
-      <p class="section-intro">
+        </summary>
+        <p class="section-intro">
         Know a beer PINtPOINT doesn't? On Discover → Beers, paste an Untappd beer URL into the search bar and tap Add. The edge function scrapes canonical name, brewery, style, ABV and Untappd ID, then upserts to the shared catalogue.
-      </p>
-      <div class="detail-grid">
+        </p>
+        <div class="detail-grid">
         <div class="detail-card">
-          <h4>🔗 Untappd URL or Shortlink</h4>
-          <p>Full URLs and untp.beer/… shortlinks both work — the edge function resolves them server-side.</p>
+        <h4>🔗 Untappd URL or Shortlink</h4>
+        <p>Full URLs and untp.beer/… shortlinks both work — the edge function resolves them server-side.</p>
         </div>
         <div class="detail-card">
-          <h4>🗝️ Canonical Untappd ID</h4>
-          <p>Every beer in the catalogue keys on its Untappd ID. The paste flow won't create duplicates — future logs and scrapes resolve to the same canonical row.</p>
+        <h4>🗝️ Canonical Untappd ID</h4>
+        <p>Every beer in the catalogue keys on its Untappd ID. The paste flow won't create duplicates — future logs and scrapes resolve to the same canonical row.</p>
         </div>
         <div class="detail-card">
-          <h4>vs. Log a Beer</h4>
-          <p>Log a Beer ties a beer to a specific venue's live tap list. Add a Beer to the Catalogue just enters it into the shared database — no venue attached. Use this when you want the beer searchable regardless of where it's pouring.</p>
+        <h4>vs. Log a Beer</h4>
+        <p>Log a Beer ties a beer to a specific venue's live tap list. Add a Beer to the Catalogue just enters it into the shared database — no venue attached. Use this when you want the beer searchable regardless of where it's pouring.</p>
         </div>
-      </div>
+        </div>
         </details>
 
-    <details class="feature-section" id="add-venue">
-      <summary class="section-summary">
+        <details class="feature-section" id="add-venue">
+        <summary class="section-summary">
 
         <div class="section-header">
         <div class="section-icon icon-teal">➕</div>
         <h2>Add Venue</h2>
         <span class="section-chevron">›</span>
-      </div>
+        </div>
 
-      </summary>
-      <p class="section-intro">
+        </summary>
+        <p class="section-intro">
         Found a pub that's not in the database? Add it yourself. Search by name or Untappd URL, or add from your Discover results. PINtPOINT pulls in photos, location data, and tap list details automatically.
-      </p>
-      <div class="detail-grid">
+        </p>
+        <div class="detail-grid">
         <div class="detail-card">
-          <h4>🔍 Untappd Search</h4>
-          <p>Paste an Untappd venue URL or search by name. PINtPOINT imports the tap list, ratings, and venue details.</p>
+        <h4>🔍 Untappd Search</h4>
+        <p>Paste an Untappd venue URL or search by name. PINtPOINT imports the tap list, ratings, and venue details.</p>
         </div>
         <div class="detail-card">
-          <h4>📸 Auto Photos</h4>
-          <p>Google Places photos are fetched automatically. If the initial fetch fails, photos are lazily loaded when you browse.</p>
+        <h4>📸 Auto Photos</h4>
+        <p>Google Places photos are fetched automatically. If the initial fetch fails, photos are lazily loaded when you browse.</p>
         </div>
         <div class="detail-card">
-          <h4>🌍 Worldwide</h4>
-          <p>Add venues from anywhere in the world. PINtPOINT already covers venues across multiple countries and keeps growing as more places are added.</p>
+        <h4>🌍 Worldwide</h4>
+        <p>Add venues from anywhere in the world. PINtPOINT already covers venues across multiple countries and keeps growing as more places are added.</p>
         </div>
-      </div>
+        </div>
         </details>
 
-    <details class="feature-section" id="alerts">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-amber">🔔</div>
-        <h2>Beer Alerts</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Never miss your favourite beer. Add beers to your watchlist and PINtPOINT will alert you when they appear on tap at venues you've saved as favourites. Matched against live Untappd tap list data.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>📝 Watchlist</h4>
-          <p>Build a list of beers you love. Add as many as you want — swipe to remove any you no longer care about.</p>
-        </div>
-        <div class="detail-card">
-          <h4>❤️ Favourited Venue Alerts</h4>
-          <p>Alerts are matched against the venues you've saved as favourites — so notifications stay relevant to the places you actually care about.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🔔 Push Notifications</h4>
-          <p>Get notified when a watched beer is spotted at one of your saved venues.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📲 Checks on Open</h4>
-          <p>Alerts also run when you open the app, so you can quickly see what's appeared since your last visit.</p>
-        </div>
-      </div>
-        </details>
-
-    <details class="feature-section" id="beer-can-scan">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-teal">📷</div>
-        <h2>Beer Scan</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Two ways to identify a beer from your camera. Frame any can or bottle and PINtPOINT auto-reads the barcode in real time. For cans without a useful barcode, cask pump clips, or anything where the printed label tells you more than the strip, tap "Scan" and PINtPOINT reads the label itself — extracting brewery, beer name, style and ABV.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>📷 Auto Barcode Scan</h4>
-          <p>Live camera scan reads the EAN/UPC barcode instantly — no typing, no tapping. Cross-checks our central catalog, then EAN-DB and Open Food Facts as fallbacks.</p>
-        </div>
-        <div class="detail-card">
-          <h4>👁️ Label Vision</h4>
-          <p>Tap "Scan" to read a label with vision. Works on craft cans, cask pump clips, taps with no barcode in frame — anywhere the printed label is more reliable than a strip.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🔗 Untappd Auto-Link</h4>
-          <p>When vision finds a confident match on Untappd, your scan attaches the canonical beer ID and adds it to the central catalog automatically — every scan grows the database for the next user.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📚 Save &amp; Scan Next</h4>
-          <p>Confirm-screen has primary save and a secondary "Save &amp; Scan Next" — fast batch entry when you're working through a haul or a flight.</p>
-        </div>
-      </div>
-        </details>
-
-    <details class="feature-section" id="crawl">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-amber">🗺️</div>
-        <h2>Create-a-Crawl</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Plan the perfect pub crawl in seconds. Set your starting point, number of stops (2–12), maximum gap between venues, and total walking distance. Three modes — automatic, hands-on, and ghost — let you build anything from a routine evening to a haunted historical wander.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>📐 Smart Routing</h4>
-          <p>Standard mode picks the closest unvisited venue at each step. Configurable stops, max gap, and total walk distance keep the route within reach.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🧭 Nearest Neighbours</h4>
-          <p>Hands-on mode: at each stop, you pick from the 3 closest pubs. The walk shape emerges as you go — great for unfamiliar areas where you want some say.</p>
-        </div>
-        <div class="detail-card">
-          <h4>👻 Ghost Crawl</h4>
-          <p>Swap every stop for a closed pub from CAMRA-era guides (1983, 1986, 1991, or all eras). Walks the ghosts of pubs past — a city tour you can no longer drink in.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🆕 New Venues Only</h4>
-          <p>Skip pubs you've already saved. Forces the route into territory you've never set foot in.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🚶 Walk Times</h4>
-          <p>Real-time walking estimates between each stop. Total crawl distance and duration shown at a glance.</p>
-        </div>
-        <div class="detail-card">
-          <h4>✅ Progress Tracking</h4>
-          <p>Mark stops as visited as you go. Resume an active crawl anytime — your progress is saved.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📲 Share with Friends</h4>
-          <p>Share the itinerary via any messaging app — venue names, distances, and walk times between each stop.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🗺️ Map View</h4>
-          <p>Toggle list/map with one tap. Every stop is a numbered pin on a dark-styled map, dashed route line connecting them in order. Current stop highlighted.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📍 Open in Google Maps</h4>
-          <p>Send the full crawl route to Google Maps with all stops as waypoints — navigate the whole night from your maps app.</p>
-        </div>
-      </div>
-        </details>
-
-    <details class="feature-section" id="customise">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-blue">🎨</div>
-        <h2>Customisation</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Make PINtPOINT yours. Choose your theme, pick an accent colour, set your preferred units, configure your radar behaviour, and set up Quick Picks for the areas you visit most.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>🎨 Themes</h4>
-          <p>Multiple colour themes to suit your taste — Teal, Amber, Purple, Blue and more. Every UI element adapts.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📡 Radar Settings</h4>
-          <p>Choose between Nearest Venues or All Within Radius mode. Set how many blips to show or the radar range.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📌 Quick Picks</h4>
-          <p>Save up to 6 favourite areas (postcodes, neighbourhoods, cities) for instant location switching. Search any new location and we offer to pin it right there in the sheet — if all 6 are used, we ask which one to swap out.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📏 Units</h4>
-          <p>Switch between miles and metres. Distance displays across the entire app update instantly.</p>
-        </div>
-      </div>
-        </details>
-
-    <details class="feature-section" id="discover">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-teal">✨</div>
-        <h2>Discover</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Surface venues you've never visited. Discover searches nearby pubs and bars and shows rich cards with photos, ratings, and live venue details. Add any discovery to your PINtPOINT list with one tap.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>📍 Configurable Radius</h4>
-          <p>Search within a range that suits you — from a short local wander to a wider destination search.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🟢 Open Now Badges</h4>
-          <p>Each discovered venue shows whether it's currently open or closed, plus its Google rating and review count.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🔗 Find on Untappd</h4>
-          <p>Tap to search for any discovered venue on Untappd and check their tap list before adding to PINtPOINT.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🍻 Crawl from Discoveries</h4>
-          <p>Found a cluster of interesting places? Build a pub crawl directly from your discovered venues.</p>
-        </div>
-      </div>
-        </details>
-
-    <details class="feature-section" id="contribute">
-      <summary class="section-summary">
+        <details class="feature-section" id="contribute">
+        <summary class="section-summary">
 
         <div class="section-header">
         <div class="section-icon icon-teal">🤝</div>
         <h2>Expand the Map</h2>
         <span class="section-chevron">›</span>
-      </div>
+        </div>
 
-      </summary>
-      <p class="section-intro">
+        </summary>
+        <p class="section-intro">
         PINtPOINT only gets better when people use it. Many good pubs and beers are still missing — the backstreet locals, the cask that just appeared, the special release that isn't on Untappd yet. When you contribute, that information becomes live for everyone nearby. No moderation queue. No waiting. No upvotes. Just better data, instantly.
-      </p>
-      <div class="detail-grid">
+        </p>
+        <div class="detail-grid">
         <div class="detail-card">
-          <h4>➕ Add a venue we don't have yet</h4>
-          <p>See Add Venue below.</p>
+        <h4>➕ Add a venue we don't have yet</h4>
+        <p>See Add Venue below.</p>
         </div>
         <div class="detail-card">
-          <h4>🍺 Log a beer on tap at a specific pub</h4>
-          <p>Adds it to that venue's live tap list, visible to everyone in range.</p>
+        <h4>🍺 Log a beer on tap at a specific pub</h4>
+        <p>Adds it to that venue's live tap list, visible to everyone in range.</p>
         </div>
         <div class="detail-card">
-          <h4>📚 Add a beer to the shared catalogue</h4>
-          <p>Paste an Untappd link on Discover → Beers. Makes the beer searchable and gives it a canonical detail page.</p>
+        <h4>📚 Add a beer to the shared catalogue</h4>
+        <p>Paste an Untappd link on Discover → Beers. Makes the beer searchable and gives it a canonical detail page.</p>
         </div>
         <div class="detail-card">
-          <h4>❤️ Save the pubs you drink at</h4>
-          <p>Tells the crowd what's worth covering. Shapes coverage priorities without any extra effort.</p>
+        <h4>❤️ Save the pubs you drink at</h4>
+        <p>Tells the crowd what's worth covering. Shapes coverage priorities without any extra effort.</p>
         </div>
-      </div>
+        </div>
         </details>
 
-    <details class="feature-section" id="filters">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-blue">🎯</div>
-        <h2>Filters</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Tap the gold magnifying glass on any screen to open the universal filter sheet. Set your destination, radius and beer styles — all from one place, applied across every tab.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>📍 Destination</h4>
-          <p>Search by postcode or area name, or tap a Quick Pick to jump to your favourite spots instantly.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📏 Radius</h4>
-          <p>Six presets from 250 yards to 15 miles. Your selection syncs across the radar, venues and discover tabs.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🍺 Style Filter</h4>
-          <p>Multi-select from dozens of styles — IPA, Stout, Lager, Sour, Saison, and more. Long-press any style for a description.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🔍 Consistent</h4>
-          <p>One gold magnifying glass, top-left on every screen. Same filters everywhere — no hunting for settings.</p>
-        </div>
-      </div>
-        </details>
-
-    <details class="feature-section ghost-section" id="ghost">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-purple">👻</div>
-        <h2>Ghost Hunter</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Every street corner was once a pub. Toggle Ghost Hunter and your radar transforms — 500+ closed and demolished pubs appear as purple blips, with the feature primarily focused on London. Tap any ghost to see what it once looked like, and what replaced it.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card ghost-card">
-          <h4>📸 Then &amp; Now</h4>
-          <p>Historical photos alongside current Street View. Tap the venue image to flip between past and present — the same corner, decades apart.</p>
-        </div>
-        <div class="detail-card ghost-card">
-          <h4>🟣 Purple Blips</h4>
-          <p>Ghost pubs appear as solid purple blips on the radar. Many are linked to archive photography and historical notes.</p>
-        </div>
-        <div class="detail-card ghost-card">
-          <h4>💀 Demolished Mode</h4>
-          <p>Filter to show only the pubs that no longer exist at all — not converted, not closed, just gone.</p>
-        </div>
-      </div>
-      <a href="ghost.html" class="ghost-link">👻 Full Ghost Hunter story →</a>
-        </details>
-
-    <details class="feature-section" id="hall-of-fame">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-amber">🏆</div>
-        <h2>Hall of Fame</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        25+ curated pub crawls preserved from the archive — time-stamped routes, living and lost pubs both. A mixture of well-known classics and lesser-known routes from personal archives stretching back to 2007. Reach it via the 🏆 trophy at the top of Create-a-Crawl.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>🍺 Classic Routes</h4>
-          <p>Bermondsey Beer Mile, Orange Line Mile, Black Horse Beer Mile, Chelmsford Beer Mile, the Monopoly Board, and the Circle Line Pub Crawl — the routes London (and Essex) craft drinkers know by heart.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📜 Personal Archives</h4>
-          <p>Time-stamped crawls from personal archives going back to 2007. Each preserves the original narrative, route, and pub picks of the day — a snapshot of a drinking moment in London history.</p>
-        </div>
-        <div class="detail-card">
-          <h4>👻 Living &amp; Lost</h4>
-          <p>Many archive crawls now include closed pubs as ghost stops. Walk a 2008 route in 2026 and see how much of the city's pub fabric has changed in a generation.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🚀 Start Any Crawl</h4>
-          <p>Tap "Start this crawl" on any Hall of Fame entry to load it as your active route. Mark stops visited as you go, share with mates, send to Google Maps.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🎲 Hidden Variants</h4>
-          <p>Some crawls have an "Advanced drinkers" link to harder variants. The Monopoly Board hides an A–Z challenge: order a drink starting with a different letter at every stop.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🌍 Submit Your Own</h4>
-          <p>Build a crawl in Create-a-Crawl, then tap 🏆 Submit on the route to send it for Hall of Fame consideration. PINtPOINT isn't London-only — if we don't yet cover your city, use Add Venue for each pub first and you'll be seeding your city's coverage as you go.</p>
-        </div>
-      </div>
-      <p style="margin-top: 1.25rem; color: var(--muted); font-size: 0.9rem; font-style: italic;">
-        …and many more in the app. The full Hall of Fame holds 25+ crawls and grows as users submit theirs.
-      </p>
-        </details>
-
-    <details class="feature-section" id="head-to-head">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-teal">🥊</div>
-        <h2>Head to Head</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        The next generation of taste profiling. Where Sip or Skip asks "would you drink this?" — Head to Head asks "which of these two?" Forced choice, always between two beers of the same style. A West Coast IPA versus a Hazy IPA is meaningful; a Sour versus a Stout is not.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>🎯 Pick Your Styles First</h4>
-          <p>Choose from 13 styles before you start. No forced IPA-vs-IPA if you don't drink IPA — H2H only matches you on styles you actually like.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🥊 Same-Style Matchups</h4>
-          <p>Five pair-choice rounds, always within the same style. Your preference between Punk IPA and Neck Oil reveals sub-style signal Sip or Skip can't capture.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🏆 Champs Per Style</h4>
-          <p>See your winners ranked by win percentage. Champion styles are prepended to your taste profile — PINtDEXTER recommendations update instantly.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🔄 Mind Changed? We Notice</h4>
-          <p>If a style you voted for was previously in your "avoided" list, it's removed. Your new preference wins.</p>
-        </div>
-        <div class="detail-card">
-          <h4>⚡ See My Recommendations</h4>
-          <p>End of a round drops you on a ranked top-10 of beers on tap within 3 miles that best match your refined profile. Walkable-now, not "anywhere in your search catchment". Tap any row to open the venue.</p>
-        </div>
-      </div>
-        </details>
-
-    <details class="feature-section" id="log-beer">
-      <summary class="section-summary">
+        <details class="feature-section" id="log-beer">
+        <summary class="section-summary">
 
         <div class="section-header">
         <div class="section-icon icon-amber">🍺</div>
         <h2>Log a Beer</h2>
         <span class="section-chevron">›</span>
-      </div>
+        </div>
 
-      </summary>
-      <p class="section-intro">
+        </summary>
+        <p class="section-intro">
         See a beer on tap that PINtPOINT doesn't show? On any venue's detail page, tap "Add Beer", paste the Untappd URL and pick the serving type (cask, keg or draft). The beer joins that venue's live tap list on the spot — the fastest way to correct a stale scrape or add a one-off special.
-      </p>
-      <div class="detail-grid">
+        </p>
+        <div class="detail-grid">
         <div class="detail-card">
-          <h4>🔗 Paste-and-Go</h4>
-          <p>Untappd URL from the app share sheet or the browser URL bar. Full Untappd resolution happens server-side — no lookups on your device.</p>
+        <h4>🔗 Paste-and-Go</h4>
+        <p>Untappd URL from the app share sheet or the browser URL bar. Full Untappd resolution happens server-side — no lookups on your device.</p>
         </div>
         <div class="detail-card">
-          <h4>🛢️ Cask, Keg, Draft</h4>
-          <p>Mark cask when it's cask. The venue page and share cards use that flag to badge cask pours distinctly.</p>
+        <h4>🛢️ Cask, Keg, Draft</h4>
+        <p>Mark cask when it's cask. The venue page and share cards use that flag to badge cask pours distinctly.</p>
         </div>
         <div class="detail-card">
-          <h4>♡ Watch While You Log</h4>
-          <p>Log a beer and add it to your Beer Alerts watchlist in the same tap.</p>
+        <h4>♡ Watch While You Log</h4>
+        <p>Log a beer and add it to your Beer Alerts watchlist in the same tap.</p>
         </div>
-      </div>
+        </div>
         </details>
 
-    <details class="feature-section" id="pintdexter">
-      <summary class="section-summary">
+      </div><!-- /cat-body -->
+    </details>
+
+    <details class="category">
+      <summary>
+        <div class="cat-emoji">🔍</div>
+        <span class="cat-label">Find &amp; Explore <span class="cat-sub">Discover · Radar · Tap Roulette · Venues</span></span>
+        <span class="cat-chevron">›</span>
+      </summary>
+      <div class="cat-body">
+
+        <details class="feature-section" id="discover">
+        <summary class="section-summary">
 
         <div class="section-header">
-        <div class="section-icon icon-amber">⚡</div>
-        <h2>PINtDEXTER</h2>
+        <div class="section-icon icon-teal">✨</div>
+        <h2>Discover</h2>
         <span class="section-chevron">›</span>
-      </div>
+        </div>
 
-      </summary>
-      <p class="section-intro">
-        PINtDEXTER is PINtPOINT's personal recommendation engine. It blends three signals — Sip or Skip swipes, Head to Head picks, and TUNeDEXTER fine-tuning — with your real scan history to surface the best beer on tap at every venue you visit. Your Best Pint Next.
-      </p>
-      <div class="detail-grid">
+        </summary>
+        <p class="section-intro">
+        Surface venues you've never visited. Discover searches nearby pubs and bars and shows rich cards with photos, ratings, and live venue details. Add any discovery to your PINtPOINT list with one tap.
+        </p>
+        <div class="detail-grid">
         <div class="detail-card">
-          <h4>🎯 Best Pint Next</h4>
-          <p>A compact recommendation button on every venue's tap list. Tap to expand and see PINtDEXTER's top pick with confidence level and reasons why.</p>
+        <h4>📍 Configurable Radius</h4>
+        <p>Search within a range that suits you — from a short local wander to a wider destination search.</p>
         </div>
         <div class="detail-card">
-          <h4>🧠 Learns From Every Signal</h4>
-          <p>Sip or Skip swipes, Head to Head champs, TUNeDEXTER sliders and scanned beers all feed in — earlier signals fill gaps until your scan history builds up.</p>
+        <h4>🟢 Open Now Badges</h4>
+        <p>Each discovered venue shows whether it's currently open or closed, plus its Google rating and review count.</p>
         </div>
         <div class="detail-card">
-          <h4>🚫 Avoids What You Hate</h4>
-          <p>Styles you consistently skipped are penalised in the scoring — PINtDEXTER won't keep recommending sours if you always swipe left on them.</p>
+        <h4>🔗 Find on Untappd</h4>
+        <p>Tap to search for any discovered venue on Untappd and check their tap list before adding to PINtPOINT.</p>
         </div>
         <div class="detail-card">
-          <h4>💬 Reason Chips</h4>
-          <p>Every recommendation comes with short reason chips explaining why that beer was picked — style match, ABV preference, or top-rated at this venue.</p>
+        <h4>🍻 Crawl from Discoveries</h4>
+        <p>Found a cluster of interesting places? Build a pub crawl directly from your discovered venues.</p>
         </div>
-      </div>
+        </div>
         </details>
 
-    <details class="feature-section" id="radar">
-      <summary class="section-summary">
+        <details class="feature-section" id="radar">
+        <summary class="section-summary">
 
         <div class="section-header">
         <div class="section-icon icon-teal">📡</div>
         <h2>Radar</h2>
         <span class="section-chevron">›</span>
-      </div>
+        </div>
 
-      </summary>
-      <p class="section-intro">
+        </summary>
+        <p class="section-intro">
         A live radar sweeps your surroundings and plots nearby venues as colour-coded blips. Tap a blip to lock on — the radar transforms into a live compass pointing you directly at your chosen pub, with real-time distance and bearing.
-      </p>
-      <div class="detail-grid">
+        </p>
+        <div class="detail-grid">
         <div class="detail-card">
-          <h4>🔒 Lock-on Navigation</h4>
-          <p>Tap any blip to lock on. The display shows bearing, distance, and a compass needle that updates as you move and turn.</p>
+        <h4>🔒 Lock-on Navigation</h4>
+        <p>Tap any blip to lock on. The display shows bearing, distance, and a compass needle that updates as you move and turn.</p>
         </div>
         <div class="detail-card">
-          <h4>🔄 Two Display Modes</h4>
-          <p><strong>Nearest venues</strong> shows the closest pubs. <strong>All within radius</strong> shows everything in your chosen search area.</p>
+        <h4>🔄 Two Display Modes</h4>
+        <p><strong>Nearest venues</strong> shows the closest pubs. <strong>All within radius</strong> shows everything in your chosen search area.</p>
         </div>
         <div class="detail-card">
-          <h4>🤏 Pinch &amp; Pan</h4>
-          <p>Pinch to zoom your radar range. Two-finger drag to pan. Explore beyond your immediate area without moving.</p>
+        <h4>🤏 Pinch &amp; Pan</h4>
+        <p>Pinch to zoom your radar range. Two-finger drag to pan. Explore beyond your immediate area without moving.</p>
         </div>
         <div class="detail-card">
-          <h4>🗺️ Maps Handoff</h4>
-          <p>When locked on, tap the maps button for turn-by-turn directions in Apple Maps or Google Maps.</p>
+        <h4>🗺️ Maps Handoff</h4>
+        <p>When locked on, tap the maps button for turn-by-turn directions in Apple Maps or Google Maps.</p>
         </div>
         <div class="detail-card">
-          <h4>🎛️ Legend Chips Are Filters</h4>
-          <p>Every chip in the key below the radar is tappable. Isolate a single class of pub — Pick, Faves, @Risk, Match, Others, Ghosts, Unknown — and hide the rest. Handy in dense areas where blips overlap.</p>
+        <h4>🎛️ Legend Chips Are Filters</h4>
+        <p>Every chip in the key below the radar is tappable. Isolate a single class of pub — Pick, Faves, @Risk, Match, Others, Ghosts, Unknown — and hide the rest. Handy in dense areas where blips overlap.</p>
         </div>
         <div class="detail-card">
-          <h4>🎯 @Risk Auto-Hides Outside Coverage</h4>
-          <p>The @Risk chip only shows where we have Fabric Preservation Index data (England and Wales). Users elsewhere never see a chip that leads to an empty radar.</p>
+        <h4>🎯 @Risk Auto-Hides Outside Coverage</h4>
+        <p>The @Risk chip only shows where we have Fabric Preservation Index data (England and Wales). Users elsewhere never see a chip that leads to an empty radar.</p>
         </div>
         <div class="detail-card">
-          <h4>🔔 Bell That Doesn't Overstay</h4>
-          <p>Watched beers spotted nearby collapse to a small bell top-right — tap to expand, ignore and it auto-fades after about 18 seconds. Never blocks the search magnifier.</p>
+        <h4>🔔 Bell That Doesn't Overstay</h4>
+        <p>Watched beers spotted nearby collapse to a small bell top-right — tap to expand, ignore and it auto-fades after about 18 seconds. Never blocks the search magnifier.</p>
         </div>
-      </div>
-      <h4 style="margin-top:28px; margin-bottom:10px; font-size:0.82rem; font-weight:700; color:var(--muted); letter-spacing:0.6px; text-transform:uppercase">Blip Legend</h4>
-      <div class="blip-legend">
+        </div>
+        <h4 style="margin-top:28px; margin-bottom:10px; font-size:0.82rem; font-weight:700; color:var(--muted); letter-spacing:0.6px; text-transform:uppercase">Blip Legend</h4>
+        <div class="blip-legend">
         <div class="blip-item"><div class="blip-dot" style="background:#00D4AA"></div><span class="blip-label">Nearby venue</span></div>
         <div class="blip-item"><div class="blip-dot" style="background:#FF4D6A"></div><span class="blip-label">Favourited venue</span></div>
         <div class="blip-item"><div class="blip-dot" style="background:#4A9EFF"></div><span class="blip-label">Matches style filter</span></div>
@@ -1178,309 +864,685 @@
         <div class="blip-item"><div class="blip-dot flash" style="background:#F5A623"></div><span class="blip-label">At-risk pub (FPI 60–89)</span></div>
         <div class="blip-item"><div class="blip-dot flash" style="background:#9B59B6"></div><span class="blip-label">Critical pub (FPI 90+)</span></div>
         <div class="blip-item"><div class="blip-dot" style="background:#9B59B6"></div><span class="blip-label">Ghost pub (closed)</span></div>
-      </div>
+        </div>
         </details>
 
-    <details class="feature-section" id="sharing">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-teal">📲</div>
-        <h2>Sharing</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Share venues, beers and crawl routes with friends — no accounts needed, works with any messaging app.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>🍺 Beer Sharing</h4>
-          <p>Send any beer's PINtPOINT page — recipients see brewery, style, ABV and where it&rsquo;s currently pouring without needing the app.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📲 Crawl Sharing</h4>
-          <p>Share your pub crawl itinerary — venue names, distances, and walk times between stops — via iMessage, WhatsApp, or any app.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🗺️ Google Maps</h4>
-          <p>Open any crawl as a multi-stop walking route in Google Maps with one tap. Navigate the whole night from your maps app.</p>
-        </div>
-        <div class="detail-card">
-          <h4>⭐ Google Reviews</h4>
-          <p>See and leave Google reviews for any venue directly from its detail page — support the pubs you love.</p>
-        </div>
-      </div>
-        </details>
-
-    <details class="feature-section" id="sip-or-skip">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-teal">🍺</div>
-        <h2>Sip or Skip</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Swipe through real beers Tinder-style and tell PINtPOINT what you love. Love IPAs? Hate sours? Prefer session strength? Sip or Skip builds your personal taste profile in minutes. Find it on the Discover → Beers tab or in Settings → My Stuff.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>👉 Swipe to Sip or Skip</h4>
-          <p>Swipe right (or tap Sip) for beers you'd order. Swipe left (or tap Skip) for ones you'd avoid. Curated cards across 13 styles.</p>
-        </div>
-        <div class="detail-card">
-          <h4>⚡ Instant Profile</h4>
-          <p>After 10 swipes, PINtDEXTER has enough signal to start personalising your recommendations. Keep going to sharpen it further.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🔁 Refine Any Time</h4>
-          <p>Your taste changes. Run Sip or Skip again to refine your profile — each session improves your recommendations.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🗂️ My Kind of Beer</h4>
-          <p>See your full taste profile under Settings → My Stuff. Preferred styles, avoided styles, strength preference, and PINtDEXTER labels — all in one place.</p>
-        </div>
-        <div class="detail-card">
-          <h4>⚡ See My Recommendations</h4>
-          <p>End of a round drops you on a ranked top-10 of beers on tap within 3 miles that best match your refined profile. Walkable-now, not "anywhere in your search catchment". Tap any row to open the venue.</p>
-        </div>
-      </div>
-        </details>
-
-    <details class="feature-section" id="tap-roulette">
-      <summary class="section-summary">
+        <details class="feature-section" id="tap-roulette">
+        <summary class="section-summary">
 
         <div class="section-header">
         <div class="section-icon icon-amber">🎰</div>
         <h2>Tap Roulette</h2>
         <span class="section-chevron">›</span>
-      </div>
+        </div>
 
-      </summary>
-      <p class="section-intro">
+        </summary>
+        <p class="section-intro">
         Can't decide where to go? Tap Roulette picks a nearby venue at random, then spins again for a beer from that venue's tap list — no overthinking, no committee meeting, just a decision made. Find it on the Venues tab or in Settings.
-      </p>
-      <div class="detail-grid">
+        </p>
+        <div class="detail-grid">
         <div class="detail-card">
-          <h4>📍 Radius Control</h4>
-          <p>Set how far you're willing to travel. Results are filtered to your chosen range so you won't end up miles away.</p>
+        <h4>📍 Radius Control</h4>
+        <p>Set how far you're willing to travel. Results are filtered to your chosen range so you won't end up miles away.</p>
         </div>
         <div class="detail-card">
-          <h4>🎯 Lock &amp; Go</h4>
-          <p>Once a venue is picked, you get the essentials — distance, details, and a one-tap handoff to Maps.</p>
+        <h4>🎯 Lock &amp; Go</h4>
+        <p>Once a venue is picked, you get the essentials — distance, details, and a one-tap handoff to Maps.</p>
         </div>
         <div class="detail-card">
-          <h4>⚡ Live Refresh On-Land</h4>
-          <p>Rather than pre-scraping every venue in range, we fetch a fresh Untappd tap list for just the pub the wheel lands on. No wasted data, no wasted time — the pint we spin for is the pint that's actually there.</p>
+        <h4>⚡ Live Refresh On-Land</h4>
+        <p>Rather than pre-scraping every venue in range, we fetch a fresh Untappd tap list for just the pub the wheel lands on. No wasted data, no wasted time — the pint we spin for is the pint that's actually there.</p>
         </div>
         <div class="detail-card">
-          <h4>🔄 Spin Again</h4>
-          <p>Not feeling it? Spin again and let fate have another go — or "Exclude &amp; re-spin" to drop a specific venue from the next round.</p>
+        <h4>🔄 Spin Again</h4>
+        <p>Not feeling it? Spin again and let fate have another go — or "Exclude &amp; re-spin" to drop a specific venue from the next round.</p>
         </div>
-      </div>
+        </div>
         </details>
 
-    <details class="feature-section" id="troubled">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-amber">⚠️</div>
-        <h2>Troubled Pubs</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Some pubs need your support before it's too late. PINtPOINT uses FPI (Financial Pressure Index) data from <a href="https://ismypubfucked.com" style="color:var(--amber);text-decoration:none" target="_blank">ismypubfucked.com</a> to highlight venues under financial strain — from "Feeling It" to "Absolutely F**ked". Visit them while you still can.
-      </p>
-      <div class="fpi-scale">
-        <div class="fpi-badge"><div class="fpi-dot" style="background:#00D4AA"></div>Fine — rates flat</div>
-        <div class="fpi-badge"><div class="fpi-dot" style="background:#F5A623"></div>Feeling It — FPI 1–29</div>
-        <div class="fpi-badge"><div class="fpi-dot" style="background:#F5A623"></div>Struggling — FPI 30–59</div>
-        <div class="fpi-badge"><div class="fpi-dot" style="background:#FF4D6A"></div>F**ked — FPI 60–99</div>
-        <div class="fpi-badge"><div class="fpi-dot" style="background:#9B59B6"></div>Absolutely F**ked — FPI 100+</div>
-      </div>
-      <div class="fpi-cards">
-        <div class="fpi-card">
-          <div class="fpi-card-img-wrap">
-            <img src="img/rose-and-crown.jpg" alt="The Rose and Crown">
-            <span class="fpi-card-badge" style="background:rgba(255,77,106,0.9)">At Risk of Closure</span>
-          </div>
-          <div class="fpi-card-body">
-            <div class="fpi-card-name">The Rose and Crown</div>
-            <div class="fpi-card-addr">2 The Polygon, Clapham Old Town, SW4</div>
-            <div class="fpi-card-footer">
-              <div class="fpi-card-status"><strong style="color:#FF4D6A">F**ked</strong><span>Rates +180.0% vs 2023</span></div>
-              <div class="fpi-card-score"><big>84</big><small>/100 FPI</small></div>
-            </div>
-          </div>
-        </div>
-        <div class="fpi-card">
-          <div class="fpi-card-img-wrap">
-            <img src="img/crown-and-shuttle.jpg" alt="Crown and Shuttle">
-            <span class="fpi-card-badge" style="background:rgba(255,77,106,0.9)">At Risk of Closure</span>
-          </div>
-          <div class="fpi-card-body">
-            <div class="fpi-card-name">Crown &amp; Shuttle</div>
-            <div class="fpi-card-addr">226 Shoreditch High St, E1</div>
-            <div class="fpi-card-footer">
-              <div class="fpi-card-status"><strong style="color:#FF4D6A">F**ked</strong><span>Rates +158.0% vs 2023</span></div>
-              <div class="fpi-card-score"><big>77</big><small>/100 FPI</small></div>
-            </div>
-          </div>
-        </div>
-        <div class="fpi-card">
-          <div class="fpi-card-img-wrap">
-            <img src="img/bradleys-spanish-bar.jpg" alt="Bradley's Spanish Bar">
-            <span class="fpi-card-badge" style="background:rgba(245,166,35,0.9);color:#000">Under Pressure</span>
-          </div>
-          <div class="fpi-card-body">
-            <div class="fpi-card-name">Bradley's Spanish Bar</div>
-            <div class="fpi-card-addr">42–44 Hanway St, Fitzrovia, W1T</div>
-            <div class="fpi-card-footer">
-              <div class="fpi-card-status"><strong style="color:#F5A623">Struggling</strong><span>Rates +80.0% vs 2023</span></div>
-              <div class="fpi-card-score"><big>48</big><small>/100 FPI</small></div>
-            </div>
-          </div>
-        </div>
-        <div class="fpi-card">
-          <div class="fpi-card-img-wrap">
-            <img src="img/coach-and-horses.jpg" alt="Coach and Horses">
-            <span class="fpi-card-badge" style="background:rgba(245,166,35,0.9);color:#000">Under Pressure</span>
-          </div>
-          <div class="fpi-card-body">
-            <div class="fpi-card-name">Coach &amp; Horses</div>
-            <div class="fpi-card-addr">29 Greek St, Soho, W1D</div>
-            <div class="fpi-card-footer">
-              <div class="fpi-card-status"><strong style="color:#F5A623">Struggling</strong><span>Rates +70.6% vs 2023</span></div>
-              <div class="fpi-card-score"><big>42</big><small>/100 FPI</small></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>🟠 Amber Radar Blips</h4>
-          <p>Struggling pubs show as solid amber. At-risk pubs pulse faster the higher the FPI score. Critical pubs flash purple.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🧭 Lock-On Warning</h4>
-          <p>Tap an amber blip — the compass needle turns amber and a flickering warning appears: UNDER PRESSURE, AT RISK, or IN SERIOUS TROUBLE.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📊 Venue FPI Card</h4>
-          <p>Every troubled pub page shows FPI score, severity label, and rate change vs 2023 — credited to <a href="https://ismypubfucked.com" style="color:var(--amber);text-decoration:none" target="_blank">ismypubfucked.com</a> · VOA data.</p>
-        </div>
-      </div>
-      <a href="fpi.html" class="fpi-link">🕯️ Full Troubled Pubs story →</a>
-        </details>
-
-    <details class="feature-section" id="tunedexter">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-teal">🎚️</div>
-        <h2>TUNeDEXTER</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Direct flavour sliders for fine-tuning what "your kind of beer" really means. Five axes (Hoppy, Sweet, Fruity, Malty, Sour) plus Body and Strength. Sits between your picks and PINtDEXTER's recommendations.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>📡 Tracks Your Picks</h4>
-          <p>Sliders open at positions derived from your Sip or Skip and Head to Head picks — you see your own taste, not a blank template.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🔒 You Save, You Lock</h4>
-          <p>The moment you save, your tuning becomes authoritative. PINtDEXTER uses your values; SoS/H2H stop moving the sliders.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🔬 Live Beer DNA</h4>
-          <p>As you adjust, a Beer DNA preview tells you which styles your current tuning favours — West Coast IPA, Hazy IPA, Stout, Sour and more.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🎛️ Precision Controls</h4>
-          <p>Stepped 0–5 bars for flavour axes. Segmented controls for body (Light / Medium / Full) and strength (Session / Standard / Strong).</p>
-        </div>
-      </div>
-        </details>
-
-    <details class="feature-section" id="venue-detail">
-      <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-teal">📋</div>
-        <h2>Venue Detail</h2>
-        <span class="section-chevron">›</span>
-      </div>
-
-      </summary>
-      <p class="section-intro">
-        Tap any venue card to see the full picture — tap list, ratings, distance, navigation, sharing, and more.
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h4>🍺 Full Tap List</h4>
-          <p>Every beer on tap with style, rating, and ABV. Toggle <strong>On Tap</strong> for what&rsquo;s pouring now, <strong>Tap History</strong> for older sightings. See the top-rated beer badge.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🧭 Navigate</h4>
-          <p>One tap to open directions in your maps app of choice. See distance from your current location.</p>
-        </div>
-        <div class="detail-card">
-          <h4>📲 Share &amp; QR</h4>
-          <p>Generate a QR code for any venue. Share it with friends so they can add it to their PINtPOINT app.</p>
-        </div>
-        <div class="detail-card">
-          <h4>🔗 Untappd Link</h4>
-          <p>Jump to the venue's Untappd page to check in, see reviews, and browse the full beer menu.</p>
-        </div>
-      </div>
-        </details>
-
-    <details class="feature-section" id="venues">
-      <summary class="section-summary">
+        <details class="feature-section" id="venues">
+        <summary class="section-summary">
 
         <div class="section-header">
         <div class="section-icon icon-teal">🍺</div>
         <h2>Venues</h2>
         <span class="section-chevron">›</span>
-      </div>
+        </div>
 
-      </summary>
-      <p class="section-intro">
+        </summary>
+        <p class="section-intro">
         A fully searchable list of nearby venues with photos, ratings, and live tap list data. Search by venue name or beer name. Sort by distance or style match. Filter to find exactly what suits the moment.
-      </p>
-      <div class="detail-grid">
+        </p>
+        <div class="detail-grid">
         <div class="detail-card">
-          <h4>🔍 Smart Search</h4>
-          <p>Search across venue names and beer names simultaneously. Fuzzy matching means you don't need exact spellings.</p>
+        <h4>🔍 Smart Search</h4>
+        <p>Search across venue names and beer names simultaneously. Fuzzy matching means you don't need exact spellings.</p>
         </div>
         <div class="detail-card">
-          <h4>📊 Sort Options</h4>
-          <p>Sort by distance to find what's close, or by style match when filtering to find venues with the best selection.</p>
+        <h4>📊 Sort Options</h4>
+        <p>Sort by distance to find what's close, or by style match when filtering to find venues with the best selection.</p>
         </div>
         <div class="detail-card">
-          <h4>❤️ Favourites</h4>
-          <p>Heart any venue to save it. Favourited venues show as red blips on the radar so you can always spot your regulars.</p>
+        <h4>❤️ Favourites</h4>
+        <p>Heart any venue to save it. Favourited venues show as red blips on the radar so you can always spot your regulars.</p>
         </div>
         <div class="detail-card">
-          <h4>📸 Rich Cards</h4>
-          <p>Every venue card shows a photo, distance, rating, beer count, and a featured beer pill highlighting what's worth trying.</p>
+        <h4>📸 Rich Cards</h4>
+        <p>Every venue card shows a photo, distance, rating, beer count, and a featured beer pill highlighting what's worth trying.</p>
         </div>
         <div class="detail-card">
-          <h4>💾 Query Persists</h4>
-          <p>Search a pub name, tap into a venue, hit back — your query and the filtered list are still there. No re-typing to keep browsing matches.</p>
+        <h4>💾 Query Persists</h4>
+        <p>Search a pub name, tap into a venue, hit back — your query and the filtered list are still there. No re-typing to keep browsing matches.</p>
         </div>
-      </div>
+        </div>
         </details>
+
+      </div><!-- /cat-body -->
+    </details>
+
+    <details class="category">
+      <summary>
+        <div class="cat-emoji">🍺</div>
+        <span class="cat-label">Beer <span class="cat-sub">Beer Alerts · Beer Scan · Head to Head · PINtDEXTER · Sip or Skip · TUNeDEXTER</span></span>
+        <span class="cat-chevron">›</span>
+      </summary>
+      <div class="cat-body">
+
+        <details class="feature-section" id="alerts">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-amber">🔔</div>
+        <h2>Beer Alerts</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        Never miss your favourite beer. Add beers to your watchlist and PINtPOINT will alert you when they appear on tap at venues you've saved as favourites. Matched against live Untappd tap list data.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>📝 Watchlist</h4>
+        <p>Build a list of beers you love. Add as many as you want — swipe to remove any you no longer care about.</p>
+        </div>
+        <div class="detail-card">
+        <h4>❤️ Favourited Venue Alerts</h4>
+        <p>Alerts are matched against the venues you've saved as favourites — so notifications stay relevant to the places you actually care about.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🔔 Push Notifications</h4>
+        <p>Get notified when a watched beer is spotted at one of your saved venues.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📲 Checks on Open</h4>
+        <p>Alerts also run when you open the app, so you can quickly see what's appeared since your last visit.</p>
+        </div>
+        </div>
+        </details>
+
+        <details class="feature-section" id="beer-can-scan">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-teal">📷</div>
+        <h2>Beer Scan</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        Two ways to identify a beer from your camera. Frame any can or bottle and PINtPOINT auto-reads the barcode in real time. For cans without a useful barcode, cask pump clips, or anything where the printed label tells you more than the strip, tap "Scan" and PINtPOINT reads the label itself — extracting brewery, beer name, style and ABV.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>📷 Auto Barcode Scan</h4>
+        <p>Live camera scan reads the EAN/UPC barcode instantly — no typing, no tapping. Cross-checks our central catalog, then EAN-DB and Open Food Facts as fallbacks.</p>
+        </div>
+        <div class="detail-card">
+        <h4>👁️ Label Vision</h4>
+        <p>Tap "Scan" to read a label with vision. Works on craft cans, cask pump clips, taps with no barcode in frame — anywhere the printed label is more reliable than a strip.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🔗 Untappd Auto-Link</h4>
+        <p>When vision finds a confident match on Untappd, your scan attaches the canonical beer ID and adds it to the central catalog automatically — every scan grows the database for the next user.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📚 Save &amp; Scan Next</h4>
+        <p>Confirm-screen has primary save and a secondary "Save &amp; Scan Next" — fast batch entry when you're working through a haul or a flight.</p>
+        </div>
+        </div>
+        </details>
+
+        <details class="feature-section" id="head-to-head">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-teal">🥊</div>
+        <h2>Head to Head</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        The next generation of taste profiling. Where Sip or Skip asks "would you drink this?" — Head to Head asks "which of these two?" Forced choice, always between two beers of the same style. A West Coast IPA versus a Hazy IPA is meaningful; a Sour versus a Stout is not.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>🎯 Pick Your Styles First</h4>
+        <p>Choose from 13 styles before you start. No forced IPA-vs-IPA if you don't drink IPA — H2H only matches you on styles you actually like.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🥊 Same-Style Matchups</h4>
+        <p>Five pair-choice rounds, always within the same style. Your preference between Punk IPA and Neck Oil reveals sub-style signal Sip or Skip can't capture.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🏆 Champs Per Style</h4>
+        <p>See your winners ranked by win percentage. Champion styles are prepended to your taste profile — PINtDEXTER recommendations update instantly.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🔄 Mind Changed? We Notice</h4>
+        <p>If a style you voted for was previously in your "avoided" list, it's removed. Your new preference wins.</p>
+        </div>
+        <div class="detail-card">
+        <h4>⚡ See My Recommendations</h4>
+        <p>End of a round drops you on a ranked top-10 of beers on tap within 3 miles that best match your refined profile. Walkable-now, not "anywhere in your search catchment". Tap any row to open the venue.</p>
+        </div>
+        </div>
+        </details>
+
+        <details class="feature-section" id="pintdexter">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-amber">⚡</div>
+        <h2>PINtDEXTER</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        PINtDEXTER is PINtPOINT's personal recommendation engine. It blends three signals — Sip or Skip swipes, Head to Head picks, and TUNeDEXTER fine-tuning — with your real scan history to surface the best beer on tap at every venue you visit. Your Best Pint Next.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>🎯 Best Pint Next</h4>
+        <p>A compact recommendation button on every venue's tap list. Tap to expand and see PINtDEXTER's top pick with confidence level and reasons why.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🧠 Learns From Every Signal</h4>
+        <p>Sip or Skip swipes, Head to Head champs, TUNeDEXTER sliders and scanned beers all feed in — earlier signals fill gaps until your scan history builds up.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🚫 Avoids What You Hate</h4>
+        <p>Styles you consistently skipped are penalised in the scoring — PINtDEXTER won't keep recommending sours if you always swipe left on them.</p>
+        </div>
+        <div class="detail-card">
+        <h4>💬 Reason Chips</h4>
+        <p>Every recommendation comes with short reason chips explaining why that beer was picked — style match, ABV preference, or top-rated at this venue.</p>
+        </div>
+        </div>
+        </details>
+
+        <details class="feature-section" id="sip-or-skip">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-teal">🍺</div>
+        <h2>Sip or Skip</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        Swipe through real beers Tinder-style and tell PINtPOINT what you love. Love IPAs? Hate sours? Prefer session strength? Sip or Skip builds your personal taste profile in minutes. Find it on the Discover → Beers tab or in Settings → My Stuff.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>👉 Swipe to Sip or Skip</h4>
+        <p>Swipe right (or tap Sip) for beers you'd order. Swipe left (or tap Skip) for ones you'd avoid. Curated cards across 13 styles.</p>
+        </div>
+        <div class="detail-card">
+        <h4>⚡ Instant Profile</h4>
+        <p>After 10 swipes, PINtDEXTER has enough signal to start personalising your recommendations. Keep going to sharpen it further.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🔁 Refine Any Time</h4>
+        <p>Your taste changes. Run Sip or Skip again to refine your profile — each session improves your recommendations.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🗂️ My Kind of Beer</h4>
+        <p>See your full taste profile under Settings → My Stuff. Preferred styles, avoided styles, strength preference, and PINtDEXTER labels — all in one place.</p>
+        </div>
+        <div class="detail-card">
+        <h4>⚡ See My Recommendations</h4>
+        <p>End of a round drops you on a ranked top-10 of beers on tap within 3 miles that best match your refined profile. Walkable-now, not "anywhere in your search catchment". Tap any row to open the venue.</p>
+        </div>
+        </div>
+        </details>
+
+        <details class="feature-section" id="tunedexter">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-teal">🎚️</div>
+        <h2>TUNeDEXTER</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        Direct flavour sliders for fine-tuning what "your kind of beer" really means. Five axes (Hoppy, Sweet, Fruity, Malty, Sour) plus Body and Strength. Sits between your picks and PINtDEXTER's recommendations.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>📡 Tracks Your Picks</h4>
+        <p>Sliders open at positions derived from your Sip or Skip and Head to Head picks — you see your own taste, not a blank template.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🔒 You Save, You Lock</h4>
+        <p>The moment you save, your tuning becomes authoritative. PINtDEXTER uses your values; SoS/H2H stop moving the sliders.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🔬 Live Beer DNA</h4>
+        <p>As you adjust, a Beer DNA preview tells you which styles your current tuning favours — West Coast IPA, Hazy IPA, Stout, Sour and more.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🎛️ Precision Controls</h4>
+        <p>Stepped 0–5 bars for flavour axes. Segmented controls for body (Light / Medium / Full) and strength (Session / Standard / Strong).</p>
+        </div>
+        </div>
+        </details>
+
+      </div><!-- /cat-body -->
+    </details>
+
+    <details class="category">
+      <summary>
+        <div class="cat-emoji">🗺️</div>
+        <span class="cat-label">Nights Out <span class="cat-sub">Create-a-Crawl · Hall of Fame · Sharing</span></span>
+        <span class="cat-chevron">›</span>
+      </summary>
+      <div class="cat-body">
+
+        <details class="feature-section" id="crawl">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-amber">🗺️</div>
+        <h2>Create-a-Crawl</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        Plan the perfect pub crawl in seconds. Set your starting point, number of stops (2–12), maximum gap between venues, and total walking distance. Three modes — automatic, hands-on, and ghost — let you build anything from a routine evening to a haunted historical wander.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>📐 Smart Routing</h4>
+        <p>Standard mode picks the closest unvisited venue at each step. Configurable stops, max gap, and total walk distance keep the route within reach.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🧭 Nearest Neighbours</h4>
+        <p>Hands-on mode: at each stop, you pick from the 3 closest pubs. The walk shape emerges as you go — great for unfamiliar areas where you want some say.</p>
+        </div>
+        <div class="detail-card">
+        <h4>👻 Ghost Crawl</h4>
+        <p>Swap every stop for a closed pub from CAMRA-era guides (1983, 1986, 1991, or all eras). Walks the ghosts of pubs past — a city tour you can no longer drink in.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🆕 New Venues Only</h4>
+        <p>Skip pubs you've already saved. Forces the route into territory you've never set foot in.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🚶 Walk Times</h4>
+        <p>Real-time walking estimates between each stop. Total crawl distance and duration shown at a glance.</p>
+        </div>
+        <div class="detail-card">
+        <h4>✅ Progress Tracking</h4>
+        <p>Mark stops as visited as you go. Resume an active crawl anytime — your progress is saved.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📲 Share with Friends</h4>
+        <p>Share the itinerary via any messaging app — venue names, distances, and walk times between each stop.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🗺️ Map View</h4>
+        <p>Toggle list/map with one tap. Every stop is a numbered pin on a dark-styled map, dashed route line connecting them in order. Current stop highlighted.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📍 Open in Google Maps</h4>
+        <p>Send the full crawl route to Google Maps with all stops as waypoints — navigate the whole night from your maps app.</p>
+        </div>
+        </div>
+        </details>
+
+        <details class="feature-section" id="hall-of-fame">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-amber">🏆</div>
+        <h2>Hall of Fame</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        25+ curated pub crawls preserved from the archive — time-stamped routes, living and lost pubs both. A mixture of well-known classics and lesser-known routes from personal archives stretching back to 2007. Reach it via the 🏆 trophy at the top of Create-a-Crawl.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>🍺 Classic Routes</h4>
+        <p>Bermondsey Beer Mile, Orange Line Mile, Black Horse Beer Mile, Chelmsford Beer Mile, the Monopoly Board, and the Circle Line Pub Crawl — the routes London (and Essex) craft drinkers know by heart.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📜 Personal Archives</h4>
+        <p>Time-stamped crawls from personal archives going back to 2007. Each preserves the original narrative, route, and pub picks of the day — a snapshot of a drinking moment in London history.</p>
+        </div>
+        <div class="detail-card">
+        <h4>👻 Living &amp; Lost</h4>
+        <p>Many archive crawls now include closed pubs as ghost stops. Walk a 2008 route in 2026 and see how much of the city's pub fabric has changed in a generation.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🚀 Start Any Crawl</h4>
+        <p>Tap "Start this crawl" on any Hall of Fame entry to load it as your active route. Mark stops visited as you go, share with mates, send to Google Maps.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🎲 Hidden Variants</h4>
+        <p>Some crawls have an "Advanced drinkers" link to harder variants. The Monopoly Board hides an A–Z challenge: order a drink starting with a different letter at every stop.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🌍 Submit Your Own</h4>
+        <p>Build a crawl in Create-a-Crawl, then tap 🏆 Submit on the route to send it for Hall of Fame consideration. PINtPOINT isn't London-only — if we don't yet cover your city, use Add Venue for each pub first and you'll be seeding your city's coverage as you go.</p>
+        </div>
+        </div>
+        <p style="margin-top: 1.25rem; color: var(--muted); font-size: 0.9rem; font-style: italic;">
+        …and many more in the app. The full Hall of Fame holds 25+ crawls and grows as users submit theirs.
+        </p>
+        </details>
+
+        <details class="feature-section" id="sharing">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-teal">📲</div>
+        <h2>Sharing</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        Share venues, beers and crawl routes with friends — no accounts needed, works with any messaging app.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>🍺 Beer Sharing</h4>
+        <p>Send any beer's PINtPOINT page — recipients see brewery, style, ABV and where it&rsquo;s currently pouring without needing the app.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📲 Crawl Sharing</h4>
+        <p>Share your pub crawl itinerary — venue names, distances, and walk times between stops — via iMessage, WhatsApp, or any app.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🗺️ Google Maps</h4>
+        <p>Open any crawl as a multi-stop walking route in Google Maps with one tap. Navigate the whole night from your maps app.</p>
+        </div>
+        <div class="detail-card">
+        <h4>⭐ Google Reviews</h4>
+        <p>See and leave Google reviews for any venue directly from its detail page — support the pubs you love.</p>
+        </div>
+        </div>
+        </details>
+
+      </div><!-- /cat-body -->
+    </details>
+
+    <details class="category">
+      <summary>
+        <div class="cat-emoji">🏚️</div>
+        <span class="cat-label">Pub Culture <span class="cat-sub">Ghost Hunter · Troubled Pubs</span></span>
+        <span class="cat-chevron">›</span>
+      </summary>
+      <div class="cat-body">
+
+        <details class="feature-section ghost-section" id="ghost">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-purple">👻</div>
+        <h2>Ghost Hunter</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        Every street corner was once a pub. Toggle Ghost Hunter and your radar transforms — 500+ closed and demolished pubs appear as purple blips, with the feature primarily focused on London. Tap any ghost to see what it once looked like, and what replaced it.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card ghost-card">
+        <h4>📸 Then &amp; Now</h4>
+        <p>Historical photos alongside current Street View. Tap the venue image to flip between past and present — the same corner, decades apart.</p>
+        </div>
+        <div class="detail-card ghost-card">
+        <h4>🟣 Purple Blips</h4>
+        <p>Ghost pubs appear as solid purple blips on the radar. Many are linked to archive photography and historical notes.</p>
+        </div>
+        <div class="detail-card ghost-card">
+        <h4>💀 Demolished Mode</h4>
+        <p>Filter to show only the pubs that no longer exist at all — not converted, not closed, just gone.</p>
+        </div>
+        </div>
+        <a href="ghost.html" class="ghost-link">👻 Full Ghost Hunter story →</a>
+        </details>
+
+        <details class="feature-section" id="troubled">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-amber">⚠️</div>
+        <h2>Troubled Pubs</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        Some pubs need your support before it's too late. PINtPOINT uses FPI (Financial Pressure Index) data from <a href="https://ismypubfucked.com" style="color:var(--amber);text-decoration:none" target="_blank">ismypubfucked.com</a> to highlight venues under financial strain — from "Feeling It" to "Absolutely F**ked". Visit them while you still can.
+        </p>
+        <div class="fpi-scale">
+        <div class="fpi-badge"><div class="fpi-dot" style="background:#00D4AA"></div>Fine — rates flat</div>
+        <div class="fpi-badge"><div class="fpi-dot" style="background:#F5A623"></div>Feeling It — FPI 1–29</div>
+        <div class="fpi-badge"><div class="fpi-dot" style="background:#F5A623"></div>Struggling — FPI 30–59</div>
+        <div class="fpi-badge"><div class="fpi-dot" style="background:#FF4D6A"></div>F**ked — FPI 60–99</div>
+        <div class="fpi-badge"><div class="fpi-dot" style="background:#9B59B6"></div>Absolutely F**ked — FPI 100+</div>
+        </div>
+        <div class="fpi-cards">
+        <div class="fpi-card">
+        <div class="fpi-card-img-wrap">
+        <img src="img/rose-and-crown.jpg" alt="The Rose and Crown">
+        <span class="fpi-card-badge" style="background:rgba(255,77,106,0.9)">At Risk of Closure</span>
+        </div>
+        <div class="fpi-card-body">
+        <div class="fpi-card-name">The Rose and Crown</div>
+        <div class="fpi-card-addr">2 The Polygon, Clapham Old Town, SW4</div>
+        <div class="fpi-card-footer">
+        <div class="fpi-card-status"><strong style="color:#FF4D6A">F**ked</strong><span>Rates +180.0% vs 2023</span></div>
+        <div class="fpi-card-score"><big>84</big><small>/100 FPI</small></div>
+        </div>
+        </div>
+        </div>
+        <div class="fpi-card">
+        <div class="fpi-card-img-wrap">
+        <img src="img/crown-and-shuttle.jpg" alt="Crown and Shuttle">
+        <span class="fpi-card-badge" style="background:rgba(255,77,106,0.9)">At Risk of Closure</span>
+        </div>
+        <div class="fpi-card-body">
+        <div class="fpi-card-name">Crown &amp; Shuttle</div>
+        <div class="fpi-card-addr">226 Shoreditch High St, E1</div>
+        <div class="fpi-card-footer">
+        <div class="fpi-card-status"><strong style="color:#FF4D6A">F**ked</strong><span>Rates +158.0% vs 2023</span></div>
+        <div class="fpi-card-score"><big>77</big><small>/100 FPI</small></div>
+        </div>
+        </div>
+        </div>
+        <div class="fpi-card">
+        <div class="fpi-card-img-wrap">
+        <img src="img/bradleys-spanish-bar.jpg" alt="Bradley's Spanish Bar">
+        <span class="fpi-card-badge" style="background:rgba(245,166,35,0.9);color:#000">Under Pressure</span>
+        </div>
+        <div class="fpi-card-body">
+        <div class="fpi-card-name">Bradley's Spanish Bar</div>
+        <div class="fpi-card-addr">42–44 Hanway St, Fitzrovia, W1T</div>
+        <div class="fpi-card-footer">
+        <div class="fpi-card-status"><strong style="color:#F5A623">Struggling</strong><span>Rates +80.0% vs 2023</span></div>
+        <div class="fpi-card-score"><big>48</big><small>/100 FPI</small></div>
+        </div>
+        </div>
+        </div>
+        <div class="fpi-card">
+        <div class="fpi-card-img-wrap">
+        <img src="img/coach-and-horses.jpg" alt="Coach and Horses">
+        <span class="fpi-card-badge" style="background:rgba(245,166,35,0.9);color:#000">Under Pressure</span>
+        </div>
+        <div class="fpi-card-body">
+        <div class="fpi-card-name">Coach &amp; Horses</div>
+        <div class="fpi-card-addr">29 Greek St, Soho, W1D</div>
+        <div class="fpi-card-footer">
+        <div class="fpi-card-status"><strong style="color:#F5A623">Struggling</strong><span>Rates +70.6% vs 2023</span></div>
+        <div class="fpi-card-score"><big>42</big><small>/100 FPI</small></div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>🟠 Amber Radar Blips</h4>
+        <p>Struggling pubs show as solid amber. At-risk pubs pulse faster the higher the FPI score. Critical pubs flash purple.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🧭 Lock-On Warning</h4>
+        <p>Tap an amber blip — the compass needle turns amber and a flickering warning appears: UNDER PRESSURE, AT RISK, or IN SERIOUS TROUBLE.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📊 Venue FPI Card</h4>
+        <p>Every troubled pub page shows FPI score, severity label, and rate change vs 2023 — credited to <a href="https://ismypubfucked.com" style="color:var(--amber);text-decoration:none" target="_blank">ismypubfucked.com</a> · VOA data.</p>
+        </div>
+        </div>
+        <a href="fpi.html" class="fpi-link">🕯️ Full Troubled Pubs story →</a>
+        </details>
+
+      </div><!-- /cat-body -->
+    </details>
+
+    <details class="category">
+      <summary>
+        <div class="cat-emoji">⚙️</div>
+        <span class="cat-label">Manage <span class="cat-sub">Customisation · Filters · Venue Detail</span></span>
+        <span class="cat-chevron">›</span>
+      </summary>
+      <div class="cat-body">
+
+        <details class="feature-section" id="customise">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-blue">🎨</div>
+        <h2>Customisation</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        Make PINtPOINT yours. Choose your theme, pick an accent colour, set your preferred units, configure your radar behaviour, and set up Quick Picks for the areas you visit most.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>🎨 Themes</h4>
+        <p>Multiple colour themes to suit your taste — Teal, Amber, Purple, Blue and more. Every UI element adapts.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📡 Radar Settings</h4>
+        <p>Choose between Nearest Venues or All Within Radius mode. Set how many blips to show or the radar range.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📌 Quick Picks</h4>
+        <p>Save up to 6 favourite areas (postcodes, neighbourhoods, cities) for instant location switching. Search any new location and we offer to pin it right there in the sheet — if all 6 are used, we ask which one to swap out.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📏 Units</h4>
+        <p>Switch between miles and metres. Distance displays across the entire app update instantly.</p>
+        </div>
+        </div>
+        </details>
+
+        <details class="feature-section" id="filters">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-blue">🎯</div>
+        <h2>Filters</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        Tap the gold magnifying glass on any screen to open the universal filter sheet. Set your destination, radius and beer styles — all from one place, applied across every tab.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>📍 Destination</h4>
+        <p>Search by postcode or area name, or tap a Quick Pick to jump to your favourite spots instantly.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📏 Radius</h4>
+        <p>Six presets from 250 yards to 15 miles. Your selection syncs across the radar, venues and discover tabs.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🍺 Style Filter</h4>
+        <p>Multi-select from dozens of styles — IPA, Stout, Lager, Sour, Saison, and more. Long-press any style for a description.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🔍 Consistent</h4>
+        <p>One gold magnifying glass, top-left on every screen. Same filters everywhere — no hunting for settings.</p>
+        </div>
+        </div>
+        </details>
+
+        <details class="feature-section" id="venue-detail">
+        <summary class="section-summary">
+
+        <div class="section-header">
+        <div class="section-icon icon-teal">📋</div>
+        <h2>Venue Detail</h2>
+        <span class="section-chevron">›</span>
+        </div>
+
+        </summary>
+        <p class="section-intro">
+        Tap any venue card to see the full picture — tap list, ratings, distance, navigation, sharing, and more.
+        </p>
+        <div class="detail-grid">
+        <div class="detail-card">
+        <h4>🍺 Full Tap List</h4>
+        <p>Every beer on tap with style, rating, and ABV. Toggle <strong>On Tap</strong> for what&rsquo;s pouring now, <strong>Tap History</strong> for older sightings. See the top-rated beer badge.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🧭 Navigate</h4>
+        <p>One tap to open directions in your maps app of choice. See distance from your current location.</p>
+        </div>
+        <div class="detail-card">
+        <h4>📲 Share &amp; QR</h4>
+        <p>Generate a QR code for any venue. Share it with friends so they can add it to their PINtPOINT app.</p>
+        </div>
+        <div class="detail-card">
+        <h4>🔗 Untappd Link</h4>
+        <p>Jump to the venue's Untappd page to check in, see reviews, and browse the full beer menu.</p>
+        </div>
+        </div>
+        </details>
+
+      </div><!-- /cat-body -->
+    </details>
 
   </div><!-- /categories -->
 
