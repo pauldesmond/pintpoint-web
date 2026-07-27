@@ -681,6 +681,18 @@
               <h4>🗺️ Maps Handoff</h4>
               <p>When locked on, tap the maps button for turn-by-turn directions in Apple Maps or Google Maps.</p>
             </div>
+            <div class="detail-card">
+              <h4>🎛️ Legend Chips Are Filters</h4>
+              <p>Every chip in the key below the radar is tappable. Isolate a single class of pub — Pick, Faves, @Risk, Match, Others, Ghosts, Unknown — and hide the rest. Handy in dense areas where blips overlap.</p>
+            </div>
+            <div class="detail-card">
+              <h4>🎯 @Risk Auto-Hides Outside Coverage</h4>
+              <p>The @Risk chip only shows where we have Fabric Preservation Index data (England and Wales). Users elsewhere never see a chip that leads to an empty radar.</p>
+            </div>
+            <div class="detail-card">
+              <h4>🔔 Bell That Doesn't Overstay</h4>
+              <p>Watched beers spotted nearby collapse to a small bell top-right — tap to expand, ignore and it auto-fades after about 18 seconds. Never blocks the search magnifier.</p>
+            </div>
           </div>
           <h4 style="margin-top:28px; margin-bottom:10px; font-size:0.82rem; font-weight:700; color:var(--muted); letter-spacing:0.6px; text-transform:uppercase">Blip Legend</h4>
           <div class="blip-legend">
@@ -701,7 +713,7 @@
             <h2>Tap Roulette</h2>
           </div>
           <p class="section-intro">
-            Can't decide where to go? Tap Roulette picks a nearby venue at random and sends you there — no overthinking, no committee meeting, just a decision made. Find it on the Venues tab or in Settings.
+            Can't decide where to go? Tap Roulette picks a nearby venue at random, then spins again for a beer from that venue's tap list — no overthinking, no committee meeting, just a decision made. Find it on the Venues tab or in Settings.
           </p>
           <div class="detail-grid">
             <div class="detail-card">
@@ -713,8 +725,12 @@
               <p>Once a venue is picked, you get the essentials — distance, details, and a one-tap handoff to Maps.</p>
             </div>
             <div class="detail-card">
+              <h4>⚡ Live Refresh On-Land</h4>
+              <p>Rather than pre-scraping every venue in range, we fetch a fresh Untappd tap list for just the pub the wheel lands on. No wasted data, no wasted time — the pint we spin for is the pint that's actually there.</p>
+            </div>
+            <div class="detail-card">
               <h4>🔄 Spin Again</h4>
-              <p>Not feeling it? Spin again and let fate have another go.</p>
+              <p>Not feeling it? Spin again and let fate have another go — or "Exclude &amp; re-spin" to drop a specific venue from the next round.</p>
             </div>
           </div>
         </div>
@@ -744,6 +760,10 @@
             <div class="detail-card">
               <h4>📸 Rich Cards</h4>
               <p>Every venue card shows a photo, distance, rating, beer count, and a featured beer pill highlighting what's worth trying.</p>
+            </div>
+            <div class="detail-card">
+              <h4>💾 Query Persists</h4>
+              <p>Search a pub name, tap into a venue, hit back — your query and the filtered list are still there. No re-typing to keep browsing matches.</p>
             </div>
           </div>
         </div>
@@ -788,6 +808,10 @@
               <h4>🗂️ My Kind of Beer</h4>
               <p>See your full taste profile under Settings → My Stuff. Preferred styles, avoided styles, strength preference, and PINtDEXTER labels — all in one place.</p>
             </div>
+            <div class="detail-card">
+              <h4>⚡ See My Recommendations</h4>
+              <p>End of a round drops you on a ranked top-10 of beers on tap within 3 miles that best match your refined profile. Walkable-now, not "anywhere in your search catchment". Tap any row to open the venue.</p>
+            </div>
           </div>
         </div>
 
@@ -816,6 +840,10 @@
             <div class="detail-card">
               <h4>🔄 Mind Changed? We Notice</h4>
               <p>If a style you voted for was previously in your "avoided" list, it's removed. Your new preference wins.</p>
+            </div>
+            <div class="detail-card">
+              <h4>⚡ See My Recommendations</h4>
+              <p>End of a round drops you on a ranked top-10 of beers on tap within 3 miles that best match your refined profile. Walkable-now, not "anywhere in your search catchment". Tap any row to open the venue.</p>
             </div>
           </div>
         </div>
@@ -1232,15 +1260,44 @@
     </details>
 
     <!-- ════════════════════════════════════════ -->
-    <!-- CATEGORY 5: MANAGE                      -->
+    <!-- CATEGORY 5: HELP BUILD THE MAP          -->
     <!-- ════════════════════════════════════════ -->
     <details class="category">
       <summary>
-        <div class="cat-emoji">⚙️</div>
-        <span class="cat-label">Manage <span class="cat-sub">Add Venue · Customisation · Filters</span></span>
+        <div class="cat-emoji">🤝</div>
+        <span class="cat-label">Help Build the Map <span class="cat-sub">Add Venue · Log a Beer · Add a Beer to the Catalogue</span></span>
         <span class="cat-chevron">›</span>
       </summary>
       <div class="cat-body">
+
+        <!-- HELP BUILD THE MAP — INTRO -->
+        <div class="feature-section" id="contribute">
+          <div class="section-header">
+            <div class="section-icon icon-teal">🤝</div>
+            <h2>Help Build the Map</h2>
+          </div>
+          <p class="section-intro">
+            PINtPOINT only gets better when people use it. Many good pubs and beers are still missing — the backstreet locals, the cask that just appeared, the special release that isn't on Untappd yet. When you contribute, that information becomes live for everyone nearby. No moderation queue. No waiting. No upvotes. Just better data, instantly.
+          </p>
+          <div class="detail-grid">
+            <div class="detail-card">
+              <h4>➕ Add a venue we don't have yet</h4>
+              <p>See Add Venue below.</p>
+            </div>
+            <div class="detail-card">
+              <h4>🍺 Log a beer on tap at a specific pub</h4>
+              <p>Adds it to that venue's live tap list, visible to everyone in range.</p>
+            </div>
+            <div class="detail-card">
+              <h4>📚 Add a beer to the shared catalogue</h4>
+              <p>Paste an Untappd link on Discover → Beers. Makes the beer searchable and gives it a canonical detail page.</p>
+            </div>
+            <div class="detail-card">
+              <h4>❤️ Save the pubs you drink at</h4>
+              <p>Tells the crowd what's worth covering. Shapes coverage priorities without any extra effort.</p>
+            </div>
+          </div>
+        </div>
 
         <!-- ADD VENUE -->
         <div class="feature-section" id="add-venue">
@@ -1267,6 +1324,70 @@
           </div>
         </div>
 
+        <!-- LOG A BEER -->
+        <div class="feature-section" id="log-beer">
+          <div class="section-header">
+            <div class="section-icon icon-amber">🍺</div>
+            <h2>Log a Beer</h2>
+          </div>
+          <p class="section-intro">
+            See a beer on tap that PINtPOINT doesn't show? On any venue's detail page, tap "Add Beer", paste the Untappd URL and pick the serving type (cask, keg or draft). The beer joins that venue's live tap list on the spot — the fastest way to correct a stale scrape or add a one-off special.
+          </p>
+          <div class="detail-grid">
+            <div class="detail-card">
+              <h4>🔗 Paste-and-Go</h4>
+              <p>Untappd URL from the app share sheet or the browser URL bar. Full Untappd resolution happens server-side — no lookups on your device.</p>
+            </div>
+            <div class="detail-card">
+              <h4>🛢️ Cask, Keg, Draft</h4>
+              <p>Mark cask when it's cask. The venue page and share cards use that flag to badge cask pours distinctly.</p>
+            </div>
+            <div class="detail-card">
+              <h4>♡ Watch While You Log</h4>
+              <p>Log a beer and add it to your Beer Alerts watchlist in the same tap.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADD A BEER TO THE CATALOGUE -->
+        <div class="feature-section" id="add-beer">
+          <div class="section-header">
+            <div class="section-icon icon-teal">📚</div>
+            <h2>Add a Beer to the Catalogue</h2>
+          </div>
+          <p class="section-intro">
+            Know a beer PINtPOINT doesn't? On Discover → Beers, paste an Untappd beer URL into the search bar and tap Add. The edge function scrapes canonical name, brewery, style, ABV and Untappd ID, then upserts to the shared catalogue.
+          </p>
+          <div class="detail-grid">
+            <div class="detail-card">
+              <h4>🔗 Untappd URL or Shortlink</h4>
+              <p>Full URLs and untp.beer/… shortlinks both work — the edge function resolves them server-side.</p>
+            </div>
+            <div class="detail-card">
+              <h4>🗝️ Canonical Untappd ID</h4>
+              <p>Every beer in the catalogue keys on its Untappd ID. The paste flow won't create duplicates — future logs and scrapes resolve to the same canonical row.</p>
+            </div>
+            <div class="detail-card">
+              <h4>vs. Log a Beer</h4>
+              <p>Log a Beer ties a beer to a specific venue's live tap list. Add a Beer to the Catalogue just enters it into the shared database — no venue attached. Use this when you want the beer searchable regardless of where it's pouring.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cat-body -->
+    </details>
+
+    <!-- ════════════════════════════════════════ -->
+    <!-- CATEGORY 6: MANAGE                      -->
+    <!-- ════════════════════════════════════════ -->
+    <details class="category">
+      <summary>
+        <div class="cat-emoji">⚙️</div>
+        <span class="cat-label">Manage <span class="cat-sub">Customisation · Filters</span></span>
+        <span class="cat-chevron">›</span>
+      </summary>
+      <div class="cat-body">
+
         <!-- CUSTOMISATION -->
         <div class="feature-section" id="customise">
           <div class="section-header">
@@ -1287,7 +1408,7 @@
             </div>
             <div class="detail-card">
               <h4>📌 Quick Picks</h4>
-              <p>Save up to 6 favourite areas (postcodes, neighbourhoods, cities) for instant location switching.</p>
+              <p>Save up to 6 favourite areas (postcodes, neighbourhoods, cities) for instant location switching. Search any new location and we offer to pin it right there in the sheet — if all 6 are used, we ask which one to swap out.</p>
             </div>
             <div class="detail-card">
               <h4>📏 Units</h4>
