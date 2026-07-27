@@ -265,6 +265,16 @@
       border-top: 1px solid var(--border);
       padding: 0;
     }
+    .cat-intro {
+      padding: 28px 24px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cat-intro-lead {
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--text);
+      margin: 0 0 20px;
+    }
 
     /* FEATURE SECTIONS inside categories */
     .feature-section {
@@ -643,10 +653,34 @@
     <details class="category">
       <summary>
         <div class="cat-emoji">🤝</div>
-        <span class="cat-label">Expand the Map <span class="cat-sub">Add a Beer to the Catalogue · Add Venue · Expand the Map · Log a Beer</span></span>
+        <span class="cat-label">Expand the Map <span class="cat-sub">Add a Beer to the Catalogue · Add Venue · Log a Beer</span></span>
         <span class="cat-chevron">›</span>
       </summary>
       <div class="cat-body">
+
+        <div class="cat-intro">
+          <p class="cat-intro-lead">
+            PINtPOINT only gets better when people use it. Many good pubs and beers are still missing — the backstreet locals, the cask that just appeared, the special release that isn't on Untappd yet. When you contribute, that information becomes live for everyone nearby. No moderation queue. No waiting. No upvotes. Just better data, instantly.
+          </p>
+          <div class="detail-grid">
+            <div class="detail-card">
+              <h4>➕ Add a venue we don't have yet</h4>
+              <p>See Add Venue below.</p>
+            </div>
+            <div class="detail-card">
+              <h4>🍺 Log a beer on tap at a specific pub</h4>
+              <p>Adds it to that venue's live tap list, visible to everyone in range.</p>
+            </div>
+            <div class="detail-card">
+              <h4>📚 Add a beer to the shared catalogue</h4>
+              <p>Paste an Untappd link on Discover → Beers. Makes the beer searchable and gives it a canonical detail page.</p>
+            </div>
+            <div class="detail-card">
+              <h4>❤️ Save the pubs you drink at</h4>
+              <p>Tells the crowd what's worth covering. Shapes coverage priorities without any extra effort.</p>
+            </div>
+          </div>
+        </div>
 
         <details class="feature-section" id="add-beer">
         <summary class="section-summary">
@@ -702,39 +736,6 @@
         <div class="detail-card">
         <h4>🌍 Worldwide</h4>
         <p>Add venues from anywhere in the world. PINtPOINT already covers venues across multiple countries and keeps growing as more places are added.</p>
-        </div>
-        </div>
-        </details>
-
-        <details class="feature-section" id="contribute">
-        <summary class="section-summary">
-
-        <div class="section-header">
-        <div class="section-icon icon-teal">🤝</div>
-        <h2>Expand the Map</h2>
-        <span class="section-chevron">›</span>
-        </div>
-
-        </summary>
-        <p class="section-intro">
-        PINtPOINT only gets better when people use it. Many good pubs and beers are still missing — the backstreet locals, the cask that just appeared, the special release that isn't on Untappd yet. When you contribute, that information becomes live for everyone nearby. No moderation queue. No waiting. No upvotes. Just better data, instantly.
-        </p>
-        <div class="detail-grid">
-        <div class="detail-card">
-        <h4>➕ Add a venue we don't have yet</h4>
-        <p>See Add Venue below.</p>
-        </div>
-        <div class="detail-card">
-        <h4>🍺 Log a beer on tap at a specific pub</h4>
-        <p>Adds it to that venue's live tap list, visible to everyone in range.</p>
-        </div>
-        <div class="detail-card">
-        <h4>📚 Add a beer to the shared catalogue</h4>
-        <p>Paste an Untappd link on Discover → Beers. Makes the beer searchable and gives it a canonical detail page.</p>
-        </div>
-        <div class="detail-card">
-        <h4>❤️ Save the pubs you drink at</h4>
-        <p>Tells the crowd what's worth covering. Shapes coverage priorities without any extra effort.</p>
         </div>
         </div>
         </details>
