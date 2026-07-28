@@ -660,7 +660,7 @@
 
         <div class="cat-intro">
           <p class="cat-intro-lead">
-            PINtPOINT only gets better when people use it. Many good pubs and beers are still missing — the backstreet locals, the cask that just appeared, the special release that isn't on Untappd yet. When you contribute, that information becomes live for everyone nearby. No moderation queue. No waiting. No upvotes. Just better data, instantly.
+            PINtPOINT only gets better when people use it. Many good pubs and beers are still missing — the backstreet locals, the cask that just appeared, the special release the crowd hasn't caught yet. When you contribute, that information becomes live for everyone nearby. No moderation queue. No waiting. No upvotes. Just better data, instantly.
           </p>
         </div>
 
@@ -675,16 +675,16 @@
 
         </summary>
         <p class="section-intro">
-        Know a beer PINtPOINT doesn't? On Discover → Beers, paste an Untappd beer URL into the search bar and tap Add. The edge function scrapes canonical name, brewery, style, ABV and Untappd ID, then upserts to the shared catalogue.
+        Know a beer PINtPOINT doesn't? On Discover → Beers, paste an Untappd beer URL into the search bar and tap Add. The edge function pulls the canonical name, brewery, style, ABV and beer ID from the source and upserts to the shared catalogue.
         </p>
         <div class="detail-grid">
         <div class="detail-card">
-        <h4>🔗 Untappd URL or Shortlink</h4>
-        <p>Full URLs and untp.beer/… shortlinks both work — the edge function resolves them server-side.</p>
+        <h4>🔗 URL or Shortlink</h4>
+        <p>Full URLs and short links both work — the edge function resolves them server-side.</p>
         </div>
         <div class="detail-card">
-        <h4>🗝️ Canonical Untappd ID</h4>
-        <p>Every beer in the catalogue keys on its Untappd ID. The paste flow won't create duplicates — future logs and scrapes resolve to the same canonical row.</p>
+        <h4>🗝️ Canonical Beer ID</h4>
+        <p>Every beer in the catalogue keys on a canonical ID pulled from the source. The paste flow won't create duplicates — future logs and scrapes resolve to the same row.</p>
         </div>
         <div class="detail-card">
         <h4>vs. Log a Beer</h4>
@@ -704,12 +704,12 @@
 
         </summary>
         <p class="section-intro">
-        Found a pub that's not in the database? Add it yourself. Search by name or Untappd URL, or add from your Discover results. PINtPOINT pulls in photos, location data, and tap list details automatically.
+        Found a pub that's not in the database? Add it yourself. Paste the venue's Untappd URL, or add from your Discover results. PINtPOINT pulls in photos, location data, and tap list details automatically.
         </p>
         <div class="detail-grid">
         <div class="detail-card">
-        <h4>🔍 Untappd Search</h4>
-        <p>Paste an Untappd venue URL or search by name. PINtPOINT imports the tap list, ratings, and venue details.</p>
+        <h4>🔍 Paste to Import</h4>
+        <p>Paste the venue's Untappd URL and PINtPOINT imports the tap list, ratings, and venue details.</p>
         </div>
         <div class="detail-card">
         <h4>📸 Auto Photos</h4>
@@ -738,7 +738,7 @@
         <div class="detail-grid">
         <div class="detail-card">
         <h4>🔗 Paste-and-Go</h4>
-        <p>Untappd URL from the app share sheet or the browser URL bar. Full Untappd resolution happens server-side — no lookups on your device.</p>
+        <p>Grab the beer's URL from the app share sheet or the browser URL bar. Full resolution happens server-side — no lookups on your device.</p>
         </div>
         <div class="detail-card">
         <h4>🛢️ Cask, Keg, Draft</h4>
@@ -880,7 +880,7 @@
         </div>
         <div class="detail-card">
         <h4>⚡ Live Refresh On-Land</h4>
-        <p>Rather than pre-scraping every venue in range, we fetch a fresh Untappd tap list for just the pub the wheel lands on. No wasted data, no wasted time — the pint we spin for is the pint that's actually there.</p>
+        <p>Rather than pre-scraping every venue in range, we fetch a fresh tap list for just the pub the wheel lands on. No wasted data, no wasted time — the pint we spin for is the pint that's actually there.</p>
         </div>
         <div class="detail-card">
         <h4>🔄 Spin Again</h4>
@@ -954,7 +954,7 @@
 
         </summary>
         <p class="section-intro">
-        Never miss your favourite beer. Add beers to your watchlist and PINtPOINT will alert you when they appear on tap at venues you've saved as favourites. Matched against live Untappd tap list data.
+        Never miss your favourite beer. Add beers to your watchlist and PINtPOINT will alert you when they appear on tap at venues you've saved as favourites. Matched against live tap list data.
         </p>
         <div class="detail-grid">
         <div class="detail-card">
@@ -999,8 +999,8 @@
         <p>Tap "Scan" to read a label with vision. Works on craft cans, cask pump clips, taps with no barcode in frame — anywhere the printed label is more reliable than a strip.</p>
         </div>
         <div class="detail-card">
-        <h4>🔗 Untappd Auto-Link</h4>
-        <p>When vision finds a confident match on Untappd, your scan attaches the canonical beer ID and adds it to the central catalog automatically — every scan grows the database for the next user.</p>
+        <h4>🔗 Auto-Link</h4>
+        <p>When vision finds a confident match in the source catalogue, your scan attaches the canonical beer ID and adds it to the central catalog automatically — every scan grows the database for the next user.</p>
         </div>
         <div class="detail-card">
         <h4>📚 Save &amp; Scan Next</h4>
@@ -1132,7 +1132,7 @@
 
         </summary>
         <p class="section-intro">
-        PINtDEXTER is PINtPOINT's personal recommendation engine — not a screen you visit, the layer between your taste and every list PINtPOINT builds for you. It blends every signal you give it (Sip or Skip swipes, Head to Head picks, TUNeDEXTER sliders, My Kind of Beer / My Kind of Pub answers, scanned beer history, favourites) and drives every recommendation surface: Best Pint Next, Pick of the Pubs, the top-10 payoff screen after questionnaires, and the reason chips that explain each pick.
+        The recommendation engine behind every list PINtPOINT builds for you. Not a screen — the layer between your taste and every ranking. It blends every signal you give it (Sip or Skip swipes, Head to Head picks, TUNeDEXTER sliders, My Kind of Beer / My Kind of Pub answers, scanned beer history, and your ❤️ favourites) and drives every recommendation surface in the app.
         </p>
         <div class="detail-grid">
         <div class="detail-card">
@@ -1169,7 +1169,7 @@
 
         </summary>
         <p class="section-intro">
-        Swipe through real beers Tinder-style and tell PINtPOINT what you love. Love IPAs? Hate sours? Prefer session strength? Sip or Skip builds your personal taste profile in minutes. Find it on the Discover → Beers tab or in Settings → My Stuff.
+        Swipe through real beers Tinder-style and tell PINtPOINT what you love. Find it via the "Sip or Skip" button on the Discover → Beers tab, or in Settings → My Stuff → My Kind of Beer.
         </p>
         <div class="detail-grid">
         <div class="detail-card">
