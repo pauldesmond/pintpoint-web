@@ -1,9 +1,9 @@
 {
-  "latest_version": "1.11.0",
+  "latest_version": "1.12.0",
   "min_supported_version": "1.7.0",
-  "apk_url": "https://expo.dev/artifacts/eas/tvP9HP1fKEmzKDTF-GuoZcBNCiXXt82oeQYJjomQqmk.apk",
+  "apk_url": "https://expo.dev/artifacts/eas/bhsQCFxVoynOsP_C7rrI4rstade7CZifn7-KkB55GwM.apk",
   "release_notes_url": "https://pintpoint.co.uk/changelog",
-  "released_at": "2026-07-03",
-  "notes": "Untappd matcher restored (Algolia migration), Radar undiscovered-venues layer, faster cold-start, plus dozens of polish fixes.",
+  "released_at": "2026-07-29",
+  "notes": "Pick of the Pubs (green triangle picks a pub for you), tappable Radar legend filters, 500+ ghost pubs built in, My Kind of Pub/Beer taste gauges, and rebuilt Beer Alerts showing nearest tap in-app.",
   "urgent": false
 }
