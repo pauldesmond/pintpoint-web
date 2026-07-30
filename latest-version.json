@@ -1,9 +1,9 @@
 {
-  "latest_version": "1.12.0",
+  "latest_version": "1.12.1",
   "min_supported_version": "1.7.0",
-  "apk_url": "https://expo.dev/artifacts/eas/bhsQCFxVoynOsP_C7rrI4rstade7CZifn7-KkB55GwM.apk",
+  "apk_url": "https://expo.dev/artifacts/eas/zy2Ocn9ZQrwgeSdkeKrKL3edn2Tk4dgI3c6QWIDiJq8.apk",
   "release_notes_url": "https://pintpoint.co.uk/changelog",
-  "released_at": "2026-07-29",
-  "notes": "Pick of the Pubs (green triangle picks a pub for you), tappable Radar legend filters, 500+ ghost pubs built in, My Kind of Pub/Beer taste gauges, and rebuilt Beer Alerts showing nearest tap in-app.",
+  "released_at": "2026-07-30",
+  "notes": "Behind-the-scenes: added crash reporting so we hear about problems before you have to tell us. Everything else from 1.12.0 has been landing as smaller updates through the month — including 46 curated ghost pubs across central, east, and south London, and a new 'recently added' sort in Nearby A-Z.",
   "urgent": false
 }
