@@ -45,6 +45,46 @@ fi
 echo "Newest post detected: ${NEW_URL}"
 echo
 
+# 3b. Draft-meta assertion. Codifies the rule from
+# feedback_promote_to_live_strip_draft_meta: a promoted post must have
+# NO noindex robots meta and NO /blog/drafts/ URLs anywhere. Missing
+# either strips indexability — Google refuses to index the live post
+# because the draft artifacts still say "don't index" or "the canonical
+# lives elsewhere".
+POST_FILE="blog/${NEW_SLUG}.html"
+if [[ ! -f "${POST_FILE}" ]]; then
+  echo "❌ Draft-meta guard: ${POST_FILE} not found on disk (matched from feed but file missing)."
+  exit 1
+fi
+
+GUARD_FAIL=0
+
+# 1. noindex must be gone. Match any robots meta tag containing noindex.
+if grep -nE '<meta[^>]*name="robots"[^>]*noindex|<meta[^>]*noindex[^>]*name="robots"' "${POST_FILE}" >/dev/null; then
+  echo "❌ Draft-meta guard failed: noindex robots meta still present. Google will refuse to index."
+  grep -nE '<meta[^>]*name="robots"[^>]*noindex|<meta[^>]*noindex[^>]*name="robots"' "${POST_FILE}" | sed 's/^/     /'
+  GUARD_FAIL=1
+fi
+
+# 2. no /blog/drafts/ URLs anywhere — catches canonical, og:url, og:image,
+#    JSON-LD @id/url/mainEntityOfPage, sameAs, breadcrumbs, etc. in one sweep.
+if grep -nE '/blog/drafts/' "${POST_FILE}" >/dev/null; then
+  echo "❌ Draft-meta guard failed: /blog/drafts/ URLs still present. Swap ALL to /blog/${NEW_SLUG}.html."
+  grep -nE '/blog/drafts/' "${POST_FILE}" | sed 's/^/     /'
+  GUARD_FAIL=1
+fi
+
+if [[ "$GUARD_FAIL" -eq 1 ]]; then
+  echo
+  echo "→ Fix ${POST_FILE} and re-run publish-blog.sh. Nothing has been committed."
+  echo "  Typical fix: remove <meta name=\"robots\" content=\"noindex,nofollow\"> and swap"
+  echo "  /blog/drafts/${NEW_SLUG}.html → /blog/${NEW_SLUG}.html across canonical, og:*, and JSON-LD."
+  exit 1
+fi
+
+echo "✓ Draft-meta guard passed (no noindex, no /blog/drafts/ URLs)."
+echo
+
 # 4. Show diff stat
 echo "→ Working-tree changes:"
 git diff --stat
