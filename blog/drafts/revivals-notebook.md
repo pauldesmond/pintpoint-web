@@ -306,6 +306,21 @@ Famous slogans worth lifting: *"Double Diamond works wonders"* / *"You're only h
 
 Irresistible detail: *the wreck was caused by drunkenness*. Beer preserved by a beer-related disaster.
 
+### Guinness 1864 (SS Mindoro shipwreck) — Tier 4 with an active recipe recreation
+
+The Tennent's story with an added twist — Diageo isn't just brewing a commemorative, it's DNA-sequencing the yeast in the recovered bottle to try to recreate the actual beer. Naming their initiative **"Project Jurassic Beer"** — self-aware, and a much stronger editorial hook than a heritage-marketing PR push.
+
+- **Bottle**: 162 years old (brewed 1864, verified via ship's manifest).
+- **Ship**: British sailing barque *Mindoro*. Sank **27 November 1864**, English Channel, ~3 miles off the Dover coast.
+- **Recovered**: 2025 by diver **Stefan Panis** (Belgian) with a friend. Plans to bring up further bottles from the same wreck site this month (Aug 2026).
+- **Analysis**: Sent to **KU Leuven (Belgium)** for microbiological analysis. Diageo's Project Jurassic Beer specifically targets **yeast-strain DNA sequencing** to recreate the original flavour profile — technically closer to a Tier 6 continuity attempt than a Tier 4 artefact commemorative, if the yeast recovery works.
+- **Taste-testing pending safety analysis**. Panis (diver): *"of course"* they'd want to sample it if testing confirms safety.
+- **Diver quote**: *"We immediately recognized that we weren't just holding an old artifact. We were holding a flawlessly sealed time capsule of liquid history."* (Truszynski)
+- **Diageo quote**: *"Discoveries like this provide a fascinating window into our past and help build a deeper understanding of our heritage."*
+- Source: https://www.smithsonianmag.com/smart-news/shipwreck-divers-discovered-a-162-year-old-bottle-of-guinness-brewed-during-the-reign-of-queen-victoria-and-they-want-to-take-a-swig-180989320/ (Smithsonian Magazine, 12 August 2026)
+
+**Editorial value for the piece:** Guinness/Mindoro is Tennent's 1868 turned up a notch — same shipwreck-preserved artefact frame, but with a live scientific recreation attempt where Tennent's just brewed a commemorative-with-vibes. If the yeast recovery succeeds, this becomes the first genuinely Tier 6-adjacent case in the entire notebook that's driven by a mega-corporate parent (Diageo) — same brewer, same yeast, physically preserved for 162 years. Watch this space. Also: the wreck was two months into the American Civil War; brewed during Queen Victoria's 27th year on the throne. Period-piece detail as good as Tennent's drunken captain.
+
 ### Carling Black Label — Tier 2 (line extension)
 - Returns March 16 2026 — Molson Coors
 - 4.7% ABV (vs Carling Original 4.0%)
