@@ -339,6 +339,21 @@ Closer to Allsopp's Double Diamond than to Burton Bridge DBA, but with a technic
 - **2022-09-15: Original revival company sold the Truman's trademark and rebranded itself as Big Penny** (Morning Advertiser, 2 Sept 2022). Buyer: the management team at the Old Truman Brewery — the property estate that owns the physical Brick Lane site (Zeloof family holding). So the modern Truman's beer sits with the site-owning property company; the 2013 revivalists kept their venues and rebranded to Big Penny.
 - Venues renamed 2022-09-15: **Truman's Social Club (Walthamstow) → Big Penny Social**; **Brick Lane Brews (London City Airport) → Big Penny Brews**; The Newman Arms (Fitzrovia) retained its original name.
 - **Michael-George Hemus** (founder, Big Penny): *"the effect of the pandemic meant we had to sell the Truman's name to survive and keep everyone employed."* That is the single most honest sentence in the whole revival category — a founder saying out loud that the licensed brand had to be sold to keep the crew paid. This is where Tier-3 architectures actually end when the money runs out.
+
+**The Blackhorse Road venue (Truman's Social Club → Big Penny Social) — the scale context that makes Hemus's quote land:**
+
+- Location: Blackhorse Road E17 (Walthamstow), a minute from the Overground station. Blackhorse Beer Mile territory.
+- **26,000 sq ft** industrial building. Nine-metre ceilings. Three bays: Brewery, Events Space, Social Club (per Casambi lighting-project case study).
+- Interior by **Hunter's Daughter Interior and Architectural Design**; lighting by There's Light Limited.
+- Framed as *"a new destination beer hall"* to *"celebrate East London's rich history"* — reviving Truman's not just as a beer brand but as a venue-scale piece of London brewing heritage.
+- Opened **early December 2020** — Leytonstoner review notes the site *"had been open for just a week before lockdown in November"*, so effectively the ribbon was cut into the second Covid closure.
+- Leytonstoner's characterisation: *"cathedral-style grandeur"* with *"huge socially distanced sturdy wooden sharing benches, enormo indoor plants and gleaming industrial beer tanks"* — deliberately evoking *"the Tate Modern's Turbine Hall – of booze"*. The headline: *"It's a vast cathedral to beer."*
+- Up to 20 beers on tap; Truman IPA and Raw Lager singled out. Open 7 days 9am-11pm. Food from Last Night A Vegan Saved My Life, Zero, and poke-bowl vendors.
+- **The arc**: Dec 2020 open → immediate Covid closure → Sept 2022 trademark sold and venue rebranded Big Penny Social. From cathedral-launch to name-sale in 21 months. Which is what Hemus's quote is actually about — you don't build a 26,000 sq ft cathedral if you're planning to sell the brand within two years.
+
+Sources for the venue arc:
+- https://casambi.com/projects/trumans-social-club/ (project case study, technical detail on the space)
+- https://www.leytonstoner.london/2020/12/09/truman-social-club-its-a-vast-cathedral-to-beer/ (Waltham Forest local blog, opening review)
 - *"Most beers were new recipes but included recreations of classic stouts and porters and Ben Truman Export"* (Des de Moor) — partial recipe authenticity, mostly new beers.
 - Sources:
   - https://desdemoor.co.uk/trumans-beer/
