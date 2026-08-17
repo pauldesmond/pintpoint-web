@@ -197,26 +197,48 @@ Source: https://protzonbeer.co.uk/features/2018/08/24/40-years-on-big-beer-still
 
 ## Cases catalogued
 
-### Watney's Party Seven — Tier 1 (and ALREADY DEAD)
-- **Original Party Seven launched 21 October 1968** (Kevin Harrington's history piece). Seven-pint metal can requiring a screwdriver and hammer to open. Sold alongside a "Sparklets" beer tap accessory (59 shillings 9d, included a voucher for a free Party Seven). Peaked as a working-class party staple through the late 1960s and 1970s.
-- Decline late 1970s / early 1980s as individual cans and bottles arrived and wine took share.
-- Journalist Jim White (via Kevin Harrington) describes the original taste as if it had *"been brewed in a vat that had previously contained industrial effluent."* Consistent with the Drinks Business commenter tone on Double Diamond — the beer was never as good as the packaging suggested.
-- **Two overlapping revival attempts in the 2010s-2020s** (needs resolving):
-  - Des de Moor identifies **Brands Reunited** as the revival vehicle, licensing the trademark **from Heineken in 2016** (Heineken acquired the Watney IP via Scottish Courage in 2008). 2016 launch: keg + can beers brewed by **Sambrook's** — described by Des de Moor as *"distant relatives of Watney's pale ales"*. 2021 Party Seven reissue as a 5L minikeg. Des de Moor's tone is sceptical about the format claim.
-  - Kevin Harrington's piece names **Nick Whitehurst as co-founder of "Watneys Beer Company"** doing a 2020 revival with craft beer and improved tap access. This may be the same entity rebranded, a subsequent attempt, or a separate line — the sources don't reconcile. The Republic equity-raise page (see sources) presumably answers this; I couldn't fetch it (403 from CF-like block).
-- **"The beers disappeared from sale soon afterwards"** (Des de Moor) — the entire 2016-2021 revival is already extinct.
-- **Modern Watney's brand's own site https://www.watneys-beer.com/ is dead** (verified 2026-08-17). No response at all. Corroborates the "revival died" narrative in the most literal sense: their own web address is now unreachable.
-- **Equity raise via Republic**: europe.republic.com/watneys-beer-company exists (verified as a URL). This is where the story arc darkens — someone was raising retail investor money against a revived brand that had already lost trade support. Need to check page for raise size, valuation, whether it closed successfully, and current investor count. Blocked from my end today.
-- Original Watney's Red Barrel framing: *"Rebranded as Red in the early 1970s, it became a byword for a poorly brewed and characterless national brand foisted on an unwilling public"* — and was so toxic by 1979 that Watney's removed the red barrel symbol from their own corporate branding in 1982. The brand died not from market pressure but from reputational suicide.
-- Stag Brewery Mortlake (Watney's primary site post-1898) ceased brewing **December 2015** — "the final working remnant of London's 18th-19th century industrial brewing legacy" per Des de Moor. AB InBev had owned it since 2002.
-- Sources:
-  - https://metalpackager.com/2021/01/metalpackager-com-watneys-party7/
-  - https://desdemoor.co.uk/stag-brewery-mortlake-ab-inbev-uk-watney-mann/
-  - https://www.kevinharrington.com/2024/10/the-rise-and-fall-of-watneys-party-seven-a-nostalgic-journey-through-british-beer-history/
-  - https://www.telegraph.co.uk/food-and-drink/features/watneys-party-seven-could-drunk-absolutely-no-clue-beer-like/ — blocked from my end (paywall/bot challenge); paste required
-  - https://europe.republic.com/watneys-beer-company — blocked (403); paste required to characterise the raise
+### Watney's Party Seven / Watneys Beer Company — Tier 1 (and ALREADY DEAD)
 
-**Editorial implication for the piece**: Watney's is the cautionary case. The revival isn't just dishonest — it's a *failed* revival that then tried to close the gap by raising retail investor money. Brands Reunited bet that "sufficient time had passed for the brand to be revived ironically" (Des's wording) and the market said no. This is the **revival arc as failure**: licensed name + outsourced brewing + nostalgia framing → quiet disappearance → equity-crowdfunding hail-mary → dead .com. The opposite of Burton Bridge DBA's humble continuity success, and a strong lead candidate for the "Ghost Beers" follow-up piece.
+**Original Watney's brand history:**
+- Watney's brewed in London since **1837** (per own modern marketing / Republic pitch). Stag mascot.
+- Party Seven launched **21 October 1968** (Kevin Harrington). Seven-pint metal can requiring a screwdriver and hammer to open. Sparklets beer tap accessory sold alongside (59 shillings 9d, included a voucher for a free Party Seven). Peaked as a working-class party staple through the late 1960s and 1970s.
+- Decline late 1970s / early 1980s as individual cans and bottles arrived and wine took share.
+- Journalist Jim White (via Kevin Harrington) on the original taste: *"brewed in a vat that had previously contained industrial effluent."*
+- Watney's Red Barrel framing (via Des de Moor): *"Rebranded as Red in the early 1970s, it became a byword for a poorly brewed and characterless national brand foisted on an unwilling public"* — and was so toxic by 1979 that Watney's removed the red barrel symbol from their own corporate branding in 1982. The brand died not from market pressure but from reputational suicide.
+- Stag Brewery Mortlake (Watney's primary site post-1898) ceased brewing **December 2015** — "the final working remnant of London's 18th-19th century industrial brewing legacy" per Des de Moor. AB InBev had owned it since 2002.
+- IP: Scottish & Newcastle inherited Watney's brands; Heineken absorbed them via the 2008 Scottish Courage acquisition. Heineken has held the licence-out rights since.
+
+**The 2010s-2020s revival (Watneys Beer Company, née Brands Reunited) — the full arc:**
+
+The Republic equity-raise page (paul-supplied screenshots 2026-08-17) resolves the earlier reconciliation puzzle. The revival is a single continuous entity that rebranded partway through:
+
+- **20 Feb 2014**: Watneys Beer Company Ltd incorporated as **Brands Reunited** (Companies House #08905243). Portfolio play from the start — licence-out multiple defunct British brand names. Not just Watneys.
+- **Portfolio held**: Watney's + **Home Ales** (Nottingham/Midlands) + **Federation** (North East, ex-CIU club supplier) + **Matthew Brown** (Blackburn, North West). Four ghost brands under one licensor-and-cuckoo-brew operator.
+- **2015**: Home Ales relaunched "back into its Midlands heartland" as the first of the portfolio.
+- **2016**: Watneys launched in London. Keg + can beers brewed at Sambrook's (per Des de Moor: *"distant relatives of Watney's pale ales"*).
+- **~2016-2018**: Rebranded corporate identity from Brands Reunited to **Watneys Beer Company**. The Watneys brand became the flagship — the portfolio pitch survived but the top-of-page name changed.
+- **2018**: launched the modern "Headliners" craft range — **Irony (craft lager, 4.6%), Sarcasm (citrus pale ale, 4.5%), Slapstick (double IPA, 7.5%)**. Positioned as *"CRAFT BEER THAT LIKES A LAUGH"*. In-outlet activation included "Pop-up Stand-up Comedy Nights". This is Tier 2 "updated recipe" in denim — new beers under a heritage badge.
+- **May 2019**: Two lines available permanently in Ei Pubs (Enterprise Inns) — first permanent presence in a major pubco. Distribution partners at the raise: Star Pubs and Bars, Enterprise Inns, Admiral Taverns, Stonegate, Urban Pubs and Bars, Mosaic Pubs, Antic Pubs.
+- **11 August 2019**: Republic equity crowdfund closes **100% funded**: **£400,287 from 425 investors** vs a £400,005 target. **Pre-money valuation £1.8M**. **18.29% equity offered**. EIS-eligible.
+- Their own trading figures at the raise (unaudited management accounts): **Total sales £900k since launch**. **Y/E Feb 2018: £428k**. **Average YoY growth 130%+**. **400,000+ pints sold in the last 12 months**. Cuckoo model: *"We have done this without a brewery, without a lorry, without owning a barrel."*
+- **2021**: Party Seven reissue as a 5L minikeg — the nostalgia peak moment.
+- **Then**: *"the beers disappeared from sale soon afterwards"* (Des de Moor).
+- **2026-08-17**: their own website **https://www.watneys-beer.com/ is dead** (verified via curl — no HTTP response at all). The most literal end-of-revival data point available.
+
+**Editorial implication for the piece — this is the full cautionary arc, and it's darker than "the badge came back badly":**
+
+The story is not "someone licensed a name and did a lazy job". It's "someone licensed FOUR names, built real trade with seven pubcos, raised £400k from 425 retail investors on a £1.8M valuation, sold 400k+ pints a year at peak, launched a modern craft-comedy sub-brand, reissued Party Seven for the nostalgia beat — and STILL died within two-three years." The revival had genuine trade momentum. It still failed.
+
+The 425 investors are the piece's live nerve. They are the retail equivalent of Behrens's "young, fashionable" cask drinkers CAMRA wants for Boddingtons — except these people wrote cheques rather than ordered pints, and lost their money when the .com went dark. If Boddingtons is the licensed revival that (so far) works, Watneys Beer Company is the licensed revival that shows what happens when the trade doesn't stick.
+
+This isn't a "Ghost Beers" case any more — it's arguably the anchor of the **"Romford Beer That Never Came Back"** follow-up too, because the pattern (multi-brand licensor + cuckoo brewery + big claims + investor raise + death) is exactly what would happen if Carlsberg licensed out John Bull Bitter and Long Life tomorrow. Watneys Beer Company is the near-past receipt for what a Romford revival would probably look like.
+
+Sources:
+- https://metalpackager.com/2021/01/metalpackager-com-watneys-party7/
+- https://desdemoor.co.uk/stag-brewery-mortlake-ab-inbev-uk-watney-mann/
+- https://www.kevinharrington.com/2024/10/the-rise-and-fall-of-watneys-party-seven-a-nostalgic-journey-through-british-beer-history/
+- https://www.telegraph.co.uk/food-and-drink/features/watneys-party-seven-could-drunk-absolutely-no-clue-beer-like/ — blocked from my end (Cloudflare bot challenge); paste required
+- **https://europe.republic.com/watneys-beer-company** — the definitive source on the modern revival's business shape. Paul-supplied screenshots 2026-08-17 (page is 403-blocked from tooling). Companies House #08905243 gives the corporate history if we need it verified.
 
 ### Allsopp brand IP history (from Des de Moor's Ind Coope piece, 2026)
 
