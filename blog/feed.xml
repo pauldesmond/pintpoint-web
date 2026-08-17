@@ -9,8 +9,8 @@
     <copyright>© 2026 PINtPOINT</copyright>
     <managingEditor>hello@pintpoint.co.uk (Sophie Ro)</managingEditor>
     <webMaster>hello@pintpoint.co.uk (Sophie Ro)</webMaster>
-    <lastBuildDate>Tue, 5 Aug 2026 09:20:00 +0000</lastBuildDate>
-    <pubDate>Tue, 5 Aug 2026 09:20:00 +0000</pubDate>
+    <lastBuildDate>Mon, 17 Aug 2026 17:30:00 +0000</lastBuildDate>
+    <pubDate>Mon, 17 Aug 2026 17:30:00 +0000</pubDate>
     <generator>PINtPOINT hand-maintained RSS</generator>
     <ttl>1440</ttl>
     <image>
@@ -18,6 +18,16 @@
       <title>PINtPRESS</title>
       <link>https://pintpoint.co.uk/blog/</link>
     </image>
+
+    <item>
+      <title>These aren't revivals — they're hauntings</title>
+      <link>https://pintpoint.co.uk/blog/revivals.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/revivals.html</guid>
+      <pubDate>Mon, 17 Aug 2026 17:30:00 +0000</pubDate>
+      <dc:creator>Sophie Ro</dc:creator>
+      <category>Essay</category>
+      <description>British beer is having a revival revival. Old names are back on the bar — some painstakingly reconstructed, some entirely new beers wearing dead men's clothes. Diageo is now DNA-sequencing yeast from an 1864 shipwreck bottle. A field guide to what's actually being resurrected: recipe, yeast, water, brewery, people, badge, or nothing but the name.</description>
+    </item>
 
     <item>
       <title>Davy's — 155 years of sawdust and candles</title>
