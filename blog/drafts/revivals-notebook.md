@@ -201,9 +201,29 @@ Source: https://protzonbeer.co.uk/features/2018/08/24/40-years-on-big-beer-still
 
 **Original Watney's brand history:**
 - Watney's brewed in London since **1837** (per own modern marketing / Republic pitch). Stag mascot.
-- Party Seven launched **21 October 1968** (Kevin Harrington). Seven-pint metal can requiring a screwdriver and hammer to open. Sparklets beer tap accessory sold alongside (59 shillings 9d, included a voucher for a free Party Seven). Peaked as a working-class party staple through the late 1960s and 1970s.
-- Decline late 1970s / early 1980s as individual cans and bottles arrived and wine took share.
-- Journalist Jim White (via Kevin Harrington) on the original taste: *"brewed in a vat that had previously contained industrial effluent."*
+- Party Seven launched **21 October 1968** (Kevin Harrington). Seven-pint metal can filled with *"Watney's ubiquitous draft bitter Red Barrel"* (Jim White, Telegraph). Required a screwdriver and hammer to open. Sparklets beer tap accessory sold alongside (59 shillings 9d, included a voucher for a free Party Seven). *"A staple of parties, pop festivals and football special trains for a decade"* (Jim White).
+- **£1.50** was the price a group of teenagers pooled for one Party Seven in the mid-1970s (Jim White, Telegraph, remembering his own suburban gate-crashing days).
+- Decline: *"The Party Seven disappeared from view the moment the ring-pull was invented, when it was surpassed as the gate-crasher's golden ticket by the six pack."* (Jim White) — technological displacement, not just taste.
+- **Jim White (Telegraph, 14 January 2021) on the original taste and format — the definitive editorial quote for the Ghost Beers piece:**
+
+  > *"Though quite why was anyone's guess. It tasted as if it had been brewed in a vat that had previously contained industrial effluent. Sour, acidic, chemical, leaving an aftertaste not unlike you might imagine the consequences of gargling with bleach, it could only be drunk by those with absolutely no clue about beer. Like us."*
+
+  And on the opening ritual:
+
+  > *"The opening of the Party Seven at parties would involve an esoteric ritual of everyone evacuating the kitchen while one brave soul would cautiously approach the can in the manner of a bomb disposal expert. And full access was generally preceded by an explosive arc of pressurised liquid vomiting out at high speed, arcing across the room, leaving a trail of sticky mulch in its wake."*
+
+  The "gargling with bleach" line is arguably a better opening beat for "Ghost Beers" than anything else in the notebook. It's honest, it's funny, and it comes from someone who was there.
+
+- **Jim White on the 2021 reissue**: revived by *"a beer collective in Liverpool"* whose own claim is that it *"tastes nothing like it used to"*. Piece framing: *"hoping both to capture the nostalgia market and find a method to deliver their product after lockdown curtailed pub sales"*. New pack format has *"an easy access tap attached"* (fixing the bomb-disposal problem). Beer inside labelled *"proper craft ale"*.
+
+  **Puzzle**: Telegraph attributes the reissue to a *"beer collective in Liverpool"*. Watneys Beer Company (per Republic) is London-based and contract-brewed at Sambrook's (also London). Options: (a) further sub-licence from Watneys Beer Company to a Liverpool operator for the reissue specifically; (b) Home Ales / Federation / Matthew Brown side of the Watneys Beer Company portfolio had a Northern arrangement; (c) Jim got the location wrong. Worth resolving before "Ghost Beers" goes to publish.
+
+- **Jim White's punchline** — worth keeping as a coda option if the piece leans on his voice:
+
+  > *"the mate who had been carrying the can pointed out one minor consolation. He had taken the precaution of shaking the barrel vigorously as we approached the party. 'It will be all over the ceiling about now,' he said, smirking."*
+
+  A perfect ending beat for a nostalgia piece — the mate booby-trapping the Party Seven after they got the door slammed in their faces. If "Ghost Beers" opens on Jim's "gargling with bleach" quote, this is the closer.
+
 - Watney's Red Barrel framing (via Des de Moor): *"Rebranded as Red in the early 1970s, it became a byword for a poorly brewed and characterless national brand foisted on an unwilling public"* — and was so toxic by 1979 that Watney's removed the red barrel symbol from their own corporate branding in 1982. The brand died not from market pressure but from reputational suicide.
 - Stag Brewery Mortlake (Watney's primary site post-1898) ceased brewing **December 2015** — "the final working remnant of London's 18th-19th century industrial brewing legacy" per Des de Moor. AB InBev had owned it since 2002.
 - IP: Scottish & Newcastle inherited Watney's brands; Heineken absorbed them via the 2008 Scottish Courage acquisition. Heineken has held the licence-out rights since.
@@ -237,7 +257,7 @@ Sources:
 - https://metalpackager.com/2021/01/metalpackager-com-watneys-party7/
 - https://desdemoor.co.uk/stag-brewery-mortlake-ab-inbev-uk-watney-mann/
 - https://www.kevinharrington.com/2024/10/the-rise-and-fall-of-watneys-party-seven-a-nostalgic-journey-through-british-beer-history/
-- https://www.telegraph.co.uk/food-and-drink/features/watneys-party-seven-could-drunk-absolutely-no-clue-beer-like/ — blocked from my end (Cloudflare bot challenge); paste required
+- https://www.telegraph.co.uk/food-and-drink/features/watneys-party-seven-could-drunk-absolutely-no-clue-beer-like/ — full article body pasted by Paul 2026-08-17 (Cloudflare bot challenge from tooling). Jim White, published 14 January 2021. Quotes now integrated above.
 - **https://europe.republic.com/watneys-beer-company** — the definitive source on the modern revival's business shape. Paul-supplied screenshots 2026-08-17 (page is 403-blocked from tooling). Companies House #08905243 gives the corporate history if we need it verified.
 
 ### Allsopp brand IP history (from Des de Moor's Ind Coope piece, 2026)
