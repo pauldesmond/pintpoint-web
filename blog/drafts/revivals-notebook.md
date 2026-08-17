@@ -4,6 +4,18 @@
 
 ---
 
+## Planned publication arc (2026-08-17)
+
+The notebook's editorial ambition splits across three PINtPRESS pieces. The current essay carries the framework; the two follow-ups carry the emotional weight of the un-revivable beers.
+
+1. **Now — "These aren't revivals — they're hauntings"** (`/blog/drafts/revivals.html`). The framework: 6-tier honesty spectrum, hop-list diagnostic, duty band as invisible editor, Behrens's "which era" argument, the shelf-presence defence. Closes with a bridge paragraph pointing at the beers no licence will bring back.
+2. **Next — "The Romford Beer That Never Came Back"**. The Ind Coope Romford piece — John Bull Bitter, Long Life, Romford Brewers Bitter, the 1983 Pilgrimage booklet, the 24 tied pubs, Havering Museum's copper vat and iron gates. The material already lives in the "Sister project — Romford Universe" section below. When commissioned: Havering Museum outreach for booklet reproduction, Pattinson archive scrape, cross-check 24 Pilgrimage pubs against PINtPOINT venues table.
+3. **Later — "Ghost Beers: the pints we can't drink anymore"**. The broader companion piece. Anything a corporate parent won't revive and a homebrewer hasn't reconstructed. Alligator Man (source lost — a good idea whose origin I cannot locate today; if it resurfaces, it slots here). Whatever the "Open research questions" list at the foot of this notebook produces when swept.
+
+The current blog feels unfinished when read as a single piece because it's carrying the emotional weight of #2 and #3. Splitting the arc removes that weight. Each piece then has room to breathe.
+
+---
+
 ## The central editorial inquiry (Paul's own framing, 2026-06-01)
 
 > *"When a beer returns, what exactly has been resurrected — the recipe, the badge, the strength, the package, or just the feeling?"*
