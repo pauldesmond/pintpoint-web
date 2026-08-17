@@ -35,7 +35,7 @@
   </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; --red: #C8102E; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --amber: #F5A623; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
     body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; line-height: 1.65; }
     nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
     .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
@@ -44,17 +44,18 @@
     nav a:hover { color: var(--text); }
     .content { max-width: 720px; margin: 0 auto; padding: 48px 24px 72px; }
     .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .category { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+    .category { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
     .category.essay { background: rgba(0,212,170,0.12); color: var(--teal); border: 1px solid rgba(0,212,170,0.32); }
     h1 { font-size: clamp(1.9rem, 5.2vw, 2.7rem); font-weight: 900; letter-spacing: -1.1px; line-height: 1.08; margin-bottom: 18px; text-transform: none; }
     h1 em { color: var(--teal); font-style: normal; }
     h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.4px; margin: 36px 0 12px; line-height: 1.25; }
     p { margin-bottom: 14px; color: #e6edf3; }
-    .lede { margin-bottom: 30px; padding-left: 14px; border-left: 3px solid var(--red); }
+    .lede { margin-bottom: 30px; padding-left: 14px; border-left: 3px solid var(--amber); }
     .lede p:first-child { font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
     .lede p.short { font-size: 0.95rem; color: var(--muted); font-style: italic; margin-bottom: 14px; }
     a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
-    a:hover { border-bottom-color: var(--teal); }
+    a:hover { color: #fff; border-bottom-color: var(--teal); }
+    .logo span { color: var(--teal); }
     .tier-table { width: 100%; border-collapse: collapse; margin: 24px 0; background: var(--card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
     .tier-table th, .tier-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
     .tier-table th { background: rgba(0,212,170,0.08); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; }
@@ -128,7 +129,7 @@
     <p>"Its rebirth brings it full circle," Behrens writes. The pre-industrial version had a purpose. The industrial one did not. The revival worth having is the one that returns to purpose. That framing turns out to apply to several of the more credible current cases — Burton Bridge DBA reviving the recipe genealogy that predates DBA's own 1976 naming, Jennings reopening cask-first before Carlsberg-Marston's closed the brewery, Bass Pale Ale surviving as cask against the keg tide.</p>
 
     <h2>The corporate scaffolding</h2>
-    <p>Protz's forty-year loop is not incidental. Most revivals happen inside the paperwork of the same handful of aggregators. Heineken inherited Watney's and Truman's from the 2008 Scottish & Newcastle acquisition. Carlsberg-Marston's holds the Ind Coope / Jennings / Banks's / Bombardier trail. AB InBev retains the Boddingtons brand. Molson Coors runs Carling. The aggregators are the gatekeepers, not usually the executors. The genuinely interesting work happens when the IP is licensed out — or abandoned — into the hands of people with a regional or technical reason to care.</p>
+    <p>Protz's forty-year loop is not incidental. Most revivals happen inside the paperwork of the same handful of aggregators. Heineken inherited Watney's and Truman's from the 2008 Scottish &amp; Newcastle acquisition. Carlsberg-Marston's holds the Ind Coope / Jennings / Banks's / Bombardier trail. AB InBev retains the Boddingtons brand. Molson Coors runs Carling. The aggregators are the gatekeepers, not usually the executors. The genuinely interesting work happens when the IP is licensed out — or abandoned — into the hands of people with a regional or technical reason to care.</p>
 
     <p>Carlsberg is the recurring villain. It discontinued Ind Coope's Draught Burton Ale, and Burton Bridge picked it up. It closed Jennings Brewery in Cockermouth in November 2022, and the Canfields bought the site back and reopened. Its Marston's operation has also axed Banks's Mild and Bombardier in recent years. The pattern is uncomfortably neat: <em>kill the brand, let it be rescued by people who do it better</em>.</p>
 

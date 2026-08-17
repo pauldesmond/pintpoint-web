@@ -18,9 +18,24 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "These aren't revivals — they're hauntings",
+    "description": "When a beer returns, what exactly has been resurrected — the recipe, the badge, the strength, the package, or just the feeling?",
+    "author": { "@type": "Person", "name": "Sophie Ro" },
+    "publisher": { "@id": "https://pintpoint.co.uk/#organization" },
+    "datePublished": "2026-08-17",
+    "dateModified": "2026-08-17",
+    "url": "https://pintpoint.co.uk/blog/revivals.html",
+    "image": "https://pintpoint.co.uk/blog/images/revivals.jpg",
+    "mainEntityOfPage": "https://pintpoint.co.uk/blog/revivals.html"
+  }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; --red: #C8102E; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --amber: #F5A623; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
     body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; line-height: 1.65; }
     nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
     .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
@@ -29,34 +44,26 @@
     nav a:hover { color: var(--text); }
     .content { max-width: 720px; margin: 0 auto; padding: 48px 24px 72px; }
     .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .category { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+    .category { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
     .category.essay { background: rgba(0,212,170,0.12); color: var(--teal); border: 1px solid rgba(0,212,170,0.32); }
     h1 { font-size: clamp(1.9rem, 5.2vw, 2.7rem); font-weight: 900; letter-spacing: -1.1px; line-height: 1.08; margin-bottom: 18px; text-transform: none; }
     h1 em { color: var(--teal); font-style: normal; }
     h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.4px; margin: 36px 0 12px; line-height: 1.25; }
     p { margin-bottom: 14px; color: #e6edf3; }
-    .lede { margin-bottom: 30px; padding-left: 14px; border-left: 3px solid var(--red); }
+    .lede { margin-bottom: 30px; padding-left: 14px; border-left: 3px solid var(--amber); }
     .lede p:first-child { font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
     .lede p.short { font-size: 0.95rem; color: var(--muted); font-style: italic; margin-bottom: 14px; }
-    .highlight { color: var(--text); font-weight: 600; }
     a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
-    a:hover { border-bottom-color: var(--teal); }
+    a:hover { color: #fff; border-bottom-color: var(--teal); }
+    .logo span { color: var(--teal); }
     .tier-table { width: 100%; border-collapse: collapse; margin: 24px 0; background: var(--card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
     .tier-table th, .tier-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
     .tier-table th { background: rgba(0,212,170,0.08); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; }
     .tier-table tr:last-child td { border-bottom: none; }
-    .faq { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--border); }
-    .faq h2 { font-size: 1.3rem; margin-bottom: 14px; }
-    .faq-item { margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-    .faq-item summary { cursor: pointer; font-weight: 600; padding: 8px 0; color: var(--text); }
-    .faq-item summary:hover { color: var(--teal); }
-    .faq-item p { padding: 6px 0 8px; color: #c9d1d9; font-size: 0.95rem; }
     .sources { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
     .sources h2 { font-size: 1rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
     .sources ul { padding-left: 18px; }
     .sources li { margin-bottom: 6px; }
-    .cta { display: inline-block; background: var(--teal); color: #0d1117; font-weight: 700; padding: 12px 22px; border-radius: 8px; text-decoration: none; border: none; margin-top: 8px; }
-    .cta:hover { background: #00b896; border-bottom: none; }
     footer { text-align: center; padding: 36px 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--muted); margin-top: 24px; }
     footer a { color: var(--muted); text-decoration: none; border-bottom: none; }
     footer a:hover { color: var(--teal); }
@@ -84,7 +91,7 @@
       <p class="short">When a beer returns, what exactly has been resurrected — the recipe, the badge, the strength, the package, or just the feeling?</p>
     </div>
 
-    <p>Before the nostalgia gets too comfortable, an inconvenient voice. David Behrens, writing in the <em>Yorkshire Post</em> about the Sheffield revival of Stones Bitter, opens with a shrug: "I can think of little about the 1970s that I would wish to inflict upon the present generation." He calls that era the age of the <em>beerage</em> — the six-brewery cartel that owned the whole route from brewery to beer mat. Roger Protz made the same argument in 1978. In 2018 he had to make it again, forty years on, under the headline "Big Beer still rules the roost". <em>Plus ça change</em>.</p>
+    <p>Before the nostalgia gets too comfortable, an inconvenient voice. David Behrens, writing in the <em>Yorkshire Post</em> about the Sheffield revival of Stones Bitter, opens with a shrug: "I can think of little about the 1970s that I would wish to inflict upon the present generation." He calls that era the age of the <em>beerage</em> — the six-brewery cartel that owned the whole route from brewery to beer mat. Roger Protz made the same argument in 1978. In 2018 he had to make it again, forty years on. <em>Plus ça change</em>.</p>
 
     <p>British beer revivals are happening inside a corporate landscape that has barely changed since the era being revived. That is worth stating before we get to Watney's Party Seven or the return of the little cartoon fellow. The interesting question is not <em>whether</em> to bring back the beer your dad drank. It is <em>which version</em> of it, and <em>who is doing the work</em>.</p>
 
