@@ -81,7 +81,7 @@ Three corporate parents now hold most of the lost-British-brewery IP. The patter
 | **Heineken** | Watney's, Truman's, Courage, McEwan's, Scottish & Newcastle estate | Watney→Brands Reunited (dead). Truman→2013 revivalists, then sold to site owners 2022. |
 | **Carlsberg-Marston's** | Jennings, Ind Coope DBA, Banks's, Bombardier, Marston's family | Closes breweries (Jennings 2022, DBA discontinued 2015). Continuity revivals happen *after* corporate closure: Burton Bridge for DBA, Canfield rescue for Jennings. |
 | **AB InBev** | Boddingtons, Bass, Whitbread keg | Licenses to local brewers (Boddingtons → JW Lees 2025). Same model as Heineken-licensed Truman's. |
-| **Molson Coors** | Carling, Worthington's | Direct revivals (Carling Black Label 2026 line extension). Marketing-led, not heritage-led. |
+| **Molson Coors** | Carling, Worthington's, Stones Bitter | Direct revivals (Carling Black Label 2026 line extension, marketing-led). ALSO licenses to third parties: True North Brew Co (Sheffield) is cask-reviving Stones Bitter under Molson Coors licence — same pattern as AB InBev → JW Lees for Boddingtons. |
 
 The pattern is that the **aggregators are the gatekeepers, not the executors**. The interesting revivals happen at the third-party brewing layer (JW Lees, Burton Bridge, Allsopp's of Burton, the original 2013 Truman's revivalists), which is exactly where the editorial spectrum gets richest.
 
@@ -132,6 +132,54 @@ Paul's quote in his own words:
 The piece can't be all cynicism. Cultural-visibility-of-heritage-brands has its own value even when the liquid is mediocre. Better a flawed Double Diamond next to John Bull's cartoon than another row of identical macro-lagers.
 
 This softens the "revivals are hauntings" thesis into something truer: **be honest about what a revival is AND still want it on the shelf**.
+
+### 7. The contrarian voice — "who'd want to bring back beer from the 1970s?"
+
+David Behrens, writing in the *Yorkshire Post*, is the columnist-length version of the argument the Drinks Business commenters on Double Diamond were already making in the wild (*"universally loathed"*, *"sickly sweet"*, *"artificial"*). But he's more useful than a pure contrarian — his piece dismisses 1970s Stones AND blesses the True North Brew Co revival of it, on the specific grounds that True North is restoring the PRE-1970s cask recipe, not the keg-era version. That layered position is exactly what the piece needs to argue against and with.
+
+**On the 1970s beer itself:**
+> *"I can think of little about the 1970s that I would wish to inflict upon the present generation. But if we were to revive anything from that misbegotten, flared-trousered decade, Stones Bitter would be only slightly above the three-day week and Love Thy Neighbour on the list of priorities."*
+
+> *"I can't put my finger on what it was about Stones – maybe the gaudy orange badge on the pump; perhaps just the ghastly, gassy taste of the stuff – that made it embody everything that was wrong with Britain at that time."*
+
+**On the corporate structure that produced it (this DIRECTLY parallels Protz §8):**
+> *"It was a time when Britain's social life was controlled by six big breweries – the beerage, as they were known within political lobbying circles. Bass was the biggest and Stones was its principal brand of bitter. It owned the whole process, from brewery to beer mat, and laid down the law on what was sold and for how much."*
+
+> *"A great many remain in the hands of a few enormous estate-owning companies – the so-called pubcos that were spun off from the breweries and which have little incentive to act in the interests of the communities they serve."*
+
+**On what CAMRA achieved (unexpectedly generous):**
+> *"We have Camra, the Campaign for Real Ale, to thank in large measure for calling time on all that. The model for a million pressure groups that followed, its lobbying led to the Beer Orders of 1989, which forced the breweries to sell off their estates and ushered in the era of guest ales."*
+
+> *"Beer itself is a craft now, instead of just a commodity."*
+
+**On the True North revival specifically — the case that reframes the whole piece:**
+> *"The revival of Stones, meanwhile, serves as a metaphor for the industry. Before the 1970s its best bitter did not come cold and carbonated but was drawn from the wood for the benefit of Sheffield's steelworkers – its recipe formulated to replenish the salt they had lost from sweating in the foundries."*
+
+> *"Its rebirth brings it full circle, for it is being made in its original cask form by a small craft brewery in Sheffield, under licence from the American multinational which now owns the brand. The head brewer acknowledged that he would have his work cut out in convincing people who remembered Stones only on keg that this wasn't going to be more of the same."*
+
+> *"The rise of breweries like his is an inevitable and welcome consequence of the consumer society we have become. A pint of 'proper' Stones may be just another drop in an ocean of alcohol, but it's a start."*
+
+> *"I might even try a half myself – in a glass with a handle, please, landlord."*
+
+**How this reshapes the piece**: Behrens isn't the anti-revival voice — he's the "revive the pre-industrial version, not the industrial one" voice. His editorial line is: *the 1970s corporate keg was an interruption; the True North cask revival is restoring what came before the interruption*. That's a THIRD framing on top of the 6-tier honesty spectrum and the duty-reform argument: **what era exactly are you reviving?** A 1970s brand can revive the 1970s recipe (mediocre keg) or leapfrog to the pre-1970s recipe (purposeful cask) — and Behrens argues the second is what a revival should aim at.
+
+This also gives us a new tier consideration: **Tier 7 (implicit)** — reviving a *pre-industrial* recipe of a brand that later became a mass-market keg beer. It's what Burton Bridge DBA does with Ind Coope's ledger; it's what True North does with Stones. Not just "as close as possible to the original" but "as close as possible to the original BEFORE the corporate era wrecked it".
+
+Source: https://www.yorkshirepost.co.uk/news/opinion/columnists/whod-want-to-bring-back-beer-from-the-1970s-david-behrens-2449536
+
+### 8. The 40-year corporate continuity (Roger Protz)
+
+Roger Protz wrote *Pulling a Fast One: What the Brewers Have Done to Your Beer* in 1978. In 2018 he wrote a 40-years-on piece for Beer & Brewer arguing the same thing:
+
+> *"The global brewers and their pubco pals dominate the market and charge wickedly high prices for their products."* — Protz, 2018
+
+> *"Plus ça change, plus c'est la même chose."* — Protz, 2018
+
+This is the structural context for the entire revival wave. The same four-to-six corporate parents that dominated in 1978 still dominate in 2018 and still dominate in 2026. Revivals happen INSIDE this structure, not in opposition to it — which is why the IP-aggregator table (§3) looks the way it does. Protz has been documenting the same corporate concentration for half a century, and the revival cases in this notebook are the third-party workarounds inside a market shape he predicted would still be there.
+
+Useful for the piece's opening move: if you want to explain WHY there are so many licensed-back-to-third-parties revivals right now, Protz's continuity gives you the answer in one sentence.
+
+Source: https://protzonbeer.co.uk/features/2018/08/24/40-years-on-big-beer-still-rules-the-roost-1
 
 ---
 
@@ -253,6 +301,44 @@ Closer to Allsopp's Double Diamond than to Burton Bridge DBA, but with a technic
 **Tier placement**: Trademark + new recipes (Tier 3) + authentic yeast strain via NCYC (a unique technical-continuity layer). The yeast adds a dimension our other tier-3 cases lack. Could justify a 3.5 sub-tier or just sit within Tier 3 with a footnote: *"yeast-authentic, recipe-modern"*. Compare to Allsopp's DD where there's no analogous biological continuity.
 
 Editorial value for the piece: Truman's is the most architecturally honest revival — actual brewing site survives (Brick Lane), yeast strain is genuine, owners ARE descendants of a sort (Truman Estates owns the physical site continuously since 1995). The 2022 ownership transfer to the site-owning property company is the awkward modern coda.
+
+### Hofmeister — Tier 1/2 (badge-only, and honest about it)
+
+The cleanest self-declared "the beer itself is completely new" case in the notebook. Fake-German lager revived by two ex-Heineken people who bought the trademark from Heineken. Then went on to win Best Lager IWSC 2017 — so the Tier 1 script (naked brand + mediocre execution) is inverted here.
+
+- **Original** (1983): Scottish & Newcastle brand, brewed in Newcastle. 3.2% ABV. Fake-German styling. "George the Bear" mascot. *"For great lager, follow the bear."* Discontinued 2003 after the S&N / Courage merger consolidated the portfolio.
+- **IP chain**: Scottish & Newcastle → Heineken (2008 — the same aggregation event that swallowed Watney's and Truman's). Heineken holds the trademark to this day; the modern brewers licence it from them.
+- **Revival** (2015): Spencer Chambers + Richard Longhurst (both ex-Heineken) bought naming rights from Heineken. Contract-brewed at a Bavarian Helles specialist in **Market Schwaben, Germany** — so the modern Hofmeister is more literally German than the 1983 fake-German original ever was.
+- **Now**: 5% ABV Bavarian Helles. Won **Best Lager, IWSC 2017**.
+
+The defining editorial quote — this is Tier 1 honesty compressed into one sentence:
+
+> *"The permission to use the name and the bear's likeness was about all they wanted of the old Hofmeister: the beer itself was to be completely new."* — hofmeister.co.uk own blog
+
+That framing is the whole revival-honesty argument in one line. Compare to Allsopp's *"inspired by 1922"* rhetoric (Tier 3): Hofmeister explicitly disclaims recipe continuity while trading only the mascot and the brand. It's Tier 1 without pretending to be anything else — and that's why it works.
+
+**Why it earns the 1/2 hybrid placement**: Tier 1 by intent (brand + mascot only), but the modern liquid is a genuinely better beer than the 1983 original — which flips the usual Tier 1 script. Watney's Party Seven's third-party revival died because the licensed beer was mediocre; Hofmeister's licensed beer won IWSC gold. **Same IP-owner (Heineken), same third-party licence model, opposite outcomes**. The difference is the executors' honesty about what they were making.
+
+Source: https://www.hofmeister.co.uk/blogs/stories/hofmeister-reimagining-a-favourite-uk-brand
+
+### Stones Bitter (True North Brew Co, Sheffield) — Tier 6c + "pre-industrial recipe" hybrid
+
+The Behrens Stones revival case. Fits the Boddingtons pattern exactly (corporate IP + regional craft brewery + licence), with a distinctive editorial angle: True North is reviving the *pre*-1970s cask recipe, not the mass-market keg version that Stones became.
+
+- **Original recipe** (pre-1970s): cask-drawn, salt-adjusted for Sheffield steelworkers replenishing lost sweat in the foundries. Local bitter with a purpose.
+- **Industrial-era Stones** (from 1940s onward, then Bass ownership at the height of the keg revolution): cold, carbonated, keg-only. *"Set the pattern for the plastic pint"* — Behrens. The "gaudy orange badge on the pump", the "ghastly, gassy taste".
+- **IP chain**: Local Sheffield brand → Bass (1940s-ish) → Bass Brewers → Interbrew (2000, split) → Molson Coors (UK operations). "American multinational" per Behrens = Molson Coors.
+- **Revival** (Sheffield, current): Cask form at **True North Brew Co, Sheffield** under Molson Coors licence. Head brewer explicitly acknowledges the challenge — *"he would have his work cut out in convincing people who remembered Stones only on keg that this wasn't going to be more of the same."*
+
+**Why it earns Tier 6c placement**: Same corporate-licensed regional hybrid as Boddingtons (AB InBev → JW Lees). Local craft brewery, corporate IP-holder, third-party licence. What makes it distinct — and what Behrens correctly picks up on — is that True North is not reviving the industrial-era recipe (which is what people remember and what would be commercially easier). They're reviving the pre-industrial cask recipe, which is a specific editorial stance that says: *"the corporate era wasn't the peak of this beer; it was the interruption of it."*
+
+Compare to Carling Black Label (§Cases → Molson Coors direct revival): same corporate parent, opposite philosophy. Molson Coors is running BOTH plays in the same year — a marketing-led line extension (Carling Black Label) AND a heritage-led third-party licence (Stones via True North).
+
+**Editorial value for the piece**: Stones is the strongest counter-example to the "revivals are hauntings" framing. It's a revival that explicitly rejects the era being revived AND restores something older that had purpose. It also gives the piece a genuine multi-source through-line — Behrens (contrarian columnist), Protz (structural continuity), and the True North head brewer (honest execution) all reading the same case in complementary ways.
+
+Source: Behrens, Yorkshire Post — https://www.yorkshirepost.co.uk/news/opinion/columnists/whod-want-to-bring-back-beer-from-the-1970s-david-behrens-2449536
+
+Open research: True North Brew Co's own launch page for Stones (find + link); confirm Molson Coors as the specific licensor; check whether True North has documented the pre-1970s recipe reconstruction (ledger? Bass archive? scholarly source? homebrew archaeology?).
 
 ### Boddingtons Bitter (JW Lees) — Tier 6c (corporate-licensed regional hybrid)
 - Strangeways Brewery founded 1778, Boddington name from 1853, sold to Whitbread 1989, acquired by Interbrew (now AB InBev) 2000
@@ -384,6 +470,12 @@ The DIY tier is where actual recipe faithfulness lives — mediated by archive r
 - **Watney's Party Seven** — European Malt: https://www.europeanmalt.com/2020/10/14/2020-european-malt-company-celebrates-30-years-plus-the-return-of-the-infamous-watneys-party-seven/ (frames the return as 2020 mini-keg revival; may be a separate format release from the Jan 2021 Watney's-brand-co. relaunch we already have)
 - **Belhaven Twisted Thistle** — Belhaven's own page: https://www.belhaven.co.uk/our-beers/belhaven-twisted-thistle-ipa; DRAM Scotland: https://dramscotland.co.uk/2026/02/26/belhaven-relaunches-twisted-thistle/
 
+## Additional sources surfaced 2026-08-17
+
+- **Hofmeister — "Reimagining a favourite UK brand"** (hofmeister.co.uk own blog): https://www.hofmeister.co.uk/blogs/stories/hofmeister-reimagining-a-favourite-uk-brand — full origin story of the 2015 revival direct from the brewers. The "the beer itself was to be completely new" quote lives here. Also gives the Market Schwaben brewery, the 2017 IWSC gold, and the Chambers/Longhurst Heineken lineage. Sits with the Tier 1/2 case above.
+- **Roger Protz — "40 years on, Big Beer still rules the roost"** (2018, Protz on Beer): https://protzonbeer.co.uk/features/2018/08/24/40-years-on-big-beer-still-rules-the-roost-1 — Protz writing 40 years after his own 1978 book *Pulling a Fast One: What the Brewers Have Done to Your Beer*. Structural context for the whole revival wave: the four-to-six corporate parents that dominated in 1978 still dominate in 2018 and still dominate in 2026. Revivals happen INSIDE this structure, not in opposition to it. Feeds §8 above.
+- **David Behrens — "Who'd want to bring back beer from the 1970s?"** (Yorkshire Post): https://www.yorkshirepost.co.uk/news/opinion/columnists/whod-want-to-bring-back-beer-from-the-1970s-david-behrens-2449536 — Article body pasted by Paul 2026-08-17 (WebFetch/archive.org blocked by Cloudflare). Full quote pull now sits in §7 above. Also seeds the new Stones Bitter / True North Brew Co case (Tier 6c hybrid, alongside Boddingtons). The "beerage" term is Behrens's coinage — worth using; it's the political-lobbying nickname for the six-brewery pre-Beer-Orders cartel.
+
 ## Open research questions
 
 - [ ] Truman's Brixton revival (2013→) — Tier 6 candidate? They reportedly found the original yeast at NCYC
@@ -420,6 +512,13 @@ The DIY tier is where actual recipe faithfulness lives — mediated by archive r
 - *"Sneck Lifter, in Northern dialect, means someone's last sixpence"* (Jennings) — heritage detail that justifies the beer name
 - *"Back Yam"* as honestly-new-in-revival-lineup (Jennings) — the rare brewery that brackets new from revived
 - **The hop list as receipt** — Citra/Mosaic vs Fuggles/Goldings as the spec-sheet honesty check
+- *"The beer itself was to be completely new"* (Hofmeister own blog) — Tier 1 honesty benchmark; the disclaimer Allsopp's never made
+- *"Plus ça change, plus c'est la même chose"* (Protz, 40 years on) — the 40-year corporate continuity that makes revivals happen the way they do
+- *"Who'd want to bring back beer from the 1970s?"* (Behrens, Yorkshire Post) — the contrarian voice the piece must answer
+- *"the beerage"* (Behrens, borrowed from 1970s political-lobbying slang) — the six-brewery cartel that ran Britain's social life pre-Beer-Orders 1989
+- *"a glass with a handle, please, landlord"* (Behrens closer) — the Yorkshireman's blessing on a cask revival; concedes the aesthetic case
+- *"Its rebirth brings it full circle"* (Behrens on Stones) — the pre-industrial-recipe-revival move; not "as it was in 1970" but "as it was before 1970 ruined it"
+- **The "which era are you reviving?" question** — a 1970s brand can revive its 1970s recipe (usually mediocre) or its pre-1970s recipe (often purposeful). This is a NEW axis on top of the 6-tier honesty spectrum.
 
 ---
 
