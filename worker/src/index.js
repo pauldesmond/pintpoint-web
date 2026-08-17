@@ -28,12 +28,45 @@ const ABOUT_CANONICAL = 'https://pintpoint.co.uk/about-pintpoint.html';
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
 // the edge function's rendering or slug-resolution logic).
-const CACHE_VERSION = 'v13';
+const CACHE_VERSION = 'v14'; // v14 2026-08-17: 404/301 caching + 24h HTML fallback TTL
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
 // live tap lists, long for ghosts etc.) — this is belt-and-braces.
-const DEFAULT_CACHE_CONTROL = 'public, max-age=600, s-maxage=3600';
+// s-maxage 3600 → 86400 on 2026-08-17 (crawler-tax fix): tap data moves
+// at daily cron cadence, so a 1h edge TTL bought freshness nobody used
+// while every bot recrawl cycle longer than 1h re-invoked Supabase.
+const DEFAULT_CACHE_CONTROL = 'public, max-age=600, s-maxage=86400, stale-while-revalidate=86400';
+
+// Crawler-tax fix (2026-08-17): 404s and 301s were never edge-cached, so
+// every bot revisit of a junk sitemap URL or legacy bare slug re-invoked
+// the edge function (multi-second render + PostgREST reads) to recompute
+// the same answer. Cache them in the colo like any other response.
+// 404s get a shorter TTL than 301s: a 404 can turn into a 200 when a
+// venue/beer is added, a permanent redirect basically never changes.
+const NOT_FOUND_CACHE_CONTROL = 'public, max-age=300, s-maxage=3600';
+const REDIRECT_CACHE_CONTROL = 'public, max-age=3600, s-maxage=86400';
+
+// Build a cacheable 404, store it against the request's cache key, and
+// return it. `label` keeps the per-route body text ("Venue not found").
+function cacheable404(ctx, cache, cacheKey, label) {
+  const resp = new Response(label, {
+    status: 404,
+    headers: { 'Cache-Control': NOT_FOUND_CACHE_CONTROL },
+  });
+  ctx.waitUntil(cache.put(cacheKey, resp.clone()));
+  return resp;
+}
+
+// Build a cacheable 301, store it, and return it.
+function cacheable301(ctx, cache, cacheKey, location) {
+  const resp = new Response(null, {
+    status: 301,
+    headers: { 'Location': location, 'Cache-Control': REDIRECT_CACHE_CONTROL },
+  });
+  ctx.waitUntil(cache.put(cacheKey, resp.clone()));
+  return resp;
+}
 
 // Shared proxy for the OG share-image routes (/og/venue/, /og/beer/). Both
 // render a PNG card via an edge function with identical cache/validate/proxy
@@ -57,7 +90,9 @@ async function serveOgImage(request, ctx, prefix, fnUrl) {
   upstream.searchParams.set('slug', slug);
   const resp = await fetch(upstream.toString(), { method: 'GET' });
   if (resp.status === 404) {
-    return new Response('Not found', { status: 404, headers: { 'Cache-Control': 'no-store' } });
+    // Was no-store — every bot revisit of a stale og URL re-invoked the
+    // PNG renderer. Cache the miss (crawler-tax fix 2026-08-17).
+    return cacheable404(ctx, ogCache, cacheKey, 'Not found');
   }
   if (!resp.ok) return new Response('Upstream error', { status: 502 });
   const buf = await resp.arrayBuffer();
@@ -204,7 +239,7 @@ export default {
         headers: { 'Accept': 'text/html' },
         cf: { cacheEverything: false },
       });
-      if (beerResp.status === 404) return new Response('Beer not found', { status: 404 });
+      if (beerResp.status === 404) return cacheable404(ctx, beerCache, beerCacheKey, 'Beer not found');
       if (!beerResp.ok) return new Response('Upstream error', { status: 502 });
       const beerBody = await beerResp.text();
       const beerCC = beerResp.headers.get('Cache-Control') || DEFAULT_CACHE_CONTROL;
@@ -247,7 +282,7 @@ export default {
         headers: { 'Accept': 'text/html' },
         cf: { cacheEverything: false },
       });
-      if (crawlResp.status === 404) return new Response('Crawl not found', { status: 404 });
+      if (crawlResp.status === 404) return cacheable404(ctx, crawlCache, crawlCacheKey, 'Crawl not found');
       if (!crawlResp.ok) return new Response('Upstream error', { status: 502 });
       const crawlBody = await crawlResp.text();
       const crawlCC = crawlResp.headers.get('Cache-Control') || DEFAULT_CACHE_CONTROL;
@@ -327,18 +362,17 @@ export default {
     // Edge function returns 301 when a legacy bare-name slug resolves
     // unambiguously to a canonical name+city slug. Pass it through so the
     // browser visits the canonical URL (and so Google consolidates signals).
+    // Cached since 2026-08-17 — recomputing a permanent redirect cost a
+    // multi-second render + PostgREST reads on every bot revisit.
     if (upstreamResp.status === 301 || upstreamResp.status === 302) {
       const location = upstreamResp.headers.get('Location');
       if (location) {
-        return new Response(null, {
-          status: 301,
-          headers: { 'Location': location },
-        });
+        return cacheable301(ctx, cache, cacheKey, location);
       }
     }
 
     if (upstreamResp.status === 404) {
-      return new Response('Venue not found', { status: 404 });
+      return cacheable404(ctx, cache, cacheKey, 'Venue not found');
     }
 
     if (!upstreamResp.ok) {
