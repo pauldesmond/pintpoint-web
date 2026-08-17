@@ -198,17 +198,25 @@ Source: https://protzonbeer.co.uk/features/2018/08/24/40-years-on-big-beer-still
 ## Cases catalogued
 
 ### Watney's Party Seven — Tier 1 (and ALREADY DEAD)
-- The "Watney's revival" entity is **Brands Reunited**, who **licensed the trademark from Heineken in 2016** (Heineken acquired the Watney IP via Scottish Courage in 2008)
-- 2016 launch: keg + can beers brewed by **Sambrook's** — described by Des de Moor as *"distant relatives of Watney's pale ales"*
-- 2021 Party Seven reissue: 5L minikeg, "actually" — Des de Moor's wording suggests scepticism about the format claim
-- **"The beers disappeared from sale soon afterwards"** (Des de Moor) — the entire 2016-2021 Watney's revival is already extinct
+- **Original Party Seven launched 21 October 1968** (Kevin Harrington's history piece). Seven-pint metal can requiring a screwdriver and hammer to open. Sold alongside a "Sparklets" beer tap accessory (59 shillings 9d, included a voucher for a free Party Seven). Peaked as a working-class party staple through the late 1960s and 1970s.
+- Decline late 1970s / early 1980s as individual cans and bottles arrived and wine took share.
+- Journalist Jim White (via Kevin Harrington) describes the original taste as if it had *"been brewed in a vat that had previously contained industrial effluent."* Consistent with the Drinks Business commenter tone on Double Diamond — the beer was never as good as the packaging suggested.
+- **Two overlapping revival attempts in the 2010s-2020s** (needs resolving):
+  - Des de Moor identifies **Brands Reunited** as the revival vehicle, licensing the trademark **from Heineken in 2016** (Heineken acquired the Watney IP via Scottish Courage in 2008). 2016 launch: keg + can beers brewed by **Sambrook's** — described by Des de Moor as *"distant relatives of Watney's pale ales"*. 2021 Party Seven reissue as a 5L minikeg. Des de Moor's tone is sceptical about the format claim.
+  - Kevin Harrington's piece names **Nick Whitehurst as co-founder of "Watneys Beer Company"** doing a 2020 revival with craft beer and improved tap access. This may be the same entity rebranded, a subsequent attempt, or a separate line — the sources don't reconcile. The Republic equity-raise page (see sources) presumably answers this; I couldn't fetch it (403 from CF-like block).
+- **"The beers disappeared from sale soon afterwards"** (Des de Moor) — the entire 2016-2021 revival is already extinct.
+- **Modern Watney's brand's own site https://www.watneys-beer.com/ is dead** (verified 2026-08-17). No response at all. Corroborates the "revival died" narrative in the most literal sense: their own web address is now unreachable.
+- **Equity raise via Republic**: europe.republic.com/watneys-beer-company exists (verified as a URL). This is where the story arc darkens — someone was raising retail investor money against a revived brand that had already lost trade support. Need to check page for raise size, valuation, whether it closed successfully, and current investor count. Blocked from my end today.
 - Original Watney's Red Barrel framing: *"Rebranded as Red in the early 1970s, it became a byword for a poorly brewed and characterless national brand foisted on an unwilling public"* — and was so toxic by 1979 that Watney's removed the red barrel symbol from their own corporate branding in 1982. The brand died not from market pressure but from reputational suicide.
 - Stag Brewery Mortlake (Watney's primary site post-1898) ceased brewing **December 2015** — "the final working remnant of London's 18th-19th century industrial brewing legacy" per Des de Moor. AB InBev had owned it since 2002.
 - Sources:
   - https://metalpackager.com/2021/01/metalpackager-com-watneys-party7/
   - https://desdemoor.co.uk/stag-brewery-mortlake-ab-inbev-uk-watney-mann/
+  - https://www.kevinharrington.com/2024/10/the-rise-and-fall-of-watneys-party-seven-a-nostalgic-journey-through-british-beer-history/
+  - https://www.telegraph.co.uk/food-and-drink/features/watneys-party-seven-could-drunk-absolutely-no-clue-beer-like/ — blocked from my end (paywall/bot challenge); paste required
+  - https://europe.republic.com/watneys-beer-company — blocked (403); paste required to characterise the raise
 
-**Editorial implication for the piece**: Watney's is the cautionary case. The revival isn't just dishonest — it's a *failed* revival. Brands Reunited bet that "sufficient time had passed for the brand to be revived ironically" (Des's wording) and the market said no. This is the **revival arc as failure**: licensed name + outsourced brewing + nostalgia framing → quiet disappearance. The opposite of Burton Bridge DBA's humble continuity success.
+**Editorial implication for the piece**: Watney's is the cautionary case. The revival isn't just dishonest — it's a *failed* revival that then tried to close the gap by raising retail investor money. Brands Reunited bet that "sufficient time had passed for the brand to be revived ironically" (Des's wording) and the market said no. This is the **revival arc as failure**: licensed name + outsourced brewing + nostalgia framing → quiet disappearance → equity-crowdfunding hail-mary → dead .com. The opposite of Burton Bridge DBA's humble continuity success, and a strong lead candidate for the "Ghost Beers" follow-up piece.
 
 ### Allsopp brand IP history (from Des de Moor's Ind Coope piece, 2026)
 
@@ -306,9 +314,13 @@ Closer to Allsopp's Double Diamond than to Burton Bridge DBA, but with a technic
 - IP chain: Truman Hanbury Buxton → Grand Metropolitan (1971) → Watney Mann Truman (1974) → Courage (1991) → Scottish Courage (1995) → **Heineken (2008, present)**. Same pattern as Watney's — Heineken aggregates the lost-London-brewery IP.
 - **2013 revival by two young professionals** (not original brewers). Cuckoo-brewed from 2010, own brewery The Eyrie in Hackney Wick from 2013.
 - **YES the NCYC yeast claim is real** (confirms our open research question): per Des de Moor, *"using the Truman yeast, retrieved from the National Collection of Yeast Cultures"*. So the technical continuity is real even though the personnel isn't.
-- 2022: Original revival company **sold the brand to the Brick Lane site owners (Truman Estates / Zeloof family)** and rebranded itself as **Big Penny**. So the modern Truman's beer is now cuckoo-brewed by a property company, not the 2013 revivalists.
+- **2022-09-15: Original revival company sold the Truman's trademark and rebranded itself as Big Penny** (Morning Advertiser, 2 Sept 2022). Buyer: the management team at the Old Truman Brewery — the property estate that owns the physical Brick Lane site (Zeloof family holding). So the modern Truman's beer sits with the site-owning property company; the 2013 revivalists kept their venues and rebranded to Big Penny.
+- Venues renamed 2022-09-15: **Truman's Social Club (Walthamstow) → Big Penny Social**; **Brick Lane Brews (London City Airport) → Big Penny Brews**; The Newman Arms (Fitzrovia) retained its original name.
+- **Michael-George Hemus** (founder, Big Penny): *"the effect of the pandemic meant we had to sell the Truman's name to survive and keep everyone employed."* That is the single most honest sentence in the whole revival category — a founder saying out loud that the licensed brand had to be sold to keep the crew paid. This is where Tier-3 architectures actually end when the money runs out.
 - *"Most beers were new recipes but included recreations of classic stouts and porters and Ben Truman Export"* (Des de Moor) — partial recipe authenticity, mostly new beers.
-- Source: https://desdemoor.co.uk/trumans-beer/
+- Sources:
+  - https://desdemoor.co.uk/trumans-beer/
+  - https://www.morningadvertiser.co.uk/Article/2022/09/02/truman-s-beer-changes-name-to-big-penny/
 
 **Tier placement**: Trademark + new recipes (Tier 3) + authentic yeast strain via NCYC (a unique technical-continuity layer). The yeast adds a dimension our other tier-3 cases lack. Could justify a 3.5 sub-tier or just sit within Tier 3 with a footnote: *"yeast-authentic, recipe-modern"*. Compare to Allsopp's DD where there's no analogous biological continuity.
 
@@ -487,6 +499,16 @@ The DIY tier is where actual recipe faithfulness lives — mediated by archive r
 - **Hofmeister — "Reimagining a favourite UK brand"** (hofmeister.co.uk own blog): https://www.hofmeister.co.uk/blogs/stories/hofmeister-reimagining-a-favourite-uk-brand — full origin story of the 2015 revival direct from the brewers. The "the beer itself was to be completely new" quote lives here. Also gives the Market Schwaben brewery, the 2017 IWSC gold, and the Chambers/Longhurst Heineken lineage. Sits with the Tier 1/2 case above.
 - **Roger Protz — "40 years on, Big Beer still rules the roost"** (2018, Protz on Beer): https://protzonbeer.co.uk/features/2018/08/24/40-years-on-big-beer-still-rules-the-roost-1 — Protz writing 40 years after his own 1978 book *Pulling a Fast One: What the Brewers Have Done to Your Beer*. Structural context for the whole revival wave: the four-to-six corporate parents that dominated in 1978 still dominate in 2018 and still dominate in 2026. Revivals happen INSIDE this structure, not in opposition to it. Feeds §8 above.
 - **David Behrens — "Who'd want to bring back beer from the 1970s?"** (Yorkshire Post): https://www.yorkshirepost.co.uk/news/opinion/columnists/whod-want-to-bring-back-beer-from-the-1970s-david-behrens-2449536 — Article body pasted by Paul 2026-08-17 (WebFetch/archive.org blocked by Cloudflare). Full quote pull now sits in §7 above. Also seeds the new Stones Bitter / True North Brew Co case (Tier 6c hybrid, alongside Boddingtons). The "beerage" term is Behrens's coinage — worth using; it's the political-lobbying nickname for the six-brewery pre-Beer-Orders cartel.
+
+## Additional sources surfaced 2026-08-17 (afternoon drop — Watney's + Truman's)
+
+Paul dropped this stack when we agreed the shipped essay should carry only the framework and the two follow-ups ("Romford Beer That Never Came Back", "Ghost Beers: the pints we can't drink anymore") would carry the emotional weight. These sources feed the Ghost Beers follow-up primarily.
+
+- **Kevin Harrington — "The Rise and Fall of Watney's Party Seven"** (2024-10): https://www.kevinharrington.com/2024/10/the-rise-and-fall-of-watneys-party-seven-a-nostalgic-journey-through-british-beer-history/ — full-length nostalgic history. Adds: launch date **21 October 1968**; Sparklets tap accessory (59s 9d, free-can voucher); Nick Whitehurst named as co-founder of "Watneys Beer Company" doing a 2020 revival (which needs reconciling with Des de Moor's Brands Reunited/Sambrook's 2016 revival — same entity? successor? separate?); Jim White journalist quote *"brewed in a vat that had previously contained industrial effluent"* which is the killer taste-quote for the piece.
+- **Telegraph — Watney's Party Seven feature**: https://www.telegraph.co.uk/food-and-drink/features/watneys-party-seven-could-drunk-absolutely-no-clue-beer-like/ — WebFetch blocked from my end. Paul paste required if we want quotes. Title suggests a taste-test-with-modern-drinker angle.
+- **Republic (equity crowdfunding) — Watneys Beer Company page**: https://europe.republic.com/watneys-beer-company — 403 blocked from my end. Would tell us raise size, valuation, investor count, whether it closed successfully. The existence of an equity raise for a brand that had already lost trade support is editorially rich — the "retail investors as last-resort revival funder" beat.
+- **Modern Watney's brand's own site https://www.watneys-beer.com/**: verified dead (no HTTP response) 2026-08-17. The most literal "revival died" data point available. Useful for the Ghost Beers piece's opening beat.
+- **Morning Advertiser — "Truman's Beer changes name to Big Penny"** (2 Sept 2022): https://www.morningadvertiser.co.uk/Article/2022/09/02/truman-s-beer-changes-name-to-big-penny/ — the definitive source on the 2022-09-15 rebrand. Contains the Michael-George Hemus quote: *"the effect of the pandemic meant we had to sell the Truman's name to survive and keep everyone employed."* Names the three specific venues renamed (Big Penny Social ex-Truman's Social Club Walthamstow; Big Penny Brews ex-Brick Lane Brews at London City Airport; The Newman Arms retained). Buyer of trademark: management team at Old Truman Brewery (the Zeloof-family property estate holding the Brick Lane site).
 
 ## Open research questions
 
