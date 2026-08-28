@@ -64,6 +64,8 @@
     .pub-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 18px 0 30px; }
     .pub-list { padding: 16px 18px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
     .pub-list h3 { margin-top: 0; }
+    details.pub-list { margin: 18px 0 30px; }
+    details.pub-list summary { cursor: pointer; color: var(--teal); font-weight: 800; margin-bottom: 12px; }
     ul { padding-left: 20px; color: #e6edf3; }
     li { margin: 5px 0; }
     .sources { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
@@ -91,7 +93,7 @@
     <h1>Ghosts of <em>Baddow Brewery</em></h1>
 
     <div class="lede">
-      <p>Baddow Brewery closed nearly a century ago. But its pub estate is still scattered across Essex — some still pouring, some converted, some demolished, and two still refusing to give up their secrets.</p>
+      <p>Baddow Brewery stopped brewing in 1927. Nearly a century later, 30 of the 61 pubs associated with it are still serving drinkers.</p>
       <p class="short">This is the sort of map PINtPOINT was made for: not just where to drink now, but where Essex used to drink.</p>
     </div>
 
@@ -120,7 +122,7 @@
 
     <p class="short"><strong>*Method note:</strong> “Open” includes renamed pubs, free houses, hotel bars and pub-restaurants such as Harvester — not only traditional wet-led locals.</p>
 
-    <p>Twenty-nine appear to have gone, been replaced, converted, or ceased trading as pubs. Two remain unknown because the evidence is too thin to call honestly.</p>
+    <p>Another 29 have ceased trading as pubs. Two remain unknown because the evidence is too thin to call honestly.</p>
 
     <div class="note">
       <p><strong>Accuracy note:</strong> this is a draft research classification, not a final legal/historic record. Where the evidence is weak, the status remains cautious. The two unknowns — Gardeners Arms, Kelvedon and New Inn, Pitsea — are deliberately left unknown rather than forced into a tidy answer.</p>
@@ -128,62 +130,75 @@
 
     <h2>The survivors</h2>
 
-    <p>The living half of the estate is the joy of the thing. These are the former Baddow Brewery houses that still appear to be trading today:</p>
+    <p>The living half of the estate is the joy of the thing. But the names alone are not the story. The transformations are.</p>
 
-    <div class="pub-grid">
-      <div class="pub-list">
-        <h3>Chelmsford, Great Baddow and nearby</h3>
-        <ul>
-          <li>Black Horse, Moulsham Street</li>
-          <li>Rising Sun</li>
-          <li>Compasses</li>
-          <li>Hop Shop — formerly Coopers Arms</li>
-          <li>White Horse, Great Baddow</li>
-          <li>Generals Arms</li>
-          <li>White Bear, Galleywood</li>
-          <li>Crown, Sandon</li>
-        </ul>
-      </div>
-      <div class="pub-list">
-        <h3>Wider Essex survivors</h3>
-        <ul>
-          <li>Rayleigh Arms, Terling</li>
-          <li>William B — formerly Crown, Hatfield Peverel</li>
-          <li>Drunken Dragon — formerly Brewer’s Arms</li>
-          <li>Bell, Ingatestone</li>
-          <li>Hawk Inn, Battlesbridge</li>
-          <li>Red Lion, Billericay</li>
-          <li>Quart Pot, Runwell</li>
-          <li>White Hart, Thundersley</li>
-          <li>Ship Hotel, Leigh-on-Sea</li>
-          <li>Castle, Hadleigh</li>
-          <li>Foresters, High Ongar</li>
-          <li>Mundon White Horse</li>
-          <li>Bell Inn, Woodham Ferrers</li>
-          <li>Five Bells, Vange — now Harvester</li>
-          <li>Duke’s Head, Little Burstead</li>
-          <li>Kings Head, Bradwell-on-Sea</li>
-          <li>Black Bull, Fyfield</li>
-          <li>Hoop, Stock</li>
-          <li>Oyster Smack, Burnham</li>
-          <li>Prince of Wales, Stow Maries</li>
-          <li>Dog &amp; Pickle — formerly Nags Head, Moreton</li>
-          <li>Bell Inn, Horndon-on-the-Hill</li>
-        </ul>
-      </div>
+    <div class="ghost-card">
+      <h2>Six estate afterlives</h2>
+      <ul>
+        <li><strong>Coopers Arms → Hop Shop</strong>: a former tied house reborn as Chelmsford’s micropub culture.</li>
+        <li><strong>Crown, Hatfield Peverel → William B</strong>: old pub identity, new name, still serving.</li>
+        <li><strong>Nags Head, Moreton → Dog &amp; Pickle</strong>: a renamed survivor with its own modern character.</li>
+        <li><strong>Five Bells, Vange → Harvester</strong>: not a traditional wet-led local, but still open, still licensed, still part of the living estate.</li>
+        <li><strong>White Hart, Brentwood → Sugar Hut</strong>: no longer a pub, but an Essex afterlife almost too strange to leave out.</li>
+        <li><strong>Bull Inn, Pitsea → Bull Mews</strong>: the pub is gone, but the name has stuck to the housing.</li>
+      </ul>
     </div>
 
-    <p>That list is why the story works. Baddow Brewery is dead as a brewery company, but its estate has not vanished. Half of it is still visible in the modern pub map.</p>
+    <p>That is why the count matters. Baddow Brewery is dead as a brewery company, but its estate has not vanished. Half of it is still visible in the modern pub map; the other half survives as restaurants, shops, houses, names, rumours and awkward gaps in the record.</p>
 
-    <p>Some survivals are stranger than others. Five Bells at Vange trades as a Harvester — not a traditional wet-led local, but still open, still licensed, and still part of the living estate. This is what pub afterlives actually look like: not always graceful, rarely predictable, but still there.</p>
+    <details class="pub-list">
+      <summary>Show the 30 open survivors</summary>
+      <div class="pub-grid">
+        <div>
+          <h3>Chelmsford, Great Baddow and nearby</h3>
+          <ul>
+            <li>Black Horse, Moulsham Street</li>
+            <li>Rising Sun</li>
+            <li>Compasses</li>
+            <li>Hop Shop — formerly Coopers Arms</li>
+            <li>White Horse, Great Baddow</li>
+            <li>Generals Arms</li>
+            <li>White Bear, Galleywood</li>
+            <li>Crown, Sandon</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Wider Essex survivors</h3>
+          <ul>
+            <li>Rayleigh Arms, Terling</li>
+            <li>William B — formerly Crown, Hatfield Peverel</li>
+            <li>Drunken Dragon — formerly Brewer’s Arms</li>
+            <li>Bell, Ingatestone</li>
+            <li>Hawk Inn, Battlesbridge</li>
+            <li>Red Lion, Billericay</li>
+            <li>Quart Pot, Runwell</li>
+            <li>White Hart, Thundersley</li>
+            <li>Ship Hotel, Leigh-on-Sea</li>
+            <li>Castle, Hadleigh</li>
+            <li>Foresters, High Ongar</li>
+            <li>Mundon White Horse</li>
+            <li>Bell Inn, Woodham Ferrers</li>
+            <li>Five Bells, Vange — now Harvester</li>
+            <li>Duke’s Head, Little Burstead</li>
+            <li>Kings Head, Bradwell-on-Sea</li>
+            <li>Black Bull, Fyfield</li>
+            <li>Hoop, Stock</li>
+            <li>Oyster Smack, Burnham</li>
+            <li>Prince of Wales, Stow Maries</li>
+            <li>Dog &amp; Pickle — formerly Nags Head, Moreton</li>
+            <li>Bell Inn, Horndon-on-the-Hill</li>
+          </ul>
+        </div>
+      </div>
+    </details>
 
     <h2>The changed and the gone</h2>
 
-    <p>The other half is where Ghost Hunter comes in.</p>
+    <p>This is where Ghost Hunter — PINtPOINT’s layer for lost, renamed and transformed pubs — earns its keep.</p>
 
     <p>Some former Baddow houses survive physically but no longer function as pubs. Some are restaurants, shops, homes, holiday lets or housing developments. Some appear to be simply closed. Some have left only a name in a directory and a stubborn gap on the map.</p>
 
-    <p>And some afterlives are stranger than others. The White Hart at Brentwood is now Sugar Hut — Essex’s TOWIE nightclub, a former Baddow tied house reborn as reality-TV shorthand. The Bull at Pitsea gave its name to Bull Mews housing. That is what the gone half looks like too: not just disappearance, but mutation.</p>
+    <p>Sugar Hut deserves the spotlight here. The White Hart at Brentwood did not survive as a pub, but as Essex’s TOWIE nightclub it became something almost as map-defining: a former Baddow tied house reborn as reality-TV shorthand. The Bull at Pitsea gave its name to Bull Mews housing. That is what the gone half looks like too: not just disappearance, but mutation.</p>
 
     <div class="pub-grid">
       <div class="pub-list">
@@ -237,7 +252,7 @@
 
     <p>Chelmsford Brew Co now brews in Great Baddow. Their own account says the site had to be Brewery Fields, the landscape of the original Great Baddow brewery in the 1800s. CAMRA’s visit write-up placed them only a stone’s throw from the old Baddow Brewery, and the early BlueShack story has exactly the right local-brewery texture: family, garden-shed brewing, recipes getting out of hand, beers appearing at The Lion Inn, The Ale House and Chelmsford Beer &amp; Cider Festival.</p>
 
-    <p>That does <em>not</em> make Chelmsford Brew Co the same company as Baddow Brewery. It is not a corporate continuation. It is not the same old brewery building. And modern Chelmsford brewing is wider than one brewery, with Radio City Beer Works also part of today’s scene.</p>
+    <p>Chelmsford’s current brewing scene is wider than one brewery — <a href="https://www.rcbw.co.uk">Radio City Beer Works</a> is part of it too — but the Great Baddow geography matters.</p>
 
     <blockquote>Not the same company. Not the old brewery building. But new beer on old brewing soil.</blockquote>
 
