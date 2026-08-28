@@ -1,9 +1,9 @@
 {
-  "latest_version": "1.12.1",
+  "latest_version": "1.13.0",
   "min_supported_version": "1.7.0",
-  "apk_url": "https://expo.dev/artifacts/eas/zy2Ocn9ZQrwgeSdkeKrKL3edn2Tk4dgI3c6QWIDiJq8.apk",
+  "apk_url": "https://expo.dev/artifacts/eas/Q41cjuOEavo0Yzjs4NiA4OeHG4JytnE7CXtBnstEDis.apk",
   "release_notes_url": "https://pintpoint.co.uk/changelog",
-  "released_at": "2026-07-30",
-  "notes": "Behind-the-scenes: added crash reporting so we hear about problems before you have to tell us. Everything else from 1.12.0 has been landing as smaller updates through the month — including 46 curated ghost pubs across central, east, and south London, and a new 'recently added' sort in Nearby A-Z.",
+  "released_at": "2026-08-28",
+  "notes": "Apple Watch companion — install PINtPOINT on your paired Apple Watch for a wrist-mounted radar and compass that walks you to any pub you tap. Plus: Compare beers side-by-side, Ghost Hunter is now a simple toggle, faster in-catalogue beer logging, a new Recently Added sort in Nearby A-Z, target-on-my-location on PINtPOINT WORLD, and more countries surfacing as tap-to-zoom pills once they cross the 5-pub threshold.",
   "urgent": false
 }
