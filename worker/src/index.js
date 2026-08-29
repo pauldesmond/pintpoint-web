@@ -47,7 +47,7 @@ const CACHE_VERSION = 'v14'; // v14 2026-08-17: 404/301 caching + 24h HTML fallb
 // changed, so we don't cold-rehydrate the whole fleet (photos in particular
 // — see [[feedback_no_cache_key_bumps_under_egress_pressure]]). Falls
 // back to CACHE_VERSION when a route hasn't declared its own.
-const COLLECTIONS_CACHE_VERSION = 'v7'; // v7 2026-08-29: Baddow — region name 'Great Baddow, Chelmsford and nearby' (Baddow leads)
+const COLLECTIONS_CACHE_VERSION = 'v8'; // v8 2026-08-29: render former_names on Collection cards ("Formerly the …")
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
@@ -171,6 +171,25 @@ export default {
           const headers = new Headers(upstream.headers);
           headers.set('X-Robots-Tag', 'noindex, nofollow');
           return new Response(upstream.body, { status: upstream.status, statusText: upstream.statusText, headers });
+        }
+        // Bare draft slug (e.g. /blog/drafts/ghosts-of-baddow-brewery) or
+        // trailing-slash form → 301 to the .html canonical. Same canonical-
+        // ising logic as /blog/<slug>, applied here so a clean URL can be
+        // shared with an external subject (brewery, venue) for preview
+        // without exposing the .html suffix.
+        const draftTail = tail.slice('drafts/'.length);
+        const draftSlug = draftTail.endsWith('/') ? draftTail.slice(0, -1) : draftTail;
+        if (/^[a-z0-9-]+$/.test(draftSlug)) {
+          const canonical = new URL(url);
+          canonical.pathname = `/blog/drafts/${draftSlug}.html`;
+          return new Response(null, {
+            status: 301,
+            headers: {
+              'Location': canonical.toString(),
+              'Cache-Control': 'public, max-age=3600',
+              'X-Robots-Tag': 'noindex, nofollow',
+            },
+          });
         }
         return new Response('Not found', { status: 404 });
       }
