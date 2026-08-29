@@ -47,7 +47,7 @@ const CACHE_VERSION = 'v14'; // v14 2026-08-17: 404/301 caching + 24h HTML fallb
 // changed, so we don't cold-rehydrate the whole fleet (photos in particular
 // — see [[feedback_no_cache_key_bumps_under_egress_pressure]]). Falls
 // back to CACHE_VERSION when a route hasn't declared its own.
-const COLLECTIONS_CACHE_VERSION = 'v6'; // v6 2026-08-29: Baddow — 'Wider Essex survivors' → 'Across Essex'
+const COLLECTIONS_CACHE_VERSION = 'v7'; // v7 2026-08-29: Baddow — region name 'Great Baddow, Chelmsford and nearby' (Baddow leads)
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
