@@ -234,11 +234,23 @@ export default {
         return cacheable404(ctx, photoCache, photoCacheKey, 'Not found');
       }
       if (!photoResp.ok) return new Response('Upstream error', { status: 502 });
+      // MIME allow-list: the venue-photos bucket accepts user submissions
+      // under pending/, so a submitter can put an SVG or HTML in there. If
+      // we reflect that Storage Content-Type onto the apex origin, that
+      // file executes as script in pintpoint.co.uk's origin (stored XSS).
+      // Only serve raster image types, and always assert the fixed type
+      // with nosniff so the browser cannot second-guess it.
+      const upstreamType = (photoResp.headers.get('Content-Type') || '').split(';')[0].trim().toLowerCase();
+      const ALLOWED_IMAGE_TYPES = { 'image/jpeg': 1, 'image/png': 1, 'image/webp': 1, 'image/gif': 1 };
+      if (!ALLOWED_IMAGE_TYPES[upstreamType]) {
+        return cacheable404(ctx, photoCache, photoCacheKey, 'Not an image');
+      }
       const photoBuf = await photoResp.arrayBuffer();
       const photoOut = new Response(photoBuf, {
         status: 200,
         headers: {
-          'Content-Type': photoResp.headers.get('Content-Type') || 'image/jpeg',
+          'Content-Type': upstreamType,
+          'X-Content-Type-Options': 'nosniff',
           'Cache-Control': PHOTO_CACHE_CONTROL,
           'X-Rendered-By': 'pintpoint-photo-worker',
         },
