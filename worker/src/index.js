@@ -10,6 +10,7 @@
  * - /pubs/index.html   → pass through to origin
  * - /pubs/<slug>       → render via Supabase edge function
  * - /pubs/<slug>.html  → redirect to /pubs/<slug> (canonical, clean URL)
+ * - /photos/<file>     → venue photo proxied from Supabase Storage (long edge TTL)
  * - /blog/<slug>       → 301 redirect to /blog/<slug>.html (canonical w/ extension)
  * - /blog/<slug>/      → 301 redirect to /blog/<slug>.html
  * - /blog/<slug>.html  → pass through to origin
@@ -25,6 +26,17 @@ const BEER_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/beer-page
 const OG_BEER_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/og-beer';
 const OG_VENUE_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/og-venue';
 const ABOUT_CANONICAL = 'https://pintpoint.co.uk/about-pintpoint.html';
+
+// Venue photos live in the public Supabase Storage bucket. Serving them
+// to the web straight from storage.supabase.co bills Storage egress on
+// every fetch with no edge cache in front — the 28 Aug 2026 spike
+// (114 MB Storage in one day) was bots crawling venue pages and pulling
+// each embedded photo from the bucket. /photos/<file> proxies the bucket
+// through this Worker so repeat fetches hit the colo cache instead.
+// Photos are effectively immutable once uploaded (enrichment replaces
+// the file under a NEW name), so the TTL is long.
+const STORAGE_PHOTOS = 'https://rvokskoevmcekkgiglpa.supabase.co/storage/v1/object/public/venue-photos/';
+const PHOTO_CACHE_CONTROL = 'public, max-age=604800, s-maxage=2592000, immutable';
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
 // the edge function's rendering or slug-resolution logic).
@@ -198,6 +210,41 @@ export default {
       }
       // Everything else (.html files, drafts, images, the index) → origin
       return fetch(request);
+    }
+
+    // /photos/<file> → venue photo proxied from Supabase Storage with a
+    // long edge TTL (see STORAGE_PHOTOS above). Accepts an optional
+    // single "pending/" prefix — user submissions land there before
+    // review and some venue.photo values point at it.
+    if (pathname.startsWith('/photos/')) {
+      const file = pathname.slice('/photos/'.length);
+      if (!/^(?:pending\/)?[A-Za-z0-9][A-Za-z0-9._-]*$/.test(file)) {
+        return new Response('Bad request', { status: 400 });
+      }
+      const photoCacheUrl = new URL(request.url);
+      photoCacheUrl.search = '';
+      photoCacheUrl.searchParams.set('_cv', CACHE_VERSION);
+      const photoCacheKey = new Request(photoCacheUrl.toString(), { method: 'GET' });
+      const photoCache = caches.default;
+      const cachedPhoto = await photoCache.match(photoCacheKey);
+      if (cachedPhoto) return cachedPhoto;
+
+      const photoResp = await fetch(STORAGE_PHOTOS + file, { method: 'GET' });
+      if (photoResp.status === 400 || photoResp.status === 404) {
+        return cacheable404(ctx, photoCache, photoCacheKey, 'Not found');
+      }
+      if (!photoResp.ok) return new Response('Upstream error', { status: 502 });
+      const photoBuf = await photoResp.arrayBuffer();
+      const photoOut = new Response(photoBuf, {
+        status: 200,
+        headers: {
+          'Content-Type': photoResp.headers.get('Content-Type') || 'image/jpeg',
+          'Cache-Control': PHOTO_CACHE_CONTROL,
+          'X-Rendered-By': 'pintpoint-photo-worker',
+        },
+      });
+      ctx.waitUntil(photoCache.put(photoCacheKey, photoOut.clone()));
+      return photoOut;
     }
 
     // OG share-image routes — both proxy a PNG card from an edge function
