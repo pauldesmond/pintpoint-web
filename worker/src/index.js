@@ -43,6 +43,12 @@ const PHOTO_CACHE_CONTROL = 'public, max-age=604800, s-maxage=2592000, immutable
 // the edge function's rendering or slug-resolution logic).
 const CACHE_VERSION = 'v14'; // v14 2026-08-17: 404/301 caching + 24h HTML fallback TTL
 
+// Per-route cache version — bump ONLY the routes whose rendering / data
+// changed, so we don't cold-rehydrate the whole fleet (photos in particular
+// — see [[feedback_no_cache_key_bumps_under_egress_pressure]]). Falls
+// back to CACHE_VERSION when a route hasn't declared its own.
+const COLLECTIONS_CACHE_VERSION = 'v2'; // v2 2026-08-29: static-map thumbnail live + copy/data fixes
+
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
 // live tap lists, long for ghosts etc.) — this is belt-and-braces.
@@ -325,7 +331,7 @@ export default {
       const slug = pathname.slice('/collections/'.length, -'/map.png'.length);
       if (!/^[a-z0-9-]+$/i.test(slug)) return new Response('Bad request', { status: 400 });
       const mapCacheUrl = new URL(request.url);
-      mapCacheUrl.searchParams.set('_cv', CACHE_VERSION);
+      mapCacheUrl.searchParams.set('_cv', COLLECTIONS_CACHE_VERSION);
       const mapCacheKey = new Request(mapCacheUrl.toString(), { method: 'GET' });
       const mapCache = caches.default;
       const cached = await mapCache.match(mapCacheKey);
@@ -385,7 +391,7 @@ export default {
         return new Response('Collection not found', { status: 404 });
       }
       const colCacheUrl = new URL(request.url);
-      colCacheUrl.searchParams.set('_cv', CACHE_VERSION);
+      colCacheUrl.searchParams.set('_cv', COLLECTIONS_CACHE_VERSION);
       const colCacheKey = new Request(colCacheUrl.toString(), { method: 'GET' });
       const colCache = caches.default;
       const cachedCol = await colCache.match(colCacheKey);
