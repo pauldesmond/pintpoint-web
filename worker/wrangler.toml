@@ -8,10 +8,12 @@ account_id = "2c8869d0743b3846dca0b34a462fe16a"
 # - /beers/*   → dynamic beer pages (proxied to beer-page edge function)
 # - /og/beer/* → dynamic OG share PNGs (proxied to og-beer edge function)
 # - /crawl/*   → dynamic Hall of Fame pages (proxied to crawl-page edge function)
+# - /photos/*  → venue photos (proxied to Supabase Storage, long edge TTL)
 # - /blog/*    → 301 bare slug → .html canonical (kills duplicate URL signal in BWT)
 # - /about(/)  → 301 redirect to /about-pintpoint.html (canonicalise)
 routes = [
   { pattern = "pintpoint.co.uk/pubs/*", zone_name = "pintpoint.co.uk" },
+  { pattern = "pintpoint.co.uk/photos/*", zone_name = "pintpoint.co.uk" },
   { pattern = "pintpoint.co.uk/beers/*", zone_name = "pintpoint.co.uk" },
   { pattern = "pintpoint.co.uk/og/beer/*", zone_name = "pintpoint.co.uk" },
   { pattern = "pintpoint.co.uk/og/venue/*", zone_name = "pintpoint.co.uk" },
