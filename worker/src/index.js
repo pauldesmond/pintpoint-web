@@ -25,6 +25,7 @@ const CRAWL_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/crawl-pa
 const BEER_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/beer-page';
 const OG_BEER_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/og-beer';
 const OG_VENUE_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/og-venue';
+const COLLECTIONS_FN = 'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/collections-page';
 const ABOUT_CANONICAL = 'https://pintpoint.co.uk/about-pintpoint.html';
 
 // Venue photos live in the public Supabase Storage bucket. Serving them
@@ -311,6 +312,105 @@ export default {
         },
       });
       ctx.waitUntil(beerCache.put(beerCacheKey, resp.clone()));
+      return resp;
+    }
+
+    // /collections/<slug>/map.png → server-side Static Map proxy.
+    // Google Static Maps needs a key, which we DON'T want in the HTML
+    // (referrer-restricted keys still cost Google API $, and any client-
+    // visible key can be scraped). The Worker calls the API with a secret
+    // key (env.GOOGLE_STATIC_MAPS_KEY) and edge-caches the PNG. Same
+    // pattern as /photos/*.
+    if (pathname.startsWith('/collections/') && pathname.endsWith('/map.png')) {
+      const slug = pathname.slice('/collections/'.length, -'/map.png'.length);
+      if (!/^[a-z0-9-]+$/i.test(slug)) return new Response('Bad request', { status: 400 });
+      const mapCacheUrl = new URL(request.url);
+      mapCacheUrl.searchParams.set('_cv', CACHE_VERSION);
+      const mapCacheKey = new Request(mapCacheUrl.toString(), { method: 'GET' });
+      const mapCache = caches.default;
+      const cached = await mapCache.match(mapCacheKey);
+      if (cached) return cached;
+
+      // Pull venue coords for the collection from the DB via PostgREST
+      // (service-role read). Same origin as edge functions.
+      const postgrest = 'https://rvokskoevmcekkgiglpa.supabase.co/rest/v1';
+      const colResp = await fetch(`${postgrest}/collections?slug=eq.${encodeURIComponent(slug)}&select=regions&limit=1`, {
+        headers: { 'apikey': env.SUPABASE_SERVICE_ROLE_KEY, 'Authorization': `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}` },
+      });
+      if (!colResp.ok) return cacheable404(ctx, mapCache, mapCacheKey, 'Map unavailable');
+      const cols = await colResp.json();
+      const col = cols?.[0];
+      if (!col?.regions) return cacheable404(ctx, mapCache, mapCacheKey, 'Collection not found');
+      const ids = (col.regions || []).flatMap((r) => r.venue_ids || []);
+      if (ids.length === 0) return cacheable404(ctx, mapCache, mapCacheKey, 'No venues');
+      const inList = ids.map((s) => `"${s}"`).join(',');
+      const vResp = await fetch(`${postgrest}/venues?id=in.(${encodeURIComponent(inList)})&select=id,latitude,longitude`, {
+        headers: { 'apikey': env.SUPABASE_SERVICE_ROLE_KEY, 'Authorization': `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}` },
+      });
+      if (!vResp.ok) return cacheable404(ctx, mapCache, mapCacheKey, 'Venues fetch failed');
+      const venues = await vResp.json();
+      const pins = venues.filter((v) => v.latitude != null && v.longitude != null);
+      if (pins.length === 0) return cacheable404(ctx, mapCache, mapCacheKey, 'No pins');
+
+      const markers = pins.map((v) => `color:0x9B59B6|${v.latitude},${v.longitude}`).join('&markers=');
+      const staticUrl = `https://maps.googleapis.com/maps/api/staticmap?size=800x400&scale=2&maptype=roadmap&markers=${markers}&key=${env.GOOGLE_STATIC_MAPS_KEY}`;
+      const gResp = await fetch(staticUrl);
+      if (!gResp.ok) return cacheable404(ctx, mapCache, mapCacheKey, 'Static map error');
+      const buf = await gResp.arrayBuffer();
+      const out = new Response(buf, {
+        status: 200,
+        headers: {
+          'Content-Type': 'image/png',
+          'X-Content-Type-Options': 'nosniff',
+          'Cache-Control': 'public, max-age=604800, s-maxage=2592000, immutable',
+          'X-Rendered-By': 'pintpoint-collection-map-worker',
+        },
+      });
+      ctx.waitUntil(mapCache.put(mapCacheKey, out.clone()));
+      return out;
+    }
+
+    // /collections/<slug> → proxy to the collections-page edge function.
+    // Curated Collections are editorial themed pub sets — long-arc reference
+    // maps distinct from crawls (route/session) and watchlists (personal).
+    if (pathname.startsWith('/collections/')) {
+      let slug = pathname.slice('/collections/'.length);
+      if (slug.endsWith('/')) slug = slug.slice(0, -1);
+      if (slug.endsWith('.html')) {
+        const canonical = new URL(url);
+        canonical.pathname = `/collections/${slug.slice(0, -5)}`;
+        return Response.redirect(canonical.toString(), 301);
+      }
+      if (!slug || !/^[a-z0-9-]+$/i.test(slug)) {
+        return new Response('Collection not found', { status: 404 });
+      }
+      const colCacheUrl = new URL(request.url);
+      colCacheUrl.searchParams.set('_cv', CACHE_VERSION);
+      const colCacheKey = new Request(colCacheUrl.toString(), { method: 'GET' });
+      const colCache = caches.default;
+      const cachedCol = await colCache.match(colCacheKey);
+      if (cachedCol) return cachedCol;
+
+      const colUpstream = new URL(COLLECTIONS_FN);
+      colUpstream.searchParams.set('slug', slug);
+      const colResp2 = await fetch(colUpstream.toString(), {
+        method: 'GET',
+        headers: { 'Accept': 'text/html' },
+        cf: { cacheEverything: false },
+      });
+      if (colResp2.status === 404) return cacheable404(ctx, colCache, colCacheKey, 'Collection not found');
+      if (!colResp2.ok) return new Response('Upstream error', { status: 502 });
+      const colBody = await colResp2.text();
+      const colCC = colResp2.headers.get('Cache-Control') || DEFAULT_CACHE_CONTROL;
+      const resp = new Response(colBody, {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html; charset=utf-8',
+          'Cache-Control': colCC,
+          'X-Rendered-By': 'pintpoint-collections-worker',
+        },
+      });
+      ctx.waitUntil(colCache.put(colCacheKey, resp.clone()));
       return resp;
     }
 

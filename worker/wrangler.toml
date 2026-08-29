@@ -18,6 +18,7 @@ routes = [
   { pattern = "pintpoint.co.uk/og/beer/*", zone_name = "pintpoint.co.uk" },
   { pattern = "pintpoint.co.uk/og/venue/*", zone_name = "pintpoint.co.uk" },
   { pattern = "pintpoint.co.uk/crawl/*", zone_name = "pintpoint.co.uk" },
+  { pattern = "pintpoint.co.uk/collections/*", zone_name = "pintpoint.co.uk" },
   { pattern = "pintpoint.co.uk/blog/*", zone_name = "pintpoint.co.uk" },
   { pattern = "pintpoint.co.uk/about", zone_name = "pintpoint.co.uk" },
   { pattern = "pintpoint.co.uk/about/", zone_name = "pintpoint.co.uk" },
