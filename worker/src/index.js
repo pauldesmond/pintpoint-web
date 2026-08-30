@@ -47,7 +47,7 @@ const CACHE_VERSION = 'v14'; // v14 2026-08-17: 404/301 caching + 24h HTML fallb
 // changed, so we don't cold-rehydrate the whole fleet (photos in particular
 // — see [[feedback_no_cache_key_bumps_under_egress_pressure]]). Falls
 // back to CACHE_VERSION when a route hasn't declared its own.
-const COLLECTIONS_CACHE_VERSION = 'v10'; // v10 2026-08-30: kindred_brewery pill live + seen-age floor (was rounding 20mo → "2y ago")
+const COLLECTIONS_CACHE_VERSION = 'v11'; // v11 2026-08-30: kindred pill picks MAX lastSeen per venue (was showing older row)
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
