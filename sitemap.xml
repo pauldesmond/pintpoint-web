@@ -91,6 +91,18 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://pintpoint.co.uk/collections/baddow-brewery-survivors</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/collections/davys-wine-bars</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://pintpoint.co.uk/blog/revivals.html</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
