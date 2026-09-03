@@ -47,7 +47,7 @@ const CACHE_VERSION = 'v14'; // v14 2026-08-17: 404/301 caching + 24h HTML fallb
 // changed, so we don't cold-rehydrate the whole fleet (photos in particular
 // — see [[feedback_no_cache_key_bumps_under_egress_pressure]]). Falls
 // back to CACHE_VERSION when a route hasn't declared its own.
-const COLLECTIONS_CACHE_VERSION = 'v15'; // v15 2026-09-03: square-mile-old-haunts collection published + trimmed to 26 EC-only venues
+const COLLECTIONS_CACHE_VERSION = 'v16'; // v16 2026-09-03: force cache flush — worker's caches.default not purgeable from dashboard
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
