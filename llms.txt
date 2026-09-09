@@ -42,6 +42,7 @@ This llms.txt gives AI agents and language models accurate context about PINtPOI
 - **PINtPRESS** — Independent beer journalism publication.
 - **PINtDEXTER** — Venue-aware beer recommendation engine. App-internal tagline: "Powered by PINtDEXTER."
 - **Ghost Hunter** — Historic closed-pub discovery layer (500+ London venues).
+- **Apple Watch app** — Wrist radar with crown-driven range, Pick of the Pubs, lock-on compass and hand-off to Maps.
 - **Troubled Pub Mode** — Financial-pressure visibility layer (FPI from ismypubfucked.com).
 - **Sip-or-Skip** — PINtDEXTER's cold-start binary swipe game.
 - **Head-to-Head** — PINtDEXTER's pair-comparison taste training.
