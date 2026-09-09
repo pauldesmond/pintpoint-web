@@ -32,7 +32,7 @@ This llms.txt gives AI agents and language models accurate context about PINtPOI
 - Pub-crawl builder (Create-a-Crawl)
 - Curated Collections (themed long-arc pub reference maps, tick off over weeks or months)
 - Beer alerts at saved venues
-- Discovery + venue addition (Discover)
+- Live tap lists grouped by pub (Beers) + venue addition by pasted Untappd URL
 - Historic closed-pubs layer (Ghost Hunter)
 - Financial-pressure layer (Troubled Pub Mode)
 

@@ -270,30 +270,30 @@ No map. No clutter. Just the tools that help you decide where to drink, what's o
 
 🔍
 
-Find & Explore Discover · Radar · Tap Roulette · Venues
+Find & Explore Beers · Radar · Tap Roulette · Venues
 ›
 
 ✨
 
-Discover
+Beers
 
-Surface venues you've never visited. Discover searches nearby pubs and bars and shows rich cards with photos, ratings, and live venue details. Add any discovery to your PINtPOINT list with one tap.
+What's pouring near you. Sorted by location, the list is grouped under the pub each beer is closest to — the pub's name in gold, with its distance beneath. Switch the sort to browse the whole PINtPOINT catalogue A–Z or by recently added.
 
-📍 Configurable Radius
+🍺 Grouped by pub
 
-Search within a range that suits you — from a short local wander to a wider destination search.
+Distance belongs to the pub, not the beer, so everything at your nearest pub shares one distance. The headers are there so a run of beers at a single address reads as exactly that.
 
-🟢 Open Now Badges
+🕐 Seven days means seven days
 
-Each discovered venue shows whether it's currently open or closed, plus its Google rating and review count.
+"On tap" means seen in the last seven days — the same rule on every screen in the app and on this website. No screen claims a beer another screen has given up on.
 
-🔗 Find on Untappd
+📷 Scan a clip or a barcode
 
-Tap to search for any discovered venue on Untappd and check their tap list before adding to PINtPOINT.
+The Scan pill reads an EAN barcode straight off a can, or the printed label on a cask pump clip, and pre-fills the beer for you to confirm.
 
-🍻 Crawl from Discoveries
+🔗 Paste to add
 
-Found a cluster of interesting places? Build a pub crawl directly from your discovered venues.
+Drop an Untappd beer URL into the search box to add it to the shared catalogue — searchable for everyone, with its own page, keyed to its canonical Untappd ID.
 
 📡
 
@@ -738,7 +738,7 @@ Search by postcode or area name, or tap a Quick Pick to jump to your favourite s
 
 📏 Radius
 
-Six presets from 250 yards to 15 miles. Your selection syncs across the radar, venues and discover tabs.
+Six presets from 250 yards to 15 miles. Your selection syncs across the Radar, Venues and Beers tabs.
 
 🍺 Style Filter
 
