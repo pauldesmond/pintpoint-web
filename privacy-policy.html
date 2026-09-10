@@ -59,14 +59,14 @@
 
   <main class="content">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: March 2026</p>
+    <p class="updated">Last updated: September 2026</p>
 
     <p>PINtPOINT ("we", "our", "the app") is a pub and venue finder for iOS and Android. This policy explains what data we collect, how we use it, and your rights.</p>
 
     <h2>What data we collect</h2>
     <p>PINtPOINT collects the minimum data needed to work:</p>
     <ul>
-      <li><strong>Location</strong> — used to find nearby venues and point the radar compass. We request "while using the app" permission only. Location is never stored on our servers or shared with third parties.</li>
+      <li><strong>Location</strong> — used to find nearby venues, point the radar compass, and look for pubs we don't yet know about. We request "while using the app" permission only, and nothing happens when the app is closed or in the background. When the Radar searches for new pubs it sends your approximate coordinates to Google Places and Foursquare to ask what is there; neither is told who you are, because we don't know either — PINtPOINT has no accounts. We don't keep your location on our servers, and we never use it for advertising or tracking.</li>
       <li><strong>Device heading (compass)</strong> — used to orient the radar relative to the direction you're facing. Not stored.</li>
       <li><strong>In-app preferences</strong> — your theme, radar settings and venue preferences are stored locally on your device.</li>
       <li><strong>Favourite beers and beer alerts</strong> — if you save a beer to your watchlist or set a beer alert, that data is stored securely on our servers (Supabase) solely to power those features. It is not shared with third parties or used for advertising.</li>
@@ -84,7 +84,8 @@
     <p>PINtPOINT displays data from the following external sources. When you tap through to these services, their own privacy policies apply:</p>
     <ul>
       <li><strong>Untappd</strong> — tap list and check-in data. See <a href="https://untappd.com/privacy" target="_blank">untappd.com/privacy</a></li>
-      <li><strong>Foursquare</strong> — venue search and discovery data used to surface nearby pubs and bars</li>
+      <li><strong>Google Places</strong> — searching for pubs near you that are not yet in PINtPOINT. Receives your approximate coordinates, not your identity</li>
+      <li><strong>Foursquare</strong> — venue search and discovery data used to surface nearby pubs and bars. Receives your approximate coordinates, not your identity</li>
       <li><strong>ismypubfucked.com</strong> — Financial Pressure Index (FPI) data sourced from VOA rating lists</li>
       <li><strong>OpenStreetMap / Nominatim</strong> — venue geocoding</li>
       <li><strong>Google Street View</strong> — venue and ghost pub images (where shown)</li>
