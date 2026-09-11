@@ -118,7 +118,12 @@ async function serveOgImage(request, ctx, prefix, fnUrl) {
   const out = new Response(buf, {
     status: 200,
     headers: {
-      'Content-Type': 'image/png',
+      // Forward the renderer's real type instead of hardcoding PNG: the
+      // og functions are moving to JPEG output (2026-09-11 — the 827 KB
+      // PNG cards were 92% of a directory crawler's egress). URLs keep
+      // their .png shape; unfurlers honor the header, and changing the
+      // URL would orphan every og link already crawled.
+      'Content-Type': resp.headers.get('Content-Type') || 'image/png',
       'Cache-Control': resp.headers.get('Cache-Control') || 'public, max-age=600, s-maxage=86400',
       'X-Rendered-By': 'pintpoint-og-worker',
     },
