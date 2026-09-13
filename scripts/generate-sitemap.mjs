@@ -27,19 +27,6 @@ const staticUrls = [
   { loc: '/vs-real-ale-finder.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.9' },
   { loc: '/how-to-find-beer-near-you.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.95' },
   { loc: '/blog/', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
-  { loc: '/blog/beer-recommendation-systems-what-most-get-wrong.html', lastmod: '2026-04-20', changefreq: 'monthly', priority: '0.85' },
-  { loc: '/blog/chelmsford-beer-mile-guide.html', lastmod: '2026-04-05', changefreq: 'monthly', priority: '0.9' },
-  { loc: '/blog/san-diego-ipa-capital-love-letter.html', lastmod: '2026-04-20', changefreq: 'monthly', priority: '0.9' },
-  { loc: '/blog/richmond-ted-lasso-pub-trail.html', lastmod: '2026-05-01', changefreq: 'monthly', priority: '0.9' },
-  { loc: '/blog/hops-what-each-one-tastes-like.html', lastmod: '2026-04-12', changefreq: 'monthly', priority: '0.95' },
-  { loc: '/blog/melbourne-bar-culture-love-letter.html', lastmod: '2026-04-20', changefreq: 'monthly', priority: '0.9' },
-  { loc: '/blog/london-craft-beer-love-letter.html', lastmod: '2026-04-20', changefreq: 'monthly', priority: '0.9' },
-  { loc: '/blog/12-years-of-bosko.html', lastmod: '2026-05-01', changefreq: 'monthly', priority: '0.85' },
-  { loc: '/blog/blackhorse-beer-mile-4th-birthday.html', lastmod: '2026-05-01', changefreq: 'weekly', priority: '0.95' },
-  { loc: '/blog/radio-city-7-deadly-sins.html', lastmod: '2026-05-02', changefreq: 'weekly', priority: '0.95' },
-  { loc: '/blog/the-whippet-ec2-liverpool-street-opens.html', lastmod: '2026-06-06', changefreq: 'weekly', priority: '0.95' },
-  { loc: '/blog/the-sparkler-question.html', lastmod: '2026-06-06', changefreq: 'monthly', priority: '0.85' },
-  { loc: '/blog/mild-half-to-half-a-percent.html', lastmod: '2026-06-06', changefreq: 'monthly', priority: '0.85' },
   { loc: '/firkin/', lastmod: TODAY, changefreq: 'monthly', priority: '0.95' },
   { loc: '/privacy-policy.html', lastmod: TODAY, changefreq: 'yearly', priority: '0.3' },
   { loc: '/about-pintpoint.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
@@ -113,6 +100,74 @@ async function listCrawlPages() {
       changefreq: 'monthly',
       priority: '0.8',
     });
+  }
+  return out;
+}
+
+// Auto-scan /blog/*.html — PINtPRESS posts are flat HTML files in the repo.
+// This used to be a hand-maintained list in staticUrls, which silently fell
+// two months behind and left 32 of 46 posts out of the sitemap entirely.
+// lastmod comes from the post's own JSON-LD dateModified, so a correction
+// to a published piece moves its lastmod without anyone remembering to.
+const BLOG_PRIORITY = {
+  'beer-recommendation-systems-what-most-get-wrong.html': ['monthly', '0.85'],
+  'chelmsford-beer-mile-guide.html': ['monthly', '0.9'],
+  'san-diego-ipa-capital-love-letter.html': ['monthly', '0.9'],
+  'richmond-ted-lasso-pub-trail.html': ['monthly', '0.9'],
+  'hops-what-each-one-tastes-like.html': ['monthly', '0.95'],
+  'melbourne-bar-culture-love-letter.html': ['monthly', '0.9'],
+  'london-craft-beer-love-letter.html': ['monthly', '0.9'],
+  '12-years-of-bosko.html': ['monthly', '0.85'],
+  'blackhorse-beer-mile-4th-birthday.html': ['weekly', '0.95'],
+  'radio-city-7-deadly-sins.html': ['weekly', '0.95'],
+  'the-whippet-ec2-liverpool-street-opens.html': ['weekly', '0.95'],
+  'the-sparkler-question.html': ['monthly', '0.85'],
+  'mild-half-to-half-a-percent.html': ['monthly', '0.85'],
+};
+
+async function listBlogPages() {
+  const { readdir, readFile } = await import('node:fs/promises');
+  const blogDir = new URL('../blog/', import.meta.url);
+  let entries;
+  try {
+    entries = await readdir(blogDir);
+  } catch (e) {
+    console.warn(`[blog] readdir failed (${e.code}); skipping blog-post section`);
+    return [];
+  }
+  const out = [];
+  for (const file of entries.sort()) {
+    if (!file.endsWith('.html')) continue;
+    if (file === 'index.html') continue; // already covered by /blog/
+    if (file === 'older.html') continue; // archive index, linked from /blog/
+
+    const fileUrl = new URL(file, blogDir);
+    let html = '';
+    try {
+      html = await readFile(fileUrl, 'utf8');
+    } catch (e) {
+      console.warn(`[blog] ${file}: read failed (${e.code}); skipping`);
+      continue;
+    }
+    // Never submit a page that asks not to be indexed.
+    if (/<meta[^>]+name=["']robots["'][^>]+noindex/i.test(html)) {
+      console.warn(`[blog] ${file}: noindex; skipping`);
+      continue;
+    }
+
+    let lastmod = null;
+    const modified = html.match(/"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})/);
+    const published = html.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})/);
+    lastmod = (modified && modified[1]) || (published && published[1]) || null;
+    if (!lastmod) {
+      // No JSON-LD dates on the post. mtime is checkout time in CI, so it
+      // would report "changed today" every single night; omit lastmod
+      // instead and say which post needs its schema block.
+      console.warn(`[blog] ${file}: no JSON-LD date — lastmod omitted (post needs a BlogPosting schema block)`);
+    }
+
+    const [changefreq, priority] = BLOG_PRIORITY[file] || ['monthly', '0.85'];
+    out.push({ loc: `/blog/${file}`, lastmod, changefreq, priority });
   }
   return out;
 }
@@ -264,18 +319,19 @@ function renderUrl({ loc, lastmod, changefreq, priority }) {
   return [
     '  <url>',
     `    <loc>${xmlEscape(loc.startsWith('http') ? loc : `${SITE_URL}${loc}`)}</loc>`,
-    `    <lastmod>${xmlEscape(lastmod)}</lastmod>`,
+    ...(lastmod ? [`    <lastmod>${xmlEscape(lastmod)}</lastmod>`] : []),
     `    <changefreq>${xmlEscape(changefreq)}</changefreq>`,
     `    <priority>${xmlEscape(priority)}</priority>`,
     '  </url>',
   ].join('\n');
 }
 
-const [venues, liveTapCounts, curatedGhosts, crawlPages, beerCount] = await Promise.all([
+const [venues, liveTapCounts, curatedGhosts, crawlPages, blogPages, beerCount] = await Promise.all([
   fetchVenues(),
   fetchLiveTapCountsByVenue(),
   fetchCuratedGhosts(),
   listCrawlPages(),
+  listBlogPages(),
   fetchExactCount('beers'),
 ]);
 const totalVenues = venues.length;
@@ -325,7 +381,7 @@ const ghostUrls = curatedGhosts
   .filter(Boolean);
 
 const seen = new Set();
-const urls = [...staticUrls, ...crawlPages, ...venueUrls, ...ghostUrls].filter((url) => {
+const urls = [...staticUrls, ...crawlPages, ...blogPages, ...venueUrls, ...ghostUrls].filter((url) => {
   const loc = url.loc.startsWith('http') ? url.loc : `${SITE_URL}${url.loc}`;
   if (seen.has(loc)) return false;
   seen.add(loc);
@@ -343,7 +399,7 @@ const sitemap = [
 
 await import('node:fs/promises').then(({ writeFile }) => writeFile(new URL('../sitemap.xml', import.meta.url), sitemap));
 
-console.log(`Generated sitemap.xml with ${staticUrls.length} static URL(s), ${crawlPages.length} crawl-page URL(s), ${venueUrls.length} live-venue URL(s), and ${ghostUrls.length} curated ghost URL(s).`);
+console.log(`Generated sitemap.xml with ${staticUrls.length} static URL(s), ${crawlPages.length} crawl-page URL(s), ${blogPages.length} blog-post URL(s), ${venueUrls.length} live-venue URL(s), and ${ghostUrls.length} curated ghost URL(s).`);
 console.log(`Excluded ${totalVenues - indexableVenues.length} live venue(s) with fewer than ${MIN_LIVE_BEERS} live taps in the last ${TAP_FRESHNESS_DAYS} days (of ${totalVenues} total).`);
 const venueUrlInputTotal = venueUrls.length + ghostUrls.length;
 if (uniqueVenueUrlCount !== venueUrlInputTotal) {
