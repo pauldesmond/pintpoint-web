@@ -339,3 +339,23 @@ happens to be Tuborg's livery, which earns its keep on part three.
   horse, per the cover already generated.
 
 Lockup on all three: PINtPRESS · THE PINtPOINT BLOG. No Santa anywhere.
+
+## Guy Fawkes Inn — verified, ready to add (NOT added)
+
+Everything needed except the photo, which is why it has not been
+inserted: the standing rules are no venue without a verified Untappd ID
+AND no venue without a photo. The utid is now verified; the photo needs
+the proper pipeline, so add it from the app rather than by hand.
+
+- Name: **Guy Fawkes Inn**
+- Address: 25 High Petergate, York YO1 7HP
+- Untappd: `133541` — https://untappd.com/v/guy-fawkes-inn/133541
+  (curl-verified 2026-09-14: HTTP 200, title "Guy Fawkes Inn - York,
+  North Yorkshire")
+- Coordinates from the Untappd page: 53.9616547, -1.0831178
+- Stands by Fawkes's birthplace; house bitter is Guy Fawkes Bitter 3.6%
+  (Tetley's). Grade I/II listed, gas lighting.
+
+Once it is in, the Lewes piece's line can move to the past tense, which
+is better writing anyway: "Our catalogue didn't hold the pub in York
+when we started. It does now."
