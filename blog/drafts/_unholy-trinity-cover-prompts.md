@@ -1,4 +1,4 @@
-# The Invented Autumn — cover prompts
+# The Unholy Trinity — cover prompts
 
 Square (1:1). One house style across all three so they read as a suite.
 
