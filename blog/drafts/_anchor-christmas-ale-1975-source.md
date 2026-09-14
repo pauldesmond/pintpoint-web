@@ -1,4 +1,10 @@
-# Our Special Ale — notes for 1 December 2026
+# Our Special Ale & J-dag — notes
+
+**PUBLISH: Friday 6 November 2026**, the first Friday of November — J-dag
+itself. Tuborg's release moment is 20:59 CET = **19:59 GMT** (the UK is on
+GMT from 25 October). Publishing before that is publishing before the beer
+exists; the piece should be up in the morning and the release moment
+referred to in the future tense.
 
 Angle: the Christmas beer that refused to say "Season's Greetings". Sourced
 from David Burkhart, *The Anchor Brewing Story* (Ten Speed Press, 2022),
@@ -58,7 +64,33 @@ lingered." Fifteen years later Denmark turned it into a national event.
 Either the tradition came back, or he was wrong about Scandinavia. Either
 way, the two facts belong side by side.
 
-**Dates — CHECKED 14 Sep 2026, and the popular version is wrong:**
+**Three separate dates, routinely conflated. CHECKED 14 Sep 2026:**
+
+- **1981** — Tuborg's *Julebryg* is launched, after a 1980 commercial
+  featuring a beer-chasing Santa Claus.
+- **1990** — *J-dag*, the event, begins.
+- **1999** — moved to the first Friday of November at 20:59.
+
+All three postdate Maytag's 1975 remark. **So he was right**, and the arc
+is a revival rather than an error: he brewed his Christmas beer believing
+the tradition had lapsed, and within fifteen years Denmark had rebuilt it
+into a national event. That is a better piece than "he was wrong about
+Scandinavia", and it is what the dates actually support.
+
+CAUTION: Tuborg's Julebryg launching in 1981 is not the same claim as
+Denmark having no Christmas beer before 1981. Danish julebryg as a
+tradition is older. Do not write the stronger version.
+
+**Format details — Scandinavia Standard, cross-check before use:**
+
+- Horse-drawn wagons in blue finery leave the Tuborg brewery for pubs
+  around Copenhagen; staff reach 400+ locations nationally.
+- Blue **elf hats** mirroring the packaging — that is what the source
+  says. "Blue Santa suits" is the version that circulates; don't repeat it
+  without a picture.
+- A strong pilsner, on sale about ten weeks a year.
+
+**Earlier notes on the timing, kept because the popular version is wrong:**
 
 - J-dag started **1990**, not earlier. So it postdates Maytag's remark by
   fifteen years, which is what makes the arc work.
