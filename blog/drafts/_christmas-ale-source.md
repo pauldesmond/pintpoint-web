@@ -359,3 +359,67 @@ the proper pipeline, so add it from the app rather than by hand.
 Once it is in, the Lewes piece's line can move to the past tense, which
 is better writing anyway: "Our catalogue didn't hold the pub in York
 when we started. It does now."
+
+---
+
+## Verify list — worked through 2026-09-14
+
+**Gulating law — CONFIRMED, sharpened.** Snorri Sturluson has Haakon the
+Good (r. c.934) legislating that Christmas start with the Christians' and
+that "every man should brew from one measure of malt, or else pay fees."
+The Gulating manuscript (Copenhagen Royal Library) prices it: three marks
+to the bishop for a miss; forfeit everything after three winters or on
+failure to pay, king and bishop halving it. Banishment appears only as a
+more dramatic formulation in some tellings — now hedged as "some tellings
+add banishment on top," not asserted.
+
+**liquidum non frangit ieiunium — FAILED as written. Corrected.** The
+phrase is real but its formal declaration is Pope Alexander VII, **1662**.
+The draft had it as medieval doctrine underwriting medieval monastic
+brewing. Nothing substantiates the medieval version; it is repeated far
+more than it is evidenced.
+
+**Benedict's three tiers — FAILED TWICE. Rewritten.** Two separate errors:
+1. The tiers were INVERTED. Sources put prima melior with the abbot and
+   distinguished guests, secunda with the lay brothers, tertia — the
+   weakest — with the pilgrims and paupers. The draft gave pilgrims the
+   middle beer and the brothers the thin one. Backwards.
+2. They are not "under the Rule of St Benedict" at all. The Rule regulates
+   wine (the hemina), not a three-grade beer cellar. The three grades come
+   from the **Plan of St Gall**, and Martyn Cornell filed the whole thing
+   as Myth 6: the Plan is a ninth-century idealised drawing that was
+   probably never built as drawn, and separate brewhouses for monks,
+   guests and pilgrims are not evidence of three separate *strengths*.
+
+   The paragraph now runs the debunk as its argument and keeps only what
+   holds: hospitality as rule, not courtesy (Rule ch. 53, every guest
+   received as Christ). The inverted detail turned out to be the better
+   line — the pilgrim gets the thin stuff.
+
+**Essen "a couple of hundred" — CONFIRMED.** O.B.E.R. Kerstbierfestival
+pours about 200 Belgian Christmas and winter beers over two days, ~20 of
+them on draught; peak 206 in 2014 for the twentieth. ~2,100 attendees.
+"A couple of hundred" stands.
+
+**Three firs in 48 labels — RESOLVED BY REMOVAL.** The count never made it
+into the body; the passage now names specimens (Joshua tree, blue gum
+eucalyptus, the wedding birches, the Hawaiian coconut palm) instead of
+asserting an arithmetic I could not source. Leave it that way.
+
+**Kent green hop 2026 — CONFIRMED, and a hazard found.**
+- Gadds' green hop launch, Broadstairs: **Sat 19 September 2026**
+- Ramsgate Brewery Green Hop Festival: **Sat 10 October 2026**
+- Spa Valley Railway, 40 Kent green hop beers: **15–18 October 2026**
+
+So the season's last sizeable outing ends thirteen days before Halloween,
+which is a stronger and checkable version of the argument. Part 1 now
+cites the 19 Sept and 18 Oct anchors.
+
+⚠️ **Do not link kentgreenhopbeer.com.** The domain has lapsed and now
+serves a Thai slot-machine site. CAMRA Kent lists no "Green Hop Beer
+Fortnight" entry for 2026 either, so the branded Fortnight may no longer
+be running — the copy deliberately no longer names it. Source green hop
+dates from Kent CAMRA's festival diary instead.
+
+**Still open:** re-run the pub-name counts nearer 31 Oct (Part 1 cites
+"nine Green Man pubs" and credits "PINtPOINT venue data, September 2026").
