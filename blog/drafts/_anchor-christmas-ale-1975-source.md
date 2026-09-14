@@ -122,3 +122,57 @@ does not state.
   ingredient, while the American brewing his own Christmas beer in 1975
   thought the tradition had died in Scandinavia. Three countries passing
   the same idea around, each convinced it belongs to somewhere else.
+
+## THE ACTUAL THESIS (found 14 Sep, from BYO + Pat's Pints)
+
+The English influence on both Anchor beers **arrives late**. That is the
+pattern, and it is the piece.
+
+**Brew Your Own**, "Unwrapping the secrets to Anchor's Our Special Ale":
+
+- "Brewed first in 1975, the original Our Special Ale had little in common
+  with the spiced brown ale of today. The beer was originally **a vehicle
+  for Anchor to perfect an all-malt, dry-hopped version of Liberty Ale**."
+  — independent confirmation of Burkhart's "2nd L. A.".
+- "The brewery came up with a new recipe evoking the brown ales that Fritz
+  Maytag enjoyed on a previous trip to England. **From 1983 to 1986, Our
+  Special Ale was an all-malt traditional English brown ale** brewed with
+  pale, caramel and Munich malts. In 1987, Ma…" [cut — check what 1987
+  changed; spices are the likely answer]
+
+So Our Special Ale became an English beer in **1983**, not 1975 — the
+same shape as Liberty Ale, which became the beer people credit to
+Landlord only after its first brew. **Anchor's English inheritance is
+real and it is retrospective.** Both beers started American and grew
+English afterwards. That is a better and stranger claim than the one the
+heritage piece began with, and it is the one the sources support.
+
+CAUTION: BYO's "a previous trip to England" is vague and BYO is not
+Burkhart. Do not date that trip from it.
+
+**Pat's Pints**, origins of the spiced winter warmer:
+
+- Anchor Christmas Ale, 1975, "the granddaddy of American Christmas beers"
+  — and Maytag "departed from the English tradition by **adding
+  undisclosed spices**". The spicing is the American move, not the English
+  one.
+- The English Winter Ale / Winter Warmer is "thought to have evolved from
+  October beers".
+- Argues British traditions shaped American craft more than Scandinavian
+  ones did — useful counterweight to the J-dag material, and it should be
+  argued rather than asserted.
+
+## The horses — the coincidence that opens the piece
+
+- **Young's Winter Warmer** is launched at Leadenhall Market each year,
+  the first barrel arriving by **dray horse and cart** at 10am. Young's ran
+  27 dray horses from the **Ram Brewery, Wandsworth** in the 1870s.
+- **J-dag**: horse-drawn wagons in blue finery leave the Tuborg brewery
+  for the pubs of Copenhagen.
+- **The Ram Brewery is where Maytag's October 1975 tour began** — John
+  Young and his head brewer were the first visit of the trip (Burkhart
+  p.138).
+
+Three Christmas beers, three cities, and two of them still deliver the
+first barrel by horse. The brewery that begins the Anchor story is the one
+that never stopped.
