@@ -289,3 +289,33 @@ printing it, though printing it is honest either way.
 Deliberately not used: "Fawkes Off, Sperrin Brewery, Warwickshire" — the
 Sperrin Brewery is in Northern Ireland, so the county is wrong in the
 source and I could not establish which detail is the error.
+
+## THE INVENTED AUTUMN — series wiring, and what publication must change
+
+Three pieces, all inside seven days:
+
+| date | file | role |
+|---|---|---|
+| Sat 31 Oct | green-man-pub-signs.html | invented BY an outsider (Lady Raglan, 1939) |
+| Thu 5 Nov | lewes-bonfire-boy.html | invented BY the keepers, in public, still argued over |
+| Fri 6 Nov | christmas-ale-drinking-yule.html | invented BY a marketing department (J-dag, 1990) |
+
+Lewes is the control. Without it the series is three debunkings; with it
+the argument is that every tradition is invented and what differs is who
+did it and whether they told you.
+
+**Wired into all three:** a standing italic line before the first h2
+("Three nights in seven days, and not one of them is as old as it says.
+This is the [first/second/third] of three."), and a `.companion` footer
+headed **The Invented Autumn** cross-linking the other two.
+
+**AT PUBLICATION — relative paths change.** The cross-links are bare
+filenames, which work while all three sit in drafts/. As each moves to
+blog/, its own links and the OTHER TWO's links to it must be rewritten.
+Simplest fix: make every companion href root-absolute (/blog/<file>)
+before the first one publishes, and they survive the move untouched.
+
+Also at publication: the first piece's footer will point at two drafts.
+Either publish all three at once, or accept that the 31 Oct piece links
+forward to unpublished URLs for a few days — in which case point those
+links at /blog/ paths that will exist by the time anyone follows them.
