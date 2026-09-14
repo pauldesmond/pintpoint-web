@@ -71,6 +71,40 @@ function xmlEscape(value) {
     .replace(/'/g, '&apos;');
 }
 
+// A single dropped TLS connection used to cost the whole nightly run: on
+// 2026-09-14 fetchVenues died mid-paging on ECONNRESET and the job exited
+// before writing anything, so the sitemap silently stayed a day stale.
+// Retry what is transient — a thrown network error, a 429, a 5xx — but
+// never a 4xx, which is a real answer (bad key, bad query) that will not
+// improve on the third attempt. Paging is ordered by id.asc with an
+// explicit offset, so re-issuing one page is safe: no gaps, no dupes.
+const FETCH_ATTEMPTS = 3;
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function supabaseFetch(endpoint, extraHeaders = {}) {
+  const headers = {
+    apikey: serviceRoleKey,
+    Authorization: `Bearer ${serviceRoleKey}`,
+    ...extraHeaders,
+  };
+  let lastError;
+  for (let attempt = 1; attempt <= FETCH_ATTEMPTS; attempt += 1) {
+    try {
+      const response = await fetch(endpoint, { headers });
+      if (response.status !== 429 && response.status < 500) return response;
+      lastError = new Error(`HTTP ${response.status}`);
+    } catch (err) {
+      lastError = err;
+    }
+    if (attempt < FETCH_ATTEMPTS) {
+      const backoff = 1000 * attempt + Math.floor(Math.random() * 500);
+      console.warn(`[retry] ${endpoint.pathname} attempt ${attempt}/${FETCH_ATTEMPTS}: ${lastError.message} — retrying in ${backoff}ms`);
+      await sleep(backoff);
+    }
+  }
+  throw new Error(`${endpoint.pathname} failed after ${FETCH_ATTEMPTS} attempts: ${lastError.message}`);
+}
+
 // Auto-scan /crawls/*.html — Hall-of-Fame crawl pages live as flat
 // HTML files in the repo. Each file becomes a sitemap entry with its
 // real mtime as lastmod. Saves having to manually update this script
@@ -183,12 +217,7 @@ async function fetchVenues() {
     endpoint.searchParams.set('limit', String(PAGE_SIZE));
     endpoint.searchParams.set('offset', String(offset));
 
-    const response = await fetch(endpoint, {
-      headers: {
-        apikey: serviceRoleKey,
-        Authorization: `Bearer ${serviceRoleKey}`,
-      },
-    });
+    const response = await supabaseFetch(endpoint);
 
     if (!response.ok) {
       const body = await response.text();
@@ -217,12 +246,7 @@ async function fetchCuratedGhosts() {
     endpoint.searchParams.set('limit', String(PAGE_SIZE));
     endpoint.searchParams.set('offset', String(offset));
 
-    const response = await fetch(endpoint, {
-      headers: {
-        apikey: serviceRoleKey,
-        Authorization: `Bearer ${serviceRoleKey}`,
-      },
-    });
+    const response = await supabaseFetch(endpoint);
 
     if (!response.ok) {
       const body = await response.text();
@@ -267,12 +291,7 @@ async function fetchLiveTapCountsByVenue() {
     endpoint.searchParams.set('limit', String(PAGE_SIZE));
     endpoint.searchParams.set('offset', String(offset));
 
-    const response = await fetch(endpoint, {
-      headers: {
-        apikey: serviceRoleKey,
-        Authorization: `Bearer ${serviceRoleKey}`,
-      },
-    });
+    const response = await supabaseFetch(endpoint);
 
     if (!response.ok) {
       const body = await response.text();
@@ -296,14 +315,7 @@ async function fetchExactCount(table, filters = {}) {
   const endpoint = new URL(`/rest/v1/${table}`, supabaseUrl);
   endpoint.searchParams.set('select', 'id');
   for (const [k, v] of Object.entries(filters)) endpoint.searchParams.set(k, v);
-  const response = await fetch(endpoint, {
-    headers: {
-      apikey: serviceRoleKey,
-      Authorization: `Bearer ${serviceRoleKey}`,
-      Prefer: 'count=exact',
-      Range: '0-0',
-    },
-  });
+  const response = await supabaseFetch(endpoint, { Prefer: 'count=exact', Range: '0-0' });
   if (!response.ok && response.status !== 206) {
     const body = await response.text();
     throw new Error(`Supabase ${table} count failed: HTTP ${response.status} ${body.slice(0, 300)}`);
