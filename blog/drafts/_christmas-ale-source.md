@@ -276,3 +276,16 @@ Draft at blog/drafts/green-man-pub-signs.html, for 31 October 2026.
   Fortnight dates for 2026 and name real examples.
 - Pub-name counts are ours and current as of September 2026. Re-run
   before publishing — they move.
+
+## Coverage gap found 14 Sep — the Guy Fawkes Inn, York
+
+High Petergate, York. A well-known historic pub trading on Fawkes's
+birthplace, with a house bitter (Guy Fawkes Bitter, 3.6%). NOT in our
+venues. Worth adding before the 5 November piece runs, since the draft
+points out that we hold a Nashville brown ale named after him and not
+the pub in the city he came from. Fixing it would be better than
+printing it, though printing it is honest either way.
+
+Deliberately not used: "Fawkes Off, Sperrin Brewery, Warwickshire" — the
+Sperrin Brewery is in Northern Ireland, so the county is wrong in the
+source and I could not establish which detail is the error.
