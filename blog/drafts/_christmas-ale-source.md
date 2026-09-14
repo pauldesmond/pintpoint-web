@@ -319,3 +319,23 @@ Also at publication: the first piece's footer will point at two drafts.
 Either publish all three at once, or accept that the 31 Oct piece links
 forward to unpublished URLs for a few days — in which case point those
 links at /blog/ paths that will exist by the time anyone follows them.
+
+## Cover briefs — one palette, three motifs
+
+Unified flat-vector screen-print on a deep-navy ground across all three,
+so they read as a suite in a feed. Navy is late-autumn twilight and it
+happens to be Tuborg's livery, which earns its keep on part three.
+
+- **Part 1, Green Man.** Navy ground, muted sage and moss linework,
+  parchment accents. A foliate head — but flat, a 1930s linocut or a
+  painted signboard, NOT a medieval gothic carving. The point of the
+  piece is that he is a modern invention, so he should not look ancient.
+- **Part 2, Lewes.** Navy punctured by sulphurous torch-gold, with
+  off-white and black smuggler stripes. Flaming tar barrels or crossed
+  torches as flat geometric silhouettes. No effigy, no Pope — the piece
+  does that work and an image of it would be the wrong kind of loud.
+- **Part 3, J-dag.** Navy mirroring Tuborg's winter livery, cut with
+  frost-white and amber cask tones. The clock at 20:59 and the dray
+  horse, per the cover already generated.
+
+Lockup on all three: PINtPRESS · THE PINtPOINT BLOG. No Santa anywhere.
