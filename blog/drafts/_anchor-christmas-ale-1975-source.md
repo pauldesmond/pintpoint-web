@@ -176,3 +176,40 @@ Burkhart. Do not date that trip from it.
 Three Christmas beers, three cities, and two of them still deliver the
 first barrel by horse. The brewery that begins the Anchor story is the one
 that never stopped.
+
+
+## VERIFY BEFORE PUBLISHING (from the 14 Sep research dump)
+
+These are in the draft or were considered. None is sourced to a document
+we have read ourselves — they came from a research summary, and this
+project has spent a day learning what that is worth.
+
+- **Haakon the Good / Gulating law.** Yule ale compulsory; three years'
+  failure forfeits the farm to king and bishop, plus exile. Widely
+  repeated; find the law text or a historian citing it.
+- **"drikke jul"** as the living idiom. Easy to check with any Norwegian
+  source.
+- **Liquidum non frangit ieiunium.** The phrase is real; its medieval
+  provenance is disputed and it is sometimes beer folklore rather than
+  canon law. The draft states it as doctrine — soften or source it.
+- **Rule of St Benedict, three tiers** (prima melior / cervisia /
+  tertia). Chapter 53 is hospitality; the three-tier naming may be later
+  convention. Check before attributing the tiers to the Rule itself.
+- **Samichlaus**: Hürlimann 1979, brewed only on 6 December, 14%, ten
+  months' conditioning, Guinness record. Note production moved to
+  Schloss Eggenberg, Austria, after Hürlimann closed — the draft avoids
+  saying it is still Swiss-brewed, keep it that way.
+- **Essen Christmas beer festival**, "200+ winter ales". Number unchecked.
+- **Anchor's different tree on each label.** Believed true and it pairs
+  with Fritz's own tree sketch for the 1975 bottle (Burkhart). Confirm.
+- **J-dag "blue Santa suits"**: Scandinavia Standard says blue ELF HATS,
+  the research dump says suits. Draft says hats. Keep it that way absent
+  a photograph.
+- **Danish schools scheduling light timetables after J-dag** — charming,
+  unsourced, deliberately left out.
+
+## Not in the piece, kept for later
+
+- Southern-hemisphere Christmas ales brewed for a December summer —
+  the tradition decoupled from weather entirely. Good angle, no room.
+- The sweet-Burton-ale to piney-spruce-IPA shift as a style history.
