@@ -110,3 +110,15 @@ Everything above is quoted or page-cited. The heritage piece
 14 Sep — Landlord→Liberty Ale, Owd Rodger→Old Foghorn,
 Whitsuntide→Christmas Ale. Do not assert an influence here that a source
 does not state.
+
+## The beer itself (Carlsberg's own product page)
+
+- **5.6% ABV**, bottom-fermented Vienna-style lager on lager, münchener
+  and caramel malt. Dark-golden; caramel, cereal, liquorice, blackcurrant.
+- Note the conflict: Scandinavia Standard calls it "a strong pilsner",
+  Carlsberg calls it a dark/Vienna lager. Use Carlsberg's.
+- **Added English liquorice.** Worth the whole paragraph on its own: the
+  beer that marks Christmas in Denmark is seasoned with an English
+  ingredient, while the American brewing his own Christmas beer in 1975
+  thought the tradition had died in Scandinavia. Three countries passing
+  the same idea around, each convinced it belongs to somewhere else.
