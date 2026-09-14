@@ -244,3 +244,16 @@ Anchor Christmas Ale piece, which the material now clearly supports.
 says the beer "leaned into dark, malt-forward traditional ales" from
 **1976**; Brew Your Own says it was an all-malt English brown ale from
 **1983 to 1986**. Burkhart is the tiebreak.
+
+## Later / sidebars
+
+- **Stella Artois Christmas myth.** Marketing says 1926 holiday beer for
+  Leuven, crowned with the Star of Bethlehem. Brewing logs: test batches
+  June 1926, on the market September, December sales dipped, and it was
+  repositioned year-round almost immediately. Excellent myth-busting
+  sidebar, tangential to this piece.
+- **Church ales, Tudor England.** Parishes brewed a large batch of strong
+  ale in the church brewhouse — Whitsun ales, Lady ales, Christmas and
+  Bid ales — and sold it to the village to fund church upkeep and poor
+  relief through the winter. Community crowdfunding with beer. Pairs with
+  the wassail material; left out of the draft only for length.
