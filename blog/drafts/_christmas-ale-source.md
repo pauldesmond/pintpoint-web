@@ -213,3 +213,34 @@ project has spent a day learning what that is worth.
 - Southern-hemisphere Christmas ales brewed for a December summer —
   the tradition decoupled from weather entirely. Good angle, no room.
 - The sweet-Burton-ale to piney-spruce-IPA shift as a style history.
+
+## Anchor's tree labels — for the Anchor piece, not the J-dag one
+
+Only one clause of this is in the Christmas-ale essay (the trees are
+solstice trees, not Christmas trees). The rest is here for a dedicated
+Anchor Christmas Ale piece, which the material now clearly supports.
+
+- Jim Stitt hand-illustrated every label from the seventies; in his
+  nineties as of the 2018 Good Beer Hunting piece. A binder of 44 labels
+  sits at Anchor Public Taps.
+- Maytag chose trees deliberately for **solstice and rebirth**
+  symbolism, not the Nativity, and for local, historical or personal
+  significance over a commercial Christmas pine. He was interested in
+  botany.
+- Species include: Coconut Palm (1995, from a photo Maytag took in
+  Hawaii), Birch (1991, from his daughter's wedding), Joshua Tree,
+  Norfolk Island Pine, Blue Gum Eucalyptus (2022), the "Three Graces"
+  sequoias (2020).
+- **1987** is the year everything happened at once: Maytag married, the
+  label carried a Douglas fir intertwined with a Coast redwood for the
+  union, and the recipe became the spiced dark brown ale it still is —
+  from spices he threw into the previous year's batch for the wedding.
+- Claim: across 48 releases only three were true firs or Douglas firs —
+  1987 (Douglas fir), 2013 (California white fir), 2017 (Santa Lucia
+  fir, the rarest in North America). VERIFY: unsourced, and a very
+  countable claim, so it will be checked by someone.
+
+**Source conflict to resolve before publishing either piece:** this dump
+says the beer "leaned into dark, malt-forward traditional ales" from
+**1976**; Brew Your Own says it was an all-malt English brown ale from
+**1983 to 1986**. Burkhart is the tiebreak.
