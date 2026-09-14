@@ -257,3 +257,22 @@ says the beer "leaned into dark, malt-forward traditional ales" from
   Bid ales — and sold it to the village to fund church upkeep and poor
   relief through the winter. Community crowdfunding with beer. Pairs with
   the wassail material; left out of the draft only for length.
+
+## Halloween companion piece — VERIFY
+
+Draft at blog/drafts/green-man-pub-signs.html, for 31 October 2026.
+
+- **Lady Raglan, Folklore 50:1 (1939), "The Green Man in Church
+  Architecture."** Named the carving after the pub sign; argued foliate
+  heads, Jack-in-the-Green and Robin Hood were one pagan fertility god.
+  Contested since; "20th-century folklore"; her naming "based more upon
+  inspiration than fact". Get the article itself if possible.
+- **Pumpkin as a colonial malt substitute** rather than a flavouring.
+  Widely repeated, NOT yet verified from a primary source. This is the
+  piece's one unchecked origin story and it is exactly the shape of the
+  four the Christmas piece had to withdraw. Check before publishing.
+- **Green hop**: hops in the copper within hours because undried hops
+  rot; season roughly September–October. Check the Kent Green Hop Beer
+  Fortnight dates for 2026 and name real examples.
+- Pub-name counts are ours and current as of September 2026. Re-run
+  before publishing — they move.
