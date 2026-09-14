@@ -44,11 +44,32 @@ read 14 Sep 2026. Page refs where captured.
   by side in the late 2000s / early 2010s. An English-occasion beer made in
   San Francisco, shipped back, and cellared here across years.
 
-## Open — ASK PAUL
+## The Danish counterweight — J-dag (this is the piece's spine)
 
-- "the factory where everyone is sent home" — Paul's note, source not
-  captured. Which brewery, which year, and is it the Christmas shutdown or
-  the 2023 closure? Needs pinning before it goes anywhere near copy.
+Paul's "factory where everyone is sent home" = **J-dag**, Tuborg's
+Julebryg launch. Brewery staff leave their jobs for the night, dress in
+blue Santa suits, and blitz 400+ bars in festive trucks handing out the
+first free samples and singing the Tuborg Christmas song.
+
+**The arc, and it is a good one.** In 1975 Maytag believed he was brewing
+"the only real Christmas brew in the world" — the tradition, he said, had
+"recently disappeared, I think, even in Scandinavia, where it had
+lingered." Fifteen years later Denmark turned it into a national event.
+Either the tradition came back, or he was wrong about Scandinavia. Either
+way, the two facts belong side by side.
+
+**Dates — CHECKED 14 Sep 2026, and the popular version is wrong:**
+
+- J-dag started **1990**, not earlier. So it postdates Maytag's remark by
+  fifteen years, which is what makes the arc work.
+- **1990–1998** it ran on the *second Wednesday* of November, with the
+  beer arriving a minute before midnight.
+- **1999** onward: moved to the *first Friday* of November at **20:59**.
+
+So "first Friday of November at 8:59 PM" describes J-dag since 1999, not
+since 1990 — don't write it as though it has always been so. 20:59 is the
+Danish form; use it, or write "one minute to nine". Verify both against
+Wikipedia's J-dag entry before publishing, not against listicles.
 
 ## Discipline
 
