@@ -249,12 +249,15 @@ export default {
     // review and some venue.photo values point at it.
     if (pathname.startsWith('/photos/')) {
       const file = pathname.slice('/photos/'.length);
-      // Allow the three canonical subfolders alongside top-level files.
+      // Allow the four canonical subfolders alongside top-level files.
       // pending/    → user-submitted photos awaiting admin approval
       // historical/ → ghost-venue archive photos ("Then" side of Then/Now)
       // streetview/ → cron-cached Street View fallbacks
+      // discover/   → discover-places Google-photo mirror (1,116 objects;
+      //               was missing here while the cdn Worker served it —
+      //               the PR rork-pintpoint#15 review's asymmetry find)
       // Anything else must be a bare filename at bucket root.
-      if (!/^(?:(?:pending|historical|streetview)\/)?[A-Za-z0-9][A-Za-z0-9._-]*$/.test(file)) {
+      if (!/^(?:(?:pending|historical|streetview|discover)\/)?[A-Za-z0-9][A-Za-z0-9._-]*$/.test(file)) {
         return new Response('Bad request', { status: 400 });
       }
       const photoCacheUrl = new URL(request.url);
