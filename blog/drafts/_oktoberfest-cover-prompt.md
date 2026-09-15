@@ -30,7 +30,7 @@ steins (Bavarian, but restrained — a stripe, not a tablecloth pattern).
 
 Text on the cover, exactly:
 - Top left, small: `PINtPRESS` with `THE PINtPOINT BLOG` beneath it.
-- Title, large, above or beside the steins: `Everyone kept a different Oktoberfest`
+- Title, large, above or beside the steins: `September is Oktoberfest`
 
 Avoid: lederhosen, dirndls, pretzels, oompah bands, fairground rides, tents,
 Bavarian flags, wheat-beer glasses (wrong vessel — these are Maß steins),
@@ -71,3 +71,11 @@ stained glass, with two hero steins clinking in the foreground.
 colour contrast still had to carry the argument; it just needed somewhere to
 happen. And keep the no-text rule absolute — that part of the prompt worked
 both times.
+
+## Retitled 2026-09-15: "September is Oktoberfest"
+
+The cover artwork carries the OLD title, so it needs one regeneration -
+same composition, text swap only. The winning image is the toast from a
+low angle with pale gold and deep copper steins clinking in the
+foreground; keep all of it, change only the title line to
+`September is Oktoberfest`.
