@@ -32,7 +32,7 @@ Accent palette: muted sage and moss green for the foliage, parchment cream
 for the sign board, one small warm amber from a pub window behind.
 
 Title text, large, left of the sign:
-`The old gods are on the pub signs`
+`Season of the Witch`
 
 Avoid: stone texture, churches, gargoyles, anything mystical or glowing,
 witches, pumpkins.
