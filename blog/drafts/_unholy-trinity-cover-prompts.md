@@ -74,7 +74,7 @@ Accent palette: Tuborg-ish blue for the driver's hat, frost white, amber and
 gold from the windows, one red.
 
 Title text, large, upper left:
-`Christmas starts at 20:59`
+`The First Friday of Christmas`
 
 Avoid: Santa Claus, Christmas trees, landmarks, globes, "around the world"
 imagery, any text on the clock face.
