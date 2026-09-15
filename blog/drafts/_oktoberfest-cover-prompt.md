@@ -44,3 +44,30 @@ pumpkins, any "Prost!" or "O'zapft is" lettering.
   Current lockup is teal `PINtPRESS · THE PINtPOINT BLOG`.
 - If the two beers come out the same colour, the cover has failed its only
   job — regenerate rather than accept.
+
+---
+
+## What actually worked (2026-09-15)
+
+The flat-vector two-steins-on-a-table prompt above produced a technically
+correct, completely lifeless cover. Paul: "this is so fucking boring." He was
+right — it was a diagram of the argument, not a cover. Two objects on a table
+has no event in it.
+
+The error was over-correcting away from a previous photoreal attempt whose
+problems were invented signage ("LEADERHAUSEN OKTOBERFEST"), Hofbräu HB
+trademarks on four steins, and a strapline that contradicted the piece. None
+of those problems were caused by the ENERGY. Banning crowds, tents, brass and
+lederhosen threw out the life along with the errors.
+
+The winning prompt kept the crowd and killed only the errors: a painted
+editorial illustration (gouache/ink, not photoreal — which also dodges the
+uncanny-face problem), the toast moment from a low angle, arms up, a sea of
+steins receding into warm haze, and the critical instruction that the raised
+beers are NOT all one colour — half pale gold, half deep copper, backlit like
+stained glass, with two hero steins clinking in the foreground.
+
+**Lesson for the next cover: put the subject mid-event, not on a table.** The
+colour contrast still had to carry the argument; it just needed somewhere to
+happen. And keep the no-text rule absolute — that part of the prompt worked
+both times.
