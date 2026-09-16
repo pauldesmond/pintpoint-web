@@ -423,3 +423,26 @@ dates from Kent CAMRA's festival diary instead.
 
 **Still open:** re-run the pub-name counts nearer 31 Oct (Part 1 cites
 "nine Green Man pubs" and credits "PINtPOINT venue data, September 2026").
+
+---
+
+## HOLD: Guy Fawkes Inn, York — do not insert before 6 November 2026
+
+utid **133541**, 25 High Petergate, York (verified HTTP 200, coords
+53.9616547/−1.0831178). It passes every normal gate and must still stay out of
+`venues` until the Lewes essay has run.
+
+*Voice of the Fire* (5 Nov) ends its central argument on:
+
+> Our catalogue holds both of the American ones. It does not hold the pub in
+> York. The novelty travels; the place stays put and waits to be noticed.
+
+We hold Black Abbey's Guy Fawkes (Nashville) and Black Raven's Gunpowder Plot
+(Washington State), and not the coaching inn standing on Fawkes's birthplace.
+That asymmetry is the evidence for the essay's thesis. Insert the venue early
+and the sentence is false on a live page.
+
+After 6 November it can go in normally — it still needs a photo through the
+proper pipeline. No edit to the essay is needed afterwards: the source line is
+dated "PINtPOINT beer and venue data, September 2026", so the audit reads as a
+snapshot of where the blind spots were on the night.
