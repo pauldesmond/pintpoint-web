@@ -260,7 +260,7 @@ says the beer "leaned into dark, malt-forward traditional ales" from
 
 ## Halloween companion piece — VERIFY
 
-Draft at blog/drafts/green-man-pub-signs.html, for 31 October 2026.
+Draft at blog/drafts/green-man-and-season-of-the-witch.html, for 31 October 2026.
 
 - **Lady Raglan, Folklore 50:1 (1939), "The Green Man in Church
   Architecture."** Named the carving after the pub sign; argued foliate
@@ -296,9 +296,9 @@ Three pieces, all inside seven days:
 
 | date | file | role |
 |---|---|---|
-| Sat 31 Oct | green-man-pub-signs.html | invented BY an outsider (Lady Raglan, 1939) |
-| Thu 5 Nov | lewes-bonfire-boy.html | invented BY the keepers, in public, still argued over |
-| Fri 6 Nov | christmas-ale-drinking-yule.html | invented BY a marketing department (J-dag, 1990) |
+| Sat 31 Oct | green-man-and-season-of-the-witch.html | invented BY an outsider (Lady Raglan, 1939) |
+| Thu 5 Nov | lewes-voice-of-the-bonfire.html | invented BY the keepers, in public, still argued over |
+| Fri 6 Nov | the-first-friday-of-christmas.html | invented BY a marketing department (J-dag, 1990) |
 
 Lewes is the control. Without it the series is three debunkings; with it
 the argument is that every tradition is invented and what differs is who

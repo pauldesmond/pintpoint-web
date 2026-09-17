@@ -18,7 +18,7 @@ Square (1:1). One house style across all three so they read as a suite.
 
 ---
 
-## Part 1 — 31 October — green-man-pub-signs.html
+## Part 1 — 31 October — green-man-and-season-of-the-witch.html
 
 [shared style block]
 
@@ -39,7 +39,7 @@ witches, pumpkins.
 
 ---
 
-## Part 2 — 5 November — lewes-bonfire-boy.html
+## Part 2 — 5 November — lewes-voice-of-the-bonfire.html
 
 [shared style block]
 
@@ -59,7 +59,7 @@ crowds of faces. Silhouettes and torches only.
 
 ---
 
-## Part 3 — 6 November — christmas-ale-drinking-yule.html
+## Part 3 — 6 November — the-first-friday-of-christmas.html
 
 [shared style block]
 
