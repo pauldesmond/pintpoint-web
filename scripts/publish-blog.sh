@@ -74,6 +74,14 @@ if grep -nE '/blog/drafts/' "${POST_FILE}" >/dev/null; then
   GUARD_FAIL=1
 fi
 
+# 3. column standard — one width for every PINtPRESS page
+#    (feedback_pintpress_column_standard). Copy the block from any
+#    page that has it.
+if ! grep -q 'PINtPRESS column standard v1' "${POST_FILE}"; then
+  echo "❌ Column guard failed: ${POST_FILE} lacks the 'PINtPRESS column standard v1' CSS block."
+  GUARD_FAIL=1
+fi
+
 if [[ "$GUARD_FAIL" -eq 1 ]]; then
   echo
   echo "→ Fix ${POST_FILE} and re-run publish-blog.sh. Nothing has been committed."
@@ -82,7 +90,7 @@ if [[ "$GUARD_FAIL" -eq 1 ]]; then
   exit 1
 fi
 
-echo "✓ Draft-meta guard passed (no noindex, no /blog/drafts/ URLs)."
+echo "✓ Draft-meta guard passed (no noindex, no /blog/drafts/ URLs, column standard present)."
 echo
 
 # 4. Show diff stat
