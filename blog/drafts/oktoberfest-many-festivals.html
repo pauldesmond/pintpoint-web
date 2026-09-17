@@ -41,6 +41,16 @@
     blockquote cite { display: block; margin-top: 10px; font-size: 0.85rem; color: var(--muted); font-style: normal; }
     .closing { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
     .closing p { font-size: 1.05rem; color: var(--text); }
+    .geek { margin: 28px 0 8px; padding: 20px 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; font-size: 0.92rem; }
+    .geek h3 { font-size: 0.9rem; color: var(--muted); margin: 0 0 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .geek p { font-size: 0.92rem; margin-bottom: 12px; }
+    .geek p:last-child { margin-bottom: 0; }
+    .geek .scroll { overflow-x: auto; margin: 4px 0 14px; }
+    .geek table { width: 100%; border-collapse: collapse; min-width: 420px; }
+    .geek th, .geek td { text-align: left; vertical-align: top; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--border); line-height: 1.45; }
+    .geek thead th { color: var(--muted); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .geek tbody th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+    .geek tr:last-child th, .geek tr:last-child td { border-bottom: none; }
     .sources { margin-top: 40px; padding: 20px 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; font-size: 0.88rem; }
     .sources h3 { font-size: 0.9rem; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0; }
     .sources ul { list-style: none; padding: 0; }
@@ -77,6 +87,24 @@
     <p>Then Munich moved again. Over the second half of the twentieth century its brewers lightened the festival beer into the pale, dry, aggressively drinkable <strong>Festbier</strong> the tents pour today — a beer designed to be drunk by the litre for sixteen days without ending you. It is an excellent beer and a genuine piece of engineering. It is also not what was in the Schottenhamel tent in 1890.</p>
 
     <p>So the most traditional festival in beer is pouring its newest recipe, and has been for fifty-odd years.</p>
+
+    <aside class="geek" aria-labelledby="geek-title">
+      <h3 id="geek-title">For the geeks: Märzen v Festbier</h3>
+      <p>Both are lagers made with German hops. The difference is the malt.</p>
+      <div class="scroll">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col">Märzen</th><th scope="col">Festbier</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Colour</th><td>Amber to copper</td><td>Deep yellow to gold</td></tr>
+            <tr><th scope="row">Base malt</th><td>Munich and Vienna</td><td>Pilsner, with a little Vienna or Munich</td></tr>
+            <tr><th scope="row">Taste</th><td>Toasted bread crust, malt-sweet, clean finish</td><td>Lighter and drier; the hops show a little more</td></tr>
+            <tr><th scope="row">Body</th><td>Medium to full, but not heavy</td><td>Medium, and very easy to drink</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The pale one is not the weaker one. Festbier runs to about 6%, the same as a Märzen, but without the Munich malt’s weight and sweetness it drinks like an ordinary Helles of around 5% — which is how a litre of it catches people out.</p>
+      <p>Munich’s six big breweries pour the pale style in the tents. American “Oktoberfest” beers keep the amber one, often with caramel malts Munich never used.</p>
+    </aside>
 
     <h2>America kept the beer Munich abandoned</h2>
 
