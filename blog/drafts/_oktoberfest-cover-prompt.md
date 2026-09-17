@@ -1,6 +1,6 @@
 # Oktoberfest — cover prompt
 
-Square (1:1), output 1254×1254 JPEG → `/blog/images/oktoberfest-many-festivals.jpg`
+Square (1:1), output 1254×1254 JPEG → `/blog/images/september-is-oktoberfest.jpg`
 
 Deliberately NOT in the Unholy Trinity's navy night-suite style — this is a
 September festival piece, not one of the three autumn nights, and it should
