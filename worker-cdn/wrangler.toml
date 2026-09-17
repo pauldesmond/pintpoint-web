@@ -14,3 +14,9 @@ routes = [
 
 [observability]
 enabled = true
+
+# Photo storage. The Worker reads R2 first and falls back to Supabase
+# Storage for anything not migrated yet (see research/r2-migration/PLAN.md).
+[[r2_buckets]]
+binding = "PHOTOS"
+bucket_name = "pintpoint-venue-photos"

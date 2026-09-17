@@ -47,7 +47,26 @@ export default {
     const cached = await cache.match(cacheKey);
     if (cached) return cached;
 
-    // Cache miss — pull from Supabase Storage
+    // Cache miss — R2 first (the photos' home since the 2026-09 migration),
+    // Supabase Storage second. The fallback is deliberate: it covers keys
+    // written before the migration caught up, and makes the switch revertible
+    // by removing the binding rather than by restoring files.
+    if (env.PHOTOS) {
+      const obj = await env.PHOTOS.get(key);
+      if (obj) {
+        const r2Response = new Response(obj.body, {
+          status: 200,
+          headers: {
+            'Content-Type': obj.httpMetadata?.contentType ?? 'image/jpeg',
+            'Cache-Control': 'public, max-age=31536000, immutable',
+            'X-Served-By': 'pintpoint-cdn-r2',
+          },
+        });
+        ctx.waitUntil(cache.put(cacheKey, r2Response.clone()));
+        return r2Response;
+      }
+    }
+
     const upstream = `${SUPABASE_BUCKET_BASE}/${key}`;
     const upstreamResp = await fetch(upstream, {
       method: 'GET',
