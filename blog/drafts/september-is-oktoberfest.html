@@ -60,6 +60,10 @@
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
     @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } h1 { font-size: 1.75rem; } }
+      /* PINtPRESS column standard v1 (2026-09-17): desktop 960px column, 880px of text at 17px; mobile full width, 20px gutters, 16px text. Do not vary per page. */
+    .content { max-width: 960px; padding: 60px 40px 80px; }
+    body { font-size: 17px; }
+    @media (max-width: 600px) { .content { max-width: none; padding: 32px 20px 56px; } body { font-size: 16px; } }
   </style>
 </head>
 <body>
