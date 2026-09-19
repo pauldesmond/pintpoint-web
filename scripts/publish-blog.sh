@@ -33,6 +33,14 @@ echo "→ Syncing index.html ItemList + sitemap.xml from feed.xml..."
 node scripts/sync-from-feed.mjs
 echo
 
+# 2b. Rebuild llms-full.txt from the curated list in llms.txt.
+#     sitemap.xml advertises both llms files as changing weekly; before this
+#     ran here, llms-full.txt had not been regenerated since April while the
+#     sitemap kept stamping it with today's date (2026-09-19).
+echo "→ Rebuilding llms-full.txt..."
+node scripts/generate-llms-full.mjs
+echo
+
 # 3. Identify the newest post URL from feed.xml (top <item>'s <link>)
 NEW_URL=$(awk '/<item>/{p=1} p && /<link>/{gsub(/.*<link>|<\/link>.*/, ""); print; exit}' blog/feed.xml)
 NEW_SLUG=$(basename "$NEW_URL" .html)
