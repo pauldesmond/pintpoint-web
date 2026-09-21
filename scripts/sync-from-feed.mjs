@@ -69,7 +69,7 @@ function syncIndexItemList(items) {
 function syncSitemap(items) {
   const sitemap = readFileSync(SITEMAP_PATH, 'utf8');
 
-  // Build new blog URL block from feed
+  // Build the blog block from the feed.
   const blogIndexLastmod = items[0]?.isoDate ?? new Date().toISOString().slice(0, 10);
   const blogBlocks = [
     `  <url>\n    <loc>https://pintpoint.co.uk/blog/</loc>\n    <lastmod>${blogIndexLastmod}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>`,
@@ -79,18 +79,64 @@ function syncSitemap(items) {
     }),
   ].join('\n');
 
-  // Replace everything from /blog/ entry through the last /blog/ URL
-  const replaced = sitemap.replace(
-    /  <url>\n    <loc>https:\/\/pintpoint\.co\.uk\/blog\/<\/loc>[\s\S]*?(?=\n  <url>\n    <loc>https:\/\/pintpoint\.co\.uk\/(?!blog)|\n<\/urlset>)/,
-    blogBlocks,
-  );
-
-  if (replaced === sitemap) {
-    console.warn('  ⚠️  sitemap.xml blog block not matched — nothing replaced');
+  // Rebuild from PARSED ENTRIES rather than replacing a text range.
+  //
+  // The previous version matched from the /blog/ entry lazily up to the first
+  // non-blog URL, which assumed every blog URL sat in one contiguous run. The
+  // nightly Supabase regeneration does not write them that way: the /blog/
+  // index lands at position 13 and the posts at 26-73, twelve other URLs in
+  // between. So the replace swapped ONE entry for the whole block and left all
+  // 48 originals in place — 1,163 URLs became 1,204 with 40 duplicates. It did
+  // this silently; the "nothing replaced" warning only fires when the match
+  // fails entirely, and this match succeeded.
+  //
+  // Splitting the file into <url> entries and filtering by loc is immune to
+  // ordering, and idempotent: running it twice changes nothing.
+  const entries = sitemap.match(/  <url>[\s\S]*?<\/url>/g) ?? [];
+  if (entries.length === 0) {
+    console.warn('  ⚠️  sitemap.xml has no <url> entries — nothing written');
     return false;
   }
-  writeFileSync(SITEMAP_PATH, replaced);
-  console.log(`  ✅ sitemap.xml → ${items.length} blog URLs (+ index)`);
+  const locOf = (e) => (e.match(/<loc>([^<]+)<\/loc>/) ?? [])[1] ?? '';
+  const isBlog = (e) => /^https:\/\/pintpoint\.co\.uk\/blog\//.test(locOf(e));
+
+  // The feed is NOT the full list of blog URLs, and treating it as one costs
+  // real pages. Quiet-published posts are deliberately kept out of feed.xml
+  // while staying indexable — that is the whole taxonomy — so rebuilding the
+  // block from the feed alone silently dropped eight live URLs on the first
+  // test of this rewrite, including oktoberfest-first-giant-tent.html,
+  // quiet-published the day before. De-indexing a page is worse than the
+  // duplicate bug this function was being fixed for.
+  //
+  // So: refresh from the feed where the feed knows the post, and preserve any
+  // existing blog URL it does not.
+  const feedLocs = new Set(items.map((it) => it.link));
+  const orphans = entries.filter((e) => isBlog(e) && locOf(e) !== 'https://pintpoint.co.uk/blog/' && !feedLocs.has(locOf(e)));
+  if (orphans.length > 0) {
+    console.log(`  ℹ️  preserving ${orphans.length} blog URL(s) not in the feed (quiet-published or excluded)`);
+  }
+
+  const firstBlogAt = entries.findIndex(isBlog);
+  const kept = entries.filter((e) => !isBlog(e));
+  const insertAt = firstBlogAt === -1 ? kept.length : Math.min(firstBlogAt, kept.length);
+  const blogSection = [blogBlocks, ...orphans].join('\n');
+  const rebuilt = [...kept.slice(0, insertAt), blogSection, ...kept.slice(insertAt)].join('\n');
+
+  const head = sitemap.slice(0, sitemap.indexOf(entries[0]));
+  const tail = sitemap.slice(sitemap.lastIndexOf('</url>') + '</url>'.length);
+  const out = `${head}${rebuilt}${tail}`;
+
+  // A sitemap with duplicate <loc>s is the failure this function shipped for
+  // months. Refuse to write one rather than push it and find out later.
+  const locs = [...out.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  const dupes = locs.filter((l, i) => locs.indexOf(l) !== i);
+  if (dupes.length > 0) {
+    console.error(`  ❌ refusing to write: ${dupes.length} duplicate URL(s), e.g. ${dupes[0]}`);
+    return false;
+  }
+
+  writeFileSync(SITEMAP_PATH, out);
+  console.log(`  ✅ sitemap.xml → ${locs.length} URLs (${items.length} blog posts + index), 0 duplicates`);
   return true;
 }
 
