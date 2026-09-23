@@ -156,12 +156,17 @@
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
     @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
-    .pager { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 30px 0 8px; }
-    .pager a, .pager span { min-width: 34px; padding: 7px 11px; border-radius: 8px; text-align: center;
-      font-size: 0.9rem; font-weight: 700; text-decoration: none; border: 1px solid var(--border); }
+
+    .pager { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; justify-content: center; margin: 34px 0 10px; }
+    .pager a, .pager span { min-width: 32px; padding: 6px 9px; border-radius: 7px; text-align: center;
+      font-size: 0.85rem; font-weight: 700; text-decoration: none; border: 1px solid var(--border); }
     .pager a { color: var(--teal); }
-    .pager a:hover { border-color: var(--teal); }
+    .pager a:hover { border-color: var(--teal); background: rgba(0,212,170,0.08); }
     .pager .is-here { background: var(--teal); border-color: var(--teal); color: #06231d; }
+    /* Newer/Older sit slightly apart from the numbers so the digits read as
+       one tight group rather than six evenly-spaced buttons. */
+    .pager a[rel="prev"] { margin-right: 10px; }
+    .pager a[rel="next"] { margin-left: 10px; }
 
   </style>
 </head>
