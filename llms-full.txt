@@ -2027,7 +2027,7 @@ What we do not collect
 
 - No advertising identifiers or tracking
 
-- No behavioural analytics
+- No behavioural analytics, no cross-site tracking, and no profile of you — in the app or on this website
 
 Third-party services
 
@@ -2048,6 +2048,10 @@ PINtPOINT displays data from the following external sources. When you tap throug
 - Flickr — historical pub photographs (credited in-app)
 
 - Sentry — anonymous crash reports (stack traces, device model, OS version, app version) sent from your device only when the app throws an error. No personal data, no advertising identifiers, no location, no beer or venue activity. Used solely to detect and fix bugs. See sentry.io/legal/privacy
+
+This website
+
+pintpoint.co.uk uses Cloudflare Web Analytics to count page views. It sets no cookies, stores nothing on your device, and builds no profile of you — which is why this site has never asked you to accept anything. It records the page URL, the referring site, and coarse country- and browser-level information, and it does so without any identifier that can follow you here or anywhere else. We use it to see which pages people actually read and where a link was shared. See cloudflare.com/web-analytics.
 
 Purchases
 
@@ -4170,6 +4174,7 @@ The Wiesn opens tomorrow at noon and runs until 4 October. It began 216 years ag
 
 When most people picture Oktoberfest they think of lederhosen and dirndls, oompah bands, litre steins, bratwurst, schnitzel and sauerkraut. They also assume it happens in October and that the beer is M&auml;rzen. The reality is a little different.
 
+Companion piece: seventy UK Oktoberfest events, sorted by the question this essay raises — is the beer in the stein actually from the Wiesn? &rarr;
 The name has travelled further than almost any other in beer — to Brazil, to Ontario, to Ohio, to a Methodist mission hall on Peter Street in Manchester. Say “Oktoberfest” in four countries and you will not be handed the same drink twice — and the oldest of them is not the one in Munich. Munich quietly changed it decades ago, from the amber M&auml;rzen to the pale, dry Festbier now poured in the tents.
 
 Munich changed the beer, and kept the name
@@ -4442,6 +4447,7 @@ The Whippet: Why This Could Be One of London's Most Interesting Beer Openings of
 
 London does not lack new openings. It lacks new openings that feel like they already understand the drinker.
 
+If you are here for the German lagers: we have since sorted seventy UK Oktoberfest events by whether the beer in the stein is actually from Munich. Thirteen pour at least one of the six. Most do not. &rarr;
 The Whippet, due to open in mid-May just outside Liverpool Street Station, looks like one of those rare places that might.
 
 On paper, it is already interesting enough. This is the new venue from Bloomsbury Leisure Group, the team behind the Euston Tap — one of the most important specialist beer bars in modern London. The soft launch is set for 14 May 2026 from around 4pm, with a full opening shortly after. The group already runs a handful of specialist rooms across London, Manchester and Bristol, which makes EC2 a next move rather than a one-off.
@@ -7292,6 +7298,8 @@ Essay 20 September 2026 · Beer history · Oktoberfest
 
 Everything Traditional About Oktoberfest Is Younger Than the Tent
 
+Companion piece: seventy UK Oktoberfest events running now, sorted by whether the beer is from one of Munich’s six licensed breweries. &rarr;
+
 In 1898 a publican from Nuremberg paid five men to bid on five neighbouring stalls at the Oktoberfest auction, knocked them together into a hall for six thousand drinkers, and was promptly sued by every other restaurateur on the Theresienwiese. He lost the argument about the rules and won the argument about the future: the giant tent is now the thing people picture when they picture Oktoberfest.
 
 His name was Georg Lang, and the story of how he did it is a story about who controls the Wiesn — which turns out to be the only question the festival has ever really been about.
@@ -7366,6 +7374,7 @@ Tegernseer on Draught, and Where
 
 Tegernseer Hell is the beer people come back from Bavaria talking about. It is brewed at a former monastery on the Tegernsee, forty miles south of Munich, by a brewery still owned by the Wittelsbachs — the family that ran Bavaria for seven hundred years and wrote the purity law. It is not rare in Germany. It is genuinely hard to find on draught here.
 
+Tegernseer is not one of the Munich six. If you want the Wiesn beers themselves, seventy UK Oktoberfest events, sorted by which actually pour them. &rarr;
 There is no published list of UK stockists, so this is ours: eleven venues we can show poured it, built the same way as our Augustiner list — by cross-referencing the public check-in record against our own tap data, rather than by asking an importer who is under no obligation to answer.
 
 Sorted by how recently it was actually seen, because that is the only thing that matters when you are deciding where to go tonight. A pub that poured it in May is not a pub that has it now, and most lists will not tell you the difference.
