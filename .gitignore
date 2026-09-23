@@ -1,2 +1,5 @@
 .DS_Store
 .geo-audit/
+.wrangler/
+worker-cdn/.wrangler/
+node_modules/
