@@ -1866,6 +1866,28 @@
     .okt-n { font-size: 0.66rem; font-weight: 700; padding: 1px 6px; border-radius: 999px; background: rgba(255,255,255,0.08); }
     .okt-panel { display: none; }
     .okt-panel > h3.region { display: none; }
+    /* Cap the open panel and scroll it internally, so the cheat sheet and the
+       FAQ stay within reach instead of sitting 26 rows down the page. The tab
+       counts are the affordance that there is more than you can see, and the
+       scrollbar is deliberately visible rather than hidden for tidiness. */
+    #reg-london:checked ~ .okt-panel[data-region="london"],
+    #reg-north:checked ~ .okt-panel[data-region="north"],
+    #reg-celtic:checked ~ .okt-panel[data-region="celtic"],
+    #reg-anywhere:checked ~ .okt-panel[data-region="anywhere"] {
+      max-height: min(62vh, 560px);
+      overflow-y: auto;
+      overscroll-behavior: contain;   /* don't chain into the page mid-list */
+      padding-right: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0,212,170,0.55) transparent;
+    }
+    .okt-panel::-webkit-scrollbar { width: 8px; }
+    .okt-panel::-webkit-scrollbar-track { background: transparent; }
+    .okt-panel::-webkit-scrollbar-thumb { background: rgba(0,212,170,0.45); border-radius: 999px; }
+    .okt-panel::-webkit-scrollbar-thumb:hover { background: rgba(0,212,170,0.75); }
+    /* "Show all" is the read-everything / print view — never capped, or it
+       would stack four separate scroll boxes. */
+    #reg-all:checked ~ .okt-panel { max-height: none; overflow: visible; }
     /* Selected state is carried by fill AND border AND text weight, never
        hue alone — see user_pintpoint_colour_blindness. */
     #reg-london:checked ~ .okt-tabs label[for="reg-london"],
@@ -1892,6 +1914,8 @@
     @media print {
       .okt-tabs { display: none !important; }
       .okt-panel, .okt-panel > h3.region { display: block !important; }
+      /* release the scroll cap, or print clips each region at 62vh */
+      .okt-panel { max-height: none !important; overflow: visible !important; }
     }
     .tellus { background: var(--card); border: 1px solid rgba(0,212,170,0.28); border-radius: 12px; padding: 18px; margin: 34px 0 8px; }
     .tellus h2 { margin-top: 0; font-size: 1.15rem; }
