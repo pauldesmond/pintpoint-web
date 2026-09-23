@@ -1726,6 +1726,82 @@
   ]
 }
   </script>
+  <!-- FAQPage, generated from the .faq block above so the two cannot drift.
+       Google retired FAQ rich results for most sites in 2023, so this earns
+       no snippet; it is here because AI answer engines still read it, and
+       these are the questions an organiser's own page will never answer. -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which UK Oktoberfest events actually serve real Munich beer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Thirteen of the sixty-two entries on this page pour at least one of Munich’s six licensed Wiesn breweries. Albert’s Schloss and Kapital claim all six. Kirkstall Brewery in Leeds pours four and publishes the full list. Caps and Taps, Munich Cricket Club and Radio City Social in Chelmsford pour three. Tiny Rebel Brewery Bar and Brewhemia pour two. Bermondsey Bierkeller, Brigadiers and Oktoberfest on the Common pour Paulaner, Fulham Pier Löwenbräu, and The Rake at Borough Market has Hofbräu on the list with no event attached. Everything else on this page is a German lager and an oompah band, which is a perfectly good night and a different thing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the six official Oktoberfest beers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only six Munich breweries may pour at the Wiesn, and the list has been closed since the nineteenth century: Augustiner and Hofbräu at 6.3%, Löwenbräu 6.1%, Paulaner and Hacker-Pschorr 6%, Spaten 5.9%. They cluster there because a Wiesn beer must be brewed within the city to a minimum 13.5% Stammwürze, which lands at about six per cent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Hacker-Pschorr Oktoberfest Märzen the beer served at Oktoberfest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, and this is the most common substitution in Britain. Hacker-Pschorr brew two: Oktoberfest Märzen at 5.8%, the amber export beer sold here, and Oktoberfestbier / Superior Festbier at 6%, the pale one actually served in their Wiesn tent. Three venues on this page pour the 5.8% Märzen. It is a good beer; it is not the Wiesn beer. British importers stock the Märzen because the Märzen is the one that gets exported."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which UK venue pours the most Munich beer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kirkstall Brewery in Leeds, at four of six — Hofbräu 6.3%, Löwenbräu 6.1%, Paulaner 6% and Spaten 5.9%, every strength matching the official figure. It is also the only one that publishes its whole twenty-beer list, so it is the highest count anyone has shown their working for. Two venues claim all six and publish no list."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is Augustiner so hard to find in the UK?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Augustiner is the smallest and least exported of the six, and the only one no venue on this page pours on draught. Caps and Taps in Tufnell Park managed it in bottle and sold out. Their everyday Lagerbier Hell at 5.2% is widely available and is often mistaken for it — the Wiesn beer is Oktoberfest Bier at 6.3%. If you want the real thing, mail order is the realistic route."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Oktoberfest Essex the same as Oktoberfest Guildford?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — both are stops on one nine-city tour, along with Chichester, Colchester, Milton Keynes, Southend, Beverley, Plymouth and Portsmouth. Each town gets its own domain and its own local-sounding name, and none of the nine sites mentions the others. They share one ticketing account. It is a real event either way; it is not a local institution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When is Oktoberfest 2026, and when do the UK events run?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Munich’s 191st Wiesn ran 19 September to 4 October 2026. British events run far longer — from 11 September to 31 October, with one German bier hall at Alexandra Palace on 7 November. Two entries match Munich’s exact window: Brewhouse & Kitchen straight through across thirteen brewpubs, and Clacton Pier across its three weekends."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are any UK Oktoberfest events free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Several. Clacton Pier is free entry across all three weekends, Triple Point Brewing in Sheffield is free on both nights, and The Destination @ Lakeside charges nothing to get in. The Dial in North Greenwich needs no ticket at all. Elsewhere tickets start at £5 — Anspach & Hobday in Croydon, BrewDog Waterloo and Oktoberfest Southampton all open there, and Kirkstall is £5.50."
+      }
+    }
+  ]
+}
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; --red: #C8102E; --blue: #0B61A4; }
@@ -1771,6 +1847,17 @@
        ~20,000 characters in one column, which is a very long scroll on a
        phone. Every panel stays in the DOM, so "Show all" (and crawlers,
        and Ctrl+F) still see the lot. */
+    /* FAQ accordion. Native <details>, no JS; the answers stay in the DOM
+       when collapsed so crawlers and Ctrl+F still reach them. */
+    .faq { margin: 8px 0 4px; }
+    .faq details { border: 1px solid var(--border); border-radius: 10px; background: var(--card); margin-bottom: 8px; }
+    .faq summary { cursor: pointer; padding: 12px 14px; font-weight: 700; font-size: 0.97rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; color: var(--teal); font-weight: 900; font-size: 1.15rem; line-height: 1; flex: 0 0 auto; }
+    .faq details[open] summary::after { content: '\2212'; }
+    .faq details[open] summary { border-bottom: 1px solid var(--border); }
+    .faq summary:hover { color: var(--teal); }
+    .faq details > p { margin: 0; padding: 12px 14px 14px; font-size: 0.93rem; color: #c9d1d9; }
     .okt-radio { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
     .okt-tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 20px 0 6px; padding-bottom: 4px; }
     .okt-tabs::-webkit-scrollbar { display: none; }
@@ -2076,6 +2163,32 @@
     </table>
     <p style="font-size:0.92rem;margin-top:16px"><b>One more, and it is not Oktoberfest.</b> Alexandra Palace bills &ldquo;London&rsquo;s largest German Bier Festival&rdquo; for <span class="highlight">Saturday 7 November</span> &mdash; but it sits inside the <a href="https://www.alexandrapalace.com/whats-on/fireworks-drone-festival/" target="_blank" rel="noopener noreferrer">Fireworks &amp; Drone Festival</a>, gates at four, from £11.50, with a Queen tribute band and a drone show rather than an oompah tent. Two days after Bonfire Night, a month after Munich packed up. Worth saying because several London round-ups put it on 30&ndash;31 October: the palace&rsquo;s own page says 7&ndash;8 November, and the bier hall is the Saturday. We have not counted it among the sixty-two, because it is not one of them &mdash; it is here as the last place in the calendar that will hand you a German beer in a field.</p>
     <p style="font-size:0.88rem;color:var(--muted);margin-top:10px">Dates and beer lists change. Check the linked page before you travel &mdash; especially the ones that claim all six.</p>
+
+    <!-- Literal question phrasings. The h2s on this page are written in our
+         voice ("Where the actual Wiesn beer is"), which is right for a reader
+         and invisible to anyone searching "which UK Oktoberfest serves real
+         Munich beer". These answer the questions an organiser's own site never
+         will, which is the only ground where a round-up beats a primary
+         source. Collapsed so they cost no scroll; the text stays in the DOM. -->
+    <h2>Questions people actually ask</h2>
+    <div class="faq">
+      <details><summary>Which UK Oktoberfest events actually serve real Munich beer?</summary>
+        <p>Thirteen of the sixty-two entries on this page pour at least one of Munich&rsquo;s six licensed Wiesn breweries. <b>Albert&rsquo;s Schloss</b> and <b>Kapital</b> claim all six. <b>Kirkstall Brewery</b> in Leeds pours four and publishes the full list. <b>Caps and Taps</b>, <b>Munich Cricket Club</b> and <b>Radio City Social</b> in Chelmsford pour three. <b>Tiny Rebel Brewery Bar</b> and <b>Brewhemia</b> pour two. <b>Bermondsey Bierkeller</b>, <b>Brigadiers</b> and <b>Oktoberfest on the Common</b> pour Paulaner, <b>Fulham Pier</b> L&ouml;wenbr&auml;u, and <b>The Rake</b> at Borough Market has Hofbr&auml;u on the list with no event attached. Everything else on this page is a German lager and an oompah band, which is a perfectly good night and a different thing.</p></details>
+      <details><summary>What are the six official Oktoberfest beers?</summary>
+        <p>Only six Munich breweries may pour at the Wiesn, and the list has been closed since the nineteenth century: <b>Augustiner</b> and <b>Hofbr&auml;u</b> at 6.3%, <b>L&ouml;wenbr&auml;u</b> 6.1%, <b>Paulaner</b> and <b>Hacker-Pschorr</b> 6%, <b>Spaten</b> 5.9%. They cluster there because a Wiesn beer must be brewed within the city to a minimum 13.5% Stammw&uuml;rze, which lands at about six per cent.</p></details>
+      <details><summary>Is Hacker-Pschorr Oktoberfest M&auml;rzen the beer served at Oktoberfest?</summary>
+        <p><b>No</b>, and this is the most common substitution in Britain. Hacker-Pschorr brew two: <b>Oktoberfest M&auml;rzen at 5.8%</b>, the amber export beer sold here, and <b>Oktoberfestbier / Superior Festbier at 6%</b>, the pale one actually served in their Wiesn tent. Three venues on this page pour the 5.8% M&auml;rzen. It is a good beer; it is not the Wiesn beer. British importers stock the M&auml;rzen because the M&auml;rzen is the one that gets exported.</p></details>
+      <details><summary>Which UK venue pours the most Munich beer?</summary>
+        <p><b>Kirkstall Brewery in Leeds</b>, at four of six &mdash; Hofbr&auml;u 6.3%, L&ouml;wenbr&auml;u 6.1%, Paulaner 6% and Spaten 5.9%, every strength matching the official figure. It is also the only one that publishes its whole twenty-beer list, so it is the highest count anyone has shown their working for. Two venues claim all six and publish no list.</p></details>
+      <details><summary>Why is Augustiner so hard to find in the UK?</summary>
+        <p>Augustiner is the smallest and least exported of the six, and the only one no venue on this page pours on draught. <b>Caps and Taps</b> in Tufnell Park managed it in bottle and sold out. Their everyday <b>Lagerbier Hell</b> at 5.2% is widely available and is often mistaken for it &mdash; the Wiesn beer is <b>Oktoberfest Bier at 6.3%</b>. If you want the real thing, mail order is the realistic route.</p></details>
+      <details><summary>Is Oktoberfest Essex the same as Oktoberfest Guildford?</summary>
+        <p><b>Yes</b> &mdash; both are stops on one nine-city tour, along with Chichester, Colchester, Milton Keynes, Southend, Beverley, Plymouth and Portsmouth. Each town gets its own domain and its own local-sounding name, and none of the nine sites mentions the others. They share one ticketing account. It is a real event either way; it is not a local institution.</p></details>
+      <details><summary>When is Oktoberfest 2026, and when do the UK events run?</summary>
+        <p>Munich&rsquo;s 191st Wiesn ran <b>19 September to 4 October 2026</b>. British events run far longer &mdash; from <b>11 September</b> to <b>31 October</b>, with one German bier hall at Alexandra Palace on 7 November. Two entries match Munich&rsquo;s exact window: <b>Brewhouse &amp; Kitchen</b> straight through across thirteen brewpubs, and <b>Clacton Pier</b> across its three weekends.</p></details>
+      <details><summary>Are any UK Oktoberfest events free?</summary>
+        <p>Several. <b>Clacton Pier</b> is free entry across all three weekends, <b>Triple Point Brewing</b> in Sheffield is free on both nights, and <b>The Destination @ Lakeside</b> charges nothing to get in. <b>The Dial</b> in North Greenwich needs no ticket at all. Elsewhere tickets start at £5 &mdash; Anspach &amp; Hobday in Croydon, BrewDog Waterloo and Oktoberfest Southampton all open there, and Kirkstall is £5.50.</p></details>
+    </div>
 
     <div class="tellus">
       <h2>Know one we have missed?</h2>
