@@ -62,7 +62,15 @@
       /* PINtPRESS column standard v1 (2026-09-17): desktop 960px column, 880px of text at 17px; mobile full width, 20px gutters, 16px text. Do not vary per page. */
     .content { max-width: 960px; padding: 60px 40px 80px; }
     body { font-size: 17px; }
-    @media (max-width: 600px) { .content { max-width: none; padding: 32px 20px 56px; } body { font-size: 16px; } }
+    @media (max-width: 600px) { .content { max-width: none; padding: 32px 20px 56px; } body { font-size: 16px; } }    /* Seasonal signpost — remove after 4 November 2026. Routes the traffic
+       these posts already earn to the Oktoberfest guide, which earns none
+       of its own yet. Placed straight after the lede, not in the footer. */
+    .seasonal { display: block; margin: 18px 0 6px; padding: 13px 15px; border-radius: 9px;
+      background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.28);
+      font-size: 0.93rem; color: #c9d1d9; text-decoration: none; }
+    .seasonal b { color: var(--teal); }
+    .seasonal:hover { border-color: var(--teal); }
+
   </style>
 </head>
 <body>
@@ -83,6 +91,7 @@
 
     <p class="lede">When most people picture Oktoberfest they think of lederhosen and dirndls, oompah bands, litre steins, bratwurst, schnitzel and sauerkraut. They also assume it happens in October and that the beer is M&auml;rzen. The reality is a little different.</p>
 
+    <a class="seasonal" href="/blog/uk-oktoberfest-events-2026.html">Companion piece: <b>seventy UK Oktoberfest events</b>, sorted by the question this essay raises &mdash; is the beer in the stein actually from the Wiesn? &rarr;</a>
     <p>The name has travelled further than almost any other in beer &mdash; to Brazil, to Ontario, to Ohio, to a Methodist mission hall on Peter Street in Manchester. Say &ldquo;Oktoberfest&rdquo; in four countries and you will not be handed the same drink twice &mdash; and the oldest of them is not the one in Munich. Munich quietly changed it decades ago, from the amber M&auml;rzen to the pale, dry Festbier now poured in the tents.</p>
 
     <h2>Munich changed the beer, and kept the name</h2>

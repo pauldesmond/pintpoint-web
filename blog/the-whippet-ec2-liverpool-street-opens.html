@@ -135,7 +135,15 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 60px; } }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 60px; } }    /* Seasonal signpost — remove after 4 November 2026. Routes the traffic
+       these posts already earn to the Oktoberfest guide, which earns none
+       of its own yet. Placed straight after the lede, not in the footer. */
+    .seasonal { display: block; margin: 18px 0 6px; padding: 13px 15px; border-radius: 9px;
+      background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.28);
+      font-size: 0.93rem; color: #c9d1d9; text-decoration: none; }
+    .seasonal b { color: var(--teal); }
+    .seasonal:hover { border-color: var(--teal); }
+
   </style>
 </head>
 <body>
@@ -156,6 +164,7 @@
 
     <p class="lede">London does not lack new openings. It lacks new openings that feel like they already understand the drinker.</p>
 
+    <a class="seasonal" href="/blog/uk-oktoberfest-events-2026.html">If you are here for the German lagers: we have since sorted <b>seventy UK Oktoberfest events</b> by whether the beer in the stein is actually from Munich. Thirteen pour at least one of the six. Most do not. &rarr;</a>
     <p>The Whippet, due to open in mid-May just outside Liverpool Street Station, looks like one of those rare places that might.</p>
 
     <p>On paper, it is already interesting enough. This is the new venue from Bloomsbury Leisure Group, the team behind the <a href="/pubs/the-euston-tap-london">Euston Tap</a> — one of the most important specialist beer bars in modern London. The soft launch is set for <span class="highlight">14 May 2026 from around 4pm</span>, with a full opening shortly after. The group already runs a handful of specialist rooms across London, Manchester and Bristol, which makes EC2 a next move rather than a one-off.</p>

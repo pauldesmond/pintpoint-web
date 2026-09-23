@@ -140,7 +140,15 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--teal); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }    /* Seasonal signpost — remove after 4 November 2026. Routes the traffic
+       these posts already earn to the Oktoberfest guide, which earns none
+       of its own yet. Placed straight after the lede, not in the footer. */
+    .seasonal { display: block; margin: 18px 0 6px; padding: 13px 15px; border-radius: 9px;
+      background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.28);
+      font-size: 0.93rem; color: #c9d1d9; text-decoration: none; }
+    .seasonal b { color: var(--teal); }
+    .seasonal:hover { border-color: var(--teal); }
+
   </style>
 </head>
 <body>
@@ -161,6 +169,7 @@
 
     <p class="lede">Tegernseer Hell is the beer people come back from Bavaria talking about. It is brewed at a former monastery on the Tegernsee, forty miles south of Munich, by a brewery still owned by the Wittelsbachs — the family that ran Bavaria for seven hundred years and wrote the purity law. It is not rare in Germany. It is genuinely hard to find on draught here.</p>
 
+    <a class="seasonal" href="/blog/uk-oktoberfest-events-2026.html">Tegernseer is not one of the Munich six. If you want the Wiesn beers themselves, <b>seventy UK Oktoberfest events</b>, sorted by which actually pour them. &rarr;</a>
     <p>There is no published list of UK stockists, so this is ours: <b>eleven venues we can show poured it</b>, built the same way as our <a href="/blog/augustiner-on-draft-uk-six-pubs.html">Augustiner list</a> — by cross-referencing the public check-in record against our own tap data, rather than by asking an importer who is under no obligation to answer.</p>
 
     <p>Sorted by <b>how recently it was actually seen</b>, because that is the only thing that matters when you are deciding where to go tonight. A pub that poured it in May is not a pub that has it now, and most lists will not tell you the difference.</p>

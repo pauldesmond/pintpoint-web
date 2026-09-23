@@ -25,7 +25,7 @@
     "author": { "@type": "Organization", "name": "PINtPRESS", "url": "https://pintpoint.co.uk/blog/" },
     "publisher": { "@id": "https://pintpoint.co.uk/#organization" },
     "datePublished": "2026-09-20",
-    "dateModified": "2026-09-20",
+    "dateModified": "2026-09-23",
     "url": "https://pintpoint.co.uk/blog/oktoberfest-first-giant-tent.html",
     "mainEntityOfPage": "https://pintpoint.co.uk/blog/oktoberfest-first-giant-tent.html",
     "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".lede p", "h1"] },
@@ -94,7 +94,15 @@
       /* PINtPRESS column standard v1 (2026-09-17): desktop 960px column, 880px of text at 17px; mobile full width, 20px gutters, 16px text. Do not vary per page. */
     .content { max-width: 960px; margin: 0 auto; padding: 60px 40px 80px; }
     body { font-size: 17px; }
-    @media (max-width: 600px) { .content { max-width: none; padding: 32px 20px 56px; } body { font-size: 16px; } }
+    @media (max-width: 600px) { .content { max-width: none; padding: 32px 20px 56px; } body { font-size: 16px; } }    /* Seasonal signpost — remove after 4 November 2026. Routes the traffic
+       these posts already earn to the Oktoberfest guide, which earns none
+       of its own yet. Placed straight after the lede, not in the footer. */
+    .seasonal { display: block; margin: 18px 0 6px; padding: 13px 15px; border-radius: 9px;
+      background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.28);
+      font-size: 0.93rem; color: #c9d1d9; text-decoration: none; }
+    .seasonal b { color: var(--teal); }
+    .seasonal:hover { border-color: var(--teal); }
+
   </style>
 </head>
 <body>
@@ -112,6 +120,7 @@
     <p class="meta"><span class="category">Essay</span>20 September 2026 · Beer history · Oktoberfest</p>
     <h1>Everything Traditional About Oktoberfest Is <em>Younger Than the Tent</em></h1>
 
+    <a class="seasonal" href="/blog/uk-oktoberfest-events-2026.html">Companion piece: <b>seventy UK Oktoberfest events</b> running now, sorted by whether the beer is from one of Munich&rsquo;s six licensed breweries. &rarr;</a>
     <div class="lede">
       <p>In 1898 a publican from Nuremberg paid five men to bid on five neighbouring stalls at the Oktoberfest auction, knocked them together into a hall for six thousand drinkers, and was promptly sued by every other restaurateur on the Theresienwiese. He lost the argument about the rules and won the argument about the future: the giant tent is now the thing people picture when they picture Oktoberfest.</p>
       <p>His name was Georg Lang, and the story of how he did it is a story about who controls the Wiesn — which turns out to be the only question the festival has ever really been about.</p>
