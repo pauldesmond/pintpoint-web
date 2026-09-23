@@ -2069,6 +2069,13 @@
     table.spirit .sub { font-size: 0.88rem; color: var(--muted); }
     table.spirit b a { border-bottom: none; }
 
+    table.quick { margin-top: 6px; }
+    table.quick th { font-size: 0.68rem; }
+    table.quick td { font-size: 0.9rem; padding: 8px 10px; }
+    table.quick td:first-child { color: var(--amber); font-weight: 700; width: 34%; }
+    .freshness { font-size: 0.86rem; color: var(--muted); margin: 10px 0 4px; padding-left: 11px; border-left: 2px solid rgba(0,212,170,0.4); }
+    @media (max-width: 600px) { table.quick td:first-child { width: auto; } }
+
     /* Region tabs for "In the spirit". CSS-only radio deck, same mechanism
        as the BWC fixtures wall — no JS. The section reached 49 rows and
        ~20,000 characters in one column, which is a very long scroll on a
@@ -2224,6 +2231,22 @@
     </div>
 
     <p>You can watch the whole thing from here. Bavaria&rsquo;s own broadcaster, <a href="https://www.youtube.com/br24" target="_blank" rel="noopener noreferrer">BR24</a>, streams the tapping and the rest of the fortnight on YouTube &mdash; the parade of the landlords, the Trachten procession on the first Sunday, and the tents themselves. It is in German, and it does not matter in the slightest.</p>
+
+    <!-- Short cheat sheet up top. The full one sits at the foot of the page,
+         seventy events down; a reader who just wants "where do I go" should
+         not have to scroll past all of them to find out. Five rows, not
+         seven — the two cut are the ones that need the long version. -->
+    <table class="quick">
+      <thead><tr><th>If you want&hellip;</th><th>Go to</th></tr></thead>
+      <tbody>
+        <tr><td>All six, claimed</td><td>Albert&rsquo;s Schloss (four cities) or Kapital, Sheffield</td></tr>
+        <tr><td>The most, actually shown</td><td>Kirkstall Brewery, Leeds &mdash; four of six, full list published</td></tr>
+        <tr><td>Munich beer, no ticket</td><td>The Rake, Borough Market (Hofbr&auml;u) &middot; Radio City Social, Chelmsford (three of six)</td></tr>
+        <tr><td>A big tent and a real one</td><td>Oktoberfest on the Common &mdash; Paulaner</td></tr>
+        <tr><td>Munich&rsquo;s dates, nowhere near Munich</td><td>Brewhouse &amp; Kitchen &mdash; thirteen brewpubs, 19 Sept to 4 Oct</td></tr>
+      </tbody>
+    </table>
+    <p class="freshness">Tap lists and dates last checked <b>23 September 2026</b>. Where a beer is named below, it is because a venue published it or we saw it on a live tap list &mdash; not because a listing said so.</p>
 
     <h2>Why that question is worth asking</h2>
     <p>Only six breweries may pour at the Wiesn &mdash; <span class="highlight">Augustiner, Hacker-Pschorr, Hofbr&auml;u, L&ouml;wenbr&auml;u, Paulaner and Spaten</span> &mdash; and what they pour is Festbier: pale, dry, and built to be drunk by the litre for sixteen days. That is the beer being tapped in the tents this afternoon, and it is <a href="/blog/september-is-oktoberfest.html">not the beer the festival started with</a>.</p>
