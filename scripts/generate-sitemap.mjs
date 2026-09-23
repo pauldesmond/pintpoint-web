@@ -144,6 +144,12 @@ async function listCrawlPages() {
 // lastmod comes from the post's own JSON-LD dateModified, so a correction
 // to a published piece moves its lastmod without anyone remembering to.
 const BLOG_PRIORITY = {
+  // Live during the Oktoberfest season and edited most days — it took eight
+  // additions on 22-23 September alone. The default 'monthly' told crawlers
+  // not to come back, on the one page where "come back" is the whole point.
+  // Drop this to 'monthly' once the season is over (after 7 November, when
+  // the Alexandra Palace note's date has passed).
+  'uk-oktoberfest-events-2026.html': ['daily', '0.95'],
   'beer-recommendation-systems-what-most-get-wrong.html': ['monthly', '0.85'],
   'chelmsford-beer-mile-guide.html': ['monthly', '0.9'],
   'san-diego-ipa-capital-love-letter.html': ['monthly', '0.9'],
