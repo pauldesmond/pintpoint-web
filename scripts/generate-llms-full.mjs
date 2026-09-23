@@ -47,8 +47,26 @@ const BLOCK = 'address|article|aside|blockquote|div|dd|dl|dt|figcaption|figure|f
 function htmlToText(html) {
   let s = html;
   // Prefer the article/main body; fall back to the whole document.
-  const body = s.match(/<(article|main)\b[^>]*>([\s\S]*?)<\/\1>/i);
-  if (body) s = body[2];
+  //
+  // Depth-aware, because the tag nests. The previous non-greedy match
+  // (<article>([\s\S]*?)</article>) stopped at the FIRST closing tag, so any
+  // page whose wrapper <article> contains <article class="ev"> cards was
+  // silently truncated at its first card. uk-oktoberfest-events-2026 emitted
+  // 2.7 KB — the lede and nothing else, none of its 62 events — while
+  // beer-world-cup-xi-line-ups (49 article tags) and loaded-world-cup-canon
+  // (13) lost nearly everything too. It failed silently: a plausible-looking
+  // intro, no error, no empty output.
+  const open = s.match(/<(article|main)\b[^>]*>/i);
+  if (open) {
+    const tag = open[1].toLowerCase();
+    const re = new RegExp(`<${tag}\\b[^>]*>|</${tag}\\s*>`, 'gi');
+    re.lastIndex = open.index;
+    let depth = 0, start = open.index + open[0].length, m;
+    while ((m = re.exec(s))) {
+      depth += m[0].startsWith('</') ? -1 : 1;
+      if (depth === 0) { s = s.slice(start, m.index); break; }
+    }
+  }
   s = s.replace(/<(script|style|template|svg|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ');
   s = s.replace(/<nav\b[^>]*>[\s\S]*?<\/nav>/gi, ' ');
   s = s.replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/gi, ' ');
