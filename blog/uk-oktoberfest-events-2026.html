@@ -1847,6 +1847,25 @@
        ~20,000 characters in one column, which is a very long scroll on a
        phone. Every panel stays in the DOM, so "Show all" (and crawlers,
        and Ctrl+F) still see the lot. */
+    /* Wiesn-beer cards: same capped, internally-scrolling treatment as the
+       region panels, so "In the spirit" and everything after it stay in
+       reach instead of sitting thirteen cards down. Scrollbar visible on
+       purpose; a capped box with no scroll hint reads as a short list. */
+    .ev-deck {
+      max-height: min(62vh, 560px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding-right: 6px;
+      margin-bottom: 4px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0,212,170,0.55) transparent;
+    }
+    .ev-deck::-webkit-scrollbar { width: 8px; }
+    .ev-deck::-webkit-scrollbar-track { background: transparent; }
+    .ev-deck::-webkit-scrollbar-thumb { background: rgba(0,212,170,0.45); border-radius: 999px; }
+    .ev-deck::-webkit-scrollbar-thumb:hover { background: rgba(0,212,170,0.75); }
+    @media print { .ev-deck { max-height: none !important; overflow: visible !important; } }
+
     /* FAQ accordion. Native <details>, no JS; the answers stay in the DOM
        when collapsed so crawlers and Ctrl+F still reach them. */
     .faq { margin: 8px 0 4px; }
@@ -1972,7 +1991,11 @@
     <p>Most British Oktoberfest nights are a German lager and an oompah playlist, which is a perfectly good night out and nobody should be sniffy about it. But a handful put genuine Wiesn beer in the stein, and if you have just watched Krause swing the hammer, you probably want to know which is which. So this list is in two halves, and the first half is short.</p>
 
     <h2>Where the actual Wiesn beer is</h2>
-    <p>Go here if you care what is in the glass. One rule for reading this section: <span class="highlight">“all six” is the venue’s claim, not our count.</span> Both places making it advertise the Big Six without printing a full list, and neither names Augustiner — the one brewery of the six that barely leaves Bavaria. That is an absence from a webpage, not from a bar: it may be poured, or bottled, or neither. Worth asking before you build an evening around it.</p>
+    <p><span class="highlight">Thirteen venues</span> pour at least one of the six. Go here if you care what is in the glass. One rule for reading this section: <span class="highlight">“all six” is the venue’s claim, not our count.</span> Both places making it advertise the Big Six without printing a full list, and neither names Augustiner — the one brewery of the six that barely leaves Bavaria. That is an absence from a webpage, not from a bar: it may be poured, or bottled, or neither. Worth asking before you build an evening around it.</p>
+    <!-- Capped, internally scrolling deck. Thirteen cards is a long way
+         to the next heading; the count in the intro tells the reader how
+         many there are, and the scrollbar is left visible. -->
+    <div class="ev-deck">
 <article class="ev">
         <p class="ev-when">19 Sept – 25 Oct</p>
         <h3>Albert’s Schloss</h3>
@@ -2069,6 +2092,7 @@
         <p class="ev-note">Scotland&rsquo;s entry, and it prints its taps, which is more than most: <span class="highlight">Paulaner and Hacker-Pschorr Oktoberfest brews</span>, plus Flotzinger Wies&rsquo;n-M&auml;rzen and Bitburger Premium Pils, in steins, with bottled German beer behind. Two of the six named outright and a third Bavarian that only Caps and Taps otherwise carries. Sixteen days on Market Street rather than a weekend, and the brass is booked by name across the three weekends &mdash; Flat Cap Brass on the 19th, The Brass Rats on the 25th and the 2nd, Atomic Brass on the 26th, Loud Noises on the 3rd. Not to be confused with Edinburgh Oktoberfest at Central Hall in the list below, which is a different event a week later.</p>
         <p class="ev-link"><a href="https://www.brewhemia.co.uk/oktoberfest" target="_blank" rel="noopener noreferrer">Brewhemia Oktoberfest</a></p>
       </article>
+    </div>
 
     <h2>In the spirit</h2>
     <p>Same energy, looser about the exact Munich six. Steins, sausages, brass, and a crowd. Dressing up is a bonus rather than the point. Thirty-eight of them, by region, so you can find the one near you and stop reading. Then one at the end that is not an event at all.</p>
