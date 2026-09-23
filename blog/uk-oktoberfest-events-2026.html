@@ -54,6 +54,10 @@
        No ItemList wrapper: Google reads ItemList as a carousel and
        carousels require same-site item urls, so it validated invalid while
        the 71 events inside it passed.
+       Ticket prices are a HAND-CHECKED list, never parsed from the prose:
+       the page also carries beer prices, a refundable deposit, a stein
+       package and bottle prices, any of which auto-parsing would have
+       published as an admission price. Free means the page says free.
        Three entries are deliberately absent: Radio City Social and The Rake
        are beer on a bar rather than dated events, and Home Sweet Home is mail
        order. Bierkeller is absent because "Selected Oct dates" is not a date. -->
@@ -97,7 +101,14 @@
       },
       "url": "https://capsandtaps.co.uk/collections/events/products/caps-and-taps-oktoberfest",
       "endDate": "2026-09-30",
-      "description": "Two pints — of Paulaner Oktoberfest and a pretzel."
+      "description": "Two pints — of Paulaner Oktoberfest and a pretzel.",
+      "offers": {
+        "@type": "Offer",
+        "price": "15",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://capsandtaps.co.uk/collections/events/products/caps-and-taps-oktoberfest"
+      }
     },
     {
       "@type": "Event",
@@ -135,7 +146,14 @@
       },
       "url": "https://www.designmynight.com/leeds/whats-on/food-drink/oktoberfest-at-kirkstall-brewery-2026",
       "endDate": "2026-09-26",
-      "description": "And four of them are Munich’s: Hofbräu Oktoberfestbier 6.3%, Löwenbräu 6.1%, Paulaner 6% and Spaten 5.9%, every strength"
+      "description": "And four of them are Munich’s: Hofbräu Oktoberfestbier 6.3%, Löwenbräu 6.1%, Paulaner 6% and Spaten 5.9%, every strength",
+      "offers": {
+        "@type": "Offer",
+        "price": "5.50",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.designmynight.com/leeds/whats-on/food-drink/oktoberfest-at-kirkstall-brewery-2026"
+      }
     },
     {
       "@type": "Event",
@@ -173,7 +191,15 @@
       },
       "url": "https://www.bermondseybierkeller.co.uk/oktoberfest-2026",
       "endDate": "2026-10-31",
-      "description": "One of the six, done properly as a Bierkeller night out, and six weeks of it from the grand opening on 19 September. The week has a shape: o"
+      "description": "One of the six, done properly as a Bierkeller night out, and six weeks of it from the grand opening on 19 September. The week has a shape: o",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "20",
+        "highPrice": "55",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.bermondseybierkeller.co.uk/oktoberfest-2026"
+      }
     },
     {
       "@type": "EventSeries",
@@ -230,7 +256,15 @@
       },
       "url": "https://www.fulhampier.com/event/105355/tickets",
       "endDate": "2026-10-03",
-      "description": "An actual Wiesn brewery rather than a German lager standing in for one, which is worth more than a for"
+      "description": "An actual Wiesn brewery rather than a German lager standing in for one, which is worth more than a for",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "15",
+        "highPrice": "40",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.fulhampier.com/event/105355/tickets"
+      }
     },
     {
       "@type": "Event",
@@ -343,7 +377,14 @@
       },
       "url": "https://www.clactonpier.co.uk/events/oktoberfest/",
       "endDate": "2026-10-04",
-      "description": "The other entry that opens and closes with Munich: 19 September to 4 October, but across its three weekends rather than straight through — 19–20 and 26–27 September, then 3–4 O"
+      "description": "The other entry that opens and closes with Munich: 19 September to 4 October, but across its three weekends rather than straight through — 19–20 and 26–27 September, then 3–4 O",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.clactonpier.co.uk/events/oktoberfest/"
+      }
     },
     {
       "@type": "Event",
@@ -381,7 +422,14 @@
       },
       "url": "https://www.designmynight.com/london/bars/greenwich/the-old-brewery/oktoberfest-with-camden-town-brewery",
       "endDate": "2026-09-25",
-      "description": "One night in the Pepys Building at the Old Royal Naval College, benches set out in front of the brewery tanks. A London lager rather than a Munich one: £25 gets a pint stein of Camde"
+      "description": "One night in the Pepys Building at the Old Royal Naval College, benches set out in front of the brewery tanks. A London lager rather than a Munich one: £25 gets a pint stein of Camde",
+      "offers": {
+        "@type": "Offer",
+        "price": "25",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.designmynight.com/london/bars/greenwich/the-old-brewery/oktoberfest-with-camden-town-brewery"
+      }
     },
     {
       "@type": "EventSeries",
@@ -438,7 +486,14 @@
       },
       "url": "https://www.anspachandhobday.com/shop/ticket-oktoberfest-at-the-croydon-brewery",
       "endDate": "2026-09-26",
-      "description": "A brewery pouring its own: three Festbier-inspired beers brewed on site rather than anything shipped from Munich. £5 in and the first pint is included, Bavarian Boy on the food, Therapi"
+      "description": "A brewery pouring its own: three Festbier-inspired beers brewed on site rather than anything shipped from Munich. £5 in and the first pint is included, Bavarian Boy on the food, Therapi",
+      "offers": {
+        "@type": "Offer",
+        "price": "5",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.anspachandhobday.com/shop/ticket-oktoberfest-at-the-croydon-brewery"
+      }
     },
     {
       "@type": "EventSeries",
@@ -458,6 +513,13 @@
       "url": "https://www.thedestinationatlakeside.com/",
       "endDate": "2026-10-03",
       "description": "Two Saturdays at the Lakeside funfair: live Bavarian bands and DJs, sausages, steins and dancing, in an indoor Bavarian bar that is new for 2026. Free entry to the park, no ticket ne",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.thedestinationatlakeside.com/"
+      },
       "subEvent": [
         {
           "@type": "Event",
@@ -569,7 +631,15 @@
       },
       "url": "https://www.brewdog.com/pages/bars/waterloo",
       "endDate": "2026-09-26",
-      "description": "One Saturday night, priced in two tiers: £5 gets a ticket and a beer on arrival, a live oompah band, a sausage contest and a DJ until late. £15 adds a beer tasting"
+      "description": "One Saturday night, priced in two tiers: £5 gets a ticket and a beer on arrival, a live oompah band, a sausage contest and a DJ until late. £15 adds a beer tasting",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "5",
+        "highPrice": "15",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.brewdog.com/pages/bars/waterloo"
+      }
     },
     {
       "@type": "Event",
@@ -709,7 +779,14 @@
       },
       "url": "https://www.eventbrite.co.uk/e/40ft-oktoberfest-tickets-2002065112646",
       "endDate": "2026-10-03",
-      "description": "One Saturday night on the Blackhorse Beer Mile, £11.55, and the ticket includes the stein itself to take home — which is a better souvenir than most of th"
+      "description": "One Saturday night on the Blackhorse Beer Mile, £11.55, and the ticket includes the stein itself to take home — which is a better souvenir than most of th",
+      "offers": {
+        "@type": "Offer",
+        "price": "11.55",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.eventbrite.co.uk/e/40ft-oktoberfest-tickets-2002065112646"
+      }
     },
     {
       "@type": "EventSeries",
@@ -825,6 +902,14 @@
       "url": "https://www.thepriceiswight.co.uk/product/ggs-bar-oktoberfest-2026/",
       "endDate": "2026-10-10",
       "description": "The only one on this list that needs a ferry. Two nights at GG’s Island Riding Centre: London Oompah Band, a DJ, party games and Bavarian serving staff. £10 first-release earl",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "10",
+        "highPrice": "12.50",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.thepriceiswight.co.uk/product/ggs-bar-oktoberfest-2026/"
+      },
       "subEvent": [
         {
           "@type": "Event",
@@ -930,7 +1015,14 @@
       },
       "url": "https://www.oktoberfestessex.co.uk/",
       "endDate": "2026-10-24",
-      "description": "A proper marquee in the middle of town, three ticketed sessions across the weekend and a separate ticket for each, from £15. Two-pint steins, German food from a row of vendo"
+      "description": "A proper marquee in the middle of town, three ticketed sessions across the weekend and a separate ticket for each, from £15. Two-pint steins, German food from a row of vendo",
+      "offers": {
+        "@type": "Offer",
+        "price": "15",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.oktoberfestessex.co.uk/"
+      }
     },
     {
       "@type": "Event",
@@ -949,7 +1041,14 @@
       },
       "url": "https://www.southamptonoktoberfest.com/",
       "endDate": "2026-10-24",
-      "description": "Ninth year, and it bills itself as the biggest in the country: a themed beer marquee dropped into the civic square, thousands through it, oompah bands and DJs across the weeke"
+      "description": "Ninth year, and it bills itself as the biggest in the country: a themed beer marquee dropped into the civic square, thousands through it, oompah bands and DJs across the weeke",
+      "offers": {
+        "@type": "Offer",
+        "price": "5",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.southamptonoktoberfest.com/"
+      }
     },
     {
       "@type": "Event",
@@ -987,7 +1086,14 @@
       },
       "url": "https://www.roosters.co.uk/pages/oktoberfest",
       "endDate": "2026-09-26",
-      "description": "Their name for it, not ours, and our catalogue says they have earned the qualifier: of the 27 Rooster’s beers we hold, exactly one is a lager, a Festbier at 5.2% — a Fes"
+      "description": "Their name for it, not ours, and our catalogue says they have earned the qualifier: of the 27 Rooster’s beers we hold, exactly one is a lager, a Festbier at 5.2% — a Fes",
+      "offers": {
+        "@type": "Offer",
+        "price": "14.95",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.roosters.co.uk/pages/oktoberfest"
+      }
     },
     {
       "@type": "EventSeries",
@@ -1094,7 +1200,14 @@
       },
       "url": "https://www.beartownbrewery.co.uk/oktobearfest/",
       "endDate": "2026-10-03",
-      "description": "Their fifth year of it, and they have not skimped: a live 30-piece brass oompah band, which is comfortably the biggest band named anywhere on this page. Friday"
+      "description": "Their fifth year of it, and they have not skimped: a live 30-piece brass oompah band, which is comfortably the biggest band named anywhere on this page. Friday",
+      "offers": {
+        "@type": "Offer",
+        "price": "10",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.beartownbrewery.co.uk/oktobearfest/"
+      }
     },
     {
       "@type": "EventSeries",
@@ -1114,6 +1227,13 @@
       "url": "https://triplepointbrewing.co.uk/event/oktoberfest-save-the-date/",
       "endDate": "2026-10-03",
       "description": "A brewery pouring its own: the Oktoberfest beer is a Märzen they brew on site, 4.8%, rather than a German lager bought in. Two nights of live music in the beer garden and free to get i",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://triplepointbrewing.co.uk/event/oktoberfest-save-the-date/"
+      },
       "subEvent": [
         {
           "@type": "Event",
@@ -1162,7 +1282,12 @@
       },
       "url": "https://www.universe.com/events/docktoberfest-2026-tickets-FV78GJ",
       "endDate": "2026-10-03",
-      "description": "Sold out / waitlist"
+      "description": "Sold out / waitlist",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/SoldOut",
+        "url": "https://www.universe.com/events/docktoberfest-2026-tickets-FV78GJ"
+      }
     },
     {
       "@type": "EventSeries",
@@ -1333,7 +1458,15 @@
       },
       "url": "https://www.eventbrite.com/e/arcadia-oktoberfest-opening-evening-food-beer-music-tickets-2000280773640",
       "endDate": "2026-10-03",
-      "description": "Nine days run by Utopian, a Devon brewery whose whole identity is German lager. We hold fifteen of their beers and they are a Helles, a Czech pilsner, a"
+      "description": "Nine days run by Utopian, a Devon brewery whose whole identity is German lager. We hold fifteen of their beers and they are a Helles, a Czech pilsner, a",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "0",
+        "highPrice": "25",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.eventbrite.com/e/arcadia-oktoberfest-opening-evening-food-beer-music-tickets-2000280773640"
+      }
     },
     {
       "@type": "Event",
@@ -1581,7 +1714,14 @@
       },
       "url": "https://www.oktoberfestuk.co.uk",
       "endDate": "2026-10-31",
-      "description": "One operator, nine towns, and the thing none of the nine websites mentions: Oktoberfest Essex and Oktoberfest Guildford, both listed under London & South East as local events,"
+      "description": "One operator, nine towns, and the thing none of the nine websites mentions: Oktoberfest Essex and Oktoberfest Guildford, both listed under London & South East as local events,",
+      "offers": {
+        "@type": "Offer",
+        "price": "15",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.oktoberfestuk.co.uk"
+      }
     }
   ]
 }
