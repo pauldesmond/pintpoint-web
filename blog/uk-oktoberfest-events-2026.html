@@ -85,6 +85,47 @@
     table.spirit .flag, .ev-note .flag { color: var(--red); font-weight: 700; }
     table.spirit .sub { font-size: 0.88rem; color: var(--muted); }
     table.spirit b a { border-bottom: none; }
+
+    /* Region tabs for "In the spirit". CSS-only radio deck, same mechanism
+       as the BWC fixtures wall — no JS. The section reached 49 rows and
+       ~20,000 characters in one column, which is a very long scroll on a
+       phone. Every panel stays in the DOM, so "Show all" (and crawlers,
+       and Ctrl+F) still see the lot. */
+    .okt-radio { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    .okt-tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 20px 0 6px; padding-bottom: 4px; }
+    .okt-tabs::-webkit-scrollbar { display: none; }
+    .okt-tab { flex: 0 0 auto; cursor: pointer; -webkit-user-select: none; user-select: none; font-size: 0.72rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--muted); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .okt-tab:hover { color: var(--text); border-color: rgba(255,255,255,0.22); }
+    .okt-n { font-size: 0.66rem; font-weight: 700; padding: 1px 6px; border-radius: 999px; background: rgba(255,255,255,0.08); }
+    .okt-panel { display: none; }
+    .okt-panel > h3.region { display: none; }
+    /* Selected state is carried by fill AND border AND text weight, never
+       hue alone — see user_pintpoint_colour_blindness. */
+    #reg-london:checked ~ .okt-tabs label[for="reg-london"],
+    #reg-north:checked ~ .okt-tabs label[for="reg-north"],
+    #reg-celtic:checked ~ .okt-tabs label[for="reg-celtic"],
+    #reg-anywhere:checked ~ .okt-tabs label[for="reg-anywhere"],
+    #reg-all:checked ~ .okt-tabs label[for="reg-all"] { background: var(--teal); border-color: var(--teal); color: #06231d; font-weight: 900; }
+    #reg-london:checked ~ .okt-tabs label[for="reg-london"] .okt-n,
+    #reg-north:checked ~ .okt-tabs label[for="reg-north"] .okt-n,
+    #reg-celtic:checked ~ .okt-tabs label[for="reg-celtic"] .okt-n,
+    #reg-anywhere:checked ~ .okt-tabs label[for="reg-anywhere"] .okt-n,
+    #reg-all:checked ~ .okt-tabs label[for="reg-all"] .okt-n { background: rgba(0,0,0,0.2); }
+    #reg-london:checked ~ .okt-panel[data-region="london"],
+    #reg-north:checked ~ .okt-panel[data-region="north"],
+    #reg-celtic:checked ~ .okt-panel[data-region="celtic"],
+    #reg-anywhere:checked ~ .okt-panel[data-region="anywhere"],
+    #reg-all:checked ~ .okt-panel { display: block; }
+    #reg-all:checked ~ .okt-panel > h3.region { display: block; }
+    #reg-london:focus-visible ~ .okt-tabs label[for="reg-london"],
+    #reg-north:focus-visible ~ .okt-tabs label[for="reg-north"],
+    #reg-celtic:focus-visible ~ .okt-tabs label[for="reg-celtic"],
+    #reg-anywhere:focus-visible ~ .okt-tabs label[for="reg-anywhere"],
+    #reg-all:focus-visible ~ .okt-tabs label[for="reg-all"] { outline: 2px solid var(--text); outline-offset: 2px; }
+    @media print {
+      .okt-tabs { display: none !important; }
+      .okt-panel, .okt-panel > h3.region { display: block !important; }
+    }
     .tellus { background: var(--card); border: 1px solid rgba(0,212,170,0.28); border-radius: 12px; padding: 18px; margin: 34px 0 8px; }
     .tellus h2 { margin-top: 0; font-size: 1.15rem; }
     .sources { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--border); }
@@ -241,6 +282,25 @@
     <h2>In the spirit</h2>
     <p>Same energy, looser about the exact Munich six. Steins, sausages, brass, and a crowd. Dressing up is a bonus rather than the point. Thirty-eight of them, by region, so you can find the one near you and stop reading. Then one at the end that is not an event at all.</p>
 
+    <!-- Region tabs: CSS-only radio deck, same mechanism as the BWC
+         fixtures wall. Radios MUST stay siblings of .okt-tabs and
+         .okt-panel for the ~ selectors to resolve. Every panel stays
+         in the DOM, so nothing is hidden from crawlers or Ctrl+F when
+         "Show all" is picked. -->
+    <div class="okt-regions">
+    <input type="radio" id="reg-london" name="okt-region" class="okt-radio" checked aria-hidden="true">
+    <input type="radio" id="reg-north" name="okt-region" class="okt-radio" aria-hidden="true">
+    <input type="radio" id="reg-celtic" name="okt-region" class="okt-radio" aria-hidden="true">
+    <input type="radio" id="reg-anywhere" name="okt-region" class="okt-radio" aria-hidden="true">
+    <input type="radio" id="reg-all" name="okt-region" class="okt-radio" aria-hidden="true">
+    <div class="okt-tabs" role="tablist" aria-label="Filter by region">
+      <label for="reg-london" class="okt-tab" role="tab">London &amp; SE <span class="okt-n">26</span></label>
+      <label for="reg-north" class="okt-tab" role="tab">Midlands &amp; North <span class="okt-n">12</span></label>
+      <label for="reg-celtic" class="okt-tab" role="tab">Scotland, Wales, SW &amp; East <span class="okt-n">9</span></label>
+      <label for="reg-anywhere" class="okt-tab" role="tab">Wherever you are <span class="okt-n">2</span></label>
+      <label for="reg-all" class="okt-tab okt-tab-all" role="tab">Show all <span class="okt-n">49</span></label>
+    </div>
+    <div class="okt-panel" data-region="london">
     <h3 class="region">London &amp; South East</h3>
     <table class="spirit">
       <tbody>
@@ -272,7 +332,8 @@
         <tr><td class="w">23–24 Oct</td><td><b><a href="https://shelterhall.co.uk/whats-on/brightons-oktoberfest-2026/" target="_blank" rel="noopener noreferrer">Brighton’s Oktoberfest</a></b><br><span class="sub">Shelter Hall, Kings Road Arches, BN1 &mdash; On the seafront, in the arches, which is the most interesting room of the three: <span class="highlight">four sessions across the Friday and Saturday only</span>, communal tables, and an arrival pint included in every ticket. The Oomparty Band do the singalongs and the games. 18+. One weekend and then it is over, so it goes early.</span></td></tr>
       </tbody>
     </table>
-
+    </div>
+    <div class="okt-panel" data-region="north">
     <h3 class="region">Midlands &amp; North</h3>
     <table class="spirit">
       <tbody>
@@ -290,7 +351,8 @@
         <tr><td class="w">17 Oct</td><td><b><a href="https://www.boxpark.co.uk/venues/liverpool/events/oktoberfest?eventDate=2026-10-17T10%3A00%3A00.000Z" target="_blank" rel="noopener noreferrer">BOXPARK Liverpool</a></b><br><span class="sub">Liverpool</span></td></tr>
       </tbody>
     </table>
-
+    </div>
+    <div class="okt-panel" data-region="celtic">
     <h3 class="region">Scotland, Wales, South West &amp; East</h3>
     <table class="spirit">
       <tbody>
@@ -305,8 +367,8 @@
         <tr><td class="w">30–31 Oct</td><td><b><a href="https://www.oktoberfesttour.co.uk/" target="_blank" rel="noopener noreferrer">Bath Oktoberfest</a></b><br><span class="sub">Bath &mdash; Oktoberfest Tour Limited again, closing the season on the last weekend of October, three weeks after Munich has packed up &mdash; a last day it now shares with the Oktoberfest UK tour&rsquo;s Portsmouth stop.</span></td></tr>
       </tbody>
     </table>
-
-
+    </div>
+    <div class="okt-panel" data-region="anywhere">
     <h3 class="region">Wherever you are</h3>
     <p>For everyone the three lists above do not reach &mdash; no tent within travelling distance, or a weekend already spoken for. One chain has put a freshly brewed Festbier inside thirteen towns, several of which have no tent at all. Failing that, the beer will come to you.</p>
     <table class="spirit">
@@ -316,6 +378,8 @@
         <tr class="home"><td class="w">Any night &middot; 0.0 miles</td><td><b>Home Sweet Home</b><br><span class="sub">Your sofa &mdash; The closest venue on this page, and the only one that is not one of the sixty-two. <span class="highlight">All six of Munich&rsquo;s will post to you</span>, which is more than anywhere above this line can say. They sit close together &mdash; Hofbr&auml;u and Augustiner at 6.3%, L&ouml;wenbr&auml;u 6.1%, Paulaner 6%, Spaten 5.9%, Hacker-Pschorr 6% &mdash; because a Wiesn beer has to: 13.5% Stammw&uuml;rze minimum, which lands at about six. <a href="https://beermerchants.com/products/oktoberfest" target="_blank" rel="noopener noreferrer">Beer Merchants</a> carry four of them, roughly £3.65&ndash;4.30 a bottle. <a href="https://www.beersofeurope.co.uk/occasions/style/oktoberfest/" target="_blank" rel="noopener noreferrer">Beers of Europe</a> have the lot in stock: L&ouml;wenbr&auml;u, Hofbr&auml;u, Spaten and Paulaner at £3.69, Hacker-Pschorr at £3.79, and Augustiner &mdash; the one no venue on this page pours, which Caps and Taps could only get in bottle before selling out &mdash; at £4.39. Which is the quiet joke of the whole list: the six are harder to drink in a tent than to buy in a box. British brewers worth the postage instead: Anspach &amp; Hobday &mdash; already on this list, for Croydon &mdash; Lost &amp; Grounded, Newbarns, Braybrooke, Donzoko and Pilot all have a Festbier out this autumn, and <a href="https://www.leftfieldbeer.co.uk/craft-lager" target="_blank" rel="noopener noreferrer">Left Field</a>, <a href="/blog/left-field-beer-britain-american-craft.html">who we wrote about in April</a>, add Cloudwater&rsquo;s, Verdant&rsquo;s and Polly&rsquo;s. No ticket, no bench, no oompah. Dress up anyway.</span></td></tr>
       </tbody>
     </table>
+    </div>
+    </div>
 
     <h2>The cheat sheet</h2>
     <table>
