@@ -51,1775 +51,1537 @@
        rows they describe. Non-contiguous runs are EventSeries with one
        subEvent per occurrence rather than a flattened start..end, which would
        claim Camden runs for three straight weeks instead of four Saturdays.
+       No ItemList wrapper: Google reads ItemList as a carousel and
+       carousels require same-site item urls, so it validated invalid while
+       the 71 events inside it passed.
        Three entries are deliberately absent: Radio City Social and The Rake
        are beer on a bar rather than dated events, and Home Sweet Home is mail
        order. Bierkeller is absent because "Selected Oct dates" is not a date. -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "UK Oktoberfest events 2026",
-  "description": "British Oktoberfest events for autumn 2026, sorted by whether the beer is from one of Munich's six licensed Wiesn breweries.",
-  "url": "https://pintpoint.co.uk/blog/uk-oktoberfest-events-2026.html",
-  "numberOfItems": 59,
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Albert’s Schloss",
-        "startDate": "2026-09-19",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "London (Soho) · Manchester · Birmingham · Liverpool",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "London (Soho)",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.albertsschloss.com/oktoberfest/london/",
-        "endDate": "2026-10-25",
-        "description": "We checked. Free entry, keg tapping, 19 September to 25 October at each. One caveat: their page bills “all of the Munich Big 6”, then na"
-      }
+      "@type": "Event",
+      "name": "Albert’s Schloss",
+      "startDate": "2026-09-19",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "London (Soho) · Manchester · Birmingham · Liverpool",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "London (Soho)",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.albertsschloss.com/oktoberfest/london/",
+      "endDate": "2026-10-25",
+      "description": "We checked. Free entry, keg tapping, 19 September to 25 October at each. One caveat: their page bills “all of the Munich Big 6”, then na"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Caps and Taps",
-        "startDate": "2026-09-30",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Tufnell Park, London",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Tufnell Park",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://capsandtaps.co.uk/collections/events/products/caps-and-taps-oktoberfest",
-        "endDate": "2026-09-30",
-        "description": "Two pints — of Paulaner Oktoberfest and a pretzel."
-      }
+      "@type": "Event",
+      "name": "Caps and Taps",
+      "startDate": "2026-09-30",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Tufnell Park, London",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tufnell Park",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://capsandtaps.co.uk/collections/events/products/caps-and-taps-oktoberfest",
+      "endDate": "2026-09-30",
+      "description": "Two pints — of Paulaner Oktoberfest and a pretzel."
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Kapital",
-        "startDate": "2026-09-18",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Sheffield",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Sheffield",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://kapitalsheffield.com/oktoberfest/",
-        "endDate": "2026-10-11",
-        "description": "The strongest Big Six claim outside Albert’s, and the reason to go north for it: all six Festbiers in 1L steins, with a Paulaner wooden-barrel tapping on Fridays. The site says “all six official Oktob"
-      }
+      "@type": "Event",
+      "name": "Kapital",
+      "startDate": "2026-09-18",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Sheffield",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Sheffield",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://kapitalsheffield.com/oktoberfest/",
+      "endDate": "2026-10-11",
+      "description": "The strongest Big Six claim outside Albert’s, and the reason to go north for it: all six Festbiers in 1L steins, with a Paulaner wooden-barrel tapping on Fridays. The site says “all six official Oktob"
     },
     {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Oktoberfest at Kirkstall Brewery",
-        "startDate": "2026-09-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Leeds",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Leeds",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.designmynight.com/leeds/whats-on/food-drink/oktoberfest-at-kirkstall-brewery-2026",
-        "endDate": "2026-09-26",
-        "description": "And four of them are Munich’s: Hofbräu Oktoberfestbier 6.3%, Löwenbräu 6.1%, Paulaner 6% and Spaten 5.9%, every strength"
-      }
+      "@type": "EventSeries",
+      "name": "Oktoberfest at Kirkstall Brewery",
+      "startDate": "2026-09-25",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Leeds",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Leeds",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.designmynight.com/leeds/whats-on/food-drink/oktoberfest-at-kirkstall-brewery-2026",
+      "endDate": "2026-09-26",
+      "description": "And four of them are Munich’s: Hofbräu Oktoberfestbier 6.3%, Löwenbräu 6.1%, Paulaner 6% and Spaten 5.9%, every strength"
     },
     {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Munich Cricket Club",
-        "startDate": "2026-09-17",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Victoria · Tower Hill · Canary Wharf",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Victoria",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://munichcricketclub.co.uk/events/oktoberfest/",
-        "endDate": "2026-10-31",
-        "description": "Pouring Paulaner, Löwenbräu and Spaten plus other Munich beers. Multi-week, multi-venue season."
-      }
+      "@type": "Event",
+      "name": "Munich Cricket Club",
+      "startDate": "2026-09-17",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Victoria · Tower Hill · Canary Wharf",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Victoria",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://munichcricketclub.co.uk/events/oktoberfest/",
+      "endDate": "2026-10-31",
+      "description": "Pouring Paulaner, Löwenbräu and Spaten plus other Munich beers. Multi-week, multi-venue season."
     },
     {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "Bermondsey Bierkeller",
-        "startDate": "2026-09-19",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "London Bridge",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "London Bridge",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.bermondseybierkeller.co.uk/oktoberfest-2026",
-        "endDate": "2026-10-31",
-        "description": "One of the six, done properly as a Bierkeller night out, and six weeks of it from the grand opening on 19 September. The week has a shape: o"
-      }
+      "@type": "Event",
+      "name": "Bermondsey Bierkeller",
+      "startDate": "2026-09-19",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "London Bridge",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "London Bridge",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.bermondseybierkeller.co.uk/oktoberfest-2026",
+      "endDate": "2026-10-31",
+      "description": "One of the six, done properly as a Bierkeller night out, and six weeks of it from the grand opening on 19 September. The week has a shape: o"
     },
     {
-      "@type": "ListItem",
-      "position": 7,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Oktoberfest on the Common",
-        "startDate": "2026-10-09",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Clapham Common",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Clapham Common",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.oktoberfestonthecommon.com/",
-        "endDate": "2026-10-24",
-        "description": "A named Wiesn brewery on the bar at party scale. They pour two south London breweries beside it, Jubel"
-      }
+      "@type": "EventSeries",
+      "name": "Oktoberfest on the Common",
+      "startDate": "2026-10-09",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Clapham Common",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Clapham Common",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.oktoberfestonthecommon.com/",
+      "endDate": "2026-10-24",
+      "description": "A named Wiesn brewery on the bar at party scale. They pour two south London breweries beside it, Jubel"
     },
     {
-      "@type": "ListItem",
-      "position": 8,
-      "item": {
-        "@type": "Event",
-        "name": "Brigadiers Bier Hall",
-        "startDate": "2026-09-21",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Bank, London",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Bank",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://brigadierslondon.com/menus/oktoberfest/",
-        "endDate": "2026-10-03",
-        "description": "Paulaner steins and towers; Indian–Bavarian food. One of the six in a slightly unexpected room."
-      }
+      "@type": "Event",
+      "name": "Brigadiers Bier Hall",
+      "startDate": "2026-09-21",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Bank, London",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bank",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://brigadierslondon.com/menus/oktoberfest/",
+      "endDate": "2026-10-03",
+      "description": "Paulaner steins and towers; Indian–Bavarian food. One of the six in a slightly unexpected room."
     },
     {
-      "@type": "ListItem",
-      "position": 9,
-      "item": {
-        "@type": "Event",
-        "name": "Fulham Pier",
-        "startDate": "2026-10-03",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Fulham, SW6",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Fulham",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.fulhampier.com/event/105355/tickets",
-        "endDate": "2026-10-03",
-        "description": "An actual Wiesn brewery rather than a German lager standing in for one, which is worth more than a for"
-      }
+      "@type": "Event",
+      "name": "Fulham Pier",
+      "startDate": "2026-10-03",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Fulham, SW6",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Fulham",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.fulhampier.com/event/105355/tickets",
+      "endDate": "2026-10-03",
+      "description": "An actual Wiesn brewery rather than a German lager standing in for one, which is worth more than a for"
     },
     {
-      "@type": "ListItem",
-      "position": 10,
-      "item": {
-        "@type": "Event",
-        "name": "Tiny Rebel Brewery Bar",
-        "startDate": "2026-09-19",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Rogerstone, Newport",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Rogerstone",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.instagram.com/tinyrebelbrewerybar/",
-        "endDate": "2026-09-19",
-        "description": "The old amber beer and the"
-      }
+      "@type": "Event",
+      "name": "Tiny Rebel Brewery Bar",
+      "startDate": "2026-09-19",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Rogerstone, Newport",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Rogerstone",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.instagram.com/tinyrebelbrewerybar/",
+      "endDate": "2026-09-19",
+      "description": "The old amber beer and the"
     },
     {
-      "@type": "ListItem",
-      "position": 11,
-      "item": {
-        "@type": "Event",
-        "name": "Brewhemia",
-        "startDate": "2026-09-19",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Edinburgh",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Edinburgh",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.brewhemia.co.uk/oktoberfest",
-        "endDate": "2026-10-04",
-        "description": "Scotland’s entry, and it prints its taps, which is more than most: Paulaner and Hacker-Pschorr Oktoberfest brews, plus Flotzinger Wies’n-Märzen and Bitburger Premium Pils, in steins, with bottled Germ"
-      }
+      "@type": "Event",
+      "name": "Brewhemia",
+      "startDate": "2026-09-19",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Edinburgh",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Edinburgh",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.brewhemia.co.uk/oktoberfest",
+      "endDate": "2026-10-04",
+      "description": "Scotland’s entry, and it prints its taps, which is more than most: Paulaner and Hacker-Pschorr Oktoberfest brews, plus Flotzinger Wies’n-Märzen and Bitburger Premium Pils, in steins, with bottled Germ"
     },
     {
-      "@type": "ListItem",
-      "position": 12,
-      "item": {
-        "@type": "Event",
-        "name": "The Dial — Home of Meantime",
-        "startDate": "2026-09-11",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "North Greenwich, SE10",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "North Greenwich",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://thedialldn.com/oktoberfest-in-london/",
-        "description": "There is a microbrewery on the premises, so the Oktoberfest beer is brewed where you drink it and poured tank to tap. Stein Well Spent, a Helles, from 11 September; and the rea"
-      }
+      "@type": "Event",
+      "name": "The Dial — Home of Meantime",
+      "startDate": "2026-09-11",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "North Greenwich, SE10",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "North Greenwich",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://thedialldn.com/oktoberfest-in-london/",
+      "description": "There is a microbrewery on the premises, so the Oktoberfest beer is brewed where you drink it and poured tank to tap. Stein Well Spent, a Helles, from 11 September; and the rea"
     },
     {
-      "@type": "ListItem",
-      "position": 13,
-      "item": {
-        "@type": "Event",
-        "name": "Oktoberfest Canary Wharf",
-        "startDate": "2026-09-17",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Canary Wharf, E14",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Canary Wharf",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://canarywharf.com/whats-on/oktoberfest-canary-wharf/",
-        "endDate": "2026-10-04",
-        "description": "The estate runs its own Oktoberfest across three venues, opening two days before Munich does and closing the same Sunday. BrewDog goes the full stretch, 17 September to 4 October,"
-      }
+      "@type": "Event",
+      "name": "Oktoberfest Canary Wharf",
+      "startDate": "2026-09-17",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Canary Wharf, E14",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Canary Wharf",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://canarywharf.com/whats-on/oktoberfest-canary-wharf/",
+      "endDate": "2026-10-04",
+      "description": "The estate runs its own Oktoberfest across three venues, opening two days before Munich does and closing the same Sunday. BrewDog goes the full stretch, 17 September to 4 October,"
     },
     {
-      "@type": "ListItem",
-      "position": 14,
-      "item": {
-        "@type": "Event",
-        "name": "German Gymnasium",
-        "startDate": "2026-09-18",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "King’s Cross",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "King’s Cross",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://germangymnasium.com/whats-on/",
-        "endDate": "2026-10-23",
-        "description": "Warsteiner / König Ludwig steins, Friday oompah."
-      }
+      "@type": "Event",
+      "name": "German Gymnasium",
+      "startDate": "2026-09-18",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "King’s Cross",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "King’s Cross",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://germangymnasium.com/whats-on/",
+      "endDate": "2026-10-23",
+      "description": "Warsteiner / König Ludwig steins, Friday oompah."
     },
     {
-      "@type": "ListItem",
-      "position": 15,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Clacton Pier Oktoberfest",
-        "startDate": "2026-09-19",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Clacton-on-Sea, Essex",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Clacton-on-Sea",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.clactonpier.co.uk/events/oktoberfest/",
-        "endDate": "2026-10-04",
-        "description": "The other entry that opens and closes with Munich: 19 September to 4 October, but across its three weekends rather than straight through — 19–20 and 26–27 September, then 3–4 O"
-      }
+      "@type": "EventSeries",
+      "name": "Clacton Pier Oktoberfest",
+      "startDate": "2026-09-19",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Clacton-on-Sea, Essex",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Clacton-on-Sea",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.clactonpier.co.uk/events/oktoberfest/",
+      "endDate": "2026-10-04",
+      "description": "The other entry that opens and closes with Munich: 19 September to 4 October, but across its three weekends rather than straight through — 19–20 and 26–27 September, then 3–4 O"
     },
     {
-      "@type": "ListItem",
-      "position": 16,
-      "item": {
-        "@type": "Event",
-        "name": "Three Wise Monkeys",
-        "startDate": "2026-09-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Colchester, Essex",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Colchester",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://threewisemonkeyscolchester.com/events/oktoberfest/",
-        "endDate": "2026-09-27",
-        "description": "Their annual one, run across two venues with Other Monkey Brewing’s taproom next door: a tap takeover of German beers served in steins while stocks last, or in taster racks if you"
-      }
+      "@type": "Event",
+      "name": "Three Wise Monkeys",
+      "startDate": "2026-09-24",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Colchester, Essex",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Colchester",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://threewisemonkeyscolchester.com/events/oktoberfest/",
+      "endDate": "2026-09-27",
+      "description": "Their annual one, run across two venues with Other Monkey Brewing’s taproom next door: a tap takeover of German beers served in steins while stocks last, or in taster racks if you"
     },
     {
-      "@type": "ListItem",
-      "position": 17,
-      "item": {
-        "@type": "Event",
-        "name": "The Old Brewery",
-        "startDate": "2026-09-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Greenwich, SE10",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Greenwich",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.designmynight.com/london/bars/greenwich/the-old-brewery/oktoberfest-with-camden-town-brewery",
-        "endDate": "2026-09-25",
-        "description": "One night in the Pepys Building at the Old Royal Naval College, benches set out in front of the brewery tanks. A London lager rather than a Munich one: £25 gets a pint stein of Camde"
-      }
+      "@type": "Event",
+      "name": "The Old Brewery",
+      "startDate": "2026-09-25",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Greenwich, SE10",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Greenwich",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.designmynight.com/london/bars/greenwich/the-old-brewery/oktoberfest-with-camden-town-brewery",
+      "endDate": "2026-09-25",
+      "description": "One night in the Pepys Building at the Old Royal Naval College, benches set out in front of the brewery tanks. A London lager rather than a Munich one: £25 gets a pint stein of Camde"
     },
     {
-      "@type": "ListItem",
-      "position": 18,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Between the Bridges",
-        "startDate": "2026-09-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Southbank",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Southbank",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.betweenthebridges.co.uk/oktoberfest-2026",
-        "endDate": "2026-10-17",
-        "description": "Southbank"
-      }
+      "@type": "EventSeries",
+      "name": "Between the Bridges",
+      "startDate": "2026-09-25",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Southbank",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Southbank",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.betweenthebridges.co.uk/oktoberfest-2026",
+      "endDate": "2026-10-17",
+      "description": "Southbank"
     },
     {
-      "@type": "ListItem",
-      "position": 19,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Flat Iron Square",
-        "startDate": "2026-09-26",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Borough, SE1",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Borough",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://flatironsquare.co.uk/event/oktoberfest-2026/",
-        "endDate": "2026-10-24",
-        "description": "Staropramen and Jägermeister rather than anything from Munich; afternoon and evening sessions, oompah band, DJs late."
-      }
+      "@type": "EventSeries",
+      "name": "Flat Iron Square",
+      "startDate": "2026-09-26",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Borough, SE1",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Borough",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://flatironsquare.co.uk/event/oktoberfest-2026/",
+      "endDate": "2026-10-24",
+      "description": "Staropramen and Jägermeister rather than anything from Munich; afternoon and evening sessions, oompah band, DJs late."
     },
     {
-      "@type": "ListItem",
-      "position": 20,
-      "item": {
-        "@type": "Event",
-        "name": "Anspach & Hobday: The Croydon Brewery",
-        "startDate": "2026-09-26",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Croydon, CR0",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Croydon",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.anspachandhobday.com/shop/ticket-oktoberfest-at-the-croydon-brewery",
-        "endDate": "2026-09-26",
-        "description": "A brewery pouring its own: three Festbier-inspired beers brewed on site rather than anything shipped from Munich. £5 in and the first pint is included, Bavarian Boy on the food, Therapi"
-      }
+      "@type": "Event",
+      "name": "Anspach & Hobday: The Croydon Brewery",
+      "startDate": "2026-09-26",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Croydon, CR0",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Croydon",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.anspachandhobday.com/shop/ticket-oktoberfest-at-the-croydon-brewery",
+      "endDate": "2026-09-26",
+      "description": "A brewery pouring its own: three Festbier-inspired beers brewed on site rather than anything shipped from Munich. £5 in and the first pint is included, Bavarian Boy on the food, Therapi"
     },
     {
-      "@type": "ListItem",
-      "position": 21,
-      "item": {
-        "@type": "EventSeries",
-        "name": "The Destination @ Lakeside",
-        "startDate": "2026-09-26",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Thurrock, Essex",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Thurrock",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.thedestinationatlakeside.com/",
-        "endDate": "2026-10-03",
-        "description": "Two Saturdays at the Lakeside funfair: live Bavarian bands and DJs, sausages, steins and dancing, in an indoor Bavarian bar that is new for 2026. Free entry to the park, no ticket ne",
-        "subEvent": [
-          {
-            "@type": "Event",
-            "name": "The Destination @ Lakeside",
-            "startDate": "2026-09-26",
-            "location": {
-              "@type": "Place",
-              "name": "Thurrock, Essex",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Thurrock",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "The Destination @ Lakeside",
-            "startDate": "2026-10-03",
-            "location": {
-              "@type": "Place",
-              "name": "Thurrock, Essex",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Thurrock",
-                "addressCountry": "GB"
-              }
+      "@type": "EventSeries",
+      "name": "The Destination @ Lakeside",
+      "startDate": "2026-09-26",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Thurrock, Essex",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Thurrock",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.thedestinationatlakeside.com/",
+      "endDate": "2026-10-03",
+      "description": "Two Saturdays at the Lakeside funfair: live Bavarian bands and DJs, sausages, steins and dancing, in an indoor Bavarian bar that is new for 2026. Free entry to the park, no ticket ne",
+      "subEvent": [
+        {
+          "@type": "Event",
+          "name": "The Destination @ Lakeside",
+          "startDate": "2026-09-26",
+          "location": {
+            "@type": "Place",
+            "name": "Thurrock, Essex",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Thurrock",
+              "addressCountry": "GB"
             }
           }
-        ]
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 22,
-      "item": {
-        "@type": "EventSeries",
-        "name": "BOXPARK",
-        "startDate": "2026-09-26",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Croydon, Camden & Shoreditch",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Croydon",
-            "addressCountry": "GB"
-          }
         },
-        "url": "https://www.boxpark.co.uk/venues/croydon/events/oktoberfest-croydon-2026",
-        "endDate": "2026-10-10",
-        "description": "Three container yards, three Saturdays, and Staropramen rather than anything from Munich — a Czech pilsner, served by the two-pint stein. Croydon 26 Sept, 3–11pm, with a",
-        "subEvent": [
-          {
-            "@type": "Event",
-            "name": "BOXPARK",
-            "startDate": "2026-09-26",
-            "location": {
-              "@type": "Place",
-              "name": "Croydon, Camden & Shoreditch",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Croydon",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "BOXPARK",
-            "startDate": "2026-10-03",
-            "location": {
-              "@type": "Place",
-              "name": "Croydon, Camden & Shoreditch",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Croydon",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "BOXPARK",
-            "startDate": "2026-10-10",
-            "location": {
-              "@type": "Place",
-              "name": "Croydon, Camden & Shoreditch",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Croydon",
-                "addressCountry": "GB"
-              }
+        {
+          "@type": "Event",
+          "name": "The Destination @ Lakeside",
+          "startDate": "2026-10-03",
+          "location": {
+            "@type": "Place",
+            "name": "Thurrock, Essex",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Thurrock",
+              "addressCountry": "GB"
             }
           }
-        ]
-      }
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 23,
-      "item": {
-        "@type": "Event",
-        "name": "BrewDog Waterloo",
-        "startDate": "2026-09-26",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "The Sidings, Waterloo Station, SE1",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "The Sidings",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.brewdog.com/pages/bars/waterloo",
-        "endDate": "2026-09-26",
-        "description": "One Saturday night, priced in two tiers: £5 gets a ticket and a beer on arrival, a live oompah band, a sausage contest and a DJ until late. £15 adds a beer tasting"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 24,
-      "item": {
-        "@type": "Event",
-        "name": "BOXHALL",
-        "startDate": "2026-09-28",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Liverpool Street, EC2M",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Liverpool Street",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.boxhall.co.uk/blog/oktoberfest",
-        "endDate": "2026-10-31",
-        "description": "A City one that runs and runs, though Brigadiers up the road has the better claim on the beer: litre steins at £12.95 from 28 September to 31 October, live sport on, food hall"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 25,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Mercato Metropolitano",
-        "startDate": "2026-09-28",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elephant & Castle, Mayfair & Wood Wharf",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Elephant & Castle",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://mercatometropolitano.com/events/ec-oktoberfest/",
-        "endDate": "2026-10-10",
-        "description": "Three food markets, three different Oktoberfests, and only two of them name a beer. Those two pour German Kraft, a London brewery with its own beer garden ins",
-        "subEvent": [
-          {
-            "@type": "Event",
-            "name": "Mercato Metropolitano",
-            "startDate": "2026-09-28",
-            "endDate": "2026-10-04",
-            "location": {
-              "@type": "Place",
-              "name": "Elephant & Castle, Mayfair & Wood Wharf",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Elephant & Castle",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Mercato Metropolitano",
-            "startDate": "2026-10-03",
-            "location": {
-              "@type": "Place",
-              "name": "Elephant & Castle, Mayfair & Wood Wharf",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Elephant & Castle",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Mercato Metropolitano",
-            "startDate": "2026-10-10",
-            "location": {
-              "@type": "Place",
-              "name": "Elephant & Castle, Mayfair & Wood Wharf",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Elephant & Castle",
-                "addressCountry": "GB"
-              }
+      "@type": "EventSeries",
+      "name": "BOXPARK",
+      "startDate": "2026-09-26",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Croydon, Camden & Shoreditch",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Croydon",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.boxpark.co.uk/venues/croydon/events/oktoberfest-croydon-2026",
+      "endDate": "2026-10-10",
+      "description": "Three container yards, three Saturdays, and Staropramen rather than anything from Munich — a Czech pilsner, served by the two-pint stein. Croydon 26 Sept, 3–11pm, with a",
+      "subEvent": [
+        {
+          "@type": "Event",
+          "name": "BOXPARK",
+          "startDate": "2026-09-26",
+          "location": {
+            "@type": "Place",
+            "name": "Croydon, Camden & Shoreditch",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Croydon",
+              "addressCountry": "GB"
             }
           }
-        ]
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 26,
-      "item": {
-        "@type": "Event",
-        "name": "London Oktoberfest",
-        "startDate": "2026-10-01",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Finsbury Park",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Finsbury Park",
-            "addressCountry": "GB"
-          }
         },
-        "url": "https://london-oktoberfest.co.uk",
-        "endDate": "2026-10-03",
-        "description": "Big tent, Bavarian FestBeer, thousands of people."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 27,
-      "item": {
-        "@type": "Event",
-        "name": "Five Points Taproom",
-        "startDate": "2026-10-02",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Hackney",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Hackney",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://dice.fm/event/k62bdq-oktoberfest-at-five-points-taproom-courtyard-2nd-oct-the-five-points-taproom-courtyard-london-tickets",
-        "endDate": "2026-10-04",
-        "description": "German guests (Veltins, Tegernseer etc.) — not the Big Six, still a good beer crowd."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 28,
-      "item": {
-        "@type": "Event",
-        "name": "40FT Oktoberfest",
-        "startDate": "2026-10-03",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "40FT Brewery, Lockwood Way, Walthamstow E17",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "40FT Brewery",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.eventbrite.co.uk/e/40ft-oktoberfest-tickets-2002065112646",
-        "endDate": "2026-10-03",
-        "description": "One Saturday night on the Blackhorse Beer Mile, £11.55, and the ticket includes the stein itself to take home — which is a better souvenir than most of th"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 29,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Camden Oktoberfest",
-        "startDate": "2026-10-03",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Electric Ballroom, Camden",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Electric Ballroom",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://camdenoktoberfest.com/2026tickets",
-        "endDate": "2026-10-24",
-        "description": "Four Saturday afternoon sessions, tenth year. Bavarian hall dressing, long tables, bratwurst and Currywurst, steins, and staff in Dirndl and Lederhosen; fancy dress encoura",
-        "subEvent": [
-          {
-            "@type": "Event",
-            "name": "Camden Oktoberfest",
-            "startDate": "2026-10-03",
-            "location": {
-              "@type": "Place",
-              "name": "Electric Ballroom, Camden",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Electric Ballroom",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Camden Oktoberfest",
-            "startDate": "2026-10-10",
-            "location": {
-              "@type": "Place",
-              "name": "Electric Ballroom, Camden",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Electric Ballroom",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Camden Oktoberfest",
-            "startDate": "2026-10-17",
-            "location": {
-              "@type": "Place",
-              "name": "Electric Ballroom, Camden",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Electric Ballroom",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Camden Oktoberfest",
-            "startDate": "2026-10-24",
-            "location": {
-              "@type": "Place",
-              "name": "Electric Ballroom, Camden",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Electric Ballroom",
-                "addressCountry": "GB"
-              }
+        {
+          "@type": "Event",
+          "name": "BOXPARK",
+          "startDate": "2026-10-03",
+          "location": {
+            "@type": "Place",
+            "name": "Croydon, Camden & Shoreditch",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Croydon",
+              "addressCountry": "GB"
             }
           }
-        ]
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 30,
-      "item": {
-        "@type": "Event",
-        "name": "We Brought Beer",
-        "startDate": "2026-10-09",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Tooting Market, SW17",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Tooting Market",
-            "addressCountry": "GB"
-          }
         },
-        "url": "https://www.instagram.com/webroughtbeer/",
-        "endDate": "2026-10-10",
-        "description": "Billed by them as “(slightly late) Oktoberfest 2026”, which is the most honest headline on this page. Munich packs up on the Sunday before and they say so themselves, then argue"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 31,
-      "item": {
-        "@type": "EventSeries",
-        "name": "GG’s Bar Oktoberfest",
-        "startDate": "2026-10-09",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Newport, Isle of Wight",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Newport",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.thepriceiswight.co.uk/product/ggs-bar-oktoberfest-2026/",
-        "endDate": "2026-10-10",
-        "description": "The only one on this list that needs a ferry. Two nights at GG’s Island Riding Centre: London Oompah Band, a DJ, party games and Bavarian serving staff. £10 first-release earl",
-        "subEvent": [
-          {
-            "@type": "Event",
-            "name": "GG’s Bar Oktoberfest",
-            "startDate": "2026-10-09",
-            "location": {
-              "@type": "Place",
-              "name": "Newport, Isle of Wight",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Newport",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "GG’s Bar Oktoberfest",
-            "startDate": "2026-10-10",
-            "location": {
-              "@type": "Place",
-              "name": "Newport, Isle of Wight",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Newport",
-                "addressCountry": "GB"
-              }
+        {
+          "@type": "Event",
+          "name": "BOXPARK",
+          "startDate": "2026-10-10",
+          "location": {
+            "@type": "Place",
+            "name": "Croydon, Camden & Shoreditch",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Croydon",
+              "addressCountry": "GB"
             }
           }
-        ]
-      }
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 32,
-      "item": {
-        "@type": "Event",
-        "name": "Oktoberfest Guildford",
-        "startDate": "2026-10-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Merrist Wood College, Guildford",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Merrist Wood College",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.oktoberfestguildford.co.uk/",
-        "endDate": "2026-10-10",
-        "description": "Merrist Wood College, Guildford"
-      }
+      "@type": "Event",
+      "name": "BrewDog Waterloo",
+      "startDate": "2026-09-26",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "The Sidings, Waterloo Station, SE1",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "The Sidings",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.brewdog.com/pages/bars/waterloo",
+      "endDate": "2026-09-26",
+      "description": "One Saturday night, priced in two tiers: £5 gets a ticket and a beer on arrival, a live oompah band, a sausage contest and a DJ until late. £15 adds a beer tasting"
     },
     {
-      "@type": "ListItem",
-      "position": 33,
-      "item": {
-        "@type": "Event",
-        "name": "BREW//LDN Oktoberfest",
-        "startDate": "2026-10-16",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Olympic Park",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Olympic Park",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.brewldn.com/brew-ldn-oktoberfest",
-        "endDate": "2026-10-17",
-        "description": "Craft-led beer fest with an Oktoberfest coat of paint."
-      }
+      "@type": "Event",
+      "name": "BOXHALL",
+      "startDate": "2026-09-28",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Liverpool Street, EC2M",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Liverpool Street",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.boxhall.co.uk/blog/oktoberfest",
+      "endDate": "2026-10-31",
+      "description": "A City one that runs and runs, though Brigadiers up the road has the better claim on the beer: litre steins at £12.95 from 28 September to 31 October, live sport on, food hall"
     },
     {
-      "@type": "ListItem",
-      "position": 34,
-      "item": {
-        "@type": "Event",
-        "name": "Hertfordshire Oktoberfest",
-        "startDate": "2026-10-16",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Hertfordshire",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Hertfordshire",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.oktoberfesttour.co.uk/",
-        "endDate": "2026-10-17",
-        "description": "Run by Oktoberfest Tour Limited, who also do the Bath weekend a fortnight later; those two are their whole 2026 programme. Big-tent format, live entertainment, steins."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 35,
-      "item": {
-        "@type": "Event",
-        "name": "Oktoberfest Essex",
-        "startDate": "2026-10-23",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Central Park, Chelmsford",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Central Park",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.oktoberfestessex.co.uk/",
-        "endDate": "2026-10-24",
-        "description": "A proper marquee in the middle of town, three ticketed sessions across the weekend and a separate ticket for each, from £15. Two-pint steins, German food from a row of vendo"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 36,
-      "item": {
-        "@type": "Event",
-        "name": "Oktoberfest Southampton",
-        "startDate": "2026-10-23",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Guildhall Square, SO14",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Guildhall Square",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.southamptonoktoberfest.com/",
-        "endDate": "2026-10-24",
-        "description": "Ninth year, and it bills itself as the biggest in the country: a themed beer marquee dropped into the civic square, thousands through it, oompah bands and DJs across the weeke"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 37,
-      "item": {
-        "@type": "Event",
-        "name": "Brighton’s Oktoberfest",
-        "startDate": "2026-10-23",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Shelter Hall, Kings Road Arches, BN1",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Shelter Hall",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://shelterhall.co.uk/whats-on/brightons-oktoberfest-2026/",
-        "endDate": "2026-10-24",
-        "description": "On the seafront, in the arches, which is the most interesting room of the three: four sessions across the Friday and Saturday only, communal tables, and an arriv"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 38,
-      "item": {
-        "@type": "Event",
-        "name": "An Almost Authentic Oktoberfest",
-        "startDate": "2026-09-26",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Rooster’s Taproom, Harrogate",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Rooster’s Taproom",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.roosters.co.uk/pages/oktoberfest",
-        "endDate": "2026-09-26",
-        "description": "Their name for it, not ours, and our catalogue says they have earned the qualifier: of the 27 Rooster’s beers we hold, exactly one is a lager, a Festbier at 5.2% — a Fes"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 39,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Freight Island",
-        "startDate": "2026-10-01",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Manchester",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Manchester",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.escapetofreightisland.com/oktoberfest",
-        "endDate": "2026-10-11",
-        "description": "Free-entry venue takeover; more drag/comedy than classic Wiesn — still steins and a crowd.",
-        "subEvent": [
-          {
-            "@type": "Event",
-            "name": "Freight Island",
-            "startDate": "2026-10-01",
-            "endDate": "2026-10-04",
-            "location": {
-              "@type": "Place",
-              "name": "Manchester",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Manchester",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Freight Island",
-            "startDate": "2026-10-08",
-            "endDate": "2026-10-11",
-            "location": {
-              "@type": "Place",
-              "name": "Manchester",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Manchester",
-                "addressCountry": "GB"
-              }
+      "@type": "EventSeries",
+      "name": "Mercato Metropolitano",
+      "startDate": "2026-09-28",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Elephant & Castle, Mayfair & Wood Wharf",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Elephant & Castle",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://mercatometropolitano.com/events/ec-oktoberfest/",
+      "endDate": "2026-10-10",
+      "description": "Three food markets, three different Oktoberfests, and only two of them name a beer. Those two pour German Kraft, a London brewery with its own beer garden ins",
+      "subEvent": [
+        {
+          "@type": "Event",
+          "name": "Mercato Metropolitano",
+          "startDate": "2026-09-28",
+          "endDate": "2026-10-04",
+          "location": {
+            "@type": "Place",
+            "name": "Elephant & Castle, Mayfair & Wood Wharf",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Elephant & Castle",
+              "addressCountry": "GB"
             }
           }
-        ]
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 40,
-      "item": {
-        "@type": "Event",
-        "name": "BAR Events",
-        "startDate": "2026-10-02",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Temple Arches, Leeds",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Temple Arches",
-            "addressCountry": "GB"
-          }
         },
-        "url": "https://www.koobit.com/oktoberfest-e230643",
-        "description": "Temple Arches, Leeds"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 41,
-      "item": {
-        "@type": "Event",
-        "name": "Oktoberfest Doncaster",
-        "startDate": "2026-10-02",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Doncaster Racecourse",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Doncaster Racecourse",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.doncaster-racecourse.co.uk/whats-on/oktoberfest-doncaster-saturday-3rd-october-2026",
-        "endDate": "2026-10-03",
-        "description": "Doncaster Racecourse"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 42,
-      "item": {
-        "@type": "Event",
-        "name": "OktoBEARfest",
-        "startDate": "2026-10-02",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Beartown Brewery, Congleton, Cheshire",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Beartown Brewery",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.beartownbrewery.co.uk/oktobearfest/",
-        "endDate": "2026-10-03",
-        "description": "Their fifth year of it, and they have not skimped: a live 30-piece brass oompah band, which is comfortably the biggest band named anywhere on this page. Friday"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 43,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Triple Point Brewing",
-        "startDate": "2026-10-02",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Sheffield, S1",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Sheffield",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://triplepointbrewing.co.uk/event/oktoberfest-save-the-date/",
-        "endDate": "2026-10-03",
-        "description": "A brewery pouring its own: the Oktoberfest beer is a Märzen they brew on site, 4.8%, rather than a German lager bought in. Two nights of live music in the beer garden and free to get i",
-        "subEvent": [
-          {
-            "@type": "Event",
-            "name": "Triple Point Brewing",
-            "startDate": "2026-10-02",
-            "location": {
-              "@type": "Place",
-              "name": "Sheffield, S1",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Sheffield",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Triple Point Brewing",
-            "startDate": "2026-10-03",
-            "location": {
-              "@type": "Place",
-              "name": "Sheffield, S1",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Sheffield",
-                "addressCountry": "GB"
-              }
+        {
+          "@type": "Event",
+          "name": "Mercato Metropolitano",
+          "startDate": "2026-10-03",
+          "location": {
+            "@type": "Place",
+            "name": "Elephant & Castle, Mayfair & Wood Wharf",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Elephant & Castle",
+              "addressCountry": "GB"
             }
           }
-        ]
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 44,
-      "item": {
-        "@type": "Event",
-        "name": "Docktoberfest",
-        "startDate": "2026-10-03",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Hill Dickinson Stadium, Liverpool",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Hill Dickinson Stadium",
-            "addressCountry": "GB"
-          }
         },
-        "url": "https://www.universe.com/events/docktoberfest-2026-tickets-FV78GJ",
-        "endDate": "2026-10-03",
-        "description": "Sold out / waitlist"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 45,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Oktoberfest Newcastle",
-        "startDate": "2026-10-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Times Square",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Times Square",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.oktoberfest.org.uk/newcastle",
-        "endDate": "2026-10-24",
-        "description": "Times Square",
-        "subEvent": [
-          {
-            "@type": "Event",
-            "name": "Oktoberfest Newcastle",
-            "startDate": "2026-10-10",
-            "location": {
-              "@type": "Place",
-              "name": "Times Square",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Times Square",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Oktoberfest Newcastle",
-            "startDate": "2026-10-17",
-            "location": {
-              "@type": "Place",
-              "name": "Times Square",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Times Square",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Oktoberfest Newcastle",
-            "startDate": "2026-10-24",
-            "location": {
-              "@type": "Place",
-              "name": "Times Square",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Times Square",
-                "addressCountry": "GB"
-              }
+        {
+          "@type": "Event",
+          "name": "Mercato Metropolitano",
+          "startDate": "2026-10-10",
+          "location": {
+            "@type": "Place",
+            "name": "Elephant & Castle, Mayfair & Wood Wharf",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Elephant & Castle",
+              "addressCountry": "GB"
             }
           }
-        ]
-      }
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 46,
-      "item": {
-        "@type": "Event",
-        "name": "Oktoberfest Derby",
-        "startDate": "2026-10-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Ultra Warehouse",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Ultra Warehouse",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.koobit.com/oktoberfest-ultra-warehouse-derby-e210254",
-        "endDate": "2026-10-10",
-        "description": "Warehouse turned Bavarian hall; oompah band and German beer (not named as Big Six)."
-      }
+      "@type": "Event",
+      "name": "London Oktoberfest",
+      "startDate": "2026-10-01",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Finsbury Park",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Finsbury Park",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://london-oktoberfest.co.uk",
+      "endDate": "2026-10-03",
+      "description": "Big tent, Bavarian FestBeer, thousands of people."
     },
     {
-      "@type": "ListItem",
-      "position": 47,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Yorktoberfest",
-        "startDate": "2026-10-16",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "York Racecourse",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "York Racecourse",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.yorktoberfest.co.uk/",
-        "endDate": "2026-10-24",
-        "description": "York Racecourse",
-        "subEvent": [
-          {
-            "@type": "Event",
-            "name": "Yorktoberfest",
-            "startDate": "2026-10-16",
-            "endDate": "2026-10-17",
-            "location": {
-              "@type": "Place",
-              "name": "York Racecourse",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "York Racecourse",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Yorktoberfest",
-            "startDate": "2026-10-23",
-            "endDate": "2026-10-24",
-            "location": {
-              "@type": "Place",
-              "name": "York Racecourse",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "York Racecourse",
-                "addressCountry": "GB"
-              }
-            }
-          }
-        ]
-      }
+      "@type": "Event",
+      "name": "Five Points Taproom",
+      "startDate": "2026-10-02",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Hackney",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hackney",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://dice.fm/event/k62bdq-oktoberfest-at-five-points-taproom-courtyard-2nd-oct-the-five-points-taproom-courtyard-london-tickets",
+      "endDate": "2026-10-04",
+      "description": "German guests (Veltins, Tegernseer etc.) — not the Big Six, still a good beer crowd."
     },
     {
-      "@type": "ListItem",
-      "position": 48,
-      "item": {
-        "@type": "Event",
-        "name": "BOXPARK Liverpool",
-        "startDate": "2026-10-17",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Liverpool",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Liverpool",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.boxpark.co.uk/venues/liverpool/events/oktoberfest?eventDate=2026-10-17T10%3A00%3A00.000Z",
-        "endDate": "2026-10-17",
-        "description": "Liverpool"
-      }
+      "@type": "Event",
+      "name": "40FT Oktoberfest",
+      "startDate": "2026-10-03",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "40FT Brewery, Lockwood Way, Walthamstow E17",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "40FT Brewery",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.eventbrite.co.uk/e/40ft-oktoberfest-tickets-2002065112646",
+      "endDate": "2026-10-03",
+      "description": "One Saturday night on the Blackhorse Beer Mile, £11.55, and the ticket includes the stein itself to take home — which is a better souvenir than most of th"
     },
     {
-      "@type": "ListItem",
-      "position": 49,
-      "item": {
-        "@type": "Event",
-        "name": "Arcadia Oktoberfest",
-        "startDate": "2026-09-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arcadia Exeter, 6 Northernhay Place, EX4 3QJ",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Arcadia Exeter",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.eventbrite.com/e/arcadia-oktoberfest-opening-evening-food-beer-music-tickets-2000280773640",
-        "endDate": "2026-10-03",
-        "description": "Nine days run by Utopian, a Devon brewery whose whole identity is German lager. We hold fifteen of their beers and they are a Helles, a Czech pilsner, a"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 50,
-      "item": {
-        "@type": "Event",
-        "name": "Cambridge Oktoberfest",
-        "startDate": "2026-09-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Jesus Green",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Jesus Green",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://cambridge-oktoberfest.co.uk/home/",
-        "endDate": "2026-09-26",
-        "description": "Jesus Green"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 51,
-      "item": {
-        "@type": "Event",
-        "name": "SWG3 Oktoberfest",
-        "startDate": "2026-09-26",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Glasgow",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Glasgow",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://swg3.tv/events/2026/september/oktoberfest/",
-        "endDate": "2026-09-26",
-        "description": "Glasgow"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 52,
-      "item": {
-        "@type": "Event",
-        "name": "Prospect Building",
-        "startDate": "2026-09-26",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Bristol",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Bristol",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.theprospectbuilding.com/events/oktoberfest_",
-        "endDate": "2026-09-26",
-        "description": "Ticketed Bavarian party — confirm beer list on the day."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 53,
-      "item": {
-        "@type": "Event",
-        "name": "OktoberWEST",
-        "startDate": "2026-10-02",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "WEST on the Green, Glasgow",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "WEST on the Green",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://westbeer.com/pages/oktoberwest",
-        "endDate": "2026-10-03",
-        "description": "House Oktoberfest lager."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 54,
-      "item": {
-        "@type": "EventSeries",
-        "name": "Oktoberfest Cardiff",
-        "startDate": "2026-10-03",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Tiger Yard, Cardiff Bay, CF10",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Tiger Yard",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://tiger-yard.com/oktoberfest-2026/",
-        "endDate": "2026-10-24",
-        "description": "Four Saturdays at the open-air container yard on Porth Teigr Way, each split in two: 12:00–16:30 and 17:00–21:30, so pick one rather than assuming it runs through. Live",
-        "subEvent": [
-          {
-            "@type": "Event",
-            "name": "Oktoberfest Cardiff",
-            "startDate": "2026-10-03",
-            "location": {
-              "@type": "Place",
-              "name": "Tiger Yard, Cardiff Bay, CF10",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Tiger Yard",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Oktoberfest Cardiff",
-            "startDate": "2026-10-10",
-            "location": {
-              "@type": "Place",
-              "name": "Tiger Yard, Cardiff Bay, CF10",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Tiger Yard",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Oktoberfest Cardiff",
-            "startDate": "2026-10-17",
-            "location": {
-              "@type": "Place",
-              "name": "Tiger Yard, Cardiff Bay, CF10",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Tiger Yard",
-                "addressCountry": "GB"
-              }
-            }
-          },
-          {
-            "@type": "Event",
-            "name": "Oktoberfest Cardiff",
-            "startDate": "2026-10-24",
-            "location": {
-              "@type": "Place",
-              "name": "Tiger Yard, Cardiff Bay, CF10",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Tiger Yard",
-                "addressCountry": "GB"
-              }
+      "@type": "EventSeries",
+      "name": "Camden Oktoberfest",
+      "startDate": "2026-10-03",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Electric Ballroom, Camden",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Electric Ballroom",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://camdenoktoberfest.com/2026tickets",
+      "endDate": "2026-10-24",
+      "description": "Four Saturday afternoon sessions, tenth year. Bavarian hall dressing, long tables, bratwurst and Currywurst, steins, and staff in Dirndl and Lederhosen; fancy dress encoura",
+      "subEvent": [
+        {
+          "@type": "Event",
+          "name": "Camden Oktoberfest",
+          "startDate": "2026-10-03",
+          "location": {
+            "@type": "Place",
+            "name": "Electric Ballroom, Camden",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Electric Ballroom",
+              "addressCountry": "GB"
             }
           }
-        ]
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 55,
-      "item": {
-        "@type": "Event",
-        "name": "Edinburgh Oktoberfest",
-        "startDate": "2026-10-08",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Central Hall",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Central Hall",
-            "addressCountry": "GB"
+        },
+        {
+          "@type": "Event",
+          "name": "Camden Oktoberfest",
+          "startDate": "2026-10-10",
+          "location": {
+            "@type": "Place",
+            "name": "Electric Ballroom, Camden",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Electric Ballroom",
+              "addressCountry": "GB"
+            }
           }
         },
-        "url": "https://edinburgh-oktoberfest.co.uk/",
-        "endDate": "2026-10-10",
-        "description": "Indoor Bavarian FestBeer sessions."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 56,
-      "item": {
-        "@type": "Event",
-        "name": "Oktoberfest Cornwall",
-        "startDate": "2026-10-17",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Monkey Tree Holiday Park, Newquay",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Monkey Tree Holiday Park",
-            "addressCountry": "GB"
+        {
+          "@type": "Event",
+          "name": "Camden Oktoberfest",
+          "startDate": "2026-10-17",
+          "location": {
+            "@type": "Place",
+            "name": "Electric Ballroom, Camden",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Electric Ballroom",
+              "addressCountry": "GB"
+            }
           }
         },
-        "url": "https://www.monkeytreeholidaypark.co.uk/all-events/oktoberfest/",
-        "endDate": "2026-10-17",
-        "description": "Imported pilsner in 2-pint steins, oompah, big tent; early-bird £4 pint window on standing tickets."
-      }
+        {
+          "@type": "Event",
+          "name": "Camden Oktoberfest",
+          "startDate": "2026-10-24",
+          "location": {
+            "@type": "Place",
+            "name": "Electric Ballroom, Camden",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Electric Ballroom",
+              "addressCountry": "GB"
+            }
+          }
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 57,
-      "item": {
-        "@type": "Event",
-        "name": "Bath Oktoberfest",
-        "startDate": "2026-10-30",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Bath",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Bath",
-            "addressCountry": "GB"
-          }
-        },
-        "url": "https://www.oktoberfesttour.co.uk/",
-        "endDate": "2026-10-31",
-        "description": "Oktoberfest Tour Limited again, closing the season on the last weekend of October, three weeks after Munich has packed up — a last day it now shares with the Oktoberfest UK tour’s Portsmouth st"
-      }
+      "@type": "Event",
+      "name": "We Brought Beer",
+      "startDate": "2026-10-09",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Tooting Market, SW17",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tooting Market",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.instagram.com/webroughtbeer/",
+      "endDate": "2026-10-10",
+      "description": "Billed by them as “(slightly late) Oktoberfest 2026”, which is the most honest headline on this page. Munich packs up on the Sunday before and they say so themselves, then argue"
     },
     {
-      "@type": "ListItem",
-      "position": 58,
-      "item": {
-        "@type": "Event",
-        "name": "Brewhouse & Kitchen",
-        "startDate": "2026-09-19",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Thirteen brewpubs, Chester down to Worthing",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Thirteen brewpubs",
-            "addressCountry": "GB"
+      "@type": "EventSeries",
+      "name": "GG’s Bar Oktoberfest",
+      "startDate": "2026-10-09",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Newport, Isle of Wight",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Newport",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.thepriceiswight.co.uk/product/ggs-bar-oktoberfest-2026/",
+      "endDate": "2026-10-10",
+      "description": "The only one on this list that needs a ferry. Two nights at GG’s Island Riding Centre: London Oompah Band, a DJ, party games and Bavarian serving staff. £10 first-release earl",
+      "subEvent": [
+        {
+          "@type": "Event",
+          "name": "GG’s Bar Oktoberfest",
+          "startDate": "2026-10-09",
+          "location": {
+            "@type": "Place",
+            "name": "Newport, Isle of Wight",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Newport",
+              "addressCountry": "GB"
+            }
           }
         },
-        "url": "https://www.brewhouseandkitchen.com/brewpubs",
-        "endDate": "2026-10-04",
-        "description": "The only entry on this page that runs Munich’s exact dates without a break, 19 September to 4 October, opening and closing on the same days as the Wiesn."
-      }
+        {
+          "@type": "Event",
+          "name": "GG’s Bar Oktoberfest",
+          "startDate": "2026-10-10",
+          "location": {
+            "@type": "Place",
+            "name": "Newport, Isle of Wight",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Newport",
+              "addressCountry": "GB"
+            }
+          }
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 59,
-      "item": {
-        "@type": "Event",
-        "name": "Oktoberfest UK",
-        "startDate": "2026-10-02",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Chichester to Beverley",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Chichester to Beverley",
-            "addressCountry": "GB"
+      "@type": "Event",
+      "name": "Oktoberfest Guildford",
+      "startDate": "2026-10-10",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Merrist Wood College, Guildford",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Merrist Wood College",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.oktoberfestguildford.co.uk/",
+      "endDate": "2026-10-10",
+      "description": "Merrist Wood College, Guildford"
+    },
+    {
+      "@type": "Event",
+      "name": "BREW//LDN Oktoberfest",
+      "startDate": "2026-10-16",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Olympic Park",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Olympic Park",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.brewldn.com/brew-ldn-oktoberfest",
+      "endDate": "2026-10-17",
+      "description": "Craft-led beer fest with an Oktoberfest coat of paint."
+    },
+    {
+      "@type": "Event",
+      "name": "Hertfordshire Oktoberfest",
+      "startDate": "2026-10-16",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Hertfordshire",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hertfordshire",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.oktoberfesttour.co.uk/",
+      "endDate": "2026-10-17",
+      "description": "Run by Oktoberfest Tour Limited, who also do the Bath weekend a fortnight later; those two are their whole 2026 programme. Big-tent format, live entertainment, steins."
+    },
+    {
+      "@type": "Event",
+      "name": "Oktoberfest Essex",
+      "startDate": "2026-10-23",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Central Park, Chelmsford",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Central Park",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.oktoberfestessex.co.uk/",
+      "endDate": "2026-10-24",
+      "description": "A proper marquee in the middle of town, three ticketed sessions across the weekend and a separate ticket for each, from £15. Two-pint steins, German food from a row of vendo"
+    },
+    {
+      "@type": "Event",
+      "name": "Oktoberfest Southampton",
+      "startDate": "2026-10-23",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Guildhall Square, SO14",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Guildhall Square",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.southamptonoktoberfest.com/",
+      "endDate": "2026-10-24",
+      "description": "Ninth year, and it bills itself as the biggest in the country: a themed beer marquee dropped into the civic square, thousands through it, oompah bands and DJs across the weeke"
+    },
+    {
+      "@type": "Event",
+      "name": "Brighton’s Oktoberfest",
+      "startDate": "2026-10-23",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Shelter Hall, Kings Road Arches, BN1",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Shelter Hall",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://shelterhall.co.uk/whats-on/brightons-oktoberfest-2026/",
+      "endDate": "2026-10-24",
+      "description": "On the seafront, in the arches, which is the most interesting room of the three: four sessions across the Friday and Saturday only, communal tables, and an arriv"
+    },
+    {
+      "@type": "Event",
+      "name": "An Almost Authentic Oktoberfest",
+      "startDate": "2026-09-26",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Rooster’s Taproom, Harrogate",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Rooster’s Taproom",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.roosters.co.uk/pages/oktoberfest",
+      "endDate": "2026-09-26",
+      "description": "Their name for it, not ours, and our catalogue says they have earned the qualifier: of the 27 Rooster’s beers we hold, exactly one is a lager, a Festbier at 5.2% — a Fes"
+    },
+    {
+      "@type": "EventSeries",
+      "name": "Freight Island",
+      "startDate": "2026-10-01",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Manchester",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Manchester",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.escapetofreightisland.com/oktoberfest",
+      "endDate": "2026-10-11",
+      "description": "Free-entry venue takeover; more drag/comedy than classic Wiesn — still steins and a crowd.",
+      "subEvent": [
+        {
+          "@type": "Event",
+          "name": "Freight Island",
+          "startDate": "2026-10-01",
+          "endDate": "2026-10-04",
+          "location": {
+            "@type": "Place",
+            "name": "Manchester",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Manchester",
+              "addressCountry": "GB"
+            }
           }
         },
-        "url": "https://www.oktoberfestuk.co.uk",
-        "endDate": "2026-10-31",
-        "description": "One operator, nine towns, and the thing none of the nine websites mentions: Oktoberfest Essex and Oktoberfest Guildford, both listed under London & South East as local events,"
-      }
+        {
+          "@type": "Event",
+          "name": "Freight Island",
+          "startDate": "2026-10-08",
+          "endDate": "2026-10-11",
+          "location": {
+            "@type": "Place",
+            "name": "Manchester",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Manchester",
+              "addressCountry": "GB"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Event",
+      "name": "BAR Events",
+      "startDate": "2026-10-02",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Temple Arches, Leeds",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Temple Arches",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.koobit.com/oktoberfest-e230643",
+      "description": "Temple Arches, Leeds"
+    },
+    {
+      "@type": "Event",
+      "name": "Oktoberfest Doncaster",
+      "startDate": "2026-10-02",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Doncaster Racecourse",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Doncaster Racecourse",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.doncaster-racecourse.co.uk/whats-on/oktoberfest-doncaster-saturday-3rd-october-2026",
+      "endDate": "2026-10-03",
+      "description": "Doncaster Racecourse"
+    },
+    {
+      "@type": "Event",
+      "name": "OktoBEARfest",
+      "startDate": "2026-10-02",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Beartown Brewery, Congleton, Cheshire",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Beartown Brewery",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.beartownbrewery.co.uk/oktobearfest/",
+      "endDate": "2026-10-03",
+      "description": "Their fifth year of it, and they have not skimped: a live 30-piece brass oompah band, which is comfortably the biggest band named anywhere on this page. Friday"
+    },
+    {
+      "@type": "EventSeries",
+      "name": "Triple Point Brewing",
+      "startDate": "2026-10-02",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Sheffield, S1",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Sheffield",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://triplepointbrewing.co.uk/event/oktoberfest-save-the-date/",
+      "endDate": "2026-10-03",
+      "description": "A brewery pouring its own: the Oktoberfest beer is a Märzen they brew on site, 4.8%, rather than a German lager bought in. Two nights of live music in the beer garden and free to get i",
+      "subEvent": [
+        {
+          "@type": "Event",
+          "name": "Triple Point Brewing",
+          "startDate": "2026-10-02",
+          "location": {
+            "@type": "Place",
+            "name": "Sheffield, S1",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Sheffield",
+              "addressCountry": "GB"
+            }
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Triple Point Brewing",
+          "startDate": "2026-10-03",
+          "location": {
+            "@type": "Place",
+            "name": "Sheffield, S1",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Sheffield",
+              "addressCountry": "GB"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Event",
+      "name": "Docktoberfest",
+      "startDate": "2026-10-03",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Hill Dickinson Stadium, Liverpool",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hill Dickinson Stadium",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.universe.com/events/docktoberfest-2026-tickets-FV78GJ",
+      "endDate": "2026-10-03",
+      "description": "Sold out / waitlist"
+    },
+    {
+      "@type": "EventSeries",
+      "name": "Oktoberfest Newcastle",
+      "startDate": "2026-10-10",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Times Square",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Times Square",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.oktoberfest.org.uk/newcastle",
+      "endDate": "2026-10-24",
+      "description": "Times Square",
+      "subEvent": [
+        {
+          "@type": "Event",
+          "name": "Oktoberfest Newcastle",
+          "startDate": "2026-10-10",
+          "location": {
+            "@type": "Place",
+            "name": "Times Square",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Times Square",
+              "addressCountry": "GB"
+            }
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Oktoberfest Newcastle",
+          "startDate": "2026-10-17",
+          "location": {
+            "@type": "Place",
+            "name": "Times Square",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Times Square",
+              "addressCountry": "GB"
+            }
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Oktoberfest Newcastle",
+          "startDate": "2026-10-24",
+          "location": {
+            "@type": "Place",
+            "name": "Times Square",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Times Square",
+              "addressCountry": "GB"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Event",
+      "name": "Oktoberfest Derby",
+      "startDate": "2026-10-10",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Ultra Warehouse",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ultra Warehouse",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.koobit.com/oktoberfest-ultra-warehouse-derby-e210254",
+      "endDate": "2026-10-10",
+      "description": "Warehouse turned Bavarian hall; oompah band and German beer (not named as Big Six)."
+    },
+    {
+      "@type": "EventSeries",
+      "name": "Yorktoberfest",
+      "startDate": "2026-10-16",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "York Racecourse",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "York Racecourse",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.yorktoberfest.co.uk/",
+      "endDate": "2026-10-24",
+      "description": "York Racecourse",
+      "subEvent": [
+        {
+          "@type": "Event",
+          "name": "Yorktoberfest",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-17",
+          "location": {
+            "@type": "Place",
+            "name": "York Racecourse",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "York Racecourse",
+              "addressCountry": "GB"
+            }
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Yorktoberfest",
+          "startDate": "2026-10-23",
+          "endDate": "2026-10-24",
+          "location": {
+            "@type": "Place",
+            "name": "York Racecourse",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "York Racecourse",
+              "addressCountry": "GB"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Event",
+      "name": "BOXPARK Liverpool",
+      "startDate": "2026-10-17",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Liverpool",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Liverpool",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.boxpark.co.uk/venues/liverpool/events/oktoberfest?eventDate=2026-10-17T10%3A00%3A00.000Z",
+      "endDate": "2026-10-17",
+      "description": "Liverpool"
+    },
+    {
+      "@type": "Event",
+      "name": "Arcadia Oktoberfest",
+      "startDate": "2026-09-25",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Arcadia Exeter, 6 Northernhay Place, EX4 3QJ",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Arcadia Exeter",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.eventbrite.com/e/arcadia-oktoberfest-opening-evening-food-beer-music-tickets-2000280773640",
+      "endDate": "2026-10-03",
+      "description": "Nine days run by Utopian, a Devon brewery whose whole identity is German lager. We hold fifteen of their beers and they are a Helles, a Czech pilsner, a"
+    },
+    {
+      "@type": "Event",
+      "name": "Cambridge Oktoberfest",
+      "startDate": "2026-09-25",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Jesus Green",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Jesus Green",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://cambridge-oktoberfest.co.uk/home/",
+      "endDate": "2026-09-26",
+      "description": "Jesus Green"
+    },
+    {
+      "@type": "Event",
+      "name": "SWG3 Oktoberfest",
+      "startDate": "2026-09-26",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Glasgow",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Glasgow",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://swg3.tv/events/2026/september/oktoberfest/",
+      "endDate": "2026-09-26",
+      "description": "Glasgow"
+    },
+    {
+      "@type": "Event",
+      "name": "Prospect Building",
+      "startDate": "2026-09-26",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Bristol",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bristol",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.theprospectbuilding.com/events/oktoberfest_",
+      "endDate": "2026-09-26",
+      "description": "Ticketed Bavarian party — confirm beer list on the day."
+    },
+    {
+      "@type": "Event",
+      "name": "OktoberWEST",
+      "startDate": "2026-10-02",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "WEST on the Green, Glasgow",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "WEST on the Green",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://westbeer.com/pages/oktoberwest",
+      "endDate": "2026-10-03",
+      "description": "House Oktoberfest lager."
+    },
+    {
+      "@type": "EventSeries",
+      "name": "Oktoberfest Cardiff",
+      "startDate": "2026-10-03",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Tiger Yard, Cardiff Bay, CF10",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tiger Yard",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://tiger-yard.com/oktoberfest-2026/",
+      "endDate": "2026-10-24",
+      "description": "Four Saturdays at the open-air container yard on Porth Teigr Way, each split in two: 12:00–16:30 and 17:00–21:30, so pick one rather than assuming it runs through. Live",
+      "subEvent": [
+        {
+          "@type": "Event",
+          "name": "Oktoberfest Cardiff",
+          "startDate": "2026-10-03",
+          "location": {
+            "@type": "Place",
+            "name": "Tiger Yard, Cardiff Bay, CF10",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Tiger Yard",
+              "addressCountry": "GB"
+            }
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Oktoberfest Cardiff",
+          "startDate": "2026-10-10",
+          "location": {
+            "@type": "Place",
+            "name": "Tiger Yard, Cardiff Bay, CF10",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Tiger Yard",
+              "addressCountry": "GB"
+            }
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Oktoberfest Cardiff",
+          "startDate": "2026-10-17",
+          "location": {
+            "@type": "Place",
+            "name": "Tiger Yard, Cardiff Bay, CF10",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Tiger Yard",
+              "addressCountry": "GB"
+            }
+          }
+        },
+        {
+          "@type": "Event",
+          "name": "Oktoberfest Cardiff",
+          "startDate": "2026-10-24",
+          "location": {
+            "@type": "Place",
+            "name": "Tiger Yard, Cardiff Bay, CF10",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Tiger Yard",
+              "addressCountry": "GB"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Event",
+      "name": "Edinburgh Oktoberfest",
+      "startDate": "2026-10-08",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Central Hall",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Central Hall",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://edinburgh-oktoberfest.co.uk/",
+      "endDate": "2026-10-10",
+      "description": "Indoor Bavarian FestBeer sessions."
+    },
+    {
+      "@type": "Event",
+      "name": "Oktoberfest Cornwall",
+      "startDate": "2026-10-17",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Monkey Tree Holiday Park, Newquay",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Monkey Tree Holiday Park",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.monkeytreeholidaypark.co.uk/all-events/oktoberfest/",
+      "endDate": "2026-10-17",
+      "description": "Imported pilsner in 2-pint steins, oompah, big tent; early-bird £4 pint window on standing tickets."
+    },
+    {
+      "@type": "Event",
+      "name": "Bath Oktoberfest",
+      "startDate": "2026-10-30",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Bath",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bath",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.oktoberfesttour.co.uk/",
+      "endDate": "2026-10-31",
+      "description": "Oktoberfest Tour Limited again, closing the season on the last weekend of October, three weeks after Munich has packed up — a last day it now shares with the Oktoberfest UK tour’s Portsmouth st"
+    },
+    {
+      "@type": "Event",
+      "name": "Brewhouse & Kitchen",
+      "startDate": "2026-09-19",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Thirteen brewpubs, Chester down to Worthing",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Thirteen brewpubs",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.brewhouseandkitchen.com/brewpubs",
+      "endDate": "2026-10-04",
+      "description": "The only entry on this page that runs Munich’s exact dates without a break, 19 September to 4 October, opening and closing on the same days as the Wiesn."
+    },
+    {
+      "@type": "Event",
+      "name": "Oktoberfest UK",
+      "startDate": "2026-10-02",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Chichester to Beverley",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Chichester to Beverley",
+          "addressCountry": "GB"
+        }
+      },
+      "url": "https://www.oktoberfestuk.co.uk",
+      "endDate": "2026-10-31",
+      "description": "One operator, nine towns, and the thing none of the nine websites mentions: Oktoberfest Essex and Oktoberfest Guildford, both listed under London & South East as local events,"
     }
   ]
 }
