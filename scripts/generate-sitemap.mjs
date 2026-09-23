@@ -27,6 +27,11 @@ const staticUrls = [
   { loc: '/vs-real-ale-finder.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.9' },
   { loc: '/how-to-find-beer-near-you.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.95' },
   { loc: '/blog/', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
+  // Paginated archive (generate-blog-pages.mjs, 10 posts a page). Lower
+  // priority than page 1: these are navigation, not destinations.
+  { loc: '/blog/page-2.html', lastmod: TODAY, changefreq: 'weekly', priority: '0.5' },
+  { loc: '/blog/page-3.html', lastmod: TODAY, changefreq: 'weekly', priority: '0.5' },
+  { loc: '/blog/page-4.html', lastmod: TODAY, changefreq: 'weekly', priority: '0.5' },
   { loc: '/firkin/', lastmod: TODAY, changefreq: 'monthly', priority: '0.95' },
   { loc: '/privacy-policy.html', lastmod: TODAY, changefreq: 'yearly', priority: '0.3' },
   { loc: '/about-pintpoint.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
