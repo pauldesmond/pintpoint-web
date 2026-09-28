@@ -38,6 +38,9 @@ const staticUrls = [
   { loc: '/vs-untappd.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.9' },
   { loc: '/vs-real-ale-finder.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.9' },
   { loc: '/how-to-find-beer-near-you.html', lastmod: TODAY, changefreq: 'monthly', priority: '0.95' },
+  // Rebuilt nightly from real sightings, so it genuinely changes daily —
+  // unlike most of this list, the daily changefreq here is honest.
+  { loc: '/oktoberfest-beers-pouring-now.html', lastmod: TODAY, changefreq: 'daily', priority: '0.8' },
   { loc: '/blog/', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
   // Paginated archive pages are appended below by scanning blog/ — hardcoding
   // page-2..4 meant a fifth page (added 23 Sept when the archive passed 40

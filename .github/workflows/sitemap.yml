@@ -1,8 +1,8 @@
 name: Regenerate sitemap and pubs index
 
 # Runs nightly and on demand. Reads venues from Supabase, writes
-# sitemap.xml AND regenerates the venue list inside pubs/index.html
-# (between PUBS-INDEX markers). Commits + pushes if anything changed,
+# sitemap.xml, regenerates the venue list inside pubs/index.html
+# (between PUBS-INDEX markers) and the Oktoberfest "pouring now" list. Commits + pushes if anything changed,
 # then pings IndexNow so Bing/Yandex/DuckDuckGo recrawl.
 #
 # Required repo secrets:
@@ -48,16 +48,27 @@ jobs:
           PINTPOINT_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.PINTPOINT_SUPABASE_SERVICE_ROLE_KEY }}
         run: node scripts/generate-pubs-index.mjs
 
+      - name: Regenerate Oktoberfest "pouring now" list
+        env:
+          PINTPOINT_SUPABASE_URL: ${{ secrets.PINTPOINT_SUPABASE_URL }}
+          PINTPOINT_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.PINTPOINT_SUPABASE_SERVICE_ROLE_KEY }}
+        # Exits non-zero, leaving the page untouched, if the query fails or the
+        # list falls below 10 beers. `continue-on-error` so an out-of-season
+        # page does not fail the sitemap job it shares a workflow with — the
+        # page simply keeps yesterday's list until it is retired.
+        continue-on-error: true
+        run: node scripts/generate-oktoberfest-now.mjs
+
       - name: Check for changes
         id: diff
         run: |
-          if git diff --quiet -- sitemap.xml pubs/index.html ai/counts.json; then
+          if git diff --quiet -- sitemap.xml pubs/index.html ai/counts.json oktoberfest-beers-pouring-now.html; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No changes."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Changed files:"
-            git diff --stat -- sitemap.xml pubs/index.html ai/counts.json
+            git diff --stat -- sitemap.xml pubs/index.html ai/counts.json oktoberfest-beers-pouring-now.html
           fi
 
       - name: Commit and push
@@ -65,7 +76,7 @@ jobs:
         run: |
           git config user.name  "pintpoint-sitemap-bot"
           git config user.email "noreply@pintpoint.co.uk"
-          git add sitemap.xml pubs/index.html ai/counts.json
+          git add sitemap.xml pubs/index.html ai/counts.json oktoberfest-beers-pouring-now.html
           git commit -m "sitemap + pubs index + counts: nightly regeneration from Supabase"
           git push
 
