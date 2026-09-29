@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Nobody Asked For Most Of It — PINtPRESS</title>
+  <meta name="description" content="The test was never whether AI touched it. It was whether anyone had the problem in the first place — and what happens when the answer turns out to be wrong." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/blog/drafts/nobody-asked-for-most-of-it.html" />
+  <link rel="alternate" type="application/rss+xml" title="PINtPRESS" href="https://pintpoint.co.uk/blog/feed.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nobody Asked For Most Of It" />
+  <meta property="og:description" content="Two confident fixes. Both wrong. What caught them was a person looking at a picture." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg: #0a0e1a; --card: #111827; --text: #e5e7eb; --muted: #9ca3af; --border: #1f2937; --teal: #00d4aa; --amber: #f5a623; --link: #00d4aa; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 32px; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.01em; }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); font-size: 0.9rem; font-weight: 500; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 720px; margin: 0 auto; padding: 60px 32px 80px; }
+    .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 18px; display: flex; gap: 12px; align-items: center; }
+    .category { background: rgba(0,212,170,0.12); color: var(--teal); border-radius: 999px; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h1 { font-size: 2.3rem; font-weight: 900; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 12px; }
+    h1 em { color: var(--teal); font-style: normal; }
+    h2 { font-size: 1.55rem; font-weight: 800; margin-top: 56px; margin-bottom: 18px; letter-spacing: -0.015em; color: var(--teal); }
+    h2:nth-of-type(even) { color: var(--amber); }
+    p { margin-bottom: 18px; color: var(--text); }
+    p.lede { font-size: 1.1rem; color: var(--text); margin-bottom: 28px; }
+    blockquote { margin: 32px 0; padding: 4px 0 4px 22px; border-left: 3px solid var(--teal); font-size: 1.1rem; line-height: 1.6; color: var(--text); }
+    blockquote cite { display: block; margin-top: 10px; font-size: 0.85rem; color: var(--muted); font-style: normal; }
+    .closing { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .closing p { font-size: 1.05rem; color: var(--text); }
+    .revision-note { margin: 0 0 34px; padding: 16px 20px; border-left: 3px solid var(--amber); background: rgba(245,166,35,0.07); border-radius: 0 8px 8px 0; font-size: 0.92rem; line-height: 1.6; color: var(--text); }
+    .revision-note strong { color: var(--amber); }
+    .part { display: block; margin-top: 22px; padding: 20px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; text-decoration: none; transition: border-color .15s ease; }
+    .part:hover { border-color: var(--teal); text-decoration: none; }
+    .part .when { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); font-weight: 700; }
+    .part h3 { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.015em; margin: 6px 0 8px; color: var(--text); }
+    .part p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+    .part .verdict { display: block; margin-top: 10px; color: var(--text); font-size: 0.9rem; }
+    .verdict b { color: var(--amber); }
+    .sources { margin-top: 40px; padding: 20px 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; font-size: 0.88rem; }
+    .sources h3 { font-size: 0.9rem; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0; }
+    .sources ul { list-style: none; padding: 0; }
+    .sources li { padding: 6px 0; }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } h1 { font-size: 1.75rem; } }
+      /* PINtPRESS column standard v1 (2026-09-17): desktop 960px column, 880px of text at 17px; mobile full width, 20px gutters, 16px text. Do not vary per page. */
+    .content { max-width: 960px; padding: 60px 40px 80px; }
+    body { font-size: 17px; }
+    @media (max-width: 600px) { .content { max-width: none; padding: 32px 20px 56px; } body { font-size: 16px; } }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary">
+    <a href="/index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="/about-pintpoint.html">About</a>
+      <a href="/features.html">Features</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/blog/">Blog</a>
+      <a href="/screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+  <article class="content">
+    <p class="meta"><span class="category">Draft</span>September 2026 · Building things · Not for publication</p>
+    <h1>Nobody Asked For <em>Most Of It</em></h1>
+
+    <div class="revision-note">
+      <strong>Draft.</strong> Written in response to a Boak &amp; Bailey post of 29 September 2026. Every claim in the closing section describes behaviour the app already has; nothing here is promised rather than shipped. Outstanding decision before this goes anywhere: whether to link the piece it answers.
+    </div>
+
+    <p class="lede">A site that plans your pub crawl in a city you have never been to. A single-page app naming which world lagers are actually brewed in Burton. Press releases written by the same model that built the thing they are pitching.</p>
+
+    <p>The complaint is fair. These are answers hunting for a question, and nobody asked one.</p>
+
+    <p>But the line is being drawn in the wrong place. <em>Was AI involved</em> was never the test.</p>
+
+    <h2>The Cooperage</h2>
+
+    <p>Here is a better one. On Monday the person who built this app stood outside the Cooperage, near London Bridge, shut since 2021 — and his own app showed him a photograph of it trading. Awnings out, sandwich boards on the pavement, a woman walking past.</p>
+
+    <p>The database was right. The phone was wrong. The photograph had been replaced four days earlier at the same address, and because we serve images as permanent, every phone that had already seen the old one would keep showing it for a year. Nothing errored. Nothing looked broken. It was quietly wrong on every device that mattered.</p>
+
+    <p>You do not find that by generating a website. You find it by standing in the street using the thing you made.</p>
+
+    <h2>Two confident fixes, both wrong</h2>
+
+    <p>What happened next is the part worth reading. The fix was obvious, so we shipped it — and it was wrong. Then we shipped a second fix, reasoned from the data, and that was wrong too: it preferred the most recent photograph of each pub, which turned out to select a Tube platform, because Transport for London had re-photographed Bank station more recently than Google last drove down the street above it.</p>
+
+    <p>Two confident fixes. Both wrong. What caught them was a person looking at a picture and saying <em>that is not a pub, that is the Central line</em>.</p>
+
+    <p>That is the whole argument. The machine is very good at producing something plausible and very bad at noticing when plausible is false. Judgment, taste, and the willingness to keep looking after the status code says 200 stay human. Take those away and you get the pub crawl planner.</p>
+
+    <h2>Ask what happens when it is wrong</h2>
+
+    <p>So do not ask whether AI touched it. Ask what happens when it is wrong. A thing built to scratch its maker's own itch gets fixed, because they are still out there using it and it still annoys them. A thing built to prove the tools work gets abandoned the week the novelty does.</p>
+
+    <p>And ask for receipts. Not a claim of rigour — an artefact. A photograph taken by someone else carries their name; where we could not establish who took it, it carries nothing rather than a guess. Where we have no data at all, the app says nothing, instead of the reassuring shape of an answer.</p>
+
+    <div class="closing">
+      <p>AI has made it far cheaper to ship the plausible version. For anyone willing to keep standing in the street when it is wrong, it has made it cheaper to ship the true one.</p>
+    </div>
+  </article>
+  <footer>
+    <div class="links">
+      <a href="/index.html">Home</a>
+      <a href="/features.html">Features</a>
+      <a href="/screenshots.html">Screenshots</a>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+</body>
+</html>
