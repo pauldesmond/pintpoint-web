@@ -79,7 +79,7 @@
     <h1>Nobody Asked For <em>Most Of It</em></h1>
 
     <div class="revision-note">
-      <strong>Draft.</strong> Written in response to a Boak &amp; Bailey post of 29 September 2026. Every claim in the closing section describes behaviour the app already has; nothing here is promised rather than shipped. Outstanding decision before this goes anywhere: whether to link the piece it answers.
+      <strong>Draft.</strong> Written in response to a Boak &amp; Bailey post of 29 September 2026, with a second thread picked up from Business Insider's piece on Taste Labs the same week. Every claim in the closing section describes behaviour the app already has; nothing here is promised rather than shipped. Outstanding decision before this goes anywhere: whether to link the piece it answers.
     </div>
 
     <p class="lede">A site that plans your pub crawl in a city you have never been to. A single-page app naming which world lagers are actually brewed in Burton. Press releases written by the same model that built the thing they are pitching.</p>
@@ -101,6 +101,10 @@
     <p>What happened next is the part worth reading. The fix was obvious, so we shipped it — and it was wrong. Then we shipped a second fix, reasoned from the data, and that was wrong too: it preferred the most recent photograph of each pub, which turned out to select a Tube platform, because Transport for London had re-photographed Bank station more recently than Google last drove down the street above it.</p>
 
     <p>Two confident fixes. Both wrong. What caught them was a person looking at a picture and saying <em>that is not a pub, that is the Central line</em>.</p>
+
+    <p>It is tempting to call that a failure of taste, and to assume better data would fix it. We had the data. Every panorama arrives with the date it was taken, its distance from the pub, the name of whoever took it, and an identifier. We checked all four. Not one of them separates the street from the station: the platform was photographed more recently than the road above it, by the same company, and its identifier looks no different. The information is not in the metadata. It is in the picture.</p>
+
+    <p>There is a company in Silicon Valley with eighteen and a half million dollars betting the other way — that taste is a pattern you can learn from enough graded examples, and that a large enough taxonomy of quality will teach a model the difference between good and junk. It might. But what we needed was not a finer grading scheme. It was somebody who knew what the photograph was for.</p>
 
     <p>That is the whole argument. The machine is very good at producing something plausible and very bad at noticing when plausible is false. Judgment, taste, and the willingness to keep looking after the status code says 200 stay human. Take those away and you get the pub crawl planner.</p>
 
