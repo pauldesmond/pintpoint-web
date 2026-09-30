@@ -20,13 +20,57 @@ import { join } from 'node:path';
 const DRAFTS = 'blog/drafts';
 const PUBLISHED = 'blog';
 
+const stripSuffix = (t) => t.replace(/\s*[—-]\s*PINtPRESS\s*$/i, '').trim();
+
+// Matching drafts to published pieces by filename alone has a blind spot, and
+// it bit twice in one day: four redirect stubs read as unpublished drafts, and
+// "These aren't revivals — they're hauntings" sat in drafts/ for six weeks
+// after it went live at /blog/revivals.html under a rewritten headline
+// ("...they're not even spirits"). A draft published under a different slug,
+// or a headline rewritten on the way out, looks untouched.
+//
+// So match on three signals and report which one fired, rather than one
+// boolean that is silently wrong:
+//   file  — same filename in /blog/            (certain)
+//   title — identical headline                 (certain)
+//   stem  — same headline up to the first dash or colon (a LEAD, not a fact)
+// The stem is where retitles live: the subject survives the rewrite even when
+// the payoff clause does not. It is shown as "check" and never greys a row,
+// because a near-miss asserted as published is how a live draft gets deleted.
+const norm = (t) => stripSuffix(t).toLowerCase().replace(/\(.*?\)/g, ' ')
+  .replace(/[^a-z0-9]+/g, ' ').trim();
+const stemOf = (t) => {
+  const head = stripSuffix(t).split(/\s+[—–-]\s+|:/)[0];
+  const n = norm(head);
+  return n.split(' ').filter(Boolean).length >= 3 ? n : null;
+};
+
+const published = readdirSync(PUBLISHED)
+  .filter((f) => f.endsWith('.html'))
+  .map((f) => {
+    const m = readFileSync(join(PUBLISHED, f), 'utf8').match(/<title>([\s\S]*?)<\/title>/i);
+    const title = m ? stripSuffix(m[1]) : f;
+    return { file: f, title, norm: norm(title), stem: stemOf(title) };
+  });
+const byTitle = new Map(published.map((p) => [p.norm, p]));
+// A stem shared by two published pieces identifies neither, so drop it.
+const stemCount = new Map();
+for (const p of published) if (p.stem) stemCount.set(p.stem, (stemCount.get(p.stem) || 0) + 1);
+const byStem = new Map(published.filter((p) => p.stem && stemCount.get(p.stem) === 1).map((p) => [p.stem, p]));
+
 const rows = readdirSync(DRAFTS)
   .filter((f) => f.endsWith('.html') && f !== 'index.html')
   .map((f) => {
     const src = readFileSync(join(DRAFTS, f), 'utf8');
     const t = src.match(/<title>([\s\S]*?)<\/title>/i);
-    const title = (t ? t[1] : f).replace(/\s*—\s*PINtPRESS\s*$/i, '').trim();
-    const live = existsSync(join(PUBLISHED, f));
+    const title = stripSuffix(t ? t[1] : f);
+    let live = existsSync(join(PUBLISHED, f)) ? { how: 'file', at: f } : null;
+    if (!live) {
+      const exact = byTitle.get(norm(title));
+      if (exact) live = { how: 'title', at: exact.file };
+    }
+    const st = stemOf(title);
+    const lead = !live && st ? byStem.get(st) : null;
     // A redirect stub is not a duplicate. Two of these exist so that anyone
     // holding an old draft link lands on the published piece rather than a
     // 404 — deleting them as "already published" would break exactly the
@@ -47,7 +91,7 @@ const rows = readdirSync(DRAFTS)
         }
       }
     }
-    return { file: f, title, live, stub, target, targetTitle, mtime: statSync(join(DRAFTS, f)).mtime };
+    return { file: f, title, live, lead, stub, target, targetTitle, mtime: statSync(join(DRAFTS, f)).mtime };
   })
   .sort((a, b) => b.mtime - a.mtime);
 
@@ -59,8 +103,14 @@ const items = rows.map((r) => {
   const label = r.stub
     ? `<span class="from">${esc(r.file.replace(/\.html$/, ''))}</span> → ${esc(r.targetTitle || r.target || 'unknown')}`
     : esc(r.title);
-  const meta = r.stub ? 'redirect stub' : r.live ? 'published' : '';
-  return `      <li${r.stub || r.live ? ' class="live"' : ''}>
+  const meta = r.stub
+    ? 'redirect stub'
+    : r.live
+      ? (r.live.how === 'file' ? 'published' : `published as ${r.live.at}`)
+      : r.lead
+        ? `check — ${r.lead.file} has the same headline stem`
+        : '';
+  return `      <li${r.stub || r.live ? ' class="live"' : r.lead ? ' class="check"' : ''}>
         <a href="${r.file}">${label}</a>
         <span class="meta">${fmt(r.mtime)}${meta ? ' · ' + meta : ''}</span>
       </li>`;
@@ -90,6 +140,7 @@ writeFileSync(join(DRAFTS, 'index.html'), `<!DOCTYPE html>
     li a { color:var(--text); text-decoration:none; font-weight:500; }
     li a:hover { color:var(--teal); }
     li.live a { color:var(--muted); }
+    li.check .meta { color:var(--amber); }
     .from { color:var(--muted); font-weight:400; }
     .meta { color:var(--muted); font-size:0.78rem; white-space:nowrap; font-variant-numeric:tabular-nums; }
     footer { margin-top:32px; color:var(--muted); font-size:0.8rem; }
@@ -99,8 +150,8 @@ writeFileSync(join(DRAFTS, 'index.html'), `<!DOCTYPE html>
 <body>
   <div class="wrap">
     <h1>PINtPRESS <span>drafts</span></h1>
-    <p class="sub">${rows.filter((r) => !r.stub).length} drafts · ${rows.filter((r) => !r.live && !r.stub).length} unpublished · ${rows.filter((r) => r.stub).length} redirect stubs · ${notes} working notes (not served)</p>
-    <div class="warn">Unlisted, not indexed — but publicly served. Anyone with a URL can read these. Greyed entries have a published counterpart in <code>/blog/</code>; those marked <em>redirect stub</em> are not drafts at all and exist to keep old draft links working.</div>
+    <p class="sub">${rows.filter((r) => !r.stub).length} drafts · ${rows.filter((r) => !r.live && !r.stub).length} unpublished · ${rows.filter((r) => r.lead).length} to check · ${rows.filter((r) => r.stub).length} redirect stubs · ${notes} working notes (not served)</p>
+    <div class="warn">Unlisted, not indexed — but publicly served. Anyone with a URL can read these. Greyed entries have a published counterpart in <code>/blog/</code>; those marked <em>redirect stub</em> are not drafts at all and exist to keep old draft links working. A <em>check</em> flag means a published piece shares this headline's opening clause — likely the same article, retitled on the way out; confirm before deleting.</div>
     <ul>
 ${items}
     </ul>
@@ -109,7 +160,8 @@ ${items}
 </body>
 </html>
 `);
-console.log(`drafts index: ${rows.length} drafts (${rows.filter((r) => !r.live).length} unpublished), ${notes} notes`);
+console.log(`drafts index: ${rows.length} drafts (${rows.filter((r) => !r.live && !r.stub).length} unpublished, ${rows.filter((r) => r.lead).length} to check), ${notes} notes`);
+for (const r of rows.filter((x) => x.lead)) console.log(`  check: ${r.file} ~ ${r.lead.file} ("${r.lead.title}")`);
 
 // --- stub target check -------------------------------------------------
 // Deleting a superseded draft on 2026-09-30 broke a stub that pointed at it:

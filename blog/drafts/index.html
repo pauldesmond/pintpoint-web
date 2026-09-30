@@ -22,6 +22,7 @@
     li a { color:var(--text); text-decoration:none; font-weight:500; }
     li a:hover { color:var(--teal); }
     li.live a { color:var(--muted); }
+    li.check .meta { color:var(--amber); }
     .from { color:var(--muted); font-weight:400; }
     .meta { color:var(--muted); font-size:0.78rem; white-space:nowrap; font-variant-numeric:tabular-nums; }
     footer { margin-top:32px; color:var(--muted); font-size:0.8rem; }
@@ -31,8 +32,8 @@
 <body>
   <div class="wrap">
     <h1>PINtPRESS <span>drafts</span></h1>
-    <p class="sub">23 drafts · 23 unpublished · 0 redirect stubs · 16 working notes (not served)</p>
-    <div class="warn">Unlisted, not indexed — but publicly served. Anyone with a URL can read these. Greyed entries have a published counterpart in <code>/blog/</code>; those marked <em>redirect stub</em> are not drafts at all and exist to keep old draft links working.</div>
+    <p class="sub">21 drafts · 17 unpublished · 0 to check · 0 redirect stubs · 16 working notes (not served)</p>
+    <div class="warn">Unlisted, not indexed — but publicly served. Anyone with a URL can read these. Greyed entries have a published counterpart in <code>/blog/</code>; those marked <em>redirect stub</em> are not drafts at all and exist to keep old draft links working. A <em>check</em> flag means a published piece shares this headline's opening clause — likely the same article, retitled on the way out; confirm before deleting.</div>
     <ul>
       <li>
         <a href="nobody-asked-for-most-of-it.html">Nobody Asked For Most Of It</a>
@@ -67,19 +68,11 @@
         <span class="meta">2026-09-14</span>
       </li>
       <li>
-        <a href="revivals-original-runtime.html">These aren't revivals — they're hauntings</a>
-        <span class="meta">2026-09-14</span>
-      </li>
-      <li>
         <a href="revivals-notebook.html">Research notebook — British beer revivals (draft)</a>
         <span class="meta">2026-09-14</span>
       </li>
       <li>
         <a href="revivals-notebook-original-2026-06-01.html">Research notebook — British beer revivals (ORIGINAL, 1 Jun 2026)</a>
-        <span class="meta">2026-09-14</span>
-      </li>
-      <li>
-        <a href="revivals-draft2.html">These aren't revivals — they're hauntings (Draft 2, pre-rewrite)</a>
         <span class="meta">2026-09-14</span>
       </li>
       <li>
@@ -90,13 +83,13 @@
         <a href="hop-city-2026.html">Hop City 2026: Northern Monk's Flagship Festival Pours Nine — 15–16 May, Leeds</a>
         <span class="meta">2026-09-14</span>
       </li>
-      <li>
+      <li class="live">
         <a href="ghosts-of-baddow-brewery-v4.html">Ghosts of Baddow Brewery</a>
-        <span class="meta">2026-09-14</span>
+        <span class="meta">2026-09-14 · published as ghosts-of-baddow-brewery.html</span>
       </li>
-      <li>
+      <li class="live">
         <a href="ghosts-of-baddow-brewery-v3.html">Ghosts of Baddow Brewery</a>
-        <span class="meta">2026-09-14</span>
+        <span class="meta">2026-09-14 · published as ghosts-of-baddow-brewery.html</span>
       </li>
       <li>
         <a href="gfg-best-pubs-2026-nominations.html">Pick of the Pubs 2026: our 12 nominations for Good Food Guide Best Pubs</a>
@@ -110,13 +103,13 @@
         <a href="colchester-beer-festival-2026.html">39th Colchester Real Ale &amp; Cider Festival: 80+ Casks, 20+ Ciders, Four Days at the Arts Centre</a>
         <span class="meta">2026-09-14</span>
       </li>
-      <li>
+      <li class="live">
         <a href="city-of-london-ghosts-v4.html">Old Haunts of the Square Mile — City of London Ghosts</a>
-        <span class="meta">2026-09-14</span>
+        <span class="meta">2026-09-14 · published as city-of-london-ghosts.html</span>
       </li>
-      <li>
+      <li class="live">
         <a href="city-of-london-ghosts-v3.html">Old Haunts of the Square Mile — City of London Ghosts</a>
-        <span class="meta">2026-09-14</span>
+        <span class="meta">2026-09-14 · published as city-of-london-ghosts.html</span>
       </li>
       <li>
         <a href="city-of-london-ghosts-v2.html">City of London Ghosts — the wine-bar map beneath the modern City</a>
