@@ -87,3 +87,26 @@ ${items}
 </html>
 `);
 console.log(`drafts index: ${rows.length} drafts (${rows.filter((r) => !r.live).length} unpublished), ${notes} notes`);
+
+// --- stub target check -------------------------------------------------
+// Deleting a superseded draft on 2026-09-30 broke a stub that pointed at it:
+// oktoberfest-many-festivals → drafts/september-is-oktoberfest, removed the
+// same minute. A redirect to a 404 is worse than no redirect, and nothing
+// would have said so. So the generator now fails loudly instead.
+{
+  const { existsSync: ex } = await import('node:fs');
+  const broken = [];
+  for (const f of readdirSync(DRAFTS).filter((x) => x.endsWith('.html'))) {
+    const src = readFileSync(join(DRAFTS, f), 'utf8');
+    const m = src.match(/url=(\/blog\/[^\s"']+)/i);
+    if (!m) continue;
+    const target = m[1].replace(/^\/blog\//, '');
+    if (!ex(join(PUBLISHED, target))) broken.push(`${f} -> ${m[1]}`);
+  }
+  if (broken.length) {
+    console.error(`\nBROKEN REDIRECT STUBS (${broken.length}):`);
+    for (const b of broken) console.error('  ' + b);
+    process.exit(1);
+  }
+  console.log('all redirect stubs resolve');
+}
