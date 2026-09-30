@@ -11,7 +11,11 @@ User-agent: *
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 # Unpublished editorial drafts and working notes — not for indexing.
-# (Enforced at the edge too: the worker returns 404 for /blog/drafts/*.)
+# Edge behaviour (worker/src/index.js), corrected 2026-09-30: the bare
+# directory and every NON-.html path under drafts/ hard-404. HTML drafts are
+# deliberately passed through so a draft can be previewed at its live URL,
+# with X-Robots-Tag: noindex, nofollow injected. They are unlisted, not
+# unreachable — anyone with the URL can read one.
 Disallow: /blog/drafts/
 
 # Allow AI search/assistant crawlers (these surface your site in AI answers)
