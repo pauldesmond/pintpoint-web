@@ -32,17 +32,39 @@ const rows = readdirSync(DRAFTS)
     // 404 — deleting them as "already published" would break exactly the
     // links they were left behind to serve.
     const stub = /http-equiv="refresh"/i.test(src) && src.length < 2000;
-    return { file: f, title, live, stub, mtime: statSync(join(DRAFTS, f)).mtime };
+    // A stub's own <title> is "Moved", which tells you nothing in a list.
+    // Show where it goes instead, using the target's real title.
+    let target = null, targetTitle = null;
+    if (stub) {
+      const m = src.match(/url=(\/blog\/[^\s"']+)/i);
+      if (m) {
+        target = m[1];
+        const rel = target.replace(/^\/blog\//, '');
+        const abs = join(PUBLISHED, rel);
+        if (existsSync(abs)) {
+          const tt = readFileSync(abs, 'utf8').match(/<title>([\s\S]*?)<\/title>/i);
+          if (tt) targetTitle = tt[1].replace(/\s*—\s*PINtPRESS\s*$/i, '').trim();
+        }
+      }
+    }
+    return { file: f, title, live, stub, target, targetTitle, mtime: statSync(join(DRAFTS, f)).mtime };
   })
   .sort((a, b) => b.mtime - a.mtime);
 
 const notes = readdirSync(DRAFTS).filter((f) => f.endsWith('.md')).length;
 const fmt = (d) => d.toISOString().slice(0, 10);
 
-const items = rows.map((r) => `      <li${r.live ? ' class="live"' : ''}>
-        <a href="${r.file}">${r.title.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</a>
-        <span class="meta">${fmt(r.mtime)}${r.stub ? ' · redirect stub' : r.live ? ' · published' : ''}</span>
-      </li>`).join('\n');
+const esc = (x) => String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const items = rows.map((r) => {
+  const label = r.stub
+    ? `<span class="from">${esc(r.file.replace(/\.html$/, ''))}</span> → ${esc(r.targetTitle || r.target || 'unknown')}`
+    : esc(r.title);
+  const meta = r.stub ? 'redirect stub' : r.live ? 'published' : '';
+  return `      <li${r.stub || r.live ? ' class="live"' : ''}>
+        <a href="${r.file}">${label}</a>
+        <span class="meta">${fmt(r.mtime)}${meta ? ' · ' + meta : ''}</span>
+      </li>`;
+}).join('\n');
 
 writeFileSync(join(DRAFTS, 'index.html'), `<!DOCTYPE html>
 <html lang="en">
@@ -68,6 +90,7 @@ writeFileSync(join(DRAFTS, 'index.html'), `<!DOCTYPE html>
     li a { color:var(--text); text-decoration:none; font-weight:500; }
     li a:hover { color:var(--teal); }
     li.live a { color:var(--muted); }
+    .from { color:var(--muted); font-weight:400; }
     .meta { color:var(--muted); font-size:0.78rem; white-space:nowrap; font-variant-numeric:tabular-nums; }
     footer { margin-top:32px; color:var(--muted); font-size:0.8rem; }
     @media (max-width:520px){ li { flex-direction:column; gap:2px; } }
@@ -76,7 +99,7 @@ writeFileSync(join(DRAFTS, 'index.html'), `<!DOCTYPE html>
 <body>
   <div class="wrap">
     <h1>PINtPRESS <span>drafts</span></h1>
-    <p class="sub">${rows.length} drafts · ${rows.filter((r) => !r.live).length} unpublished · ${notes} working notes (not served)</p>
+    <p class="sub">${rows.filter((r) => !r.stub).length} drafts · ${rows.filter((r) => !r.live && !r.stub).length} unpublished · ${rows.filter((r) => r.stub).length} redirect stubs · ${notes} working notes (not served)</p>
     <div class="warn">Unlisted, not indexed — but publicly served. Anyone with a URL can read these. Greyed entries have a published counterpart in <code>/blog/</code>; those marked <em>redirect stub</em> are not drafts at all and exist to keep old draft links working.</div>
     <ul>
 ${items}
