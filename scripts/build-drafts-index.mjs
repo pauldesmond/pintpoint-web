@@ -39,24 +39,48 @@ const stripSuffix = (t) => t.replace(/\s*[—-]\s*PINtPRESS\s*$/i, '').trim();
 // because a near-miss asserted as published is how a live draft gets deleted.
 const norm = (t) => stripSuffix(t).toLowerCase().replace(/\(.*?\)/g, ' ')
   .replace(/[^a-z0-9]+/g, ' ').trim();
-const stemOf = (t) => {
-  const head = stripSuffix(t).split(/\s+[—–-]\s+|:/)[0];
-  const n = norm(head);
-  return n.split(' ').filter(Boolean).length >= 3 ? n : null;
-};
+
+// A first-clause-only stem missed two more on 2026-09-30, each a different way:
+//   "City of London Ghosts — the wine-bar map..." vs the live "Old Haunts of
+//     the Square Mile — City of London Ghosts". The shared phrase is the FIRST
+//     clause of one and the LAST of the other, so comparing heads found nothing.
+//   "The 61 Pubs of Baddow Brewery" vs the live "Ghosts of Baddow Brewery".
+//     No clause matches at all — the headline was rewritten end to end. Only
+//     the slug kept the subject.
+// So: take every clause of every headline, and separately compare slugs.
+const clausesOf = (t) => stripSuffix(t).split(/\s+[—–-]\s+|:/)
+  .map(norm).filter((c) => c.split(' ').filter(Boolean).length >= 3);
+const STOP = new Set(['the', 'of', 'and', 'a', 'in', 'to', 'blog', 'html', 'pubs', 'v1', 'v2', 'v3', 'v4', 'draft', 'original', 'runtime', 'final']);
+const slugTokens = (f) => new Set(f.replace(/\.html$/, '').split(/[^a-z0-9]+/i)
+  .map((x) => x.toLowerCase()).filter((x) => x.length > 2 && !STOP.has(x) && !/^\d+$/.test(x)));
 
 const published = readdirSync(PUBLISHED)
   .filter((f) => f.endsWith('.html'))
   .map((f) => {
     const m = readFileSync(join(PUBLISHED, f), 'utf8').match(/<title>([\s\S]*?)<\/title>/i);
     const title = m ? stripSuffix(m[1]) : f;
-    return { file: f, title, norm: norm(title), stem: stemOf(title) };
+    return { file: f, title, norm: norm(title), clauses: clausesOf(title), slug: slugTokens(f) };
   });
 const byTitle = new Map(published.map((p) => [p.norm, p]));
-// A stem shared by two published pieces identifies neither, so drop it.
-const stemCount = new Map();
-for (const p of published) if (p.stem) stemCount.set(p.stem, (stemCount.get(p.stem) || 0) + 1);
-const byStem = new Map(published.filter((p) => p.stem && stemCount.get(p.stem) === 1).map((p) => [p.stem, p]));
+// A clause shared by two published pieces identifies neither, so drop it.
+const clauseCount = new Map();
+for (const p of published) for (const c of p.clauses) clauseCount.set(c, (clauseCount.get(c) || 0) + 1);
+const byClause = new Map();
+for (const p of published) for (const c of p.clauses) if (clauseCount.get(c) === 1) byClause.set(c, p);
+
+// Slug overlap is the weakest signal and needs the most care: two distinctive
+// tokens in common, and only when no other published piece shares as many.
+const slugLead = (f) => {
+  const t = slugTokens(f);
+  if (t.size < 2) return null;
+  const scored = published
+    .map((p) => ({ p, n: [...t].filter((x) => p.slug.has(x)).length }))
+    .filter((x) => x.n >= 2)
+    .sort((a, b) => b.n - a.n);
+  if (!scored.length) return null;
+  if (scored.length > 1 && scored[1].n === scored[0].n) return null;
+  return scored[0].p;
+};
 
 const rows = readdirSync(DRAFTS)
   .filter((f) => f.endsWith('.html') && f !== 'index.html')
@@ -69,8 +93,17 @@ const rows = readdirSync(DRAFTS)
       const exact = byTitle.get(norm(title));
       if (exact) live = { how: 'title', at: exact.file };
     }
-    const st = stemOf(title);
-    const lead = !live && st ? byStem.get(st) : null;
+    let lead = null, why = null;
+    if (!live) {
+      for (const c of clausesOf(title)) {
+        const hit = byClause.get(c);
+        if (hit) { lead = hit; why = 'shares the phrase "' + c + '"'; break; }
+      }
+      if (!lead) {
+        const hit = slugLead(f);
+        if (hit) { lead = hit; why = 'same subject in the filename'; }
+      }
+    }
     // A redirect stub is not a duplicate. Two of these exist so that anyone
     // holding an old draft link lands on the published piece rather than a
     // 404 — deleting them as "already published" would break exactly the
@@ -91,7 +124,7 @@ const rows = readdirSync(DRAFTS)
         }
       }
     }
-    return { file: f, title, live, lead, stub, target, targetTitle, mtime: statSync(join(DRAFTS, f)).mtime };
+    return { file: f, title, live, lead, why, stub, target, targetTitle, mtime: statSync(join(DRAFTS, f)).mtime };
   })
   .sort((a, b) => b.mtime - a.mtime);
 
@@ -108,7 +141,7 @@ const items = rows.map((r) => {
     : r.live
       ? (r.live.how === 'file' ? 'published' : `published as ${r.live.at}`)
       : r.lead
-        ? `check — ${r.lead.file} has the same headline stem`
+        ? `check — ${r.lead.file} ${r.why}`
         : '';
   return `      <li${r.stub || r.live ? ' class="live"' : r.lead ? ' class="check"' : ''}>
         <a href="${r.file}">${label}</a>
@@ -151,7 +184,7 @@ writeFileSync(join(DRAFTS, 'index.html'), `<!DOCTYPE html>
   <div class="wrap">
     <h1>PINtPRESS <span>drafts</span></h1>
     <p class="sub">${rows.filter((r) => !r.stub).length} drafts · ${rows.filter((r) => !r.live && !r.stub).length} unpublished · ${rows.filter((r) => r.lead).length} to check · ${rows.filter((r) => r.stub).length} redirect stubs · ${notes} working notes (not served)</p>
-    <div class="warn">Unlisted, not indexed — but publicly served. Anyone with a URL can read these. Greyed entries have a published counterpart in <code>/blog/</code>; those marked <em>redirect stub</em> are not drafts at all and exist to keep old draft links working. A <em>check</em> flag means a published piece shares this headline's opening clause — likely the same article, retitled on the way out; confirm before deleting.</div>
+    <div class="warn">Unlisted, not indexed — but publicly served. Anyone with a URL can read these. Greyed entries have a published counterpart in <code>/blog/</code>; those marked <em>redirect stub</em> are not drafts at all and exist to keep old draft links working. A <em>check</em> flag means a published piece shares a headline phrase or the filename's subject — often the same article, retitled on the way out; open both before deleting.</div>
     <ul>
 ${items}
     </ul>
@@ -161,7 +194,7 @@ ${items}
 </html>
 `);
 console.log(`drafts index: ${rows.length} drafts (${rows.filter((r) => !r.live && !r.stub).length} unpublished, ${rows.filter((r) => r.lead).length} to check), ${notes} notes`);
-for (const r of rows.filter((x) => x.lead)) console.log(`  check: ${r.file} ~ ${r.lead.file} ("${r.lead.title}")`);
+for (const r of rows.filter((x) => x.lead)) console.log(`  check: ${r.file} ~ ${r.lead.file} — ${r.why}`);
 
 // --- stub target check -------------------------------------------------
 // Deleting a superseded draft on 2026-09-30 broke a stub that pointed at it:
