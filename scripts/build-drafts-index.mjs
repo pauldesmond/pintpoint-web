@@ -27,7 +27,12 @@ const rows = readdirSync(DRAFTS)
     const t = src.match(/<title>([\s\S]*?)<\/title>/i);
     const title = (t ? t[1] : f).replace(/\s*—\s*PINtPRESS\s*$/i, '').trim();
     const live = existsSync(join(PUBLISHED, f));
-    return { file: f, title, live, mtime: statSync(join(DRAFTS, f)).mtime };
+    // A redirect stub is not a duplicate. Two of these exist so that anyone
+    // holding an old draft link lands on the published piece rather than a
+    // 404 — deleting them as "already published" would break exactly the
+    // links they were left behind to serve.
+    const stub = /http-equiv="refresh"/i.test(src) && src.length < 2000;
+    return { file: f, title, live, stub, mtime: statSync(join(DRAFTS, f)).mtime };
   })
   .sort((a, b) => b.mtime - a.mtime);
 
@@ -36,7 +41,7 @@ const fmt = (d) => d.toISOString().slice(0, 10);
 
 const items = rows.map((r) => `      <li${r.live ? ' class="live"' : ''}>
         <a href="${r.file}">${r.title.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</a>
-        <span class="meta">${fmt(r.mtime)}${r.live ? ' · published' : ''}</span>
+        <span class="meta">${fmt(r.mtime)}${r.stub ? ' · redirect stub' : r.live ? ' · published' : ''}</span>
       </li>`).join('\n');
 
 writeFileSync(join(DRAFTS, 'index.html'), `<!DOCTYPE html>
@@ -72,7 +77,7 @@ writeFileSync(join(DRAFTS, 'index.html'), `<!DOCTYPE html>
   <div class="wrap">
     <h1>PINtPRESS <span>drafts</span></h1>
     <p class="sub">${rows.length} drafts · ${rows.filter((r) => !r.live).length} unpublished · ${notes} working notes (not served)</p>
-    <div class="warn">Unlisted, not indexed — but publicly served. Anyone with a URL can read these. Greyed entries already have a published counterpart in <code>/blog/</code>.</div>
+    <div class="warn">Unlisted, not indexed — but publicly served. Anyone with a URL can read these. Greyed entries have a published counterpart in <code>/blog/</code>; those marked <em>redirect stub</em> are not drafts at all and exist to keep old draft links working.</div>
     <ul>
 ${items}
     </ul>
