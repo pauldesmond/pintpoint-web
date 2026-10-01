@@ -3,3 +3,6 @@
 .wrangler/
 worker-cdn/.wrangler/
 node_modules/
+
+# Working file, never published: the internal venue backlog page
+venue-backlog.html
