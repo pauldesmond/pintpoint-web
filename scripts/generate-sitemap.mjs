@@ -235,7 +235,7 @@ async function fetchVenues() {
   const venues = [];
   for (let offset = 0; ; offset += PAGE_SIZE) {
     const endpoint = new URL('/rest/v1/venues', supabaseUrl);
-    endpoint.searchParams.set('select', 'id,name,city,country_code,untappd_id,untappd_type,updated_at,last_scraped_at');
+    endpoint.searchParams.set('select', 'id,name,city,country_code,untappd_id,untappd_type,untappd_category,updated_at,last_scraped_at');
     endpoint.searchParams.set('deleted_at', 'is.null');
     endpoint.searchParams.set('closed_down', 'eq.false');
     endpoint.searchParams.set('order', 'id.asc');
@@ -652,5 +652,154 @@ async function rewriteHeadlineStats() {
   }
 }
 
+
+// ---------------------------------------------------------------------------
+// FEATURED VENUE CHIPS on the home page.
+//
+// These were 18 venues hand-typed into index.html in a literal array. Paul,
+// 2026-10-02: "why is the website still referring to Boilermaker House
+// Melbourne / Radio City Social Chelmsford / Capitan Amargo Granada / Mad
+// Island CAPITOL Palma this never seems to change much". It never changed
+// because nothing fed it — the page shuffled a frozen list.
+//
+// TWO OF THE EIGHTEEN WERE 404s, and the reason is the thing to avoid here.
+// The chip renders a city label AND builds the href out of that same label,
+// so a hand-written city silently becomes a hand-written URL:
+//
+//   mad-island-capitol-palma      -> 404   (stored city is "Comunitat
+//                                           Autonoma de les Illes Balears";
+//                                           "Palma" appears nowhere)
+//   the-local-taphouse-melbourne  -> 404   (stored city is "St Kilda")
+//
+// Both were plausible-looking guesses by a human who knew where the pub is.
+// The venue-page resolver is tolerant about slug FORM (it accepts both
+// `brauart-d-sseldorf-d-sseldorf` and other shapes via its ILIKE cascade), but
+// it cannot rescue a city the venue does not have. So: href comes from the
+// data, and the display label is allowed to differ from it.
+//
+// Costs no extra egress — `venues` and `liveTapCounts` are already fetched
+// above for the sitemap.
+function collectFeaturedVenues() {
+  const MAX_CITY_LABEL = 20;
+  const MAX_NAME_LABEL = 26;
+
+  // A chip is a small pill: the name and the city have to fit and have to read
+  // as a place you could go for a beer. The first run of this generator
+  // produced "Bierconsumentenvereniging PINT" (a consumers' association),
+  // "ICderLaden.ch" (a bottle shop) and "A Hoppy Place Maidenhead" labelled
+  // with the city "Park St Maidenhead" — a street. Each is a real catalogue
+  // row; none is a pub chip.
+  //
+  // PRIMARY category only, same reading as the app's venueTypeEligibility
+  // (first comma-separated type wins). "Beer Store" primary is excluded even
+  // though it carries stock, because shop stock is not a tap list.
+  const DRINKING_PRIMARY = /^(pub|bar|beer bar|gastropub|brewery|brewpub|taproom|tap room|irish pub|beer garden|beer hall|micropub|craft beer bar)$/i;
+  // "Park St Maidenhead", "North High St" — a street in the city column.
+  const LOOKS_LIKE_STREET = /\b(st|rd|road|street|lane|ln|ave|avenue|way|drive|dr)\b/i;
+
+  // DISPLAY LABEL ONLY — never feeds the slug. cleanCityForSlug strips a full
+  // UK postcode ("London W8 4RT") but not a bare outward code, so the city
+  // column yields chips reading "Greater London W8". The href still comes from
+  // canonicalSlug(venue) and is GET-verified, so label and slug are free to
+  // differ; that separation is the whole point of this rewrite.
+  const cityLabel = (c) => c.replace(/\s+[A-Z]{1,2}\d[A-Z\d]?$/, '').trim();
+
+  const candidates = venues
+    // A chip promises a live pub page with beer on it. Needs a VENUE-typed
+    // Untappd identity (a brewery id reads a stranger's feed) and recent
+    // confirmed taps, or the visitor lands on an empty page.
+    .filter((v) => v.untappd_id && v.untappd_id !== 0 && (v.untappd_type ?? 'venue') === 'venue')
+    .filter((v) => (liveTapCounts.get(v.id) ?? 0) >= 3)
+    .map((v) => ({ venue: v, city: cleanCityForSlug(v.city), taps: liveTapCounts.get(v.id) ?? 0 }))
+    // Skip rather than shorten an administrative-region city. Shortening is
+    // how "Comunitat Autonoma de les Illes Balears" became "Palma" and then
+    // became a 404. A venue we cannot label honestly is not featured.
+    .map((c) => ({ ...c, label: cityLabel(c.city) }))
+    .filter((c) => c.city && c.label && c.label.length <= MAX_CITY_LABEL)
+    .filter((c) => !LOOKS_LIKE_STREET.test(c.label))
+    .filter((c) => c.venue.name && c.venue.name.length <= MAX_NAME_LABEL)
+    // Drop a name that just repeats its own city ("Head of Steam Birmingham"
+    // in Birmingham renders as "Head of Steam Birmingham / Birmingham").
+    .filter((c) => !new RegExp(`\\b${c.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b\\s*$`, 'i').test(c.venue.name))
+    .filter((c) => {
+      const primary = String(c.venue.untappd_category ?? '').split(',')[0].trim();
+      return DRINKING_PRIMARY.test(primary);
+    })
+    .sort((a, b) => b.taps - a.taps);
+
+  const picked = [];
+  const usedCities = new Set();
+  const perCountry = new Map();
+  for (const c of candidates) {
+    if (picked.length >= 24) break;
+    const cityKey = c.label.toLowerCase();
+    if (usedCities.has(cityKey)) continue;
+    // Cap any one country at 8 so the row does not read as a UK-only app.
+    const cc = c.venue.country_code ?? '??';
+    if ((perCountry.get(cc) ?? 0) >= 8) continue;
+    usedCities.add(cityKey);
+    perCountry.set(cc, (perCountry.get(cc) ?? 0) + 1);
+    picked.push({ name: c.venue.name, city: c.label, slug: canonicalSlug(c.venue) });
+  }
+  return picked;
+}
+
+// Probe each chip before publishing it. This is the check that would have
+// caught the two dead links: a slug can be derived correctly and still 404,
+// and nothing on the page would say so. Bounded — stops once 18 are confirmed.
+async function verifyFeaturedVenues(list) {
+  const good = [];
+  for (const v of list) {
+    if (good.length >= 18) break;
+    try {
+      const res = await fetch(`https://pintpoint.co.uk/pubs/${v.slug}`, { method: 'GET' });
+      if (res.ok) good.push(v);
+      else console.warn(`[sitemap] featured chip dropped (HTTP ${res.status}): ${v.slug}`);
+    } catch (e) {
+      console.warn(`[sitemap] featured chip dropped (fetch failed): ${v.slug}`);
+    }
+  }
+  return good;
+}
+
+async function rewriteFeaturedVenues() {
+  const { readFile, writeFile } = await import('node:fs/promises');
+  const url = new URL('../index.html', import.meta.url);
+
+  const candidates = collectFeaturedVenues();
+  if (candidates.length < 8) {
+    console.warn(`[sitemap] featured venues skipped — only ${candidates.length} candidates`);
+    return;
+  }
+  const list = await verifyFeaturedVenues(candidates);
+  if (list.length < 8) {
+    console.warn(`[sitemap] featured venues skipped — only ${list.length} verified`);
+    return;
+  }
+
+  const html = await readFile(url, 'utf8');
+  const START = '/* FEATURED-VENUES:START */';
+  const END = '/* FEATURED-VENUES:END */';
+  const from = html.indexOf(START);
+  const to = html.indexOf(END);
+  if (from === -1 || to === -1 || to < from) {
+    console.warn('[sitemap] featured venues skipped — markers not found in index.html');
+    return;
+  }
+
+  const body = list
+    .map((v) => `        {name:${JSON.stringify(v.name)},city:${JSON.stringify(v.city)},slug:${JSON.stringify(v.slug)}},`)
+    .join('\n');
+  const next = `${START}\n${body}\n        ${END}`;
+  const updated = html.slice(0, from) + next + html.slice(to + END.length);
+  if (updated === html) {
+    console.log('[sitemap] featured venues unchanged');
+    return;
+  }
+  await writeFile(url, updated);
+  console.log(`[sitemap] featured venues: ${list.length} chips rewritten from the catalogue`);
+}
+
 // Last: the helpers above are `const`, so this cannot run before they exist.
 await rewriteHeadlineStats();
+await rewriteFeaturedVenues();

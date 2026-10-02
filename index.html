@@ -744,25 +744,36 @@
 
   <script>
     (function() {
+      // Rewritten nightly by scripts/generate-sitemap.mjs from the live
+      // catalogue — do not hand-edit the rows between the markers.
+      //
+      // This list used to be hand-typed, and two of its eighteen entries were
+      // 404s: the chip builds its href out of the city label it displays, so a
+      // human writing the city they knew ("Palma", "Melbourne") wrote a URL the
+      // catalogue had never heard of. The generator now takes the href from the
+      // data, labels the city separately, and GETs every chip before publishing
+      // it. See the FEATURED VENUE CHIPS note in the generator.
       var venues = [
-        {name:'The Rake',city:'London',slug:'the-rake-london'},
-        {name:'Capitan Amargo',city:'Granada',slug:'capitan-amargo-granada'},
-        {name:'Harlem Public',city:'New York',slug:'harlem-public-new-york'},
-        {name:'The Local Taphouse',city:'Melbourne',slug:'the-local-taphouse-melbourne'},
-        {name:'Broadway Brewhouse',city:'Nashville',slug:'broadway-brewhouse-downtown-nashville'},
-        {name:'Põrgu',city:'Tallinn',slug:'p-rgu-tallinn'},
-        {name:'The Crafty Tap',city:'Christchurch',slug:'the-crafty-tap-christchurch'},
-        {name:'Mad Island CAPITOL',city:'Palma',slug:'mad-island-capitol-palma'},
-        {name:'Beer Corner USA',city:'Omaha',slug:'beer-corner-usa-omaha'},
-        {name:'Radio City Social',city:'Chelmsford',slug:'radio-city-social-chelmsford'},
-        {name:'The Kernel Brewery',city:'London',slug:'the-kernel-brewery-london'},
-        {name:'Sherlock Holmes',city:'London',slug:'sherlock-holmes-london'},
-        {name:'Boilermaker House',city:'Melbourne',slug:'boilermaker-house-melbourne'},
-        {name:'The Ale House',city:'Chelmsford',slug:'the-ale-house-chelmsford'},
-        {name:'Moody Goose Brewery',city:'Braintree',slug:'moody-goose-brewery-braintree'},
-        {name:'Yard House',city:'Kansas City',slug:'yard-house-kansas-city-legends-outlets-kansas-city'},
-        {name:'DC Tap House',city:'Cupertino',slug:'dc-tap-house-cupertino'},
-        {name:'Bar Arbolada',city:'Oklahoma City',slug:'bar-arbolada-oklahoma-city'},
+        /* FEATURED-VENUES:START */
+        {name:"Cask Pub & Kitchen",city:"London",slug:"cask-pub-and-kitchen-london"},
+        {name:"Tap Craft Beer",city:"București",slug:"tap-craft-beer-bucure-ti"},
+        {name:"Lórien",city:"Illes Balears",slug:"l-rien-illes-balears"},
+        {name:"Brewhemia",city:"Edinburgh",slug:"brewhemia-edinburgh"},
+        {name:"Zenta Kraft",city:"Budapest",slug:"zenta-kraft-budapest"},
+        {name:"The White Horse",city:"Slough",slug:"the-white-horse-slough"},
+        {name:"Labeerynt",city:"Gdańsk",slug:"labeerynt-gda-sk"},
+        {name:"Mad Goat",city:"Oslo",slug:"mad-goat-oslo"},
+        {name:"Taplands",city:"Santa Clara",slug:"taplands-santa-clara"},
+        {name:"Craft Beer Market",city:"Vancouver",slug:"craft-beer-market-vancouver"},
+        {name:"North Park Beer Co.",city:"San Diego",slug:"north-park-beer-co-san-diego"},
+        {name:"Beer Bar",city:"Salt Lake City",slug:"beer-bar-salt-lake-city"},
+        {name:"Khyber Pass Pub",city:"Philadelphia",slug:"khyber-pass-pub-philadelphia"},
+        {name:"Atomic Garden",city:"Palma",slug:"atomic-garden-palma"},
+        {name:"The Hop Beer Shop",city:"Chelmsford",slug:"the-hop-beer-shop-chelmsford"},
+        {name:"The Hop Inn",city:"Swindon",slug:"the-hop-inn-swindon"},
+        {name:"West Walls Brewing Co.",city:"Carlisle",slug:"west-walls-brewing-co-carlisle"},
+        {name:"The Mall Tavern",city:"Greater London",slug:"the-mall-tavern-greater-london-w8"},
+        /* FEATURED-VENUES:END */
       ];
       // Shuffle and pick 4, max 1 per city
       for (var i = venues.length - 1; i > 0; i--) {

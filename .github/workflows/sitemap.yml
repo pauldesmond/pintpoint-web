@@ -59,16 +59,34 @@ jobs:
         continue-on-error: true
         run: node scripts/generate-oktoberfest-now.mjs
 
+      # STAGE EVERY TRACKED FILE THE GENERATORS TOUCH, not a hand-listed four.
+      #
+      # This step used to name sitemap.xml, pubs/index.html, ai/counts.json and
+      # the Oktoberfest page explicitly. Two generators write outside that list
+      # and their output was therefore produced in CI and thrown away every
+      # night since it was built:
+      #
+      #   rewriteHeadlineStats()   - venue/beer/country figures across the root
+      #                              HTML pages and ai/*.json. Shipped
+      #                              2026-10-01 (81d3f1c); `git log --author=
+      #                              pintpoint-sitemap-bot --name-only` shows
+      #                              it has never once committed one of them.
+      #   rewriteFeaturedVenues()  - the home-page venue chips in index.html.
+      #
+      # `git add -u` stages modifications to ALREADY-TRACKED files only. That is
+      # deliberate over `git add -A`: -A would also pick up anything untracked
+      # that happened to be in the runner, which is how a private backlog page
+      # once reached the public site. -u cannot add a new file.
       - name: Check for changes
         id: diff
         run: |
-          if git diff --quiet -- sitemap.xml pubs/index.html ai/counts.json oktoberfest-beers-pouring-now.html; then
+          if git diff --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No changes."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Changed files:"
-            git diff --stat -- sitemap.xml pubs/index.html ai/counts.json oktoberfest-beers-pouring-now.html
+            git diff --stat
           fi
 
       - name: Commit and push
@@ -76,8 +94,8 @@ jobs:
         run: |
           git config user.name  "pintpoint-sitemap-bot"
           git config user.email "noreply@pintpoint.co.uk"
-          git add sitemap.xml pubs/index.html ai/counts.json oktoberfest-beers-pouring-now.html
-          git commit -m "sitemap + pubs index + counts: nightly regeneration from Supabase"
+          git add -u
+          git commit -m "nightly regeneration from Supabase: sitemap, pubs index, counts, headline stats, featured venues"
           git push
 
       - name: Ping IndexNow (streaming, one URL per request)
