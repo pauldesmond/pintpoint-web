@@ -235,7 +235,7 @@ async function fetchVenues() {
   const venues = [];
   for (let offset = 0; ; offset += PAGE_SIZE) {
     const endpoint = new URL('/rest/v1/venues', supabaseUrl);
-    endpoint.searchParams.set('select', 'id,name,city,country_code,updated_at,last_scraped_at');
+    endpoint.searchParams.set('select', 'id,name,city,country_code,untappd_id,untappd_type,updated_at,last_scraped_at');
     endpoint.searchParams.set('deleted_at', 'is.null');
     endpoint.searchParams.set('closed_down', 'eq.false');
     endpoint.searchParams.set('order', 'id.asc');
@@ -506,10 +506,21 @@ async function collectCatalogueStats() {
     if (regions[region]) regions[region].beers = set.size;
   }
 
+  // WHAT "LIVE TAP LISTS ACROSS N VENUES" MEANS. Not the venues we happen to
+  // hold fresh rows for — the app auto-refreshes the tap list on mount for any
+  // venue carrying a usable Untappd VENUE identity (see the mount effect in
+  // useVenueTapListRefresh.ts), so it fetches on demand when someone opens it.
+  // Counting the cache instead of the mechanism published 800+ on 2026-10-02
+  // against a real 5,829, and understated the app by a factor of seven.
+  // A brewery-typed untappd_id is excluded: refresh needs a venue identity, or
+  // it reads a stranger's feed.
+  const refreshable = venues.filter((v) =>
+    v.untappd_id && v.untappd_id !== 0 && (v.untappd_type ?? 'venue') === 'venue').length;
+
   return {
     venues: venues.length,
     countries: countries.size,
-    venuesWithTaps: liveTapCounts.size,
+    venuesWithTaps: refreshable,
     beersOnTap: allBeers.size,
     beersCatalogue: beerCount,
     regions,
