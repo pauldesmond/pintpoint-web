@@ -755,43 +755,21 @@
       // it. See the FEATURED VENUE CHIPS note in the generator.
       var venues = [
         /* FEATURED-VENUES:START */
-        {name:"Cask Pub & Kitchen",city:"London",slug:"cask-pub-and-kitchen-london"},
-        {name:"Tap Craft Beer",city:"București",slug:"tap-craft-beer-bucure-ti"},
-        {name:"Lórien",city:"Illes Balears",slug:"l-rien-illes-balears"},
-        {name:"Brewhemia",city:"Edinburgh",slug:"brewhemia-edinburgh"},
-        {name:"Zenta Kraft",city:"Budapest",slug:"zenta-kraft-budapest"},
-        {name:"The White Horse",city:"Slough",slug:"the-white-horse-slough"},
-        {name:"Labeerynt",city:"Gdańsk",slug:"labeerynt-gda-sk"},
-        {name:"Mad Goat",city:"Oslo",slug:"mad-goat-oslo"},
-        {name:"Taplands",city:"Santa Clara",slug:"taplands-santa-clara"},
-        {name:"Craft Beer Market",city:"Vancouver",slug:"craft-beer-market-vancouver"},
-        {name:"North Park Beer Co.",city:"San Diego",slug:"north-park-beer-co-san-diego"},
-        {name:"Beer Bar",city:"Salt Lake City",slug:"beer-bar-salt-lake-city"},
-        {name:"Khyber Pass Pub",city:"Philadelphia",slug:"khyber-pass-pub-philadelphia"},
-        {name:"Atomic Garden",city:"Palma",slug:"atomic-garden-palma"},
-        {name:"The Hop Beer Shop",city:"Chelmsford",slug:"the-hop-beer-shop-chelmsford"},
-        {name:"The Hop Inn",city:"Swindon",slug:"the-hop-inn-swindon"},
-        {name:"West Walls Brewing Co.",city:"Carlisle",slug:"west-walls-brewing-co-carlisle"},
-        {name:"The Mall Tavern",city:"Greater London",slug:"the-mall-tavern-greater-london-w8"},
+        {name:"Didsbury",city:"Manchester",slug:"didsbury-manchester"},  // GB · added 2026-10-02 · 11 beers
+        {name:"Semeli Bar",city:"Mikonos",slug:"semeli-bar-mykonos-mikonos"},  // GR · added 2026-10-02 · 7 beers
+        {name:"The Fringe Café",city:"Vancouver",slug:"the-fringe-caf-vancouver"},  // CA · added 2026-10-01 · 6 beers
+        {name:"Mucky O'Marras Irish Bar",city:"Alcúdia",slug:"mucky-omarras-irish-bar-alc-dia"},  // ES · added 2026-10-01 · 9 beers
         /* FEATURED-VENUES:END */
       ];
-      // Shuffle and pick 4, max 1 per city
-      for (var i = venues.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var t = venues[i]; venues[i] = venues[j]; venues[j] = t;
-      }
+      // No shuffle, no client-side filtering. The generator emits exactly
+      // four, one per country, newest first — so render the list as given.
+      // Shuffling a four-item list only hid which was newest, and the old
+      // client-side city dedup could silently render three chips.
       var el = document.getElementById('featured-venues');
       if (!el) return;
       var html = '';
-      var picked = [], usedCities = {};
-      for (var p = 0; p < venues.length && picked.length < 4; p++) {
-        var c = venues[p].city.toLowerCase();
-        if (usedCities[c]) continue;
-        usedCities[c] = true;
-        picked.push(venues[p]);
-      }
-      for (var k = 0; k < picked.length; k++) {
-        var v = picked[k];
+      for (var k = 0; k < venues.length; k++) {
+        var v = venues[k];
         html += '<a href="pubs/' + v.slug + '" class="featured-chip">' + v.name + '<span class="chip-city">' + v.city + '</span></a>';
       }
       el.innerHTML = html;

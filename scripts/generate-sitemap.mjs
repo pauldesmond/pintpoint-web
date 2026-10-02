@@ -235,7 +235,7 @@ async function fetchVenues() {
   const venues = [];
   for (let offset = 0; ; offset += PAGE_SIZE) {
     const endpoint = new URL('/rest/v1/venues', supabaseUrl);
-    endpoint.searchParams.set('select', 'id,name,city,country_code,untappd_id,untappd_type,untappd_category,updated_at,last_scraped_at');
+    endpoint.searchParams.set('select', 'id,name,city,country_code,untappd_id,untappd_type,untappd_category,created_at,updated_at,last_scraped_at');
     endpoint.searchParams.set('deleted_at', 'is.null');
     endpoint.searchParams.set('closed_down', 'eq.false');
     endpoint.searchParams.set('order', 'id.asc');
@@ -683,79 +683,109 @@ function collectFeaturedVenues() {
   const MAX_CITY_LABEL = 20;
   const MAX_NAME_LABEL = 26;
 
-  // A chip is a small pill: the name and the city have to fit and have to read
-  // as a place you could go for a beer. The first run of this generator
-  // produced "Bierconsumentenvereniging PINT" (a consumers' association),
-  // "ICderLaden.ch" (a bottle shop) and "A Hoppy Place Maidenhead" labelled
-  // with the city "Park St Maidenhead" — a street. Each is a real catalogue
-  // row; none is a pub chip.
+  // ONE VENUE PER COUNTRY, NEWEST FIRST. Paul, 2026-10-02: "we should pick the
+  // latest venue from 4 different countries to show the international nature
+  // of the app, understandably UK is likely always to be in the top 4".
   //
-  // PRIMARY category only, same reading as the app's venueTypeEligibility
-  // (first comma-separated type wins). "Beer Store" primary is excluded even
-  // though it carries stock, because shop stock is not a tap list.
+  // So the row is the four countries whose newest qualifying venue is newest.
+  // GB usually takes a slot on merit, because GB is where most venues land —
+  // it is not pinned, and on a quiet UK day it drops out, which is honest.
+  //
+  // Capping the POOL at one per country is what makes the guarantee hold: the
+  // page renders the pool in order, so "4 chips" and "4 countries" are the
+  // same statement and cannot drift apart.
+  //
+  // Recency, not tap volume. An earlier version ranked by cached tap count,
+  // which buried every new venue and reproduced the frozen list it replaced.
   const DRINKING_PRIMARY = /^(pub|bar|beer bar|gastropub|brewery|brewpub|taproom|tap room|irish pub|beer garden|beer hall|micropub|craft beer bar)$/i;
-  // "Park St Maidenhead", "North High St" — a street in the city column.
   const LOOKS_LIKE_STREET = /\b(st|rd|road|street|lane|ln|ave|avenue|way|drive|dr)\b/i;
 
   // DISPLAY LABEL ONLY — never feeds the slug. cleanCityForSlug strips a full
   // UK postcode ("London W8 4RT") but not a bare outward code, so the city
   // column yields chips reading "Greater London W8". The href still comes from
-  // canonicalSlug(venue) and is GET-verified, so label and slug are free to
-  // differ; that separation is the whole point of this rewrite.
+  // canonicalSlug(venue) and is verified below, so label and slug are free to
+  // differ; that separation is why the two hand-typed 404s cannot recur.
   const cityLabel = (c) => c.replace(/\s+[A-Z]{1,2}\d[A-Z\d]?$/, '').trim();
 
+  // Untappd names often carry a pipe-delimited tail that is listing metadata,
+  // not the pub's name: "Semeli Bar | Mykonos", "The Gloucester Old Spot |
+  // Family Friendly Pub | Bristol, UK". Rendered next to the city column that
+  // reads "Semeli Bar | Mykonos / Mikonos". Keep only the first segment.
+  //
+  // Pipe only. A hyphen is load-bearing in real pub names, so stripping on
+  // ' - ' would start editing names rather than tidying a separator — and
+  // [[feedback_dont_rewrite_what_untappd_recorded]] applies: the DB row keeps
+  // Untappd's string, this is a display label, and the slug is still built
+  // from the full recorded name so the link resolves.
+  const nameLabel = (n) => String(n || '').split('|')[0].trim();
+
   const candidates = venues
-    // A chip promises a live pub page with beer on it. Needs a VENUE-typed
-    // Untappd identity (a brewery id reads a stranger's feed) and recent
-    // confirmed taps, or the visitor lands on an empty page.
+    // Needs a VENUE-typed Untappd identity: the pub page refreshes its tap
+    // list from Untappd on demand, so a venue with no cached rows still
+    // renders — but a brewery id reads a stranger's feed.
     .filter((v) => v.untappd_id && v.untappd_id !== 0 && (v.untappd_type ?? 'venue') === 'venue')
-    .filter((v) => (liveTapCounts.get(v.id) ?? 0) >= 3)
-    .map((v) => ({ venue: v, city: cleanCityForSlug(v.city), taps: liveTapCounts.get(v.id) ?? 0 }))
-    // Skip rather than shorten an administrative-region city. Shortening is
-    // how "Comunitat Autonoma de les Illes Balears" became "Palma" and then
-    // became a 404. A venue we cannot label honestly is not featured.
+    .filter((v) => v.country_code)
+    .map((v) => ({ venue: v, city: cleanCityForSlug(v.city) }))
     .map((c) => ({ ...c, label: cityLabel(c.city) }))
     .filter((c) => c.city && c.label && c.label.length <= MAX_CITY_LABEL)
     .filter((c) => !LOOKS_LIKE_STREET.test(c.label))
-    .filter((c) => c.venue.name && c.venue.name.length <= MAX_NAME_LABEL)
+    .map((c) => ({ ...c, nameText: nameLabel(c.venue.name) }))
+    .filter((c) => c.nameText && c.nameText.length <= MAX_NAME_LABEL)
     // Drop a name that just repeats its own city ("Head of Steam Birmingham"
     // in Birmingham renders as "Head of Steam Birmingham / Birmingham").
-    .filter((c) => !new RegExp(`\\b${c.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b\\s*$`, 'i').test(c.venue.name))
+    .filter((c) => !new RegExp(`\\b${c.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b\\s*$`, 'i').test(c.nameText))
+    // Primary category only, same reading as the app's venueTypeEligibility.
+    // "Beer Store" primary is excluded: shop stock is not a tap list.
     .filter((c) => {
       const primary = String(c.venue.untappd_category ?? '').split(',')[0].trim();
       return DRINKING_PRIMARY.test(primary);
     })
-    .sort((a, b) => b.taps - a.taps);
+    .sort((a, b) => String(b.venue.created_at ?? '').localeCompare(String(a.venue.created_at ?? '')));
 
+  const perCountry = new Set();
   const picked = [];
-  const usedCities = new Set();
-  const perCountry = new Map();
   for (const c of candidates) {
-    if (picked.length >= 24) break;
-    const cityKey = c.label.toLowerCase();
-    if (usedCities.has(cityKey)) continue;
-    // Cap any one country at 8 so the row does not read as a UK-only app.
-    const cc = c.venue.country_code ?? '??';
-    if ((perCountry.get(cc) ?? 0) >= 8) continue;
-    usedCities.add(cityKey);
-    perCountry.set(cc, (perCountry.get(cc) ?? 0) + 1);
-    picked.push({ name: c.venue.name, city: c.label, slug: canonicalSlug(c.venue) });
+    const cc = c.venue.country_code;
+    if (perCountry.has(cc)) continue;
+    perCountry.add(cc);
+    picked.push({
+      name: c.nameText,
+      city: c.label,
+      slug: canonicalSlug(c.venue),
+      cc,
+      added: String(c.venue.created_at ?? '').slice(0, 10),
+    });
+    if (picked.length >= 16) break;   // walk depth for the verify step below
   }
   return picked;
 }
 
-// Probe each chip before publishing it. This is the check that would have
-// caught the two dead links: a slug can be derived correctly and still 404,
-// and nothing on the page would say so. Bounded — stops once 18 are confirmed.
-async function verifyFeaturedVenues(list) {
+// Verify by OUTCOME, not status code. HTTP 200 is not enough: a venue added
+// today can resolve, render, and show no beer at all — autonomous-society-dallas
+// did exactly that on 2026-10-02, 200 with no tap-list header. A chip that
+// lands on an empty pub page is the failure this row is supposed to avoid.
+//
+// So the test is the rendered page: it must carry the tap-list header AND a
+// non-zero beer count. Stops as soon as FOUR countries have passed.
+const TAP_HEADER = /(\d+)\s+beers? in recent tap history/i;
+async function verifyFeaturedVenues(list, want = 4) {
   const good = [];
   for (const v of list) {
-    if (good.length >= 18) break;
+    if (good.length >= want) break;
     try {
-      const res = await fetch(`https://pintpoint.co.uk/pubs/${v.slug}`, { method: 'GET' });
-      if (res.ok) good.push(v);
-      else console.warn(`[sitemap] featured chip dropped (HTTP ${res.status}): ${v.slug}`);
-    } catch (e) {
+      const res = await fetch(`https://pintpoint.co.uk/pubs/${v.slug}`);
+      if (!res.ok) {
+        console.warn(`[sitemap] featured chip dropped (HTTP ${res.status}): ${v.slug}`);
+        continue;
+      }
+      const m = TAP_HEADER.exec(await res.text());
+      const beers = m ? Number(m[1]) : 0;
+      if (!beers) {
+        console.warn(`[sitemap] featured chip dropped (page has no beers): ${v.slug}`);
+        continue;
+      }
+      good.push({ ...v, beers });
+    } catch {
       console.warn(`[sitemap] featured chip dropped (fetch failed): ${v.slug}`);
     }
   }
@@ -767,13 +797,15 @@ async function rewriteFeaturedVenues() {
   const url = new URL('../index.html', import.meta.url);
 
   const candidates = collectFeaturedVenues();
-  if (candidates.length < 8) {
+  if (candidates.length < 4) {
     console.warn(`[sitemap] featured venues skipped — only ${candidates.length} candidates`);
     return;
   }
-  const list = await verifyFeaturedVenues(candidates);
-  if (list.length < 8) {
-    console.warn(`[sitemap] featured venues skipped — only ${list.length} verified`);
+  const list = await verifyFeaturedVenues(candidates, 4);
+  // Leave yesterday's row standing rather than publish a short one. Four
+  // countries is the claim the row makes; three would quietly weaken it.
+  if (list.length < 4) {
+    console.warn(`[sitemap] featured venues skipped — only ${list.length} of 4 verified`);
     return;
   }
 
@@ -788,7 +820,8 @@ async function rewriteFeaturedVenues() {
   }
 
   const body = list
-    .map((v) => `        {name:${JSON.stringify(v.name)},city:${JSON.stringify(v.city)},slug:${JSON.stringify(v.slug)}},`)
+    .map((v) => `        {name:${JSON.stringify(v.name)},city:${JSON.stringify(v.city)},slug:${JSON.stringify(v.slug)}},`
+      + `  // ${v.cc} · added ${v.added} · ${v.beers} beers`)
     .join('\n');
   const next = `${START}\n${body}\n        ${END}`;
   const updated = html.slice(0, from) + next + html.slice(to + END.length);
@@ -797,7 +830,7 @@ async function rewriteFeaturedVenues() {
     return;
   }
   await writeFile(url, updated);
-  console.log(`[sitemap] featured venues: ${list.length} chips rewritten from the catalogue`);
+  console.log(`[sitemap] featured venues: ${list.map((v) => `${v.name} (${v.cc})`).join(', ')}`);
 }
 
 // Last: the helpers above are `const`, so this cannot run before they exist.
