@@ -235,7 +235,7 @@ async function fetchVenues() {
   const venues = [];
   for (let offset = 0; ; offset += PAGE_SIZE) {
     const endpoint = new URL('/rest/v1/venues', supabaseUrl);
-    endpoint.searchParams.set('select', 'id,name,city,updated_at,last_scraped_at');
+    endpoint.searchParams.set('select', 'id,name,city,country_code,updated_at,last_scraped_at');
     endpoint.searchParams.set('deleted_at', 'is.null');
     endpoint.searchParams.set('closed_down', 'eq.false');
     endpoint.searchParams.set('order', 'id.asc');
@@ -377,10 +377,12 @@ const totalVenues = venues.length;
 // AI-discovery layer (llms.txt, ai/*.json) can be reconciled against ground
 // truth instead of drifting. venues_live + beers are counted here; countries
 // is stable and stays hand-maintained in the prose files.
-//   NOTE: this writes the canonical numbers; the prose files are not yet
-//   auto-rewritten from it. If counts.json and the prose disagree, counts.json
-//   is right and the prose is stale — reconcile the prose (or wire an
-//   auto-rewrite step) when the gap is material.
+//   The prose IS now auto-rewritten from these numbers — see
+//   rewriteHeadlineStats() below. The note that used to live here said to wire
+//   that up "when the gap is material". It became material: the pages read
+//   "1,776+ venues across 49 countries" against a real 5,842 and 61, and
+//   "17,611+ beers" against 23,380 actually appearing on tap lists. Hand-
+//   maintained figures do not get maintained.
 await import('node:fs/promises').then(({ writeFile }) => writeFile(
   new URL('../ai/counts.json', import.meta.url),
   JSON.stringify({
@@ -442,3 +444,202 @@ const venueUrlInputTotal = venueUrls.length + ghostUrls.length;
 if (uniqueVenueUrlCount !== venueUrlInputTotal) {
   console.log(`Skipped ${venueUrlInputTotal - uniqueVenueUrlCount} duplicate canonical venue slug(s).`);
 }
+
+// Continent for an ISO-3166 alpha-2 code. Only the codes we actually hold are
+// listed; anything else falls into Other and is counted in the totals but not
+// shown as a region row, so an unmapped country can never silently vanish.
+const REGION_BY_CC = {
+  Europe: 'GB IE FR DE ES IT PT BE NL DK SE NO FI PL AT CZ HU CH GR HR RS SI SK RO BG EE LV LT IS LU MT CY UA ME BA MK AL MD TR RU',
+  'North America': 'US CA MX CR PA GT CU DO JM PR',
+  Oceania: 'AU NZ FJ',
+  Asia: 'JP SG TH VN MY ID PH KR CN HK TW IN AE IL LK KH NP',
+  'South America': 'BR AR CL CO PE UY EC BO PY VE',
+  Africa: 'ZA KE NG MA EG TZ NA',
+};
+const CC_TO_REGION = Object.fromEntries(
+  Object.entries(REGION_BY_CC).flatMap(([region, codes]) => codes.split(' ').map((cc) => [cc, region])),
+);
+
+// Distinct beer names across ALL tap-list rows, not just the fresh ones the
+// sitemap uses. The claim on the page is "beers matched to tap lists" — the
+// matching work done, cumulative — so it must not be filtered to what is
+// pouring this month (23,380 against 7,754; filtering would quietly understate
+// by two thirds). One paged pass carrying venue_id as well, so the per-region
+// breakdown comes out of the same bytes rather than a second trip.
+async function collectCatalogueStats() {
+  const regionOf = new Map();
+  const countries = new Set();
+  const regions = {};
+  for (const v of venues) {
+    const cc = v.country_code;
+    if (!cc) continue;             // unclassified: counted nowhere, never guessed
+    countries.add(cc);
+    const region = CC_TO_REGION[cc] ?? 'Other';
+    regionOf.set(v.id, region);
+    regions[region] ??= { venues: 0, beers: 0 };
+    regions[region].venues++;
+  }
+
+  const allBeers = new Set();
+  const beersByRegion = new Map();
+  for (let offset = 0; ; offset += PAGE_SIZE) {
+    const endpoint = new URL('/rest/v1/tap_list', supabaseUrl);
+    endpoint.searchParams.set('select', 'beer_name,venue_id');
+    endpoint.searchParams.set('beer_name', 'not.is.null');
+    endpoint.searchParams.set('order', 'id.asc');
+    endpoint.searchParams.set('limit', String(PAGE_SIZE));
+    endpoint.searchParams.set('offset', String(offset));
+    const response = await supabaseFetch(endpoint);
+    if (!response.ok) return null;
+    const page = await response.json();
+    for (const row of page) {
+      if (!row.beer_name) continue;
+      allBeers.add(row.beer_name);
+      const region = regionOf.get(row.venue_id);
+      if (!region) continue;
+      if (!beersByRegion.has(region)) beersByRegion.set(region, new Set());
+      beersByRegion.get(region).add(row.beer_name);
+    }
+    if (page.length < PAGE_SIZE) break;
+  }
+  for (const [region, set] of beersByRegion) {
+    if (regions[region]) regions[region].beers = set.size;
+  }
+
+  return {
+    venues: venues.length,
+    countries: countries.size,
+    venuesWithTaps: liveTapCounts.size,
+    beersOnTap: allBeers.size,
+    beersCatalogue: beerCount,
+    regions,
+  };
+}
+
+// ── Headline stats: rewritten into the prose, not just counts.json ─────
+//
+// Every figure on the home page and the comparison page is wrapped in an
+// element carrying `data-stat="…"`. This rewrites each one from the live
+// catalogue, so the marketing numbers cannot drift from the database again.
+//
+// They had drifted badly: "1,776+ venues across 49 countries" and
+// "17,611+ beers" sat on the home page against a real 5,842 / 61 / 23,380 —
+// the catalogue had more than tripled and nothing said so.
+//
+// TWO DIFFERENT "VENUES" NUMBERS, DELIBERATELY KEPT APART:
+//   venues            every live venue we hold — the coverage claim
+//   venues-with-taps  only those that actually have tap data — which is what
+//                     "live tap lists across N venues" means on compare.html
+// Conflating them would overclaim by about 2,500 pubs.
+//
+// "beers" is distinct beer names appearing on tap lists, NOT the beers table
+// (which is ~49k and counts every beer we know of, poured or not). The page
+// says "beers matched to tap lists", so it has to be the smaller, true one.
+async function rewriteHeadlineStats() {
+  const { readFile, writeFile } = await import('node:fs/promises');
+
+  const round = (n) => {
+    if (n < 100) return `${Math.floor(n / 10) * 10}+`;
+    if (n < 1000) return `${Math.floor(n / 100) * 100}+`;
+    return `${(Math.floor(n / 100) * 100).toLocaleString('en-GB')}+`;
+  };
+
+  const stats = await collectCatalogueStats();
+  if (!stats) {
+    console.warn('[sitemap] headline stats skipped — could not read catalogue counts');
+    return;
+  }
+
+  const values = {
+    venues: round(stats.venues),
+    countries: String(stats.countries),
+    beers: round(stats.beersOnTap),
+    'venues-with-taps': round(stats.venuesWithTaps),
+    'countries-venues': `${stats.countries} countries, ${round(stats.venues)} venues`,
+    footer: `${round(stats.beersOnTap)} Beers · ${round(stats.venues)} Venues · ${stats.countries} Countries`,
+  };
+  for (const [region, slug] of [['Europe','europe'],['North America','north-america'],['Oceania','oceania'],['Asia','asia']]) {
+    const r = stats.regions[region];
+    if (r) values[`region-${slug}`] = `${round(r.venues)} venues · ${round(r.beers)} beers`;
+  }
+
+  // A site-wide sweep for the same claim written in prose. The data-stat
+  // anchors below cover the home and comparison pages; these phrasings appear
+  // on another ten, plus the AI-facing JSON. They are formulaic enough to match
+  // safely — every pattern is anchored on the words venues / countries / beers,
+  // so a bare number elsewhere is never touched.
+  //
+  // blog/ IS DELIBERATELY EXCLUDED. A published piece said what was true the
+  // day it went out; quietly editing its body later rewrites the record rather
+  // than updating a claim. Product pages are a live claim and should track the
+  // database. Editorial is not.
+  {
+    const { readdir } = await import('node:fs/promises');
+    const root = new URL('../', import.meta.url);
+    const v = round(stats.venues);
+    const c = String(stats.countries);
+    const b = round(stats.beersOnTap);
+    const patterns = [
+      [/[\d,]+\+ venues across \d+ countries/g, `${v} venues across ${c} countries`],
+      [/[\d,]+\+ venues in \d+ countries/g, `${v} venues in ${c} countries`],
+      [/\d+ countries, [\d,]+\+ venues/g, `${c} countries, ${v} venues`],
+      [/[\d,]+\+ beers matched to tap lists/g, `${b} beers matched to tap lists`],
+      [/[\d,]+\+ Beers · [\d,]+\+ Venues · \d+ Countries/g, `${b} Beers · ${v} Venues · ${c} Countries`],
+      [/tracks [\d,]+\+ venues/g, `tracks ${v} venues`],
+      [/tap lists (from|for) [\d,]+\+ venues/g, (_m, w) => `tap lists ${w} ${v} venues`],
+      [/venues across \d+ countries/g, `venues across ${c} countries`],
+      [/"venue_count_tracked": "[\d,]+\+"/g, `"venue_count_tracked": "${v}"`],
+      [/"countries": \d+/g, `"countries": ${c}`],
+      // Bare "N countries" in prose and meta descriptions. Safe because every
+      // occurrence on this site is the coverage claim; the sweep never touches
+      // blog/, where a number might be about something else entirely.
+      [/\b\d+ countries\b/g, `${c} countries`],
+      [/[\d,]+\+ live pub and taproom pages/g, `${v} live pub and taproom pages`],
+      [/[\d,]+\+ pages, structurally similar/g, `${v} pages, structurally similar`],
+      [/[\d,]+\+ roster\./g, `${v} roster.`],
+      [/Live tap lists across [\d,]+\+ venues/g, `Live tap lists across ${round(stats.venuesWithTaps)} venues`],
+      // "over 1,776 venues" — no plus sign, so the patterns above miss it.
+      [/over [\d,]+ venues/g, `over ${stats.venues.toLocaleString('en-GB')} venues`],
+    ];
+    const files = [];
+    for (const name of await readdir(root)) {
+      if (name.endsWith('.html') || name === 'llms.txt') files.push(name);
+    }
+    for (const name of await readdir(new URL('ai/', root))) {
+      if (name.endsWith('.json') && name !== 'counts.json') files.push(`ai/${name}`);
+    }
+    files.push('pubs/index.html');
+    let touched = 0;
+    for (const name of files) {
+      const url = new URL(name, root);
+      let text;
+      try { text = await readFile(url, 'utf8'); } catch { continue; }
+      const before = text;
+      for (const [re, to] of patterns) text = text.replace(re, to);
+      if (text !== before) { await writeFile(url, text); touched++; }
+    }
+    if (touched) console.log(`[sitemap] headline stats: prose refreshed in ${touched} file(s)`);
+  }
+
+  for (const file of ['../index.html', '../compare.html']) {
+    const url = new URL(file, import.meta.url);
+    let html = await readFile(url, 'utf8');
+    let changed = 0;
+    for (const [key, value] of Object.entries(values)) {
+      // Replaces only the text inside the anchored element, never the markup.
+      const re = new RegExp(`(data-stat="${key}"[^>]*>)([^<]*)(<)`, 'g');
+      html = html.replace(re, (whole, open, current, close) => {
+        if (current === value) return whole;
+        changed++;
+        return `${open}${value}${close}`;
+      });
+    }
+    if (changed) {
+      await writeFile(url, html);
+      console.log(`[sitemap] headline stats: ${changed} figure(s) refreshed in ${file.replace('../','')}`);
+    }
+  }
+}
+
+// Last: the helpers above are `const`, so this cannot run before they exist.
+await rewriteHeadlineStats();

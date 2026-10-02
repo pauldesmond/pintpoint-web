@@ -26,7 +26,7 @@
   ],
   "coverage": {
     "venues_tracked": 1776,
-    "countries": 49,
+    "countries": 61,
     "primary_regions": ["United Kingdom", "United States", "Australia", "Spain", "Germany", "Japan", "New Zealand", "Norway", "Canada", "Poland"]
   },
   "core_features": [
