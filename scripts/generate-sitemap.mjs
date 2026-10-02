@@ -767,6 +767,15 @@ function collectFeaturedVenues() {
 //
 // So the test is the rendered page: it must carry the tap-list header AND a
 // non-zero beer count. Stops as soon as FOUR countries have passed.
+//
+// DELIBERATELY NO CACHE-BUSTER on this fetch. The edge caches 404s as well as
+// 200s, so a venue whose URL recently changed can be live in the database and
+// still serving a cached 404 to visitors. On 2026-10-02 the Mykonos city fix
+// did exactly that: semeli-bar-mykonos-mykonos answered 200 to a cache-busted
+// curl and 404 to this verifier, and the verifier was right — a visitor
+// clicking that chip would have got the 404. Fetching the same URL a reader
+// fetches is the point of the check; adding ?cb= would test a URL no visitor
+// uses and publish a chip that is broken for everyone else.
 const TAP_HEADER = /(\d+)\s+beers? in recent tap history/i;
 async function verifyFeaturedVenues(list, want = 4) {
   const good = [];
