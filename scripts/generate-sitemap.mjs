@@ -517,12 +517,21 @@ async function collectCatalogueStats() {
   const refreshable = venues.filter((v) =>
     v.untappd_id && v.untappd_id !== 0 && (v.untappd_type ?? 'venue') === 'venue').length;
 
+  // Ghosts are counted separately because fetchVenues() filters
+  // closed_down=eq.false — the ghost catalogue is, by definition, everything
+  // that query throws away. A head request, so it costs one row of egress.
+  const ghosts = await fetchExactCount('venues', {
+    closed_down: 'eq.true',
+    deleted_at: 'is.null',
+  });
+
   return {
     venues: venues.length,
     countries: countries.size,
     venuesWithTaps: refreshable,
     beersOnTap: allBeers.size,
     beersCatalogue: beerCount,
+    ghosts,
     regions,
   };
 }
@@ -566,6 +575,10 @@ async function rewriteHeadlineStats() {
     countries: String(stats.countries),
     beers: round(stats.beersOnTap),
     'venues-with-taps': round(stats.venuesWithTaps),
+    // Deliberately exact rather than round()ed. "767 pubs that called last
+    // orders for good" reads as a counted thing; "700+" reads as an estimate,
+    // and this is the one figure on the page where the precision is the point.
+    ghosts: stats.ghosts.toLocaleString('en-GB'),
     'countries-venues': `${stats.countries} countries, ${round(stats.venues)} venues`,
     footer: `${round(stats.beersOnTap)} Beers · ${round(stats.venues)} Venues · ${stats.countries} Countries`,
   };
@@ -698,6 +711,13 @@ function collectFeaturedVenues() {
   // Recency, not tap volume. An earlier version ranked by cached tap count,
   // which buried every new venue and reproduced the frozen list it replaced.
   const DRINKING_PRIMARY = /^(pub|bar|beer bar|gastropub|brewery|brewpub|taproom|tap room|irish pub|beer garden|beer hall|micropub|craft beer bar)$/i;
+  // A drinking PRIMARY category is not enough on its own. "Baby Dolls, Dallas"
+  // is categorised "Bar, Nightclub, Entertainment Service" — a strip club,
+  // primary-typed as a bar, which on 2026-10-02 won the US slot on this row
+  // and would have gone out as a PINtPOINT recommendation. Read the WHOLE
+  // category list and refuse these outright, whatever leads it.
+  // (Sibling of the Goldwood-class slip in the non-pub category audit.)
+  const OFF_BRAND_ANY = /\b(nightclub|night club|entertainment service|adult|strip|gentlemen'?s club|casino|hookah|shisha|smoking lounge)\b/i;
   const LOOKS_LIKE_STREET = /\b(st|rd|road|street|lane|ln|ave|avenue|way|drive|dr)\b/i;
 
   // DISPLAY LABEL ONLY — never feeds the slug. cleanCityForSlug strips a full
@@ -737,17 +757,27 @@ function collectFeaturedVenues() {
     // Primary category only, same reading as the app's venueTypeEligibility.
     // "Beer Store" primary is excluded: shop stock is not a tap list.
     .filter((c) => {
-      const primary = String(c.venue.untappd_category ?? '').split(',')[0].trim();
-      return DRINKING_PRIMARY.test(primary);
+      const cats = String(c.venue.untappd_category ?? '');
+      const primary = cats.split(',')[0].trim();
+      return DRINKING_PRIMARY.test(primary) && !OFF_BRAND_ANY.test(cats);
     })
     .sort((a, b) => String(b.venue.created_at ?? '').localeCompare(String(a.venue.created_at ?? '')));
 
-  const perCountry = new Set();
+  // DEPTH PER COUNTRY, not one shot per country. The first version took a
+  // single newest venue for each country BEFORE verification, so when that
+  // venue failed the page check the whole country was lost — it had no second
+  // candidate to fall back on. On 2026-10-02 that silently dropped GB from the
+  // row: the newest GB venue was Fountain Tap, its page had no beers, and
+  // Britain — where most of our venues are — went unrepresented while Monaco
+  // made it. Carry a few per country and let the verifier choose.
+  const PER_COUNTRY_DEPTH = 4;
+  const perCountry = new Map();
   const picked = [];
   for (const c of candidates) {
     const cc = c.venue.country_code;
-    if (perCountry.has(cc)) continue;
-    perCountry.add(cc);
+    const used = perCountry.get(cc) ?? 0;
+    if (used >= PER_COUNTRY_DEPTH) continue;
+    perCountry.set(cc, used + 1);
     picked.push({
       name: c.nameText,
       city: c.label,
@@ -755,7 +785,7 @@ function collectFeaturedVenues() {
       cc,
       added: String(c.venue.created_at ?? '').slice(0, 10),
     });
-    if (picked.length >= 16) break;   // walk depth for the verify step below
+    if (picked.length >= 60) break;   // walk depth for the verify step below
   }
   return picked;
 }
@@ -779,8 +809,12 @@ function collectFeaturedVenues() {
 const TAP_HEADER = /(\d+)\s+beers? in recent tap history/i;
 async function verifyFeaturedVenues(list, want = 4) {
   const good = [];
+  const countriesTaken = new Set();
   for (const v of list) {
     if (good.length >= want) break;
+    // One per country is enforced HERE, after the page check, so a country's
+    // second-newest venue can stand in when its newest fails.
+    if (countriesTaken.has(v.cc)) continue;
     try {
       const res = await fetch(`https://pintpoint.co.uk/pubs/${v.slug}`);
       if (!res.ok) {
@@ -793,6 +827,7 @@ async function verifyFeaturedVenues(list, want = 4) {
         console.warn(`[sitemap] featured chip dropped (page has no beers): ${v.slug}`);
         continue;
       }
+      countriesTaken.add(v.cc);
       good.push({ ...v, beers });
     } catch {
       console.warn(`[sitemap] featured chip dropped (fetch failed): ${v.slug}`);
