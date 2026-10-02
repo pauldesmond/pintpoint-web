@@ -1,40 +1,44 @@
 /**
  * First-party page-view beacon.
  *
- * WHY IT EXISTS. `log-page-view` and the `page_views.referrer` column have
- * been in place since April, but the beacon was only ever wired into
- * index.html and download.html. On 2026-10-01 one blog post carried roughly
- * half the site's traffic for a day and we could not see where any of it came
- * from: Cloudflare had the referrers and we could not reach them, and our own
- * table had three rows against Cloudflare's 240. A referrer column nothing
- * writes to is worse than none, because it looks like data we hold.
+ * WHY IT EXISTS. `log-page-view` and `page_views.referrer` have been in place
+ * since April, but the beacon was only ever wired into index.html and
+ * download.html. On 2026-10-01 one blog post carried roughly half the site's
+ * traffic for a day and we could not see where any of it came from.
  *
- * Cookieless, no identifiers, no consent banner — the same position as the
- * Cloudflare beacon alongside it. It records the path, the referring URL the
- * browser already sends, and the user agent.
+ * WHY sendBeacon AND NOT fetch. The first version of this file used fetch with
+ * Authorization and apikey headers, copied from index.html. It logged NOTHING
+ * in its first fifteen hours. Those headers are not CORS-simple, so the request
+ * preflights — and the function answers OPTIONS with
+ * `access-control-allow-headers: content-type` alone, so the real POST is never
+ * sent. index.html's copy has the same flaw and manages 0–4 rows a day against
+ * a page Cloudflare counts in the dozens.
  *
- * Deliberately silent: analytics must never break a page or show an error, and
- * a blocked fetch (privacy DNS, extensions) is an expected outcome, not a
- * fault.
+ * download.html has always used sendBeacon with no headers at all, and it is
+ * the only beacon on the site that logs reliably. The function does not need
+ * auth — a bare text/plain POST returns 200 — so the headers bought nothing and
+ * cost everything. This copies the one that demonstrably works.
+ *
+ * sendBeacon also survives the page being closed, which a fetch on a link click
+ * does not.
+ *
+ * Cookieless, no identifier, no consent banner — the same position as the
+ * Cloudflare beacon beside it. Silent by design: a blocked request is an
+ * expected outcome on a site whose readers run privacy DNS, not a fault.
  */
 (function () {
   try {
-    var ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2b2tza29ldm1jZWtrZ2lnbHBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4ODQ3ODAsImV4cCI6MjA4ODQ2MDc4MH0.mdwX__oAXOr3WwBdWsc7a0esZZoSGovr3S0xkh-gTp8';
-    fetch('https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/log-page-view', {
-      method: 'POST',
-      // text/plain keeps this a CORS simple request: no preflight, so one
-      // round trip rather than two.
-      headers: {
-        'Content-Type': 'text/plain',
-        'Authorization': 'Bearer ' + ANON,
-        'apikey': ANON,
-      },
-      body: JSON.stringify({
-        path: location.pathname || '/',
-        referrer: document.referrer || null,
-        ua: navigator.userAgent || null,
-      }),
-      keepalive: true,
-    }).catch(function () {});
+    if (!navigator.sendBeacon) return;
+    var payload = JSON.stringify({
+      path: location.pathname || '/',
+      referrer: document.referrer || null,
+      ua: navigator.userAgent || null,
+    });
+    // text/plain keeps this a CORS simple request: no preflight, which
+    // sendBeacon cannot perform anyway.
+    navigator.sendBeacon(
+      'https://rvokskoevmcekkgiglpa.supabase.co/functions/v1/log-page-view',
+      new Blob([payload], { type: 'text/plain' })
+    );
   } catch (e) { /* never let analytics surface on the page */ }
 })();
