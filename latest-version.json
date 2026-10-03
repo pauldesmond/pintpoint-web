@@ -1,9 +1,9 @@
 {
-  "latest_version": "1.14.1",
+  "latest_version": "1.14.3",
   "min_supported_version": "1.7.0",
-  "apk_url": "https://expo.dev/artifacts/eas/zyOuTfoE8waqQMXmhOgz7l-zDtLzAnDECJ2IiBAmgZg.apk",
+  "apk_url": "https://expo.dev/artifacts/eas/MciXXRn8u21deGDneAvdnLXbPyJdEXT0tVYKgtGBnLU.apk",
   "release_notes_url": "https://pintpoint.co.uk/changelog",
-  "released_at": "2026-10-01",
-  "notes": "Closure warnings you can trust. Every closure-risk score now names where it came from, and shows nothing rather than inventing one — a pub with no score no longer reads as a pub with a good score. Sixteen pubs have lost an At Risk warning they hadn't earned. One score, one wording, everywhere. Plus: the Radar's empty states say what they're actually looking for, Quick Picks are editable from the sheet, and area search keeps the location you chose.",
+  "released_at": "2026-10-03",
+  "notes": "Malt and roast are now two different things. A Märzen tastes of bread, toast and toffee; a stout tastes of coffee and char. They had been sharing one line on the Beer DNA chart, which is why a Festbier could come out with almost no malt at all. Every style now starts from a reference range drawn from the brewing guidelines, and your saved taste profile is carried over to the new scale the first time you open the app. Plus eleven new style filters — Brett, California Common, Fruit Beer, Pumpkin, Wild Ale and more — with around 1,600 beers now sorting into a style that didn't before, and nothing left uncategorised.",
   "urgent": false
 }
