@@ -524,6 +524,15 @@ async function collectCatalogueStats() {
     closed_down: 'eq.true',
     deleted_at: 'is.null',
   });
+  // The London subset, because several pages say "closed LONDON pubs" and
+  // the total would overstate that claim. 703 of 767 on 2026-10-03 — still
+  // overwhelmingly London, but no longer only London, so the two numbers
+  // have to be separate or one of the two sentences is wrong.
+  const ghostsLondon = await fetchExactCount('venues', {
+    closed_down: 'eq.true',
+    deleted_at: 'is.null',
+    city: 'ilike.*london*',
+  });
 
   return {
     venues: venues.length,
@@ -532,6 +541,7 @@ async function collectCatalogueStats() {
     beersOnTap: allBeers.size,
     beersCatalogue: beerCount,
     ghosts,
+    ghostsLondon,
     regions,
   };
 }
@@ -619,6 +629,30 @@ async function rewriteHeadlineStats() {
       // blog/, where a number might be about something else entirely.
       [/\b\d+ countries\b/g, `${c} countries`],
       [/[\d,]+\+ live pub and taproom pages/g, `${v} live pub and taproom pages`],
+      // Ghosts. Added 2026-10-03: an external review found "500+" on six
+      // pages against a real 767 — the home page already carried the right
+      // figure via its data-stat marker, so the site contradicted itself.
+      // London and total are separate patterns on purpose; using one number
+      // for both sentences makes whichever it isn't untrue.
+      [/[\d,]+\+ closed and demolished London pubs/g, `${round(stats.ghostsLondon)} closed and demolished London pubs`],
+      [/[\d,]+\+ closed London pubs/g, `${round(stats.ghostsLondon)} closed London pubs`],
+      [/[\d,]+\+ closed pubs/g, `${round(stats.ghosts)} closed pubs`],
+      [/[\d,]+\+ closed, demolished and historic UK pubs/g, `${round(stats.ghosts)} closed, demolished and historic UK pubs`],
+      // "mostly London" / "primarily focused on London" sit next to these two,
+      // so they take the TOTAL, not the London subset. Found by enumerating
+      // every variant on the site rather than fixing the ones I happened to
+      // grep first — two had already slipped through on the first pass.
+      [/[\d,]+\+ closed and demolished venues/g, `${round(stats.ghosts)} closed and demolished venues`],
+      [/[\d,]+\+ closed and demolished pubs/g, `${round(stats.ghosts)} closed and demolished pubs`],
+      // Catalogue size. llms.txt said 45,000+ against a real 49,900+. This is
+      // the CATALOGUE, a different number from "beers matched to tap lists"
+      // (23,883) — both are true and they must not be collapsed into one.
+      // ANCHORED to the sentence, not to "N+ beers" on its own. The loose
+      // version would have rewritten the four regional cells — Europe
+      // 17,300+, North America 5,200+, Oceania 1,100+, Asia 500+ — to the
+      // global catalogue figure. Caught before running it.
+      [/across (\d+) countries and [\d,]+\+ beers/g,
+        (_m, cc) => `across ${cc} countries and ${round(stats.beersCatalogue)} beers`],
       [/[\d,]+\+ pages, structurally similar/g, `${v} pages, structurally similar`],
       [/[\d,]+\+ roster\./g, `${v} roster.`],
       [/Live tap lists across [\d,]+\+ venues/g, `Live tap lists across ${round(stats.venuesWithTaps)} venues`],

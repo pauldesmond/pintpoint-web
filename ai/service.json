@@ -32,7 +32,7 @@
     },
     {
       "name": "Ghost Hunter (London)",
-      "description": "Reveals 500+ closed and demolished London pubs as purple blips on the radar. 327 pubs have archive photos attached. Tapping a ghost shows historical context."
+      "description": "Reveals 700+ closed and demolished London pubs as purple blips on the radar. 327 pubs have archive photos attached. Tapping a ghost shows historical context."
     },
     {
       "name": "Troubled Pub Mode (England & Wales)",
@@ -44,7 +44,7 @@
     "primary": "United Kingdom",
     "international": ["United States", "Spain", "Australia", "Germany", "Japan", "New Zealand", "Norway", "Canada", "Poland"],
     "country_count": "49",
-    "venue_count_tracked": "5,900+"
+    "venue_count_tracked": "6,000+"
   },
   "pricing": {
     "model": "Annual subscription",
