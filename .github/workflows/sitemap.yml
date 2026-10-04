@@ -101,3 +101,11 @@ jobs:
       - name: Ping IndexNow (streaming, one URL per request)
         if: steps.diff.outputs.changed == 'true'
         run: ./scripts/indexnow.sh --all
+
+      # LAST, and deliberately after the commit. A broken JSON-LD block is a
+      # critical Search Console error but it is not a reason to withhold a
+      # fresh sitemap, so this never blocks the regeneration — it just turns
+      # the run red so the breakage surfaces here rather than in a Search
+      # Console email weeks later, which is how the 2026-10-04 one was found.
+      - name: Validate structured data
+        run: node scripts/check-structured-data.mjs
