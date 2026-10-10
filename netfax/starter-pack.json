@@ -1,0 +1,206 @@
+{
+  "format": "netfax-starter-pack",
+  "version": 1,
+  "name": "NMS layout: BBC News + Sky News section feeds",
+  "notes": "Imported only when you choose it. Headlines and publisher summaries are shown unedited with a BBC NEWS / SKY NEWS credit and a link to the original article. No logos. Personal, non-commercial use per each publisher's RSS terms.",
+  "feeds": [
+    {
+      "section": "news",
+      "name": "BBC Top stories",
+      "url": "https://feeds.bbci.co.uk/news/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "news",
+      "name": "BBC UK",
+      "url": "https://feeds.bbci.co.uk/news/uk/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "news",
+      "name": "BBC World",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "news",
+      "name": "Sky Home",
+      "url": "https://feeds.skynews.com/feeds/rss/home.xml",
+      "credit": "SKY NEWS"
+    },
+    {
+      "section": "news",
+      "name": "Sky UK",
+      "url": "https://feeds.skynews.com/feeds/rss/uk.xml",
+      "credit": "SKY NEWS"
+    },
+    {
+      "section": "news",
+      "name": "Sky World",
+      "url": "https://feeds.skynews.com/feeds/rss/world.xml",
+      "credit": "SKY NEWS"
+    },
+    {
+      "section": "politics",
+      "name": "BBC Politics",
+      "url": "https://feeds.bbci.co.uk/news/politics/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "politics",
+      "name": "Sky Politics",
+      "url": "https://feeds.skynews.com/feeds/rss/politics.xml",
+      "credit": "SKY NEWS"
+    },
+    {
+      "section": "business",
+      "name": "BBC Business",
+      "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "business",
+      "name": "Sky Business",
+      "url": "https://feeds.skynews.com/feeds/rss/business.xml",
+      "credit": "SKY NEWS"
+    },
+    {
+      "section": "tech",
+      "name": "BBC Technology",
+      "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "tech",
+      "name": "Sky Technology",
+      "url": "https://feeds.skynews.com/feeds/rss/technology.xml",
+      "credit": "SKY NEWS"
+    },
+    {
+      "section": "science",
+      "name": "BBC Science & Environment",
+      "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "entertainment",
+      "name": "BBC Entertainment & Arts",
+      "url": "https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "entertainment",
+      "name": "Sky Entertainment",
+      "url": "https://feeds.skynews.com/feeds/rss/entertainment.xml",
+      "credit": "SKY NEWS"
+    },
+    {
+      "section": "football",
+      "name": "BBC Football",
+      "url": "https://feeds.bbci.co.uk/sport/football/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "cricket",
+      "name": "BBC Cricket",
+      "url": "https://feeds.bbci.co.uk/sport/cricket/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "f1",
+      "name": "BBC Formula 1",
+      "url": "https://feeds.bbci.co.uk/sport/formula1/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "rugby",
+      "name": "BBC Rugby Union",
+      "url": "https://feeds.bbci.co.uk/sport/rugby-union/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "tennisgolf",
+      "name": "BBC Tennis",
+      "url": "https://feeds.bbci.co.uk/sport/tennis/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "tennisgolf",
+      "name": "BBC Golf",
+      "url": "https://feeds.bbci.co.uk/sport/golf/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-ni",
+      "name": "BBC Northern Ireland",
+      "url": "https://feeds.bbci.co.uk/news/northern_ireland/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-scotland",
+      "name": "BBC Scotland",
+      "url": "https://feeds.bbci.co.uk/news/scotland/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-wales",
+      "name": "BBC Wales",
+      "url": "https://feeds.bbci.co.uk/news/wales/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-northwest",
+      "name": "BBC Manchester",
+      "url": "https://feeds.bbci.co.uk/news/england/manchester/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-northeast",
+      "name": "BBC Tyne & Wear",
+      "url": "https://feeds.bbci.co.uk/news/england/tyne_and_wear/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-yorkslincs",
+      "name": "BBC Leeds & West Yorkshire",
+      "url": "https://feeds.bbci.co.uk/news/england/leeds/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-westmidlands",
+      "name": "BBC Birmingham & Black Country",
+      "url": "https://feeds.bbci.co.uk/news/england/birmingham_and_black_country/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-eastmidlands",
+      "name": "BBC Nottingham",
+      "url": "https://feeds.bbci.co.uk/news/england/nottingham/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-westsouthwest",
+      "name": "BBC Bristol",
+      "url": "https://feeds.bbci.co.uk/news/england/bristol/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-east",
+      "name": "BBC Norfolk",
+      "url": "https://feeds.bbci.co.uk/news/england/norfolk/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-south",
+      "name": "BBC Hampshire",
+      "url": "https://feeds.bbci.co.uk/news/england/hampshire/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-london",
+      "name": "BBC London",
+      "url": "https://feeds.bbci.co.uk/news/england/london/rss.xml",
+      "credit": "BBC NEWS"
+    }
+  ]
+}
