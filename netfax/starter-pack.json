@@ -1,8 +1,8 @@
 {
   "format": "netfax-starter-pack",
   "version": 1,
-  "name": "NMS layout: BBC News + Sky News section feeds",
-  "notes": "Imported only when you choose it. Headlines and publisher summaries are shown unedited with a BBC NEWS / SKY NEWS credit and a link to the original article. No logos. Personal, non-commercial use per each publisher's RSS terms.",
+  "name": "NMS: BBC News, Sky News, Hacker News & The Register",
+  "notes": "Imported only when you choose it. Headlines and publisher summaries are shown unedited with a BBC NEWS / SKY NEWS / HACKER NEWS / THE REGISTER credit and a link to the original article. No logos. Hacker News comes via the unofficial hnrss.org feed (not run by Y Combinator). Personal, non-commercial use per each publisher's RSS terms.",
   "feeds": [
     {
       "section": "news",
@@ -75,6 +75,18 @@
       "name": "Sky Technology",
       "url": "https://feeds.skynews.com/feeds/rss/technology.xml",
       "credit": "SKY NEWS"
+    },
+    {
+      "section": "tech",
+      "name": "Hacker News (unofficial hnrss)",
+      "url": "https://hnrss.org/frontpage",
+      "credit": "HACKER NEWS"
+    },
+    {
+      "section": "tech",
+      "name": "The Register",
+      "url": "https://www.theregister.com/headlines.atom",
+      "credit": "THE REGISTER"
     },
     {
       "section": "science",
