@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netfax – Support | PINtPOINT</title>
+  <link rel="canonical" href="https://pintpoint.co.uk/netfax/support/" />
+  <meta name="description" content="Help with Netfax: adding feeds, Add News, feed errors, weather, page numbers and HOLD." />
+  <link rel="icon" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
+    .updated { font-size: 0.85rem; color: var(--muted); margin-bottom: 48px; }
+    h2 { font-size: 1.1rem; font-weight: 700; color: var(--teal); margin: 36px 0 12px; }
+    p { font-size: 0.95rem; color: #ccc; line-height: 1.75; margin-bottom: 14px; }
+    ul { padding-left: 20px; margin-bottom: 14px; }
+    li { font-size: 0.95rem; color: #ccc; line-height: 1.75; margin-bottom: 6px; }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Primary">
+    <a href="/index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center">
+      <a href="/about-pintpoint.html">About</a>
+      <a href="/features.html">Features</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/blog/">Blog</a>
+      <a href="/screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Netfax Support</h1>
+    <p class="updated">Help for the Netfax teletext news reader on iPhone and iPad</p>
+
+    <p>Need help, found a bug or have a feed that won't load? Email <a href="mailto:hello@pintpoint.co.uk">hello@pintpoint.co.uk</a> and include your device, iOS version and, if relevant, the feed address.</p>
+
+    <h2>How do I add a feed?</h2>
+    <p>On the home screen, tap <strong>Paste a feed</strong>. You can also open <strong>Feed Settings</strong>, choose a category and tap <strong>Paste a feed URL</strong>. Enter the address of a public RSS or Atom feed, give it a name and save. Its headlines appear on the category's teletext pages.</p>
+
+    <h2>What does Add News do?</h2>
+    <p><strong>Add News</strong> adds the public RSS feeds that BBC News and Sky News publish to your device, for your personal reading. It downloads a small feed list from pintpoint.co.uk and sets up the news sections. Headlines and the publisher's summaries are shown with a credit line, and you can open the original article on the publisher's site. You can remove any feed in Feed Settings, or import a feed list from the Files app instead.</p>
+
+    <h2>Why won't a feed load?</h2>
+    <ul>
+      <li>The address must use <strong>HTTPS</strong>. Plain <code>http://</code> feeds are refused.</li>
+      <li>It must be on a <strong>public website</strong>. Local network addresses, IP addresses, custom ports and addresses with a username or password are blocked for safety.</li>
+      <li>It must be an actual RSS or Atom feed, not a normal web page. Try the site's <code>/feed</code> or <code>/rss</code> link.</li>
+      <li>Very large feeds and sites that block apps may fail. Netfax keeps the last good copy and tries again later.</li>
+    </ul>
+
+    <h2>Weather</h2>
+    <p>Page 400 shows a forecast from Apple Weather for the UK place you choose. Netfax does not use your location. If no forecast appears, check your internet connection and try again later.</p>
+
+    <h2>Which page numbers should I know?</h2>
+    <ul>
+      <li><strong>100</strong>: index of all sections</li>
+      <li><strong>101</strong>: news headlines</li>
+      <li><strong>300</strong>: sport</li>
+      <li><strong>400</strong>: weather</li>
+      <li><strong>240</strong>: exchange rates (ECB reference rates)</li>
+    </ul>
+    <p>Type any three-digit page on the remote, or use the coloured buttons.</p>
+
+    <h2>The page keeps changing. How do I stop it?</h2>
+    <p>Long stories rotate through sub-pages (1/3, 2/3...) every 25 seconds. Tap <strong>HOLD</strong> to freeze the current sub-page, and tap it again to carry on from where it was.</p>
+
+    <h2>Privacy</h2>
+    <p>Netfax has no account and collects no data. Read the <a href="/netfax/privacy/">Netfax privacy policy</a>.</p>
+
+    <h2>Contact</h2>
+    <p>Paul Desmond (PINtPOINT): <a href="mailto:hello@pintpoint.co.uk">hello@pintpoint.co.uk</a></p>
+  </main>
+
+  <footer>
+    <div class="links">
+      <a href="/index.html">Home</a>
+      <a href="/about-pintpoint.html">About</a>
+      <a href="/features.html">Features</a>
+      <a href="/screenshots.html">Screenshots</a>
+      <a href="/blog/">Blog</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/netfax/privacy/">Netfax Privacy</a>
+      <a href="/netfax/support/">Netfax Support</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+      <a href="https://x.com/sophiero84" target="_blank">X</a>
+      <a href="https://instagram.com/pint_point" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com/@pintpoint84" target="_blank">TikTok</a>
+      <a href="https://www.youtube.com/@pintpoint-app" target="_blank">YouTube</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT</p>
+    <p style="margin-top: 6px; font-size: 0.75rem; opacity: 0.55;">Under the same roof: Cakes by <a href="https://myblossombakery.com" rel="noopener" target="_blank" style="color: inherit; text-decoration: underline">Blossom Bakery</a></p>
+  </footer>
+  <!-- Cloudflare Web Analytics — cookieless, no consent banner required.
+       Added 2026-09-23 so referral and direct traffic are visible at all;
+       Search Console only ever reported Google search clicks. -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "6971c676a791477aa5c33ef62298efc0"}'></script>
+    <script defer src="/js/pageview.js"></script>
+</body>
+</html>
