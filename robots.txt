@@ -17,6 +17,8 @@ Allow: /
 # with X-Robots-Tag: noindex, nofollow injected. They are unlisted, not
 # unreachable — anyone with the URL can read one.
 Disallow: /blog/drafts/
+# Netfax app feed packs aren't for indexing. The app fetches them directly.
+Disallow: /netfax/starter-pack
 
 # Allow AI search/assistant crawlers (these surface your site in AI answers)
 User-agent: GPTBot
