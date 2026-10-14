@@ -17,6 +17,7 @@
  * - /blog/...other...  → pass through (drafts, images, the index)
  * - /about, /about/    → 301 redirect to /about-pintpoint.html
  * - /about/<anything>  → 301 redirect to /about-pintpoint.html
+ * - /netfax/starter-pack*.json → origin JSON, plus X-Robots-Tag: noindex
  * - everything else    → pass through to origin
  */
 
@@ -136,6 +137,21 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const { pathname } = url;
+
+    // Netfax starter packs are feed lists the app downloads itself.
+    // Fetch the origin JSON and return that body and status unchanged;
+    // only the robots header is added. Requires the matching route in
+    // wrangler.toml — this worker is not otherwise invoked for /netfax/.
+    if (/^\/netfax\/starter-pack.*\.json$/.test(pathname)) {
+      const upstream = await fetch(request);
+      const headers = new Headers(upstream.headers);
+      headers.set('X-Robots-Tag', 'noindex');
+      return new Response(upstream.body, {
+        status: upstream.status,
+        statusText: upstream.statusText,
+        headers,
+      });
+    }
 
     // Canonicalise /about, /about/, and any /about/* path to the real
     // About page. GitHub Pages used to serve /about/index.html as a
