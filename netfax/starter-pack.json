@@ -1,8 +1,8 @@
 {
   "format": "netfax-starter-pack",
   "version": 1,
-  "name": "NMS: BBC News, Sky News, Hacker News & The Register",
-  "notes": "Imported only when you choose it. Headlines and publisher summaries are shown unedited with a BBC NEWS / SKY NEWS / HACKER NEWS / THE REGISTER credit and a link to the original article. No logos. Hacker News comes via the unofficial hnrss.org feed (not run by Y Combinator). Personal, non-commercial use per each publisher's RSS terms.",
+  "name": "NMS: BBC, Sky, Guardian, papers and sport",
+  "notes": "Builds 42 and 43 can import this file. It is the build 44 pack without Boxing. Those builds reject the entire pack if any feed names a section they do not have, so Boxing must stay out of https://pintpoint.co.uk/netfax/starter-pack.json. Build 44 downloads starter-pack-v2.json, which includes Boxing on page 390. Headlines and publisher summaries are shown unedited. Personal, non-commercial use per each publisher's RSS terms.",
   "feeds": [
     {
       "section": "news",
@@ -41,6 +41,24 @@
       "credit": "SKY NEWS"
     },
     {
+      "section": "news",
+      "name": "The Sun UK",
+      "url": "https://www.thesun.co.uk/news/uknews/feed/",
+      "credit": "THE SUN"
+    },
+    {
+      "section": "news",
+      "name": "Daily Express",
+      "url": "https://www.express.co.uk/posts/rss/77/news",
+      "credit": "DAILY EXPRESS"
+    },
+    {
+      "section": "news",
+      "name": "Telegraph",
+      "url": "https://www.telegraph.co.uk/news/rss.xml",
+      "credit": "THE TELEGRAPH"
+    },
+    {
       "section": "politics",
       "name": "BBC Politics",
       "url": "https://feeds.bbci.co.uk/news/politics/rss.xml",
@@ -53,6 +71,18 @@
       "credit": "SKY NEWS"
     },
     {
+      "section": "politics",
+      "name": "Mirror politics",
+      "url": "https://www.mirror.co.uk/news/politics/?service=rss",
+      "credit": "MIRROR"
+    },
+    {
+      "section": "politics",
+      "name": "Daily Express politics",
+      "url": "https://www.express.co.uk/posts/rss/139/politics",
+      "credit": "DAILY EXPRESS"
+    },
+    {
       "section": "business",
       "name": "BBC Business",
       "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
@@ -63,6 +93,18 @@
       "name": "Sky Business",
       "url": "https://feeds.skynews.com/feeds/rss/business.xml",
       "credit": "SKY NEWS"
+    },
+    {
+      "section": "business",
+      "name": "The Sun money",
+      "url": "https://www.thesun.co.uk/money/feed/",
+      "credit": "THE SUN"
+    },
+    {
+      "section": "business",
+      "name": "Mirror money",
+      "url": "https://www.mirror.co.uk/money/?service=rss",
+      "credit": "MIRROR"
     },
     {
       "section": "tech",
@@ -89,6 +131,12 @@
       "credit": "THE REGISTER"
     },
     {
+      "section": "tech",
+      "name": "The Sun technology",
+      "url": "https://www.thesun.co.uk/tech/feed/",
+      "credit": "THE SUN"
+    },
+    {
       "section": "science",
       "name": "BBC Science & Environment",
       "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
@@ -105,6 +153,18 @@
       "name": "Sky Entertainment",
       "url": "https://feeds.skynews.com/feeds/rss/entertainment.xml",
       "credit": "SKY NEWS"
+    },
+    {
+      "section": "entertainment",
+      "name": "The Sun showbiz",
+      "url": "https://www.thesun.co.uk/tvandshowbiz/feed/",
+      "credit": "THE SUN"
+    },
+    {
+      "section": "entertainment",
+      "name": "Mirror 3am",
+      "url": "https://www.mirror.co.uk/3am/?service=rss",
+      "credit": "MIRROR"
     },
     {
       "section": "football",
@@ -213,6 +273,192 @@
       "name": "BBC London",
       "url": "https://feeds.bbci.co.uk/news/england/london/rss.xml",
       "credit": "BBC NEWS"
+    },
+    {
+      "section": "region-ni",
+      "name": "Belfast Telegraph",
+      "url": "https://www.belfasttelegraph.co.uk/news/northern-ireland/rss/",
+      "credit": "BELFAST TELEGRAPH"
+    },
+    {
+      "section": "region-scotland",
+      "name": "The Scotsman",
+      "url": "https://www.scotsman.com/news/rss",
+      "credit": "THE SCOTSMAN"
+    },
+    {
+      "section": "region-wales",
+      "name": "WalesOnline",
+      "url": "https://www.walesonline.co.uk/news/wales-news/?service=rss",
+      "credit": "WALESONLINE"
+    },
+    {
+      "section": "region-northwest",
+      "name": "Manchester Evening News",
+      "url": "https://www.manchestereveningnews.co.uk/news/greater-manchester-news/?service=rss",
+      "credit": "MANCHESTER EVENING NEWS"
+    },
+    {
+      "section": "region-northwest",
+      "name": "Liverpool Echo",
+      "url": "https://www.liverpoolecho.co.uk/news/liverpool-news/?service=rss",
+      "credit": "LIVERPOOL ECHO"
+    },
+    {
+      "section": "region-northeast",
+      "name": "Chronicle Live",
+      "url": "https://www.chroniclelive.co.uk/news/north-east-news/?service=rss",
+      "credit": "CHRONICLE LIVE"
+    },
+    {
+      "section": "region-northeast",
+      "name": "Teesside Live",
+      "url": "https://www.gazettelive.co.uk/news/teesside-news/?service=rss",
+      "credit": "TEESSIDE LIVE"
+    },
+    {
+      "section": "region-yorkslincs",
+      "name": "Leeds Live",
+      "url": "https://www.leeds-live.co.uk/news/leeds-news/?service=rss",
+      "credit": "LEEDS LIVE"
+    },
+    {
+      "section": "region-yorkslincs",
+      "name": "Lincolnshire Live",
+      "url": "https://www.lincolnshirelive.co.uk/news/?service=rss",
+      "credit": "LINCOLNSHIRE LIVE"
+    },
+    {
+      "section": "region-westmidlands",
+      "name": "Birmingham Live",
+      "url": "https://www.birminghammail.co.uk/news/midlands-news/?service=rss",
+      "credit": "BIRMINGHAM LIVE"
+    },
+    {
+      "section": "region-westmidlands",
+      "name": "Coventry Live",
+      "url": "https://www.coventrytelegraph.net/news/?service=rss",
+      "credit": "COVENTRY LIVE"
+    },
+    {
+      "section": "region-eastmidlands",
+      "name": "Nottingham Post",
+      "url": "https://www.nottinghampost.com/news/?service=rss",
+      "credit": "NOTTINGHAM POST"
+    },
+    {
+      "section": "region-eastmidlands",
+      "name": "Leicestershire Live",
+      "url": "https://www.leicestermercury.co.uk/news/?service=rss",
+      "credit": "LEICESTERSHIRE LIVE"
+    },
+    {
+      "section": "region-westsouthwest",
+      "name": "Bristol Post",
+      "url": "https://www.bristolpost.co.uk/news/?service=rss",
+      "credit": "BRISTOL POST"
+    },
+    {
+      "section": "region-westsouthwest",
+      "name": "Plymouth Herald",
+      "url": "https://www.plymouthherald.co.uk/news/?service=rss",
+      "credit": "PLYMOUTH HERALD"
+    },
+    {
+      "section": "region-east",
+      "name": "Eastern Daily Press",
+      "url": "https://www.edp24.co.uk/news/rss/",
+      "credit": "EASTERN DAILY PRESS"
+    },
+    {
+      "section": "region-east",
+      "name": "Cambridgeshire Live",
+      "url": "https://www.cambridge-news.co.uk/news/?service=rss",
+      "credit": "CAMBRIDGESHIRE LIVE"
+    },
+    {
+      "section": "region-south",
+      "name": "Daily Echo",
+      "url": "https://www.dailyecho.co.uk/news/rss/",
+      "credit": "DAILY ECHO"
+    },
+    {
+      "section": "region-london",
+      "name": "MyLondon",
+      "url": "https://www.mylondon.news/news/?service=rss",
+      "credit": "MYLONDON"
+    },
+    {
+      "section": "region-london",
+      "name": "Kent Live",
+      "url": "https://www.kentlive.news/news/?service=rss",
+      "credit": "KENT LIVE"
+    },
+    {
+      "section": "football",
+      "name": "Guardian Football",
+      "url": "https://www.theguardian.com/football/rss",
+      "credit": "THE GUARDIAN"
+    },
+    {
+      "section": "football",
+      "name": "Sky Sports Football",
+      "url": "https://www.skysports.com/rss/11095",
+      "credit": "SKY SPORTS"
+    },
+    {
+      "section": "football",
+      "name": "Mirror football",
+      "url": "https://www.mirror.co.uk/sport/football/?service=rss",
+      "credit": "MIRROR"
+    },
+    {
+      "section": "cricket",
+      "name": "ESPNcricinfo",
+      "url": "https://www.cricinfo.com/rss/content/story/feeds/0.xml",
+      "credit": "ESPNCRICINFO"
+    },
+    {
+      "section": "cricket",
+      "name": "Cricket365",
+      "url": "https://www.cricket365.com/feed",
+      "credit": "CRICKET365"
+    },
+    {
+      "section": "f1",
+      "name": "RaceFans",
+      "url": "https://www.racefans.net/feed/",
+      "credit": "RACEFANS"
+    },
+    {
+      "section": "f1",
+      "name": "Sky Sports Formula 1",
+      "url": "https://www.skysports.com/rss/12430",
+      "credit": "SKY SPORTS"
+    },
+    {
+      "section": "rugby",
+      "name": "Ruck",
+      "url": "https://www.ruck.co.uk/feed/",
+      "credit": "RUCK"
+    },
+    {
+      "section": "rugby",
+      "name": "BBC Rugby League",
+      "url": "https://feeds.bbci.co.uk/sport/rugby-league/rss.xml",
+      "credit": "BBC NEWS"
+    },
+    {
+      "section": "tennisgolf",
+      "name": "Tennis365",
+      "url": "https://www.tennis365.com/feed",
+      "credit": "TENNIS365"
+    },
+    {
+      "section": "tennisgolf",
+      "name": "Golf365",
+      "url": "https://www.golf365.com/feed",
+      "credit": "GOLF365"
     }
   ]
 }
