@@ -9,8 +9,8 @@
     <copyright>© 2026 PINtPOINT</copyright>
     <managingEditor>hello@pintpoint.co.uk (Sophie Ro)</managingEditor>
     <webMaster>hello@pintpoint.co.uk (Sophie Ro)</webMaster>
-    <lastBuildDate>Sat, 30 Aug 2026 09:00:00 +0000</lastBuildDate>
-    <pubDate>Sat, 30 Aug 2026 09:00:00 +0000</pubDate>
+    <lastBuildDate>Sat, 17 Oct 2026 05:30:00 +0100</lastBuildDate>
+    <pubDate>Sat, 17 Oct 2026 05:30:00 +0100</pubDate>
     <generator>PINtPOINT hand-maintained RSS</generator>
     <ttl>1440</ttl>
     <image>
@@ -18,6 +18,15 @@
       <title>PINtPRESS</title>
       <link>https://pintpoint.co.uk/blog/</link>
     </image>
+    <item>
+      <title>Why Firestone Walker chose Fuller's yeast</title>
+      <category>Essay</category>
+      <link>https://pintpoint.co.uk/blog/fullers-yeast-firestone-walker.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/fullers-yeast-firestone-walker.html</guid>
+      <pubDate>Sat, 17 Oct 2026 05:30:00 +0100</pubDate>
+      <dc:creator>Sophie Ro</dc:creator>
+      <description>Firestone Walker's beer trials picked a Fuller's ESB yeast over Chico, the workhorse of American craft, even though Chico was cleaner. Then its flocculation handed them diacetyl at packaging. What replaced it is still, in co-founder David Walker's words, essentially a Fullers/London yeast.</description>
+    </item>
     <item>
       <title>UK Oktoberfest Events 2026</title>
       <category>Guide</category>
