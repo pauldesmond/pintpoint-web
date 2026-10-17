@@ -52,16 +52,26 @@ function syncIndexItemList(items) {
     .join(',\n');
 
   const html = readFileSync(INDEX_PATH, 'utf8');
-  const replaced = html.replace(
-    /(<!-- Structured Data: ItemList — the "From the blog" grid -->[\s\S]*?"itemListElement": \[\n)([\s\S]*?)(\n    \]\n  \}\n  <\/script>)/,
-    (_, before, _old, after) => `${before}${newList}${after}`,
-  );
+  // Match first, THEN replace. Comparing the result to the input conflates two
+  // opposite states: the block is missing (a real failure) and the block is
+  // already correct (success). It reported the second as the first on
+  // 2026-10-17, one minute after a publish it had in fact got right, which is
+  // the shape CLAUDE.md warns about — a check that cannot tell the state you
+  // want from the state you fear.
+  const BLOCK = /(<!-- Structured Data: ItemList — the "From the blog" grid -->[\s\S]*?"itemListElement": \[\n)([\s\S]*?)(\n    \]\n  \}\n  <\/script>)/;
+  const match = BLOCK.exec(html);
 
-  if (replaced === html) {
-    console.warn('  ⚠️  index.html ItemList block not matched — nothing replaced');
+  if (!match) {
+    console.warn('  ⚠️  index.html ItemList block not found — the markup around it has changed');
     return false;
   }
-  writeFileSync(INDEX_PATH, replaced);
+
+  if (match[2] === newList) {
+    console.log('  ✓  index.html ItemList already current — nothing to do');
+    return true;
+  }
+
+  writeFileSync(INDEX_PATH, html.replace(BLOCK, (_, before, _old, after) => `${before}${newList}${after}`));
   console.log(`  ✅ index.html ItemList → ${topThree.length} entries`);
   return true;
 }
