@@ -168,6 +168,22 @@
     .pager a[rel="prev"] { margin-right: 10px; }
     .pager a[rel="next"] { margin-left: 10px; }
 
+    /* Covers shrink as the shelf goes back: one at four columns, four at two,
+       the rest at one. Eight columns keeps those spans whole. height:auto
+       matters — the img tags carry width/height, and without it the attribute
+       height wins and aspect-ratio is ignored. */
+    .shelf { display: grid; gap: 10px; grid-template-columns: repeat(8, 1fr); margin: 0 0 40px; }
+    .shelf-tile { display: block; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0; }
+    .shelf-tile:hover, .shelf-tile:focus-visible { border-color: var(--teal); outline: none; }
+    .shelf-tile img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+    .t1 { grid-column: span 4; grid-row: span 2; }
+    .t2 { grid-column: span 2; }
+    .t3 { grid-column: span 1; }
+    @media (max-width: 620px) {
+      .shelf { grid-template-columns: repeat(4, 1fr); }
+      .t1 { grid-column: span 4; grid-row: auto; }
+    }
+
   </style>
 </head>
 <body>
@@ -191,6 +207,8 @@
     </h1>
     <p class="lede">Guides, postcards, essays and notes — nothing sponsored, nothing astroturfed, no SEO farm slop. Written because the pint deserves the thought.</p>
     <p class="rss-link"><a href="https://pintpoint.co.uk/blog/feed.xml">RSS feed</a></p>
+
+
 
     <ul class="post-list">
       <li>

@@ -55,6 +55,71 @@ function collectCards() {
   return [...seen.values()].sort((a, b) => b.iso.localeCompare(a.iso));
 }
 
+/**
+ * The shelf: covers only, newest first, halving in size as it goes back.
+ *
+ * Only on page 1, and only for posts whose artwork carries its own masthead
+ * and headline, because the point of a cover is that it says what it is. Two
+ * posts are held back for that reason and named below; give them a proper
+ * card and they join automatically.
+ *
+ * The cards stay in the list underneath exactly as they were. Nothing is
+ * removed from the corpus this script reads back on its next run.
+ */
+const NO_TITLE_ON_ART = new Set([
+  'beer-tastes-better-on-holiday.html',  // a bottle on a deckchair, no masthead
+  'ghosts-of-baddow-brewery.html',       // a street scene, no masthead
+]);
+const SHELF_MAX = 21;
+
+function coverFor(href) {
+  const file = join(BLOG, href);
+  if (!existsSync(file)) return null;
+  const og = readFileSync(file, 'utf8').match(/og:image" content="([^"]+)/);
+  if (!og) return null;
+  const img = og[1].split('/blog/').pop().split('?')[0];
+  if (!img.startsWith('images/') || !existsSync(join(BLOG, img))) return null;
+  return img;
+}
+
+function shelf(cards) {
+  const picks = [];
+  for (const c of cards) {
+    if (picks.length >= SHELF_MAX) break;
+    if (NO_TITLE_ON_ART.has(c.href)) continue;
+    const img = coverFor(c.href);
+    if (!img || picks.some(p => p.img === img)) continue;
+    const title = (c.html.match(/<div class="post-title">([\s\S]*?)<\/div>/) || [, ''])[1]
+      .replace(/<[^>]+>/g, '').trim();
+    picks.push({ href: c.href, img, title });
+  }
+  if (!picks.length) return '';
+  const tier = i => (i === 0 ? 't1' : i < 5 ? 't2' : 't3');
+  const tiles = picks.map((p, i) =>
+    `        <a class="shelf-tile ${tier(i)}" href="${p.href}" title="${p.title}" aria-label="${p.title}">` +
+    `<img src="${p.img}" alt="${p.title}" loading="${i < 5 ? 'eager' : 'lazy'}" width="800" height="800" /></a>`
+  ).join('\n');
+  return `    <div class="shelf">\n${tiles}\n    </div>\n\n`;
+}
+
+const SHELF_CSS = `
+    /* Covers shrink as the shelf goes back: one at four columns, four at two,
+       the rest at one. Eight columns keeps those spans whole. height:auto
+       matters — the img tags carry width/height, and without it the attribute
+       height wins and aspect-ratio is ignored. */
+    .shelf { display: grid; gap: 10px; grid-template-columns: repeat(8, 1fr); margin: 0 0 40px; }
+    .shelf-tile { display: block; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0; }
+    .shelf-tile:hover, .shelf-tile:focus-visible { border-color: var(--teal); outline: none; }
+    .shelf-tile img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+    .t1 { grid-column: span 4; grid-row: span 2; }
+    .t2 { grid-column: span 2; }
+    .t3 { grid-column: span 1; }
+    @media (max-width: 620px) {
+      .shelf { grid-template-columns: repeat(4, 1fr); }
+      .t1 { grid-column: span 4; grid-row: auto; }
+    }
+`;
+
 /** Numbered pager. Current page is a <span>, never a link to itself. */
 function pager(current, total) {
   const url = n => (n === 1 ? './' : `page-${n}.html`);
@@ -82,10 +147,14 @@ const PAGER_CSS = `
     .pager a[rel="next"] { margin-left: 10px; }
 `;
 
-function buildPage(template, cards, current, total) {
+function buildPage(template, cards, current, total, allCards) {
   let html = template;
   const list = cards.map(c => '      ' + c.html.trim()).join('\n');
   html = html.replace(/(<ul class="post-list">)[\s\S]*?(<\/ul>)/, `$1\n${list}\n    $2`);
+  // Page 1 opens on the shelf. Strip any previous one first so reruns do not stack.
+  html = html.replace(/\n?\s*<div class="shelf">[\s\S]*?<\/div>\n\n/, '\n');
+  if (current === 1) html = html.replace(/(\n\s*<ul class="post-list">)/, `\n${shelf(allCards)}$1`);
+  if (!html.includes('.shelf {')) html = html.replace(/(\n  <\/style>)/, `${SHELF_CSS}$1`);
   // replace the old "→ Older posts" link, or any existing pager, with this one
   html = html.replace(/\n\s*<p style="margin-top:24px[^"]*"><a href="older\.html"[\s\S]*?<\/p>/, '');
   html = html.replace(/\n\s*<nav class="pager"[\s\S]*?<\/nav>/, '');
@@ -108,7 +177,7 @@ console.log(`${cards.length} unique posts → ${pages} pages of ${PER_PAGE}`);
 const template = readFileSync(join(BLOG, 'index.html'), 'utf8');
 for (let n = 1; n <= pages; n++) {
   const slice = cards.slice((n - 1) * PER_PAGE, n * PER_PAGE);
-  const out = buildPage(template, slice, n, pages);
+  const out = buildPage(template, slice, n, pages, cards);
   const file = n === 1 ? 'index.html' : `page-${n}.html`;
   console.log(`  ${file.padEnd(14)} ${slice.length} posts  ${slice[0].iso} → ${slice[slice.length-1].iso}`);
   if (!DRY) writeFileSync(join(BLOG, file), out);

@@ -168,6 +168,22 @@
     .pager a[rel="prev"] { margin-right: 10px; }
     .pager a[rel="next"] { margin-left: 10px; }
 
+    /* Covers shrink as the shelf goes back: one at four columns, four at two,
+       the rest at one. Eight columns keeps those spans whole. height:auto
+       matters — the img tags carry width/height, and without it the attribute
+       height wins and aspect-ratio is ignored. */
+    .shelf { display: grid; gap: 10px; grid-template-columns: repeat(8, 1fr); margin: 0 0 40px; }
+    .shelf-tile { display: block; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0; }
+    .shelf-tile:hover, .shelf-tile:focus-visible { border-color: var(--teal); outline: none; }
+    .shelf-tile img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+    .t1 { grid-column: span 4; grid-row: span 2; }
+    .t2 { grid-column: span 2; }
+    .t3 { grid-column: span 1; }
+    @media (max-width: 620px) {
+      .shelf { grid-template-columns: repeat(4, 1fr); }
+      .t1 { grid-column: span 4; grid-row: auto; }
+    }
+
   </style>
 </head>
 <body>
@@ -191,6 +207,33 @@
     </h1>
     <p class="lede">Guides, postcards, essays and notes — nothing sponsored, nothing astroturfed, no SEO farm slop. Written because the pint deserves the thought.</p>
     <p class="rss-link"><a href="https://pintpoint.co.uk/blog/feed.xml">RSS feed</a></p>
+    <div class="shelf">
+        <a class="shelf-tile t1" href="fullers-yeast-firestone-walker.html" title="Why Firestone Walker chose Fuller&rsquo;s yeast" aria-label="Why Firestone Walker chose Fuller&rsquo;s yeast"><img src="images/fullers-yeast-firestone-walker-x.jpg" alt="Why Firestone Walker chose Fuller&rsquo;s yeast" loading="eager" width="800" height="800" /></a>
+        <a class="shelf-tile t2" href="uk-oktoberfest-events-2026.html" title="UK Oktoberfest Events 2026" aria-label="UK Oktoberfest Events 2026"><img src="images/uk-oktoberfest-events-2026.jpg" alt="UK Oktoberfest Events 2026" loading="eager" width="800" height="800" /></a>
+        <a class="shelf-tile t2" href="september-is-oktoberfest.html" title="September is Oktoberfest" aria-label="September is Oktoberfest"><img src="images/september-is-oktoberfest-v2.jpg" alt="September is Oktoberfest" loading="eager" width="800" height="800" /></a>
+        <a class="shelf-tile t2" href="cask-ale-week-2026.html" title="Cask Ale Week: the Format Nobody Else Can Pour" aria-label="Cask Ale Week: the Format Nobody Else Can Pour"><img src="images/cask-ale-week-2026-v2.jpg" alt="Cask Ale Week: the Format Nobody Else Can Pour" loading="eager" width="800" height="800" /></a>
+        <a class="shelf-tile t2" href="city-of-london-ghosts.html" title="Old Haunts of the Square Mile" aria-label="Old Haunts of the Square Mile"><img src="images/city-of-london-ghosts.jpg" alt="Old Haunts of the Square Mile" loading="eager" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="revivals.html" title="These aren't revivals — they're not even spirits" aria-label="These aren't revivals — they're not even spirits"><img src="images/revivals.jpg" alt="These aren't revivals — they're not even spirits" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="davys-wine-bars.html" title="Davy's — 155 years of sawdust and candles" aria-label="Davy's — 155 years of sawdust and candles"><img src="images/davys-wine-bars.jpg" alt="Davy's — 155 years of sawdust and candles" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="celeb-owned-pubs-worth-a-pint.html" title="Celebrity-Owned Pubs Worth the Pint (Not Just the Autograph)" aria-label="Celebrity-Owned Pubs Worth the Pint (Not Just the Autograph)"><img src="images/celeb-owned-pubs-worth-a-pint.jpg" alt="Celebrity-Owned Pubs Worth the Pint (Not Just the Autograph)" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="pick-of-the-pubs-and-the-bass-triangle.html" title="The Green Triangle and the Oldest Trademark in British Beer" aria-label="The Green Triangle and the Oldest Trademark in British Beer"><img src="images/pick-of-the-pubs-and-the-bass-triangle.jpg" alt="The Green Triangle and the Oldest Trademark in British Beer" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="anti-check-in.html" title="The Anti-Check-In: Why We Skip the Feed" aria-label="The Anti-Check-In: Why We Skip the Feed"><img src="images/anti-check-in.jpg" alt="The Anti-Check-In: Why We Skip the Feed" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="beer-world-cup-xi-final.html" title="The Beer Final We Almost Had: England vs Spain" aria-label="The Beer Final We Almost Had: England vs Spain"><img src="images/beer-world-cup-xi-final.jpg" alt="The Beer Final We Almost Had: England vs Spain" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="norman-balon-obituary.html" title="Norman Balon: London's Last Great Rude Landlord" aria-label="Norman Balon: London's Last Great Rude Landlord"><img src="images/norman-balon-obituary.jpg" alt="Norman Balon: London's Last Great Rude Landlord" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="humphrey-smith-obituary.html" title="Humphrey Smith: British Beer's Great Awkward Character" aria-label="Humphrey Smith: British Beer's Great Awkward Character"><img src="images/humphrey-smith-obituary-v2.jpg" alt="Humphrey Smith: British Beer's Great Awkward Character" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="before-the-final-cask.html" title="Before Kick-Off: Why English Cask Has the Advantage" aria-label="Before Kick-Off: Why English Cask Has the Advantage"><img src="images/before-the-final-cask.jpg" alt="Before Kick-Off: Why English Cask Has the Advantage" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="world-cup-stadium-beer-map.html" title="World Cup 2026 Stadium Beer Map: Help Us Find Good Beer Near The Grounds" aria-label="World Cup 2026 Stadium Beer Map: Help Us Find Good Beer Near The Grounds"><img src="images/stadium-beer-map-infographic-v1.jpg" alt="World Cup 2026 Stadium Beer Map: Help Us Find Good Beer Near The Grounds" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="beer-world-cup-xi.html" title="Beer World Cup XI: 48 Nations, Real Fixtures, Stupidly Serious Beer Results" aria-label="Beer World Cup XI: 48 Nations, Real Fixtures, Stupidly Serious Beer Results"><img src="images/beer-world-cup-xi-infographic-v1.jpg" alt="Beer World Cup XI: 48 Nations, Real Fixtures, Stupidly Serious Beer Results" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="firkin-died-as-a-chain.html" title="Following the Firkin trail(s)…" aria-label="Following the Firkin trail(s)…"><img src="images/firkin-died-as-a-chain.jpg" alt="Following the Firkin trail(s)…" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="anchor-british-heritage.html" title="Anchor Brewing's British heritage runs deeper than people realise" aria-label="Anchor Brewing's British heritage runs deeper than people realise"><img src="images/anchor-british-heritage.png" alt="Anchor Brewing's British heritage runs deeper than people realise" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="anchor-brewing-returns-2027.html" title="Anchor Brewing looks to be coming back. The 2021 rebrand isn't." aria-label="Anchor Brewing looks to be coming back. The 2021 rebrand isn't."><img src="images/anchor-brewing-returns-2027.png" alt="Anchor Brewing looks to be coming back. The 2021 rebrand isn't." loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="the-bell-ingatestone-save-our-pubs-in-one-pub.html" title="Save Our Pubs, In One Pub: The Bell at Ingatestone" aria-label="Save Our Pubs, In One Pub: The Bell at Ingatestone"><img src="images/the-bell-ingatestone-save-our-pubs.jpg" alt="Save Our Pubs, In One Pub: The Bell at Ingatestone" loading="lazy" width="800" height="800" /></a>
+        <a class="shelf-tile t3" href="national-pub-day-telegraph-ale.html" title="Four Pubs a Day Are Closing. The Telegraph's Answer Is a Free Pint." aria-label="Four Pubs a Day Are Closing. The Telegraph's Answer Is a Free Pint."><img src="images/national-pub-day-telegraph-ale.jpg" alt="Four Pubs a Day Are Closing. The Telegraph's Answer Is a Free Pint." loading="lazy" width="800" height="800" /></a>
+    </div>
+
+
+
+
 
     <ul class="post-list">
       <li>
