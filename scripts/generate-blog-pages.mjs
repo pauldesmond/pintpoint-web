@@ -86,8 +86,9 @@ function collectCards() {
  * removed from the corpus this script reads back on its next run.
  */
 const NO_TITLE_ON_ART = new Set([
-  'beer-tastes-better-on-holiday.html',  // a bottle on a deckchair, no masthead
-  'ghosts-of-baddow-brewery.html',       // a street scene, no masthead
+  // Empty: both of the pieces that were held back were given proper cards on
+  // 19 October 2026. Add an href here if one ever ships without a headline on
+  // its artwork, and take it out again when the card is made.
 ]);
 const SHELF_MAX = 21;
 
