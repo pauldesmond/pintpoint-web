@@ -38,7 +38,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg: #0a0e1a; --card: #111827; --text: #e5e7eb; --muted: #9ca3af; --border: #1f2937; --teal: #00d4aa; --amber: #f5a623; --link: #00d4aa; }
+    :root { --bg: #0a0e1a; --card: #111827; --text: #e5e7eb; --muted: #9ca3af; --border: #1f2937; --teal: #00d4aa; --amber: #f5a623; --link: #f5a623; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
     a { color: var(--link); text-decoration: none; }
@@ -50,15 +50,15 @@
     nav a:hover { color: var(--text); }
     .content { max-width: 720px; margin: 0 auto; padding: 60px 32px 80px; }
     .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 18px; display: flex; gap: 12px; align-items: center; }
-    .category { background: rgba(0,212,170,0.12); color: var(--teal); border-radius: 999px; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .category { background: rgba(245,166,35,0.12); color: var(--amber); border-radius: 999px; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
     /* Same amber as every other Note on the blog (12-years-of-bosko and the rest). */
     .category.note { background: rgba(255,213,128,0.10); color: #FFD580; }
     h1 { font-size: 2.3rem; font-weight: 900; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 12px; }
     h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.55rem; font-weight: 800; margin-top: 56px; margin-bottom: 18px; letter-spacing: -0.015em; }
+    h2 { font-size: 1.55rem; font-weight: 800; margin-top: 56px; margin-bottom: 18px; letter-spacing: -0.015em; color: var(--teal); }
     p { margin-bottom: 18px; color: var(--text); }
     p.lede { font-size: 1.1rem; color: var(--text); margin-bottom: 28px; }
-    blockquote { margin: 32px 0; padding: 4px 0 4px 22px; border-left: 3px solid var(--teal); font-size: 1.1rem; line-height: 1.6; color: var(--text); }
+    blockquote { margin: 32px 0; padding: 4px 0 4px 22px; border-left: 3px solid var(--amber); font-size: 1.1rem; line-height: 1.6; color: var(--text); }
     blockquote cite { display: block; margin-top: 10px; font-size: 0.85rem; color: var(--muted); font-style: normal; }
     .closing { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
     .closing p { font-size: 1.05rem; color: var(--text); }
