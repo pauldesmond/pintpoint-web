@@ -28,6 +28,9 @@ const SRC = join(BLOG, 'images');
 const OUT = join(SRC, 'tiles');
 const SIZES = [960, 480, 240];
 const FORCE = process.argv.includes('--force');
+let HAVE_WEBP = true;
+try { execFileSync('cwebp', ['-version'], { stdio: 'ignore' }); }
+catch { HAVE_WEBP = false; console.warn('cwebp not found: jpeg only, pages still work'); }
 
 /** Every image any post points at as its og:image. */
 function covers() {
@@ -58,6 +61,14 @@ for (const name of covers()) {
       '-Z', String(size), src, '--out', out], { stdio: 'ignore' });
     bytes += statSync(out).size;
     cut++;
+    // A webp beside it, about a third smaller for the same picture. The page
+    // offers both and the browser takes whichever it can read.
+    if (HAVE_WEBP) {
+      const webp = out.replace(/\.jpg$/, '.webp');
+      execFileSync('cwebp', ['-quiet', '-q', '76', '-resize', String(size), '0', src, '-o', webp]);
+      bytes += statSync(webp).size;
+      cut++;
+    }
   }
 }
 console.log(`${cut} cut, ${skipped} already current, ${(bytes / 1024 / 1024).toFixed(1)} MB written to blog/images/tiles/`);

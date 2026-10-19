@@ -170,9 +170,14 @@ function shelfHtml(picks) {
   const tiles = picks.map((p, i) => {
     const t = tier(i);
     const w = TIER_WIDTH[t];
+    const jpg = tileSrc(p.img, t);
+    const webp = jpg.replace(/\.jpg$/, '.webp');
+    const source = jpg !== p.img && existsSync(join(BLOG, webp))
+      ? `<source type="image/webp" srcset="${webp}" />` : '';
+    const img = `<img src="${jpg}" alt="${p.title}" loading="${i === 0 ? 'eager' : 'lazy'}" ` +
+      `decoding="async" width="${w}" height="${w}" />`;
     return `        <a class="shelf-tile ${t}" href="${p.href}" title="${p.title}" aria-label="${p.title}">` +
-      `<img src="${tileSrc(p.img, t)}" alt="${p.title}" loading="${i < 5 ? 'eager' : 'lazy'}" ` +
-      `decoding="async" width="${w}" height="${w}" /></a>`;
+      (source ? `<picture>${source}${img}</picture>` : img) + `</a>`;
   }).join('\n');
   return `    <div class="shelf">\n${tiles}\n    </div>\n\n`;
 }
@@ -193,6 +198,7 @@ const SHELF_CSS = `
     .shelf { display: grid; gap: 10px; grid-template-columns: repeat(8, 1fr); margin: 0 0 40px; }
     .shelf-tile { display: block; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0; }
     .shelf-tile:hover, .shelf-tile:focus-visible { border-color: var(--teal); outline: none; }
+    .shelf-tile picture { display: block; }
     .shelf-tile img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
     .t1 { grid-column: span 4; grid-row: span 2; }
     .t2 { grid-column: span 2; }
