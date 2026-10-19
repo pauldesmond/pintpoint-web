@@ -92,6 +92,32 @@ const NO_TITLE_ON_ART = new Set([
 ]);
 const SHELF_MAX = 21;
 
+/** Width and height of a jpeg or png, without pulling in a library. */
+function imageSize(file) {
+  const b = readFileSync(file);
+  if (b.length > 24 && b.readUInt32BE(0) === 0x89504e47) {
+    return { w: b.readUInt32BE(16), h: b.readUInt32BE(20) };
+  }
+  let i = 2;
+  while (i < b.length) {
+    if (b[i] !== 0xff) { i++; continue; }
+    const m = b[i + 1];
+    if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) {
+      return { h: b.readUInt16BE(i + 5), w: b.readUInt16BE(i + 7) };
+    }
+    i += 2 + b.readUInt16BE(i + 2);
+  }
+  return null;
+}
+
+/**
+ * The cover for a post, preferring a square one.
+ *
+ * A post's og:image is sometimes the wide 1200x628 cut made for sharing. The
+ * shelf frames are square, so a wide cover arrives cropped through the middle
+ * and loses whatever sat at its top and bottom. Where a square sibling exists
+ * beside it, that is the one the shelf wants.
+ */
 function coverFor(href) {
   const file = join(BLOG, href);
   if (!existsSync(file)) return null;
@@ -99,7 +125,27 @@ function coverFor(href) {
   if (!og) return null;
   const img = og[1].split('/blog/').pop().split('?')[0];
   if (!img.startsWith('images/') || !existsSync(join(BLOG, img))) return null;
+
+  const size = imageSize(join(BLOG, img));
+  if (size && Math.abs(size.w - size.h) <= 2) return img;
+  const square = img.replace(/-x(\.[a-z]+)$/i, '$1');
+  if (square !== img && existsSync(join(BLOG, square))) {
+    const s2 = imageSize(join(BLOG, square));
+    if (s2 && Math.abs(s2.w - s2.h) <= 2) return square;
+  }
   return img;
+}
+
+/**
+ * The small cut of a cover for the size it is about to be drawn at, from
+ * blog/images/tiles (see build-blog-tiles.mjs). Falls back to the original so
+ * a cover added without running that script still appears.
+ */
+const TIER_WIDTH = { t1: 960, t2: 480, t3: 240 };
+function tileSrc(img, tier) {
+  const stem = img.replace(/^images\//, '').replace(/\.[a-z]+$/i, '');
+  const small = `images/tiles/${stem}-${TIER_WIDTH[tier]}.jpg`;
+  return existsSync(join(BLOG, small)) ? small : img;
 }
 
 function shelfPicks(cards) {
@@ -115,20 +161,19 @@ function shelfPicks(cards) {
   }
   if (!picks.length) return '';
   const tier = i => (i === 0 ? 't1' : i < 5 ? 't2' : 't3');
-  const tiles = picks.map((p, i) =>
-    `        <a class="shelf-tile ${tier(i)}" href="${p.href}" title="${p.title}" aria-label="${p.title}">` +
-    `<img src="${p.img}" alt="${p.title}" loading="${i < 5 ? 'eager' : 'lazy'}" width="800" height="800" /></a>`
-  ).join('\n');
   return picks;
 }
 
 function shelfHtml(picks) {
   if (!picks.length) return '';
   const tier = i => (i === 0 ? 't1' : i < 5 ? 't2' : 't3');
-  const tiles = picks.map((p, i) =>
-    `        <a class="shelf-tile ${tier(i)}" href="${p.href}" title="${p.title}" aria-label="${p.title}">` +
-    `<img src="${p.img}" alt="${p.title}" loading="${i < 5 ? 'eager' : 'lazy'}" width="800" height="800" /></a>`
-  ).join('\n');
+  const tiles = picks.map((p, i) => {
+    const t = tier(i);
+    const w = TIER_WIDTH[t];
+    return `        <a class="shelf-tile ${t}" href="${p.href}" title="${p.title}" aria-label="${p.title}">` +
+      `<img src="${tileSrc(p.img, t)}" alt="${p.title}" loading="${i < 5 ? 'eager' : 'lazy'}" ` +
+      `decoding="async" width="${w}" height="${w}" /></a>`;
+  }).join('\n');
   return `    <div class="shelf">\n${tiles}\n    </div>\n\n`;
 }
 
