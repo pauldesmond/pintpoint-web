@@ -43,6 +43,48 @@ const STATIC_PAGES = [
 
 const BLOCK = 'address|article|aside|blockquote|div|dd|dl|dt|figcaption|figure|footer|h1|h2|h3|h4|h5|h6|header|hr|li|main|nav|ol|p|section|table|tbody|td|tfoot|th|thead|tr|ul';
 
+/**
+ * Remove any element marked data-llms="skip", with its contents.
+ *
+ * The blog template puts furniture inside the article: the fact strip, the
+ * spec card, the "find it near you" button. A reader sees a sidebar; this file
+ * is a single column of text, so the same words land mid-paragraph — brewery,
+ * style, ABV, then an invitation to open the app, dropped into the middle of a
+ * sentence about diacetyl. That is what the AI crawlers read.
+ *
+ * Marking by attribute rather than by tag, because <aside> is already carrying
+ * real writing on eight pages (the Maerzen and Festbier comparison, the celeb
+ * pubs FAQ, the companion-essay links). Stripping the tag would delete those
+ * from the crawled text, which is the opposite of what we want. The author
+ * says what is furniture; the script does not guess.
+ *
+ * Depth-aware for the same reason the <article> match above is: these boxes
+ * contain divs, and a non-greedy match stops at the first closing tag and
+ * silently eats the rest of the page.
+ */
+function stripSkipped(s) {
+  const marked = /<([a-z][a-z0-9]*)\b[^>]*\bdata-llms\s*=\s*["']skip["'][^>]*>/i;
+  for (let guard = 0; guard < 200; guard++) {
+    const m = s.match(marked);
+    if (!m) break;
+    const tag = m[1].toLowerCase();
+    const start = m.index;
+    const re = new RegExp(`<${tag}\\b[^>]*>|</${tag}\\s*>`, 'gi');
+    re.lastIndex = start;
+    let depth = 0, end = -1, mm;
+    while ((mm = re.exec(s))) {
+      depth += mm[0].startsWith('</') ? -1 : 1;
+      if (depth === 0) { end = mm.index + mm[0].length; break; }
+    }
+    // Unclosed (or a void element wearing the attribute): drop the tag alone,
+    // never the rest of the document, and never loop on it.
+    s = end === -1
+      ? s.slice(0, start) + ' ' + s.slice(start + m[0].length)
+      : s.slice(0, start) + ' ' + s.slice(end);
+  }
+  return s;
+}
+
 /** HTML → readable plain text. Keeps the shape a reader relies on, drops chrome. */
 function htmlToText(html) {
   let s = html;
@@ -70,6 +112,7 @@ function htmlToText(html) {
   s = s.replace(/<(script|style|template|svg|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ');
   s = s.replace(/<nav\b[^>]*>[\s\S]*?<\/nav>/gi, ' ');
   s = s.replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/gi, ' ');
+  s = stripSkipped(s);
   s = s.replace(/<!--[\s\S]*?-->/g, ' ');
   // Adjacent inline elements carry no whitespace between them in the source,
   // so stripping tags ran them together: <span>Essay</span><time>17 September
