@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>[DRAFT] PINtPRESS archive, page 2</title>
+<meta name="description" content="Draft: a way into the archive that is not a list of dates." />
+<link rel="icon" type="image/png" href="../../favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0d1117;--teal:#00D4AA;--text:#fff;--muted:#8b949e;--card:#161b22;--border:rgba(255,255,255,.08)}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
+nav{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 28px;border-bottom:1px solid var(--border)}
+.logo{font-size:1.15rem;font-weight:900;letter-spacing:-.5px;flex:0 0 auto}
+.logo span{color:var(--teal)}
+.navlinks{display:flex;gap:16px;align-items:center;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);padding-right:22px}
+.navlinks::-webkit-scrollbar{display:none}
+nav a{color:var(--muted);text-decoration:none;font-size:.85rem;white-space:nowrap}
+nav a:hover{color:var(--text)}
+.content{max-width:980px;margin:0 auto;padding:30px 20px 80px}
+h1.masthead{margin:0 auto 14px;line-height:0;text-align:center}
+h1.masthead img{display:block;margin:0 auto;width:100%;max-width:150px;height:auto}
+.lede{font-size:.98rem;color:var(--muted);line-height:1.65;margin:0 auto 8px;text-align:center;max-width:46ch}
+.rss-link{text-align:center;font-size:.85rem;margin-bottom:34px}
+.rss-link a{color:var(--teal);font-weight:700;text-decoration:none}
+.draftbar{background:#8a1c1c;color:#fff;padding:9px 14px;border-radius:6px;margin:0 0 20px;font-weight:600;font-size:.9rem}
+h2.sec{font-size:.74rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:var(--text)}
+.card:hover{border-color:var(--teal)}
+.card-img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:center}
+.card-lead .card-img{aspect-ratio:auto;height:340px}
+.card-body{display:block;padding:18px 20px 20px}
+.card-kind{display:block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:7px}
+.card-title{display:block;font-size:1.05rem;font-weight:800;line-height:1.28;letter-spacing:-.3px;margin-bottom:7px}
+.card-lead .card-title{font-size:1.6rem}
+.card-why{display:block;font-size:.88rem;color:var(--muted);line-height:1.6}
+.leadwrap{margin-bottom:14px}
+.grid4{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));margin-bottom:14px}
+/* The shelf halves in size as it goes back: one at four columns, four at
+   two, then ones all the way down. Eight columns makes those spans whole. */
+.shelf{display:grid;gap:10px;grid-template-columns:repeat(8,1fr);margin-bottom:52px}
+.shelf-tile{display:block;border:1px solid var(--border);border-radius:12px;overflow:hidden;line-height:0}
+.shelf-tile:hover,.shelf-tile:focus-visible{border-color:var(--teal);outline:none}
+.shelf-tile img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.t1{grid-column:span 4;grid-row:span 2}
+.t2{grid-column:span 2}
+.t3{grid-column:span 1}
+@media (max-width:620px){.shelf{grid-template-columns:repeat(4,1fr)}.t1{grid-column:span 4;grid-row:auto}.t2{grid-column:span 2}.t3{grid-column:span 1}}
+.tile{display:block;border:1px solid var(--border);border-radius:12px;overflow:hidden;line-height:0}
+.tile:hover,.tile:focus-visible{border-color:var(--teal);outline:none}
+.tile img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+.chip{font:inherit;font-size:.8rem;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer}
+.chip:hover{border-color:var(--teal);color:var(--text)}
+.chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#06231d}
+.find{font:inherit;font-size:.86rem;padding:7px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text);min-width:170px;flex:1}
+ul.rows{list-style:none}
+.row a{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:12px 2px;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text)}
+.row a:hover .row-title{color:var(--teal)}
+.row-title{font-size:.95rem;font-weight:600;line-height:1.35}
+.row-meta{display:grid;grid-template-columns:5.2rem 8.6rem;align-items:baseline;gap:0;flex:0 0 auto;font-size:.74rem;color:var(--muted);white-space:nowrap}
+.row-meta .kind{text-align:right;padding-right:14px}
+.row-meta .when{text-align:left;font-variant-numeric:tabular-nums}
+.kind{font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.more{font:inherit;font-size:.85rem;font-weight:700;margin-top:16px;padding:9px 16px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--teal);cursor:pointer}
+.more:hover{border-color:var(--teal)}
+.count{font-size:.8rem;color:var(--muted);margin-top:12px}
+footer{text-align:center;padding:36px 20px;border-top:1px solid var(--border);font-size:.82rem;color:var(--muted);margin-top:56px}
+footer a{color:var(--muted);text-decoration:none}
+footer .links{display:flex;gap:20px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+@media (max-width:600px){
+ nav{padding:12px 16px} .content{padding:24px 16px 56px}
+ h1.masthead img{max-width:112px} .card-lead .card-img{height:200px}
+ .card-lead .card-title{font-size:1.25rem}
+ .row a{flex-direction:column;gap:4px} .row-meta{display:flex;gap:10px;white-space:normal}
+ .row-meta .kind{text-align:left;padding-right:0}
+}
+
+.pager{display:flex;flex-wrap:wrap;gap:4px;align-items:center;justify-content:center;margin:34px 0 10px}
+.pager a,.pager span{min-width:32px;padding:6px 9px;border-radius:7px;text-align:center;font-size:.85rem;font-weight:700;text-decoration:none;border:1px solid var(--border)}
+.pager a{color:var(--teal)}
+.pager a:hover{border-color:var(--teal);background:rgba(0,212,170,.08)}
+.pager .is-here{background:var(--teal);border-color:var(--teal);color:#06231d}
+.pager a[rel="prev"]{margin-right:10px}
+.pager a[rel="next"]{margin-left:10px}
+</style>
+</head>
+<body>
+<nav aria-label="Primary">
+  <a href="../../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+  <div class="navlinks">
+    <a href="../../about-pintpoint.html">About</a>
+    <a href="../../features.html">Features</a>
+    <a href="../../pubs/">Venues</a>
+    <a href="../">Blog</a>
+    <a href="../../screenshots.html">Screenshots</a>
+  </div>
+</nav>
+<main class="content">
+  <p class="draftbar">DRAFT, for review only. Page two of the archive. Nothing here is live.</p>
+  <h1 class="masthead"><picture><source type="image/webp" srcset="../../pintpress-mast.webp" /><img src="../../pintpress-mast.png" alt="PINtPRESS" width="150" height="150" /></picture></h1>
+  <p class="lede">Guides, postcards, essays and notes, written because the pint deserves the thought.</p>
+  <p class="rss-link"><a href="https://pintpoint.co.uk/blog/feed.xml">RSS feed</a></p>
+
+  <h2 class="sec">Older</h2>
+  <ul class="rows"><li class="row"><a href="../beer-world-cup-xi.html"><span class="row-title">Beer World Cup XI: the draw</span><span class="row-meta"><span class="kind">Note</span><span class="when">19 June 2026</span></span></a></li><li class="row"><a href="../beerology-anatomy-of-a-pint.html"><span class="row-title">Beerology — The Anatomy of a Pint</span><span class="row-meta"><span class="kind">Essay</span><span class="when">2 June 2026</span></span></a></li><li class="row"><a href="../pick-the-right-pint.html"><span class="row-title">Why PINtPOINT picks a better pint.</span><span class="row-meta"><span class="kind">Guide</span><span class="when">2 June 2026</span></span></a></li><li class="row"><a href="../anchor-british-heritage.html"><span class="row-title">Anchor Brewing&#x27;s British heritage runs deeper than people realise</span><span class="row-meta"><span class="kind">Essay</span><span class="when">24 May 2026</span></span></a></li><li class="row"><a href="../anchor-brewing-returns-2027.html"><span class="row-title">Anchor Brewing looks to be coming back. The 2021 rebrand isn&#x27;t.</span><span class="row-meta"><span class="kind">Essay</span><span class="when">22 May 2026</span></span></a></li><li class="row"><a href="../under-the-hood-how-pintdexter-picks-your-pint.html"><span class="row-title">Under the Hood: How PINtDEXTER Picks Your Pint</span><span class="row-meta"><span class="kind">Essay</span><span class="when">20 May 2026</span></span></a></li><li class="row"><a href="../mild-half-to-half-a-percent.html"><span class="row-title">From half of British beer to half a percent — what happened to mild</span><span class="row-meta"><span class="kind">Essay</span><span class="when">14 May 2026</span></span></a></li><li class="row"><a href="../radio-city-7-deadly-sins.html"><span class="row-title">Radio City turns seven</span><span class="row-meta"><span class="kind">Note</span><span class="when">1 May 2026</span></span></a></li><li class="row"><a href="../augustiner-on-draft-uk-six-pubs.html"><span class="row-title">Augustiner on Draft, Finally</span><span class="row-meta"><span class="kind">Note</span><span class="when">30 April 2026</span></span></a></li><li class="row"><a href="../12-years-of-bosko.html"><span class="row-title">12 Years of Bosko</span><span class="row-meta"><span class="kind">Note</span><span class="when">29 April 2026</span></span></a></li><li class="row"><a href="../left-field-beer-britain-american-craft.html"><span class="row-title">Left Field Beer: One of Britain&#x27;s Best Independent Beer Shops</span><span class="row-meta"><span class="kind">Essay</span><span class="when">27 April 2026</span></span></a></li><li class="row"><a href="../london-craft-beer-love-letter.html"><span class="row-title">A Postcard from London: The City That Taught the World to Brew, Then Started Again</span><span class="row-meta"><span class="kind">Postcard</span><span class="when">20 April 2026</span></span></a></li><li class="row"><a href="../richmond-ted-lasso-pub-trail.html"><span class="row-title">Walking the Ted Lasso pub trail in Richmond</span><span class="row-meta"><span class="kind">Guide</span><span class="when">19 April 2026</span></span></a></li><li class="row"><a href="../melbourne-bar-culture-love-letter.html"><span class="row-title">A Postcard from Melbourne: The City That Built a Craft-Beer Scene on Bars, Not Breweries</span><span class="row-meta"><span class="kind">Postcard</span><span class="when">16 April 2026</span></span></a></li><li class="row"><a href="../hops-what-each-one-tastes-like.html"><span class="row-title">The Drinker&#x27;s Guide to Hops: What Each Variety Actually Tastes Like</span><span class="row-meta"><span class="kind">Essay</span><span class="when">12 April 2026</span></span></a></li><li class="row"><a href="../san-diego-ipa-capital-love-letter.html"><span class="row-title">A Postcard from San Diego: How a Navy Town Became the IPA Capital of the World</span><span class="row-meta"><span class="kind">Postcard</span><span class="when">9 April 2026</span></span></a></li><li class="row"><a href="../chelmsford-beer-mile-guide.html"><span class="row-title">The Chelmsford Beer Mile: A Live Guide to Essex&#x27;s Best Craft-Beer Crawl</span><span class="row-meta"><span class="kind">Guide</span><span class="when">5 April 2026</span></span></a></li><li class="row"><a href="../beer-recommendation-systems-what-most-get-wrong.html"><span class="row-title">What&#x27;s Wrong With Beer Recommendation Systems (And What PINtPOINT Does Differently)</span><span class="row-meta"><span class="kind">Essay</span><span class="when">29 March 2026</span></span></a></li><li class="row"><a href="../beer-world-cup-xi-line-ups.html"><span class="row-title">Beer World Cup XI: forty eight squads</span><span class="row-meta"><span class="kind">Note</span><span class="when">&nbsp;</span></span></a></li><li class="row"><a href="../radio-city-7-deadly-sins-launch-venues.html"><span class="row-title">Radio City 7 Deadly Sins — All Launch Venues</span><span class="row-meta"><span class="kind">Note</span><span class="when">&nbsp;</span></span></a></li></ul>
+  <nav class="pager" aria-label="Archive pages"><a rel="prev" href="front-page-tiles.html">&larr; Newer</a><a href="front-page-tiles.html">1</a><span class="is-here">2</span></nav>
+</main>
+<footer>
+  <div class="links"><a href="../../index.html">Home</a><a href="../../features.html">Features</a><a href="../../screenshots.html">Screenshots</a><a href="../../privacy-policy.html">Privacy Policy</a></div>
+  <div>&copy; 2026 PINtPOINT</div>
+</footer>
+</body>
+</html>
