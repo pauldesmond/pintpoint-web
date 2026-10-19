@@ -59,7 +59,9 @@ ul.rows{list-style:none}
 .row a{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:12px 2px;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text)}
 .row a:hover .row-title{color:var(--teal)}
 .row-title{font-size:.95rem;font-weight:600;line-height:1.35}
-.row-meta{display:flex;gap:12px;flex:0 0 auto;font-size:.74rem;color:var(--muted);white-space:nowrap}
+.row-meta{display:grid;grid-template-columns:5.2rem 8.6rem;align-items:baseline;gap:0;flex:0 0 auto;font-size:.74rem;color:var(--muted);white-space:nowrap}
+.row-meta .kind{text-align:right;padding-right:14px}
+.row-meta .when{text-align:left;font-variant-numeric:tabular-nums}
 .kind{font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .more{font:inherit;font-size:.85rem;font-weight:700;margin-top:16px;padding:9px 16px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--teal);cursor:pointer}
 .more:hover{border-color:var(--teal)}
@@ -71,7 +73,8 @@ footer .links{display:flex;gap:20px;justify-content:center;margin-bottom:14px;fl
  nav{padding:12px 16px} .content{padding:24px 16px 56px}
  h1.masthead img{max-width:112px} .card-lead .card-img{height:200px}
  .card-lead .card-title{font-size:1.25rem}
- .row a{flex-direction:column;gap:4px} .row-meta{white-space:normal}
+ .row a{flex-direction:column;gap:4px} .row-meta{display:flex;gap:10px;white-space:normal}
+ .row-meta .kind{text-align:left;padding-right:0}
 }
 </style>
 </head>
