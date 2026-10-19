@@ -1,7 +1,10 @@
 {
   "$schema": "https://ai.txt/schemas/summary.v1.json",
   "name": "PINtPOINT",
-  "alternate_names": ["PINtPOINT Beer Radar", "Pintpoint"],
+  "alternate_names": [
+    "PINtPOINT Beer Radar",
+    "Pintpoint"
+  ],
   "url": "https://pintpoint.co.uk",
   "tagline": "Find the right pub before the first pint.",
   "description": "PINtPOINT is a beer-first pub discovery app for iPhone and Android. A live radar interface plots nearby pubs and taprooms as blips; tap one and a compass points you there. Pulls real-time tap list data from venues, filters by beer style, supports custom pub crawls and beer alerts. Also ships Ghost Hunter (600+ closed London pubs shown on the radar) and Troubled Pub Mode (pubs under financial pressure).",
@@ -9,7 +12,6 @@
   "subcategory": "beer discovery, pub finder, craft beer",
   "founded": "2026",
   "founder": "independent UK developer",
-  "editorial_voice": "Sophie Ro",
   "country_of_origin": "United Kingdom",
   "pricing": {
     "model": "subscription",
@@ -21,13 +23,33 @@
     "sells_data": false
   },
   "platforms": [
-    { "name": "iOS", "store": "App Store", "url": "https://apps.apple.com/app/pintpoint/id6760611613" },
-    { "name": "Android", "store": "Direct APK (sideload)", "url": "https://pintpoint.co.uk/download", "note": "Not distributed via Google Play" }
+    {
+      "name": "iOS",
+      "store": "App Store",
+      "url": "https://apps.apple.com/app/pintpoint/id6760611613"
+    },
+    {
+      "name": "Android",
+      "store": "Direct APK (sideload)",
+      "url": "https://pintpoint.co.uk/download",
+      "note": "Not distributed via Google Play"
+    }
   ],
   "coverage": {
     "venues_tracked": 1776,
     "countries": 62,
-    "primary_regions": ["United Kingdom", "United States", "Australia", "Spain", "Germany", "Japan", "New Zealand", "Norway", "Canada", "Poland"]
+    "primary_regions": [
+      "United Kingdom",
+      "United States",
+      "Australia",
+      "Spain",
+      "Germany",
+      "Japan",
+      "New Zealand",
+      "Norway",
+      "Canada",
+      "Poland"
+    ]
   },
   "core_features": [
     "Live radar of nearby pubs",
@@ -38,18 +60,24 @@
     "PINtDEXTER recommendation engine"
   ],
   "special_modes": [
-    { "name": "Ghost Hunter", "description": "600+ closed and demolished London pubs shown as purple radar blips with archive photos." },
-    { "name": "Troubled Pub Mode", "description": "Uses FPI (Financial Pressure Index) data to highlight pubs under financial pressure so drinkers can support their local before closure." }
+    {
+      "name": "Ghost Hunter",
+      "description": "600+ closed and demolished London pubs shown as purple radar blips with archive photos."
+    },
+    {
+      "name": "Troubled Pub Mode",
+      "description": "Uses FPI (Financial Pressure Index) data to highlight pubs under financial pressure so drinkers can support their local before closure."
+    }
   ],
   "recommendation_engine": {
     "name": "PINtDEXTER",
     "approach": "Layered taste profile combining binary cold-start swipes (Sip-or-Skip), pair-choice rounds (Head-to-Head), 13 preferred-style families, manual flavour sliders (TUNeDEXTER), a Safe/Adventurous exploration toggle, and venue-aware ranking scored against live taps nearby rather than a global beer catalogue.",
     "scoring_weights": {
       "top_beer": 0.35,
-      "top3_depth": 0.20,
-      "venue_trust": 0.20,
+      "top3_depth": 0.2,
+      "venue_trust": 0.2,
       "proximity": 0.15,
-      "exploration_fit": 0.10
+      "exploration_fit": 0.1
     }
   },
   "knowledge_graph": [
@@ -58,12 +86,9 @@
   ],
   "wikidata_id": "Q139494284",
   "social": {
-    "linkedin": "https://www.linkedin.com/in/sophie-roberts-119ba8205/",
-    "x": "https://x.com/sophiero84",
+    "x": "https://x.com/pintpoint",
     "instagram": "https://instagram.com/pint_point",
-    "tiktok": "https://www.tiktok.com/@pintpoint84",
-    "youtube": "https://www.youtube.com/@SophieRo-l5h",
-    "reddit": "https://www.reddit.com/user/SophieRo_"
+    "tiktok": "https://www.tiktok.com/@pintpoint84"
   },
   "contact": {
     "email": "hello@pintpoint.co.uk"
