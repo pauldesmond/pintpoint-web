@@ -3,7 +3,7 @@
  * generate-blog-pages.mjs
  *
  * Paginates the PINtPRESS archive: 10 posts a page, newest first.
- *   blog/index.html   page 1
+ *   blog/index.html   page 1: the shelf of covers, then cards
  *   blog/page-2.html  page 2 … page-N.html
  *
  * WHY THIS EXISTS. blog/index.html and blog/older.html were hand-maintained
@@ -25,14 +25,31 @@ import { dirname, join } from 'node:path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BLOG = join(ROOT, 'blog');
-const PER_PAGE = 10;
+const PER_PAGE = 30;   // covers on page one count towards it
 const DRY = process.argv.includes('--dry-run');
 
 const MONTHS = ['January','February','March','April','May','June','July','August',
                 'September','October','November','December'];
 
+const CORPUS = join(ROOT, '_data', 'blog-archive.json');
+
+/**
+ * The corpus: every post, with the hand-written excerpt card that goes with it.
+ *
+ * It used to be re-read from the rendered pages on every run, which was fine
+ * while every post appeared in a list. It is not fine now that the newest
+ * twenty one appear only as covers: they would be absent from the lists, and
+ * the next run would quietly forget them. So the list of record lives in
+ * _data/blog-archive.json, and the pages are only ever output.
+ *
+ * The pages are still read, and anything found there that the file does not
+ * know about is added, so a hand-added card is never lost either.
+ */
 function collectCards() {
-  const seen = new Map();          // href -> card, first (newest source) wins
+  const seen = new Map();
+  if (existsSync(CORPUS)) {
+    for (const c of JSON.parse(readFileSync(CORPUS, 'utf8'))) seen.set(c.href, c);
+  }
   const sources = ['index.html', 'older.html',
     ...readdirSync(BLOG).filter(f => /^page-\d+\.html$/.test(f))];
   for (const file of sources) {
@@ -52,7 +69,9 @@ function collectCards() {
       seen.set(href, { href, iso, html: m[0] });
     }
   }
-  return [...seen.values()].sort((a, b) => b.iso.localeCompare(a.iso));
+  const all = [...seen.values()].sort((a, b) => b.iso.localeCompare(a.iso));
+  if (!DRY) writeFileSync(CORPUS, JSON.stringify(all, null, 1) + '\n');
+  return all;
 }
 
 /**
@@ -82,7 +101,7 @@ function coverFor(href) {
   return img;
 }
 
-function shelf(cards) {
+function shelfPicks(cards) {
   const picks = [];
   for (const c of cards) {
     if (picks.length >= SHELF_MAX) break;
@@ -99,7 +118,25 @@ function shelf(cards) {
     `        <a class="shelf-tile ${tier(i)}" href="${p.href}" title="${p.title}" aria-label="${p.title}">` +
     `<img src="${p.img}" alt="${p.title}" loading="${i < 5 ? 'eager' : 'lazy'}" width="800" height="800" /></a>`
   ).join('\n');
+  return picks;
+}
+
+function shelfHtml(picks) {
+  if (!picks.length) return '';
+  const tier = i => (i === 0 ? 't1' : i < 5 ? 't2' : 't3');
+  const tiles = picks.map((p, i) =>
+    `        <a class="shelf-tile ${tier(i)}" href="${p.href}" title="${p.title}" aria-label="${p.title}">` +
+    `<img src="${p.img}" alt="${p.title}" loading="${i < 5 ? 'eager' : 'lazy'}" width="800" height="800" /></a>`
+  ).join('\n');
   return `    <div class="shelf">\n${tiles}\n    </div>\n\n`;
+}
+
+/** A page that used to exist, kept alive and pointed at the archive. */
+function stub(file) {
+  const tpl = readFileSync(join(BLOG, 'older.html'), 'utf8');
+  return tpl
+    .replace(/<meta http-equiv="refresh" content="[^"]*"\s*\/?>/, '<meta http-equiv="refresh" content="0; url=./" />')
+    .replace(/<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="https://pintpoint.co.uk/blog/${file}" />`);
 }
 
 const SHELF_CSS = `
@@ -153,7 +190,7 @@ function buildPage(template, cards, current, total, allCards) {
   html = html.replace(/(<ul class="post-list">)[\s\S]*?(<\/ul>)/, `$1\n${list}\n    $2`);
   // Page 1 opens on the shelf. Strip any previous one first so reruns do not stack.
   html = html.replace(/\n?\s*<div class="shelf">[\s\S]*?<\/div>\n\n/, '\n');
-  if (current === 1) html = html.replace(/(\n\s*<ul class="post-list">)/, `\n${shelf(allCards)}$1`);
+  if (current === 1) html = html.replace(/(\n\s*<ul class="post-list">)/, `\n${shelfHtml(allCards)}$1`);
   if (!html.includes('.shelf {')) html = html.replace(/(\n  <\/style>)/, `${SHELF_CSS}$1`);
   // replace the old "→ Older posts" link, or any existing pager, with this one
   html = html.replace(/\n\s*<p style="margin-top:24px[^"]*"><a href="older\.html"[\s\S]*?<\/p>/, '');
@@ -171,15 +208,38 @@ function buildPage(template, cards, current, total, allCards) {
 }
 
 const cards = collectCards();
-const pages = Math.max(1, Math.ceil(cards.length / PER_PAGE));
-console.log(`${cards.length} unique posts → ${pages} pages of ${PER_PAGE}`);
+
+// A cover and a card for the same post would be the same post twice, so the
+// shelf takes its posts out of the lists. The covers still count towards the
+// thirty, which is why page one carries fewer cards than the pages after it.
+const shelved = shelfPicks(cards);
+const shelvedHrefs = new Set(shelved.map(p => p.href));
+const listed = cards.filter(c => !shelvedHrefs.has(c.href));
+const firstPage = Math.max(0, PER_PAGE - shelved.length);
+const rest = Math.max(1, Math.ceil(Math.max(0, listed.length - firstPage) / PER_PAGE));
+const pages = listed.length <= firstPage ? 1 : 1 + rest;
+console.log(`${cards.length} posts: ${shelved.length} covers + ${listed.length} cards → ${pages} page(s) of ${PER_PAGE}`);
 
 const template = readFileSync(join(BLOG, 'index.html'), 'utf8');
 for (let n = 1; n <= pages; n++) {
-  const slice = cards.slice((n - 1) * PER_PAGE, n * PER_PAGE);
-  const out = buildPage(template, slice, n, pages, cards);
+  const slice = n === 1
+    ? listed.slice(0, firstPage)
+    : listed.slice(firstPage + (n - 2) * PER_PAGE, firstPage + (n - 1) * PER_PAGE);
+  const out = buildPage(template, slice, n, pages, shelved);
   const file = n === 1 ? 'index.html' : `page-${n}.html`;
-  console.log(`  ${file.padEnd(14)} ${slice.length} posts  ${slice[0].iso} → ${slice[slice.length-1].iso}`);
+  const span = slice.length ? `${slice[0].iso} → ${slice[slice.length-1].iso}` : '(covers only)';
+  console.log(`  ${file.padEnd(14)} ${n === 1 ? shelved.length + ' covers + ' : ''}${slice.length} cards  ${span}`);
   if (!DRY) writeFileSync(join(BLOG, file), out);
+}
+
+// Pages that existed when the archive ran ten to a page are kept alive rather
+// than deleted, because they are in the sitemap and may be linked from
+// elsewhere. They point at the archive and say so.
+const stale = readdirSync(BLOG)
+  .filter(f => /^page-(\d+)\.html$/.test(f))
+  .filter(f => Number(f.match(/\d+/)[0]) > pages);
+for (const file of stale) {
+  console.log(`  ${file.padEnd(14)} → redirect to /blog/`);
+  if (!DRY) writeFileSync(join(BLOG, file), stub(file));
 }
 if (DRY) console.log('\nDry run — nothing written.');
