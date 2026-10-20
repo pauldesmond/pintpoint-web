@@ -16,59 +16,18 @@
   <meta property="og:image:alt" content="PINtPRESS cover: a Green Man pub sign — a face made of oak leaves — hanging above a misty cobbled street on Halloween night, full moon behind bare branches, lit pub window and carved lanterns glowing on the step." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    :root { --bg: #0a0e1a; --card: #111827; --text: #e5e7eb; --muted: #9ca3af; --border: #1f2937; --teal: #00d4aa; --amber: #f5a623; --link: #00d4aa; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 32px; border-bottom: 1px solid var(--border); }
-    .logo { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.01em; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); font-size: 0.9rem; font-weight: 500; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 720px; margin: 0 auto; padding: 60px 32px 80px; }
-    .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 18px; display: flex; gap: 12px; align-items: center; }
-    .category { background: rgba(0,212,170,0.12); color: var(--teal); border-radius: 999px; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
-    h1 { font-size: 2.3rem; font-weight: 900; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 12px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.55rem; font-weight: 800; margin-top: 56px; margin-bottom: 18px; letter-spacing: -0.015em; color: var(--teal); }
-    h2:nth-of-type(even) { color: var(--amber); }
-    p { margin-bottom: 18px; color: var(--text); }
-    p.lede { font-size: 1.1rem; color: var(--text); margin-bottom: 28px; }
-    blockquote { margin: 32px 0; padding: 4px 0 4px 22px; border-left: 3px solid var(--teal); font-size: 1.1rem; line-height: 1.6; color: var(--text); }
-    blockquote cite { display: block; margin-top: 10px; font-size: 0.85rem; color: var(--muted); font-style: normal; }
-    .closing { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
-    .closing p { font-size: 1.05rem; color: var(--text); }
-    .revision-note { margin: 0 0 34px; padding: 16px 20px; border-left: 3px solid var(--amber); background: rgba(245,166,35,0.07); border-radius: 0 8px 8px 0; font-size: 0.92rem; line-height: 1.6; color: var(--text); }
-    .revision-note strong { color: var(--amber); }
-    .companion { margin-top: 40px; padding: 18px 20px; background: rgba(0,212,170,0.06); border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; font-size: 0.95rem; line-height: 1.65; }
-    .companion ul { list-style: none; padding: 0; margin: 10px 0 0; }
-    .companion li { padding: 5px 0; }
-    .companion li[aria-current] { color: var(--muted); }
-    .companion li[aria-current] strong { color: var(--text); }
-    .companion .here { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--teal); margin-left: 6px; }
-    .companion b { display: block; margin-bottom: 6px; color: var(--teal); letter-spacing: 0.02em; }
-    .sources { margin-top: 40px; padding: 20px 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; font-size: 0.88rem; }
-    .sources h3 { font-size: 0.9rem; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0; }
-    .sources ul { list-style: none; padding: 0; }
-    .sources li { padding: 6px 0; }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } h1 { font-size: 1.75rem; } }
-      /* PINtPRESS column standard v1 (2026-09-17): desktop 960px column, 880px of text at 17px; mobile full width, 20px gutters, 16px text. Do not vary per page. */
-    .content { max-width: 960px; padding: 60px 40px 80px; }
-    body { font-size: 17px; }
-    @media (max-width: 600px) { .content { max-width: none; padding: 32px 20px 56px; } body { font-size: 16px; } }
+    body .ps-1 { color: var(--muted); font-size: 1.05rem; margin-top: -4px; margin-bottom: 28px; }
+    body .ps-2 { font-size: 0.82rem; color: var(--muted); margin-top: 28px; }
+    body .ps-3 { margin-top: 10px; }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="/index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="/index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="/about-pintpoint.html">About</a>
       <a href="/features.html">Features</a>
       <a href="/pubs/">Venues</a>
@@ -77,9 +36,9 @@
     </div>
   </nav>
   <article class="content">
-    <p class="meta"><span class="category">Essay</span>24 October 2026 · Beer history · Folklore</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category">Essay</span>24 October 2026 · Beer history · Folklore</p>
     <h1>Season of the <em>Witch</em></h1>
-    <p style="color:var(--muted);font-size:1.05rem;margin-top:-4px;margin-bottom:28px">The Green Man’s face is medieval. His pagan biography is much harder to pin down. His name was already hanging outside the pub.</p>
+    <p class="ps-1">The Green Man’s face is medieval. His pagan biography is much harder to pin down. His name was already hanging outside the pub.</p>
 
     <p class="lede">A week before Halloween, the pub has started to acquire cobwebs it did not have to earn. There is a plastic skeleton by the fruit machine, something orange on the pump clip and, outside, a face looking down through a mouthful of leaves.</p>
     <p>The skeleton will be back in a box by November. The Green Man gets to stay.</p>
@@ -156,10 +115,10 @@
     <div class="closing">
     <p>Knowing a little more about them gives you something to talk about over a pint. Order the pumpkin beer if it sounds good. Ask after the green hop while there is still a chance. Give the cider list more than a glance.</p>
     <p>Outside, the Green Man will be watching through his leaves. The skeleton will come down, the cobwebs will be cleared and the orange pump clip will disappear.</p>
-    <p>He will still be there. We may never establish quite what he meant to the mason. The landlord only needs him to mean that the pub is open.</p>
+    <p class="end">He will still be there. We may never establish quite what he meant to the mason. The landlord only needs him to mean that the pub is open.</p>
     </div>
 
-    <p style="font-size:0.82rem;color:var(--muted);margin-top:28px"><em>Counts refer to exact pub names in the PINtPOINT catalogue checked on 15 October 2026, including closed premises; trading status is specified where given.</em></p>
+    <p class="ps-2"><em>Counts refer to exact pub names in the PINtPOINT catalogue checked on 15 October 2026, including closed premises; trading status is specified where given.</em></p>
 
     <div class="companion">
       <b>The Unholy Trinity</b>
@@ -169,7 +128,7 @@
         <li><!-- LINK ON 29 OCT: /blog/lewes-voice-of-the-bonfire.html --><strong>Part 2: Voice of the Fire</strong> (29 Oct)<br />Lewes burns the wrong Pope, for Victorian reasons.</li>
         <li><!-- LINK ON 6 NOV: /blog/the-first-friday-of-christmas.html --><strong>Part 3: The First Friday of Christmas</strong> (6 Nov)<br />A Danish brewery fires a starting pistol at 20:59 and a country calls it Christmas.</li>
       </ul>
-      <p style="margin-top:10px"><a href="/blog/unholy-trinity.html">All three, and why they belong together &rarr;</a></p>
+      <p class="ps-3"><a href="/blog/unholy-trinity.html">All three, and why they belong together &rarr;</a></p>
     </div>
 
     <div class="sources">
@@ -183,6 +142,7 @@
     </div>
   </article>
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="/index.html">Home</a>
       <a href="/features.html">Features</a>
