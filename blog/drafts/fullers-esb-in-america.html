@@ -36,62 +36,24 @@
   <meta name="twitter:image" content="https://pintpoint.co.uk/blog/images/fullers-esb-in-america.jpg" />
   <meta name="twitter:image:alt" content="PINtPRESS card: &ldquo;The man who took ESB to America&rdquo; over a Seattle bar at night in 1987, one cream and green English keg font standing among American ones, rain and neon and the Space Needle through the window." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    :root { --bg: #0a0e1a; --card: #111827; --text: #e5e7eb; --muted: #9ca3af; --border: #1f2937; --teal: #00d4aa; --amber: #f5a623; --link: #00d4aa; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 32px; border-bottom: 1px solid var(--border); }
-    .logo { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.01em; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); font-size: 0.9rem; font-weight: 500; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 720px; margin: 0 auto; padding: 60px 32px 80px; }
-    .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 18px; display: flex; gap: 12px; align-items: center; }
-    .category { background: rgba(245,166,35,0.12); color: var(--amber); border-radius: 999px; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
-    /* Same amber as every other Note on the blog (12-years-of-bosko and the rest). */
-    .category.note { background: rgba(255,213,128,0.10); color: #FFD580; }
-    h1 { font-size: 2.3rem; font-weight: 900; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 12px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.55rem; font-weight: 800; margin-top: 56px; margin-bottom: 18px; letter-spacing: -0.015em; color: var(--amber); }
-    p { margin-bottom: 18px; color: var(--text); }
-    p.lede { font-size: 1.1rem; color: var(--text); margin-bottom: 28px; }
-    blockquote { margin: 32px 0; padding: 4px 0 4px 22px; border-left: 3px solid var(--amber); font-size: 1.1rem; line-height: 1.6; color: var(--text); }
-    figure { margin: 28px auto; max-width: 320px; text-align: center; }
-    figure img { width: 100%; height: auto; border-radius: 6px; }
-    figcaption { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 10px; line-height: 1.55; }
-    blockquote cite { display: block; margin-top: 10px; font-size: 0.85rem; color: var(--muted); font-style: normal; }
-    .closing { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
-    .closing p { font-size: 1.05rem; color: var(--text); }
-    .revision-note { margin: 0 0 34px; padding: 16px 20px; border-left: 3px solid var(--amber); background: rgba(245,166,35,0.07); border-radius: 0 8px 8px 0; font-size: 0.92rem; line-height: 1.6; color: var(--text); }
-    .revision-note strong { color: var(--amber); }
-    .sources { margin-top: 40px; padding: 20px 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; font-size: 0.88rem; }
-    .sources h3 { font-size: 0.9rem; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0; }
-    .sources ul { list-style: none; padding: 0; }
-    .sources li { padding: 6px 0; }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } h1 { font-size: 1.75rem; } }
-  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="../../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
-      <a href="../../about-pintpoint.html">About</a>
-      <a href="../../features.html">Features</a>
-      <a href="../../pubs/">Venues</a>
-      <a href="../../blog/">Blog</a>
-      <a href="../../screenshots.html">Screenshots</a>
+    <a href="https://pintpoint.co.uk/index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
+      <a href="https://pintpoint.co.uk/about-pintpoint.html">About</a>
+      <a href="https://pintpoint.co.uk/features.html">Features</a>
+      <a href="https://pintpoint.co.uk/pubs/">Venues</a>
+      <a href="https://pintpoint.co.uk/blog/">Blog</a>
+      <a href="https://pintpoint.co.uk/screenshots.html">Screenshots</a>
     </div>
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category">Essay</span>DRAFT &middot; not published &middot; US trade &middot; Industry</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category">Essay</span>DRAFT &middot; not published &middot; US trade &middot; Industry</p>
     <h1>Before he could sell <em>ESB</em> to America, he had to sell it to Fuller&rsquo;s</h1>
 
     <p class="standfirst">When ESB finally reached America, brewers found more in it than a good pint.</p>
@@ -106,15 +68,14 @@
 
     <p>The bar was the College Inn, beside the University of Washington, and the beer arrived through a wholesaler called Alehouse.</p>
 
-    <figure>
-      <img src="/blog/images/fullers-esb-napkin-house.jpg" alt="A paper napkin printed with the Fuller&rsquo;s ESB roundel: a griffin above the letters E.S.B., ringed with the words Fuller Smith &amp; Turner PLC, Griffin Brewery, Chiswick London, Established 1845." width="320" height="240" loading="lazy" />
-      <figcaption>Fuller&rsquo;s ESB. Courtesy of Jeffrey House.</figcaption>
-    </figure>
-
-
     <p>Americans had tasted Fuller&rsquo;s on draught before that. House remembers polypins going out at KQED&rsquo;s beer festival in San Francisco in 1983, and homebrewers collecting the live yeast out of them afterwards.</p>
 
     <h2>Why it had to be ESB</h2>
+
+    <figure>
+      <img src="https://pintpoint.co.uk/blog/images/fullers-esb-napkin-house.jpg" alt="A paper napkin printed with the Fuller&rsquo;s ESB roundel: a griffin above the letters E.S.B., ringed with the words Fuller Smith &amp; Turner PLC, Griffin Brewery, Chiswick London, Established 1845." width="320" height="240" loading="lazy" />
+      <figcaption>Fuller&rsquo;s ESB. Courtesy of Jeffrey House.</figcaption>
+    </figure>
 
     <p>He had been bringing Fuller&rsquo;s in since 1979. London Pride had come first, in cans, but ESB offered him something he thought would make a stronger impression.</p>
 
@@ -130,21 +91,20 @@
 
     <h2>Selling it before he could pour it</h2>
 
-    <p>House had arrived in America in 1977, chasing an advertising job in San Francisco, only to find that the job came without a green card. Importing beer became another way forward. He chose a brewery that had been local to him in London.</p>
-
-    <p>London Pride cans entered the business in 1979 through a three-way partnership, Spectrum Imports. On 1 January 1980, Thames America Trading Company followed, operating from Sutter Street in San Francisco. Gordon A. Ponce documents those early years in <a href="https://thecraftbeerfinder.com/the-transatlantic-beer-bridge-how-two-sheffield-economists-helped-change-brewing/" target="_blank" rel="noopener noreferrer">&ldquo;The Transatlantic Beer Bridge&rdquo;</a> at The Craft Beer Finder.</p>
-
     <figure>
-      <img src="/blog/images/london-pride-party-can-1982-house.jpg" alt="A large London Pride party can in old Fuller&rsquo;s livery, the griffin above the words London Pride and Traditional English Beer, standing on a kitchen counter." width="320" height="240" loading="lazy" />
+      <img src="https://pintpoint.co.uk/blog/images/london-pride-party-can-1982-house.jpg" alt="A large London Pride party can in old Fuller&rsquo;s livery, the griffin above the words London Pride and Traditional English Beer, standing on a kitchen counter." width="320" height="240" loading="lazy" />
       <figcaption>A half-gallon London Pride party can from 1982. House says they did not sell many. Courtesy of Jeffrey House.</figcaption>
     </figure>
 
+    <p>House had arrived in America in 1977, chasing an advertising job in San Francisco, only to find that the job came without a green card. Importing beer became another way forward. He chose a brewery that had been local to him in London.</p>
+
+    <p>London Pride cans entered the business in 1979 through a three-way partnership, Spectrum Imports. On 1 January 1980, Thames America Trading Company followed, operating from Sutter Street in San Francisco. Gordon A. Ponce documents those early years in <a href="https://thecraftbeerfinder.com/the-transatlantic-beer-bridge-how-two-sheffield-economists-helped-change-brewing/" target="_blank" rel="noopener noreferrer">&ldquo;The Transatlantic Beer Bridge&rdquo;</a> at The Craft Beer Finder.</p>
 
     <p>The work continued long after a shipment landed. House had to find wholesalers, win accounts and persuade bars that their customers would order the beer.</p>
 
     <p>Among the people he met was Jeff Gunn of IDD, an English-born supplier of draught equipment. Gunn introduced him to Fritz Maytag of Anchor Brewing. House would later introduce Maytag to Anthony Fuller.</p>
 
-    <h2>What the brewers borrowed</h2>
+    <h2 class="section-turn">What the brewers borrowed</h2>
 
     <p>Fuller&rsquo;s influence in North America went beyond the beer House could sell. At Horseshoe Bay it was a taste to aim for. At Goose Island it helped shape an ambition. At Firestone Walker it entered the fermentation tank.</p>
 
@@ -164,7 +124,7 @@
 
     <p>Co-founder David Walker says they chose it because it made the beer they liked best, and kept its character when they moved to a derivative of it.</p>
 
-    <p>Walker describes the later house yeast as still essentially a Fuller&rsquo;s or London yeast. The trials and what came of them are in <a href="/blog/fullers-yeast-firestone-walker.html">&ldquo;Why Firestone Walker chose Fuller&rsquo;s yeast&rdquo;</a>.</p>
+    <p>Walker describes the later house yeast as still essentially a Fuller&rsquo;s or London yeast. The trials and what came of them are in <a href="https://pintpoint.co.uk/blog/fullers-yeast-firestone-walker.html">&ldquo;Why Firestone Walker chose Fuller&rsquo;s yeast&rdquo;</a>.</p>
 
     <h2>Something in the empties</h2>
 
@@ -176,7 +136,7 @@
 
     <p>The journey the other way used different barrels. House had brought Maytag and Anthony Fuller together at a distributor party at the Mark Hopkins Hotel on Nob Hill, and he encouraged Fuller&rsquo;s to import Anchor, suggesting they fill their own returnable 50-litre kegs with it.</p>
 
-    <p>Fuller&rsquo;s arranged the trial. In late 1991 Anchor&rsquo;s beers went into three London pubs: the Mawson Arms, the Dove and the Churchill Arms. We have followed what that did to British brewing in <a href="/blog/anchor-british-heritage.html">&ldquo;Anchor Brewing&rsquo;s British heritage&rdquo;</a>.</p>
+    <p>Fuller&rsquo;s arranged the trial. In late 1991 Anchor&rsquo;s beers went into three London pubs: the Mawson Arms, the Dove and the Churchill Arms. We have followed what that did to British brewing in <a href="https://pintpoint.co.uk/blog/anchor-british-heritage.html">&ldquo;Anchor Brewing&rsquo;s British heritage&rdquo;</a>.</p>
 
     <h2>Ten years with Fuller&rsquo;s</h2>
 
@@ -203,15 +163,24 @@
     <p>What Fuller&rsquo;s put into American brewing outlasted the agency. John Hall built a Chicago brewery with a London one in mind, and the yeast Firestone Walker chose in its trials is still described as essentially a Fuller&rsquo;s one.</p>
 
     <p>House would eventually put his own name behind a drink he could make as well as sell: ACE cider. That story comes next.</p>
+  </article>
 
-</article>
+  <aside class="next-story" aria-label="Next story">
+    <div class="next-story__inner">
+      <p class="next-story__label"><span class="brand">PINtPRESS</span> / NEXT STORY</p>
+      <p class="next-story__title">A supermarket buyer wanted 1,200 cases. There wasn&rsquo;t a bottle yet.</p>
+      <p class="next-story__standfirst">Jeffrey House spent ten years selling other people&rsquo;s cider in America. Then he made his own, and called it ACE.</p>
+      <span class="next-story__link">Read the ACE story</span>
+    </div>
+  </aside>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
-      <a href="../../index.html">Home</a>
-      <a href="../../features.html">Features</a>
-      <a href="../../screenshots.html">Screenshots</a>
-      <a href="../../privacy-policy.html">Privacy Policy</a>
+      <a href="https://pintpoint.co.uk/index.html">Home</a>
+      <a href="https://pintpoint.co.uk/features.html">Features</a>
+      <a href="https://pintpoint.co.uk/screenshots.html">Screenshots</a>
+      <a href="https://pintpoint.co.uk/privacy-policy.html">Privacy Policy</a>
     </div>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>

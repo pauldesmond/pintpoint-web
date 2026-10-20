@@ -1,0 +1,194 @@
+/* =====================================================================
+   PINtPRESS long-form feature template
+   ---------------------------------------------------------------------
+   Fonts: put this in <head> BEFORE this stylesheet:
+
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+
+   Brand rule: the wordmarks PINtPOINT and PINtPRESS must never be
+   uppercased. Every brand element below sets text-transform: none.
+   See TEMPLATE.md for the markup each component expects.
+   ===================================================================== */
+
+/* ---------- 1. Variables ---------- */
+:root {
+  --paper: #f6f1e7;        /* page background */
+  --paper-deep: #efe7d8;   /* rare tinted boxes */
+  --ink: #1d1b18;          /* body text */
+  --ink-soft: #3a352e;     /* standfirst, quotes */
+  --muted: #6f665a;        /* captions, metadata, footer */
+  --rule: #d9cfbd;         /* hairlines */
+  --amber: #f5a623;        /* PINtPOINT amber: accents only (rules, bars, marks) */
+  --amber-ink: #8a5a00;    /* dark amber for amber TEXT on paper: 5.27:1 on --paper (AA). Was #b8740a (3.37:1, failed for small text) */
+  --link: #7a4a00;         /* inline link text */
+
+  --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --measure: 68ch;         /* text column width */
+  --page: 1100px;          /* masthead / footer width */
+  --fig-w: 270px;          /* desktop floated figure width */
+  --fig-hang: 135px;       /* how far a figure hangs past the measure */
+}
+
+/* ---------- 2. Base ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--serif); font-size: 19px; line-height: 1.62;
+  background: var(--paper); color: var(--ink);
+  font-optical-sizing: auto; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;
+  font-feature-settings: "kern", "liga", "onum";
+}
+
+/* ---------- 3. Masthead / nav ---------- */
+nav {
+  font-family: var(--sans); display: flex; justify-content: space-between; align-items: baseline;
+  max-width: var(--page); margin: 0 auto; padding: 22px 32px 18px;
+  border-bottom: 1px solid var(--ink); position: relative;
+}
+nav::after { content: ""; position: absolute; left: 32px; right: 32px; bottom: -4px; border-bottom: 1px solid var(--rule); }
+nav > div { display: flex; gap: 20px; align-items: center; }
+nav a { color: var(--muted); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; }
+nav a:hover { color: var(--ink); }
+/* Wordmark: PINt<span>POINT</span> - never uppercased */
+nav a.logo { font-size: 1.15rem; font-weight: 800; letter-spacing: 0; text-transform: none; color: var(--ink); }
+nav a.logo span { color: var(--amber-ink); }
+
+/* ---------- 4. Article column ---------- */
+.content { max-width: calc(var(--measure) + 64px); margin: 0 auto; padding: 64px 32px 64px; }
+
+/* ---------- 5. Imprint line: PINtPRESS | ESSAY | meta ---------- */
+.meta {
+  font-family: var(--sans); font-size: 0.7rem; font-weight: 500; color: var(--muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 22px; display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap;
+}
+.meta .imprint {
+  position: relative; padding: 10px 12px 0 0; border-right: 1px solid var(--rule);
+  font-weight: 800; font-size: 0.82rem; letter-spacing: 0; text-transform: none; color: var(--amber-ink);
+}
+.meta .imprint::before { content: ""; position: absolute; left: 0; top: 0; width: 28px; height: 3px; background: var(--amber); }
+.meta .category { color: var(--ink); font-weight: 700; letter-spacing: 0.14em; padding-right: 12px; border-right: 1px solid var(--rule); }
+
+/* ---------- 6. Headline ---------- */
+h1 {
+  font-family: var(--serif); font-size: 3rem; font-weight: 600; line-height: 1.08; letter-spacing: -0.018em;
+  color: var(--ink); margin-bottom: 20px; text-wrap: balance;
+}
+h1 em { font-style: italic; font-weight: 600; color: inherit; }
+
+/* ---------- 7. Standfirst ---------- */
+.standfirst {
+  font-size: 1.32rem; line-height: 1.45; font-style: italic; color: var(--ink-soft);
+  margin-bottom: 34px; padding-bottom: 30px; border-bottom: 1px solid var(--rule); text-wrap: balance;
+}
+
+/* ---------- 8. Body + drop cap ---------- */
+p { margin-bottom: 1.05em; hyphens: auto; -webkit-hyphens: auto; text-wrap: pretty; }
+p.lede { font-size: 1.06em; }
+p.lede::first-letter {
+  float: left; font-weight: 600; font-size: 4.1em; line-height: 0.82;
+  margin: 0.07em 0.09em -0.05em 0; color: var(--amber-ink);
+}
+
+/* ---------- 9. Inline links ---------- */
+a { color: var(--link); text-decoration: underline; text-decoration-color: rgba(245,166,35,0.75);
+    text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+a:hover { color: var(--ink); text-decoration-color: var(--amber); }
+
+/* ---------- 10. Section heading (standard) ---------- */
+h2 {
+  font-size: 1.55rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em;
+  margin: 2.4em 0 0.75em; padding-top: 18px; position: relative; clear: both;
+}
+h2::before { content: ""; position: absolute; left: 0; top: 0; width: 36px; height: 2px; background: var(--amber); }
+
+/* ---------- 11. Section turn (use ONCE, at the narrative turning point) ---------- */
+h2.section-turn {
+  margin-top: 3.4em; padding-top: 1.5em; font-size: 1.8rem;
+  border-top: 1px solid var(--rule);
+}
+h2.section-turn::before {   /* small amber diamond centred on the full-measure rule */
+  left: 50%; top: -6px; width: 9px; height: 9px;
+  transform: translateX(-50%) rotate(45deg); box-shadow: 0 0 0 7px var(--paper);
+}
+
+/* ---------- 12. Figures: float on desktop, full width on mobile ---------- */
+figure { margin: 2em 0; }
+figure img { display: block; width: 100%; height: auto; outline: 1px solid rgba(29,27,24,0.08); outline-offset: -1px; }
+figcaption {
+  font-family: var(--sans); font-size: 0.74rem; line-height: 1.5; color: var(--muted);
+  margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--rule);
+}
+@media (min-width: 1000px) {
+  figure { float: right; width: var(--fig-w); margin: 0.4em calc(-1 * var(--fig-hang)) 1.4em 36px; }
+}
+
+/* ---------- 13. Blockquote ---------- */
+blockquote {
+  margin: 1.6em 0; padding: 2px 0 2px 22px; border-left: 2px solid var(--amber);
+  font-style: italic; font-size: 1.06em; line-height: 1.55; color: var(--ink-soft);
+}
+blockquote cite { display: block; margin-top: 8px; font-family: var(--sans); font-style: normal; font-size: 0.72rem; color: var(--muted); }
+
+/* ---------- 14. End mark (after the article's final paragraph or quote) ---------- */
+.content > p:last-child::after,
+.content > blockquote:last-child::after {
+  content: ""; display: inline-block; width: 0.5em; height: 0.5em; background: var(--amber);
+  margin-left: 0.4em; vertical-align: 0.05em;
+}
+
+/* ---------- 15. Next story handover (below the article, above the footer) ---------- */
+.next-story {
+  max-width: calc(var(--measure) + 64px); margin: 0 auto; padding: 8px 32px 80px;
+}
+.next-story__inner { border-top: 1px solid var(--rule); padding-top: 18px; }
+.next-story__label {
+  font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; color: var(--muted);
+  margin-bottom: 12px;
+}
+.next-story__label .brand { font-weight: 800; letter-spacing: 0; text-transform: none; color: var(--amber-ink); }
+.next-story__label .label { text-transform: uppercase; }
+.next-story__title { font-size: 1.6rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 10px; text-wrap: balance; }
+.next-story__standfirst { font-style: italic; color: var(--ink-soft); font-size: 1.02rem; line-height: 1.5; margin-bottom: 12px; }
+.next-story__link { font-family: var(--sans); font-size: 0.8rem; font-weight: 600; color: var(--amber-ink); }
+span.next-story__link { color: var(--muted); }   /* unlinked until the target is live */
+
+/* ---------- 16. Footer ---------- */
+footer {
+  font-family: var(--sans); max-width: var(--page); margin: 0 auto; text-align: center; padding: 30px 24px 48px;
+  border-top: 1px solid var(--ink); font-size: 0.74rem; letter-spacing: 0.02em; color: var(--muted); clear: both;
+}
+footer .imprint-note { font-family: var(--serif); font-style: italic; font-size: 0.9rem; letter-spacing: 0; text-transform: none; margin-bottom: 16px; color: var(--ink-soft); }
+footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
+footer a { color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; }
+footer a:hover { color: var(--ink); }
+
+/* ---------- 17. Wider screens ---------- */
+@media (min-width: 1000px) {
+  h1 { font-size: 3.3rem; margin-right: -120px; }
+  .standfirst { font-size: 1.4rem; }
+}
+
+/* ---------- 18. Phones ---------- */
+@media (max-width: 600px) {
+  body { font-size: 17.5px; line-height: 1.6; }
+  nav { padding: 16px 20px 14px; flex-wrap: wrap; gap: 10px; }
+  nav::after { left: 20px; right: 20px; }
+  nav > div { gap: 14px; flex-wrap: wrap; }
+  nav a { font-size: 0.66rem; }
+  .content { padding: 36px 20px 52px; }
+  .meta { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .meta .imprint, .meta .category { border-right: 0; padding-right: 0; }
+  h1 { font-size: 2.05rem; line-height: 1.12; }
+  .standfirst { font-size: 1.15rem; margin-bottom: 28px; padding-bottom: 24px; }
+  h2 { font-size: 1.32rem; }
+  h2.section-turn { font-size: 1.5rem; }
+  .next-story { padding: 4px 20px 60px; }
+  .next-story__title { font-size: 1.35rem; }
+  footer .links { gap: 10px 16px; }
+  footer a { font-size: 0.66rem; letter-spacing: 0.06em; }
+}
