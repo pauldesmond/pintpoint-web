@@ -153,6 +153,8 @@
     .post-date { font-family: var(--sans); font-size: .68rem; font-weight: 700; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 7px; }
     .post-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; line-height: 1.25; margin-bottom: 7px; }
     .post-excerpt { font-family: var(--serif); font-size: 1rem; color: var(--ink-soft); line-height: 1.5; }
+    /* Cards keep a common height: three lines of excerpt, then the read link. */
+    .post-excerpt { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
     .post-read { font-family: var(--sans); font-size: .72rem; color: var(--muted); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-top: 10px; }
     .empty { margin-top: 32px; font-family: var(--sans); color: var(--muted); font-size: .9rem; padding: 20px; border: 1px dashed var(--rule); text-align: center; }
 
@@ -206,13 +208,14 @@
         <a class="shelf-tile t3" href="beer-world-cup-xi-final.html" title="The Beer Final We Almost Had: England vs Spain" aria-label="The Beer Final We Almost Had: England vs Spain"><picture><source type="image/webp" srcset="images/tiles/beer-world-cup-xi-final-240.webp" /><img src="images/tiles/beer-world-cup-xi-final-240.jpg" alt="The Beer Final We Almost Had: England vs Spain" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
         <a class="shelf-tile t3" href="norman-balon-obituary.html" title="Norman Balon: London's Last Great Rude Landlord" aria-label="Norman Balon: London's Last Great Rude Landlord"><picture><source type="image/webp" srcset="images/tiles/norman-balon-obituary-240.webp" /><img src="images/tiles/norman-balon-obituary-240.jpg" alt="Norman Balon: London's Last Great Rude Landlord" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
         <a class="shelf-tile t3" href="humphrey-smith-obituary.html" title="Humphrey Smith: British Beer's Great Awkward Character" aria-label="Humphrey Smith: British Beer's Great Awkward Character"><picture><source type="image/webp" srcset="images/tiles/humphrey-smith-obituary-v2-240.webp" /><img src="images/tiles/humphrey-smith-obituary-v2-240.jpg" alt="Humphrey Smith: British Beer's Great Awkward Character" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
+        <a class="shelf-tile t3" href="loaded-lager-olympics-1995.html" title="Lager&rsquo;lympics: Loaded Magazine&rsquo;s Lost 1995 Lager World Cup, Found" aria-label="Lager&rsquo;lympics: Loaded Magazine&rsquo;s Lost 1995 Lager World Cup, Found"><picture><source type="image/webp" srcset="images/tiles/loaded-lager-olympics-1995-landscape-240.webp" /><img src="images/tiles/loaded-lager-olympics-1995-landscape-240.jpg" alt="Lager&rsquo;lympics: Loaded Magazine&rsquo;s Lost 1995 Lager World Cup, Found" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
         <a class="shelf-tile t3" href="before-the-final-cask.html" title="Before Kick-Off: Why English Cask Has the Advantage" aria-label="Before Kick-Off: Why English Cask Has the Advantage"><picture><source type="image/webp" srcset="images/tiles/before-the-final-cask-240.webp" /><img src="images/tiles/before-the-final-cask-240.jpg" alt="Before Kick-Off: Why English Cask Has the Advantage" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
         <a class="shelf-tile t3" href="world-cup-stadium-beer-map.html" title="World Cup 2026 Stadium Beer Map: Help Us Find Good Beer Near The Grounds" aria-label="World Cup 2026 Stadium Beer Map: Help Us Find Good Beer Near The Grounds"><picture><source type="image/webp" srcset="images/tiles/stadium-beer-map-infographic-v1-240.webp" /><img src="images/tiles/stadium-beer-map-infographic-v1-240.jpg" alt="World Cup 2026 Stadium Beer Map: Help Us Find Good Beer Near The Grounds" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
         <a class="shelf-tile t3" href="beer-world-cup-xi.html" title="Beer World Cup XI: 48 Nations, Real Fixtures, Stupidly Serious Beer Results" aria-label="Beer World Cup XI: 48 Nations, Real Fixtures, Stupidly Serious Beer Results"><picture><source type="image/webp" srcset="images/tiles/beer-world-cup-xi-infographic-v1-240.webp" /><img src="images/tiles/beer-world-cup-xi-infographic-v1-240.jpg" alt="Beer World Cup XI: 48 Nations, Real Fixtures, Stupidly Serious Beer Results" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
         <a class="shelf-tile t3" href="firkin-died-as-a-chain.html" title="Following the Firkin trail(s)…" aria-label="Following the Firkin trail(s)…"><picture><source type="image/webp" srcset="images/tiles/firkin-died-as-a-chain-240.webp" /><img src="images/tiles/firkin-died-as-a-chain-240.jpg" alt="Following the Firkin trail(s)…" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
         <a class="shelf-tile t3" href="anchor-british-heritage.html" title="Anchor Brewing's British heritage runs deeper than people realise" aria-label="Anchor Brewing's British heritage runs deeper than people realise"><picture><source type="image/webp" srcset="images/tiles/anchor-british-heritage-240.webp" /><img src="images/tiles/anchor-british-heritage-240.jpg" alt="Anchor Brewing's British heritage runs deeper than people realise" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
-        <a class="shelf-tile t3" href="anchor-brewing-returns-2027.html" title="Anchor Brewing looks to be coming back. The 2021 rebrand isn't." aria-label="Anchor Brewing looks to be coming back. The 2021 rebrand isn't."><picture><source type="image/webp" srcset="images/tiles/anchor-brewing-returns-2027-240.webp" /><img src="images/tiles/anchor-brewing-returns-2027-240.jpg" alt="Anchor Brewing looks to be coming back. The 2021 rebrand isn't." loading="lazy" decoding="async" width="240" height="240" /></picture></a>
     </div>
+
 
 
 
@@ -235,10 +238,50 @@
 
     <ul class="post-list">
       <li>
+        <a href="tegernseer-on-draught-uk.html" class="post">
+          <div class="post-date note">23 September 2026 &middot; Note</div>
+          <div class="post-title">Tegernseer on Draught, and Where</div>
+          <div class="post-excerpt">Tegernseer Hell is one of Bavaria&rsquo;s most sought-after lagers and reaches British bars in small, unpublicised quantities. Cross-referencing our own live tap data finds eleven UK venues that have poured it.</div>
+          <div class="post-read">Read the note &rarr;</div>
+        </a>
+      </li>
+      <li>
+        <a href="oktoberfest-first-giant-tent.html" class="post">
+          <div class="post-date essay">20 September 2026 &middot; Essay</div>
+          <div class="post-title">Everything Traditional About Oktoberfest Is Younger Than the Tent</div>
+          <div class="post-excerpt">In 1898 a Nuremberg publican used five strawmen to buy five Oktoberfest stalls and built a hall for 6,000. The restaurateurs sued and lost. The pale beer, the giant tent and the six-brewery rule are all younger than anyone admits.</div>
+          <div class="post-read">Read the essay &rarr;</div>
+        </a>
+      </li>
+      <li>
+        <a href="geography-of-sobriety.html" class="post">
+          <div class="post-date essay">3 September 2026 &middot; Essay</div>
+          <div class="post-title">The Geography of Sobriety</div>
+          <div class="post-excerpt">How Wapping and Canary Wharf relocated London&rsquo;s great professional drinking cultures into places where they could not breathe.</div>
+          <div class="post-read">Read the essay &rarr;</div>
+        </a>
+      </li>
+      <li>
+        <a href="loaded-world-cup-canon.html" class="post">
+          <div class="post-date reference">27 June 2026 &middot; Reference</div>
+          <div class="post-title">Loaded&rsquo;s World Cup Canon: From Crisps to Vodka</div>
+          <div class="post-excerpt">The canonical record of Loaded magazine&rsquo;s recurring World Cup format. The first five editions ran in fifteen months from September 1994 to December 1995, Crisp, Washing Powder, Lager&rsquo;lympics, Cereals and Vodka, and define the format at its peak.</div>
+          <div class="post-read">Read the reference &rarr;</div>
+        </a>
+      </li>
+      <li>
         <a href="beerology-anatomy-of-a-pint.html" class="post">
           <div class="post-date essay">2 June 2026 · Essay</div>
           <div class="post-title">Beerology — The Anatomy of a Pint</div>
           <div class="post-excerpt">What does this beer actually feel like to drink? Eight axes — Body, Bitterness, Sweetness, Roast, Fruit, Finish, Softness, Complexity — plus four drinker cues, a drinkability bucket, and one plain-English gut-take sentence per beer. Built for the 800-millisecond tap-list decision; honest about the sour and Belgian-yeast styles it doesn't cover. The capstone of the four-essay arc on choosing the right pint.</div>
+          <div class="post-read">Read the essay →</div>
+        </a>
+      </li>
+      <li>
+        <a href="anchor-brewing-returns-2027.html" class="post">
+          <div class="post-date essay">22 May 2026 · Essay</div>
+          <div class="post-title">Anchor Brewing looks to be coming back. The 2021 rebrand isn't.</div>
+          <div class="post-excerpt">Construction crews at Potrero Hill, twenty months of silence from a billionaire owner, and a homepage in May 2026 still wearing the 1896 logo — not the 2021 mark drinkers hated. Anchor's revival is moving from rumour into pre-brewing infrastructure. What's coming back, on the evidence, is the older Anchor.</div>
           <div class="post-read">Read the essay →</div>
         </a>
       </li>
@@ -264,46 +307,6 @@
           <div class="post-title">Four Pubs a Day Are Closing. The Telegraph's Answer Is a Free Pint.</div>
           <div class="post-excerpt">Saturday 16 May is the Telegraph's National Pub Day. Renegade Brewery — the West Berkshire outfit that took on the West Berkshire estate after the 2023 collapse — has brewed Telegraph Ale, a 4% cask English bitter, for over 250 participating pubs nationwide. The campaign sits inside Save Our Pubs, the Telegraph's response to a closure rate of roughly four pubs a day.</div>
           <div class="post-read">Read the news note →</div>
-        </a>
-      </li>
-      <li>
-        <a href="mild-half-to-half-a-percent.html" class="post">
-          <div class="post-date essay">14 May 2026 · Essay</div>
-          <div class="post-title">From Half of British Beer to Half a Percent — What Happened to Mild</div>
-          <div class="post-excerpt">In 1959 mild was still half the beer Britain drank. By 2011 it was 0.5%. How Britain's everyday beer became a rarity — and why Mild May is trying to bring it back. Pattinson, Cornell and Boak &amp; Bailey on the collapse; the modern fork between stalwarts and craft revisionists.</div>
-          <div class="post-read">Read the essay →</div>
-        </a>
-      </li>
-      <li>
-        <a href="the-sparkler-question.html" class="post">
-          <div class="post-date note">8 May 2026 · Note</div>
-          <div class="post-title">The Sparkler Question — A Field Guide to Britain's Quietest Cask Argument</div>
-          <div class="post-excerpt">A small nozzle. A 140-year argument. Mostly a Northern tradition, with London outposts at the Queen's Arms and the Punch Tavern. From 14 May the Whippet adds a sparklered Boddingtons to the Liverpool Street commute.</div>
-          <div class="post-read">Read the note →</div>
-        </a>
-      </li>
-      <li>
-        <a href="the-whippet-ec2-liverpool-street-opens.html" class="post">
-          <div class="post-date note">5 May 2026 · Note</div>
-          <div class="post-title">The Whippet: Why This Could Be One of London's Most Interesting Beer Openings of 2026</div>
-          <div class="post-excerpt">June update: The Whippet still is not pouring Augustiner, but it has quietly built one of the more unusual lager line-ups near Liverpool Street — Bitburger, Kutna Hora, Tegernseer, Benediktiner and more — alongside Boddingtons cask with a sparkler.</div>
-          <div class="post-read">Read the note →</div>
-        </a>
-      </li>
-      <li>
-        <a href="radio-city-7-deadly-sins.html" class="post">
-          <div class="post-date note">1 May 2026 · Note</div>
-          <div class="post-title">Radio City Turns 7: 7 Cans, 7 Sins, 35 Launch Venues — and One Big Saturday in Chelmsford</div>
-          <div class="post-excerpt">Saturday 9 May 2026 — Radio City Beer Works in Radley Green throws its biggest birthday yet, preceded two days earlier by the nationwide can launch of the Seven Deadly Sins. Lust × Black Iris (Strawberry Vanilla Pastry Sour), Wrath × Ampersand (Southern Hemisphere IPA), Gluttony × Vibrant Forest (Imperial Stout 8.4%), and four more. Full launch-venue locator inside.</div>
-          <div class="post-read">Read the note →</div>
-        </a>
-      </li>
-      <li>
-        <a href="blackhorse-beer-mile-4th-birthday.html" class="post">
-          <div class="post-date note">1 May 2026 · Note</div>
-          <div class="post-title">Blackhorse Beer Mile 4th Birthday: All 10 Participating Venues with PINtPOINT Links</div>
-          <div class="post-excerpt">Sunday 3 May 2026 — Walthamstow's brewery-district mile turns four with an all-day, free-entry, family-friendly takeover across 10 east-London craft venues: Big Penny Social, Exale, Signature, Borough Wines, Burnt Faith, East London Brewing Co, plus 40FT, Hackney Church, Renegade and Pretty Decent. Every venue with a PINtPOINT deeplink plus the canonical Hall of Fame crawl.</div>
-          <div class="post-read">Read the note →</div>
         </a>
       </li>
     </ul>
