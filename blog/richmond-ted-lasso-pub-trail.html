@@ -19,7 +19,7 @@
   <meta property="fb:app_id" content="1892965231402903" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -118,48 +118,46 @@
     "url": "https://pintpoint.co.uk/blog/richmond-ted-lasso-pub-trail.html"
   }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
-    h1 { font-size: clamp(1.7rem, 4vw, 2.2rem); font-weight: 900; letter-spacing: -1px; line-height: 1.2; margin-bottom: 12px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.3px; margin-top: 40px; margin-bottom: 12px; }
-    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
-    article a, article a:visited, main a, main a:visited { color: var(--teal); }
-    .highlight { color: var(--text); font-weight: 600; }
-    .meta { font-size: 0.8rem; color: #666; margin-bottom: 24px; letter-spacing: 0.3px; }
-    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border: 1px solid rgba(0,212,170,0.4); border-radius: 4px; margin-right: 8px; }
-    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.75; margin-bottom: 24px; }
-    .stop { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin: 16px 0; text-decoration: none; display: block; }
-    .stop:hover { border-color: var(--teal); }
-    .stop-num { display: inline-block; font-size: 0.7rem; font-weight: 800; color: var(--teal); letter-spacing: 2px; margin-bottom: 6px; }
-    .stop-name { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .stop { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 18px 20px; margin: 16px 0; text-decoration: none; display: block; }
+    .stop:hover { border-color: var(--amber); }
+    .stop-num { display: inline-block; font-size: 0.7rem; font-weight: 800; color: var(--ink); letter-spacing: 2px; margin-bottom: 6px; }
+    .stop-name { font-size: 1.1rem; font-weight: 800; color: var(--ink); margin-bottom: 4px; }
     .stop-addr { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; font-family: 'Inter', sans-serif; }
     .stop-note { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
     ul.bonus { list-style: none; padding: 0; margin: 16px 0; }
-    ul.bonus li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: var(--muted); }
+    ul.bonus li { padding: 10px 0; border-bottom: 1px solid var(--rule-soft); font-size: 0.9rem; color: var(--muted); }
     ul.bonus li:last-child { border-bottom: none; }
-    ul.bonus a { color: var(--text); font-weight: 600; text-decoration: none; }
-    ul.bonus a:hover { color: var(--teal); }
-    .disclosure { font-size: 0.8rem; color: #666; padding: 14px 18px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin: 32px 0; line-height: 1.6; }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); margin-top: 48px; }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+    ul.bonus a { color: var(--ink); font-weight: 600; text-decoration: none; }
+    ul.bonus a:hover { color: var(--ink); }
+    body .ps-1 { color: var(--muted); font-size: 1.05rem; margin-top: -4px; margin-bottom: 24px; }
+    body .ps-2 { background: transparent; border-left: 3px solid var(--amber); padding: 16px 20px; margin: 24px 0; color: var(--ink); line-height: 1.7; }
+    body .ps-3 { font-size: 0.9rem; color: var(--muted); margin-top: 24px; font-style: italic; }
+    body .ps-4 { border-bottom: 1px solid var(--rule-soft); padding: 18px 0; }
+    body .ps-5 { font-weight: 700; color: var(--ink); cursor: pointer; list-style: none; }
+    body .ps-6 { margin-top: 10px; }
+    body .ps-7 { border-bottom: 1px solid var(--rule-soft); padding: 18px 0; }
+    body .ps-8 { font-weight: 700; color: var(--ink); cursor: pointer; list-style: none; }
+    body .ps-9 { margin-top: 10px; }
+    body .ps-10 { border-bottom: 1px solid var(--rule-soft); padding: 18px 0; }
+    body .ps-11 { font-weight: 700; color: var(--ink); cursor: pointer; list-style: none; }
+    body .ps-12 { margin-top: 10px; }
+    body .ps-13 { border-bottom: 1px solid var(--rule-soft); padding: 18px 0; }
+    body .ps-14 { font-weight: 700; color: var(--ink); cursor: pointer; list-style: none; }
+    body .ps-15 { margin-top: 10px; }
+    body .ps-16 { border-bottom: 1px solid var(--rule-soft); padding: 18px 0; }
+    body .ps-17 { font-weight: 700; color: var(--ink); cursor: pointer; list-style: none; }
+    body .ps-18 { margin-top: 10px; }
+    body .ps-19 { padding: 18px 0; }
+    body .ps-20 { font-weight: 700; color: var(--ink); cursor: pointer; list-style: none; }
+    body .ps-21 { margin-top: 10px; }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="../about-pintpoint.html">About</a>
       <a href="../features.html">Features</a>
       <a href="../pubs/">Venues</a>
@@ -169,9 +167,9 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category">Guide</span>19 April 2026 · Richmond-upon-Thames · Pub crawl</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category">Guide</span>19 April 2026 · Richmond-upon-Thames · Pub crawl</p>
     <h1>Walking the Ted Lasso pub trail in <em>Richmond</em></h1>
-    <p style="color:var(--muted);font-size:1.05rem;margin-top:-4px;margin-bottom:24px">From the Crown &amp; Anchor exterior on Richmond Green up to the view from Richmond Hill — and what else is worth a pint while you're there.</p>
+    <p class="ps-1">From the Crown &amp; Anchor exterior on Richmond Green up to the view from Richmond Hill — and what else is worth a pint while you're there.</p>
 
     <p class="lede">Richmond-upon-Thames had the kind of identity problem most London neighbourhoods would kill for. It was a beer destination — riverside pubs, a working brewery scene, a Cask Marque density above the London average — but its postcode ambiguity (TW9/TW10 straddles the Greater London / Surrey psychological boundary) meant a lot of "London beer map" coverage skipped it entirely. Then a fictional American football coach took over a fictional Premier League club here, and Richmond stopped being skippable.</p>
 
@@ -179,7 +177,7 @@
 
     <p>Below is a four-stop walking trail: one direct Ted Lasso location, two other Richmond Green pubs to reset between sittings, and a Richmond Hill finisher with the kind of Thames-bend view the show keeps coming back to. After that, a shortlist of the wider Richmond beer scene worth knowing about while you're already in TW9.</p>
 
-    <p style="background:rgba(0,212,170,0.06);border-left:3px solid var(--teal);padding:16px 20px;margin:24px 0;color:var(--text);line-height:1.7"><strong>Where was Ted Lasso filmed?</strong> The Crown &amp; Anchor pub exterior is The Prince's Head at 28 The Green, Richmond TW9 1LX. Ted's flat doorway is 11½ Paved Court, the cobbled alley directly off Richmond Green. The Roy &amp; Keeley first-date scene is at Richmond Riverside in front of the Old Town Hall. Rebecca's house is 1 Pembroke Villas. Most other filming took place within a square mile of Richmond Green — the full address list is in the Fan Extras section below. <strong>Season 4 premieres on Apple TV on Wednesday 5 August 2026.</strong></p>
+    <p class="ps-2"><strong>Where was Ted Lasso filmed?</strong> The Crown &amp; Anchor pub exterior is The Prince's Head at 28 The Green, Richmond TW9 1LX. Ted's flat doorway is 11½ Paved Court, the cobbled alley directly off Richmond Green. The Roy &amp; Keeley first-date scene is at Richmond Riverside in front of the Old Town Hall. Rebecca's house is 1 Pembroke Villas. Most other filming took place within a square mile of Richmond Green — the full address list is in the Fan Extras section below. <strong>Season 4 premieres on Apple TV on Wednesday 5 August 2026.</strong></p>
 
     <h2>The trail</h2>
 
@@ -227,7 +225,7 @@
       <li><strong>Church Court / Church Walk</strong> · off George Street, near the Tesco Express. The post-card walk-away in the "Love, Actually" Christmas-card sequence happens here; Bernard's actual front door is somewhere around 8–10 Church Walk, framed against St Mary Magdalene Church behind.</li>
     </ul>
 
-    <p style="font-size:0.9rem;color:var(--muted);margin-top:24px;font-style:italic">Bonus across the river: <span class="highlight">Church Street, Twickenham</span> is where the S2E3 scene with Rebecca, Nora, Roy and Phoebe is filmed. It's the most ye-olde-England street you can find this close to central London — period dramas film there constantly. About a 25-minute walk over Richmond Bridge or one stop on the train from Richmond.</p>
+    <p class="ps-3">Bonus across the river: <span class="highlight">Church Street, Twickenham</span> is where the S2E3 scene with Rebecca, Nora, Roy and Phoebe is filmed. It's the most ye-olde-England street you can find this close to central London — period dramas film there constantly. About a 25-minute walk over Richmond Bridge or one stop on the train from Richmond.</p>
 
     <h2>If you've made it this far, here's what else is in Richmond</h2>
 
@@ -247,33 +245,33 @@
 
     <p>Start at <span class="highlight">Richmond station</span> (District line + South Western Railway) — it's two minutes from Richmond Green. The trail above is roughly 1.5 miles end-to-end, mostly flat except the Richmond Hill climb at the end (which is the bit that earns you the view). Allow three to four hours if you stop at every pub, longer if you take the Kew detour.</p>
 
-    <p>Inside PINtPOINT, every venue card on this page deeplinks to a live tap-list page — useful for working out whether your favourite small brewery is on at the Tap Tavern before you walk up the hill. Beer Alerts can ping you the moment a watched beer goes on a tap line at any Richmond venue.</p>
+    <p class="end">Inside PINtPOINT, every venue card on this page deeplinks to a live tap-list page — useful for working out whether your favourite small brewery is on at the Tap Tavern before you walk up the hill. Beer Alerts can ping you the moment a watched beer goes on a tap line at any Richmond venue.</p>
 
     <h2>Frequently asked questions</h2>
 
-    <details style="border-bottom:1px solid var(--border);padding:18px 0">
-      <summary style="font-weight:700;color:var(--text);cursor:pointer;list-style:none">Where is the Crown and Anchor pub from Ted Lasso?</summary>
-      <p style="margin-top:10px">The exterior is The Prince's Head, a Fuller's pub at 28 The Green, Richmond TW9 1LX, on the south-east corner of Richmond Green. Built around 1705. The interior in the show is a studio set, but the doorway, the bench outside and the red phone boxes are all the real building.</p>
+    <details class="ps-4">
+      <summary class="ps-5">Where is the Crown and Anchor pub from Ted Lasso?</summary>
+      <p class="ps-6">The exterior is The Prince's Head, a Fuller's pub at 28 The Green, Richmond TW9 1LX, on the south-east corner of Richmond Green. Built around 1705. The interior in the show is a studio set, but the doorway, the bench outside and the red phone boxes are all the real building.</p>
     </details>
-    <details style="border-bottom:1px solid var(--border);padding:18px 0">
-      <summary style="font-weight:700;color:var(--text);cursor:pointer;list-style:none">Can you go inside the Crown and Anchor?</summary>
-      <p style="margin-top:10px">You can go inside The Prince's Head, the real pub, and order a pint of London Pride. The interior layout differs from the show set, but the unfussy English-pub mood the show was trying to evoke is the same. Worth booking ahead on weekends, especially around the August 2026 Season 4 release.</p>
+    <details class="ps-7">
+      <summary class="ps-8">Can you go inside the Crown and Anchor?</summary>
+      <p class="ps-9">You can go inside The Prince's Head, the real pub, and order a pint of London Pride. The interior layout differs from the show set, but the unfussy English-pub mood the show was trying to evoke is the same. Worth booking ahead on weekends, especially around the August 2026 Season 4 release.</p>
     </details>
-    <details style="border-bottom:1px solid var(--border);padding:18px 0">
-      <summary style="font-weight:700;color:var(--text);cursor:pointer;list-style:none">Where was Ted's flat filmed?</summary>
-      <p style="margin-top:10px">11½ Paved Court — the cobbled alley directly off Richmond Green, next door to The Prince's Head. The interior was a studio set, but the front door is the real one and is the canonical Ted's-flat photo stop on every fan walking tour.</p>
+    <details class="ps-10">
+      <summary class="ps-11">Where was Ted's flat filmed?</summary>
+      <p class="ps-12">11½ Paved Court — the cobbled alley directly off Richmond Green, next door to The Prince's Head. The interior was a studio set, but the front door is the real one and is the canonical Ted's-flat photo stop on every fan walking tour.</p>
     </details>
-    <details style="border-bottom:1px solid var(--border);padding:18px 0">
-      <summary style="font-weight:700;color:var(--text);cursor:pointer;list-style:none">How long is the Ted Lasso pub trail?</summary>
-      <p style="margin-top:10px">The four-pub spine is 1.5 miles end-to-end, three to four hours if you stop properly at each pub. Adding the Fan Extras filming-locations loop adds about another mile but stays inside the same square mile of Richmond Green. Doable in an afternoon either way.</p>
+    <details class="ps-13">
+      <summary class="ps-14">How long is the Ted Lasso pub trail?</summary>
+      <p class="ps-15">The four-pub spine is 1.5 miles end-to-end, three to four hours if you stop properly at each pub. Adding the Fan Extras filming-locations loop adds about another mile but stays inside the same square mile of Richmond Green. Doable in an afternoon either way.</p>
     </details>
-    <details style="border-bottom:1px solid var(--border);padding:18px 0">
-      <summary style="font-weight:700;color:var(--text);cursor:pointer;list-style:none">When does Ted Lasso Season 4 come out?</summary>
-      <p style="margin-top:10px">Wednesday 5 August 2026 on Apple TV, with new episodes weekly through 7 October. Ted's back in Richmond, this time coaching a second-division women's team. Original cast all returning. Worth planning the Richmond trip for the week of the premiere if you want maximum vibe.</p>
+    <details class="ps-16">
+      <summary class="ps-17">When does Ted Lasso Season 4 come out?</summary>
+      <p class="ps-18">Wednesday 5 August 2026 on Apple TV, with new episodes weekly through 7 October. Ted's back in Richmond, this time coaching a second-division women's team. Original cast all returning. Worth planning the Richmond trip for the week of the premiere if you want maximum vibe.</p>
     </details>
-    <details style="padding:18px 0">
-      <summary style="font-weight:700;color:var(--text);cursor:pointer;list-style:none">How do I get to Richmond?</summary>
-      <p style="margin-top:10px">Train to Richmond Station — District line from central London, or South Western Railway from Waterloo (16 mins). Two minutes' walk to Richmond Green from there. Five minutes to The Prince's Head straight down Old Station Passage and Little Green.</p>
+    <details class="ps-19">
+      <summary class="ps-20">How do I get to Richmond?</summary>
+      <p class="ps-21">Train to Richmond Station — District line from central London, or South Western Railway from Waterloo (16 mins). Two minutes' walk to Richmond Green from there. Five minutes to The Prince's Head straight down Old Station Passage and Little Green.</p>
     </details>
 
     <div class="disclosure">
@@ -282,8 +280,9 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
-      <a href="../index.html">PINtPOINT</a>
+      <a class="brand" href="../index.html">PINtPOINT</a>
       <a href="../blog/">Blog</a>
       <a href="../about-pintpoint.html">About</a>
       <a href="../privacy-policy.html">Privacy</a>

@@ -17,7 +17,7 @@
   <meta property="fb:app_id" content="1892965231402903" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -78,70 +78,29 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 780px; margin: 0 auto; padding: 60px 24px 80px; }
-    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; }
-    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
-    article a, article a:visited, main a, main a:visited { color: var(--teal); }
-    .highlight { color: var(--text); font-weight: 600; }
-    .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
-    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
-    .category.note { color: #FFD580; border: 1px solid rgba(255,213,128,0.4); }
-    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.75; margin-bottom: 24px; }
-    .pub-list { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; margin: 24px 0 32px; }
-    .pub-list h3 { font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+    .pub-list { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 24px 28px; margin: 24px 0 32px; }
+    .pub-list h3 { font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); margin-bottom: 16px; }
     .pub-list ul { list-style: none; margin: 0; }
-    .pub-list li { font-size: 0.95rem; line-height: 1.7; margin-bottom: 10px; color: var(--text); }
+    .pub-list li { font-size: 0.95rem; line-height: 1.7; margin-bottom: 10px; color: var(--ink); }
     .pub-list li small { color: var(--muted); font-weight: 400; }
-    .pub-list li a { color: var(--text); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
-    .pub-list li a:hover { border-bottom-color: var(--teal); }
-    .pub-list .seventh { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border); }
-    .pub-list .seventh small { color: var(--teal); font-weight: 600; }
-    .pub-list .pending { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border); opacity: 0.85; }
-    .pub-list .pending .tag { display: inline-block; border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-right: 8px; }
-    .quote { font-size: 1.2rem; font-weight: 700; color: var(--teal); text-align: center; padding: 28px 0; margin: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); line-height: 1.55; }
-    .faq { margin-top: 48px; }
-    .faq h2 { margin-bottom: 24px; }
-    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-    .faq-item summary { font-size: 1rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--teal); }
-    .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item p { margin-top: 10px; }
-    .closing { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
-    .closing p { font-size: 1rem; color: var(--text); }
-    .disclosure { font-size: 0.8rem; color: #666; padding: 16px 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin: 32px 0; line-height: 1.6; }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }    /* Seasonal signpost — remove after 4 November 2026. Routes the traffic
-       these posts already earn to the Oktoberfest guide, which earns none
-       of its own yet. Placed straight after the lede, not in the footer. */
-    .seasonal { display: block; margin: 18px 0 6px; padding: 13px 15px; border-radius: 9px;
-      background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.28);
-      font-size: 0.93rem; color: #c9d1d9; text-decoration: none; }
-    .seasonal b { color: var(--teal); }
-    .seasonal:hover { border-color: var(--teal); }
-    .companion { font-size: 0.9rem; color: var(--muted); margin: 10px 0 4px;
-      padding-left: 12px; border-left: 2px solid rgba(255,255,255,0.14); }
-
+    .pub-list li a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+    .pub-list li a:hover { border-bottom-color: var(--amber); }
+    .pub-list .seventh { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--rule-soft); }
+    .pub-list .seventh small { color: var(--ink); font-weight: 600; }
+    .pub-list .pending { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--rule-soft); opacity: 0.85; }
+    .pub-list .pending .tag { display: inline-block; border: 1px solid var(--rule-soft); border-radius: 0; padding: 1px 6px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-right: 8px; }
+    .seasonal { display: block; margin: 18px 0 6px; padding: 13px 15px; border-radius: 0; background: transparent; border: 1px solid var(--rule); font-size: 0.93rem; color: var(--ink); text-decoration: none; }
+    .seasonal b { color: var(--ink); }
+    .seasonal:hover { border-color: var(--amber); }
+    body .ps-1 { font-size: 0.9rem; color: var(--muted); margin-top: 16px; }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="../about-pintpoint.html">About</a>
       <a href="../features.html">Features</a>
       <a href="../pubs/">Venues</a>
@@ -151,7 +110,7 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category note">Note</span>30 April 2026 · UK · Augustiner Helles</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category note">Note</span>30 April 2026 · UK · Augustiner Helles</p>
     <h1>Augustiner on Draft, <em>Finally</em></h1>
 
     <p class="lede">Earlier this week, Boak &amp; Bailey wrote that they "still haven't seen it on draft anywhere in the UK" — referring to Augustiner Helles, the famously protected Munich pale lager that the brewery refuses to sell to anyone who won't look after it properly. "Perhaps no pub has yet met their stringent quality standards," they speculated.</p>
@@ -175,7 +134,7 @@
       </ul>
     </div>
 
-    <p style="font-size: 0.9rem; color: var(--muted); margin-top: 16px;">Eight confirmed, one expected. No news on The Whippet, but we are still hopeful. If you know a pub pouring it that isn't here, <a href="mailto:hello@pintpoint.co.uk">let us know</a> — that is how Blind Jack's and the Oil Basin both got on the list.</p>
+    <p class="ps-1">Eight confirmed, one expected. No news on The Whippet, but we are still hopeful. If you know a pub pouring it that isn't here, <a href="mailto:hello@pintpoint.co.uk">let us know</a> — that is how Blind Jack's and the Oil Basin both got on the list.</p>
 
     <h2>What it takes to pour it</h2>
 
@@ -249,13 +208,14 @@
     </div>
 
     <div class="closing">
-      <p>If you've ever wanted to drink Augustiner Helles fresh, on draught, in the UK — turns out there's a short list, it's growing, and PINtPOINT now has all of it pinned. <b>One thing worth saying in autumn:</b> this is Augustiner <i>Helles</i>, their 5.2% everyday lager. The 6.3% <i>Oktoberfest Bier</i> they brew for the Wiesn is a different beer, and it is the one <a href="/blog/uk-oktoberfest-events-2026.html">no UK venue on our Oktoberfest list</a> pours.</p>
+      <p class="end">If you've ever wanted to drink Augustiner Helles fresh, on draught, in the UK — turns out there's a short list, it's growing, and PINtPOINT now has all of it pinned. <b>One thing worth saying in autumn:</b> this is Augustiner <i>Helles</i>, their 5.2% everyday lager. The 6.3% <i>Oktoberfest Bier</i> they brew for the Wiesn is a different beer, and it is the one <a href="/blog/uk-oktoberfest-events-2026.html">no UK venue on our Oktoberfest list</a> pours.</p>
     </div>
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
-      <a href="../index.html">PINtPOINT</a>
+      <a class="brand" href="../index.html">PINtPOINT</a>
       <a href="../blog/">Blog</a>
       <a href="../about-pintpoint.html">About</a>
       <a href="../privacy-policy.html">Privacy</a>
