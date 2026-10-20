@@ -23,7 +23,7 @@
   <meta property="fb:app_id" content="1892965231402903" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -111,57 +111,15 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --accent: #FF7A45; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
-    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; }
-    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
-    article a, article a:visited, main a, main a:visited { color: var(--teal); }
-    .highlight { color: var(--text); font-weight: 600; }
-    .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
-    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
-    .category.essay { color: #B5C8FF; border: 1px solid rgba(181,200,255,0.4); }
-    .lede p { font-size: 1.05rem; color: var(--text); line-height: 1.75; }
-    .lede p.short { font-size: 1.15rem; font-weight: 600; color: var(--teal); margin: 12px 0 20px; }
-    blockquote { border-left: 3px solid var(--accent); padding: 8px 20px; margin: 24px 0; color: var(--text); font-style: italic; }
-    blockquote cite { display: block; font-style: normal; color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
-    .faq { margin-top: 48px; }
-    .faq h2 { margin-bottom: 24px; }
-    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-    .faq-item summary { font-size: 1rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--teal); }
-    .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item p { margin-top: 10px; }
-    .closing { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
-    .closing p { font-size: 1rem; color: var(--text); }
-    .closing p.kicker { font-size: 1.1rem; font-weight: 600; color: var(--text); line-height: 1.6; }
-    .disclosure { font-size: 0.8rem; color: #666; padding: 16px 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin: 32px 0; line-height: 1.6; }
-    .sources { margin-top: 32px; padding: 20px 24px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.85rem; }
-    .sources h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 12px; }
-    .sources ul { list-style: none; padding: 0; margin: 0; }
-    .sources li { padding: 4px 0; color: var(--muted); }
-    .sources li a { color: var(--teal); }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+    body .ps-1 { color: var(--muted); font-size: 1.05rem; margin-top: -8px; margin-bottom: 24px; }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="../about-pintpoint.html">About</a>
       <a href="../features.html">Features</a>
       <a href="../pubs/">Venues</a>
@@ -171,9 +129,9 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>14 May 2026 · Mild · History</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category essay">Essay</span>14 May 2026 · Mild · History</p>
     <h1>From half of British beer to half a percent — what happened to <em>mild</em></h1>
-    <p style="color:var(--muted);font-size:1.05rem;margin-top:-8px;margin-bottom:24px">How Britain's everyday beer became a rarity — and why Mild May is trying to bring it back.</p>
+    <p class="ps-1">How Britain's everyday beer became a rarity — and why Mild May is trying to bring it back.</p>
 
     <div class="lede">
       <p>In 1959, mild was still about half the beer Britain drank.</p>
@@ -296,7 +254,7 @@
     <p>What's true: it's still being made, by people who care about it, in versions that range from quiet to assertive. The argument inside the camp is loud and interesting. The pint, where you find it, drinks well.</p>
 
     <div class="closing">
-      <p class="kicker">Mild's enemies were never taste. They were tax, two wars, a class shift, a slops rumour, and a word that promised the wrong thing. Drink one this May — if you can find one.</p>
+      <p class="kicker end">Mild's enemies were never taste. They were tax, two wars, a class shift, a slops rumour, and a word that promised the wrong thing. Drink one this May — if you can find one.</p>
     </div>
 
     <div class="disclosure">
@@ -342,8 +300,9 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
-      <a href="../index.html">PINtPOINT</a>
+      <a class="brand" href="../index.html">PINtPOINT</a>
       <a href="../blog/">Blog</a>
       <a href="../about-pintpoint.html">About</a>
       <a href="../privacy-policy.html">Privacy</a>
