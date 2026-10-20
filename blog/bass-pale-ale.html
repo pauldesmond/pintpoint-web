@@ -19,7 +19,7 @@
   <meta property="fb:app_id" content="1892965231402903" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -113,63 +113,16 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --accent: #FF7A45; --triangle: #C8102E; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
-    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; }
-    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
-    article a, article a:visited, main a, main a:visited { color: var(--teal); }
-    .highlight { color: var(--text); font-weight: 600; }
-    .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
-    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
-    .category.essay { color: #B5C8FF; border: 1px solid rgba(181,200,255,0.4); }
-    .lede p { font-size: 1.05rem; color: var(--text); line-height: 1.75; }
-    .lede p.short { font-size: 1.15rem; font-weight: 600; color: var(--teal); margin: 12px 0 20px; }
-    blockquote { border-left: 3px solid var(--accent); padding: 8px 20px; margin: 24px 0; color: var(--text); font-style: italic; }
-    blockquote cite { display: block; font-style: normal; color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
-    figure { margin: 28px auto; max-width: 420px; text-align: center; }
-    figure img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); display: block; }
-    figcaption { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 10px; line-height: 1.55; }
-    .faq { margin-top: 48px; }
-    .faq h2 { margin-bottom: 24px; }
-    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-    .faq-item summary { font-size: 1rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--teal); }
-    .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item p { margin-top: 10px; }
-    .closing { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
-    .closing p { font-size: 1rem; color: var(--text); }
-    .closing p.kicker { font-size: 1.1rem; font-weight: 600; color: var(--text); line-height: 1.6; }
-    .companion { margin-top: 32px; padding: 18px 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; font-size: 0.88rem; line-height: 1.7; }
-    .companion strong { color: var(--text); }
-    .companion a { color: var(--teal); }
-    .sources { margin-top: 32px; padding: 20px 24px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.85rem; }
-    .sources h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 12px; }
-    .sources ul { list-style: none; padding: 0; margin: 0; }
-    .sources li { padding: 4px 0; color: var(--muted); }
-    .sources li a { color: var(--teal); }
-    .triangle { display: inline-block; width: 0; height: 0; border-left: 9px solid transparent; border-right: 9px solid transparent; border-bottom: 16px solid var(--triangle); vertical-align: -2px; margin-right: 6px; }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+    :root { --triangle: #C8102E; }
+    .triangle { display: inline-block; width: 0; height: 0; border-left: 9px solid transparent; border-right: 9px solid transparent; border-bottom: 16px solid #C8102E; vertical-align: -2px; margin-right: 6px; }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="/" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="/" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="/about-pintpoint.html">About</a>
       <a href="/features.html">Features</a>
       <a href="/pubs/">Venues</a>
@@ -179,7 +132,7 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>24 April 2026</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category essay">Essay</span>24 April 2026</p>
     <h1><span class="triangle" aria-hidden="true"></span>Bass Pale Ale: The Red Triangle That Took an English Beer <em>Global</em></h1>
 
     <div class="lede">
@@ -257,7 +210,7 @@
     <p>The triangle was also the calling card of a brewery that held a Royal Warrant. From the late Victorian era through to the middle of the twentieth century, Bass were Brewers to the Royal Household — a status they advertised on millions of bottle labels and, for the pub trade, on framed mirrors that brewery reps gave to publicans to hang behind the bar. The <span class="highlight">"By Appointment / Brewers to the King"</span> wording on a mirror dates it to one of four reigns — <span class="highlight">Edward VII</span> (1901–10), <span class="highlight">George V</span> (1910–36), <span class="highlight">Edward VIII</span> (1936) or <span class="highlight">George VI</span> (1936–52). Many survive in working pubs.</p>
     <p>One hangs on the wall at <span class="highlight">The Craft Beer Co. St Mary's Axe</span> in the City of London, watching over a tap wall that doesn't include Bass.</p>
 
-    <figure>
+    <figure class="inset">
       <img src="images/bass-royal-warrant-mirror.jpg" alt="Vintage Bass pub mirror in an oak frame, showing the cursive 'Bass' wordmark next to the red triangle trade mark and the words 'IN BOTTLE'. At the top of the mirror: 'BY APPOINTMENT — BREWERS TO THE KING'. Hung on a whitewashed brick wall under a black industrial pendant light." width="960" height="1280" loading="lazy" />
       <figcaption>A Bass "By Appointment" Royal Warrant pub mirror, still hanging at The Craft Beer Co. St Mary's Axe, EC3 — June 2026. The pub doesn't pour Bass. The mirror does its work anyway.</figcaption>
     </figure>
@@ -296,7 +249,7 @@
 
     <div class="closing">
       <p class="kicker">A Victorian beer brand that survived its own brewery. The triangle is still on the label. Most of the rest is rearranged.</p>
-      <p>For more on the brewing forces that shaped (and weakened) British pale ales — strength taxes, glass duty, sparkler bias — see the companion essays below.</p>
+      <p class="end">For more on the brewing forces that shaped (and weakened) British pale ales — strength taxes, glass duty, sparkler bias — see the companion essays below.</p>
     </div>
 
     <div class="companion">
@@ -327,6 +280,7 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="/">Home</a>
       <a href="/pubs/">Venues</a>
