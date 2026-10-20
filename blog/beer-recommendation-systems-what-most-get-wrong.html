@@ -88,7 +88,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #f7f3ec; --text: #16150f; --muted: #6a6459; --border: #ded5c6; --rule: #c9bda6;
-             --amber: #a8701a; --teal: #00806a;
+             --amber: #a8701a; --amber-lit: #e8a033; --teal: #00806a;
              --ink-bg: #11161d; --ink-card: #161b22; --ink-text: #ffffff; --ink-muted: #8b949e; --ink-border: rgba(255,255,255,0.08); --ink-teal: #00D4AA;
              --serif: "Source Serif 4", Georgia, "Iowan Old Style", serif;
              --sans: "Inter", -apple-system, sans-serif; }
@@ -149,32 +149,46 @@
     /* The demo stays dark: a plate set into the page, the way print sets a chart.
        It keeps every rule it had; the dark values are simply restored under the
        names those rules already use, scoped to the panel. */
-    .venue-demo { --card: var(--ink-card); --border: var(--ink-border); --text: var(--ink-text);
+    /* The demo is a plate set into the page, the way print sets a chart:
+       paper margin, hairline frame, warm ink inside, square corners, and the
+       caption outside it in the page's own caption style. It runs a little
+       wider than the text so it reads as a figure rather than a paragraph. */
+    .venue-demo { margin: 44px -28px; padding: 10px; background: var(--bg);
+                  border: 1px solid var(--rule); }
+    .venue-plate { --card: #221c12; --border: rgba(255,255,255,0.10); --text: #f5efe4;
+                   --muted: #a79d8c; --teal: var(--amber-lit);
+                   background: #171309; padding: 26px; color: #f5efe4;
+                   font-family: var(--sans); }
+    .venue-plate p, .venue-plate li { font-size: 0.95rem; line-height: 1.7; color: #a79d8c; }
+    .venue-caption { font-family: var(--sans); font-size: 0.82rem; color: var(--muted);
+                     font-style: normal; line-height: 1.55; margin: 12px 4px 0;
+                     padding-top: 10px; border-top: 1px solid var(--rule); }
+    @media (max-width: 700px) { .venue-demo { margin-left: 0; margin-right: 0; } }
                   --muted: var(--ink-muted); --teal: var(--ink-teal);
                   background: var(--ink-bg); border: 1px solid #222a35; border-radius: 14px;
                   padding: 26px; margin: 40px 0; color: var(--ink-text); font-family: var(--sans); }
     .venue-demo p, .venue-demo li { font-size: 0.95rem; line-height: 1.7; color: var(--ink-muted); }
     .venue-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
-    .venue-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal); }
+    .venue-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--amber-lit); }
     .venue-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--text); }
     .venue-hint { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); }
     .venue-sub { font-size: 0.85rem; color: var(--muted); margin: 4px 0 16px; }
     .venue-sub strong { color: var(--text); }
     .profile-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-    .profile-chip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: all .18s ease; }
+    .profile-chip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 0; padding: 7px 14px; cursor: pointer; transition: all .18s ease; }
     .profile-chip:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-    .profile-chip[aria-pressed="true"] { color: #000; background: var(--teal); border-color: var(--teal); }
+    .profile-chip[aria-pressed="true"] { color: #171309; background: var(--amber-lit); border-color: var(--amber-lit); }
     .tap-list { display: flex; flex-direction: column; gap: 6px; }
-    .tap-row { display: grid; grid-template-columns: 36px 1fr 60px; gap: 12px; align-items: center; padding: 10px 14px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; transition: all .35s cubic-bezier(.4,1.2,.5,1); }
-    .tap-row.top-pick { background: rgba(0,212,170,0.08); border-color: var(--teal); }
+    .tap-row { display: grid; grid-template-columns: 36px 1fr 60px; gap: 12px; align-items: center; padding: 10px 14px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 0; transition: all .35s cubic-bezier(.4,1.2,.5,1); }
+    .tap-row.top-pick { background: rgba(232,160,51,0.10); border-color: var(--amber-lit); }
     .tap-rank { font-family: 'SF Mono', Menlo, monospace; font-size: 12px; color: var(--muted); text-align: center; font-weight: 700; }
-    .tap-row.top-pick .tap-rank { color: var(--teal); }
+    .tap-row.top-pick .tap-rank { color: var(--amber-lit); }
     .tap-info .tap-name { font-size: 0.9rem; color: var(--text); font-weight: 600; }
     .tap-info .tap-meta { font-size: 0.72rem; color: var(--muted); font-family: 'SF Mono', Menlo, monospace; letter-spacing: 0.02em; margin-top: 2px; }
     .tap-pct { text-align: right; font-family: 'SF Mono', Menlo, monospace; font-weight: 700; font-size: 0.95rem; color: var(--muted); }
-    .tap-row.top-pick .tap-pct { color: var(--teal); }
-    .top-pick-flag { display: inline-block; font-family: 'SF Mono', Menlo, monospace; font-size: 9px; color: #000; background: var(--teal); padding: 2px 6px; border-radius: 3px; letter-spacing: 0.08em; margin-left: 6px; vertical-align: 1px; }
-    .venue-caption { font-size: 0.78rem; color: var(--muted); margin-top: 14px; line-height: 1.5; font-style: italic; }
+    .tap-row.top-pick .tap-pct { color: var(--amber-lit); }
+    .top-pick-flag { display: inline-block; font-family: 'SF Mono', Menlo, monospace; font-size: 9px; color: #171309; background: var(--amber-lit); padding: 2px 6px; border-radius: 0; letter-spacing: 0.08em; margin-left: 6px; vertical-align: 1px; }
+    
   </style>
 </head>
 <body>
@@ -236,6 +250,7 @@
 
     <!-- ── Interactive: venue tap-list ranking demo ───────────── -->
     <figure class="venue-demo" id="venue-demo">
+      <div class="venue-plate">
       <div class="venue-head">
         <div>
           <div class="venue-kicker">Interactive · The thesis figure</div>
@@ -252,7 +267,8 @@
         <button class="profile-chip" data-profile="4" aria-pressed="false">Neutral newbie</button>
       </div>
       <div class="tap-list" id="tap-list" aria-live="polite" aria-atomic="true" aria-label="Ranked tap list for the selected reader profile"></div>
-      <p class="venue-caption">Real beers, real LLM-inferred axes (the same data the live app uses). Match% uses the recommender's actual flavour-distance formula simplified for blog inline use. The %s shift; the top pick changes. That's the point.</p>
+      </div>
+      <figcaption class="venue-caption">Real beers, real LLM-inferred axes (the same data the live app uses). Match% uses the recommender's actual flavour-distance formula simplified for blog inline use. The %s shift; the top pick changes. That's the point.</figcaption>
     </figure>
 
     <h2>What a good beer recommender is actually solving for</h2>
