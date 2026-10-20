@@ -136,7 +136,6 @@
     .series-links .you-are-here { font-size: .78rem; font-weight: 600; color: var(--amber-ink); }
     .series-links .series-guide { margin: 12px 0 0; font-family: var(--sans); font-size: .82rem; }
     .series-links .series-guide a { text-decoration: none; }
-    .sources a { text-decoration: underline; }
     .faq { margin-top: 48px; }
     .faq h2 { margin-bottom: 24px; }
     .faq-item { border-bottom: 1px solid var(--rule); padding: 20px 0; }
@@ -180,13 +179,6 @@
     .venue-caption { font-family: var(--sans); font-size: 0.82rem; color: var(--muted);
                      font-style: normal; line-height: 1.55; margin: 12px 4px 0;
                      padding-top: 4px; border-top: 0; }
-    @media (max-width: 700px) {
-      .venue-demo { margin-left: 0; margin-right: 0; padding: 6px; }
-      .venue-plate { padding: 18px 14px; }
-      .tap-row { grid-template-columns: 22px 1fr 44px; gap: 8px; padding: 10px 8px; }
-      .tap-info { min-width: 0; }
-    }
-    .venue-kicker, .venue-hint, .profile-chip, .tap-rank, .tap-meta, .tap-pct, .top-pick-flag { font-family: var(--sans); font-variant-numeric: tabular-nums; }
     .venue-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
     .venue-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--amber-lit); }
     .venue-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--text); }
@@ -208,6 +200,17 @@
     .tap-row.top-pick .tap-pct { color: var(--amber-lit); }
     .top-pick-flag { display: inline-block; font-family: 'SF Mono', Menlo, monospace; font-size: 9px; color: #171309; background: var(--amber-lit); padding: 2px 6px; border-radius: 0; letter-spacing: 0.08em; margin-left: 6px; vertical-align: 1px; }
     
+    /* After the plate's own rules, so these win. One face inside the plate, so
+       Android and Windows render it like a Mac, and a phone layout that beats
+       the base .tap-row grid instead of losing to it. */
+    .venue-kicker, .venue-hint, .profile-chip, .tap-rank, .tap-info .tap-meta, .tap-pct, .top-pick-flag { font-family: var(--sans); font-variant-numeric: tabular-nums; }
+    .faq + .sources { border-top: 0; }
+    @media (max-width: 700px) {
+      .venue-demo { margin-left: 0; margin-right: 0; padding: 6px; }
+      .venue-plate { padding: 18px 14px; }
+      .tap-row { grid-template-columns: 22px 1fr 44px; gap: 8px; padding: 10px 8px; }
+      .tap-info { min-width: 0; }
+    }
   </style>
 </head>
 <body>
