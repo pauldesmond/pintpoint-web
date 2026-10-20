@@ -333,3 +333,19 @@ footer .legal { font-size: 0.68rem; margin-top: 10px; }
   .content table { display: block; overflow-x: auto; }
   .faq-item summary { font-size: 1rem; }
 }
+
+/* ---------- 28. Print (kept last) ----------
+   Printing a feature, or saving it as a PDF, used a full page width for every
+   photograph, which pushed the text after it onto a new sheet and left the
+   previous one half empty. Figures print at a readable size instead, and a
+   heading stays with the paragraph it introduces. */
+@media print {
+  figure, figure.inset, figure.wide, figure.hero, figure.plate {
+    float: none; width: 50%; max-width: 50%; margin: 1.3em auto;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  figure img { width: 100%; height: auto; }
+  figcaption { break-before: avoid; page-break-before: avoid; }
+  h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+  blockquote, .pullquote, .quote { break-inside: avoid; page-break-inside: avoid; }
+}
