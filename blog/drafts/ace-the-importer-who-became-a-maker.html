@@ -36,62 +36,24 @@
   <meta name="twitter:image" content="https://pintpoint.co.uk/blog/images/ace-the-importer-who-became-a-maker.jpg" />
   <meta name="twitter:image:alt" content="PINtPRESS card: &ldquo;1,200 cases, not yet made.&rdquo; over a Californian loading dock at sunrise, an unlabelled amber bottle on a pallet with apple crates and an orchard beyond." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    :root { --bg: #0a0e1a; --card: #111827; --text: #e5e7eb; --muted: #9ca3af; --border: #1f2937; --teal: #00d4aa; --amber: #f5a623; --link: #00d4aa; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 32px; border-bottom: 1px solid var(--border); }
-    .logo { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.01em; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); font-size: 0.9rem; font-weight: 500; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 720px; margin: 0 auto; padding: 60px 32px 80px; }
-    .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 18px; display: flex; gap: 12px; align-items: center; }
-    .category { background: rgba(245,166,35,0.12); color: var(--amber); border-radius: 999px; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
-    /* Same amber as every other Note on the blog (12-years-of-bosko and the rest). */
-    .category.note { background: rgba(255,213,128,0.10); color: #FFD580; }
-    h1 { font-size: 2.3rem; font-weight: 900; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 12px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.55rem; font-weight: 800; margin-top: 56px; margin-bottom: 18px; letter-spacing: -0.015em; color: var(--amber); }
-    p { margin-bottom: 18px; color: var(--text); }
-    p.lede { font-size: 1.1rem; color: var(--text); margin-bottom: 28px; }
-    blockquote { margin: 32px 0; padding: 4px 0 4px 22px; border-left: 3px solid var(--amber); font-size: 1.1rem; line-height: 1.6; color: var(--text); }
-    figure { margin: 28px auto; max-width: 320px; text-align: center; }
-    figure img { width: 100%; height: auto; border-radius: 6px; }
-    figcaption { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 10px; line-height: 1.55; }
-    blockquote cite { display: block; margin-top: 10px; font-size: 0.85rem; color: var(--muted); font-style: normal; }
-    .closing { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
-    .closing p { font-size: 1.05rem; color: var(--text); }
-    .revision-note { margin: 0 0 34px; padding: 16px 20px; border-left: 3px solid var(--amber); background: rgba(245,166,35,0.07); border-radius: 0 8px 8px 0; font-size: 0.92rem; line-height: 1.6; color: var(--text); }
-    .revision-note strong { color: var(--amber); }
-    .sources { margin-top: 40px; padding: 20px 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; font-size: 0.88rem; }
-    .sources h3 { font-size: 0.9rem; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0; }
-    .sources ul { list-style: none; padding: 0; }
-    .sources li { padding: 6px 0; }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } h1 { font-size: 1.75rem; } }
-  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="../../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
-      <a href="../../about-pintpoint.html">About</a>
-      <a href="../../features.html">Features</a>
-      <a href="../../pubs/">Venues</a>
-      <a href="../../blog/">Blog</a>
-      <a href="../../screenshots.html">Screenshots</a>
+    <a href="https://pintpoint.co.uk/index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
+      <a href="https://pintpoint.co.uk/about-pintpoint.html">About</a>
+      <a href="https://pintpoint.co.uk/features.html">Features</a>
+      <a href="https://pintpoint.co.uk/pubs/">Venues</a>
+      <a href="https://pintpoint.co.uk/blog/">Blog</a>
+      <a href="https://pintpoint.co.uk/screenshots.html">Screenshots</a>
     </div>
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category">Essay</span>DRAFT &middot; not published &middot; US trade &middot; Industry</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category">Essay</span>DRAFT &middot; not published &middot; US trade &middot; Industry</p>
     <h1>A supermarket buyer wanted <em>1,200 cases</em>. There wasn&rsquo;t a bottle yet.</h1>
 
     <p class="standfirst">Jeffrey House spent ten years selling other people&rsquo;s cider in America. Then he made his own, and called it ACE.</p>
@@ -104,6 +66,11 @@
 
     <h2>Thames America&rsquo;s cider years</h2>
 
+    <figure>
+      <img src="https://pintpoint.co.uk/blog/images/thames-a-plate-house.jpg" alt="A blue and gold California number plate reading THAMES A, with a July tag and a 1994 registration sticker." width="320" height="240" loading="lazy" />
+      <figcaption>THAMES A, the plate from House&rsquo;s maroon Monte Carlo, bought new in San Francisco in 1982. Courtesy of Jeffrey House.</figcaption>
+    </figure>
+
     <p>Bulmers already had an American importer for Strongbow and Woodpecker. So House went to Taunton.</p>
 
     <p>There were two Blackthorns to choose from. Thames America picked Taunton&rsquo;s medium Special Vat and sold it as Blackthorn, judging the Dry too dry for American drinkers. Ken Vermes, writing in the trade press at the end of the nineties, counted the Taunton ciders as the first imported draught ciders sold in the United States.</p>
@@ -112,17 +79,11 @@
 
     <blockquote>&ldquo;We made Blackthorn the number one draft cider in the Western States.&rdquo;</blockquote>
 
-    <figure>
-      <img src="/blog/images/thames-a-plate-house.jpg" alt="A blue and gold California number plate reading THAMES A, with a July tag and a 1994 registration sticker." width="320" height="240" loading="lazy" />
-      <figcaption>THAMES A, the plate from House&rsquo;s maroon Monte Carlo, bought new in San Francisco in 1982. Courtesy of Jeffrey House.</figcaption>
-    </figure>
-
-
     <p>The business moved to the fourth floor of 211 Sutter Street, the old KSAN radio offices, with a warehouse at Pier 23 on the Embarcadero.</p>
 
-    <h2>Ten years, then his own</h2>
+    <h2 class="section-turn">Ten years, then his own</h2>
 
-    <p>An importer gets about ten years with somebody else&rsquo;s brand, as he puts it in his memoir <em>The Cider King</em>, and he watched it happen twice. Fuller&rsquo;s went to Grolsch Imports in 1990. Blackthorn went to Miller.</p>
+    <p>An importer gets about ten years with somebody else&rsquo;s brand, as he puts it in his memoir <em>The Cider King</em>, and he watched it happen twice. <a href="/r/esb">Fuller&rsquo;s went to Grolsch Imports in 1990</a>. Blackthorn went to Miller.</p>
 
     <blockquote>&ldquo;Having lost a couple of brands, Fuller&rsquo;s to Grolsch, Blackthorn to Miller, I thought, well, the next one I lose, if I&rsquo;m going to lose one, I&rsquo;m going to own it.&rdquo;</blockquote>
 
@@ -199,15 +160,15 @@
     <p>House started in cider by being asked for it in an Irish pub. He ended up making it.</p>
 
     <blockquote>&ldquo;We actually not only built a brand, we helped build a category that had been lost in America.&rdquo;</blockquote>
-
-</article>
+  </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
-      <a href="../../index.html">Home</a>
-      <a href="../../features.html">Features</a>
-      <a href="../../screenshots.html">Screenshots</a>
-      <a href="../../privacy-policy.html">Privacy Policy</a>
+      <a href="https://pintpoint.co.uk/index.html">Home</a>
+      <a href="https://pintpoint.co.uk/features.html">Features</a>
+      <a href="https://pintpoint.co.uk/screenshots.html">Screenshots</a>
+      <a href="https://pintpoint.co.uk/privacy-policy.html">Privacy Policy</a>
     </div>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
