@@ -9,8 +9,8 @@
     <copyright>© 2026 PINtPOINT</copyright>
     <managingEditor>hello@pintpoint.co.uk (PINtPOINT)</managingEditor>
     <webMaster>hello@pintpoint.co.uk (PINtPOINT)</webMaster>
-    <lastBuildDate>Sat, 17 Oct 2026 05:30:00 +0100</lastBuildDate>
-    <pubDate>Sat, 17 Oct 2026 05:30:00 +0100</pubDate>
+    <lastBuildDate>Tue, 20 Oct 2026 17:00:00 +0100</lastBuildDate>
+    <pubDate>Tue, 20 Oct 2026 17:00:00 +0100</pubDate>
     <generator>PINtPOINT hand-maintained RSS</generator>
     <ttl>1440</ttl>
     <image>
@@ -18,6 +18,15 @@
       <title>PINtPRESS</title>
       <link>https://pintpoint.co.uk/blog/</link>
     </image>
+    <item>
+      <title>Before he could sell ESB to America, he had to sell it to Fuller's</title>
+      <category>Essay</category>
+      <link>https://pintpoint.co.uk/blog/fullers-esb-in-america.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/fullers-esb-in-america.html</guid>
+      <pubDate>Tue, 20 Oct 2026 17:00:00 +0100</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <description>Fuller's ESB went on draught in a Seattle bar on 3 November 1987. Jeffrey House had been trying to get it there for years, and when it arrived American brewers found more in it than a good pint.</description>
+    </item>
     <item>
       <title>Why Firestone Walker chose Fuller's yeast</title>
       <category>Note</category>
