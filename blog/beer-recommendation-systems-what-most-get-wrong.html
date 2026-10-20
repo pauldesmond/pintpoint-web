@@ -88,14 +88,14 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #f7f3ec; --text: #16150f; --muted: #6a6459; --border: #ded5c6; --rule: #c9bda6;
-             --amber: #a8701a; --amber-lit: #e8a033; --teal: #00806a;
+             --amber: #f5a623; --amber-ink: #8a5a00; --link: #7a4a00; --amber-lit: #e8a033; --teal: #00806a;
              --ink-bg: #11161d; --ink-card: #161b22; --ink-text: #ffffff; --ink-muted: #8b949e; --ink-border: rgba(255,255,255,0.08); --ink-teal: #00D4AA;
              --serif: "Source Serif 4", Georgia, "Iowan Old Style", serif;
              --sans: "Inter", -apple-system, sans-serif; }
     body { background: var(--bg); color: var(--text); font-family: var(--serif); min-height: 100vh; }
     nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--rule); flex-wrap: wrap; font-family: var(--sans); }
     .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--amber); }
+    .logo span { color: var(--amber-ink); }
     nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
     nav a:hover { color: var(--text); }
     .content { max-width: 640px; margin: 0 auto; padding: 72px 24px 88px; }
@@ -105,7 +105,7 @@
     h2::before { content: ''; display: block; width: 34px; border-top: 2px solid var(--amber); margin-bottom: 18px; }
     h3 { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-top: 28px; margin-bottom: 10px; color: var(--text); }
     p { font-size: 1.19rem; color: var(--text); line-height: 1.62; margin-bottom: 20px; }
-    article a, article a:visited, main a, main a:visited { color: var(--amber); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    article a, article a:visited, main a, main a:visited { color: var(--link); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
     .highlight { color: var(--text); font-weight: 600; box-shadow: inset 0 -0.45em 0 rgba(168,112,26,0.14); }
     .meta { font-family: var(--sans); font-size: 0.72rem; color: var(--muted); margin-bottom: 26px; letter-spacing: 0.1em; text-transform: uppercase; }
     .category { display: inline-block; font-family: var(--sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-right: 12px; padding-top: 7px; border-top: 2px solid var(--amber); color: var(--text); }
@@ -121,13 +121,13 @@
     blockquote { border-left: 2px solid var(--amber); padding: 2px 18px; margin: 24px 0; color: var(--text); font-style: italic; }
     code { background: #ebe4d7; padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; font-family: 'SF Mono', Menlo, monospace; color: #1f4f45; }
     .sources { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); margin-top: 32px; padding: 16px 20px; background: #efe8db; border-left: 2px solid var(--amber); border-radius: 0; }
-    .series-links a { color: var(--amber); }
+    .series-links a { color: var(--link); }
     .sources a { color: var(--muted); text-decoration: underline; }
     .faq { margin-top: 48px; }
     .faq h2 { margin-bottom: 24px; }
     .faq-item { border-bottom: 1px solid var(--rule); padding: 20px 0; }
     .faq-item summary { font-size: 1rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--amber); }
+    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--amber-ink); }
     .faq-item[open] summary::after { content: '\2212'; }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item p { margin-top: 10px; }
@@ -136,7 +136,7 @@
     .closing { margin-top: 52px; padding-top: 32px; border-top: 1px solid var(--rule); }
     footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--muted); font-family: var(--sans); }
     footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--amber); }
+    footer a:hover { color: var(--link); }
     footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
     @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
 
@@ -224,7 +224,7 @@
     <h2>Wall 1: The cold-start problem</h2>
     <p>Collaborative filtering needs history. These models need dozens of ratings per user before predictions stabilise. What does a rating-based recommender serve to a brand-new user with zero check-ins?</p>
     <p>In practice: <span class="highlight">popular beers</span>. Pliny the Elder for anyone with "IPA" in their signature. Guinness for anyone who once rated a stout. That's not a recommendation. It's a bestseller list.</p>
-    <p>PINtPOINT uses a structured preference-elicitation step instead: a feature called <a href="../features.html" style="color:var(--amber)">Sip-or-Skip</a>. Ten quick card-swipes — "would you order this? yes/no" — produces a usable style profile in under a minute. It's the same principle Tinder uses for matchmaking: forced binary choices beat free-form ratings for fast signal.</p>
+    <p>PINtPOINT uses a structured preference-elicitation step instead: a feature called <a href="../features.html" style="color:var(--link)">Sip-or-Skip</a>. Ten quick card-swipes — "would you order this? yes/no" — produces a usable style profile in under a minute. It's the same principle Tinder uses for matchmaking: forced binary choices beat free-form ratings for fast signal.</p>
 
     <blockquote>Asking "rate this beer 1-5" is a harder cognitive task than "would you order this now?" — and it produces noisier data.</blockquote>
 
@@ -349,12 +349,12 @@
     <aside class="series-links" style="margin-top:56px;padding:24px 28px;background:#efe8db;border-left:2px solid var(--amber);border-radius:0">
       <p style="margin:0 0 14px;font-size:0.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em">Companion essays</p>
       <ul style="list-style:none;padding:0;margin:0;font-size:0.95rem;line-height:1.7">
-        <li><strong style="color:var(--amber)">Why</strong> · Beer Recommendation Systems: What Most Get Wrong — the usual approach is broken <span style="color:var(--amber);font-size:0.85rem;font-weight:600">← you're reading</span></li>
-        <li><strong style="color:var(--amber)">How</strong> · <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engine that does it instead</li>
-        <li><strong style="color:var(--amber)">What's in it</strong> · <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> — the ingredient and sensory vocabulary</li>
-        <li><strong style="color:var(--amber)">Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — what drinking it feels like</li>
+        <li><strong style="color:var(--link)">Why</strong> · Beer Recommendation Systems: What Most Get Wrong — the usual approach is broken <span style="color:var(--amber-ink);font-size:0.85rem;font-weight:600">← you're reading</span></li>
+        <li><strong style="color:var(--link)">How</strong> · <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engine that does it instead</li>
+        <li><strong style="color:var(--link)">What's in it</strong> · <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> — the ingredient and sensory vocabulary</li>
+        <li><strong style="color:var(--link)">Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — what drinking it feels like</li>
       </ul>
-      <p style="margin:14px 0 0;font-size:0.85rem"><a href="pick-the-right-pint.html" style="color:var(--amber);text-decoration:none">↑ Part of <em>Pick the right pint</em> — the four-essay guide</a></p>
+      <p style="margin:14px 0 0;font-size:0.85rem"><a href="pick-the-right-pint.html" style="color:var(--amber-ink);text-decoration:none">↑ Part of <em>Pick the right pint</em> — the four-essay guide</a></p>
     </aside>
 
     <div class="closing">
