@@ -192,3 +192,144 @@ footer a:hover { color: var(--ink); }
   footer .links { gap: 10px 16px; }
   footer a { font-size: 0.66rem; letter-spacing: 0.06em; }
 }
+
+/* =====================================================================
+   19-27. Archive components (added for the rollout of older posts)
+   ---------------------------------------------------------------------
+   Everything below is additive. It defines new variables and styles only
+   classes and elements that the template pages above do not use, so a
+   page built to sections 1-18 renders exactly as before.
+   Order on a page: fonts link, this file, then the page's own <style>.
+   Rules here are one class or two elements, so a page rule wins at equal
+   specificity without !important.
+   ===================================================================== */
+
+/* ---------- 19. More variables (new names only) ---------- */
+:root {
+  --rule-soft: #e6dfd1;    /* dotted list rules, table cell lines */
+  --plate: #171309;        /* dark demo surface, framed as a plate */
+  --plate-card: #221c12;
+  --plate-text: #f5efe4;
+  --plate-muted: #a79d8c;
+  --amber-lit: #e8a033;    /* amber on --plate only (8.39:1) */
+  /* Old names some page rules and scripts still use; they resolve to print values. */
+  --bg: var(--paper); --text: var(--ink); --border: var(--rule); --card: transparent;
+  --teal: var(--amber-ink); --accent: var(--amber-ink);
+}
+
+/* ---------- 20. Masthead: class name some pages give the link row ---------- */
+nav .nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+/* Masthead and footer links are set in capitals. A link whose text is a
+   wordmark (PINtPOINT, PINtPRESS, PINtDEXTER, TUNeDEXTER) takes class="brand"
+   so it keeps its spelling. */
+nav a.brand, footer a.brand { text-transform: none; letter-spacing: 0; }
+
+/* ---------- 21. Text: lists, h3, code, highlights, quotes ---------- */
+.content ul, .content ol { margin: 0 0 1.05em 1.3em; }
+.content li { margin-bottom: 0.4em; }
+.content li > ul, .content li > ol { margin-top: 0.4em; margin-bottom: 0; }
+h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.3; margin: 1.8em 0 0.5em; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 0.85em; background: var(--paper-deep); padding: 1px 5px; }
+.highlight { font-weight: 600; color: inherit; background: none; box-shadow: none; }
+blockquote p { margin-bottom: 0.6em; }
+blockquote p:last-child { margin-bottom: 0; }
+.pullquote {
+  margin: 1.6em 0; padding: 2px 0 2px 22px; border-left: 2px solid var(--amber);
+  font-style: italic; font-size: 1.06em; line-height: 1.55; color: var(--ink-soft); background: none; text-align: left;
+}
+/* The one centred display quote a piece may have, near the end. */
+.quote {
+  font-size: 1.3rem; font-style: italic; line-height: 1.45; color: var(--ink); text-align: center;
+  margin: 2em 0; padding: 28px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: none;
+}
+/* Older posts open with <div class="lede">: first paragraph as the standfirst, the rest as body text. */
+div.lede { margin-bottom: 34px; }
+div.lede > p:first-child { font-size: 1.32rem; line-height: 1.45; font-style: italic; color: var(--ink-soft); }
+div.lede > p.short { font-weight: 600; }
+/* Opt-out for the automatic drop cap on p.lede (section 8): add class="no-drop". */
+p.lede.no-drop::first-letter { float: none; font-size: inherit; line-height: inherit; margin: 0; color: inherit; font-weight: inherit; }
+
+/* ---------- 22. Figures: wide (not floated) variants ---------- */
+/* Section 12 floats every figure on wide screens. Heroes, charts, demos and
+   other wide figures opt out with class="wide" (or are .hero / .plate). */
+.hero { margin: 0 0 32px; }
+.hero img { display: block; width: 100%; height: auto; }
+@media (min-width: 1000px) {
+  figure.wide, figure.hero, figure.plate { float: none; width: auto; margin: 2em 0; }
+  /* A tall photo near the end of a section would float into an empty gap
+     before the next heading; class="inset" keeps it in the column, 360px wide. */
+  figure.inset { float: none; width: 360px; max-width: 100%; margin: 2em 0; }
+}
+/* Dark figures (charts, demos) sit in a paper frame with a hairline, like a plate in print. */
+.plate { margin: 2.4em -28px; padding: 10px; background: var(--paper); border: 1px solid var(--rule); }
+.plate > figcaption { margin: 12px 4px 0; }
+
+/* ---------- 23. Tables ---------- */
+.content table { width: 100%; border-collapse: collapse; margin: 1.2em 0 0.6em; font-family: var(--sans); font-size: 0.82rem; clear: both; }
+.content th, .content td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+.content th { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border-bottom-color: var(--rule); }
+
+/* ---------- 24. FAQ ---------- */
+.faq { margin-top: 2.6em; clear: both; }
+.faq-item { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+.faq-item summary {
+  font-size: 1.06rem; font-weight: 600; line-height: 1.4; cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; font-family: var(--sans); font-weight: 400; font-size: 1.2rem; color: var(--muted); }
+.faq-item[open] summary::after { content: "\2212"; }
+.faq-item p { margin: 10px 0 0; font-size: 1rem; }
+
+/* ---------- 25. End matter: hairline lists, no panels ---------- */
+.sources, .series-links, .companion, .disclosure, .revision-note {
+  margin-top: 2.4em; padding: 14px 0 0; border: 0; border-top: 1px solid var(--rule); background: none;
+  font-family: var(--sans); font-size: 0.8rem; line-height: 1.6; color: var(--muted); clear: both;
+}
+.faq + .sources { border-top: 0; }
+.sources > strong, .sources h2, .sources h3, .series-links .series-label,
+.companion > b:first-child, .companion > strong:first-child, .revision-note > strong:first-child {
+  display: block; font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 8px; padding: 0;
+}
+.sources h2::before { content: none; }
+.sources ul, .series-links ul { list-style: none; margin: 0; padding: 0; }
+.sources li, .series-links li { padding: 7px 0; margin: 0; border-bottom: 1px dotted var(--rule); }
+.sources p, .companion p, .disclosure p, .revision-note p { font-size: inherit; line-height: inherit; color: inherit; margin-bottom: 8px; }
+.series-links li strong, .companion strong, .companion b, .revision-note strong { color: var(--ink); }
+.series-links .you-are-here { font-weight: 600; color: var(--amber-ink); }
+.series-links .series-guide { margin: 12px 0 0; }
+/* A revision note sits above the article text. */
+.revision-note { margin: 0 0 34px; color: var(--ink-soft); }
+
+/* ---------- 26. Closing, call to action, end mark opt-in/opt-out ---------- */
+.closing { margin-top: 2.6em; padding-top: 28px; border-top: 1px solid var(--rule); clear: both; }
+.closing p.kicker { font-weight: 600; }
+a.cta {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 11px 20px;
+  background: transparent; color: var(--ink); border: 1px solid var(--ink); border-radius: 0; box-shadow: none;
+  font-family: var(--sans); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; text-decoration: none;
+}
+a.cta:hover { background: var(--ink); color: var(--paper); }
+a.cta svg { fill: currentColor; }
+/* Section 14 marks the last paragraph of .content automatically. Where the
+   article ends before end matter (sources, FAQ, closing), put class="end"
+   on the final paragraph (or closing quote) of the piece instead; class="no-end" switches off
+   the automatic mark on a last element that is a note, not the ending. */
+.content p.end::after, .content blockquote.end::after {
+  content: ""; display: inline-block; width: 0.5em; height: 0.5em; background: var(--amber);
+  margin-left: 0.4em; vertical-align: 0.05em;
+}
+.content > p.no-end:last-child::after, .content > blockquote.no-end:last-child::after { content: none; }
+
+/* ---------- 27. Footer extras and phones (kept last) ---------- */
+footer .legal { font-size: 0.68rem; margin-top: 10px; }
+@media (max-width: 700px) {
+  .plate { margin-left: 0; margin-right: 0; padding: 6px; }
+}
+@media (max-width: 600px) {
+  nav .nav-links { gap: 14px; }
+  div.lede > p:first-child, .quote { font-size: 1.15rem; }
+  .content table { display: block; overflow-x: auto; }
+  .faq-item summary { font-size: 1rem; }
+}
