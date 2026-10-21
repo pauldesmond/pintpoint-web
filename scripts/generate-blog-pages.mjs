@@ -468,7 +468,10 @@ const NAV_CSS = `
     .archive-nav a.go .arrow { color: var(--amber); margin-left: 4px; }
 `;
 front = front.replace(/\n\s*\.more-posts \{[^}]*\}/, '');
-if (!front.includes('.archive-nav {')) front = front.replace(/(\n  <\/style>)/, `${NAV_CSS}$1`);
+// Strip any earlier copy first: an inject-if-missing guard meant edits to
+// NAV_CSS never reached a page that already had the old block.
+front = front.replace(/\n\s*\.archive-nav \{[\s\S]*?\.archive-nav a\.go \.arrow[^}]*\}/, '');
+front = front.replace(/(\n  <\/style>)/, `${NAV_CSS}$1`);
 console.log(`  index.html     ${shelved.length} covers + ${slice.length} cards, ${remaining} more on the archive`);
 if (!DRY) writeFileSync(join(BLOG, 'index.html'), front);
 
