@@ -360,7 +360,7 @@ function buildPage(template, cards, current, total, allCards) {
   // replace the old "→ Older posts" link, or any existing pager, with this one
   html = html.replace(/\n\s*<p style="margin-top:24px[^"]*"><a href="older\.html"[\s\S]*?<\/p>/, '');
   html = html.replace(/\n\s*<nav class="pager[^"]*"[\s\S]*?<\/nav>/g, '');
-  html = html.replace(/(<\/ul>)/, `$1\n\n${pager(current, total)}`);
+  html = html.replace(/(<ul class="post-list">[\s\S]*?<\/ul>)/, `$1\n\n${pager(current, total)}`);
   if (!html.includes('.pager {')) html = html.replace(/(\n  <\/style>)/, `${PAGER_CSS}$1`);
 
   const canonical = current === 1
@@ -402,7 +402,7 @@ function buildArchive(template, allCards) {
   html = html.replace('ARCHIVEHEAD', `<h2 class="list-head">Everything</h2>\n${filterBar(allCards)}`);
   html = html.replace(/\n\s*<button type="button" class="show-more"[\s\S]*?<\/button>/, '');
   html = html.replace(/\n\s*<nav class="pager list-pager"[\s\S]*?<\/nav>/, '');
-  html = html.replace(/(<\/ul>)/, `$1\n    <nav class="pager list-pager" aria-label="Archive pages"></nav>`);
+  html = html.replace(/(<ul class="post-list">[\s\S]*?<\/ul>)/, `$1\n    <nav class="pager list-pager" aria-label="Archive pages"></nav>`);
   if (!html.includes('.kinds {')) html = html.replace(/(\n  <\/style>)/, `${FILTER_CSS}$1`);
   if (!html.includes("querySelector('.kinds')")) html = html.replace(/(\n<\/body>)/, `\n${FILTER_JS}$1`);
   html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/,
@@ -429,7 +429,7 @@ if (remaining > 0) {
   const total = remaining + shelved.length + slice.length;
   const more = `\n    <nav class="pager archive-nav" aria-label="The rest of the archive">\n${links}\n` +
     `        <a href="${ARCHIVE}" rel="next" class="go">All ${total} posts <span class="arrow">&rarr;</span></a>\n    </nav>`;
-  front = front.replace(/(<\/ul>)/, `$1\n${more}`);
+  front = front.replace(/(<ul class="post-list">[\s\S]*?<\/ul>)/, `$1\n${more}`);
 }
 // The row under the cards: the kinds are side doors, All posts is the way in,
 // and the difference is carried by weight rather than by a fifth colour.
