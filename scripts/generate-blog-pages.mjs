@@ -54,6 +54,11 @@ const FILTER_CSS = `
     .kinds button[aria-pressed="true"] .count { color: var(--amber); }
     .kinds .count { font-weight: 400; color: var(--amber-ink); margin-left: 6px; }
     .post-list li[hidden] { display: none; }
+    .show-more { display: block; margin: 26px auto 0; font-family: var(--sans); font-size: .78rem;
+      letter-spacing: .05em; text-transform: uppercase; background: none; border: 1px solid var(--rule);
+      border-radius: 999px; color: var(--ink); padding: 10px 20px; cursor: pointer; }
+    .show-more:hover, .show-more:focus-visible { border-color: var(--ink); outline: none; }
+    .show-more[hidden] { display: none; }
 `;
 
 const FILTER_JS = `  <script>
@@ -69,11 +74,27 @@ const FILTER_JS = `  <script>
       var c = d.className.replace('post-date', '').trim();
       return c.split(' ')[0] || '';
     }
-    function apply(k) {
-      items.forEach(function (li) { li.hidden = !!k && kind(li) !== k; });
+    var PAGE = 15;
+    var shown = PAGE;
+    var current = '';
+    var more = document.querySelector('.show-more');
+    function matching(k) {
+      return items.filter(function (li) { return !k || kind(li) === k; });
+    }
+    function apply(k, keep) {
+      current = k;
+      if (!keep) shown = PAGE;
+      var hits = matching(k);
+      items.forEach(function (li) { li.hidden = true; });
+      hits.slice(0, shown).forEach(function (li) { li.hidden = false; });
       Array.prototype.forEach.call(bar.querySelectorAll('button'), function (b) {
         b.setAttribute('aria-pressed', (b.dataset.kind || '') === (k || '') ? 'true' : 'false');
       });
+      if (more) {
+        var left = hits.length - Math.min(shown, hits.length);
+        more.hidden = left <= 0;
+        if (left > 0) more.textContent = left > PAGE ? 'Show ' + PAGE + ' more' : 'Show the last ' + left;
+      }
     }
     bar.addEventListener('click', function (e) {
       var b = e.target.closest('button');
@@ -83,6 +104,11 @@ const FILTER_JS = `  <script>
       var u = new URL(window.location.href);
       if (k) u.searchParams.set('kind', k); else u.searchParams.delete('kind');
       history.replaceState(null, '', u);
+      bar.scrollIntoView({ block: 'start' });
+    });
+    if (more) more.addEventListener('click', function () {
+      shown += PAGE;
+      apply(current, true);
     });
     var start = new URL(window.location.href).searchParams.get('kind') || '';
     apply(KINDNAMES.indexOf(start) === -1 ? '' : start);
@@ -355,6 +381,8 @@ function buildArchive(template, allCards) {
   html = html.replace(/\n\s*<p class="more-posts">[\s\S]*?<\/p>/, '');
   html = html.replace(/<h2 class="list-head">[\s\S]*?<\/h2>/, 'ARCHIVEHEAD');
   html = html.replace('ARCHIVEHEAD', `<h2 class="list-head">Everything</h2>\n${filterBar(allCards)}`);
+  html = html.replace(/\n\s*<button type="button" class="show-more"[\s\S]*?<\/button>/, '');
+  html = html.replace(/(<\/ul>)/, `$1\n    <button type="button" class="show-more" hidden>Show more</button>`);
   if (!html.includes('.kinds {')) html = html.replace(/(\n  <\/style>)/, `${FILTER_CSS}$1`);
   if (!html.includes("querySelector('.kinds')")) html = html.replace(/(\n<\/body>)/, `\n${FILTER_JS}$1`);
   html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/,
