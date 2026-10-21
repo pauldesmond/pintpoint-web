@@ -313,7 +313,7 @@ function buildPage(template, cards, current, total, allCards) {
   if (!html.includes('.shelf {')) html = html.replace(/(\n  <\/style>)/, `${SHELF_CSS}$1`);
   // replace the old "→ Older posts" link, or any existing pager, with this one
   html = html.replace(/\n\s*<p style="margin-top:24px[^"]*"><a href="older\.html"[\s\S]*?<\/p>/, '');
-  html = html.replace(/\n\s*<nav class="pager"[\s\S]*?<\/nav>/, '');
+  html = html.replace(/\n\s*<nav class="pager[^"]*"[\s\S]*?<\/nav>/g, '');
   html = html.replace(/(<\/ul>)/, `$1\n\n${pager(current, total)}`);
   if (!html.includes('.pager {')) html = html.replace(/(\n  <\/style>)/, `${PAGER_CSS}$1`);
 
@@ -346,9 +346,8 @@ function buildArchive(template, allCards) {
   html = html.replace(/(<ul class="post-list">)[\s\S]*?(<\/ul>)/, `$1\n${list}\n    $2`);
   html = html.replace(/\n?\s*<div class="shelf">[\s\S]*?<\/div>\n\n/, '\n');
   html = html.replace(/\n\s*<p class="shelf-switch">[\s\S]*?<\/p>/, '');
-  html = html.replace(/\n\s*<nav class="pager"[\s\S]*?<\/nav>/, '');
+  html = html.replace(/\n\s*<nav class="pager[^"]*"[\s\S]*?<\/nav>/g, '');
   html = html.replace(/\n\s*<p class="more-posts">[\s\S]*?<\/p>/, '');
-  html = html.replace(/\n\s*<nav class="pager archive-nav"[\s\S]*?<\/nav>/, '');
   html = html.replace(/<h2 class="list-head">[\s\S]*?<\/h2>/, 'ARCHIVEHEAD');
   html = html.replace('ARCHIVEHEAD', `<h2 class="list-head">Everything</h2>\n${filterBar(allCards)}`);
   if (!html.includes('.kinds {')) html = html.replace(/(\n  <\/style>)/, `${FILTER_CSS}$1`);
@@ -366,7 +365,7 @@ const template = readFileSync(join(BLOG, 'index.html'), 'utf8');
 // Page one: the covers and the newest cards, then a line through to the rest.
 const slice = listed.slice(0, firstPage);
 let front = buildPage(template, slice, 1, 1, shelved);
-front = front.replace(/\n\s*<nav class="pager"[\s\S]*?<\/nav>/, '');
+front = front.replace(/\n\s*<nav class="pager[^"]*"[\s\S]*?<\/nav>/g, '');
 front = front.replace(/\n\s*<p class="more-posts">[\s\S]*?<\/p>/, '');
 const remaining = cards.length - shelved.length - slice.length;
 if (remaining > 0) {
