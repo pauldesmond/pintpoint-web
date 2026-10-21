@@ -450,7 +450,22 @@ if (remaining > 0) {
   const total = remaining + shelved.length + slice.length;
   const more = `\n    <nav class="pager archive-nav" aria-label="The rest of the archive">\n${links}\n` +
     `        <a href="${ARCHIVE}" rel="next" class="go">All ${total} posts <span class="arrow">&rarr;</span></a>\n    </nav>`;
-  front = front.replace(/(<ul class="post-list">[\s\S]*?<\/ul>)/, `$1\n${more}`);
+  // The front page is page 1 of the history; the archive serves the rest at the
+  // same fifteen a page, so the numbers mean the same thing on both.
+  const PER = 15;
+  const numbered = Math.max(1, Math.ceil(cards.length / PER));
+  let nums = '';
+  if (numbered > 1) {
+    const cells = [];
+    for (let i = 1; i <= numbered; i++) {
+      cells.push(i === 1
+        ? `        <span class="is-here" aria-current="page">1</span>`
+        : `        <a href="${ARCHIVE}?page=${i}">${i}</a>`);
+    }
+    cells.push(`        <a href="${ARCHIVE}?page=2" rel="next">Older &rarr;</a>`);
+    nums = `\n    <nav class="pager list-pager" aria-label="Archive pages">\n${cells.join('\n')}\n    </nav>`;
+  }
+  front = front.replace(/(<ul class="post-list">[\s\S]*?<\/ul>)/, `$1\n${more}${nums}`);
 }
 // The row under the cards: the kinds are side doors, All posts is the way in,
 // and the difference is carried by weight rather than by a fifth colour.
@@ -466,11 +481,13 @@ const NAV_CSS = `
     .archive-nav a.go { background: var(--ink); border-color: var(--ink); color: var(--paper); font-weight: 700; }
     .archive-nav a.go:hover { background: #000; }
     .archive-nav a.go .arrow { color: var(--amber); margin-left: 4px; }
+    .list-pager { margin: 0 0 44px; }
+    .list-pager a, .list-pager span { border-radius: 999px; }
 `;
 front = front.replace(/\n\s*\.more-posts \{[^}]*\}/, '');
 // Strip any earlier copy first: an inject-if-missing guard meant edits to
 // NAV_CSS never reached a page that already had the old block.
-front = front.replace(/\n\s*\.archive-nav \{[\s\S]*?\.archive-nav a\.go \.arrow[^}]*\}/, '');
+front = front.replace(/\n\s*\.archive-nav \{[\s\S]*?\.list-pager a, \.list-pager span[^}]*\}/, '');
 front = front.replace(/(\n  <\/style>)/, `${NAV_CSS}$1`);
 console.log(`  index.html     ${shelved.length} covers + ${slice.length} cards, ${remaining} more on the archive`);
 if (!DRY) writeFileSync(join(BLOG, 'index.html'), front);

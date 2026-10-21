@@ -204,6 +204,8 @@
     .archive-nav a.go { background: var(--ink); border-color: var(--ink); color: var(--paper); font-weight: 700; }
     .archive-nav a.go:hover { background: #000; }
     .archive-nav a.go .arrow { color: var(--amber); margin-left: 4px; }
+    .list-pager { margin: 0 0 44px; }
+    .list-pager a, .list-pager span { border-radius: 999px; }
 
   </style>
 </head>
@@ -335,6 +337,13 @@
         <a href="archive.html?kind=guide">Guides <span class="count">6</span></a>
         <a href="archive.html?kind=postcard">Postcards <span class="count">3</span></a>
         <a href="archive.html" rel="next" class="go">All 47 posts <span class="arrow">&rarr;</span></a>
+    </nav>
+    <nav class="pager list-pager" aria-label="Archive pages">
+        <span class="is-here" aria-current="page">1</span>
+        <a href="archive.html?page=2">2</a>
+        <a href="archive.html?page=3">3</a>
+        <a href="archive.html?page=4">4</a>
+        <a href="archive.html?page=2" rel="next">Older &rarr;</a>
     </nav>
 
     <p class="empty no-end">Got a topic you'd like us to cover? <a href="mailto:hello@pintpoint.co.uk">hello@pintpoint.co.uk</a></p>
