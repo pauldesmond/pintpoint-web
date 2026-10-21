@@ -33,6 +33,72 @@ const MONTHS = ['January','February','March','April','May','June','July','August
 
 const CORPUS = join(ROOT, '_data', 'blog-archive.json');
 
+// Every post lives on one page now. The index keeps the covers and the most
+// recent cards; the archive holds the lot, with the four kinds as buttons.
+const ARCHIVE = 'archive.html';
+const KINDS = [['essay', 'Essays'], ['note', 'Notes'], ['guide', 'Guides'], ['postcard', 'Postcards']];
+
+function kindOf(card) {
+  const m = card.html.match(/post-date ([a-z]+)/);
+  return m ? m[1] : '';
+}
+
+const FILTER_CSS = `
+    .kinds { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; padding: 0; list-style: none; }
+    .kinds button { font-family: var(--sans); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase;
+      background: none; border: 1px solid var(--rule); color: var(--muted); padding: 8px 14px; border-radius: 999px;
+      cursor: pointer; }
+    .kinds button:hover, .kinds button:focus-visible { border-color: var(--amber-ink); color: var(--ink); outline: none; }
+    .kinds button[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); font-weight: 700; }
+    .kinds .count { font-weight: 400; color: var(--muted); margin-left: 6px; }
+    .kinds button[aria-pressed="true"] .count { color: var(--ink); }
+    .post-list li[hidden] { display: none; }
+`;
+
+const FILTER_JS = `  <script>
+  (function () {
+    var KINDNAMES = ['essay', 'note', 'guide', 'postcard'];
+    var bar = document.querySelector('.kinds');
+    var list = document.querySelector('.post-list');
+    if (!bar || !list) return;
+    var items = Array.prototype.slice.call(list.querySelectorAll('li'));
+    function kind(li) {
+      var d = li.querySelector('.post-date');
+      if (!d) return '';
+      var c = d.className.replace('post-date', '').trim();
+      return c.split(/\s+/)[0] || '';
+    }
+    function apply(k) {
+      items.forEach(function (li) { li.hidden = !!k && kind(li) !== k; });
+      Array.prototype.forEach.call(bar.querySelectorAll('button'), function (b) {
+        b.setAttribute('aria-pressed', (b.dataset.kind || '') === (k || '') ? 'true' : 'false');
+      });
+    }
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var k = b.dataset.kind || '';
+      apply(k);
+      var u = new URL(window.location.href);
+      if (k) u.searchParams.set('kind', k); else u.searchParams.delete('kind');
+      history.replaceState(null, '', u);
+    });
+    var start = new URL(window.location.href).searchParams.get('kind') || '';
+    apply(KINDNAMES.indexOf(start) === -1 ? '' : start);
+  })();
+  </script>
+`;
+
+function filterBar(cards) {
+  const counts = {};
+  for (const c of cards) counts[kindOf(c)] = (counts[kindOf(c)] || 0) + 1;
+  const btn = (k, label, n) =>
+    `        <li><button type="button" data-kind="${k}" aria-pressed="${k ? 'false' : 'true'}">${label}<span class="count">${n}</span></button></li>`;
+  const rows = [btn('', 'All', cards.length)]
+    .concat(KINDS.filter(([k]) => counts[k]).map(([k, label]) => btn(k, label, counts[k])));
+  return `    <ul class="kinds" aria-label="Filter by kind">\n${rows.join('\n')}\n    </ul>`;
+}
+
 /**
  * The corpus: every post, with the hand-written excerpt card that goes with it.
  *
@@ -186,8 +252,9 @@ function shelfHtml(picks) {
 function stub(file) {
   const tpl = readFileSync(join(BLOG, 'older.html'), 'utf8');
   return tpl
-    .replace(/<meta http-equiv="refresh" content="[^"]*"\s*\/?>/, '<meta http-equiv="refresh" content="0; url=./" />')
-    .replace(/<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="https://pintpoint.co.uk/blog/${file}" />`);
+    .replace(/<meta http-equiv="refresh" content="[^"]*"\s*\/?>/, `<meta http-equiv="refresh" content="0; url=./${ARCHIVE}" />`)
+    .replace(/<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="https://pintpoint.co.uk/blog/${file}" />`)
+    .replace(/<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="https://pintpoint.co.uk/blog/${ARCHIVE}" />`);
 }
 
 const SHELF_CSS = `
@@ -242,7 +309,7 @@ function buildPage(template, cards, current, total, allCards) {
   html = html.replace(/(<ul class="post-list">)[\s\S]*?(<\/ul>)/, `$1\n${list}\n    $2`);
   // Page 1 opens on the shelf. Strip any previous one first so reruns do not stack.
   html = html.replace(/\n?\s*<div class="shelf">[\s\S]*?<\/div>\n\n/, '\n');
-  if (current === 1) html = html.replace(/(\n\s*<ul class="post-list">)/, `\n${shelfHtml(allCards)}$1`);
+  if (current === 1) html = html.replace(/(\n\s*(?:<h2 class="list-head">[\s\S]*?<\/h2>\s*)?<ul class="post-list">)/, `\n${shelfHtml(allCards)}$1`);
   if (!html.includes('.shelf {')) html = html.replace(/(\n  <\/style>)/, `${SHELF_CSS}$1`);
   // replace the old "→ Older posts" link, or any existing pager, with this one
   html = html.replace(/\n\s*<p style="margin-top:24px[^"]*"><a href="older\.html"[\s\S]*?<\/p>/, '');
@@ -272,26 +339,57 @@ const rest = Math.max(1, Math.ceil(Math.max(0, listed.length - firstPage) / PER_
 const pages = listed.length <= firstPage ? 1 : 1 + rest;
 console.log(`${cards.length} posts: ${shelved.length} covers + ${listed.length} cards → ${pages} page(s) of ${PER_PAGE}`);
 
-const template = readFileSync(join(BLOG, 'index.html'), 'utf8');
-for (let n = 1; n <= pages; n++) {
-  const slice = n === 1
-    ? listed.slice(0, firstPage)
-    : listed.slice(firstPage + (n - 2) * PER_PAGE, firstPage + (n - 1) * PER_PAGE);
-  const out = buildPage(template, slice, n, pages, shelved);
-  const file = n === 1 ? 'index.html' : `page-${n}.html`;
-  const span = slice.length ? `${slice[0].iso} → ${slice[slice.length-1].iso}` : '(covers only)';
-  console.log(`  ${file.padEnd(14)} ${n === 1 ? shelved.length + ' covers + ' : ''}${slice.length} cards  ${span}`);
-  if (!DRY) writeFileSync(join(BLOG, file), out);
+/** The archive: every post, no covers, the four kinds as buttons on top. */
+function buildArchive(template, allCards) {
+  let html = template;
+  const list = allCards.map(c => '      ' + c.html.trim()).join('\n');
+  html = html.replace(/(<ul class="post-list">)[\s\S]*?(<\/ul>)/, `$1\n${list}\n    $2`);
+  html = html.replace(/\n?\s*<div class="shelf">[\s\S]*?<\/div>\n\n/, '\n');
+  html = html.replace(/\n\s*<p class="shelf-switch">[\s\S]*?<\/p>/, '');
+  html = html.replace(/\n\s*<nav class="pager"[\s\S]*?<\/nav>/, '');
+  html = html.replace(/\n\s*<p class="more-posts">[\s\S]*?<\/p>/, '');
+  html = html.replace(/<h2 class="list-head">[\s\S]*?<\/h2>/, 'ARCHIVEHEAD');
+  html = html.replace('ARCHIVEHEAD', `<h2 class="list-head">Everything</h2>\n${filterBar(allCards)}`);
+  if (!html.includes('.kinds {')) html = html.replace(/(\n  <\/style>)/, `${FILTER_CSS}$1`);
+  if (!html.includes("querySelector('.kinds')")) html = html.replace(/(\n<\/body>)/, `\n${FILTER_JS}$1`);
+  html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/,
+    `<link rel="canonical" href="https://pintpoint.co.uk/blog/${ARCHIVE}" />`);
+  html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/?>/,
+    `<meta property="og:url" content="https://pintpoint.co.uk/blog/${ARCHIVE}" />`);
+  html = html.replace(/<title>([^<]*?)(?: — page \d+)?<\/title>/, '<title>The PINtPRESS archive</title>');
+  return html;
 }
+
+const template = readFileSync(join(BLOG, 'index.html'), 'utf8');
+
+// Page one: the covers and the newest cards, then a line through to the rest.
+const slice = listed.slice(0, firstPage);
+let front = buildPage(template, slice, 1, 1, shelved);
+front = front.replace(/\n\s*<nav class="pager"[\s\S]*?<\/nav>/, '');
+front = front.replace(/\n\s*<p class="more-posts">[\s\S]*?<\/p>/, '');
+const remaining = cards.length - shelved.length - slice.length;
+if (remaining > 0) {
+  const links = KINDS.map(([k, label]) => `<a href="${ARCHIVE}?kind=${k}">${label.toLowerCase()}</a>`).join(', ');
+  const more = `\n    <p class="more-posts">${remaining} more are not on this page. <a href="${ARCHIVE}">See everything</a>, or go straight to ${links}.</p>`;
+  front = front.replace(/(<\/ul>)/, `$1\n${more}`);
+}
+if (!front.includes('.more-posts {')) {
+  front = front.replace(/(\n  <\/style>)/,
+    `\n    .more-posts { font-family: var(--sans); font-size: .9rem; color: var(--muted); margin: 26px 0 0; }$1`);
+}
+console.log(`  index.html     ${shelved.length} covers + ${slice.length} cards, ${remaining} more on the archive`);
+if (!DRY) writeFileSync(join(BLOG, 'index.html'), front);
+
+const archive = buildArchive(template, cards);
+console.log(`  ${ARCHIVE.padEnd(14)} ${cards.length} cards, ${KINDS.length} kinds`);
+if (!DRY) writeFileSync(join(BLOG, ARCHIVE), archive);
 
 // Pages that existed when the archive ran ten to a page are kept alive rather
 // than deleted, because they are in the sitemap and may be linked from
 // elsewhere. They point at the archive and say so.
-const stale = readdirSync(BLOG)
-  .filter(f => /^page-(\d+)\.html$/.test(f))
-  .filter(f => Number(f.match(/\d+/)[0]) > pages);
+const stale = readdirSync(BLOG).filter(f => /^page-(\d+)\.html$/.test(f));
 for (const file of stale) {
-  console.log(`  ${file.padEnd(14)} → redirect to /blog/`);
+  console.log(`  ${file.padEnd(14)} → redirect to /blog/${ARCHIVE}`);
   if (!DRY) writeFileSync(join(BLOG, file), stub(file));
 }
 if (DRY) console.log('\nDry run — nothing written.');
