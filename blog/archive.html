@@ -160,7 +160,7 @@
     .view-toggle[aria-checked="false"] .switch-knob { transform: translateX(0); }
     .view-toggle[aria-checked="false"] .switch-text { justify-content: flex-end; padding-left: 0; padding-right: 10px; }
     @media (prefers-reduced-motion: reduce) { .switch-knob { transition: none; } }
-    .shelf-list { list-style: none; margin: 0 0 44px; padding: 0; border-top: 1px solid var(--rule); }
+    .content .shelf-list { list-style: none; margin: 0 0 44px; padding: 0; border-top: 1px solid var(--rule); }
     .shelf-list li { border-bottom: 1px solid var(--rule); }
     .shelf-list a { display: block; padding: 11px 2px; font-family: var(--serif); font-size: 1.02rem;
       line-height: 1.4; color: var(--ink); text-decoration: none; }
@@ -168,7 +168,7 @@
     .list-head { font-family: var(--sans); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase;
       color: var(--muted); font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
 
-    .post-list { list-style: none; display: flex; flex-direction: column; gap: 0; margin: 0; padding: 0; }
+    .content .post-list { list-style: none; display: flex; flex-direction: column; gap: 0; margin: 0; padding: 0; }
     .post { display: block; padding: 20px 0; border-top: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
     .post-list li:last-child .post { border-bottom: 1px solid var(--rule); }
     .post:hover .post-title { text-decoration: underline; text-decoration-color: var(--amber); text-underline-offset: 3px; }
@@ -205,7 +205,14 @@
     .archive-nav a.go:hover { background: #000; }
     .archive-nav a.go .arrow { color: var(--amber); margin-left: 4px; }
 
-    .kinds { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; padding: 0; list-style: none; }
+    .archive-head { font-family: var(--sans); font-size: .78rem; letter-spacing: .1em;
+      margin: 0 0 26px; color: var(--muted); }
+    /* No text-transform on the brand: PINtPRESS keeps its small t. */
+    .archive-head a { color: var(--ink); font-weight: 700; text-decoration: none; }
+    .archive-head span { text-transform: uppercase; }
+    .archive-head a:hover { text-decoration: underline; }
+    .archive-head span::before { content: '\00b7'; margin: 0 7px; color: var(--rule); }
+    .content .kinds { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 34px; padding: 0; list-style: none; }
     .kinds button { font-family: var(--sans); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase;
       background: none; border: 1px solid var(--rule); color: var(--muted); padding: 8px 14px; border-radius: 999px;
       cursor: pointer; }
@@ -233,14 +240,7 @@
   </nav>
 
   <main class="content">
-    <h1 class="masthead">
-      <picture>
-        <img src="../pintpress-mast-roundel.png" alt="The PINtPRESS roundel: a target above the words PINtPRESS, and beneath them Journalism from PINtPOINT." width="220" height="220" />
-      </picture>
-    </h1>
-    <p class="lede no-drop">Guides, essays, postcards and notes on beer: where to drink it, where it came from, and what&rsquo;s in the glass. Nothing sponsored.</p>
-    <p class="start-here">New here? <a href="pick-the-right-pint.html">Start with the four-essay guide</a>.</p>
-    <p class="rss-link"><a href="https://pintpoint.co.uk/blog/feed.xml">RSS feed</a></p>
+    <p class="archive-head"><a href="./">PINtPRESS</a> <span>Archive</span></p>
     <h2 class="list-head">Everything</h2>
     <ul class="kinds" aria-label="Filter by kind">
         <li><button type="button" data-kind="" aria-pressed="true">All<span class="count">47</span></button></li>
@@ -738,17 +738,24 @@
       });
       drawPager(n);
     }
-    function sync() {
+    function sync(push) {
       var u = new URL(window.location.href);
       if (current) u.searchParams.set('kind', current); else u.searchParams.delete('kind');
       if (page > 1) u.searchParams.set('page', page); else u.searchParams.delete('page');
-      history.replaceState(null, '', u);
+      if (u.href === window.location.href) return;
+      if (push) history.pushState({ kind: current, page: page }, '', u);
+      else history.replaceState({ kind: current, page: page }, '', u);
     }
+    window.addEventListener('popstate', function () {
+      var q = new URL(window.location.href).searchParams;
+      var k = q.get('kind') || '';
+      apply(KINDNAMES.indexOf(k) === -1 ? '' : k, Number(q.get('page')) || 1);
+    });
     bar.addEventListener('click', function (e) {
       var b = e.target.closest('button');
       if (!b) return;
       apply(b.dataset.kind || '', 1);
-      sync();
+      sync(true);
       bar.scrollIntoView({ block: 'start' });
     });
     if (pager) pager.addEventListener('click', function (e) {
@@ -756,7 +763,7 @@
       if (!a || !a.dataset.page) return;
       e.preventDefault();
       apply(current, Number(a.dataset.page));
-      sync();
+      sync(true);
       bar.scrollIntoView({ block: 'start' });
     });
     var q = new URL(window.location.href).searchParams;

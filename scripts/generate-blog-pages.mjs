@@ -44,7 +44,14 @@ function kindOf(card) {
 }
 
 const FILTER_CSS = `
-    .kinds { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; padding: 0; list-style: none; }
+    .archive-head { font-family: var(--sans); font-size: .78rem; letter-spacing: .1em;
+      margin: 0 0 26px; color: var(--muted); }
+    /* No text-transform on the brand: PINtPRESS keeps its small t. */
+    .archive-head a { color: var(--ink); font-weight: 700; text-decoration: none; }
+    .archive-head span { text-transform: uppercase; }
+    .archive-head a:hover { text-decoration: underline; }
+    .archive-head span::before { content: '\\00b7'; margin: 0 7px; color: var(--rule); }
+    .content .kinds { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 34px; padding: 0; list-style: none; }
     .kinds button { font-family: var(--sans); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase;
       background: none; border: 1px solid var(--rule); color: var(--muted); padding: 8px 14px; border-radius: 999px;
       cursor: pointer; }
@@ -107,17 +114,24 @@ const FILTER_JS = `  <script>
       });
       drawPager(n);
     }
-    function sync() {
+    function sync(push) {
       var u = new URL(window.location.href);
       if (current) u.searchParams.set('kind', current); else u.searchParams.delete('kind');
       if (page > 1) u.searchParams.set('page', page); else u.searchParams.delete('page');
-      history.replaceState(null, '', u);
+      if (u.href === window.location.href) return;
+      if (push) history.pushState({ kind: current, page: page }, '', u);
+      else history.replaceState({ kind: current, page: page }, '', u);
     }
+    window.addEventListener('popstate', function () {
+      var q = new URL(window.location.href).searchParams;
+      var k = q.get('kind') || '';
+      apply(KINDNAMES.indexOf(k) === -1 ? '' : k, Number(q.get('page')) || 1);
+    });
     bar.addEventListener('click', function (e) {
       var b = e.target.closest('button');
       if (!b) return;
       apply(b.dataset.kind || '', 1);
-      sync();
+      sync(true);
       bar.scrollIntoView({ block: 'start' });
     });
     if (pager) pager.addEventListener('click', function (e) {
@@ -125,7 +139,7 @@ const FILTER_JS = `  <script>
       if (!a || !a.dataset.page) return;
       e.preventDefault();
       apply(current, Number(a.dataset.page));
-      sync();
+      sync(true);
       bar.scrollIntoView({ block: 'start' });
     });
     var q = new URL(window.location.href).searchParams;
@@ -396,6 +410,13 @@ function buildArchive(template, allCards) {
   html = html.replace(/(<ul class="post-list">)[\s\S]*?(<\/ul>)/, `$1\n${list}\n    $2`);
   html = html.replace(/\n?\s*<div class="shelf">[\s\S]*?<\/div>\n\n/, '\n');
   html = html.replace(/\n\s*<p class="shelf-switch">[\s\S]*?<\/p>/, '');
+  // The masthead belongs on the front page. Anyone opening the archive came
+  // for the list, so the header shrinks to one line and the buttons come up.
+  html = html.replace(/\n\s*<h1 class="masthead">[\s\S]*?<\/h1>/,
+    '\n    <p class="archive-head"><a href="./">PINtPRESS</a> <span>Archive</span></p>');
+  html = html.replace(/\n\s*<p class="lede no-drop">[\s\S]*?<\/p>/, '');
+  html = html.replace(/\n\s*<p class="start-here">[\s\S]*?<\/p>/, '');
+  html = html.replace(/\n\s*<p class="rss-link">[\s\S]*?<\/p>/, '');
   html = html.replace(/\n\s*<nav class="pager[^"]*"[\s\S]*?<\/nav>/g, '');
   html = html.replace(/\n\s*<p class="more-posts">[\s\S]*?<\/p>/, '');
   html = html.replace(/<h2 class="list-head">[\s\S]*?<\/h2>/, 'ARCHIVEHEAD');
@@ -434,7 +455,7 @@ if (remaining > 0) {
 // The row under the cards: the kinds are side doors, All posts is the way in,
 // and the difference is carried by weight rather than by a fifth colour.
 const NAV_CSS = `
-    .archive-nav { gap: 8px; margin: 34px 0 30px; }
+    .archive-nav { gap: 8px; margin: 34px 0 44px; }
     .archive-nav a { border-radius: 999px; padding: 9px 16px; font-size: .78rem; letter-spacing: .05em;
       text-transform: uppercase; color: var(--ink); border: 1px solid var(--rule); }
     .archive-nav a:hover { border-color: var(--ink); }
