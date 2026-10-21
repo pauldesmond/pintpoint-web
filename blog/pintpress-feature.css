@@ -237,6 +237,12 @@ blockquote p:last-child { margin-bottom: 0; }
   margin: 1.6em 0; padding: 2px 0 2px 22px; border-left: 2px solid var(--amber);
   font-style: italic; font-size: 1.06em; line-height: 1.55; color: var(--ink-soft); background: none; text-align: left;
 }
+/* One short line a piece may stand apart. The 22ch cap is the guard: it only
+   works on a handful of words, so it cannot be put on a long quoted passage. */
+.pullquote.standout {
+  border-left: 0; padding: 0; margin: 2.2em auto; max-width: 22ch;
+  text-align: center; font-style: normal; font-size: 1.7em; line-height: 1.2; color: var(--ink);
+}
 /* The one centred display quote a piece may have, near the end. */
 .quote {
   font-size: 1.3rem; font-style: italic; line-height: 1.45; color: var(--ink); text-align: center;
