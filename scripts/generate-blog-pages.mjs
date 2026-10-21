@@ -322,6 +322,10 @@ function buildPage(template, cards, current, total, allCards) {
   html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${canonical}" />`);
   const suffix = current === 1 ? '' : ` — page ${current}`;
   html = html.replace(/<title>([^<]*?)(?: — page \d+)?<\/title>/, `<title>$1${suffix}</title>`);
+  // Taking the shelf out and putting it back left one blank line behind each
+  // run, so the file grew by a line a night. Close the gap to the single blank
+  // line the strip above expects to find next time.
+  html = html.replace(/<\/div>\n{2,}(\s*<h2 class="list-head">)/, '</div>\n\n$1');
   return html;
 }
 
