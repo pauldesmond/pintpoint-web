@@ -18,7 +18,7 @@
   <meta property="fb:app_id" content="1892965231402903" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -83,123 +83,125 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 800px; margin: 0 auto; padding: 60px 24px 80px; }
-    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-    h3 { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 24px; margin-bottom: 10px; color: var(--text); }
-    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
-    article a, article a:visited, main a, main a:visited { color: var(--teal); }
-    .highlight { color: var(--text); font-weight: 600; }
-    .meta { font-size: 0.8rem; color: #666; margin-bottom: 24px; letter-spacing: 0.3px; }
-    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; color: #9DA5FF; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border: 1px solid rgba(157,165,255,0.4); border-radius: 4px; margin-right: 8px; }
-    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.75; margin-bottom: 24px; }
-    .quote { font-size: 1.2rem; font-weight: 700; color: var(--teal); text-align: center; padding: 28px 0; margin: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); line-height: 1.55; }
-    ul, ol { margin: 16px 0 24px 20px; }
-    li { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 6px; }
-    blockquote { border-left: 2px solid var(--teal); padding: 6px 16px; margin: 20px 0; color: var(--muted); font-style: italic; font-size: 0.95rem; }
     .framework-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 24px 0 32px; }
-    .framework-grid .cat { padding: 16px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; }
-    .framework-grid .cat-name { font-size: 0.75rem; font-weight: 700; color: var(--teal); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+    .framework-grid .cat { padding: 16px 18px; background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; }
+    .framework-grid .cat-name { font-size: 0.75rem; font-weight: 700; color: var(--ink); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
     .framework-grid .cat-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.55; }
-    .hop { padding: 20px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 14px; }
+    .hop { padding: 20px 22px; background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; margin-bottom: 14px; }
     .hop-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
-    .hop-name { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.2px; color: var(--text); }
+    .hop-name { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.2px; color: var(--ink); }
     .hop-tag { font-size: 0.7rem; font-weight: 700; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
-    .hop-tag.us { color: #7FC8FF; }
-    .hop-tag.uk { color: #FF8C9E; }
-    .hop-tag.de { color: #FFC107; }
-    .hop-tag.nz { color: #6FE6C1; }
-    .hop-tag.au { color: #FFA07A; }
+    .hop-tag.us { color: var(--ink); }
+    .hop-tag.uk { color: #d80022; }
+    .hop-tag.de { color: var(--ink); }
+    .hop-tag.nz { color: var(--ink); }
+    .hop-tag.au { color: var(--ink); }
     .hop-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 8px; }
-    .hop-meta { font-size: 0.78rem; color: #666; }
+    .hop-meta { font-size: 0.78rem; color: var(--muted); }
     .hop-meta strong { color: var(--muted); font-weight: 600; }
     .meters { margin-top: 14px; }
     .meter { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
     .meter .m-label { color: var(--muted); flex: 0 0 104px; font-size: 0.74rem; }
-    .meter .m-track { flex: 1; background: rgba(255,255,255,0.06); border-radius: 3px; height: 7px; overflow: hidden; }
-    .meter .m-fill { background: var(--teal); height: 100%; border-radius: 3px; }
-    .meter .m-val { flex: 0 0 1.5em; color: #666; font-size: 0.7rem; font-variant-numeric: tabular-nums; text-align: right; }
-    .meter.m-intensity { border-top: 1px dashed var(--border); padding-top: 8px; margin-top: 6px; }
-    .meter.m-intensity .m-fill { background: linear-gradient(90deg, var(--teal), #9DA5FF); }
-    .aside-box { padding: 18px 22px; background: rgba(157,165,255,0.06); border: 1px solid rgba(157,165,255,0.2); border-radius: 12px; margin: 32px 0; }
-    .aside-box .aside-label { color: #9DA5FF; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; display: block; }
+    .meter .m-track { flex: 1; background: var(--rule-soft); border-radius: 0; height: 7px; overflow: hidden; }
+    .meter .m-fill { background: var(--amber); height: 100%; border-radius: 0; }
+    .meter .m-val { flex: 0 0 1.5em; color: var(--muted); font-size: 0.7rem; font-variant-numeric: tabular-nums; text-align: right; }
+    .meter.m-intensity { border-top: 1px dashed var(--rule-soft); padding-top: 8px; margin-top: 6px; }
+    .meter.m-intensity .m-fill { background: var(--amber); }
+    .aside-box { padding: 18px 22px; background: transparent; border: 1px solid rgba(157,165,255,0.2); border-radius: 0; margin: 32px 0; }
+    .aside-box .aside-label { color: #4655ff; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; display: block; }
     .aside-box p { margin: 0; font-size: 0.92rem; line-height: 1.7; }
-    .toc { padding: 20px 24px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin: 24px 0 32px; }
-    .toc-label { font-size: 0.7rem; font-weight: 700; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+    .toc { padding: 20px 24px; background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; margin: 24px 0 32px; }
+    .toc-label { font-size: 0.7rem; font-weight: 700; color: var(--ink); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
     .toc ul { margin: 0; list-style: none; padding: 0; }
     .toc li { margin-bottom: 6px; font-size: 0.9rem; }
     .toc li a { color: var(--muted); text-decoration: none; }
-    .toc li a:hover { color: var(--teal); }
-    .sources { margin-top: 48px; padding: 20px 24px; background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; font-size: 0.9rem; }
-    .series-links a { color: #C0A340; }
-    .sources a { color: var(--teal); }
-    .faq { margin-top: 48px; }
-    .faq h2 { margin-bottom: 24px; }
-    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-    .faq-item summary { font-size: 1rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--teal); }
-    .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item p { margin-top: 10px; }
-    a.cta { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; margin-top: 32px; }
-    a.cta:hover { opacity: 0.88; }
-    .closing { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
-
-    /* ─── Hop Explorer (2026-06-07) ───────────────────────────────
-       Interactive 6-axis hexagon radar across the 25 real hops
-       catalogued in this essay. Filter by flavour category, tap a hop
-       chip to see its radar. Real per-hop data extracted from the
-       essay's own meter scores — same numbers, just made readable as a
-       single overlapping view rather than 25 separate cards. */
-    .hop-explorer { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 32px 0; }
+    .toc li a:hover { color: var(--ink); }
+    .hop-explorer { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 24px; margin: 32px 0; }
     .hop-explorer-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
-    .hop-explorer-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal); }
-    .hop-explorer-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--text); }
+    .hop-explorer-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink); }
+    .hop-explorer-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--ink); }
     .hop-explorer-hint { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); }
     .hop-filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 6px; }
-    .hop-filter { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; cursor: pointer; transition: all .18s ease; }
-    .hop-filter:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-    .hop-filter[aria-pressed="true"] { color: #000; background: var(--teal); border-color: var(--teal); }
-    .hop-chip-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; padding: 10px 0; border-bottom: 1px solid var(--border); }
-    .hop-chip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); background: transparent; border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; cursor: pointer; transition: all .15s ease; }
-    .hop-chip:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-    .hop-chip[aria-pressed="true"] { color: var(--teal); border-color: var(--teal); background: rgba(0,212,170,0.08); }
+    .hop-filter { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 6px 12px; cursor: pointer; transition: all .18s ease; }
+    .hop-filter:hover { color: var(--ink); border-color: var(--rule); }
+    .hop-filter[aria-pressed="true"] { color: var(--ink); background: transparent; border-color: var(--amber); }
+    .hop-chip-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; padding: 10px 0; border-bottom: 1px solid var(--rule-soft); }
+    .hop-chip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 4px 10px; cursor: pointer; transition: all .15s ease; }
+    .hop-chip:hover { color: var(--ink); border-color: var(--rule); }
+    .hop-chip[aria-pressed="true"] { color: var(--ink); border-color: var(--amber); background: transparent; }
     .hop-explorer-body { display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: start; }
-    @media (max-width: 600px) { .hop-explorer-body { grid-template-columns: 1fr; } }
     .hex-stage { display: flex; justify-content: center; }
     .hex-stage svg { width: 100%; max-width: 320px; height: auto; }
-    .hex-grid { fill: none; stroke: var(--border); stroke-width: 1; }
-    .hex-axis { stroke: var(--border); stroke-width: 1; }
-    .hex-shape { fill: rgba(0,212,170,0.18); stroke: var(--teal); stroke-width: 2; stroke-linejoin: round; transition: all .5s cubic-bezier(.34,1.2,.5,1); filter: drop-shadow(0 0 12px rgba(0,212,170,0.35)); }
-    .hex-vert { fill: var(--teal); transition: all .5s cubic-bezier(.34,1.2,.5,1); }
+    .hex-grid { fill: none; stroke: var(--muted); stroke-width: 1; }
+    .hex-axis { stroke: var(--muted); stroke-width: 1; }
+    .hex-shape { fill: var(--muted); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; transition: all .5s cubic-bezier(.34,1.2,.5,1); filter: drop-shadow(0 0 12px rgba(0,212,170,0.35)); }
+    .hex-vert { fill: var(--ink); transition: all .5s cubic-bezier(.34,1.2,.5,1); }
     .hex-label { font-family: 'SF Mono', Menlo, monospace; font-size: 9px; letter-spacing: 0.06em; fill: var(--muted); text-transform: uppercase; }
-    .hop-detail h4 { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 4px; }
-    .hop-detail .hop-origin { font-family: 'SF Mono', Menlo, monospace; font-size: 0.75rem; color: var(--teal); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 12px; }
+    .hop-detail h4 { font-size: 1.05rem; font-weight: 800; color: var(--ink); margin-bottom: 4px; }
+    .hop-detail .hop-origin { font-family: 'SF Mono', Menlo, monospace; font-size: 0.75rem; color: var(--ink); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 12px; }
     .hop-detail .hop-blurb { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
     .hop-detail .hop-intensity { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--muted); font-family: 'SF Mono', Menlo, monospace; text-transform: uppercase; letter-spacing: 0.1em; }
-    .hop-intensity-track { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
-    .hop-intensity-fill { height: 100%; background: linear-gradient(90deg, var(--teal), #00b88f); border-radius: 3px; transition: width .5s cubic-bezier(.34,1.2,.5,1); }
+    .hop-intensity-track { flex: 1; height: 6px; background: var(--rule-soft); border-radius: 0; overflow: hidden; }
+    .hop-intensity-fill { height: 100%; background: var(--amber); border-radius: 0; transition: width .5s cubic-bezier(.34,1.2,.5,1); }
+    body .ps-1 { width: 0%; }
+    body .ps-2 { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-bottom: 16px; }
+    body .ps-3 { width: 80%; }
+    body .ps-4 { width: 20%; }
+    body .ps-5 { width: 60%; }
+    body .ps-6 { width: 20%; }
+    body .ps-7 { width: 40%; }
+    body .ps-8 { width: 20%; }
+    body .ps-9 { width: 60%; }
+    body .ps-10 { width: 100%; }
+    body .ps-11 { width: 20%; }
+    body .ps-12 { width: 80%; }
+    body .ps-13 { width: 20%; }
+    body .ps-14 { width: 20%; }
+    body .ps-15 { width: 0%; }
+    body .ps-16 { width: 80%; }
+    body .ps-17 { width: 60%; }
+    body .ps-18 { width: 0%; }
+    body .ps-19 { width: 100%; }
+    body .ps-20 { width: 0%; }
+    body .ps-21 { width: 20%; }
+    body .ps-22 { width: 60%; }
+    body .ps-23 { width: 80%; }
+    body .ps-24 { width: 40%; }
+    body .ps-25 { width: 0%; }
+    body .ps-26 { width: 100%; }
+    body .ps-27 { width: 0%; }
+    body .ps-28 { width: 0%; }
+    body .ps-29 { width: 60%; }
+    body .ps-30 { width: 100%; }
+    body .ps-31 { width: 60%; }
+    body .ps-32 { width: 60%; }
+    body .ps-33 { width: 80%; }
+    body .ps-34 { width: 60%; }
+    body .ps-35 { width: 20%; }
+    body .ps-36 { width: 40%; }
+    body .ps-37 { width: 80%; }
+    body .ps-38 { margin: 8px 0 0 20px; }
+    body .ps-39 { margin-top: 56px; padding: 24px 28px; background: transparent; border-left: 2px solid var(--amber); border-radius: 0; }
+    body .ps-40 { margin: 0 0 14px; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    body .ps-41 { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; line-height: 1.7; }
+    body .ps-42 { color: var(--amber-ink); }
+    body .ps-43 { color: var(--amber-ink); }
+    body .ps-44 { color: var(--amber-ink); }
+    body .ps-45 { color: var(--ink); font-size: 0.85rem; font-weight: 600; }
+    body .ps-46 { color: var(--amber-ink); }
+    body .ps-47 { margin: 14px 0 0; font-size: 0.85rem; }
+    body .ps-48 { font-size: 0.75rem; color: var(--muted); margin-top: 12px; }
+    @media (max-width: 600px) {
+      .hop-explorer-body { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="../about-pintpoint.html">About</a>
       <a href="../features.html">Features</a>
       <a href="../pubs/">Venues</a>
@@ -209,7 +211,7 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>12 April 2026 · Reference</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category essay">Essay</span>12 April 2026 · Reference</p>
     <h1>The Drinker's Guide to <em>Hops</em>: What Each Variety Actually Tastes Like</h1>
 
     <p class="lede">There are dozens of hop varieties in regular commercial use, hundreds if you count the experimental ones, and a vocabulary for describing them that the American beer writer Jeff Alworth has publicly given up on. The lexicon he cites — Georg Drexler's taxonomy — has twelve flavour categories and <span class="highlight">107 individual descriptors</span>. Alworth's verdict, in a 2020 Beervana essay: "I still don't have a satisfying answer. How do we discuss hops using a language we all understand?"</p>
@@ -288,7 +290,7 @@
     <p>PINtPOINT collapses these six teaching categories into four practical labels in the app — <strong>Citrusy</strong>, <strong>Tropical</strong>, <strong>Piney</strong>, <strong>Floral</strong> — chosen for fit at thumbnail and tap-list density rather than full sensory coverage. Stone-fruit notes typically fold into Tropical; earthy and spicy notes into Floral or the generic Hoppy fallback. See <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood</a> for how that collapsed set plays out in the recommender.</p>
 
     <!-- ── Interactive: Hop Explorer ─────────────────────────────── -->
-    <figure class="hop-explorer" id="hop-explorer">
+    <figure class="hop-explorer wide" id="hop-explorer">
       <div class="hop-explorer-head">
         <div>
           <div class="hop-explorer-kicker">Interactive · Hop Explorer</div>
@@ -322,7 +324,7 @@
           <p class="hop-blurb" id="hop-detail-blurb">Choose a hop to see its 6-axis flavour signature.</p>
           <div class="hop-intensity">
             <span>Intensity</span>
-            <div class="hop-intensity-track"><div class="hop-intensity-fill" id="hop-intensity-fill" style="width:0%"></div></div>
+            <div class="hop-intensity-track"><div class="hop-intensity-fill ps-1" id="hop-intensity-fill"></div></div>
             <span id="hop-intensity-val">—</span>
           </div>
         </div>
@@ -351,20 +353,20 @@
 
     <p>The foundation of modern craft beer. Four cultivars whose names all start with C, all released or popularised in the 1970s–90s, collectively responsible for the West Coast IPA and everything downstream of it.</p>
 
-    <p style="font-size:0.85rem;color:#666;font-style:italic;margin-bottom:16px">Each hop below carries a flavour-presence strip — a 0–5 reading across the six categories plus an overall <em>intensity</em> bar. Ratings are editorial, anchored to typical late-addition / dry-hop character, and cross-checked against <a href="https://beermaverick.com/hops/" target="_blank" rel="noopener" style="color:var(--teal)">Beer Maverick</a>. Treat them as a reading aid, not a lab result.</p>
+    <p class="ps-2">Each hop below carries a flavour-presence strip — a 0–5 reading across the six categories plus an overall <em>intensity</em> bar. Ratings are editorial, anchored to typical late-addition / dry-hop character, and cross-checked against <a href="https://beermaverick.com/hops/" target="_blank" rel="noopener">Beer Maverick</a>. Treat them as a reading aid, not a lab result.</p>
 
     <div class="hop">
       <div class="hop-head"><span class="hop-name">Cascade</span><span class="hop-tag us">USA · 1972</span></div>
       <div class="hop-desc">The foundational American hop. Grapefruit, pine, a light floral edge. Moderate bitterness, moderate intensity. If a beer tastes like "American craft beer", Cascade is why. Sierra Nevada Pale Ale is the reference.</div>
       <div class="hop-meta"><strong>Primary categories:</strong> Citrus · Pine &amp; resin &nbsp;·&nbsp; <strong>Alpha:</strong> 4.5–7%</div>
       <div class="meters" aria-label="Flavour presence, 0 to 5 scale">
-        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill" style="width:80%"></div></div><div class="m-val">4</div></div>
-        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
-        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
-        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
-        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill" style="width:40%"></div></div><div class="m-val">2</div></div>
-        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
-        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
+        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill ps-3"></div></div><div class="m-val">4</div></div>
+        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill ps-4"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill ps-5"></div></div><div class="m-val">3</div></div>
+        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill ps-6"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill ps-7"></div></div><div class="m-val">2</div></div>
+        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill ps-8"></div></div><div class="m-val">1</div></div>
+        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill ps-9"></div></div><div class="m-val">3</div></div>
       </div>
     </div>
 
@@ -373,13 +375,13 @@
       <div class="hop-desc">Often described as "super Cascade": bigger grapefruit, cleaner pine, higher bitterness. Cornerstone of Founders Centennial IPA and the 2000s West Coast IPA canon. Punchier than Cascade but carries the same genetic handwriting.</div>
       <div class="hop-meta"><strong>Primary categories:</strong> Citrus · Pine &amp; resin &nbsp;·&nbsp; <strong>Alpha:</strong> 9–11.5%</div>
       <div class="meters" aria-label="Flavour presence, 0 to 5 scale">
-        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill" style="width:100%"></div></div><div class="m-val">5</div></div>
-        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
-        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill" style="width:80%"></div></div><div class="m-val">4</div></div>
-        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
-        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
-        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
-        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill" style="width:80%"></div></div><div class="m-val">4</div></div>
+        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill ps-10"></div></div><div class="m-val">5</div></div>
+        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill ps-11"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill ps-12"></div></div><div class="m-val">4</div></div>
+        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill ps-13"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill ps-14"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill ps-15"></div></div><div class="m-val">0</div></div>
+        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill ps-16"></div></div><div class="m-val">4</div></div>
       </div>
     </div>
 
@@ -388,13 +390,13 @@
       <div class="hop-desc">Pine-forward, with grapefruit pith and a distinctive spicy / peppery edge. More aggressive than Cascade. Often the bittering hop in West Coast IPAs that then use Cascade or Centennial for late aroma.</div>
       <div class="hop-meta"><strong>Primary categories:</strong> Pine &amp; resin · Earthy &amp; spicy &nbsp;·&nbsp; <strong>Alpha:</strong> 12–14%</div>
       <div class="meters" aria-label="Flavour presence, 0 to 5 scale">
-        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
-        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
-        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill" style="width:100%"></div></div><div class="m-val">5</div></div>
-        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
-        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
-        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
-        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill" style="width:80%"></div></div><div class="m-val">4</div></div>
+        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill ps-17"></div></div><div class="m-val">3</div></div>
+        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill ps-18"></div></div><div class="m-val">0</div></div>
+        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill ps-19"></div></div><div class="m-val">5</div></div>
+        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill ps-20"></div></div><div class="m-val">0</div></div>
+        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill ps-21"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill ps-22"></div></div><div class="m-val">3</div></div>
+        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill ps-23"></div></div><div class="m-val">4</div></div>
       </div>
     </div>
 
@@ -403,13 +405,13 @@
       <div class="hop-desc">"Dank" is the defining word here — resin, cannabis, pungent pine. Very high alpha acid, so primarily used for bittering. Stone's core range leaned heavily on Columbus for that distinctive aggressive-resinous West Coast signature.</div>
       <div class="hop-meta"><strong>Primary categories:</strong> Pine &amp; resin &nbsp;·&nbsp; <strong>Alpha:</strong> 14–18%</div>
       <div class="meters" aria-label="Flavour presence, 0 to 5 scale">
-        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill" style="width:40%"></div></div><div class="m-val">2</div></div>
-        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
-        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill" style="width:100%"></div></div><div class="m-val">5</div></div>
-        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
-        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill" style="width:0%"></div></div><div class="m-val">0</div></div>
-        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
-        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill" style="width:100%"></div></div><div class="m-val">5</div></div>
+        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill ps-24"></div></div><div class="m-val">2</div></div>
+        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill ps-25"></div></div><div class="m-val">0</div></div>
+        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill ps-26"></div></div><div class="m-val">5</div></div>
+        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill ps-27"></div></div><div class="m-val">0</div></div>
+        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill ps-28"></div></div><div class="m-val">0</div></div>
+        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill ps-29"></div></div><div class="m-val">3</div></div>
+        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill ps-30"></div></div><div class="m-val">5</div></div>
       </div>
     </div>
 
@@ -434,13 +436,13 @@
       <div class="hop-desc">Split personality. In some uses it's piney and resinous like a C-hop; in others it pushes passionfruit and apricot. "Cat piss" is not a slur — it's a specific Simcoe aromatic descriptor that drinkers either love or hate. Russian River Pliny the Elder's spine.</div>
       <div class="hop-meta"><strong>Primary categories:</strong> Pine &amp; resin · Tropical · Stone fruit &nbsp;·&nbsp; <strong>Alpha:</strong> 12–14%</div>
       <div class="meters" aria-label="Flavour presence, 0 to 5 scale">
-        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
-        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
-        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill" style="width:80%"></div></div><div class="m-val">4</div></div>
-        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill" style="width:60%"></div></div><div class="m-val">3</div></div>
-        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill" style="width:20%"></div></div><div class="m-val">1</div></div>
-        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill" style="width:40%"></div></div><div class="m-val">2</div></div>
-        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill" style="width:80%"></div></div><div class="m-val">4</div></div>
+        <div class="meter"><div class="m-label">Citrus</div><div class="m-track"><div class="m-fill ps-31"></div></div><div class="m-val">3</div></div>
+        <div class="meter"><div class="m-label">Tropical</div><div class="m-track"><div class="m-fill ps-32"></div></div><div class="m-val">3</div></div>
+        <div class="meter"><div class="m-label">Pine &amp; resin</div><div class="m-track"><div class="m-fill ps-33"></div></div><div class="m-val">4</div></div>
+        <div class="meter"><div class="m-label">Stone fruit</div><div class="m-track"><div class="m-fill ps-34"></div></div><div class="m-val">3</div></div>
+        <div class="meter"><div class="m-label">Floral</div><div class="m-track"><div class="m-fill ps-35"></div></div><div class="m-val">1</div></div>
+        <div class="meter"><div class="m-label">Earthy</div><div class="m-track"><div class="m-fill ps-36"></div></div><div class="m-val">2</div></div>
+        <div class="meter m-intensity"><div class="m-label">Intensity</div><div class="m-track"><div class="m-fill ps-37"></div></div><div class="m-val">4</div></div>
       </div>
     </div>
 
@@ -585,7 +587,7 @@
 
     <div class="sources">
       <strong>Further reading &amp; source material:</strong>
-      <ul style="margin:8px 0 0 20px">
+      <ul class="ps-38">
         <li><a href="https://beermaverick.com/hops/" target="_blank" rel="noopener">Beer Maverick — Hops Database</a>. The canonical brewer's reference. Full alpha / essential oil data, substitution charts, country taxonomy.</li>
         <li><a href="https://www.beer-analytics.com/hops/flavors/" target="_blank" rel="noopener">Beer Analytics — Hop Flavors</a>. Data-driven analysis of hop descriptors as they appear across real-world beer reviews.</li>
         <li><a href="https://www.beervanablog.com/beervana/2020/1/5/describing-the-flavor-of-hops" target="_blank" rel="noopener">Jeff Alworth (Beervana) — Describing the flavor of hops</a>. The essay that motivates this piece. Alworth's honest admission that the existing descriptor language has broken down.</li>
@@ -621,20 +623,20 @@
       </details>
     </div>
 
-    <aside class="series-links" style="margin-top:56px;padding:24px 28px;background:var(--card);border-left:2px solid var(--teal);border-radius:4px">
-      <p style="margin:0 0 14px;font-size:0.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em">Companion essays</p>
-      <ul style="list-style:none;padding:0;margin:0;font-size:0.95rem;line-height:1.7">
-        <li><strong style="color:#C0A340">Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the usual approach is broken</li>
-        <li><strong style="color:#C0A340">How</strong> · <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engine that does it instead</li>
-        <li><strong style="color:#C0A340">What's in it</strong> · The Drinker's Guide to Hops — the ingredient and sensory vocabulary <span style="color:var(--teal);font-size:0.85rem;font-weight:600">← you're reading</span></li>
-        <li><strong style="color:#C0A340">Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — what drinking it feels like</li>
+    <aside class="series-links ps-39">
+      <p class="ps-40">Companion essays</p>
+      <ul class="ps-41">
+        <li><strong class="ps-42">Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the usual approach is broken</li>
+        <li><strong class="ps-43">How</strong> · <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engine that does it instead</li>
+        <li><strong class="ps-44">What's in it</strong> · The Drinker's Guide to Hops — the ingredient and sensory vocabulary <span class="ps-45">← you're reading</span></li>
+        <li><strong class="ps-46">Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — what drinking it feels like</li>
       </ul>
-      <p style="margin:14px 0 0;font-size:0.85rem"><a href="pick-the-right-pint.html" style="color:#C0A340;text-decoration:none">↑ Part of <em>Pick the right pint</em> — the four-essay guide</a></p>
+      <p class="ps-47"><a href="pick-the-right-pint.html">↑ Part of <em>Pick the right pint</em> — the four-essay guide</a></p>
     </aside>
 
     <div class="closing">
       <p>No guide can make tasting hops feel automatic. Palates need practice. But the six-category framework at the top of this page will get you from "I don't know what any of this means" to "I think this is a Citra/Mosaic hazy" faster than any other vocabulary we've found.</p>
-      <p>Try it on a pint tonight. The next one will be easier.</p>
+      <p class="end">Try it on a pint tonight. The next one will be easier.</p>
       <a href="https://apps.apple.com/app/pintpoint/id6760611613" class="cta">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Use PINtPOINT to find a hop in the wild
@@ -643,13 +645,14 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="../index.html">Home</a>
       <a href="../pubs/">Venues</a>
       <a href="index.html">All blog posts</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
     </div>
-    <p style="font-size:0.75rem;color:#555;margin-top:12px">Source projects credited in the "Further reading" section above. Variety names are trademarks of their respective breeding programs and hop merchants. Flavour descriptors are drinker-side summaries, not claims of specific chemical composition.</p>
+    <p class="ps-48">Source projects credited in the "Further reading" section above. Variety names are trademarks of their respective breeding programs and hop merchants. Flavour descriptors are drinker-side summaries, not claims of specific chemical composition.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
 
