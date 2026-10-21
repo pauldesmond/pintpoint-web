@@ -124,13 +124,13 @@
     /* The listing page. Everything the articles share comes from
        /blog/pintpress-feature.css; what is left here is the shelf of covers,
        the cards and the pager, which no article has. */
-    .content { max-width: 1000px; }
+    .content { max-width: 1000px; padding-top: 30px; }
     .nav-links { display: flex; gap: 20px; align-items: center; }
-    h1.masthead { margin: 0 auto 22px; line-height: 0; text-align: center; }
+    h1.masthead { margin: 0 auto 14px; line-height: 0; text-align: center; }
     h1.masthead picture, h1.masthead img { display: block; margin: 0 auto; }
-    h1.masthead img { width: 100%; max-width: 220px; height: auto; }
+    h1.masthead img { width: 100%; max-width: 140px; height: auto; }
     .subtitle { font-family: var(--serif); font-size: 1.15rem; font-style: italic; color: var(--ink-soft); text-align: center; margin: 0 0 14px; }
-    p.lede { font-family: var(--sans); font-size: .95rem; color: var(--muted); line-height: 1.65; margin: 0 auto 36px; text-align: center; max-width: 54ch; }
+    p.lede { font-family: var(--sans); font-size: .95rem; color: var(--muted); line-height: 1.65; margin: 0 auto 22px; text-align: center; max-width: 54ch; }
     .rss-link { margin: 4px 0 30px; font-family: var(--sans); font-size: .85rem; text-align: center; }
     .start-here { margin: -22px 0 10px; font-family: var(--sans); font-size: .85rem; text-align: center; color: var(--muted); }
 
@@ -165,6 +165,8 @@
     .shelf-list a { display: block; padding: 11px 2px; font-family: var(--serif); font-size: 1.02rem;
       line-height: 1.4; color: var(--ink); text-decoration: none; }
     .shelf-list a:hover, .shelf-list a:focus-visible { text-decoration: underline; }
+    .list-head { font-family: var(--sans); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
 
     .post-list { list-style: none; display: flex; flex-direction: column; gap: 0; margin: 0; padding: 0; }
     .post { display: block; padding: 20px 0; border-top: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
@@ -215,11 +217,11 @@
     <p class="rss-link"><a href="https://pintpoint.co.uk/blog/feed.xml">RSS feed</a></p>
     <p class="shelf-switch"><span class="switch-label">Images</span><button type="button" class="view-toggle" role="switch" aria-checked="true" aria-label="Images" hidden><span class="switch-text">ON</span><span class="switch-knob"></span></button></p>
     <div class="shelf">
-        <a class="shelf-tile t1" href="fullers-esb-in-america.html" title="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s" aria-label="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s"><picture><source type="image/webp" srcset="images/tiles/fullers-esb-in-america-960.webp" /><img src="images/tiles/fullers-esb-in-america-960.jpg" alt="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s" loading="eager" decoding="async" width="960" height="960" /></picture></a>
-        <a class="shelf-tile t2" href="fullers-yeast-firestone-walker.html" title="Why Firestone Walker chose Fuller&rsquo;s yeast" aria-label="Why Firestone Walker chose Fuller&rsquo;s yeast"><picture><source type="image/webp" srcset="images/tiles/fullers-yeast-firestone-walker-480.webp" /><img src="images/tiles/fullers-yeast-firestone-walker-480.jpg" alt="Why Firestone Walker chose Fuller&rsquo;s yeast" loading="lazy" decoding="async" width="480" height="480" /></picture></a>
-        <a class="shelf-tile t2" href="uk-oktoberfest-events-2026.html" title="UK Oktoberfest Events 2026" aria-label="UK Oktoberfest Events 2026"><picture><source type="image/webp" srcset="images/tiles/uk-oktoberfest-events-2026-480.webp" /><img src="images/tiles/uk-oktoberfest-events-2026-480.jpg" alt="UK Oktoberfest Events 2026" loading="lazy" decoding="async" width="480" height="480" /></picture></a>
-        <a class="shelf-tile t2" href="september-is-oktoberfest.html" title="September is Oktoberfest" aria-label="September is Oktoberfest"><picture><source type="image/webp" srcset="images/tiles/september-is-oktoberfest-v2-480.webp" /><img src="images/tiles/september-is-oktoberfest-v2-480.jpg" alt="September is Oktoberfest" loading="lazy" decoding="async" width="480" height="480" /></picture></a>
-        <a class="shelf-tile t2" href="cask-ale-week-2026.html" title="Cask Ale Week: the Format Nobody Else Can Pour" aria-label="Cask Ale Week: the Format Nobody Else Can Pour"><picture><source type="image/webp" srcset="images/tiles/cask-ale-week-2026-v2-480.webp" /><img src="images/tiles/cask-ale-week-2026-v2-480.jpg" alt="Cask Ale Week: the Format Nobody Else Can Pour" loading="lazy" decoding="async" width="480" height="480" /></picture></a>
+        <a class="shelf-tile t1" href="fullers-esb-in-america.html" title="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s" aria-label="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s"><picture><source type="image/webp" srcset="images/tiles/fullers-esb-in-america-960.webp" /><img src="images/tiles/fullers-esb-in-america-960.jpg" alt="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s" loading="eager" fetchpriority="high" decoding="async" width="960" height="960" /></picture></a>
+        <a class="shelf-tile t2" href="fullers-yeast-firestone-walker.html" title="Why Firestone Walker chose Fuller&rsquo;s yeast" aria-label="Why Firestone Walker chose Fuller&rsquo;s yeast"><picture><source type="image/webp" srcset="images/tiles/fullers-yeast-firestone-walker-480.webp" /><img src="images/tiles/fullers-yeast-firestone-walker-480.jpg" alt="Why Firestone Walker chose Fuller&rsquo;s yeast" loading="eager" decoding="async" width="480" height="480" /></picture></a>
+        <a class="shelf-tile t2" href="uk-oktoberfest-events-2026.html" title="UK Oktoberfest Events 2026" aria-label="UK Oktoberfest Events 2026"><picture><source type="image/webp" srcset="images/tiles/uk-oktoberfest-events-2026-480.webp" /><img src="images/tiles/uk-oktoberfest-events-2026-480.jpg" alt="UK Oktoberfest Events 2026" loading="eager" decoding="async" width="480" height="480" /></picture></a>
+        <a class="shelf-tile t2" href="september-is-oktoberfest.html" title="September is Oktoberfest" aria-label="September is Oktoberfest"><picture><source type="image/webp" srcset="images/tiles/september-is-oktoberfest-v2-480.webp" /><img src="images/tiles/september-is-oktoberfest-v2-480.jpg" alt="September is Oktoberfest" loading="eager" decoding="async" width="480" height="480" /></picture></a>
+        <a class="shelf-tile t2" href="cask-ale-week-2026.html" title="Cask Ale Week: the Format Nobody Else Can Pour" aria-label="Cask Ale Week: the Format Nobody Else Can Pour"><picture><source type="image/webp" srcset="images/tiles/cask-ale-week-2026-v2-480.webp" /><img src="images/tiles/cask-ale-week-2026-v2-480.jpg" alt="Cask Ale Week: the Format Nobody Else Can Pour" loading="eager" decoding="async" width="480" height="480" /></picture></a>
         <a class="shelf-tile t3" href="city-of-london-ghosts.html" title="Old Haunts of the Square Mile" aria-label="Old Haunts of the Square Mile"><picture><source type="image/webp" srcset="images/tiles/city-of-london-ghosts-240.webp" /><img src="images/tiles/city-of-london-ghosts-240.jpg" alt="Old Haunts of the Square Mile" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
         <a class="shelf-tile t3" href="ghosts-of-baddow-brewery.html" title="Ghosts of Baddow Brewery" aria-label="Ghosts of Baddow Brewery"><picture><source type="image/webp" srcset="images/tiles/ghosts-of-baddow-brewery-v2-240.webp" /><img src="images/tiles/ghosts-of-baddow-brewery-v2-240.jpg" alt="Ghosts of Baddow Brewery" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
         <a class="shelf-tile t3" href="revivals.html" title="These aren't revivals. They're not even spirits" aria-label="These aren't revivals. They're not even spirits"><picture><source type="image/webp" srcset="images/tiles/revivals-240.webp" /><img src="images/tiles/revivals-240.jpg" alt="These aren't revivals. They're not even spirits" loading="lazy" decoding="async" width="240" height="240" /></picture></a>
@@ -266,6 +268,7 @@
 
 
 
+    <h2 class="list-head">Older posts</h2>
     <ul class="post-list">
       <li>
         <a href="tegernseer-on-draught-uk.html" class="post">
