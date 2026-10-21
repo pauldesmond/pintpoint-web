@@ -20,7 +20,7 @@
   <meta name="twitter:title" content="Under the Hood: How PINtDEXTER Picks Your Pint" />
   <meta name="twitter:description" content="Why PINtPOINT skipped collaborative filtering and built a content-first recommender on top of LLM-inferred per-beer flavour DNA." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -74,96 +74,57 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
-    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    /* Numbered thesis-form section headings (2026-06-07).
-       Auto-numbering via counter; the FAQ H2 is excluded so it doesn't
-       get a section number that wouldn't make sense for an accordion. */
-    .content { counter-reset: section; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; counter-increment: section; }
-    h2::before { content: counter(section, decimal-leading-zero) " · "; color: var(--teal); font-family: 'SF Mono', Menlo, monospace; font-weight: 700; font-size: 0.85em; letter-spacing: 0.05em; }
-    .faq h2, .faq h2::before { counter-increment: none; }
-    .faq h2::before { content: ''; }
-    h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 24px; margin-bottom: 10px; color: var(--text); }
-    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
-    article a, article a:visited, main a, main a:visited { color: var(--teal); }
-    .highlight { color: var(--text); font-weight: 600; }
-    .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
-    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
-    .category.essay { color: #9DA5FF; border: 1px solid rgba(157,165,255,0.4); }
-    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
-    .quote { font-size: 1.2rem; font-weight: 700; color: var(--teal); text-align: center; padding: 32px 0; margin: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); line-height: 1.55; }
-    ul, ol { margin: 16px 0 24px 20px; }
-    li { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 6px; }
-    blockquote { border-left: 2px solid var(--teal); padding: 4px 16px; margin: 20px 0; color: var(--muted); font-style: italic; }
-    code { background: var(--card); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; font-family: 'SF Mono', Menlo, monospace; color: var(--teal); }
-    .sources { font-size: 0.85rem; color: #666; margin-top: 32px; padding: 16px 20px; background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; }
-    .series-links a { color: #C0A340; }
-    .sources a { color: var(--muted); text-decoration: underline; }
-    .faq { margin-top: 48px; }
-    .faq h2 { margin-bottom: 24px; }
-    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-    .faq-item summary { font-size: 1rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--teal); }
-    .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item p { margin-top: 10px; }
-    a.cta { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; margin-top: 32px; }
-    a.cta:hover { opacity: 0.88; }
-    .closing { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
-
-    /* ─── Interactive figures (2026-06-07) ─────────────────────────
-       TastePentagon + Head-to-Head FlavourEqualizer + beer-chip picker.
-       Vanilla SVG + vanilla JS. No deps. Real catalogue beer data.
-       Mirrors PINtPOINT's in-app BEER DNA chart so a blog reader can
-       feel the recommendation paradigm before signing up. */
-    .fig-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 32px 0; }
+    .fig-block { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 24px; margin: 32px 0; }
     .fig-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
-    .fig-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal); }
-    .fig-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--text); }
+    .fig-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink); }
+    .fig-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--ink); }
     .fig-hint { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); }
     .beerchips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 18px; }
-    .beerchip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; cursor: pointer; transition: all .18s ease; }
-    .beerchip:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-    .beerchip[aria-pressed="true"] { color: #000; background: var(--teal); border-color: var(--teal); }
+    .beerchip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 6px 12px; cursor: pointer; transition: all .18s ease; }
+    .beerchip:hover { color: var(--ink); border-color: var(--rule); }
+    .beerchip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
     .pent-stage { display: flex; justify-content: center; padding: 8px 0; }
     .pent-stage svg { width: 100%; max-width: 320px; height: auto; }
-    .pent-grid { fill: none; stroke: var(--border); stroke-width: 1; }
-    .pent-axis { stroke: var(--border); stroke-width: 1; }
-    .pent-shape { fill: rgba(0,212,170,0.18); stroke: var(--teal); stroke-width: 2; stroke-linejoin: round; transition: all .6s cubic-bezier(.34,1.2,.5,1); filter: drop-shadow(0 0 12px rgba(0,212,170,0.4)); }
-    .pent-vert { fill: var(--teal); transition: all .6s cubic-bezier(.34,1.2,.5,1); }
+    .pent-grid { fill: none; stroke: var(--muted); stroke-width: 1; }
+    .pent-axis { stroke: var(--muted); stroke-width: 1; }
+    .pent-shape { fill: var(--muted); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; transition: all .6s cubic-bezier(.34,1.2,.5,1); filter: drop-shadow(0 0 12px rgba(0,212,170,0.4)); }
+    .pent-vert { fill: var(--ink); transition: all .6s cubic-bezier(.34,1.2,.5,1); }
     .pent-label { font-family: 'SF Mono', Menlo, monospace; font-size: 10px; letter-spacing: 0.08em; fill: var(--muted); text-transform: uppercase; }
     .pent-caption { font-size: 0.85rem; color: var(--muted); text-align: center; margin-top: 8px; line-height: 1.5; }
-    /* Head-to-Head equaliser */
     .h2h-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .h2h-col h4 { font-size: 0.85rem; color: var(--text); margin-bottom: 6px; font-weight: 700; }
+    .h2h-col h4 { font-size: 0.85rem; color: var(--ink); margin-bottom: 6px; font-weight: 700; }
     .h2h-col .h2h-meta { font-size: 0.75rem; color: var(--muted); margin-bottom: 12px; font-family: 'SF Mono', Menlo, monospace; }
     .h2h-bars { display: grid; grid-template-columns: 56px 1fr; gap: 6px 10px; align-items: center; }
     .h2h-axis { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
-    .h2h-bar-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
-    .h2h-bar-fill { height: 100%; background: var(--teal); border-radius: 4px; transition: width .5s cubic-bezier(.34,1.2,.5,1); }
-    @media (max-width: 600px) { .h2h-grid { grid-template-columns: 1fr; } .pent-label { font-size: 9px; } }
+    .h2h-bar-track { height: 8px; background: var(--rule-soft); border-radius: 0; overflow: hidden; }
+    .h2h-bar-fill { height: 100%; background: var(--amber); border-radius: 0; transition: width .5s cubic-bezier(.34,1.2,.5,1); }
+    body .ps-1 { margin-top: 16px; }
+    body .ps-2 { margin: 20px 0 28px 24px; }
+    body .ps-3 { margin-bottom: 14px; }
+    body .ps-4 { margin-bottom: 14px; }
+    body .ps-5 { margin-bottom: 14px; }
+    body .ps-6 { margin: 8px 0 0 20px; }
+    body .ps-7 { margin-top: 56px; padding: 24px 28px; background: transparent; border-left: 2px solid var(--amber); border-radius: 0; }
+    body .ps-8 { margin: 0 0 14px; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    body .ps-9 { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; line-height: 1.7; }
+    body .ps-10 { color: var(--amber-ink); }
+    body .ps-11 { color: var(--amber-ink); }
+    body .ps-12 { color: var(--ink); font-size: 0.85rem; font-weight: 600; }
+    body .ps-13 { color: var(--amber-ink); }
+    body .ps-14 { color: var(--amber-ink); }
+    body .ps-15 { margin: 14px 0 0; font-size: 0.85rem; }
+    @media (max-width: 600px) {
+      .h2h-grid { grid-template-columns: 1fr; }
+      .pent-label { font-size: 9px; }
+    }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="../about-pintpoint.html">About</a>
       <a href="../features.html">Features</a>
       <a href="../pubs/">Venues</a>
@@ -173,12 +134,12 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>20 May 2026 · Engineering</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category essay">Essay</span>20 May 2026 · Engineering</p>
     <h1>Under the Hood: <em>How PINtDEXTER Picks Your Pint</em></h1>
 
     <p class="lede">An <a href="beer-recommendation-systems-what-most-get-wrong.html">earlier essay</a> argued for predicting the pint rather than the rating. That piece was about the user side of the recommender — how PINtPOINT learns what you like. This one is the other side: how each beer gets a shape worth recommending. It comes down to four layers, a per-beer DNA, and the misclassified pale lager that exposed the most recent fix.</p>
 
-    <p class="quote">A recommender is only as good as what it knows about the thing it's recommending.</p>
+    <blockquote>A recommender is only as good as what it knows about the thing it's recommending.</blockquote>
 
     <h2>The default answer, and where it breaks on beer</h2>
 
@@ -216,7 +177,7 @@
     <p>The same five anchor a second view. The <span class="highlight">FlavourEqualizer</span> swaps the silhouette for eight vertical columns — the five fixed axes (Bitter, Sweet, Sour, Body, ABV) plus three adaptive personality slots that float across hop, malt, and fruit families by score. A NEIPA might surface Citrusy, Tropical, and Juicy; a stout, Roasty, Chocolatey, and Malty. The pentagon answers <em>is this beer my shape</em> at a glance; the equaliser answers it side-by-side — vertical bars that compare cleanly when two beers sit next to each other in Head-to-Head. The four hop labels are a compressed view of the richer six-category teaching taxonomy covered separately in <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a>.</p>
 
     <!-- ── Interactive figure 1: TastePentagon ─────────────────────── -->
-    <figure class="fig-block" id="taste-pentagon-fig">
+    <figure class="fig-block wide" id="taste-pentagon-fig">
       <div class="fig-head">
         <div>
           <div class="fig-kicker">Interactive · TastePentagon</div>
@@ -245,7 +206,7 @@
     </figure>
 
     <!-- ── Interactive figure 2: Head-to-Head FlavourEqualizer ────── -->
-    <figure class="fig-block" id="head-to-head-fig">
+    <figure class="fig-block wide" id="head-to-head-fig">
       <div class="fig-head">
         <div>
           <div class="fig-kicker">Interactive · Head-to-Head</div>
@@ -279,17 +240,17 @@
           </div>
         </div>
       </div>
-      <p class="pent-caption" style="margin-top: 16px;">Same five axes; structural twins (e.g. two American IPAs) line up across the rows. Cross-family pairs (Landlord vs The Porter) show the swap: hop and fruit bars vs roast bars high.</p>
+      <p class="pent-caption ps-1">Same five axes; structural twins (e.g. two American IPAs) line up across the rows. Cross-family pairs (Landlord vs The Porter) show the swap: hop and fruit bars vs roast bars high.</p>
     </figure>
 
     <h2>The four layers, end to end</h2>
 
     <p>PINtDEXTER stacks four signals. Each answers a different question. Take any one out and recommendations get worse in a different direction.</p>
 
-    <ol style="margin: 20px 0 28px 24px;">
-      <li style="margin-bottom: 14px"><span class="highlight">Preference capture</span> — Sip-or-Skip binary swipes and Head-to-Head pair rounds. Forced choices, not free-form ratings. Output: a soft style profile after about ten interactions.</li>
-      <li style="margin-bottom: 14px"><span class="highlight">Sliders (TUNeDEXTER)</span> — the user can take direct control of five flavour sliders plus body and strength when the inferred profile is wrong. Preference learning is suggestion, not law. The resolver applies that tuning per style family rather than globally, so a max-bitter / zero-fruit IPA tuning doesn't punish a Red Ale for being red-ale-shaped — cross-family beers score against per-family baselines instead. (Per-family slider UI is a future TUNeDEXTER slice; the resolver handles the scoping internally for now.)</li>
-      <li style="margin-bottom: 14px"><span class="highlight">Per-beer DNA</span> — the LLM-scored content features above. Independent of any user. Cached per beer, re-run only when we explicitly backfill or invalidate.</li>
+    <ol class="ps-2">
+      <li class="ps-3"><span class="highlight">Preference capture</span> — Sip-or-Skip binary swipes and Head-to-Head pair rounds. Forced choices, not free-form ratings. Output: a soft style profile after about ten interactions.</li>
+      <li class="ps-4"><span class="highlight">Sliders (TUNeDEXTER)</span> — the user can take direct control of five flavour sliders plus body and strength when the inferred profile is wrong. Preference learning is suggestion, not law. The resolver applies that tuning per style family rather than globally, so a max-bitter / zero-fruit IPA tuning doesn't punish a Red Ale for being red-ale-shaped — cross-family beers score against per-family baselines instead. (Per-family slider UI is a future TUNeDEXTER slice; the resolver handles the scoping internally for now.)</li>
+      <li class="ps-5"><span class="highlight">Per-beer DNA</span> — the LLM-scored content features above. Independent of any user. Cached per beer, re-run only when we explicitly backfill or invalidate.</li>
       <li><span class="highlight">Availability filter</span> — recent tap-list activity at venues near you, drawn from Untappd's public feeds. The recommendation is grounded in a specific bar's recent pours, not a beer name plucked from a global catalogue.</li>
     </ol>
 
@@ -309,7 +270,7 @@
 
     <h2>What we're not claiming</h2>
 
-    <p>None of this means content-based recommendation is new, or that PINtPOINT invented LLM feature extraction. The contribution is narrower: feature extraction from the beer's own metadata rather than from community discussion, combined with a four-layer pipeline tied to what's been pouring recently at venues nearby — not a global catalogue, not a leaderboard.</p>
+    <p class="end">None of this means content-based recommendation is new, or that PINtPOINT invented LLM feature extraction. The contribution is narrower: feature extraction from the beer's own metadata rather than from community discussion, combined with a four-layer pipeline tied to what's been pouring recently at venues nearby — not a global catalogue, not a leaderboard.</p>
 
     <p class="quote">Most beer recommenders predict ratings.<br/>PINtPOINT picks the pint that's on the bar.</p>
 
@@ -335,22 +296,22 @@
 
     <div class="sources">
       <strong>Source material:</strong>
-      <ul style="margin:8px 0 0 20px">
+      <ul class="ps-6">
         <li><a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the earlier PINtPOINT essay this follows up.</li>
         <li><a href="https://web.archive.org/web/20140620111956/http://blog.yhathq.com/posts/recommender-system-in-r.html" target="_blank">A Beer Recommendation System Made With R</a> — David Smith / &#375;hat, June 2013. Item-item collaborative filtering on 1.5M BeerAdvocate reviews; ratings only.</li>
         <li><a href="https://medium.com/@nskp1990/beer-recommendation-engine-harnessing-the-power-of-llms-and-embeddings-03a4f72266f5" target="_blank">Beer Recommendation Engine: Harnessing the Power of LLMs and Embeddings</a> — Nishant Kushwaha, 2023. LLM-based attribute extraction from community review text.</li>
       </ul>
     </div>
 
-    <aside class="series-links" style="margin-top:56px;padding:24px 28px;background:var(--card);border-left:2px solid var(--teal);border-radius:4px">
-      <p style="margin:0 0 14px;font-size:0.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em">Companion essays</p>
-      <ul style="list-style:none;padding:0;margin:0;font-size:0.95rem;line-height:1.7">
-        <li><strong style="color:#C0A340">Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the usual approach is broken</li>
-        <li><strong style="color:#C0A340">How</strong> · Under the Hood: How PINtDEXTER Picks Your Pint — the engine that does it instead <span style="color:var(--teal);font-size:0.85rem;font-weight:600">← you're reading</span></li>
-        <li><strong style="color:#C0A340">What's in it</strong> · <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> — the ingredient and sensory vocabulary</li>
-        <li><strong style="color:#C0A340">Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — what drinking it feels like</li>
+    <aside class="series-links ps-7">
+      <p class="ps-8">Companion essays</p>
+      <ul class="ps-9">
+        <li><strong class="ps-10">Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the usual approach is broken</li>
+        <li><strong class="ps-11">How</strong> · Under the Hood: How PINtDEXTER Picks Your Pint — the engine that does it instead <span class="ps-12">← you're reading</span></li>
+        <li><strong class="ps-13">What's in it</strong> · <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> — the ingredient and sensory vocabulary</li>
+        <li><strong class="ps-14">Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — what drinking it feels like</li>
       </ul>
-      <p style="margin:14px 0 0;font-size:0.85rem"><a href="pick-the-right-pint.html" style="color:#C0A340;text-decoration:none">↑ Part of <em>Pick the right pint</em> — the four-essay guide</a></p>
+      <p class="ps-15"><a href="pick-the-right-pint.html">↑ Part of <em>Pick the right pint</em> — the four-essay guide</a></p>
     </aside>
 
     <div class="closing">
@@ -362,6 +323,7 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="../index.html">Home</a>
       <a href="../features.html">Features</a>
