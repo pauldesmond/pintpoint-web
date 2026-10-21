@@ -210,7 +210,9 @@
       background: none; border: 1px solid var(--rule); color: var(--muted); padding: 8px 14px; border-radius: 999px;
       cursor: pointer; }
     .kinds button:hover, .kinds button:focus-visible { border-color: var(--amber-ink); color: var(--ink); outline: none; }
-    .kinds button[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); font-weight: 700; }
+    .kinds button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper);
+      font-weight: 700; }
+    .kinds button[aria-pressed="true"] .count { color: var(--amber); }
     .kinds .count { font-weight: 400; color: var(--amber-ink); margin-left: 6px; }
     .post-list li[hidden] { display: none; }
 
