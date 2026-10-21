@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="In 1979 David Bruce opened the Goose & Firkin in Elephant and Castle. By 1995 the chain had 44 pubs, 19 of them brewing on site. By 2001 the brand was gone. What people still remember isn't the puns — it's the brewing in the room." />
   <meta name="twitter:image" content="https://pintpoint.co.uk/blog/images/firkin-died-as-a-chain.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -82,55 +82,23 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    :root { --bg: #0a0e1a; --card: #111827; --text: #e5e7eb; --muted: #9ca3af; --border: #1f2937; --teal: #00d4aa; --amber: #f5a623; --link: #00d4aa; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 32px; border-bottom: 1px solid var(--border); }
-    .logo { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.01em; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); font-size: 0.9rem; font-weight: 500; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 720px; margin: 0 auto; padding: 60px 32px 80px; }
-    .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 18px; display: flex; gap: 12px; align-items: center; }
-    .category { background: rgba(0,212,170,0.12); color: var(--teal); border-radius: 999px; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
-    h1 { font-size: 2.3rem; font-weight: 900; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 12px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.55rem; font-weight: 800; margin-top: 56px; margin-bottom: 18px; letter-spacing: -0.015em; }
-    p { margin-bottom: 18px; color: var(--text); }
-    p.lede { font-size: 1.1rem; color: var(--text); margin-bottom: 28px; }
-    blockquote { margin: 32px 0; padding: 4px 0 4px 22px; border-left: 3px solid var(--teal); font-size: 1.1rem; line-height: 1.6; color: var(--text); }
-    blockquote cite { display: block; margin-top: 10px; font-size: 0.85rem; color: var(--muted); font-style: normal; }
-    figure.archive { margin: 32px 0; }
-    figure.archive img { width: 100%; height: auto; border-radius: 8px; display: block; border: 1px solid var(--border); }
-    figure.archive figcaption { margin-top: 10px; font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
-    figure.archive figcaption .credit { display: block; margin-top: 4px; font-size: 0.74rem; letter-spacing: 0.02em; }
-    figure.archive figcaption .credit a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--muted); }
-    figure.archive figcaption .credit a:hover { color: var(--text); border-bottom-color: var(--text); }
-    .closing { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
-    .closing p { font-size: 1.05rem; color: var(--text); }
-    .sources { margin-top: 40px; padding: 20px 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; font-size: 0.88rem; }
-    .sources h3 { font-size: 0.9rem; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0; }
-    .sources ul { list-style: none; padding: 0; }
-    .sources li { padding: 6px 0; }
-    .crawl-cta { margin-top: 40px; padding: 24px 26px; background: linear-gradient(135deg, rgba(0,212,170,0.08), rgba(0,212,170,0.02)); border: 1px solid rgba(0,212,170,0.3); border-radius: 12px; }
-    .crawl-cta h3 { font-size: 1rem; font-weight: 800; color: var(--teal); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .crawl-cta { margin-top: 40px; padding: 24px 26px; background: transparent; border: 1px solid var(--rule); border-radius: 0; }
+    .crawl-cta h3 { font-size: 1rem; font-weight: 800; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
     .crawl-cta p { margin-bottom: 8px; font-size: 0.95rem; }
-    .crawl-cta a { color: var(--teal); font-weight: 600; text-decoration: none; }
+    .crawl-cta a { color: var(--ink); font-weight: 600; text-decoration: none; }
     .crawl-cta a:hover { text-decoration: underline; }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } h1 { font-size: 1.75rem; } }
+    body .ps-1 { color: var(--muted); font-size: 1.05rem; margin-top: -4px; margin-bottom: 28px; }
+    body .ps-2 { margin-top: 12px; font-size: 0.9rem; }
+    body .ps-3 { margin-top: 12px; font-size: 0.9rem; }
+    body .ps-4 { margin-top: 18px; font-size: 0.88rem; color: var(--muted); }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="../about-pintpoint.html">About</a>
       <a href="../features.html">Features</a>
       <a href="../pubs/">Venues</a>
@@ -140,9 +108,9 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>31 May 2026 · London · Heritage</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category essay">Essay</span>31 May 2026 · London · Heritage</p>
     <h1>Following the Firkin <em>trail(s)</em>…</h1>
-    <p style="color:var(--muted);font-size:1.05rem;margin-top:-4px;margin-bottom:28px">A south London brewpub, a financial advisor who said it would fail, and a chain that ran for twenty-two years before losing the thing that made it itself.</p>
+    <p class="ps-1">A south London brewpub, a financial advisor who said it would fail, and a chain that ran for twenty-two years before losing the thing that made it itself.</p>
 
     <p class="lede">Ask anyone who drank in a Firkin pub between 1979 and the late 1990s what they remember and it is rarely the punning name or the logo. It is the brewing. The kit visible from the bar, the brewer somewhere in the room, the beer poured from the same brass-and-wood pumps you'd find in any London public house — except in this one, it had been made downstairs.</p>
 
@@ -154,7 +122,7 @@
 
     <p>David Bruce opened the doors of the Goose & Firkin at 47 Borough Road, Elephant and Castle, on 18 July 1979. The building was a run-down Truman pub called the Duke of York; Bruce took on the lease, renamed it, and put the brewery in the basement. He was 30, recently out of work, looking — in his own later phrasing — for "a bonkers way to get off the dole."</p>
 
-    <figure class="archive">
+    <figure class="archive inset">
       <img src="https://cdn.pintpoint.co.uk/photos/historical/firkin-goose-firkin-era.jpg" alt="The Goose & Firkin pub on Borough Road, 1979 — David Bruce's first brewpub, with the Goose & Firkin sign over the door." loading="lazy" />
       <figcaption>The Goose & Firkin, 47-48 Borough Road, Elephant and Castle — Bruce's 1979 original. The building still trades today, having quietly reverted to its pre-Firkin name: the Duke of York.<span class="credit">Courtesy of the <a href="https://breweryhistory.com/wiki/index.php/Firkin_Brewery" target="_blank" rel="noopener noreferrer">Brewery History Society</a>.</span></figcaption>
     </figure>
@@ -232,16 +200,16 @@
     <div class="closing">
       <p>Firkin's story is not just that a pub chain disappeared. It's that a live brewing idea became a chain, then ceased to be that idea, and the chain disappeared shortly after. The thing being mourned in Firkin nostalgia isn't really the chain. It's the moment when, briefly, you could walk into a pub in Elephant and Castle, or Highbury, or Lewisham, and see your beer being made.</p>
 
-      <p>Bruce himself, now in his mid-seventies, told Pellicle in 2025: <em>"Sometimes I wonder, did it start with me in London?"</em> Whatever the answer to that, the brewpub model is now familiar everywhere in British beer culture — small kit, on-site fermentation, locally-named beer, atmosphere over polish — and it doesn't need to call itself Firkin to be doing what Bruce did. Bruce himself never stopped: <span>in the late 1980s, immediately after selling Firkin, he founded a second UK brewpub chain called Hedgehog &amp; Hogshead, with sites in Hove, Southampton and a non-brewing pub (the Water Rat) near Newbury. Its flagship was <em>Hogbolter</em> at 5.8% — a sister-named, slightly stronger Dogbolter. Hedgehog &amp; Hogshead never reached Firkin scale and is now itself a closed chain. But the naming continuity — Dogbolter, Hogbolter — and the parallel insistence on visible on-site brewing made it unmistakably the next move from the same hand.</span> He later opened the Frog & Rosbif chain of brewpubs in Paris, where the pun-naming carried on (Inseine, Parislytic, Dark de Triomphe) and the on-site brewing kept going. But the chain that put this idea most ambitiously in front of British drinkers, four decades back, is the one they still bring up when the subject comes up. That's not because it lasted. It's because it stuck.</p>
+      <p class="end">Bruce himself, now in his mid-seventies, told Pellicle in 2025: <em>"Sometimes I wonder, did it start with me in London?"</em> Whatever the answer to that, the brewpub model is now familiar everywhere in British beer culture — small kit, on-site fermentation, locally-named beer, atmosphere over polish — and it doesn't need to call itself Firkin to be doing what Bruce did. Bruce himself never stopped: <span>in the late 1980s, immediately after selling Firkin, he founded a second UK brewpub chain called Hedgehog &amp; Hogshead, with sites in Hove, Southampton and a non-brewing pub (the Water Rat) near Newbury. Its flagship was <em>Hogbolter</em> at 5.8% — a sister-named, slightly stronger Dogbolter. Hedgehog &amp; Hogshead never reached Firkin scale and is now itself a closed chain. But the naming continuity — Dogbolter, Hogbolter — and the parallel insistence on visible on-site brewing made it unmistakably the next move from the same hand.</span> He later opened the Frog & Rosbif chain of brewpubs in Paris, where the pun-naming carried on (Inseine, Parislytic, Dark de Triomphe) and the on-site brewing kept going. But the chain that put this idea most ambitiously in front of British drinkers, four decades back, is the one they still bring up when the subject comes up. That's not because it lasted. It's because it stuck.</p>
     </div>
 
     <div class="crawl-cta">
       <h3>Walk the Firkin Ale Trail</h3>
       <p>We've turned the 1990 leaflet into a Hall-of-Fame crawl in PINtPOINT: 12 stops in perimeter order, seven still pubs under other names, five ghost stops with the building history. The line on the map traces the dog.</p>
       <p><a href="/crawls/firkin-doghead.html">See the route and the 12 stops →</a></p>
-      <p style="margin-top:12px;font-size:0.9rem">Or walk Ale Trail II <a href="/crawls/firkin-revival.html">— the modern Firkin Brewery revival, 8 south London bars →</a></p>
-      <p style="margin-top:12px;font-size:0.9rem">Or walk Ale Trail III <a href="/crawls/ex-firkin-london.html">— Ex-Firkin London, 22 chain-era pubs across 5 walkable chapters →</a></p>
-      <p style="margin-top:18px;font-size:0.88rem;color:var(--muted)">See the <a href="/firkin/">full Firkin overview on PINtPOINT</a> — article, all three Ale Trails, and forty pubs in one place.</p>
+      <p class="ps-2">Or walk Ale Trail II <a href="/crawls/firkin-revival.html">— the modern Firkin Brewery revival, 8 south London bars →</a></p>
+      <p class="ps-3">Or walk Ale Trail III <a href="/crawls/ex-firkin-london.html">— Ex-Firkin London, 22 chain-era pubs across 5 walkable chapters →</a></p>
+      <p class="ps-4">See the <a href="/firkin/">full Firkin overview on PINtPOINT</a> — article, all three Ale Trails, and forty pubs in one place.</p>
     </div>
 
     <div class="sources">
@@ -254,6 +222,7 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="../index.html">Home</a>
       <a href="../features.html">Features</a>
