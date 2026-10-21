@@ -54,11 +54,8 @@ const FILTER_CSS = `
     .kinds button[aria-pressed="true"] .count { color: var(--amber); }
     .kinds .count { font-weight: 400; color: var(--amber-ink); margin-left: 6px; }
     .post-list li[hidden] { display: none; }
-    .show-more { display: block; margin: 26px auto 0; font-family: var(--sans); font-size: .78rem;
-      letter-spacing: .05em; text-transform: uppercase; background: none; border: 1px solid var(--rule);
-      border-radius: 999px; color: var(--ink); padding: 10px 20px; cursor: pointer; }
-    .show-more:hover, .show-more:focus-visible { border-color: var(--ink); outline: none; }
-    .show-more[hidden] { display: none; }
+    .list-pager { margin: 34px 0 10px; }
+    .list-pager a, .list-pager span { border-radius: 999px; }
 `;
 
 const FILTER_JS = `  <script>
@@ -74,44 +71,66 @@ const FILTER_JS = `  <script>
       var c = d.className.replace('post-date', '').trim();
       return c.split(' ')[0] || '';
     }
-    var PAGE = 15;
-    var shown = PAGE;
+    // Fifteen to a page, and the numbers say where in the history you are:
+    // 1 is the newest, the last number is the oldest.
+    var PER = 15;
+    var pager = document.querySelector('.list-pager');
     var current = '';
-    var more = document.querySelector('.show-more');
+    var page = 1;
     function matching(k) {
       return items.filter(function (li) { return !k || kind(li) === k; });
     }
-    function apply(k, keep) {
+    function drawPager(n) {
+      if (!pager) return;
+      pager.textContent = '';
+      if (n < 2) return;
+      function add(label, to, rel) {
+        var el = document.createElement(to === page ? 'span' : 'a');
+        el.textContent = label;
+        if (to === page) { el.className = 'is-here'; el.setAttribute('aria-current', 'page'); }
+        else { el.href = '#'; el.dataset.page = to; if (rel) el.setAttribute('rel', rel); }
+        pager.appendChild(el);
+      }
+      if (page > 1) add('\u2190 Newer', page - 1, 'prev');
+      for (var i = 1; i <= n; i++) add(String(i), i);
+      if (page < n) add('Older \u2192', page + 1, 'next');
+    }
+    function apply(k, p) {
       current = k;
-      if (!keep) shown = PAGE;
       var hits = matching(k);
+      var n = Math.max(1, Math.ceil(hits.length / PER));
+      page = Math.min(Math.max(1, p || 1), n);
       items.forEach(function (li) { li.hidden = true; });
-      hits.slice(0, shown).forEach(function (li) { li.hidden = false; });
+      hits.slice((page - 1) * PER, page * PER).forEach(function (li) { li.hidden = false; });
       Array.prototype.forEach.call(bar.querySelectorAll('button'), function (b) {
         b.setAttribute('aria-pressed', (b.dataset.kind || '') === (k || '') ? 'true' : 'false');
       });
-      if (more) {
-        var left = hits.length - Math.min(shown, hits.length);
-        more.hidden = left <= 0;
-        if (left > 0) more.textContent = left > PAGE ? 'Show ' + PAGE + ' more' : 'Show the last ' + left;
-      }
+      drawPager(n);
+    }
+    function sync() {
+      var u = new URL(window.location.href);
+      if (current) u.searchParams.set('kind', current); else u.searchParams.delete('kind');
+      if (page > 1) u.searchParams.set('page', page); else u.searchParams.delete('page');
+      history.replaceState(null, '', u);
     }
     bar.addEventListener('click', function (e) {
       var b = e.target.closest('button');
       if (!b) return;
-      var k = b.dataset.kind || '';
-      apply(k);
-      var u = new URL(window.location.href);
-      if (k) u.searchParams.set('kind', k); else u.searchParams.delete('kind');
-      history.replaceState(null, '', u);
+      apply(b.dataset.kind || '', 1);
+      sync();
       bar.scrollIntoView({ block: 'start' });
     });
-    if (more) more.addEventListener('click', function () {
-      shown += PAGE;
-      apply(current, true);
+    if (pager) pager.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (!a || !a.dataset.page) return;
+      e.preventDefault();
+      apply(current, Number(a.dataset.page));
+      sync();
+      bar.scrollIntoView({ block: 'start' });
     });
-    var start = new URL(window.location.href).searchParams.get('kind') || '';
-    apply(KINDNAMES.indexOf(start) === -1 ? '' : start);
+    var q = new URL(window.location.href).searchParams;
+    var start = q.get('kind') || '';
+    apply(KINDNAMES.indexOf(start) === -1 ? '' : start, Number(q.get('page')) || 1);
   })();
   </script>
 `;
@@ -382,7 +401,8 @@ function buildArchive(template, allCards) {
   html = html.replace(/<h2 class="list-head">[\s\S]*?<\/h2>/, 'ARCHIVEHEAD');
   html = html.replace('ARCHIVEHEAD', `<h2 class="list-head">Everything</h2>\n${filterBar(allCards)}`);
   html = html.replace(/\n\s*<button type="button" class="show-more"[\s\S]*?<\/button>/, '');
-  html = html.replace(/(<\/ul>)/, `$1\n    <button type="button" class="show-more" hidden>Show more</button>`);
+  html = html.replace(/\n\s*<nav class="pager list-pager"[\s\S]*?<\/nav>/, '');
+  html = html.replace(/(<\/ul>)/, `$1\n    <nav class="pager list-pager" aria-label="Archive pages"></nav>`);
   if (!html.includes('.kinds {')) html = html.replace(/(\n  <\/style>)/, `${FILTER_CSS}$1`);
   if (!html.includes("querySelector('.kinds')")) html = html.replace(/(\n<\/body>)/, `\n${FILTER_JS}$1`);
   html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/,
