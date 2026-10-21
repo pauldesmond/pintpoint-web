@@ -145,6 +145,16 @@
     .t1 { grid-column: span 4; grid-row: span 2; }
     .t2 { grid-column: span 2; }
     .t3 { grid-column: span 1; }
+    .shelf[hidden], .shelf-list[hidden] { display: none; }
+    .shelf-switch { margin: 0 0 12px; text-align: right; }
+    .view-toggle { font-family: var(--sans); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+      background: none; border: 1px solid var(--rule); color: var(--muted); padding: 7px 13px; cursor: pointer; }
+    .view-toggle:hover, .view-toggle:focus-visible { border-color: var(--amber-ink); color: var(--ink); outline: none; }
+    .shelf-list { list-style: none; margin: 0 0 44px; padding: 0; border-top: 1px solid var(--rule); }
+    .shelf-list li { border-bottom: 1px solid var(--rule); }
+    .shelf-list a { display: block; padding: 11px 2px; font-family: var(--serif); font-size: 1.02rem;
+      line-height: 1.4; color: var(--ink); text-decoration: none; }
+    .shelf-list a:hover, .shelf-list a:focus-visible { text-decoration: underline; }
 
     .post-list { list-style: none; display: flex; flex-direction: column; gap: 0; margin: 0; padding: 0; }
     .post { display: block; padding: 20px 0; border-top: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
@@ -193,8 +203,9 @@
     <p class="lede no-drop">Guides, essays, postcards and notes on beer: where to drink it, where it came from, and what&rsquo;s in the glass. Nothing sponsored.</p>
     <p class="start-here">New here? <a href="pick-the-right-pint.html">Start with the four-essay guide</a>.</p>
     <p class="rss-link"><a href="https://pintpoint.co.uk/blog/feed.xml">RSS feed</a></p>
+    <p class="shelf-switch"><button type="button" class="view-toggle" aria-pressed="false" hidden>Show titles</button></p>
     <div class="shelf">
-        <a class="shelf-tile t1" href="fullers-esb-in-america.html" title="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s" aria-label="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s"><img src="images/fullers-esb-in-america.jpg" alt="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s" loading="eager" decoding="async" width="960" height="960" /></a>
+        <a class="shelf-tile t1" href="fullers-esb-in-america.html" title="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s" aria-label="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s"><picture><source type="image/webp" srcset="images/tiles/fullers-esb-in-america-960.webp" /><img src="images/tiles/fullers-esb-in-america-960.jpg" alt="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s" loading="eager" decoding="async" width="960" height="960" /></picture></a>
         <a class="shelf-tile t2" href="fullers-yeast-firestone-walker.html" title="Why Firestone Walker chose Fuller&rsquo;s yeast" aria-label="Why Firestone Walker chose Fuller&rsquo;s yeast"><picture><source type="image/webp" srcset="images/tiles/fullers-yeast-firestone-walker-480.webp" /><img src="images/tiles/fullers-yeast-firestone-walker-480.jpg" alt="Why Firestone Walker chose Fuller&rsquo;s yeast" loading="lazy" decoding="async" width="480" height="480" /></picture></a>
         <a class="shelf-tile t2" href="uk-oktoberfest-events-2026.html" title="UK Oktoberfest Events 2026" aria-label="UK Oktoberfest Events 2026"><picture><source type="image/webp" srcset="images/tiles/uk-oktoberfest-events-2026-480.webp" /><img src="images/tiles/uk-oktoberfest-events-2026-480.jpg" alt="UK Oktoberfest Events 2026" loading="lazy" decoding="async" width="480" height="480" /></picture></a>
         <a class="shelf-tile t2" href="september-is-oktoberfest.html" title="September is Oktoberfest" aria-label="September is Oktoberfest"><picture><source type="image/webp" srcset="images/tiles/september-is-oktoberfest-v2-480.webp" /><img src="images/tiles/september-is-oktoberfest-v2-480.jpg" alt="September is Oktoberfest" loading="lazy" decoding="async" width="480" height="480" /></picture></a>
@@ -351,5 +362,39 @@
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "6971c676a791477aa5c33ef62298efc0"}'></script>
     <script defer src="../js/pageview.js"></script>
+  <script>
+  (function () {
+    var shelf = document.querySelector('.shelf');
+    var btn = document.querySelector('.view-toggle');
+    if (!shelf || !btn) return;
+    var list = document.createElement('ul');
+    list.className = 'shelf-list';
+    list.hidden = true;
+    Array.prototype.forEach.call(shelf.querySelectorAll('a.shelf-tile'), function (tile) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = tile.getAttribute('href');
+      a.textContent = tile.getAttribute('aria-label') || tile.getAttribute('title') || '';
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    shelf.parentNode.insertBefore(list, shelf.nextSibling);
+    btn.hidden = false;
+    function apply(titles) {
+      shelf.hidden = titles;
+      list.hidden = !titles;
+      btn.textContent = titles ? 'Show pictures' : 'Show titles';
+      btn.setAttribute('aria-pressed', titles ? 'true' : 'false');
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('pintpress-shelf-view'); } catch (e) {}
+    apply(saved === 'titles');
+    btn.addEventListener('click', function () {
+      var next = shelf.hidden ? false : true;
+      apply(next);
+      try { localStorage.setItem('pintpress-shelf-view', next ? 'titles' : 'pictures'); } catch (e) {}
+    });
+  })();
+  </script>
 </body>
 </html>
