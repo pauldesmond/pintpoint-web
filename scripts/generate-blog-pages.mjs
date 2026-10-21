@@ -50,8 +50,7 @@ const FILTER_CSS = `
       cursor: pointer; }
     .kinds button:hover, .kinds button:focus-visible { border-color: var(--amber-ink); color: var(--ink); outline: none; }
     .kinds button[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); font-weight: 700; }
-    .kinds .count { font-weight: 400; color: var(--muted); margin-left: 6px; }
-    .kinds button[aria-pressed="true"] .count { color: var(--ink); }
+    .kinds .count { font-weight: 400; color: var(--amber-ink); margin-left: 6px; }
     .post-list li[hidden] { display: none; }
 `;
 
@@ -369,16 +368,32 @@ front = front.replace(/\n\s*<nav class="pager[^"]*"[\s\S]*?<\/nav>/g, '');
 front = front.replace(/\n\s*<p class="more-posts">[\s\S]*?<\/p>/, '');
 const remaining = cards.length - shelved.length - slice.length;
 if (remaining > 0) {
-  const links = KINDS.map(([k, label]) => `        <a href="${ARCHIVE}?kind=${k}">${label}</a>`).join('\n');
+  const counts = {};
+  for (const c of cards) counts[kindOf(c)] = (counts[kindOf(c)] || 0) + 1;
+  const links = KINDS.filter(([k]) => counts[k]).map(([k, label]) =>
+    `        <a href="${ARCHIVE}?kind=${k}">${label} <span class="count">${counts[k]}</span></a>`).join('\n');
   const total = remaining + shelved.length + slice.length;
   const more = `\n    <nav class="pager archive-nav" aria-label="The rest of the archive">\n${links}\n` +
-    `        <a href="${ARCHIVE}" rel="next">All ${total} posts &rarr;</a>\n    </nav>`;
+    `        <a href="${ARCHIVE}" rel="next" class="go">All ${total} posts <span class="arrow">&rarr;</span></a>\n    </nav>`;
   front = front.replace(/(<\/ul>)/, `$1\n${more}`);
 }
-if (!front.includes('.more-posts {')) {
-  front = front.replace(/(\n  <\/style>)/,
-    `\n    .more-posts { font-family: var(--sans); font-size: .9rem; color: var(--muted); margin: 26px 0 0; }$1`);
-}
+// The row under the cards: the kinds are side doors, All posts is the way in,
+// and the difference is carried by weight rather than by a fifth colour.
+const NAV_CSS = `
+    .archive-nav { gap: 8px; margin: 34px 0 30px; }
+    .archive-nav a { border-radius: 999px; padding: 9px 16px; font-size: .78rem; letter-spacing: .05em;
+      text-transform: uppercase; color: var(--ink); border: 1px solid var(--rule); }
+    .archive-nav a:hover { border-color: var(--ink); }
+    /* .pager styles every span as the you-are-here chip, which would put a box
+       round the counts and the arrow. */
+    .archive-nav span { min-width: 0; padding: 0; border: 0; background: none; }
+    .archive-nav .count { color: var(--amber-ink); font-weight: 400; margin-left: 5px; }
+    .archive-nav a.go { background: var(--ink); border-color: var(--ink); color: var(--paper); font-weight: 700; }
+    .archive-nav a.go:hover { background: #000; }
+    .archive-nav a.go .arrow { color: var(--amber); margin-left: 4px; }
+`;
+front = front.replace(/\n\s*\.more-posts \{[^}]*\}/, '');
+if (!front.includes('.archive-nav {')) front = front.replace(/(\n  <\/style>)/, `${NAV_CSS}$1`);
 console.log(`  index.html     ${shelved.length} covers + ${slice.length} cards, ${remaining} more on the archive`);
 if (!DRY) writeFileSync(join(BLOG, 'index.html'), front);
 
