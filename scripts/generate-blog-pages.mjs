@@ -25,7 +25,8 @@ import { dirname, join } from 'node:path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BLOG = join(ROOT, 'blog');
-const PER_PAGE = 30;   // covers on page one count towards it
+const PER_PAGE = 15;   // cards on every page after the front one
+const FIRST_PAGE = 9;  // the front page carries the covers too, so it holds fewer cards
 const DRY = process.argv.includes('--dry-run');
 
 const MONTHS = ['January','February','March','April','May','June','July','August',
@@ -398,8 +399,12 @@ const cards = collectCards();
 const shelved = shelfPicks(cards);
 const shelvedHrefs = new Set(shelved.map(p => p.href));
 const listed = cards.filter(c => !shelvedHrefs.has(c.href));
-const firstPage = Math.max(0, PER_PAGE - shelved.length);
-const rest = Math.max(1, Math.ceil(Math.max(0, listed.length - firstPage) / PER_PAGE));
+const firstPage = FIRST_PAGE;
+let rest = Math.max(1, Math.ceil(Math.max(0, listed.length - firstPage) / PER_PAGE));
+// A last page holding two or three posts reads as a mistake, so when the tail
+// is short the page before it takes them instead.
+const tail = Math.max(0, listed.length - firstPage) - (rest - 1) * PER_PAGE;
+if (rest > 1 && tail > 0 && tail < 5) rest -= 1;
 const pages = listed.length <= firstPage ? 1 : 1 + rest;
 console.log(`${cards.length} posts: ${shelved.length} covers + ${listed.length} cards → ${pages} page(s) of ${PER_PAGE}`);
 
@@ -452,17 +457,16 @@ if (remaining > 0) {
     `        <a href="${ARCHIVE}" rel="next" class="go">All ${total} posts <span class="arrow">&rarr;</span></a>\n    </nav>`;
   // The front page is page 1 of the history; the archive serves the rest at the
   // same fifteen a page, so the numbers mean the same thing on both.
-  const PER = 15;
-  const numbered = Math.max(1, Math.ceil(cards.length / PER));
+  const numbered = pages;
   let nums = '';
   if (numbered > 1) {
     const cells = [];
     for (let i = 1; i <= numbered; i++) {
       cells.push(i === 1
         ? `        <span class="is-here" aria-current="page">1</span>`
-        : `        <a href="${ARCHIVE}?page=${i}">${i}</a>`);
+        : `        <a href="page-${i}.html">${i}</a>`);
     }
-    cells.push(`        <a href="${ARCHIVE}?page=2" rel="next">Older &rarr;</a>`);
+    cells.push(`        <a href="page-2.html" rel="next">Older &rarr;</a>`);
     nums = `\n    <nav class="pager list-pager" aria-label="Archive pages">\n${cells.join('\n')}\n    </nav>`;
   }
   front = front.replace(/(<ul class="post-list">[\s\S]*?<\/ul>)/, `$1\n${more}${nums}`);
@@ -492,6 +496,18 @@ front = front.replace(/(\n  <\/style>)/, `${NAV_CSS}$1`);
 console.log(`  index.html     ${shelved.length} covers + ${slice.length} cards, ${remaining} more on the archive`);
 if (!DRY) writeFileSync(join(BLOG, 'index.html'), front);
 
+// Pages two onwards are real files again, so stepping back is a page, not a
+// query string. The archive stays because the kind buttons need one page that
+// holds every post.
+for (let n = 2; n <= pages; n++) {
+  const from = firstPage + (n - 2) * PER_PAGE;
+  const part = listed.slice(from, n === pages ? listed.length : from + PER_PAGE);
+  const out = buildPage(template, part, n, pages, shelved);
+  const span = part.length ? `${part[0].iso} → ${part[part.length - 1].iso}` : '(empty)';
+  console.log(`  page-${n}.html     ${part.length} cards  ${span}`);
+  if (!DRY) writeFileSync(join(BLOG, `page-${n}.html`), out);
+}
+
 const archive = buildArchive(template, cards);
 console.log(`  ${ARCHIVE.padEnd(14)} ${cards.length} cards, ${KINDS.length} kinds`);
 if (!DRY) writeFileSync(join(BLOG, ARCHIVE), archive);
@@ -499,7 +515,9 @@ if (!DRY) writeFileSync(join(BLOG, ARCHIVE), archive);
 // Pages that existed when the archive ran ten to a page are kept alive rather
 // than deleted, because they are in the sitemap and may be linked from
 // elsewhere. They point at the archive and say so.
-const stale = readdirSync(BLOG).filter(f => /^page-(\d+)\.html$/.test(f));
+const stale = readdirSync(BLOG)
+  .filter(f => /^page-(\d+)\.html$/.test(f))
+  .filter(f => Number(f.match(/\d+/)[0]) > pages);
 for (const file of stale) {
   console.log(`  ${file.padEnd(14)} → redirect to /blog/${ARCHIVE}`);
   if (!DRY) writeFileSync(join(BLOG, file), stub(file));
