@@ -66,7 +66,7 @@ const FILTER_JS = `  <script>
       var d = li.querySelector('.post-date');
       if (!d) return '';
       var c = d.className.replace('post-date', '').trim();
-      return c.split(/\s+/)[0] || '';
+      return c.split(' ')[0] || '';
     }
     function apply(k) {
       items.forEach(function (li) { li.hidden = !!k && kind(li) !== k; });
@@ -348,6 +348,7 @@ function buildArchive(template, allCards) {
   html = html.replace(/\n\s*<p class="shelf-switch">[\s\S]*?<\/p>/, '');
   html = html.replace(/\n\s*<nav class="pager"[\s\S]*?<\/nav>/, '');
   html = html.replace(/\n\s*<p class="more-posts">[\s\S]*?<\/p>/, '');
+  html = html.replace(/\n\s*<nav class="pager archive-nav"[\s\S]*?<\/nav>/, '');
   html = html.replace(/<h2 class="list-head">[\s\S]*?<\/h2>/, 'ARCHIVEHEAD');
   html = html.replace('ARCHIVEHEAD', `<h2 class="list-head">Everything</h2>\n${filterBar(allCards)}`);
   if (!html.includes('.kinds {')) html = html.replace(/(\n  <\/style>)/, `${FILTER_CSS}$1`);
@@ -369,8 +370,10 @@ front = front.replace(/\n\s*<nav class="pager"[\s\S]*?<\/nav>/, '');
 front = front.replace(/\n\s*<p class="more-posts">[\s\S]*?<\/p>/, '');
 const remaining = cards.length - shelved.length - slice.length;
 if (remaining > 0) {
-  const links = KINDS.map(([k, label]) => `<a href="${ARCHIVE}?kind=${k}">${label.toLowerCase()}</a>`).join(', ');
-  const more = `\n    <p class="more-posts">${remaining} more are not on this page. <a href="${ARCHIVE}">See everything</a>, or go straight to ${links}.</p>`;
+  const links = KINDS.map(([k, label]) => `        <a href="${ARCHIVE}?kind=${k}">${label}</a>`).join('\n');
+  const total = remaining + shelved.length + slice.length;
+  const more = `\n    <nav class="pager archive-nav" aria-label="The rest of the archive">\n${links}\n` +
+    `        <a href="${ARCHIVE}" rel="next">All ${total} posts &rarr;</a>\n    </nav>`;
   front = front.replace(/(<\/ul>)/, `$1\n${more}`);
 }
 if (!front.includes('.more-posts {')) {
