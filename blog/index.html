@@ -146,10 +146,20 @@
     .t2 { grid-column: span 2; }
     .t3 { grid-column: span 1; }
     .shelf[hidden], .shelf-list[hidden] { display: none; }
-    .shelf-switch { margin: 0 0 12px; text-align: right; }
-    .view-toggle { font-family: var(--sans); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
-      background: none; border: 1px solid var(--rule); color: var(--muted); padding: 7px 13px; cursor: pointer; }
-    .view-toggle:hover, .view-toggle:focus-visible { border-color: var(--amber-ink); color: var(--ink); outline: none; }
+    .shelf-switch { margin: 0 0 14px; text-align: right; line-height: 1; }
+    .switch-label { font-family: var(--sans); font-size: .72rem; letter-spacing: .09em; text-transform: uppercase;
+      color: var(--muted); margin-right: 9px; vertical-align: middle; }
+    .view-toggle { position: relative; display: inline-block; vertical-align: middle; width: 66px; height: 30px;
+      padding: 0; border: 2px solid var(--ink); border-radius: 999px; background: var(--paper); cursor: pointer; }
+    .view-toggle:focus-visible { outline: 2px solid var(--amber-ink); outline-offset: 2px; }
+    .switch-text { position: absolute; inset: 0; display: flex; align-items: center; justify-content: flex-start;
+      padding-left: 11px; font-family: var(--sans); font-size: .62rem; font-weight: 700; letter-spacing: .08em;
+      color: var(--ink); }
+    .switch-knob { position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; border: 2px solid var(--ink);
+      border-radius: 50%; background: var(--paper); transform: translateX(32px); transition: transform .15s ease; }
+    .view-toggle[aria-checked="false"] .switch-knob { transform: translateX(0); }
+    .view-toggle[aria-checked="false"] .switch-text { justify-content: flex-end; padding-left: 0; padding-right: 10px; }
+    @media (prefers-reduced-motion: reduce) { .switch-knob { transition: none; } }
     .shelf-list { list-style: none; margin: 0 0 44px; padding: 0; border-top: 1px solid var(--rule); }
     .shelf-list li { border-bottom: 1px solid var(--rule); }
     .shelf-list a { display: block; padding: 11px 2px; font-family: var(--serif); font-size: 1.02rem;
@@ -203,7 +213,7 @@
     <p class="lede no-drop">Guides, essays, postcards and notes on beer: where to drink it, where it came from, and what&rsquo;s in the glass. Nothing sponsored.</p>
     <p class="start-here">New here? <a href="pick-the-right-pint.html">Start with the four-essay guide</a>.</p>
     <p class="rss-link"><a href="https://pintpoint.co.uk/blog/feed.xml">RSS feed</a></p>
-    <p class="shelf-switch"><button type="button" class="view-toggle" aria-pressed="false" hidden>Show titles</button></p>
+    <p class="shelf-switch"><span class="switch-label">Images</span><button type="button" class="view-toggle" role="switch" aria-checked="true" aria-label="Images" hidden><span class="switch-text">ON</span><span class="switch-knob"></span></button></p>
     <div class="shelf">
         <a class="shelf-tile t1" href="fullers-esb-in-america.html" title="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s" aria-label="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s"><picture><source type="image/webp" srcset="images/tiles/fullers-esb-in-america-960.webp" /><img src="images/tiles/fullers-esb-in-america-960.jpg" alt="Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s" loading="eager" decoding="async" width="960" height="960" /></picture></a>
         <a class="shelf-tile t2" href="fullers-yeast-firestone-walker.html" title="Why Firestone Walker chose Fuller&rsquo;s yeast" aria-label="Why Firestone Walker chose Fuller&rsquo;s yeast"><picture><source type="image/webp" srcset="images/tiles/fullers-yeast-firestone-walker-480.webp" /><img src="images/tiles/fullers-yeast-firestone-walker-480.jpg" alt="Why Firestone Walker chose Fuller&rsquo;s yeast" loading="lazy" decoding="async" width="480" height="480" /></picture></a>
@@ -379,12 +389,13 @@
       list.appendChild(li);
     });
     shelf.parentNode.insertBefore(list, shelf.nextSibling);
+    var txt = btn.querySelector('.switch-text');
     btn.hidden = false;
     function apply(titles) {
       shelf.hidden = titles;
       list.hidden = !titles;
-      btn.textContent = titles ? 'Show pictures' : 'Show titles';
-      btn.setAttribute('aria-pressed', titles ? 'true' : 'false');
+      txt.textContent = titles ? 'OFF' : 'ON';
+      btn.setAttribute('aria-checked', titles ? 'false' : 'true');
     }
     var saved = null;
     try { saved = localStorage.getItem('pintpress-shelf-view'); } catch (e) {}
