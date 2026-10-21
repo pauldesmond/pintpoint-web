@@ -22,84 +22,42 @@
   <meta name="twitter:title" content="Pick the right pint — the four-essay guide to PINtPOINT" />
   <meta name="twitter:description" content="Same orbit, four different subjects: the problem, the engine, the ingredients, the experience." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
-    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; }
-    h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 24px; margin-bottom: 10px; color: var(--text); }
-    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
-    article a, article a:visited, main a, main a:visited { color: var(--teal); }
-    .highlight { color: var(--text); font-weight: 600; }
-    .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
-    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
-    .category.guide { color: #00D4AA; border: 1px solid rgba(0,212,170,0.4); }
-    .lede { font-size: 1.1rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
-
-    /* Arc grid — four substance-frame panels */
     .arc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px 0 8px; }
-    .arc-cell { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px 16px; }
-    .arc-cell .arc-num { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--teal); text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
-    .arc-cell .arc-word { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 6px; letter-spacing: -0.3px; }
+    .arc-cell { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 18px 16px; }
+    .arc-cell .arc-num { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ink); text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+    .arc-cell .arc-word { font-size: 1.1rem; font-weight: 800; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.3px; }
     .arc-cell .arc-role { font-size: 0.75rem; color: var(--muted); }
-    @media (max-width: 600px) { .arc-grid { grid-template-columns: 1fr 1fr; } }
-
-    /* Reading paths */
     .paths { display: flex; flex-direction: column; gap: 16px; margin: 16px 0 24px; }
-    .path { background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; padding: 18px 22px; }
-    .path .path-q { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 8px; font-style: italic; }
+    .path { background: transparent; border-left: 2px solid var(--amber); border-radius: 0; padding: 18px 22px; }
+    .path .path-q { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; font-style: italic; }
     .path .path-route { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
-    .path .path-route a { color: var(--teal); }
-
-    /* Essay cards (the longer ones, below) */
-    .essay-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px 26px; margin-bottom: 16px; }
-    .essay-card .ec-role { display: inline-block; font-size: 0.7rem; letter-spacing: 2px; color: var(--teal); text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+    .path .path-route a { color: var(--ink); }
+    .essay-card { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 24px 26px; margin-bottom: 16px; }
+    .essay-card .ec-role { display: inline-block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ink); text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
     .essay-card .ec-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.3px; }
-    .essay-card .ec-title a { color: var(--text); text-decoration: none; }
-    .essay-card .ec-title a:hover { color: var(--teal); }
+    .essay-card .ec-title a { color: var(--ink); text-decoration: none; }
+    .essay-card .ec-title a:hover { color: var(--ink); }
     .essay-card .ec-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 0; }
-
-    .sources { font-size: 0.85rem; color: #666; margin-top: 32px; padding: 16px 20px; background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; }
-    .sources a { color: var(--muted); text-decoration: underline; }
-    .sources ul { margin: 8px 0 0 20px; }
-    .sources li { font-size: 0.85rem; color: #666; line-height: 1.7; margin-bottom: 4px; }
-
-    a.cta { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; margin-top: 32px; }
-    a.cta:hover { opacity: 0.88; }
-    .closing { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
-
-    /* ─── Interactive path picker (2026-06-07) ────────────────────
-       Turns the existing 3 static "Where to start" paths into a
-       tap-to-light reader-route. Light addition — preserves the
-       original prose intact, just adds the picker affordance. */
     .path-picker-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 20px; }
-    .path-persona { font-family: 'SF Mono', Menlo, monospace; font-size: 12px; letter-spacing: 0.02em; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: all .18s ease; }
-    .path-persona:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-    .path-persona[aria-pressed="true"] { color: #000; background: var(--teal); border-color: var(--teal); }
+    .path-persona { font-family: 'SF Mono', Menlo, monospace; font-size: 12px; letter-spacing: 0.02em; color: var(--muted); background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 7px 14px; cursor: pointer; transition: all .18s ease; }
+    .path-persona:hover { color: var(--ink); border-color: var(--rule); }
+    .path-persona[aria-pressed="true"] { color: var(--ink); background: transparent; border-color: var(--amber); }
     .paths .path { transition: all .25s ease; }
     .paths.has-active .path:not(.path--lit) { opacity: 0.35; }
-    .paths .path--lit { border-left: 3px solid var(--teal); padding-left: 14px; margin-left: -17px; background: rgba(0,212,170,0.04); border-radius: 0 8px 8px 0; }
-    .paths .path--lit .path-q::before { content: '→ '; color: var(--teal); font-weight: 700; }
+    .paths .path--lit { border-left: 3px solid var(--amber); padding-left: 14px; margin-left: -17px; background: transparent; border-radius: 0; }
+    .paths .path--lit .path-q::before { content: '→ '; color: var(--ink); font-weight: 700; }
+    @media (max-width: 600px) {
+      .arc-grid { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="../about-pintpoint.html">About</a>
       <a href="../features.html">Features</a>
       <a href="../pubs/">Venues</a>
@@ -111,10 +69,10 @@
   <article class="content">
 
 
-    <p class="meta"><span class="category guide">Guide</span>2 June 2026</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category guide">Guide</span>2 June 2026</p>
     <h1>Why PINtPOINT picks a <em>better pint</em>.</h1>
 
-    <p class="lede">PINtPOINT is built to help you choose what to drink next, from the beers actually on tap in front of you. These four essays explain that approach from four angles: the problem with most beer recommendation systems, the engine behind PINtDEXTER, the flavour vocabulary that makes recommendations easier to read, and the drinking experience that turns a tap list into a better decision.</p>
+    <p class="lede end">PINtPOINT is built to help you choose what to drink next, from the beers actually on tap in front of you. These four essays explain that approach from four angles: the problem with most beer recommendation systems, the engine behind PINtDEXTER, the flavour vocabulary that makes recommendations easier to read, and the drinking experience that turns a tap list into a better decision.</p>
 
     <h2>The four subjects</h2>
 
@@ -212,6 +170,7 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="../index.html">Home</a>
       <a href="../features.html">Features</a>
