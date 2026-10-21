@@ -20,81 +20,56 @@
   <meta name="twitter:title" content="Beerology — The Anatomy of a Pint" />
   <meta name="twitter:description" content="A new way of describing a pint — eight axes, four drinker cues, one gut-take — demonstrated on Pressure Drop's Bosko WCIPA. Built around what the beer does to your evening, not its rating." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
-    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; }
-    h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 24px; margin-bottom: 10px; color: var(--text); }
-    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
-    article a, article a:visited, main a, main a:visited { color: var(--teal); }
-    .highlight { color: var(--text); font-weight: 600; }
-    .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
-    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
-    .category.essay { color: #9DA5FF; border: 1px solid rgba(157,165,255,0.4); }
-    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
-    .quote { font-size: 1.2rem; font-weight: 700; color: var(--teal); text-align: center; padding: 32px 0; margin: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); line-height: 1.55; }
-    ul, ol { margin: 16px 0 24px 20px; }
-    li { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 6px; }
-    blockquote { border-left: 2px solid var(--teal); padding: 4px 16px; margin: 20px 0; color: var(--muted); font-style: italic; }
-    code { background: var(--card); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; font-family: 'SF Mono', Menlo, monospace; color: var(--teal); }
-    .sources { font-size: 0.85rem; color: #666; margin-top: 32px; padding: 16px 20px; background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; }
-    .series-links a { color: #C0A340; }
-    .sources a { color: var(--muted); text-decoration: underline; }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
-
-    /* ─── Beerology octagon (2026-06-07) ──────────────────────────
-       Interactive 8-axis radar that visualises the reading method
-       this essay describes. Six real catalogue beers, chosen to span
-       distinct experience shapes — pick a chip, watch the octagon
-       morph + the drinker cues + drinkability bucket + "what it feels
-       like" line all redraw. The same vocabulary the essay teaches,
-       made playable in-place. */
-    .beerology-octagon { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 32px 0; }
+    .beerology-octagon { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 24px; margin: 32px 0; }
     .beerology-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
-    .beerology-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal); }
-    .beerology-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--text); }
+    .beerology-kicker { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink); }
+    .beerology-title { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; color: var(--ink); }
     .beerology-hint { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); }
     .beerology-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 18px; }
-    .beerology-chip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; cursor: pointer; transition: all .18s ease; }
-    .beerology-chip:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-    .beerology-chip[aria-pressed="true"] { color: #000; background: var(--teal); border-color: var(--teal); }
+    .beerology-chip { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 6px 12px; cursor: pointer; transition: all .18s ease; }
+    .beerology-chip:hover { color: var(--ink); border-color: var(--rule); }
+    .beerology-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
     .oct-body { display: grid; grid-template-columns: 360px 1fr; gap: 24px; align-items: start; }
-    @media (max-width: 600px) { .oct-body { grid-template-columns: 1fr; } }
     .oct-stage { display: flex; justify-content: center; }
     .oct-stage svg { width: 100%; max-width: 360px; height: auto; }
-    .oct-grid { fill: none; stroke: var(--border); stroke-width: 1; }
-    .oct-axis { stroke: var(--border); stroke-width: 1; }
-    .oct-shape { fill: rgba(0,212,170,0.18); stroke: var(--teal); stroke-width: 2; stroke-linejoin: round; transition: all .6s cubic-bezier(.34,1.2,.5,1); filter: drop-shadow(0 0 12px rgba(0,212,170,0.35)); }
-    .oct-vert { fill: var(--teal); transition: all .6s cubic-bezier(.34,1.2,.5,1); }
+    .oct-grid { fill: none; stroke: var(--muted); stroke-width: 1; }
+    .oct-axis { stroke: var(--muted); stroke-width: 1; }
+    .oct-shape { fill: var(--muted); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; transition: all .6s cubic-bezier(.34,1.2,.5,1); filter: drop-shadow(0 0 12px rgba(0,212,170,0.35)); }
+    .oct-vert { fill: var(--ink); transition: all .6s cubic-bezier(.34,1.2,.5,1); }
     .oct-label { font-family: 'SF Mono', Menlo, monospace; font-size: 9px; letter-spacing: 0.06em; fill: var(--muted); text-transform: uppercase; }
-    .oct-val { font-family: 'SF Mono', Menlo, monospace; font-size: 8px; fill: var(--teal); }
-    .oct-detail h4 { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 2px; }
-    .oct-detail .oct-meta { font-family: 'SF Mono', Menlo, monospace; font-size: 0.75rem; color: var(--teal); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 14px; }
+    .oct-val { font-family: 'SF Mono', Menlo, monospace; font-size: 8px; fill: var(--ink); }
+    .oct-detail h4 { font-size: 1.05rem; font-weight: 800; color: var(--ink); margin-bottom: 2px; }
+    .oct-detail .oct-meta { font-family: 'SF Mono', Menlo, monospace; font-size: 0.75rem; color: var(--ink); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 14px; }
     .oct-detail .oct-cues { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-    .oct-cue { font-size: 0.78rem; color: var(--text); background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.3); border-radius: 4px; padding: 3px 8px; font-style: italic; }
+    .oct-cue { font-size: 0.78rem; color: var(--ink); background: transparent; border: 1px solid var(--rule); border-radius: 0; padding: 3px 8px; font-style: italic; }
     .oct-detail .oct-drinkability { font-family: 'SF Mono', Menlo, monospace; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
-    .oct-detail .oct-drinkability strong { color: #F5A623; font-weight: 700; }
-    .oct-detail .oct-feel { font-size: 0.9rem; color: var(--muted); line-height: 1.6; font-style: italic; border-left: 2px solid var(--teal); padding-left: 12px; }
+    .oct-detail .oct-drinkability strong { color: var(--ink); font-weight: 700; }
+    .oct-detail .oct-feel { font-size: 0.9rem; color: var(--muted); line-height: 1.6; font-style: italic; border-left: 2px solid var(--amber); padding-left: 12px; }
+    body .ps-1 { margin-top: 16px; font-size: 0.78rem; color: var(--muted); font-style: italic; }
+    body .ps-2 { margin: 8px 0 0 20px; }
+    body .ps-3 { margin-top: 56px; padding: 24px 28px; background: transparent; border-left: 2px solid var(--amber); border-radius: 0; }
+    body .ps-4 { margin: 0 0 14px; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    body .ps-5 { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; line-height: 1.7; }
+    body .ps-6 { color: var(--amber-ink); }
+    body .ps-7 { color: var(--amber-ink); }
+    body .ps-8 { color: var(--amber-ink); }
+    body .ps-9 { color: var(--amber-ink); }
+    body .ps-10 { color: var(--ink); font-size: 0.85rem; font-weight: 600; }
+    body .ps-11 { margin: 14px 0 0; font-size: 0.85rem; }
+    body .ps-12 { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--rule-soft); }
+    body .ps-13 { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 0; text-decoration: none; margin-top: 32px; background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    @media (max-width: 600px) {
+      .oct-body { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="../about-pintpoint.html">About</a>
       <a href="../features.html">Features</a>
       <a href="../pubs/">Venues</a>
@@ -104,14 +79,14 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>2 June 2026</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category essay">Essay</span>2 June 2026</p>
     <h1>Beerology — <em>The Anatomy of a Pint</em></h1>
 
 
 
     <p class="lede">You're at the bar. Four taps. You have about 800 milliseconds before someone else makes the call. The existing language for picking between those four pints — star ratings, flavour-wheel categories, hop varieties listed off a chalkboard — none of it is built for the decision you're actually making. This is a different one: what does each of these beers <em>feel like to drink</em>?</p>
 
-    <p class="quote">Should I order this — and what sort of drinking experience<br/>am I signing up for?</p>
+    <blockquote>Should I order this — and what sort of drinking experience am I signing up for?</blockquote>
 
     <h2>What we've been missing</h2>
 
@@ -151,7 +126,7 @@
     <p>Read against the other formats: Untappd has Bosko around 4.0 — well-liked but not famous, the kind of score that tells you almost nothing about whether it suits the moment. A flavour-wheel reading would slot it under "American IPA / West Coast" — accurate, useless for picking. The brewery's own copy goes hard on hop varietals. None of those signals tell you it's the pint to start your evening with, that it'll outpace fried food, that you should drink it before the smoothie sours and the dessert stouts. The Beerology card does — in eight numbers, four cues, and a sentence.</p>
 
     <!-- ── Interactive: Beerology Octagon ──────────────────────── -->
-    <figure class="beerology-octagon" id="beerology-octagon">
+    <figure class="beerology-octagon wide" id="beerology-octagon">
       <div class="beerology-head">
         <div>
           <div class="beerology-kicker">Interactive · The Beerology card</div>
@@ -185,7 +160,7 @@
           <p class="oct-feel" id="oct-feel">—</p>
         </div>
       </div>
-      <p class="pent-caption" style="margin-top: 16px; font-size: 0.78rem; color: var(--muted); font-style: italic;">All 8 axis values are LLM-computed by the same model that scores beers in the live app (Haiku 4.5, Phase A-3 prompt — Body / Bitter / Sweet / Roast / Fruit from the main 6 axes, Finish / Softness / Complexity from the experience axes added 2026-06-07). Drinker cues and the "what it feels like" line are editorial — the system can score the structure of a beer, but the gut-take phrasing is still a human job.</p>
+      <p class="pent-caption ps-1">All 8 axis values are LLM-computed by the same model that scores beers in the live app (Haiku 4.5, Phase A-3 prompt — Body / Bitter / Sweet / Roast / Fruit from the main 6 axes, Finish / Softness / Complexity from the experience axes added 2026-06-07). Drinker cues and the "what it feels like" line are editorial — the system can score the structure of a beer, but the gut-take phrasing is still a human job.</p>
     </figure>
 
     <h2>The bit that's new: drinker cues</h2>
@@ -225,32 +200,32 @@
       <li><span class="highlight">Not replacing other flavour viz.</span> Flavour wheels answer <em>what style</em>. Star ratings answer <em>how popular</em>. <span>PINtPOINT's recommender answers <em>is this for me</em> — the fit-question gets two renderings, the TastePentagon (silhouette for single-beer recognition) and the FlavourEqualizer (vertical bars for side-by-side comparison).</span> Beerology answers <em>what does drinking it feel like</em>. <span>Four questions — style, popularity, fit, feel — none sufficient alone.</span></li>
     </ul>
 
-    <p>Serious enough to trust, funny enough to remember.</p>
+    <p class="end">Serious enough to trust, funny enough to remember.</p>
 
     <p class="quote">Untappd asks how good. The flavour wheel asks what style.<br/>Beerology asks what it feels like to drink.</p>
 
     <div class="sources">
       <strong>Source material:</strong>
-      <ul style="margin:8px 0 0 20px">
+      <ul class="ps-2">
         <li><a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engineering essay this builds on; where the per-beer flavour data comes from.</li>
         <li><a href="https://appellationbeer.com/blog/another-way-to-think-about-hop-presence/" target="_blank">Another way to think about hop presence</a> — Stan Hieronymus, Appellation Beer. The "tyranny of the tasting note" framing borrowed from Eric Asimov; case for shape and impact over specific aroma descriptors.</li>
         <li><a href="https://www.rpubs.com/ebhtra/758377" target="_blank">Untappd as a recommender</a> — Ethan Haley, 2019. Argument that beer ratings are noise-dominated by check-in circumstance; location is the dominant honest signal.</li>
       </ul>
     </div>
 
-    <aside class="series-links" style="margin-top:56px;padding:24px 28px;background:var(--card);border-left:2px solid var(--teal);border-radius:4px">
-      <p style="margin:0 0 14px;font-size:0.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em">Companion essays</p>
-      <ul style="list-style:none;padding:0;margin:0;font-size:0.95rem;line-height:1.7">
-        <li><strong style="color:#C0A340">Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the usual approach is broken</li>
-        <li><strong style="color:#C0A340">How</strong> · <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engine that does it instead</li>
-        <li><strong style="color:#C0A340">What's in it</strong> · <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> — the ingredient and sensory vocabulary</li>
-        <li><strong style="color:#C0A340">Feel</strong> · Beerology: Anatomy of a Pint — what drinking it feels like <span style="color:var(--teal);font-size:0.85rem;font-weight:600">← you're reading</span></li>
+    <aside class="series-links ps-3">
+      <p class="ps-4">Companion essays</p>
+      <ul class="ps-5">
+        <li><strong class="ps-6">Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the usual approach is broken</li>
+        <li><strong class="ps-7">How</strong> · <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> — the engine that does it instead</li>
+        <li><strong class="ps-8">What's in it</strong> · <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> — the ingredient and sensory vocabulary</li>
+        <li><strong class="ps-9">Feel</strong> · Beerology: Anatomy of a Pint — what drinking it feels like <span class="ps-10">← you're reading</span></li>
       </ul>
-      <p style="margin:14px 0 0;font-size:0.85rem"><a href="pick-the-right-pint.html" style="color:#C0A340;text-decoration:none">↑ Part of <em>Pick the right pint</em> — the four-essay guide</a></p>
+      <p class="ps-11"><a href="pick-the-right-pint.html">↑ Part of <em>Pick the right pint</em> — the four-essay guide</a></p>
     </aside>
 
-    <div class="closing" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border)">
-      <a href="https://apps.apple.com/app/pintpoint/id6760611613" style="display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#000;font-weight:700;font-size:1rem;padding:16px 32px;border-radius:14px;text-decoration:none;margin-top:32px">
+    <div class="closing ps-12">
+      <a class="ps-13" href="https://apps.apple.com/app/pintpoint/id6760611613">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Download PINtPOINT
       </a>
@@ -258,6 +233,7 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="../index.html">Home</a>
       <a href="../features.html">Features</a>
