@@ -344,8 +344,29 @@ footer .legal { font-size: 0.68rem; margin-top: 10px; }
    Printing a feature, or saving it as a PDF, used a full page width for every
    photograph, which pushed the text after it onto a new sheet and left the
    previous one half empty. Figures print at a readable size instead, and a
-   heading stays with the paragraph it introduces. */
+   heading stays with the paragraph it introduces.
+
+   Site navigation is a screen control and prints as a row of dead words, so
+   it is dropped along with the footer's link row. A link on paper is a dead
+   end unless it carries its address, so external links and PINtPOINT deep
+   links print theirs after the words. */
 @media print {
+  nav[aria-label="Primary"], nav.pager, footer .links { display: none; }
+
+  .content a[href^="http"]::after {
+    content: " <" attr(href) ">";
+  }
+  .content a[href^="/"]::after {
+    content: " <pintpoint.co.uk" attr(href) ">";
+  }
+  .content a[href^="http"]::after, .content a[href^="/"]::after {
+    font-size: 0.76em; font-weight: 400; color: var(--muted);
+    overflow-wrap: break-word; word-break: normal; text-decoration: none;
+  }
+  .content h1 a::after, .content h2 a::after, .content h3 a::after {
+    content: none;
+  }
+
   figure, figure.inset, figure.wide, figure.hero, figure.plate {
     float: none; width: 50%; max-width: 50%; margin: 1.3em auto;
     break-inside: avoid; page-break-inside: avoid;
