@@ -7,7 +7,7 @@
   ],
   "url": "https://pintpoint.co.uk",
   "tagline": "Find the right pub before the first pint.",
-  "description": "PINtPOINT is a beer-first pub discovery app for iPhone and Android. A live radar interface plots nearby pubs and taprooms as blips; tap one and a compass points you there. Pulls real-time tap list data from venues, filters by beer style, supports custom pub crawls and beer alerts. Also ships Ghost Hunter (600+ closed London pubs shown on the radar) and Troubled Pub Mode (pubs under financial pressure).",
+  "description": "PINtPOINT is a beer-first pub discovery app for iPhone and Android. A live radar interface plots nearby pubs and taprooms as blips; tap one and a compass points you there. Pulls real-time tap list data from venues, filters by beer style, supports custom pub crawls and beer alerts. Also ships Ghost Hunter (700+ closed London pubs shown on the radar) and Troubled Pub Mode (pubs under financial pressure).",
   "category": "TravelApplication",
   "subcategory": "beer discovery, pub finder, craft beer",
   "founded": "2026",
@@ -62,7 +62,7 @@
   "special_modes": [
     {
       "name": "Ghost Hunter",
-      "description": "600+ closed and demolished London pubs shown as purple radar blips with archive photos."
+      "description": "700+ closed and demolished London pubs shown as purple radar blips with archive photos."
     },
     {
       "name": "Troubled Pub Mode",
