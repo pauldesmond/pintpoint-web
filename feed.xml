@@ -3,30 +3,338 @@
   <channel>
     <title>PINtPRESS</title>
     <link>https://pintpoint.co.uk/blog/</link>
-    <atom:link href="https://pintpoint.co.uk/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://pintpoint.co.uk/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Long-form writing from the PINtPOINT team on beer, pubs, and the tools we build. Postcards from beer cities, guides to crawls and styles, and notes on what's new in the app.</description>
     <language>en-GB</language>
     <copyright>© 2026 PINtPOINT</copyright>
     <managingEditor>hello@pintpoint.co.uk (PINtPOINT)</managingEditor>
     <webMaster>hello@pintpoint.co.uk (PINtPOINT)</webMaster>
-    <lastBuildDate>Tue, 30 Jun 2026 20:00:00 +0000</lastBuildDate>
-    <pubDate>Tue, 30 Jun 2026 20:00:00 +0000</pubDate>
+    <lastBuildDate>Sat, 24 Oct 2026 10:00:00 +0100</lastBuildDate>
+    <pubDate>Sat, 24 Oct 2026 10:00:00 +0100</pubDate>
     <generator>PINtPOINT hand-maintained RSS</generator>
-    <ttl>1440</ttl>
+    <ttl>60</ttl>
     <image>
       <url>https://pintpoint.co.uk/icon.png</url>
       <title>PINtPRESS</title>
       <link>https://pintpoint.co.uk/blog/</link>
     </image>
+    <item>
+      <title>The Unholy Trinity</title>
+      <category>Series</category>
+      <link>https://pintpoint.co.uk/blog/unholy-trinity.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/unholy-trinity.html</guid>
+      <pubDate>Sat, 24 Oct 2026 10:00:00 +0100</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <description>Three of autumn's great nights fall inside a single week: Halloween, Lewes Bonfire, and the Friday evening Denmark declares Christmas open. In each one something that looks old turns out not to be. Three essays, publishing 26 October, 2 November and 6 November.</description>
+    </item>
+    <item>
+      <title>Before he could sell ESB to America, he had to sell it to Fuller's</title>
+      <category>Essay</category>
+      <link>https://pintpoint.co.uk/blog/fullers-esb-in-america.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/fullers-esb-in-america.html</guid>
+      <pubDate>Tue, 20 Oct 2026 17:00:00 +0100</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <description>Jeffrey House remembers the first pour: Fuller's ESB on draught at the College Inn in Seattle on 3 November 1987. He had been trying to get it there for years, and when it arrived American brewers found more in it than a good pint.</description>
+    </item>
+    <item>
+      <title>Why Firestone Walker chose Fuller's yeast</title>
+      <category>Note</category>
+      <link>https://pintpoint.co.uk/blog/fullers-yeast-firestone-walker.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/fullers-yeast-firestone-walker.html</guid>
+      <pubDate>Sat, 17 Oct 2026 05:30:00 +0100</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <description>Firestone Walker's beer trials picked a Fuller's ESB yeast over Chico, the workhorse of American craft, even though Chico was cleaner. Then its flocculation handed them diacetyl at packaging. What replaced it is still, in co-founder David Walker's words, essentially a Fullers/London yeast.</description>
+    </item>
+    <item>
+      <title>UK Oktoberfest Events 2026</title>
+      <category>Guide</category>
+      <link>https://pintpoint.co.uk/blog/uk-oktoberfest-events-2026.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/uk-oktoberfest-events-2026.html</guid>
+      <pubDate>Sat, 19 Sep 2026 12:15:00 +0100</pubDate>
+      <description>Munich tapped the first keg at noon. Thirty-four British Oktoberfests, sorted by the only question that matters: is the beer in the stein actually from the Wiesn?</description>
+    </item>
+    <item>
+      <title>September is Oktoberfest</title>
+      <category>Essay</category>
+      <link>https://pintpoint.co.uk/blog/september-is-oktoberfest.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/september-is-oktoberfest.html</guid>
+      <pubDate>Fri, 18 Sep 2026 10:59:00 +0100</pubDate>
+      <description>The 191st Wiesn opens tomorrow at noon. Munich swapped its amber M&#228;rzen for pale Festbier decades ago, America kept the old one, and Britain treats the whole vocabulary as a licence.</description>
+    </item>
+    <item>
+      <title>Cask Ale Week: the Format Nobody Else Can Pour</title>
+      <link>https://pintpoint.co.uk/blog/cask-ale-week-2026.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/cask-ale-week-2026.html</guid>
+      <pubDate>Thu, 17 Sep 2026 20:30:00 +0100</pubDate>
+      <description>Cask Ale Week runs 17-27 September: what cask is, what the Perfect Pint Promise covers, eleven pints worth chasing, and the numbers behind a revival led by younger drinkers.</description>
+    </item>
+    <item>
+      <title>Old Haunts of the Square Mile</title>
+      <link>https://pintpoint.co.uk/blog/city-of-london-ghosts.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/city-of-london-ghosts.html</guid>
+      <pubDate>Wed, 2 Sep 2026 19:30:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>Balls Brothers, Corney &amp; Barrow, Davy's, All Bar One and Pitcher &amp; Piano: the five bar empires that ran the Square Mile in the 1990s. Two died in name, one sold its bar arm, one refused to change and outlived most of its imitators, and two arrived late as the daylight revolution that undermined everyone else. Claret, red braces, three-hour lunches — and what's left of them now.</description>
+    </item>
+    <item>
+      <title>Ghosts of Baddow Brewery</title>
+      <link>https://pintpoint.co.uk/blog/ghosts-of-baddow-brewery.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/ghosts-of-baddow-brewery.html</guid>
+      <pubDate>Sat, 30 Aug 2026 09:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>Baddow Brewery stopped brewing in 1927. Nearly a century later, 30 of the 61 pubs associated with it are still serving drinkers — scattered from Great Baddow out to the Essex coast. Fourteen have been replaced or converted, fifteen have gone, two remain honestly unknown. And on the old brewing soil at Great Baddow, Chelmsford Brew Co brews again — not the same company, not the old building, but new beer on old brewing soil.</description>
+    </item>
+
+    <item>
+      <title>These aren't revivals. They're not even spirits</title>
+      <link>https://pintpoint.co.uk/blog/revivals.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/revivals.html</guid>
+      <pubDate>Mon, 17 Aug 2026 17:30:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>British beer is having a revival revival. Old names are back on the bar — some painstakingly reconstructed, some entirely new beers wearing dead men's clothes. Diageo is now DNA-sequencing yeast from an 1864 shipwreck bottle. A field guide to what's actually being resurrected: recipe, yeast, water, brewery, people, badge, or nothing but the name.</description>
+    </item>
+
+    <item>
+      <title>Davy's: 155 years of sawdust and candles</title>
+      <link>https://pintpoint.co.uk/blog/davys-wine-bars.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/davys-wine-bars.html</guid>
+      <pubDate>Tue, 5 Aug 2026 09:20:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>Founded off the Strand in 1870, Davy's still trades eleven sawdust-floored subterranean wine bars across London — plus three El Vino sisters brought in in 2015. In 2007 the chain had 37 sites; more than half of the family-name ones have gone since. Bangers, Bangers Too, the Crusting Pipe (closed just before Christmas 2025 after a 45-year run), the City Boot twice, City FOB, Skinkers, and two different lives of the Tappit Hen. The story of a chain slowly editing itself down.</description>
+    </item>
+
+    <item>
+      <title>Celebrity-Owned Pubs Worth the Pint (Not Just the Autograph)</title>
+      <link>https://pintpoint.co.uk/blog/celeb-owned-pubs-worth-a-pint.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/celeb-owned-pubs-worth-a-pint.html</guid>
+      <pubDate>Fri, 31 Jul 2026 07:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>News this week that James Blunt has bought a second London pub — The Carpenter's Arms in Hammersmith — is a decent excuse to ask the only useful question about celebrity-owned pubs: which are actually worth the pint? Verdicts and PINtPOINT deep links for Ian McKellen's Dickens-listed Thames boozer, Blunt's Chelsea local, Guy Ritchie's Fitzrovia gastropub, Jeremy Clarkson's Cotswolds farm-pub, and seven more.</description>
+    </item>
+
+    <item>
+      <title>The Green Triangle and the Oldest Trademark in British Beer</title>
+      <link>https://pintpoint.co.uk/blog/pick-of-the-pubs-and-the-bass-triangle.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/pick-of-the-pubs-and-the-bass-triangle.html</guid>
+      <pubDate>Wed, 29 Jul 2026 07:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>On 1 January 1876 the world's first registered trademark was granted to a beer — Bass Brewery's red triangle, UK Trade Mark No. 1, signed off by Registrar Henry Reader Lack at 47 Chancery Lane. A hundred and fifty years later — to the year — PINtPOINT needed a shape to single out the best pub around. What else could we pick? Why the geometry, why green not red, and why on a small screen at the end of a long day the fastest way to say 'this one' is still a triangle.</description>
+    </item>
+
+    <item>
+      <title>The Anti-Check-In: Why We Skip the Feed</title>
+      <link>https://pintpoint.co.uk/blog/anti-check-in.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/anti-check-in.html</guid>
+      <pubDate>Fri, 17 Jul 2026 16:55:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>Untappd is a social network first and a beer database second. Its tap lists only get fresh when someone posts publicly about a pint. PINtPOINT lets you improve any tap list with one tap and no check-in — no feed post, no badge, no requirement that you actually drank the beer. Why fresh tap lists shouldn't depend on social posting, and why the gap between 'I drank this' and 'I saw this' compounds.</description>
+    </item>
+
+    <item>
+      <title>It's Not Just the Sunshine: Your Holiday Beer Really Is a Different Beer</title>
+      <link>https://pintpoint.co.uk/blog/beer-tastes-better-on-holiday.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/beer-tastes-better-on-holiday.html</guid>
+      <pubDate>Wed, 15 Jul 2026 11:15:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>The Estrella you drank in Barcelona is not the Estrella they pour in Manchester. Damm bought the Bedford Eagle Brewery outright from Carlsberg Marston's in 2023 to brew a 4.6% UK version of a 5.4% Spanish original. Madri Excepcional has never seen Spain. What CAMRA's July 2026 Beer in the UK Report exposes about the lagers on every British bar — and why calibrating your PINtDEXTER against a holiday beer isn't the same as calibrating against the version poured in your local.</description>
+    </item>
+
+    <item>
+      <title>The Beer Final We Almost Had: England vs Spain · The Parallel-Timeline Pub VAR Verdict</title>
+      <link>https://pintpoint.co.uk/blog/beer-world-cup-xi-final.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/beer-world-cup-xi-final.html</guid>
+      <pubDate>Tue, 14 Jul 2026 08:45:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Feature</category>
+      <description>Argentina beat England 2-1 in the semi-final on Wednesday. This piece was drafted for the beer final we might have had — a Berlin rematch of English cask against Spain's Iberian craft column. Publishing it anyway as the parallel-timeline read. Draught Bass hat-trick, a 101st-minute ghost goal, Estrella Damm and La Pirata Black Block. The Pub VAR booth stands by its verdict. The actual final (Argentina vs Spain) follows in a separate piece.</description>
+    </item>
+
+    <item>
+      <title>Norman Balon: London's Last Great Rude Landlord</title>
+      <link>https://pintpoint.co.uk/blog/norman-balon-obituary.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/norman-balon-obituary.html</guid>
+      <pubDate>Fri, 03 Jul 2026 15:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>News</category>
+      <description>The Coach and Horses landlord who ran the Greek Street pub for sixty-three years and made a public brand of his own rudeness has died aged 99. On the fortnightly Private Eye lunch, the Waterhouse play, the 2005 licensing regulations he wouldn't sit down and read — and why a room isn't the same room once the person who kept it wrong on purpose has gone.</description>
+    </item>
 
     <item>
       <title>Humphrey Smith: British Beer's Great Awkward Character</title>
       <link>https://pintpoint.co.uk/blog/humphrey-smith-obituary.html</link>
       <guid isPermaLink="true">https://pintpoint.co.uk/blog/humphrey-smith-obituary.html</guid>
-      <pubDate>Tue, 30 Jun 2026 20:00:00 +0000</pubDate>
+      <pubDate>Mon, 30 Jun 2026 12:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>News</category>
+      <description>The Samuel Smith's beer baron who ran Britain's strangest pub chain by his own private rule has died aged 81. On cheap pints, dark wood, shire horses, boarded-up villages and a row over an air freshener — and on why the whole thing may become easier without him and also less peculiar.</description>
+    </item>
+
+    <item>
+      <title>Before Kick-Off: Why English Cask Has the Advantage</title>
+      <link>https://pintpoint.co.uk/blog/before-the-final-cask.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/before-the-final-cask.html</guid>
+      <pubDate>Mon, 23 Jun 2026 17:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>The football is heading to the business end. The Beer World Cup is heading the same way. With the Perfect Pint Promise just launched and heritage cask back on the rise — Greene King selling Old Speckled Hen to Spanish lager giant Damm, Draught Bass tripling distribution this year, JW Lees relaunching cask Boddingtons — the case for English cask is loud and current. The squad of eleven hand-pulled pints we'd send into a Beer World Cup, the moat argument that says cask is the one format the world can't quite copy, and a forward-look to Cask Ale Week 17–27 September.</description>
+    </item>
+
+    <item>
+      <title>World Cup 2026 Stadium Beer Map: Help Us Find Good Beer Near The Grounds</title>
+      <link>https://pintpoint.co.uk/blog/world-cup-stadium-beer-map.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/world-cup-stadium-beer-map.html</guid>
+      <pubDate>Thu, 19 Jun 2026 12:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Guide</category>
+      <description>A first-pass map of bars, pubs, breweries, taprooms, bottle shops and beer gardens around all 16 World Cup 2026 host stadiums across the USA, Canada and Mexico. Atlanta, Seattle, Philadelphia, Vancouver and Toronto landed cleanly; Dallas, the Bay Area and Mexico City need local knowledge; MetLife is still the loudest help-wanted flag. First pass, not the final whistle. Open PINtPOINT near a host stadium and add what we missed.</description>
+    </item>
+
+    <item>
+      <title>Beer World Cup XI: 48 Nations, Real Fixtures, Stupidly Serious Beer Results</title>
+      <link>https://pintpoint.co.uk/blog/beer-world-cup-xi.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/beer-world-cup-xi.html</guid>
+      <pubDate>Thu, 19 Jun 2026 12:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Feature</category>
+      <description>The football teams play on the pitch. The beers play in the pub. Every country in the World Cup gets a beer squad; real fixtures drive the matchups; Pub VAR, The Selection Committee and The Pint Desk arbitrate the disputes. A serialised editorial tournament loosely based on a distant memory of Loaded magazine's lost Beer World Cup. Help us pick the squads.</description>
+    </item>
+
+    <item>
+      <title>Beerology — The Anatomy of a Pint</title>
+      <link>https://pintpoint.co.uk/blog/beerology-anatomy-of-a-pint.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/beerology-anatomy-of-a-pint.html</guid>
+      <pubDate>Tue, 02 Jun 2026 12:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>What does this beer actually feel like to drink? Eight axes — Body, Bitterness, Sweetness, Roast, Fruit, Finish, Softness, Complexity — plus four drinker cues, a drinkability bucket and one plain-English gut-take sentence per beer. Built for the 800-millisecond tap-list decision; honest about the sour and Belgian-yeast styles it doesn't cover. Capstone of the four-essay arc on choosing the right pint.</description>
+    </item>
+
+    <item>
+      <title>Following the Firkin trail(s)…</title>
+      <link>https://pintpoint.co.uk/blog/firkin-died-as-a-chain.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/firkin-died-as-a-chain.html</guid>
+      <pubDate>Sun, 31 May 2026 16:30:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>In 1979 David Bruce opened the Goose &amp; Firkin in Elephant and Castle. By 1995 the chain had 44 pubs, 19 of them brewing on site. On 8 October 1999 the brewing stopped — and that, not the 2001 brand-discontinuation, is when Firkin actually died. By 2001 the brand was gone too, but the buildings (mostly still pubs under other names) outlived it. The 12 original London Firkin sites traced — deliberately — the outline of a dog's head on a 1990 paper leaflet. Companion: walk the Firkin Ale Trail Hall-of-Fame crawl in PINtPOINT.</description>
+    </item>
+
+    <item>
+      <title>Anchor Brewing's British heritage runs deeper than people realise</title>
+      <link>https://pintpoint.co.uk/blog/anchor-british-heritage.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/anchor-british-heritage.html</guid>
+      <pubDate>Sun, 24 May 2026 12:30:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>Two of Anchor's signature beers came home from an October 1975 Yorkshire pub tour. Liberty Ale, the one everyone credits to it, predates it by six months. The Great American Beer Festival was modelled on CAMRA's GBBF. Anchor first reached British draught in November 1991, in borrowed Fuller's kegs, and a Halifax distributor kept it there for fifteen years after. The companion to Friday's piece on Anchor's revival: the case that Anchor's identity was always partly English, and what that means for a return to UK taps.</description>
+    </item>
+
+    <item>
+      <title>Anchor Brewing looks to be coming back. The 2021 rebrand isn't.</title>
+      <link>https://pintpoint.co.uk/blog/anchor-brewing-returns-2027.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/anchor-brewing-returns-2027.html</guid>
+      <pubDate>Fri, 22 May 2026 18:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>Construction crews at Potrero Hill, twenty months of silence from a billionaire owner, and a homepage in May 2026 still wearing the 1896 logo — not the 2021 mark drinkers hated. Anchor's revival, as the SF Chronicle and others now report, is moving from rumour into pre-brewing infrastructure. What's coming back, on the evidence, is the older Anchor — even if Headlands Brewing's Austin Sharp expects "properly operational for 2027" rather than this year.</description>
+    </item>
+
+    <item>
+      <title>Under the Hood: How PINtDEXTER Picks Your Pint</title>
+      <link>https://pintpoint.co.uk/blog/under-the-hood-how-pintdexter-picks-your-pint.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/under-the-hood-how-pintdexter-picks-your-pint.html</guid>
+      <pubDate>Wed, 20 May 2026 18:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>The engineering follow-up to PINtPOINT's beer-recommender essay. The four layers PINtDEXTER stacks under the hood — preference capture, manual sliders, per-beer LLM-inferred flavour DNA, and venue-aware scoring — plus the misclassified pale lager that exposed the most recent fix. References yhat's 2013 R prototype and Kushwaha's 2023 LLM-on-comments work to trace the 2013 to 2026 arc of beer recommendation.</description>
+    </item>
+
+    <item>
+      <title>Save Our Pubs, In One Pub: The Bell at Ingatestone</title>
+      <link>https://pintpoint.co.uk/blog/the-bell-ingatestone-save-our-pubs-in-one-pub.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/the-bell-ingatestone-save-our-pubs-in-one-pub.html</guid>
+      <pubDate>Sat, 16 May 2026 12:30:00 +0000</pubDate>
       <dc:creator>PINtPOINT</dc:creator>
       <category>Note</category>
-      <description>Humphrey Smith, the Samuel Smith's beer baron who ran Britain's strangest pub chain by his own private rule, has died aged 81. On cheap pints, dark wood, shire horses, boarded-up villages and the row over an air freshener — and on why the whole thing may become easier without him and also less peculiar.</description>
+      <description>We walked into the Bell at Ingatestone on Saturday to claim a free pint of Telegraph Ale. PINtPOINT's Financial Pressure Index also flags the same building as Struggling — rates +74% vs 2023, FPI 44.38/100. The Save Our Pubs campaign's structural argument, made personal, on the bar in front of us.</description>
+    </item>
+
+    <item>
+      <title>Four Pubs a Day Are Closing. The Telegraph's Answer Is a Free Pint.</title>
+      <link>https://pintpoint.co.uk/blog/national-pub-day-telegraph-ale.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/national-pub-day-telegraph-ale.html</guid>
+      <pubDate>Sat, 16 May 2026 10:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>News</category>
+      <description>Saturday 16 May 2026 is The Telegraph's National Pub Day. Renegade Brewery — the West Berkshire outfit that took on the West Berkshire estate after the 2023 collapse — has brewed Telegraph Ale, a 4% English bitter, for cask delivery to nearly 300 participating pubs. The campaign sits inside Save Our Pubs, the Telegraph's response to a closure rate of roughly four pubs a day.</description>
+    </item>
+
+    <item>
+      <title>From Half of British Beer to Half a Percent — What Happened to Mild</title>
+      <link>https://pintpoint.co.uk/blog/mild-half-to-half-a-percent.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/mild-half-to-half-a-percent.html</guid>
+      <pubDate>Thu, 14 May 2026 09:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>In 1959 mild was still half the beer Britain drank. By 2011 it was 0.5%. How Britain's everyday beer became a rarity — and why Mild May is trying to bring it back. Pattinson, Cornell and Boak &amp; Bailey on the collapse from a 1700s young-ale category through the 1930s peak to the post-war floor; the modern fork between Black Country stalwarts at 3-3.5% and craft revisionists at 6-10%.</description>
+    </item>
+
+    <item>
+      <title>The Sparkler Question — A Field Guide to Britain's Quietest Cask Argument</title>
+      <link>https://pintpoint.co.uk/blog/the-sparkler-question.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/the-sparkler-question.html</guid>
+      <pubDate>Fri, 08 May 2026 09:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Note</category>
+      <description>A small nozzle fitted to the end of a cask tap reshapes your pint — head, mouthfeel, perceived bitterness. 140 years of British cask argument, mostly a Northern tradition with London outposts at the Queen's Arms and the Punch Tavern. From 14 May 2026, the Whippet adds Boddingtons cask with a sparkler to the Liverpool Street commute.</description>
+    </item>
+
+    <item>
+      <title>The Whippet: Why This Could Be One of London's Most Interesting Beer Openings of 2026</title>
+      <link>https://pintpoint.co.uk/blog/the-whippet-ec2-liverpool-street-opens.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/the-whippet-ec2-liverpool-street-opens.html</guid>
+      <pubDate>Tue, 05 May 2026 09:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Note</category>
+      <description>June update: The Whippet still is not pouring Augustiner, but it has quietly built one of the more unusual lager line-ups near Liverpool Street — Bitburger, Kutna Hora, Tegernseer, Benediktiner and more — alongside Boddingtons cask with a sparkler. The story now is not one famous Munich badge, but a craft-leaning City bar taking continental lager seriously.</description>
+    </item>
+
+    <item>
+      <title>Radio City Turns 7: 7 Cans, 7 Sins, 35 Launch Venues — and One Big Saturday in Chelmsford</title>
+      <link>https://pintpoint.co.uk/blog/radio-city-7-deadly-sins.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/radio-city-7-deadly-sins.html</guid>
+      <pubDate>Fri, 01 May 2026 16:30:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Note</category>
+      <description>Saturday 9 May 2026 — Radio City Beer Works marks its seventh birthday with a brewery party in Radley Green, preceded by the nationwide can release of The 7 Deadly Sins on Thursday 7 May across 35 first-pour venues UK-wide. Brewery party logistics, full sin × brewery × style line-up, and the launch-venue locator.</description>
+    </item>
+
+    <item>
+      <title>Blackhorse Beer Mile 4th Birthday: All 10 Participating Venues with PINtPOINT Links</title>
+      <link>https://pintpoint.co.uk/blog/blackhorse-beer-mile-4th-birthday.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/blackhorse-beer-mile-4th-birthday.html</guid>
+      <pubDate>Fri, 01 May 2026 07:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Note</category>
+      <description>Sunday 3 May 2026 — Walthamstow's brewery-district mile turns four with an all-day, free-entry, family-friendly takeover across 10 east-London craft venues. Every participating venue with a PINtPOINT deeplink plus the canonical Hall of Fame crawl.</description>
+    </item>
+
+    <item>
+      <title>Augustiner on Draft, Finally: Eight Confirmed UK Pubs Pouring It</title>
+      <link>https://pintpoint.co.uk/blog/augustiner-on-draft-uk-six-pubs.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/augustiner-on-draft-uk-six-pubs.html</guid>
+      <pubDate>Thu, 30 Apr 2026 08:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Note</category>
+      <description>Augustiner Helles launched on UK draught in November 2025 via James Clay &amp; Sons with no public venue list. PINtPOINT cross-references public Untappd data to confirm eight UK pubs pouring it — across London, Manchester, Newcastle, Luton, Glasgow, Knaresborough and Worcester. The Whippet, flagged for it at its May opening, is expected but not pouring it yet.</description>
     </item>
 
     <item>
@@ -50,6 +358,16 @@
     </item>
 
     <item>
+      <title>Bass Pale Ale: The Red Triangle That Took an English Beer Global</title>
+      <link>https://pintpoint.co.uk/blog/bass-pale-ale.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/bass-pale-ale.html</guid>
+      <pubDate>Fri, 24 Apr 2026 12:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Essay</category>
+      <description>Before consumer brands were global, Bass already was. The red triangle of Bass Pale Ale travelled to India, Russia and America in the 19th century, riding hard Burton water, coke-malted pale grain and clear glass into a worldwide reputation. The story from 1777 through the Bass Charrington years, the Molson Coors split, and modern attempts to recover Burton pale ale heritage.</description>
+    </item>
+
+    <item>
       <title>A Postcard from London: The City That Taught the World to Brew, Then Started Again</title>
       <link>https://pintpoint.co.uk/blog/london-craft-beer-love-letter.html</link>
       <guid isPermaLink="true">https://pintpoint.co.uk/blog/london-craft-beer-love-letter.html</guid>
@@ -59,6 +377,15 @@
       <description>London is one of the oldest beer cities in the world, but the version you can drink now is barely fifteen years old. The third in the postcard trilogy — a comeback layered over an inheritance.</description>
     </item>
 
+    <item>
+      <title>Walking the Ted Lasso Pub Trail in Richmond — From Crown &amp; Anchor to Richmond Hill</title>
+      <link>https://pintpoint.co.uk/blog/richmond-ted-lasso-pub-trail.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/richmond-ted-lasso-pub-trail.html</guid>
+      <pubDate>Sun, 19 Apr 2026 12:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <category>Guide</category>
+      <description>The Crown &amp; Anchor exterior is The Prince's Head on Richmond Green. The view above the Thames bend is the one Ted reflects from. A four-stop walking pub trail for fans of the show — and a shortlist of the wider Richmond craft-beer scene worth a pint while you're there.</description>
+    </item>
 
     <item>
       <title>A Postcard from Melbourne: The City That Built a Craft-Beer Scene on Bars, Not Breweries</title>

@@ -24,6 +24,7 @@ const ROOT = join(__dirname, '..');
 const FEED_PATH = join(ROOT, 'blog', 'feed.xml');
 const INDEX_PATH = join(ROOT, 'index.html');
 const SITEMAP_PATH = join(ROOT, 'sitemap.xml');
+const ROOT_FEED_PATH = join(ROOT, 'feed.xml');
 
 function parseFeed(xml) {
   const items = [];
@@ -150,6 +151,23 @@ function syncSitemap(items) {
   return true;
 }
 
+/**
+ * /feed.xml at the site root is an old feed that stopped being updated in June
+ * 2026 while /blog/feed.xml carried on. The home page pointed at it, so anyone
+ * who subscribed from the front door silently stopped receiving us. Rather than
+ * leave two feeds to drift apart again, the root one is now written from the
+ * blog feed on every sync, with its self link pointing at the blog feed so a
+ * reader that honours rel=self can move itself across.
+ */
+function mirrorRootFeed(xml) {
+  const out = xml.replace(
+    /<atom:link href="[^"]*" rel="self"/,
+    '<atom:link href="https://pintpoint.co.uk/blog/feed.xml" rel="self"',
+  );
+  writeFileSync(ROOT_FEED_PATH, out);
+  console.log('  ✅ feed.xml (site root) → mirrored from blog/feed.xml');
+}
+
 function main() {
   console.log('Syncing from blog/feed.xml...\n');
   const xml = readFileSync(FEED_PATH, 'utf8');
@@ -164,6 +182,7 @@ function main() {
 
   syncIndexItemList(items);
   syncSitemap(items);
+  mirrorRootFeed(xml);
 
   console.log('\nDone. Diff with `git diff` and commit if it looks right.');
 }
