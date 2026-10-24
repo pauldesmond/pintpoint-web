@@ -99,16 +99,20 @@
     <p>We learnt early that a ghost story did not have to be believed to be enjoyed. Pub folklore benefits from the same arrangement.</p>
 
     <h2>The signs stay up</h2>
-    <!-- Counts re-run 15 October 2026 AFTER the Cross Keys / Green Dragon / Raven import
-         (46 venues, scripts/_three-names-import.mjs in the app repo): White Hart 58 (51
-         trading), Royal Oak 61, Green Man 59, Cross Keys 30 (29), Green Dragon 21 (20),
-         Raven 12 (11), Hobgoblin 1. Exact normalised names, deleted rows excluded.
-         George & Dragon (5) is deliberately held for 23 April.
-         The Chelsea Cross Keys is now in: ghost-sw9-006 was holding its
-         google_place_id (a closed Stockwell pub carrying a trading Chelsea pub's
-         Google identity, 3.5km away, since March) and that id has been cleared.
-         RECHECK ON 24 OCT: only if more venues are added between now and then. -->
-    <p>Fifty-eight White Harts in our catalogue, fifty-one of them still trading. Sixty-one Royal Oaks, fifty-nine Green Men, thirty Cross Keys, twenty-one Green Dragons, twelve Ravens and one Hobgoblin. Before anyone hangs a plastic bat from the ceiling, the pub signs have already supplied a fairly respectable Halloween.</p>
+    <!-- Counts re-run 24 October 2026. RULE, so the next run matches: UK only
+         (country_code = GB), deleted_at null, and the name is the sign exactly
+         or the sign followed by a word boundary. The boundary is what matters:
+         a plain prefix match counts the Green Mango of Portsmouth as a Green
+         Man. Non-UK rows are out because the claim is about British pub signs,
+         which also drops Green Man Brewing of Asheville, North Carolina.
+         White Hart 68 (61 trading), Green Man 66 (61), Royal Oak 61 (59),
+         Cross Keys 29 (28), Green Dragon 20 (19), Raven 12 (11), Hobgoblin 1.
+         Sanity check against PubsGalore's national table, Oct 2026: they count
+         282 White Harts, 390 Royal Oaks, 140 Cross Keys, so we hold a sixth to
+         a quarter of each. Green Man is absent from their top 49, where the
+         cut-off is 74, which is what exposed the old figure as too high.
+         George & Dragon is deliberately held for 23 April. -->
+    <p>Sixty-eight White Harts in our catalogue, sixty-one of them still trading. Sixty-six Green Men, sixty-one Royal Oaks, twenty-nine Cross Keys, twenty Green Dragons, twelve Ravens and one Hobgoblin. Before anyone hangs a plastic bat from the ceiling, the pub signs have already supplied a fairly respectable Halloween.</p>
     <p>The pub sign is where Britain files the things it has stopped being able to explain. Sometimes the explanation survives. Sometimes a better one comes along and takes its place.</p>
     <p>The Green Man acquired a pagan biography. Pumpkin beer acquired the flavour of pie. Jack gave a wandering light a drinking problem, and the witch acquired a previous career. These stories have different claims on the truth, but all have found somewhere comfortable at the bar.</p>
 
