@@ -303,7 +303,10 @@ p.lede.no-drop::first-letter { float: none; font-size: inherit; line-height: inh
 .sources li, .series-links li { padding: 7px 0; margin: 0; border-bottom: 1px dotted var(--rule); }
 .sources p, .companion p, .disclosure p, .revision-note p { font-size: inherit; line-height: inherit; color: inherit; margin-bottom: 8px; }
 .series-links li strong, .companion strong, .companion b, .revision-note strong { color: var(--ink); }
-.series-links .you-are-here { font-weight: 600; color: var(--amber-ink); }
+/* .companion carries the same marker on a series page; the rule was scoped to
+   .series-links only, so the span rendered unstyled and ran straight into the
+   date before it: "(26 Oct)you are here". Found in review, 25 Oct 2026. */
+.series-links .you-are-here, .companion .you-are-here { font-weight: 600; color: var(--amber-ink); }
 .series-links .series-guide { margin: 12px 0 0; }
 /* A revision note sits above the article text. */
 .revision-note { margin: 0 0 34px; color: var(--ink-soft); }
