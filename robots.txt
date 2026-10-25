@@ -54,3 +54,11 @@ User-agent: meta-externalagent
 Disallow: /
 
 Sitemap: https://pintpoint.co.uk/sitemap.xml
+
+# Context files for AI crawlers and assistants. Not a standard robots
+# field, so parsers that do not know it ignore the line; the point is
+# that a crawler reading this file as text finds the path without
+# having to guess at the root. llms.txt is the curated index, with the
+# full editorial text in llms-full.txt.
+Llms-txt: https://pintpoint.co.uk/llms.txt
+Llms-full-txt: https://pintpoint.co.uk/llms-full.txt
