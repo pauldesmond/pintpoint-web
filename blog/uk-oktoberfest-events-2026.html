@@ -17,7 +17,7 @@
   <meta property="og:image:alt" content="PINtPRESS — Oktoberfest, without the flight: a Bavarian beer tent under an English autumn night, steins raised, brass playing." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -2191,181 +2191,79 @@
   ]
 }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; --red: #C8102E; --blue: #0B61A4; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; line-height: 1.65; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .category { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(0,212,170,0.12); color: var(--teal); border: 1px solid rgba(0,212,170,0.32); }
-    h1 { font-size: clamp(1.9rem, 5.2vw, 2.7rem); font-weight: 900; letter-spacing: -1.1px; line-height: 1.08; margin-bottom: 18px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.4px; margin: 40px 0 12px; line-height: 1.25; }
-    h3.region { font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin: 30px 0 12px; }
-    p { margin-bottom: 14px; color: #e6edf3; }
-    .lede { margin-bottom: 30px; padding-left: 14px; border-left: 3px solid var(--red); }
-    .lede p:first-child { font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
-    .highlight { color: var(--text); font-weight: 600; }
-    a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
-    a:hover { border-bottom-color: var(--teal); }
-    .ev { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; margin: 0 0 12px; }
+    :root { --red: #C8102E; --blue: #0B61A4; }
+    h3.region { font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber-ink); margin: 30px 0 12px; }
+    .ev { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 16px 18px; margin: 0 0 12px; }
     .ev h3 { font-size: 1.05rem; font-weight: 800; margin: 2px 0 4px; letter-spacing: -0.2px; }
     .ev h3 a { border-bottom: none; }
-    .ev-when { font-size: 0.74rem; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: var(--amber); margin-bottom: 2px; }
+    .ev-when { font-size: 0.74rem; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: var(--amber-ink); margin-bottom: 2px; }
     .ev-where { font-size: 0.9rem; color: var(--muted); margin-bottom: 8px; }
     .ev-note { font-size: 0.95rem; margin-bottom: 8px; }
     .ev-link { font-size: 0.85rem; margin-bottom: 0; }
-    .ev-tag { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; }
-    .ev-tag.six { background: rgba(192,163,64,0.16); color: var(--amber); border: 1px solid rgba(192,163,64,0.4); }
-    .ev-tag.named { background: rgba(0,212,170,0.1); color: var(--teal); border: 1px solid rgba(0,212,170,0.3); }
-    table { width: 100%; border-collapse: collapse; margin: 18px 0 8px; font-size: 0.95rem; }
-    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
-    th { font-size: 0.72rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+    .ev-tag { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 0; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; }
+    .ev-tag.six { background: transparent; color: var(--amber-ink); border: 1px solid var(--rule); }
+    .ev-tag.named { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
     table.spirit td { padding: 9px 10px; }
-    table.spirit td.w { white-space: nowrap; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; color: var(--amber); width: 1%; }
-    table.spirit .flag, .ev-note .flag { color: var(--red); font-weight: 700; }
+    table.spirit td.w { white-space: nowrap; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; color: var(--amber-ink); width: 1%; }
+    table.spirit .flag, .ev-note .flag { color: #C8102E; font-weight: 700; }
     table.spirit .sub { font-size: 0.88rem; color: var(--muted); }
     table.spirit b a { border-bottom: none; }
-
     table.quick { margin-top: 6px; }
     table.quick th { font-size: 0.68rem; }
     table.quick td { font-size: 0.9rem; padding: 8px 10px; }
-    table.quick td:first-child { color: var(--amber); font-weight: 700; width: 34%; }
-    .freshness { font-size: 0.86rem; color: var(--muted); margin: 10px 0 4px; padding-left: 11px; border-left: 2px solid rgba(0,212,170,0.4); }
-    @media (max-width: 600px) { table.quick td:first-child { width: auto; } }
-
-    /* Region tabs for "In the spirit". CSS-only radio deck, same mechanism
-       as the BWC fixtures wall — no JS. The section reached 49 rows and
-       ~20,000 characters in one column, which is a very long scroll on a
-       phone. Every panel stays in the DOM, so "Show all" (and crawlers,
-       and Ctrl+F) still see the lot. */
-    /* Wiesn-beer cards: same capped, internally-scrolling treatment as the
-       region panels, so "In the spirit" and everything after it stay in
-       reach instead of sitting thirteen cards down. Scrollbar visible on
-       purpose; a capped box with no scroll hint reads as a short list. */
-    .ev-deck {
-      max-height: min(62vh, 560px);
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      padding-right: 6px;
-      margin-bottom: 4px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(0,212,170,0.55) transparent;
-    }
+    table.quick td:first-child { color: var(--amber-ink); font-weight: 700; width: 34%; }
+    .freshness { font-size: 0.86rem; color: var(--muted); margin: 10px 0 4px; padding-left: 11px; border-left: 2px solid var(--rule); }
+    .ev-deck { max-height: min(62vh, 560px); overflow-y: auto; overscroll-behavior: contain; padding-right: 6px; margin-bottom: 4px; scrollbar-width: thin; scrollbar-color: rgba(0,212,170,0.55) transparent; }
     .ev-deck::-webkit-scrollbar { width: 8px; }
     .ev-deck::-webkit-scrollbar-track { background: transparent; }
-    .ev-deck::-webkit-scrollbar-thumb { background: rgba(0,212,170,0.45); border-radius: 999px; }
-    .ev-deck::-webkit-scrollbar-thumb:hover { background: rgba(0,212,170,0.75); }
-    @media print { .ev-deck { max-height: none !important; overflow: visible !important; } }
-
-    /* macOS hides overlay scrollbars unless "Show scroll bars: Always" is
-       set, so the styled scrollbar below is invisible for most readers and
-       a capped box then reads as a short list. This bottom fade does not
-       depend on any OS setting. It stays on at the end of the scroll, which
-       is a small cost for an affordance that is always there. */
-    .ev-deck, .okt-panel[data-region] {
-      -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 38px), transparent 100%);
-              mask-image: linear-gradient(to bottom, #000 calc(100% - 38px), transparent 100%);
-    }
+    .ev-deck::-webkit-scrollbar-thumb { background: transparent; border-radius: 0; }
+    .ev-deck::-webkit-scrollbar-thumb:hover { background: transparent; }
+    .ev-deck, .okt-panel[data-region] { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 38px), transparent 100%); mask-image: linear-gradient(to bottom, #000 calc(100% - 38px), transparent 100%); }
     #reg-all:checked ~ .okt-panel { -webkit-mask-image: none; mask-image: none; }
-    @media print { .ev-deck, .okt-panel { -webkit-mask-image: none !important; mask-image: none !important; } }
-
-    /* FAQ accordion. Native <details>, no JS; the answers stay in the DOM
-       when collapsed so crawlers and Ctrl+F still reach them. */
-    .faq { margin: 8px 0 4px; }
-    .faq details { border: 1px solid var(--border); border-radius: 10px; background: var(--card); margin-bottom: 8px; }
-    .faq summary { cursor: pointer; padding: 12px 14px; font-weight: 700; font-size: 0.97rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: '+'; color: var(--teal); font-weight: 900; font-size: 1.15rem; line-height: 1; flex: 0 0 auto; }
-    .faq details[open] summary::after { content: '\2212'; }
-    .faq details[open] summary { border-bottom: 1px solid var(--border); }
-    .faq summary:hover { color: var(--teal); }
-    .faq details > p { margin: 0; padding: 12px 14px 14px; font-size: 0.93rem; color: #c9d1d9; }
     .okt-radio { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
     .okt-tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 20px 0 6px; padding-bottom: 4px; }
     .okt-tabs::-webkit-scrollbar { display: none; }
-    .okt-tab { flex: 0 0 auto; cursor: pointer; -webkit-user-select: none; user-select: none; font-size: 0.72rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--muted); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
-    .okt-tab:hover { color: var(--text); border-color: rgba(255,255,255,0.22); }
-    .okt-n { font-size: 0.66rem; font-weight: 700; padding: 1px 6px; border-radius: 999px; background: rgba(255,255,255,0.08); }
+    .okt-tab { flex: 0 0 auto; cursor: pointer; -webkit-user-select: none; user-select: none; font-size: 0.72rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 7px 12px; border-radius: 0; border: 1px solid var(--rule-soft); background: transparent; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .okt-tab:hover { color: var(--ink); border-color: var(--rule); }
+    .okt-n { font-size: 0.66rem; font-weight: 700; padding: 1px 6px; border-radius: 0; background: transparent; }
     .okt-panel { display: none; }
     .okt-panel > h3.region { display: none; }
-    /* Cap the open panel and scroll it internally, so the cheat sheet and the
-       FAQ stay within reach instead of sitting 26 rows down the page. The tab
-       counts are the affordance that there is more than you can see, and the
-       scrollbar is deliberately visible rather than hidden for tidiness. */
-    #reg-london:checked ~ .okt-panel[data-region="london"],
-    #reg-north:checked ~ .okt-panel[data-region="north"],
-    #reg-celtic:checked ~ .okt-panel[data-region="celtic"],
-    #reg-anywhere:checked ~ .okt-panel[data-region="anywhere"] {
-      max-height: min(62vh, 560px);
-      overflow-y: auto;
-      overscroll-behavior: contain;   /* don't chain into the page mid-list */
-      padding-right: 6px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(0,212,170,0.55) transparent;
-    }
+    #reg-london:checked ~ .okt-panel[data-region="london"], #reg-north:checked ~ .okt-panel[data-region="north"], #reg-celtic:checked ~ .okt-panel[data-region="celtic"], #reg-anywhere:checked ~ .okt-panel[data-region="anywhere"] { max-height: min(62vh, 560px); overflow-y: auto; overscroll-behavior: contain; padding-right: 6px; scrollbar-width: thin; scrollbar-color: rgba(0,212,170,0.55) transparent; }
     .okt-panel::-webkit-scrollbar { width: 8px; }
     .okt-panel::-webkit-scrollbar-track { background: transparent; }
-    .okt-panel::-webkit-scrollbar-thumb { background: rgba(0,212,170,0.45); border-radius: 999px; }
-    .okt-panel::-webkit-scrollbar-thumb:hover { background: rgba(0,212,170,0.75); }
-    /* "Show all" is the read-everything / print view — never capped, or it
-       would stack four separate scroll boxes. */
+    .okt-panel::-webkit-scrollbar-thumb { background: transparent; border-radius: 0; }
+    .okt-panel::-webkit-scrollbar-thumb:hover { background: transparent; }
     #reg-all:checked ~ .okt-panel { max-height: none; overflow: visible; }
-    /* Selected state is carried by fill AND border AND text weight, never
-       hue alone — see user_pintpoint_colour_blindness. */
-    #reg-london:checked ~ .okt-tabs label[for="reg-london"],
-    #reg-north:checked ~ .okt-tabs label[for="reg-north"],
-    #reg-celtic:checked ~ .okt-tabs label[for="reg-celtic"],
-    #reg-anywhere:checked ~ .okt-tabs label[for="reg-anywhere"],
-    #reg-all:checked ~ .okt-tabs label[for="reg-all"] { background: var(--teal); border-color: var(--teal); color: #06231d; font-weight: 900; }
-    #reg-london:checked ~ .okt-tabs label[for="reg-london"] .okt-n,
-    #reg-north:checked ~ .okt-tabs label[for="reg-north"] .okt-n,
-    #reg-celtic:checked ~ .okt-tabs label[for="reg-celtic"] .okt-n,
-    #reg-anywhere:checked ~ .okt-tabs label[for="reg-anywhere"] .okt-n,
-    #reg-all:checked ~ .okt-tabs label[for="reg-all"] .okt-n { background: rgba(0,0,0,0.2); }
-    #reg-london:checked ~ .okt-panel[data-region="london"],
-    #reg-north:checked ~ .okt-panel[data-region="north"],
-    #reg-celtic:checked ~ .okt-panel[data-region="celtic"],
-    #reg-anywhere:checked ~ .okt-panel[data-region="anywhere"],
-    #reg-all:checked ~ .okt-panel { display: block; }
+    #reg-london:checked ~ .okt-tabs label[for="reg-london"], #reg-north:checked ~ .okt-tabs label[for="reg-north"], #reg-celtic:checked ~ .okt-tabs label[for="reg-celtic"], #reg-anywhere:checked ~ .okt-tabs label[for="reg-anywhere"], #reg-all:checked ~ .okt-tabs label[for="reg-all"] { font-weight: 900; background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    #reg-london:checked ~ .okt-tabs label[for="reg-london"] .okt-n, #reg-north:checked ~ .okt-tabs label[for="reg-north"] .okt-n, #reg-celtic:checked ~ .okt-tabs label[for="reg-celtic"] .okt-n, #reg-anywhere:checked ~ .okt-tabs label[for="reg-anywhere"] .okt-n, #reg-all:checked ~ .okt-tabs label[for="reg-all"] .okt-n { background: transparent; }
+    #reg-london:checked ~ .okt-panel[data-region="london"], #reg-north:checked ~ .okt-panel[data-region="north"], #reg-celtic:checked ~ .okt-panel[data-region="celtic"], #reg-anywhere:checked ~ .okt-panel[data-region="anywhere"], #reg-all:checked ~ .okt-panel { display: block; }
     #reg-all:checked ~ .okt-panel > h3.region { display: block; }
-    #reg-london:focus-visible ~ .okt-tabs label[for="reg-london"],
-    #reg-north:focus-visible ~ .okt-tabs label[for="reg-north"],
-    #reg-celtic:focus-visible ~ .okt-tabs label[for="reg-celtic"],
-    #reg-anywhere:focus-visible ~ .okt-tabs label[for="reg-anywhere"],
-    #reg-all:focus-visible ~ .okt-tabs label[for="reg-all"] { outline: 2px solid var(--text); outline-offset: 2px; }
+    #reg-london:focus-visible ~ .okt-tabs label[for="reg-london"], #reg-north:focus-visible ~ .okt-tabs label[for="reg-north"], #reg-celtic:focus-visible ~ .okt-tabs label[for="reg-celtic"], #reg-anywhere:focus-visible ~ .okt-tabs label[for="reg-anywhere"], #reg-all:focus-visible ~ .okt-tabs label[for="reg-all"] { outline: 2px solid var(--rule); outline-offset: 2px; }
+    .tellus { background: transparent; border: 1px solid var(--rule); border-radius: 0; padding: 18px; margin: 34px 0 8px; }
+    .tellus h2 { margin-top: 0; font-size: 1.15rem; }
+    body .ps-1 { font-size: 0.92rem; margin-top: 16px; }
+    body .ps-2 { font-size: 0.88rem; color: var(--muted); margin-top: 10px; }
+    body .ps-3 { margin-top: 28px; }
+    body .ps-4 { font-size: 0.72rem; color: var(--muted); margin-top: 10px; }
+    @media (max-width: 600px) {
+      table.quick td:first-child { width: auto; }
+    }
+    @media print {
+      .ev-deck { max-height: none !important; overflow: visible !important; }
+    }
+    @media print {
+      .ev-deck, .okt-panel { -webkit-mask-image: none !important; mask-image: none !important; }
+    }
     @media print {
       .okt-tabs { display: none !important; }
       .okt-panel, .okt-panel > h3.region { display: block !important; }
-      /* release the scroll cap, or print clips each region at 62vh */
       .okt-panel { max-height: none !important; overflow: visible !important; }
     }
-    .tellus { background: var(--card); border: 1px solid rgba(0,212,170,0.28); border-radius: 12px; padding: 18px; margin: 34px 0 8px; }
-    .tellus h2 { margin-top: 0; font-size: 1.15rem; }
-    .sources { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--border); }
-    .sources h2 { font-size: 1.1rem; }
-    .sources li { font-size: 0.9rem; color: #c9d1d9; margin-bottom: 8px; }
-    .sources ul { padding-left: 18px; }
-    footer { border-top: 1px solid var(--border); padding: 30px 40px; text-align: center; color: #555; font-size: 0.8rem; }
-    footer .links { display: flex; gap: 18px; justify-content: center; margin-bottom: 8px; flex-wrap: wrap; }
-    footer a { color: var(--muted); border: none; }
-      /* PINtPRESS column standard v1 (2026-09-17): desktop 960px column, 880px of text at 17px; mobile full width, 20px gutters, 16px text. Do not vary per page. */
-    .content { max-width: 960px; margin: 0 auto; padding: 60px 40px 80px; }
-    body { font-size: 17px; }
-    @media (max-width: 600px) { .content { max-width: none; padding: 32px 20px 56px; } body { font-size: 16px; } }
-    /* Phone: stack each event row instead of keeping two columns. The date
-       cell is white-space:nowrap, so a long one ("2–31 Oct · nine cities ·
-       from £15") holds the left column open and squeezes the note to three
-       or four words a line — readable on a laptop, a scrolling nightmare on
-       a phone. Stacked, the date reads as a heading and the note gets the
-       full width. */
     @media (max-width: 600px) {
       table.spirit, table.spirit tbody, table.spirit tr, table.spirit td { display: block; width: auto; }
-      table.spirit tr { border-bottom: 1px solid var(--border); padding: 12px 0; }
+      table.spirit tr { border-bottom: 1px solid var(--rule-soft); padding: 12px 0; }
       table.spirit td { border-bottom: none; padding: 0; }
       table.spirit td.w { white-space: normal; width: auto; margin-bottom: 6px; }
       table.spirit .sub { font-size: 0.92rem; line-height: 1.55; }
@@ -2374,8 +2272,8 @@
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="/" class="logo" style="text-decoration:none;color:var(--text);border:none">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="/" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="/about-pintpoint.html">About</a>
       <a href="/features.html">Features</a>
       <a href="/pubs/">Venues</a>
@@ -2384,7 +2282,7 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category guide">Guide</span>19 September 2026 · Festivals · UK</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category guide">Guide</span>19 September 2026 · Festivals · UK</p>
     <h1>UK Oktoberfest Events <em>2026</em></h1>
 
     <div class="lede">
@@ -2411,7 +2309,7 @@
     <p class="freshness">Tap lists and dates last checked <b>23 September 2026</b>. Where a beer is named below, it is because a venue published it or we saw it on a live tap list &mdash; not because a listing said so.</p>
 
     <h2>Why that question is worth asking</h2>
-    <p>Only six breweries may pour at the Wiesn &mdash; <span class="highlight">Augustiner, Hacker-Pschorr, Hofbr&auml;u, L&ouml;wenbr&auml;u, Paulaner and Spaten</span> &mdash; and what they pour is Festbier: pale, dry, and built to be drunk by the litre for sixteen days. That is the beer being tapped in the tents this afternoon, and it is <a href="/blog/september-is-oktoberfest.html">not the beer the festival started with</a>.</p>
+    <p>Only six breweries may pour at the Wiesn, and <a href="https://www.oktoberfest.de/en">oktoberfest.de</a> names them &mdash; <span class="highlight">Augustiner, Hacker-Pschorr, Hofbr&auml;u, L&ouml;wenbr&auml;u, Paulaner and Spaten</span> &mdash; and what they pour is Festbier: pale, dry, and built to be drunk by the litre for sixteen days. That is the beer being tapped in the tents this afternoon, and it is <a href="/blog/september-is-oktoberfest.html">not the beer the festival started with</a>.</p>
     <p>Most British Oktoberfest nights are a German lager and an oompah playlist, which is a perfectly good night out and nobody should be sniffy about it. But a handful put genuine Wiesn beer in the stein, and if you have just watched Krause swing the hammer, you probably want to know which is which. So this list is in two halves, and the first half is short.</p>
 
     <h2>Where the actual Wiesn beer is</h2>
@@ -2641,8 +2539,8 @@
         <tr><td>A Festbier on a normal Tuesday</td><td>The PINtPOINT app &mdash; Festbier is now a style you can filter by</td></tr>
       </tbody>
     </table>
-    <p style="font-size:0.92rem;margin-top:16px"><b>One more, and it is not Oktoberfest.</b> Alexandra Palace bills &ldquo;London&rsquo;s largest German Bier Festival&rdquo; for <span class="highlight">Saturday 7 November</span> &mdash; but it sits inside the <a href="https://www.alexandrapalace.com/whats-on/fireworks-drone-festival/" target="_blank" rel="noopener noreferrer">Fireworks &amp; Drone Festival</a>, gates at four, from £11.50, with a Queen tribute band and a drone show rather than an oompah tent. Two days after Bonfire Night, a month after Munich packed up. Worth saying because several London round-ups put it on 30&ndash;31 October: the palace&rsquo;s own page says 7&ndash;8 November, and the bier hall is the Saturday. We have not counted it among the seventy-six, because it is not one of them &mdash; it is here as the last place in the calendar that will hand you a German beer in a field.</p>
-    <p style="font-size:0.88rem;color:var(--muted);margin-top:10px">Dates and beer lists change. Check the linked page before you travel &mdash; especially the ones that claim all six.</p>
+    <p class="ps-1"><b>One more, and it is not Oktoberfest.</b> Alexandra Palace bills &ldquo;London&rsquo;s largest German Bier Festival&rdquo; for <span class="highlight">Saturday 7 November</span> &mdash; but it sits inside the <a href="https://www.alexandrapalace.com/whats-on/fireworks-drone-festival/" target="_blank" rel="noopener noreferrer">Fireworks &amp; Drone Festival</a>, gates at four, from £11.50, with a Queen tribute band and a drone show rather than an oompah tent. Two days after Bonfire Night, a month after Munich packed up. Worth saying because several London round-ups put it on 30&ndash;31 October: the palace&rsquo;s own page says 7&ndash;8 November, and the bier hall is the Saturday. We have not counted it among the seventy-six, because it is not one of them &mdash; it is here as the last place in the calendar that will hand you a German beer in a field.</p>
+    <p class="ps-2">Dates and beer lists change. Check the linked page before you travel &mdash; especially the ones that claim all six.</p>
 
     <!-- Literal question phrasings. The h2s on this page are written in our
          voice ("Where the actual Wiesn beer is"), which is right for a reader
@@ -2675,26 +2573,18 @@
       <p>This list is seventy-six events, and it is certainly not all of them. Local beer halls, one-night stein parties, a brewery tap doing a Bavarian weekend &mdash; if you know one that should be here, tell us and we will add it: <a href="mailto:hello@pintpoint.co.uk?subject=UK%20Oktoberfest%202026">hello@pintpoint.co.uk</a>. If you know which beers it actually pours, even better.</p>
     </div>
 
-    <p style="margin-top:28px">Companion essay: <a href="/blog/september-is-oktoberfest.html">September is Oktoberfest</a> &mdash; why twelve of the sixteen days fall in September, how Munich swapped its amber M&auml;rzen for pale Festbier, and why America kept the old one. And <a href="/blog/oktoberfest-first-giant-tent.html">Everything Traditional About Oktoberfest Is Younger Than the Tent</a> &mdash; the 1898 scandal that produced the giant tents, and the 1907 settlement that produced the six-brewery rule this whole list is sorted by.</p>
-
-    <section class="sources">
-      <h2>Sources</h2>
-      <ul>
-        <li><a href="https://www.oktoberfest.de/en" target="_blank" rel="noopener noreferrer">oktoberfest.de</a> &mdash; the 191st Oktoberfest, 19 September to 4 October 2026, the six Wiesn breweries, and Lord Mayor Dominik Krause</li>
-        <li>The tapping itself &mdash; watched live on <a href="https://www.youtube.com/br24" target="_blank" rel="noopener noreferrer">BR24</a>, Bayerischer Rundfunk&rsquo;s news channel, 12:00 Munich time, 19 September 2026</li>
-        <li>Every event listing links to the organiser&rsquo;s own site, which is where the dates and beer lists come from</li>
-      </ul>
-    </section>
+    <p class="ps-3">Companion essay: <a href="/blog/september-is-oktoberfest.html">September is Oktoberfest</a> &mdash; why twelve of the sixteen days fall in September, how Munich swapped its amber M&auml;rzen for pale Festbier, and why America kept the old one. And <a href="/blog/oktoberfest-first-giant-tent.html">Everything Traditional About Oktoberfest Is Younger Than the Tent</a> &mdash; the 1898 scandal that produced the giant tents, and the 1907 settlement that produced the six-brewery rule this whole list is sorted by.</p>
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="/">Home</a>
       <a href="/pubs/">Venues</a>
       <a href="/blog/">Blog</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
     </div>
-    <p style="font-size:0.72rem;color:#555;margin-top:10px">Independent editorial; not affiliated with Oktoberfest, the city of Munich, or any brewery or promoter listed.</p>
+    <p class="ps-4">Independent editorial; not affiliated with Oktoberfest, the city of Munich, or any brewery or promoter listed.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
   <!-- Cloudflare Web Analytics — cookieless, no consent banner required.
