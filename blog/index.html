@@ -161,6 +161,12 @@
     .view-toggle[aria-checked="false"] .switch-text { justify-content: flex-end; padding-left: 0; padding-right: 10px; }
     @media (prefers-reduced-motion: reduce) { .switch-knob { transition: none; } }
     .content .shelf-list { list-style: none; display: flex; flex-direction: column; gap: 0; margin: 0 0 44px; padding: 0; }
+    /* Out-specifies the `.content .shelf-list` rule above. Both that rule and
+       `.shelf-list[hidden]` score the same specificity, so the later one wins
+       on order alone: when it carries a `display`, the list stays on screen
+       while `hidden` is set and the shelf is drawn twice, once as covers and
+       once as the list beneath. This rule is the one that must win. */
+    .content .shelf-list[hidden] { display: none; }
     .shelf-list li:last-child .post { border-bottom: 1px solid var(--rule); }
     .list-head { font-family: var(--sans); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase;
       color: var(--muted); font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
