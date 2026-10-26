@@ -46,6 +46,17 @@
     body .ps-1 { color: var(--muted); font-size: 1.05rem; margin-top: -4px; margin-bottom: 28px; }
     body .ps-2 { font-size: 0.82rem; color: var(--muted); margin-top: 28px; }
     body .ps-3 { margin-top: 10px; }
+    /* Curated Collection break-out, same object as the one on the Davy's
+       piece. Every signal here is a shape rather than a colour: a box rule,
+       an uppercase eyebrow, an underline on the inline link and a border on
+       the button, so none of it depends on seeing the amber. */
+    .collection-cta { margin: 36px 0 20px; padding: 22px 22px 20px; border: 1px solid var(--rule); border-radius: 0; background: transparent; }
+    .collection-cta .cta-label { text-transform: uppercase; letter-spacing: 1.4px; font-size: 0.72rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .collection-cta .cta-title { font-size: 1.22rem; font-weight: 800; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.3px; }
+    .collection-cta .cta-body { color: var(--ink); font-size: 0.98rem; margin-bottom: 14px; }
+    .collection-cta .cta-body a { color: var(--ink); border-bottom: 1px solid var(--amber); }
+    .collection-cta .cta-btn { display: inline-block; padding: 10px 18px; border-radius: 0; font-weight: 700; text-decoration: none; letter-spacing: 0.2px; background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    .collection-cta .cta-btn:hover { background: transparent; }
   </style>
 </head>
 <body>
@@ -124,7 +135,14 @@
     <p>We learnt early that a ghost story did not have to be believed to be enjoyed. Pub folklore benefits from the same arrangement.</p>
 
     <h2>The signs stay up</h2>
-    <p>Seventy Green Men in <a href="/collections/green-man">our catalogue</a>, twenty Green Dragons, twelve Ravens and one Hobgoblin. Before anyone hangs a plastic bat from the ceiling, the pub signs have already supplied a fairly respectable Halloween.</p>
+    <p>Seventy Green Men in our catalogue, twenty Green Dragons, twelve Ravens and one Hobgoblin. Before anyone hangs a plastic bat from the ceiling, the pub signs have already supplied a fairly respectable Halloween.</p>
+
+    <div class="collection-cta">
+      <p class="cta-label">New &middot; Curated Collection</p>
+      <p class="cta-title">Forty-nine Green Men, mapped</p>
+      <p class="cta-body">Every Green Man our catalogue still has open, grouped by region, now lives as <a href="/collections/green-man">The Green Man</a>, a Curated Collection in PINtPOINT. Not a crawl and not a route: a map to work through over a season.</p>
+      <p><a class="cta-btn" href="/collections/green-man">Open the collection &rarr;</a></p>
+    </div>
     <p>The pub sign is where Britain files the things it has stopped being able to explain. Sometimes the explanation survives. Sometimes a better one comes along and takes its place.</p>
     <p>The Green Man acquired a pagan biography. Pumpkin beer acquired the flavour of pie. Jack gave a wandering light a drinking problem, and the witch acquired a previous career. These stories have different claims on the truth, but all have found somewhere comfortable at the bar.</p>
 
