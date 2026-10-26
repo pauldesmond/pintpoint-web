@@ -14,173 +14,198 @@
   <meta property="og:description" content="Not on the night. Lewes belongs to the processions on the fifth. Any other evening, nine pubs from the station to the Greenwich meridian." />
   <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    /* Stops are numbered rows, not cards: a walk is a sequence and the
-       numbering is the information. Rules rather than fills, like the rest
-       of the sheet. */
-    .stop { display: flex; gap: 16px; padding: 18px 0; border-top: 1px solid var(--rule-soft); }
-    .stop:last-of-type { border-bottom: 1px solid var(--rule-soft); }
-    .stop .num { flex: 0 0 auto; width: 2.1rem; height: 2.1rem; display: flex; align-items: center; justify-content: center;
-                 border: 1px solid var(--rule); font-family: var(--sans); font-weight: 800; font-size: 0.85rem; }
-    .stop .body { flex: 1 1 auto; min-width: 0; }
-    .stop h2 { font-size: 1.08rem; font-weight: 800; margin: 0 0 2px; letter-spacing: -0.2px; }
-    .stop .addr { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); margin: 0 0 8px; }
-    .stop p { margin: 0 0 6px; font-size: 0.97rem; }
-    .stop .go { font-family: var(--sans); font-size: 0.82rem; }
-    /* The warning is the one thing on the page that must not be skimmed past,
-       so it gets the break-out box: a rule, deeper paper and an uppercase
-       eyebrow. Tonal and structural, nothing resting on colour. */
-    .warn-box { margin: 28px 0; padding: 20px 22px; border: 1px solid var(--rule); background: var(--paper-deep); }
-    .warn-box .eyebrow { font-family: var(--sans); text-transform: uppercase; letter-spacing: 1.4px;
-                         font-size: 0.72rem; font-weight: 700; margin: 0 0 8px; }
-    .warn-box p { margin: 0 0 8px; }
-    .warn-box p:last-child { margin-bottom: 0; }
-    .extras { margin-top: 10px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --accent: #FF7A45; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 16px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; color: #FFD580; border: 1px solid rgba(255,213,128,0.4); }
+    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 12px; }
+    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.75; margin-bottom: 32px; }
+    p { font-size: 0.97rem; line-height: 1.7; color: var(--text); margin-bottom: 14px; }
+    a { color: var(--teal); }
+    h2.turn { font-size: 1.2rem; font-weight: 800; margin: 36px 0 14px; color: var(--text); }
+
+    /* The warning carries a left bar AND an uppercase label AND its own
+       border, so it reads as a warning without anyone having to see that
+       the bar is orange. */
+    .warn { margin: 28px 0 36px; padding: 20px 22px; background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px; }
+    .warn .eyebrow { font-size: 0.72rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .warn p:last-child { margin-bottom: 0; }
+
+    .stops { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 0 0 32px; }
+    .stop { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; }
+    .stop .num { font-size: 1.4rem; font-weight: 900; color: var(--teal); line-height: 1.1; }
+    .stop .body { min-width: 0; }
+    .stop .name { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .stop .addr { font-size: 0.82rem; color: #666; margin-bottom: 10px; }
+    .stop p { margin-bottom: 8px; }
+    .stop .go { font-size: 0.85rem; margin-bottom: 0; }
+
+    .open-app { margin: 40px 0 0; padding: 24px 28px; background: linear-gradient(135deg, rgba(0,212,170,0.08), rgba(0,212,170,0.02)); border: 1px solid rgba(0,212,170,0.3); border-radius: 12px; }
+    .open-app h2 { font-size: 1.2rem; font-weight: 800; color: var(--teal); margin-bottom: 10px; }
+    .open-app p:last-child { margin-bottom: 0; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 24px 48px; text-align: center; }
+    footer .links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+    footer a { color: var(--muted); text-decoration: none; font-size: 0.88rem; }
+    footer a:hover { color: var(--text); }
+    footer p { font-size: 0.8rem; color: #666; margin: 0; }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .content { padding: 32px 18px 64px; }
+      .stop { grid-template-columns: 30px 1fr; padding: 16px 18px; }
+    }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="/" class="logo">PINt<span>POINT</span></a>
-    <div>
-      <a href="/about-pintpoint.html">About</a>
-      <a href="/features.html">Features</a>
-      <a href="/pubs/">Venues</a>
-      <a href="/blog/">Blog</a>
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../features.html">Features</a>
+      <a href="../pubs/">Venues</a>
+      <a href="../blog/">Blog</a>
     </div>
   </nav>
 
-  <article class="content">
-    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category guide">Guide</span>Lewes, East Sussex</p>
+  <div class="content">
+    <p class="meta"><span class="category">Crawl</span>Lewes, East Sussex</p>
     <h1>Lewes Bonfire Booze Crawl</h1>
 
-    <div class="lede">
-      <p>Nine pubs, about a mile and a half, ending on the Greenwich meridian.</p>
-      <p class="short">Lewes is a county town of seventeen thousand people with more good pubs than towns five times its size. The walk below is the one <a href="https://www.southeastsussex.camra.org.uk/lewespubs">CAMRA South East Sussex</a> recommends, in the order the ground suggests: out of the station, downhill to the Cliffe, then back up the High Street until the pavement runs out at zero degrees longitude.</p>
-    </div>
+    <p class="lede">Nine pubs, about a mile and a half, ending on the Greenwich meridian. Lewes is a county town of seventeen thousand people with more good pubs than towns five times its size. The walk below is the one <a href="https://www.southeastsussex.camra.org.uk/lewespubs">CAMRA South East Sussex</a> recommends, in the order the ground suggests: out of the station, downhill to the Cliffe, then back up the High Street until the pavement runs out at zero degrees longitude.</p>
 
-    <div class="warn-box">
+    <div class="warn">
       <p class="eyebrow">Not on the fifth of November</p>
       <p>Do not attempt this on Bonfire Night. Lewes on the fifth is not a pub crawl, it is six processions through a town of seventeen thousand, with up to five thousand marching and tens of thousands watching. The shops board their windows. Many of these pubs go ticket-only, members-only or simply shut their doors, and the railway station has been known to close.</p>
       <p>Go and see the bonfire if you can get there and back. Do this walk on any other night of the year, when the town is itself again.</p>
     </div>
 
-    <h2 class="section-turn">The nine</h2>
+    <h2 class="turn">The nine</h2>
 
-    <div class="stop">
-      <div class="num">1</div>
-      <div class="body">
-        <h2>The Royal Oak</h2>
-        <p class="addr">3 Station Street, BN7 2DA</p>
-        <p>Two minutes from the platform, which makes it either the first pub or the last one depending on how the day goes. Greene King, with guest ales beside it, and a courtyard at the back.</p>
-        <p class="go"><a href="/pubs/the-royal-oak-lewes">Open in PINtPOINT &rarr;</a></p>
+    <div class="stops">
+      <div class="stop">
+        <div class="num">1</div>
+        <div class="body">
+          <div class="name">The Royal Oak</div>
+          <div class="addr">3 Station Street, BN7 2DA</div>
+          <p>Two minutes from the platform, which makes it either the first pub or the last one depending on how the day goes. Greene King, with guest ales beside it, and a courtyard at the back.</p>
+          <p class="go"><a href="/pubs/the-royal-oak-lewes">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">2</div>
+        <div class="body">
+          <div class="name">Lansdown Arms</div>
+          <div class="addr">36 Lansdown Place, BN7 2JU</div>
+          <p>Still in the station&rsquo;s orbit. Timothy Taylor Landlord is usually on, and it fills up on match days, so it is better early in the walk than late.</p>
+          <p class="go"><a href="/pubs/lansdown-arms-lewes">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">3</div>
+        <div class="body">
+          <div class="name">John Harvey Tavern</div>
+          <div class="addr">Bear Yard, Cliffe High Street, BN7 2AN</div>
+          <p>The brewery&rsquo;s own house, across the yard from where the beer is made. Seasonals turn up here first, some of it straight from the cask, and this is where Bonfire Boy appears every November. If you only make one stop on this list, it is this one.</p>
+          <p class="go"><a href="/pubs/john-harvey-tavern-lewes">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">4</div>
+        <div class="body">
+          <div class="name">The Gardeners Arms</div>
+          <div class="addr">46 Cliffe High Street, BN7 2AN</div>
+          <p>A few doors along and a different proposition: small, free of any brewery, and reliably carrying at least one dark beer. Cider too. The pub CAMRA members in this part of Sussex name first.</p>
+          <p class="go"><a href="/pubs/the-gardeners-arms-lewes">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">5</div>
+        <div class="body">
+          <div class="name">Rights of Man</div>
+          <div class="addr">179 High Street, BN7 1YE</div>
+          <p>Back over the river and up the hill. Harvey&rsquo;s showcase pub, named for the Thomas Paine connection the town never stops mentioning, and priced for the tourists it attracts. Terrace at the rear.</p>
+          <p class="go"><a href="/pubs/rights-of-man-lewes">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">6</div>
+        <div class="body">
+          <div class="name">The Lewes Arms</div>
+          <div class="addr">1 Mount Place, BN7 1YH</div>
+          <p>Tucked behind the castle, beside the old ditch where the pea-throwing happens. Fuller&rsquo;s own it now, and Harvey&rsquo;s Sussex Best is on all year, which is the whole story: in 2006 Greene King took that beer off and the town boycotted the pub until it came back.</p>
+          <p class="go"><a href="/pubs/the-lewes-arms-lewes">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">7</div>
+        <div class="body">
+          <div class="name">Elephant &amp; Castle</div>
+          <div class="addr">White Hill, BN7 2DJ</div>
+          <p>A locals&rsquo; pub with guest ales, a pool table and the football on, none of which gets in the way. Built in 1838 to stable the horses on a new road into town, and by CAMRA&rsquo;s own account it still hosts one of the bonfire societies and a Saturday folk club, which tells you more about the place than any tasting note.</p>
+          <p class="go"><a href="/pubs/elephant-and-castle-lewes">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">8</div>
+        <div class="body">
+          <div class="name">The Brewers Arms</div>
+          <div class="addr">91 High Street, BN7 1XN</div>
+          <p>A free house, so the range moves: regional and local, and cider on. Two rooms with two moods, the back one loud when there is sport, the front one not.</p>
+          <p class="go"><a href="/pubs/the-brewers-arms-lewes">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">9</div>
+        <div class="body">
+          <div class="name">The Black Horse</div>
+          <div class="addr">55 Western Road, BN7 1RS</div>
+          <p>The furthest west and the reason to keep walking. Greene King own it and stock a good range of Sussex beer that is not theirs, which is rarer than it sounds. It also sits on the Greenwich meridian: our own record puts it at four hundred-thousandths of a degree east of zero, which is about three metres. Finish your pint in the eastern hemisphere and step outside into both.</p>
+          <p class="go"><a href="/pubs/the-black-horse-lewes">Open in PINtPOINT &rarr;</a></p>
+        </div>
       </div>
     </div>
 
-    <div class="stop">
-      <div class="num">2</div>
-      <div class="body">
-        <h2>Lansdown Arms</h2>
-        <p class="addr">36 Lansdown Place, BN7 2JU</p>
-        <p>Still in the station's orbit. Timothy Taylor Landlord is usually on, and it fills up on match days, so it is better early in the walk than late.</p>
-        <p class="go"><a href="/pubs/lansdown-arms-lewes">Open in PINtPOINT &rarr;</a></p>
-      </div>
-    </div>
+    <p>CAMRA note that the Black Horse can be dropped to shorten the walk. We would keep it and drop something else, for the reason above.</p>
 
-    <div class="stop">
-      <div class="num">3</div>
-      <div class="body">
-        <h2>John Harvey Tavern</h2>
-        <p class="addr">Bear Yard, Cliffe High Street, BN7 2AN</p>
-        <p>The brewery's own house, across the yard from where the beer is made. Seasonals turn up here first, some of it straight from the cask, and this is where Bonfire Boy appears every November. If you only make one stop on this list, it is this one.</p>
-        <p class="go"><a href="/pubs/john-harvey-tavern-lewes">Open in PINtPOINT &rarr;</a></p>
-      </div>
-    </div>
+    <h2 class="turn">If you have longer</h2>
 
-    <div class="stop">
-      <div class="num">4</div>
-      <div class="body">
-        <h2>The Gardeners Arms</h2>
-        <p class="addr">46 Cliffe High Street, BN7 2AN</p>
-        <p>A few doors along and a different proposition: small, free of any brewery, and reliably carrying at least one dark beer. Cider too. The pub CAMRA members in this part of Sussex name first.</p>
-        <p class="go"><a href="/pubs/the-gardeners-arms-lewes">Open in PINtPOINT &rarr;</a></p>
-      </div>
-    </div>
+    <p>Two more worth the detour, both east of the Cliffe and both away from the line of the walk. <a href="/pubs/the-snowdrop-inn-lewes">The Snowdrop Inn</a> on South Street, built in 1840 on the ground where the 1836 avalanche buried a row of cottages and killed eight people, and named for it rather than for the flower. And <a href="/pubs/the-dorset-lewes">The Dorset</a> on Malling Street, a Harvey&rsquo;s house and the headquarters of the Cliffe Bonfire Society for the past hundred and sixty years.</p>
 
-    <div class="stop">
-      <div class="num">5</div>
-      <div class="body">
-        <h2>Rights of Man</h2>
-        <p class="addr">179 High Street, BN7 1YE</p>
-        <p>Back over the river and up the hill. Harvey's showcase pub, named for the Thomas Paine connection the town never stops mentioning, and priced for the tourists it attracts. Terrace at the rear.</p>
-        <p class="go"><a href="/pubs/rights-of-man-lewes">Open in PINtPOINT &rarr;</a></p>
-      </div>
-    </div>
+    <p>Nine pubs, one river, one hill, one meridian. Pace yourself: the High Street is steeper than it looks on a map, and it is all uphill on the way back.</p>
 
-    <div class="stop">
-      <div class="num">6</div>
-      <div class="body">
-        <h2>The Lewes Arms</h2>
-        <p class="addr">1 Mount Place, BN7 1YH</p>
-        <p>Tucked behind the castle, beside the old ditch where the pea-throwing happens. Fuller's own it now, and Harvey's Sussex Best is on all year, which is the whole story: in 2006 Greene King took that beer off and the town boycotted the pub until it came back.</p>
-        <p class="go"><a href="/pubs/the-lewes-arms-lewes">Open in PINtPOINT &rarr;</a></p>
-      </div>
-    </div>
-
-    <div class="stop">
-      <div class="num">7</div>
-      <div class="body">
-        <h2>Elephant &amp; Castle</h2>
-        <p class="addr">White Hill, BN7 2DJ</p>
-        <p>A locals’ pub with guest ales, a pool table and the football on, none of which gets in the way. Built in 1838 to stable the horses on a new road into town, and by CAMRA’s own account it still hosts one of the bonfire societies and a Saturday folk club, which tells you more about the place than any tasting note.</p>
-        <p class="go"><a href="/pubs/elephant-and-castle-lewes">Open in PINtPOINT &rarr;</a></p>
-      </div>
-    </div>
-
-    <div class="stop">
-      <div class="num">8</div>
-      <div class="body">
-        <h2>The Brewers Arms</h2>
-        <p class="addr">91 High Street, BN7 1XN</p>
-        <p>A free house, so the range moves: regional and local, and cider on. Two rooms with two moods, the back one loud when there is sport, the front one not.</p>
-        <p class="go"><a href="/pubs/the-brewers-arms-lewes">Open in PINtPOINT &rarr;</a></p>
-      </div>
-    </div>
-
-    <div class="stop">
-      <div class="num">9</div>
-      <div class="body">
-        <h2>The Black Horse</h2>
-        <p class="addr">55 Western Road, BN7 1RS</p>
-        <p>The furthest west and the reason to keep walking. Greene King own it and stock a good range of Sussex beer that is not theirs, which is rarer than it sounds. It also sits on the Greenwich meridian: our own record puts it at four hundred-thousandths of a degree east of zero, which is about three metres. Finish your pint in the eastern hemisphere and step outside into both.</p>
-        <p class="go"><a href="/pubs/the-black-horse-lewes">Open in PINtPOINT &rarr;</a></p>
-      </div>
-    </div>
-
-    <p class="extras">CAMRA note that the Black Horse can be dropped to shorten the walk. We would keep it and drop something else, for the reason above.</p>
-
-    <h2 class="section-turn">If you have longer</h2>
-
-    <p>Two more worth the detour, both east of the Cliffe and both away from the line of the walk. <a href="/pubs/the-snowdrop-inn-lewes">The Snowdrop Inn</a> on South Street, built in 1840 on the ground where the 1836 avalanche buried a row of cottages and killed eight people, and named for it rather than for the flower. And <a href="/pubs/the-dorset-lewes">The Dorset</a> on Malling Street, a Harvey's house and the headquarters of the Cliffe Bonfire Society for the past hundred and sixty years.</p>
-
-    <p class="end">Nine pubs, one river, one hill, one meridian. Pace yourself: the High Street is steeper than it looks on a map, and it is all uphill on the way back.</p>
-
-    <h2>Walk it in the app</h2>
-
-    <p>Every stop above links to its page in PINtPOINT, where you can see what has been seen on tap there recently and how far it is from wherever you are standing. Tap lists move, so on the night check the app rather than this page.</p>
-  </article>
+    <section class="open-app">
+      <h2>Walk it in the app</h2>
+      <p>Every stop above links to its page in <strong>PINtPOINT</strong>, where you can see what has been seen on tap there recently and how far it is from wherever you are standing.</p>
+      <p>Tap lists move. On the night, check the app rather than this page.</p>
+    </section>
+  </div>
 
   <footer>
-    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
-      <a href="/">Home</a>
-      <a href="/features.html">Features</a>
-      <a href="/pubs/">Venues</a>
-      <a href="/blog/">Blog</a>
-      <a href="/about-pintpoint.html">About</a>
+      <a href="../index.html">PINtPOINT</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../privacy-policy.html">Privacy</a>
     </div>
-    <p>&copy; 2026 PINtPOINT. Beer discovery for London and beyond.</p>
+    <p>&copy; 2026 PINtPOINT &middot; Find the right pub before the first pint.</p>
   </footer>
   <!-- Cloudflare Web Analytics — cookieless, no consent banner required. -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
