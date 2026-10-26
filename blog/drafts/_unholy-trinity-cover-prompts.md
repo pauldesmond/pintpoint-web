@@ -39,7 +39,7 @@ witches, pumpkins.
 
 ---
 
-## Part 2 — 5 November — lewes-voice-of-the-bonfire.html
+## Part 2 — 5 November — lewes-voice-of-the-fire.html
 
 [shared style block]
 

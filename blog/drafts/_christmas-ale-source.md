@@ -297,7 +297,7 @@ Three pieces, all inside seven days:
 | date | file | role |
 |---|---|---|
 | Sat 31 Oct | green-man-and-season-of-the-witch.html | invented BY an outsider (Lady Raglan, 1939) |
-| Thu 5 Nov | lewes-voice-of-the-bonfire.html | invented BY the keepers, in public, still argued over |
+| Thu 5 Nov | lewes-voice-of-the-fire.html | invented BY the keepers, in public, still argued over |
 | Fri 6 Nov | the-first-friday-of-christmas.html | invented BY a marketing department (J-dag, 1990) |
 
 Lewes is the control. Without it the series is three debunkings; with it

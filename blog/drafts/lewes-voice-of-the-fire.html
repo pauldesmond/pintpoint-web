@@ -7,12 +7,12 @@
   <title>Voice of the Fire — PINtPRESS</title>
   <meta name="description" content="Lewes Bonfire lapsed in the 1700s, was rebuilt by young men with tar barrels in the 1820s, and burns this Pope for Victorian reasons, in a town where Harvey's brew for it from inside the walls." />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="canonical" href="https://pintpoint.co.uk/blog/drafts/lewes-voice-of-the-bonfire.html" />
+  <link rel="canonical" href="https://pintpoint.co.uk/blog/drafts/lewes-voice-of-the-fire.html" />
   <link rel="alternate" type="application/rss+xml" title="PINtPRESS" href="https://pintpoint.co.uk/blog/feed.xml" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Voice of the Fire" />
   <meta property="og:description" content="Lewes burns this Pope, who had nothing to do with the Gunpowder Plot, for reasons rooted in the 1850s." />
-  <meta property="og:image" content="https://pintpoint.co.uk/blog/images/lewes-voice-of-the-bonfire.jpg" />
+  <meta property="og:image" content="https://pintpoint.co.uk/blog/images/lewes-voice-of-the-fire.jpg" />
   <meta property="og:image:alt" content="PINtPRESS cover: the Lewes Bonfire procession at night, with marchers in black-and-white striped jerseys and top hats carrying flaming torches down a wet high street towards a masked Guy Fawkes effigy on a burning pyre, past the lit windows of the Dorset." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,6 +22,17 @@
     body .ps-1 { color: var(--muted); font-size: 1.05rem; margin-top: -4px; margin-bottom: 28px; }
     body .ps-2 { margin-top: 10px; }
     body .ps-3 { margin-top: 14px; color: var(--muted); font-size: 0.85rem; }
+    /* Break-out for the visit advice, the same object as the Curated Collection
+       box on part one: filled with paper-deep so it lifts off the page. The lift
+       is tonal rather than a hue, which is the contrast that survives colour
+       blindness, and everything in here is a shape as well, a box rule, an
+       uppercase eyebrow and a bordered button, so nothing depends on the amber. */
+    .visit-box { margin: 36px 0 20px; padding: 22px 22px 20px; border: 1px solid var(--rule); border-radius: 0; background: var(--paper-deep); }
+    .visit-box .visit-label { text-transform: uppercase; letter-spacing: 1.4px; font-size: 0.72rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .visit-box .visit-title { font-size: 1.22rem; font-weight: 800; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.3px; }
+    .visit-box .visit-body { color: var(--ink); font-size: 0.98rem; margin-bottom: 14px; }
+    .visit-box .visit-btn { display: inline-block; padding: 10px 18px; border-radius: 0; font-weight: 700; text-decoration: none; letter-spacing: 0.2px; background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    .visit-box .visit-btn:hover { background: transparent; }
   </style>
 </head>
 <body>
@@ -104,9 +115,11 @@
 
     <p class="end">The pub signs were right all along. It does not much matter whether a tradition is old. It matters whether anybody still means it.</p>
 
-    <div class="companion">
-      <b>If you are going</b>
-      <p>Not on the fifth. The town is not yours that evening, and half the pubs will be ticket-only or shut. For any other night of the year we have put <a href="/crawls/lewes.html">the nine we would walk</a> on their own page, in the order the ground suggests.</p>
+    <div class="visit-box">
+      <p class="visit-label">If you are going</p>
+      <p class="visit-title">Not on the fifth</p>
+      <p class="visit-body">The town is not yours that evening, and half the pubs will be ticket-only or shut. For any other night of the year we have put the nine we would walk on their own page, in the order the ground suggests, from the station to the Greenwich meridian.</p>
+      <p><a class="visit-btn" href="/crawls/lewes.html">Open the Lewes crawl &rarr;</a></p>
     </div>
 
     <div class="companion">
