@@ -83,10 +83,15 @@ if grep -nE '/blog/drafts/' "${POST_FILE}" >/dev/null; then
 fi
 
 # 3. column standard — one width for every PINtPRESS page
-#    (feedback_pintpress_column_standard). Copy the block from any
-#    page that has it.
-if ! grep -q 'PINtPRESS column standard v1' "${POST_FILE}"; then
-  echo "❌ Column guard failed: ${POST_FILE} lacks the 'PINtPRESS column standard v1' CSS block."
+#    (feedback_pintpress_column_standard). Two ways to carry it now. The
+#    older pages inline a 'PINtPRESS column standard v1' block; everything
+#    painted since September takes the same measure from the shared
+#    pintpress-feature.css. Either satisfies the rule, neither being
+#    present does not.
+if ! grep -q 'PINtPRESS column standard v1' "${POST_FILE}" \
+   && ! grep -q 'blog/pintpress-feature.css' "${POST_FILE}"; then
+  echo "❌ Column guard failed: ${POST_FILE} has neither the inline 'PINtPRESS column standard v1'"
+  echo "   block nor a link to /blog/pintpress-feature.css."
   GUARD_FAIL=1
 fi
 
@@ -108,7 +113,10 @@ echo
 
 # 5. Confirmation
 read -r -p "Commit + push + IndexNow ping for this post? [y/N] " ANSWER
-if [[ "${ANSWER,,}" != "y" ]]; then
+# Lowercased with tr, not ${ANSWER,,}: that expansion is bash 4 and the bash on
+# the front of PATH here is 3.2, so the old line aborted the script with "bad
+# substitution" after the guards had passed but before anything was committed.
+if [[ "$(printf '%s' "${ANSWER}" | tr '[:upper:]' '[:lower:]')" != "y" ]]; then
   echo "Aborted. Run \`git diff\` to review, then commit manually if it looks right."
   exit 0
 fi
