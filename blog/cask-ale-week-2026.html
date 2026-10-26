@@ -17,7 +17,7 @@
   <meta property="og:image:alt" content="A hand pull on a British bar, foam settling on a pint of cask ale — PINtPRESS-typeset." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -101,66 +101,24 @@
   ]
 }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; --red: #C8102E; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; line-height: 1.65; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 720px; margin: 0 auto; padding: 48px 24px 72px; }
-    .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .category { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
-    .category.essay { background: rgba(0,212,170,0.12); color: var(--teal); border: 1px solid rgba(0,212,170,0.32); }
-    h1 { font-size: clamp(1.9rem, 5.2vw, 2.7rem); font-weight: 900; letter-spacing: -1.1px; line-height: 1.08; margin-bottom: 18px; text-transform: none; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.4px; margin: 36px 0 12px; line-height: 1.25; }
-    p { margin-bottom: 14px; color: #e6edf3; }
-    .lede { margin-bottom: 30px; padding-left: 14px; border-left: 3px solid var(--red); }
-    .lede p:first-child { font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
-    .lede p.short { font-size: 0.95rem; color: var(--muted); font-style: italic; margin-bottom: 14px; }
-    .highlight { color: var(--text); font-weight: 600; }
-    a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
-    a:hover { border-bottom-color: var(--teal); }
-    .xi { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 18px 4px; margin: 24px 0; }
-    .xi h3 { font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
+    :root { --red: #C8102E; }
+    .xi { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 18px 18px 4px; margin: 24px 0; }
+    .xi h3 { font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber-ink); margin-bottom: 12px; }
     .xi ol { list-style: none; counter-reset: cask; padding: 0; margin: 0; }
-    .xi li { counter-increment: cask; padding: 12px 0 12px 38px; border-bottom: 1px solid var(--border); position: relative; line-height: 1.45; }
+    .xi li { counter-increment: cask; padding: 12px 0 12px 38px; border-bottom: 1px solid var(--rule-soft); position: relative; line-height: 1.45; }
     .xi li:last-child { border-bottom: none; }
-    .xi li::before { content: counter(cask); position: absolute; left: 0; top: 12px; width: 28px; height: 28px; background: var(--red); border-radius: 50%; color: #fff; font-weight: 800; font-size: 0.82rem; display: flex; align-items: center; justify-content: center; }
-    .xi li b { color: var(--text); font-weight: 700; }
+    .xi li::before { content: counter(cask); position: absolute; left: 0; top: 12px; width: 28px; height: 28px; background: transparent; border-radius: 50%; color: var(--ink); font-weight: 800; font-size: 0.82rem; display: flex; align-items: center; justify-content: center; }
+    .xi li b { color: var(--ink); font-weight: 700; }
     .xi li .role { display: block; font-size: 0.85rem; color: var(--muted); margin-top: 2px; }
-    .faq { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--border); }
-    .faq h2 { font-size: 1.3rem; margin-bottom: 14px; }
-    .faq-item { margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-    .faq-item summary { cursor: pointer; font-weight: 600; padding: 8px 0; color: var(--text); }
-    .faq-item summary:hover { color: var(--teal); }
-    .faq-item p { padding: 6px 0 8px; color: #c9d1d9; font-size: 0.95rem; }
-    .companion { margin-top: 36px; padding: 16px 18px; background: rgba(0,212,170,0.06); border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; font-size: 0.92rem; }
-    .companion b { color: var(--teal); }
-    .sources { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    .sources h2 { font-size: 1rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-    .sources ul { padding-left: 18px; }
-    .sources li { margin-bottom: 6px; }
-    .cta { display: inline-block; background: var(--teal); color: #0d1117; font-weight: 700; padding: 12px 22px; border-radius: 8px; text-decoration: none; border: none; margin-top: 8px; }
-    .cta:hover { background: #00b896; border-bottom: none; }
-    footer { text-align: center; padding: 36px 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--muted); margin-top: 24px; }
-    footer a { color: var(--muted); text-decoration: none; border-bottom: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 22px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 56px; } }
-      /* PINtPRESS column standard v1 (2026-09-17): desktop 960px column, 880px of text at 17px; mobile full width, 20px gutters, 16px text. Do not vary per page. */
-    .content { max-width: 960px; padding: 60px 40px 80px; }
-    body { font-size: 17px; }
-    @media (max-width: 600px) { .content { max-width: none; padding: 32px 20px 56px; } body { font-size: 16px; } }
+    body .ps-1 { font-size: 0.72rem; color: var(--muted); margin-top: 10px; }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="/" class="logo" style="text-decoration:none;color:var(--text);border:none">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="/" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="/about-pintpoint.html">About</a>
       <a href="/features.html">Features</a>
       <a href="/pubs/">Venues</a>
@@ -169,7 +127,7 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>17 September 2026</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category essay">Essay</span>17 September 2026</p>
     <h1>Cask Ale Week: the Format <em>Nobody Else Can Pour</em></h1>
     
     <div class="lede">
@@ -179,15 +137,15 @@
     
     <h2>The misconception we keep apologising for</h2>
     <p>Anywhere else in the world, you would read <em>warm and flat</em> on a back-of-bottle review and put the glass down. In Britain, that combination — given a working cellar and a publican who knows what they are doing — is the format. Cask ale is not a fault. It is <span class="highlight">unfiltered, unpasteurised beer that finishes its fermentation inside the cask</span>, in the pub cellar, under the publican's care. It is poured at cellar temperature, around 11 to 13 degrees, which is cool to the touch but not cold to the tongue. Its carbonation comes from secondary fermentation and a soft natural release, not a CO2 cylinder.</p>
-    <p>This is what makes cask hard to copy. A keg lager travels. A bottle of Bordeaux travels. A cask of bitter, properly kept, is a living thing that exists for a few days in one specific cellar, on one specific bar, in one specific pub. <span class="highlight">It cannot be exported as a product.</span> It can only be drunk in place. The technical window is small — Des de Moor's recent book on cask puts the ideal serving window at three days once broached, four with very careful cellar work — but the cultural consequence is huge. That makes it the most local format the global drinks industry has, and the easiest to lose, which is why the people who care about it care so loudly.</p>
+    <p>This is what makes cask hard to copy. A keg lager travels. A bottle of Bordeaux travels. A cask of bitter, properly kept, is a living thing that exists for a few days in one specific cellar, on one specific bar, in one specific pub. <span class="highlight">It cannot be exported as a product.</span> It can only be drunk in place. The technical window is small — <a href="https://desdemoor.co.uk/cask/">Des de Moor&rsquo;s <em>Cask: The Real Story of Britain&rsquo;s Unique Beer</em></a> (CAMRA Books, 2023) puts the ideal serving window at three days once broached, four with very careful cellar work — but the cultural consequence is huge. That makes it the most local format the global drinks industry has, and the easiest to lose, which is why the people who care about it care so loudly.</p>
     
     <h2>Who is actually drinking it</h2>
     <p>This is the biggest one yet: <strong>more than 10,000 pubs</strong> have signed up, with hundreds of breweries, a million free tasters between them, and an app trail that pays out in a T-shirt after twelve pints. The organisers are making a point with the number, because the trade needs the encouragement.</p>
 
-    <p>The audience is changing underneath it. CGA’s June figures put <strong>16% of cask drinkers between 18 and 34</strong>, and the Society of Independent Brewers reports a quarter of 18 to 24-year-olds have now tried cask, up ten per cent on the year, with some independents seeing cask growth in double digits.</p>
-    <p>Firebrand Brewing in Cornwall is one of them, at 18% up on the year. Its founder Joe Thomson told <em>The Drinks Business</em> that drinkers "seem to be embracing cask in a way we've not seen for years", and marked the week by brewing a 4.8% pale ale from an 1864 recipe: pale malt, Goldings, nothing else. The reasons younger drinkers give are not the ones the trade expected either. Most cask is under 4.5%, it cannot be delivered to your door, and it is the cheapest proper pint on the bar: <strong>£4.54 against £4.97</strong> for the average pint.</p>
+    <p>The audience is changing underneath it. CGA’s June figures put <strong>16% of cask drinkers between 18 and 34</strong>, and the Society of Independent Brewers&rsquo; <em>Independent Beer Report</em> has a quarter of 18 to 24-year-olds having now tried cask, up ten per cent on the year, with some independents seeing cask growth in double digits.</p>
+    <p>Firebrand Brewing in Cornwall is one of them, at 18% up on the year. Its founder Joe Thomson told <a href="https://www.thedrinksbusiness.com/2026/09/consumers-are-embracing-cask-in-a-way-weve-not-seen-for-years/"><em>The Drinks Business</em></a> in September that drinkers "seem to be embracing cask in a way we've not seen for years", and marked the week by brewing a 4.8% pale ale from an 1864 recipe: pale malt, Goldings, nothing else. The reasons younger drinkers give are not the ones the trade expected either. Most cask is under 4.5%, it cannot be delivered to your door, and it is the cheapest proper pint on the bar: <strong>£4.54 against £4.97</strong> for the average pint.</p>
 
-    <p>None of which means the category is fixed. Cask still sells 8.1% of draught beer by volume and only 7.4% by value, volumes are falling where distribution has been cut, and a week of celebration does not reverse a decade. The cheapness is the sore point in the trade. St Austell's chief operating officer Andrew Turner put it plainly to the <em>Morning Advertiser</em> in July: cask is "the most difficult beer to look after, requires the most energy, the most effort, but yet it appears to be the cheapest pint on the bar — and the two just don't go hand in hand." He expects it to be the trendiest drink on the bar again; he would rather it arrived with a price that paid for the cellar work.</p>
+    <p>None of which means the category is fixed. Cask still sells 8.1% of draught beer by volume and only 7.4% by value, volumes are falling where distribution has been cut, and a week of celebration does not reverse a decade. The cheapness is the sore point in the trade. St Austell's chief operating officer Andrew Turner put it plainly to the <a href="https://www.morningadvertiser.co.uk/Article/2026/07/02/cask-beer-set-to-become-the-coolest-pub-drink-again/"><em>Morning Advertiser</em></a> in July: cask is "the most difficult beer to look after, requires the most energy, the most effort, but yet it appears to be the cheapest pint on the bar — and the two just don't go hand in hand." He expects it to be the trendiest drink on the bar again; he would rather it arrived with a price that paid for the cellar work.</p>
     
     <h2>What the plaque on the door promises</h2>
     <p><a href="https://caskaleweek.co.uk/" target="_blank" rel="noopener noreferrer">Cask Ale Week</a> was started in the early 2000s by the <a href="https://cask-marque.co.uk" target="_blank" rel="noopener noreferrer">Cask Marque Trust</a>, the body behind the plaques and window stickers you have been walking past for years, and it runs with CAMRA and most of the trade behind it. Any pub can take part, Cask Marque member or not; the campaign names a Beer of the Day and a Brewery of the Day, and lists what is on near you.</p>
@@ -232,8 +190,8 @@
     <p>Three ways to be old, three ways to claim heritage. <span class="highlight">Belgium have the oldest brewers</span> — Rochefort has been brewing continuously since 1595, with abbey lineage back to 1230. <span class="highlight">Germany has the oldest breweries</span> — Weihenstephan dates itself to 1040, and Munich’s oldest, Augustiner, to 1328. <span class="highlight">England have the oldest format.</span> Only one of those three definitions of old can be poured, kept and drunk locally without first being shipped, filtered or pasteurised.</p>
     
     <h2>The big brewers have noticed</h2>
-    <p>There is another reason this suddenly feels current. Heritage cask is no longer just something CAMRA members defend and regional brewers quietly keep alive. The big brewers have noticed the ghosts on the pub wall are worth money. It has the faintly familiar feel of craft beer a decade ago: once the independents proved the appetite was real, the larger players moved in for the brands, the credibility and the route to market.</p>
-    <p>Damm, best known in Britain for Estrella, has bought the Old Speckled Hen family from Greene King. JW Lees has brought Boddingtons back on cask. Allsopp's and Double Diamond are being revived. Draught Bass is on more than a thousand hand pumps again. Timothy Taylor's Landlord has overtaken Doom Bar at the top of the cask pile — Morning Advertiser's 2026 Drinks List puts Landlord ahead on both volume and value.</p>
+    <p>There is another reason this suddenly feels current. Heritage cask is no longer just something CAMRA members defend and regional brewers quietly keep alive. The big brewers have noticed the ghosts on the pub wall are worth money, a shift <strong>Phil Mellows</strong> traced for the <a href="https://www.morningadvertiser.co.uk/Article/2026/06/16/heritage-ales-revival-bass-and-boddingtons-return/"><em>Morning Advertiser</em></a> in June. It has the faintly familiar feel of craft beer a decade ago: once the independents proved the appetite was real, the larger players moved in for the brands, the credibility and the route to market.</p>
+    <p>Damm, best known in Britain for Estrella, has bought the Old Speckled Hen family from Greene King. JW Lees has brought Boddingtons back on cask. Allsopp's and Double Diamond are being revived. Draught Bass is on more than a thousand hand pumps again. Timothy Taylor's Landlord has overtaken Doom Bar at the top of the cask pile — <a href="https://www.morningadvertiser.co.uk/Article/2026/06/19/timothy-taylor-sales-rise-as-landlord-strengthens-cask-lead/">Morning Advertiser&rsquo;s 2026 Drinks List</a> puts Landlord ahead on both volume and value.</p>
     <p>That is flattering, and slightly dangerous. It proves the category has cultural pull again. It also means cask is being rediscovered not only as beer, but as heritage IP: names, mirrors, pump clips, memories, and pub-wall ghosts that can be reactivated once the market is ready.</p>
     <p>The handpull is fashionable again. The awkward bit is who owns the badge above it.</p>
     
@@ -244,7 +202,7 @@
     
     <h2>Eleven days</h2>
     <p>None of this makes a badly kept pint taste better. It does mean that when you find a good one this week, someone in a cellar earned it.</p>
-    <p>Cask Ale Week runs to 27 September. The cellars are ready.</p>
+    <p class="end">Cask Ale Week runs to 27 September. The cellars are ready.</p>
     <section class="faq" aria-labelledby="faq-h">
       <h2 id="faq-h">FAQ</h2>
       <details class="faq-item">
@@ -261,25 +219,17 @@
       </details>
     </section>
 
-    <section class="sources">
-      <h2>Sources</h2>
-      <ul>
-        <li>Cask Marque Trust — <a href="https://cask-marque.co.uk">cask-marque.co.uk</a></li>
-        <li><a href="https://desdemoor.co.uk/cask/">Des de Moor, <em>Cask: The Real Story of Britain’s Unique Beer</em></a> (CAMRA Books, 2023)</li>
-        <li><em>Morning Advertiser</em> — <a href="https://www.morningadvertiser.co.uk/Article/2026/07/02/cask-beer-set-to-become-the-coolest-pub-drink-again/">Andrew Turner of St Austell on cask’s price</a>, 2 July 2026, and <a href="https://www.morningadvertiser.co.uk/Article/2026/06/19/timothy-taylor-sales-rise-as-landlord-strengthens-cask-lead/">Landlord’s cask lead</a>, 19 June 2026; <a href="https://www.morningadvertiser.co.uk/Article/2026/06/16/heritage-ales-revival-bass-and-boddingtons-return/">Phil Mellows on the heritage brands</a>, 16 June 2026</li>
-        <li><a href="https://www.thedrinksbusiness.com/2026/09/consumers-are-embracing-cask-in-a-way-weve-not-seen-for-years/">The Drinks Business</a>, 14 September 2026 — Firebrand’s 18% uplift, and SIBA’s Independent Beer Report behind the 18-24 figures</li>
-      </ul>
-    </section>
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="/">Home</a>
       <a href="/pubs/">Venues</a>
       <a href="/blog/">Blog</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
     </div>
-    <p style="font-size:0.72rem;color:#555;margin-top:10px">Draft — not indexed. Independent editorial; not affiliated with CAMRA, the Cask Marque Trust, SIBA or any brewery.</p>
+    <p class="ps-1">Independent editorial; not affiliated with CAMRA, the Cask Marque Trust, SIBA or any brewery.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
   <!-- Cloudflare Web Analytics — cookieless, no consent banner required.

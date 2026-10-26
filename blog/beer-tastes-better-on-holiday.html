@@ -36,69 +36,31 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; --serif: 'Newsreader', Georgia, serif; --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
-    html, body { overflow-x: hidden; }
-    body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 48px; border-bottom: 1px solid var(--border); flex-wrap: wrap; max-width: 1180px; margin: 0 auto; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 1100px; margin: 0 auto; padding: 56px 64px 24px; }
-    .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 22px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-    .category { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(192,163,64,0.15); color: var(--amber); border: 1px solid rgba(192,163,64,0.35); }
-    h1 { font-family: var(--serif); font-size: clamp(2.3rem, 5.6vw, 3.5rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 20px; }
-    h1 em { color: var(--teal); font-style: italic; font-weight: 500; }
-    h2 { font-family: var(--serif); font-size: clamp(1.5rem, 3.4vw, 1.95rem); font-weight: 500; letter-spacing: -0.01em; margin: 44px 0 16px; line-height: 1.2; }
-    .content p { margin-bottom: 18px; color: rgba(255,255,255,0.88); font-size: 1.0625rem; line-height: 1.72; }
-    a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
-    a:hover { border-bottom-color: var(--teal); }
-    .lede { margin-bottom: 36px; padding-left: 20px; border-left: 3px solid var(--teal); }
-    .lede p:first-child { font-family: var(--serif); font-style: italic; font-size: 1.2rem; font-weight: 400; line-height: 1.5; color: rgba(255,255,255,0.9); margin-bottom: 16px; }
-    .lede p { font-size: 1.05rem; line-height: 1.68; margin-bottom: 14px; color: rgba(255,255,255,0.86); }
-    .highlight { color: var(--text); font-weight: 600; }
+    html { overflow-x: hidden; }
     .brewtable { width: 100%; border-collapse: collapse; margin: 28px 0 32px; font-size: 0.98rem; }
-    .brewtable th, .brewtable td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
-    .brewtable th { font-family: var(--sans); font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber); border-bottom: 1px solid rgba(192,163,64,0.35); }
-    .brewtable td.brand { font-weight: 700; color: var(--text); white-space: nowrap; }
-    .brewtable td.abv { font-variant-numeric: tabular-nums; color: rgba(255,255,255,0.8); }
-    .hero { margin: 0 0 32px; max-width: 640px; margin-left: auto; margin-right: auto; }
-    .hero img { width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-    .hero figcaption { font-size: 0.78rem; color: var(--muted); margin-top: 10px; text-align: center; font-style: italic; }
-    blockquote, .pullquote { font-family: var(--serif); font-style: italic; font-size: 1.4rem; line-height: 1.5; margin: 32px 0; padding-left: 24px; border-left: 3px solid var(--amber); color: rgba(255,255,255,0.9); scroll-margin-top: 24px; }
-    h1 .asterisk { color: var(--amber); font-size: 0.55em; vertical-align: super; font-family: var(--sans); font-weight: 600; text-decoration: none; margin-left: 2px; border: none; }
-    h1 .asterisk:hover { color: var(--text); }
-    blockquote cite { display: block; margin-top: 14px; font-size: 0.85rem; color: var(--muted); font-style: normal; letter-spacing: 0.5px; font-family: var(--sans); }
-    .pub-var { background: rgba(0,212,170,0.06); border-left: 3px solid var(--teal); padding: 16px 18px; margin: 24px 0; font-size: 0.96rem; line-height: 1.65; border-radius: 0 8px 8px 0; color: rgba(255,255,255,0.88); }
-    .pub-var b { color: var(--teal); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; font-size: 0.78rem; display: block; margin-bottom: 8px; font-family: var(--sans); }
-    .companion { margin-top: 40px; padding: 18px 20px; background: rgba(0,212,170,0.06); border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; font-size: 0.95rem; line-height: 1.65; }
-    .companion b { color: var(--teal); }
-    .sources { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    .sources h2 { font-size: 1rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; font-family: var(--sans); }
-    .sources ul { padding-left: 18px; }
-    .sources li { margin-bottom: 6px; }
-    footer { text-align: center; padding: 36px 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--muted); margin-top: 24px; }
-    footer a { color: var(--muted); text-decoration: none; border-bottom: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 22px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
+    .brewtable th, .brewtable td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+    .brewtable th { font-family: var(--sans); font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber-ink); border-bottom: 1px solid var(--rule); }
+    .brewtable td.brand { font-weight: 700; color: var(--ink); white-space: nowrap; }
+    .brewtable td.abv { font-variant-numeric: tabular-nums; color: var(--ink); }
+    h1 .asterisk { color: var(--amber-ink); font-size: 0.55em; vertical-align: super; font-family: var(--sans); font-weight: 600; text-decoration: none; margin-left: 2px; border: none; }
+    h1 .asterisk:hover { color: var(--ink); }
+    .pub-var { background: transparent; border-left: 3px solid var(--amber); padding: 16px 18px; margin: 24px 0; font-size: 0.96rem; line-height: 1.65; border-radius: 0; color: var(--ink); }
+    .pub-var b { color: var(--ink); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; font-size: 0.78rem; display: block; margin-bottom: 8px; font-family: var(--sans); }
+    body .ps-1 { color: var(--amber-ink); font-family: var(--sans); font-style: normal; font-weight: 700; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+    body .ps-2 { font-size: 0.72rem; color: var(--muted); margin-top: 10px; }
     @media (max-width: 600px) {
-      nav { padding: 16px 20px; }
-      .content { padding: 36px 20px 24px; }
       .brewtable { font-size: 0.9rem; }
       .brewtable th, .brewtable td { padding: 10px 8px; }
-      .lede { padding-left: 16px; }
-      .lede p:first-child { font-size: 1.2rem; }
-      blockquote, .pullquote { font-size: 1.2rem; padding-left: 18px; }
     }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
     <a href="/" class="logo">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <div>
       <a href="/about-pintpoint.html">About</a>
       <a href="/features.html">Features</a>
       <a href="/pubs/">Venues</a>
@@ -107,18 +69,18 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>15 July 2026</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category essay">Essay</span>15 July 2026</p>
 
     <h1>It's Not Just the Sunshine: <em>Your Holiday<a href="#coda" class="asterisk" aria-label="Footnote: see closing caveat">*</a> Beer Really Is a Different Beer</em></h1>
 
     <div class="lede">
       <p>You've had this feeling. First Estrella of the holiday, six euros, terrace in the shade off Passeig de Gràcia. Perfect. Three weeks later you order the same beer at a pub in Manchester and it is, unmistakably, not the same beer.</p>
-      <p>There's a reason, and it isn't the sunshine. The Estrella they pour in Barcelona is brewed by Damm at El Prat de Llobregat, ten miles south of the city. The Estrella they pour in Manchester is brewed by Damm too — but at <span class="highlight">the Eagle Brewery in Bedford, England</span>, which Damm bought outright from Carlsberg Marston's in 2023 and has since invested £70 million modernising. Different recipe. Different water. A lower ABV. Same red star, same font, different beer — and the Spanish parent is the one who decided it needed to be different.</p>
+      <p>There's a reason, and it isn't the sunshine. The Estrella they pour in Barcelona is brewed by Damm at El Prat de Llobregat, ten miles south of the city. The Estrella they pour in Manchester is brewed by Damm too — but at <span class="highlight">the Eagle Brewery in Bedford, England</span>, where Estrella had been packaged under Marston's since 2010, and which Damm then <a href="https://www.dammcorporate.com/en/damm-acquires-eagle-brewery-uk">bought outright</a> from <a href="https://www.carlsbergmarstons.co.uk/newsroom/carlsberg-marston-s-brewing-company-announces-sale-of-the-eagle-brewery-to-long-term-partner-damm/">Carlsberg Marston's</a> in 2023, its first brewery outside Spain, and has since invested £70 million modernising. Different recipe. Different water. A lower ABV. Same red star, same font, different beer — and the Spanish parent is the one who decided it needed to be different.</p>
       <p>This is not a conspiracy. It is a spreadsheet.</p>
     </div>
 
     <h2>The Bedford Estrella (and the Northampton San Miguel)</h2>
-    <p>Bedford is not an anomaly. CAMRA's <a href="https://camra.org.uk/beer-report">Beer in the UK Report</a>, published July 2026, contains a list that reads oddly at first glance: forty-odd "foreign" lager brands, all in fact produced somewhere in England or Wales. The four most-poured Spanish names on British bar tops are all on it.</p>
+    <p>Bedford is not an anomaly. CAMRA's <a href="https://camra.org.uk/beer-report">Beer in the UK Report</a>, written by Ash Corbett-Collins and published in July 2026, contains a list that reads oddly at first glance: forty-odd "foreign" lager brands, all in fact produced somewhere in England or Wales. The four most-poured Spanish names on British bar tops are all on it.</p>
 
     <p>The Barcelona-brewed Estrella is 5.4%. The Bedford-brewed one is 4.6%. That 0.8% is not an accident of house style. It is logistics. UK alcohol duty scales sharply with ABV, so the brewer's job — even when the brewer is the brand's Spanish parent — is not to make the beer the Spanish original tastes like. It is to hit the price point on the bar. A pint of 5.4% Spanish Estrella would be about fifty pence more expensive in tax alone than the 4.6% version made in Bedfordshire. The four multinationals that control the UK end of the beer trade — <span class="highlight">AB InBev, Heineken, Carlsberg, Molson Coors</span> — have every incentive to build the beer around the tax band, not the recipe, and now Damm, in Bedford, has arrived at the same conclusion.</p>
 
@@ -155,7 +117,7 @@
         <tr>
           <td class="brand">Cruzcampo</td>
           <td>Sevilla (Heineken España)</td>
-          <td>Heineken UK, Manchester (launched 2023)</td>
+          <td>Heineken UK, Manchester (<a href="https://www.thedrinksbusiness.com/2023/04/heineken-launches-cruzcampo-lager-on-draught-into-the-uk/">launched 2023</a>)</td>
           <td class="abv">4.8% → 4.4%</td>
         </tr>
       </tbody>
@@ -186,8 +148,8 @@
 
     <p>Order it, enjoy it, know what it is. And the next time the memory of a Barcelona terrace disappoints you at a UK bar, it isn't you. It is a different beer.</p>
 
-    <blockquote id="coda">
-      <span style="color: var(--amber); font-family: var(--sans); font-style: normal; font-weight: 700; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 8px;">* The caveat</span>
+    <blockquote class="end" id="coda">
+      <span class="ps-1">* The caveat</span>
       Beer tastes better on holiday. Unless you're Spanish, on holiday in the UK, ordering an Estrella.
     </blockquote>
 
@@ -195,28 +157,17 @@
       <b>Companion pieces:</b> <a href="/blog/beer-world-cup-xi-final.html">The Beer Final We Might Get: England vs Spain</a> · <a href="/blog/beer-world-cup-xi.html">Beer World Cup XI — the manifesto</a>
     </div>
 
-    <section class="sources">
-      <h2>Sources</h2>
-      <ul>
-        <li>CAMRA, <a href="https://camra.org.uk/beer-report">Beer in the UK: A consumer perspective on the real state of UK brewing and supply of beer to pubs in 2026</a> (Ash Corbett-Collins, July 2026).</li>
-        <li>Damm S.A. — acquired the Eagle Brewery, Bedford, from Carlsberg Marston's Brewing Company in 2023 (first Damm brewery outside Spain). Estrella Damm had been packaged at Bedford under CMBC/Marston's since 2010; Damm now owns the site outright and has invested £70m modernising it. See <a href="https://www.dammcorporate.com/en/damm-acquires-eagle-brewery-uk">Damm Corporate</a> and <a href="https://www.carlsbergmarstons.co.uk/newsroom/carlsberg-marston-s-brewing-company-announces-sale-of-the-eagle-brewery-to-long-term-partner-damm/">CMBC announcement</a>.</li>
-        <li>San Miguel UK — brewed under licence by Carlsberg UK, Northampton (5.0% ABV) alongside imports of the Spanish "Especial" 5.4%.</li>
-        <li>Cruzcampo UK — launched into UK on-trade April 2023, brewed at Heineken UK's Manchester plant (Tadcaster hosted the initial training). Per <a href="https://www.thedrinksbusiness.com/2023/04/heineken-launches-cruzcampo-lager-on-draught-into-the-uk/">The Drinks Business</a>.</li>
-        <li>Mahou Cinco Estrellas — imported and distributed in the UK by Carlsberg UK since 2010; UK version reformulated to 4.8% ABV (Spanish original 5.5%).</li>
-        <li>Stella Artois UK ABV reduction (5.2% → 4.8% → 4.6%), publicly reported at each stage by trade press.</li>
-        <li>Madri Excepcional — launched 2020 by Molson Coors, brewed at Burton-on-Trent. Confirmed in CAMRA's 2026 report and Molson Coors trade communications; no Spanish brewing operation exists or has ever existed.</li>
-      </ul>
-    </section>
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="/">Home</a>
       <a href="/pubs/">Venues</a>
       <a href="/blog/">Blog</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
     </div>
-    <p style="font-size:0.72rem;color:#555;margin-top:10px">ABV figures are typical UK vs Spanish-produced values and vary by format and year. Not affiliated with any brewery or Spanish brewing association.</p>
+    <p class="ps-2">ABV figures are typical UK vs Spanish-produced values and vary by format and year. Not affiliated with any brewery or Spanish brewing association.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
   <!-- Cloudflare Web Analytics — cookieless, no consent banner required.

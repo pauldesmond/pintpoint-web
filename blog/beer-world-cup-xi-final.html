@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -86,91 +86,51 @@
     "description": "Conditional editorial preview in PINtPOINT's Beer World Cup XI. Fires only if England beat Argentina in the semi-final. Projected result: England 4-2 Spain after extra time."
   }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --card-2: #0a0d12; --border: rgba(255,255,255,0.08); --amber: #C0A340; --red: #C8102E; --gold: #FFD700; --serif: 'Newsreader', Georgia, serif; --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
-    html, body { overflow-x: hidden; }
-    body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 48px; border-bottom: 1px solid var(--border); flex-wrap: wrap; max-width: 1180px; margin: 0 auto; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 1100px; margin: 0 auto; padding: 56px 64px 24px; }
-    .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 22px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-    .category { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
-    .category.preview { background: rgba(0,212,170,0.15); color: var(--teal); border: 1px solid rgba(0,212,170,0.4); }
-    h1 { font-family: var(--serif); font-size: clamp(2.3rem, 5.6vw, 3.5rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 20px; text-transform: none; }
-    h1 em { color: var(--teal); font-style: italic; font-weight: 500; }
-    h2 { font-family: var(--serif); font-size: clamp(1.5rem, 3.4vw, 1.95rem); font-weight: 500; letter-spacing: -0.01em; margin: 44px 0 16px; line-height: 1.2; }
-    .content p { margin-bottom: 18px; color: rgba(255,255,255,0.88); font-size: 1.0625rem; line-height: 1.72; }
-    .conditional { background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.35); border-radius: 10px; padding: 18px 20px; margin: 0 0 32px; font-size: 0.95rem; }
-    .conditional b { color: var(--teal); font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; font-size: 0.72rem; display: block; margin-bottom: 8px; }
+    :root { --red: #C8102E; }
+    html { overflow-x: hidden; }
+    .conditional { background: transparent; border: 1px solid var(--rule); border-radius: 0; padding: 18px 20px; margin: 0 0 32px; font-size: 0.95rem; }
+    .conditional b { color: var(--ink); font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; font-size: 0.72rem; display: block; margin-bottom: 8px; }
     .conditional p { margin-bottom: 8px; font-size: 0.96rem; }
     .conditional p:last-child { margin-bottom: 0; }
-    /* Scoreboard band — breaks out of the 820 column to full viewport width,
-       inner content constrained to 820. Uses the full-bleed pattern. */
-    .scorecard { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); background: var(--card-2); border: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); border-radius: 0; padding: 52px 24px; text-align: center; margin-top: 40px; margin-bottom: 44px; }
+    .scorecard { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); background: transparent; border: none; border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); border-radius: 0; padding: 52px 24px; text-align: center; margin-top: 40px; margin-bottom: 44px; }
     .scorecard > * { max-width: 1100px; margin-left: auto; margin-right: auto; }
-    .scorecard .competition { font-size: 0.74rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--amber); margin-bottom: 22px; }
+    .scorecard .competition { font-size: 0.74rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--amber-ink); margin-bottom: 22px; }
     .scorecard .score { font-family: var(--serif); font-size: clamp(1.8rem, 5.5vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; display: flex; justify-content: center; align-items: center; gap: 24px; flex-wrap: wrap; }
     .scorecard .score .team { display: inline-flex; align-items: center; gap: 12px; }
-    .scorecard .score .digit { color: var(--teal); font-weight: 600; }
-    .scorecard .score .digit-away { color: var(--text); font-weight: 600; }
+    .scorecard .score .digit { color: var(--ink); font-weight: 600; }
+    .scorecard .score .digit-away { color: var(--ink); font-weight: 600; }
     .scorecard .score .vs { color: var(--muted); font-size: 1.2rem; font-weight: 400; margin: 0 4px; font-family: var(--sans); }
     .scorecard .meta-row { font-size: 0.84rem; color: var(--muted); margin-top: 18px; }
-    .scorecard .goals { font-size: 0.9rem; color: var(--text); margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; text-align: left; }
+    .scorecard .goals { font-size: 0.9rem; color: var(--ink); margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--rule-soft); display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; text-align: left; }
     .scorecard .goals .side { flex: 1; min-width: 220px; }
-    .scorecard .goals .side b { display: block; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
-    .lede { margin-bottom: 36px; padding-left: 20px; border-left: 3px solid var(--teal); }
-    .lede p:first-child { font-family: var(--serif); font-style: italic; font-size: 1.2rem; font-weight: 400; line-height: 1.5; color: rgba(255,255,255,0.9); margin-bottom: 16px; }
-    .lede p.short { font-size: 0.95rem; color: var(--muted); font-style: italic; margin-bottom: 14px; }
-    .lede p { font-size: 1.05rem; line-height: 1.68; margin-bottom: 14px; color: rgba(255,255,255,0.86); }
-    .highlight { color: var(--text); font-weight: 600; }
-    a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
-    a:hover { border-bottom-color: var(--teal); }
-    .lineup { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin: 20px 0; }
-    .lineup h3 { font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
+    .scorecard .goals .side b { display: block; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber-ink); margin-bottom: 6px; }
+    .lineup { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 20px 22px; margin: 20px 0; }
+    .lineup h3 { font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber-ink); margin-bottom: 12px; }
     .lineup p { margin-bottom: 0; font-size: 0.98rem; line-height: 1.65; }
     .lineup .formation { font-size: 0.82rem; color: var(--muted); margin-top: 10px; font-style: italic; }
-    /* Goal moments as timeline items — vertical rail with an amber dot per goal. */
-    .moment { position: relative; padding: 4px 0 8px 26px; margin: 24px 0 24px 8px; border-left: 2px solid rgba(192,163,64,0.32); background: none; font-size: 0.96rem; line-height: 1.65; color: rgba(255,255,255,0.88); }
-    .moment::before { content: ""; position: absolute; left: -8px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px var(--bg); }
-    .moment b { color: var(--amber); font-family: var(--serif); font-weight: 600; margin-right: 6px; font-size: 1.02rem; }
-    .pub-var { background: rgba(0,212,170,0.06); border-left: 3px solid var(--teal); padding: 16px 18px; margin: 24px 0; font-size: 0.96rem; line-height: 1.65; border-radius: 0 8px 8px 0; color: rgba(255,255,255,0.88); }
-    .pub-var b { color: var(--teal); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; font-size: 0.78rem; display: block; margin-bottom: 8px; font-family: var(--sans); }
-    /* Pull quote — for optional emphatic beats. Serif italic, amber rail. */
-    blockquote, .pullquote { font-family: var(--serif); font-style: italic; font-size: 1.4rem; line-height: 1.5; margin: 32px 0; padding-left: 24px; border-left: 3px solid var(--amber); color: rgba(255,255,255,0.9); }
-    .companion { margin-top: 40px; padding: 18px 20px; background: rgba(0,212,170,0.06); border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; font-size: 0.95rem; line-height: 1.65; }
-    .companion b { color: var(--teal); }
-    .footnote { margin-top: 32px; padding: 16px 18px; border-left: 3px solid var(--amber); background: rgba(192,163,64,0.05); font-family: var(--serif); font-style: italic; font-size: 0.98rem; line-height: 1.65; color: var(--amber); border-radius: 0 8px 8px 0; }
-    .footnote b { color: var(--amber); font-family: var(--sans); font-style: normal; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; font-size: 0.72rem; display: block; margin-bottom: 8px; }
-    .footnote a { color: var(--amber); border-bottom-color: rgba(192,163,64,0.5); }
+    .moment { position: relative; padding: 4px 0 8px 26px; margin: 24px 0 24px 8px; border-left: 2px solid var(--rule); background: none; font-size: 0.96rem; line-height: 1.65; color: var(--ink); }
+    .moment::before { content: ""; position: absolute; left: -8px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: transparent; box-shadow: none; }
+    .moment b { color: var(--amber-ink); font-family: var(--serif); font-weight: 600; margin-right: 6px; font-size: 1.02rem; }
+    .pub-var { background: transparent; border-left: 3px solid var(--amber); padding: 16px 18px; margin: 24px 0; font-size: 0.96rem; line-height: 1.65; border-radius: 0; color: var(--ink); }
+    .pub-var b { color: var(--ink); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; font-size: 0.78rem; display: block; margin-bottom: 8px; font-family: var(--sans); }
+    .footnote { margin-top: 32px; padding: 16px 18px; border-left: 3px solid var(--amber); background: transparent; font-family: var(--serif); font-style: italic; font-size: 0.98rem; line-height: 1.65; color: var(--amber-ink); border-radius: 0; }
+    .footnote b { color: var(--amber-ink); font-family: var(--sans); font-style: normal; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; font-size: 0.72rem; display: block; margin-bottom: 8px; }
+    .footnote a { color: var(--link); border-bottom-color: var(--amber); }
     .footnote a:hover { border-bottom-color: var(--amber); }
-    .sources { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    .sources h2 { font-size: 1rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-    .sources ul { padding-left: 18px; }
-    .sources li { margin-bottom: 6px; }
-    footer { text-align: center; padding: 36px 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--muted); margin-top: 24px; }
-    footer a { color: var(--muted); text-decoration: none; border-bottom: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 22px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
+    body .ps-1 { font-size: 0.72rem; color: var(--muted); margin-top: 10px; }
     @media (max-width: 600px) {
-      nav { padding: 16px 20px; }
-      .content { padding: 36px 20px 24px; }
       .scorecard { padding: 40px 20px; margin-top: 32px; margin-bottom: 36px; }
       .scorecard .score { gap: 14px; }
-      .lede { padding-left: 16px; }
-      .lede p:first-child { font-size: 1.2rem; }
       .moment { padding-left: 22px; margin-left: 4px; }
-      blockquote, .pullquote { font-size: 1.2rem; padding-left: 18px; }
     }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="/" class="logo" style="text-decoration:none;color:var(--text);border:none">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="/" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="/about-pintpoint.html">About</a>
       <a href="/features.html">Features</a>
       <a href="/pubs/">Venues</a>
@@ -179,7 +139,7 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay &middot; Parallel timeline</span>14 July 2026 · Pub VAR Booth</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category essay">Essay &middot; Parallel timeline</span>14 July 2026 · Pub VAR Booth</p>
 
     <h1>The Beer Final We <em>Almost</em> Had: England vs Spain</h1>
 
@@ -300,7 +260,7 @@
     <p>It is two years on from Berlin. Euro 2024 final, extra time not required — Spain 2-1, a Nico Williams turnaround, a Mikel Oyarzabal finish that England could not quite answer. Sixty years on from Wembley — a different opponent then, but the same instinct: England, in extra time, against a continental heavyweight, finding the goal that ends the argument. If the pub tribunal is right, Bass matches those old English extra-time moments in the 120th, and adds two more for good measure.</p>
     <p>Loaded launched in 1994. None of it was planned. All of it lines up anyway.</p>
     <p>The result was always going to be cask, because cask only exists properly through pubs, cellars, and place, and Britain is the only country with a national infrastructure willing to keep it.</p>
-    <p>Three ways to be old, three definitions of heritage, one trophy. Belgium — out in the quarters — have the oldest brewers on the planet. Bavaria — sitting at home tonight — have the oldest brewery. Spain have the largest new craft scene in southern Europe stacked on top of three legacy macros. England have the oldest format. If Pub VAR calls it right, the trophy goes where the format goes. Drink properly. Lift trophy. Roll credits.</p>
+    <p class="end">Three ways to be old, three definitions of heritage, one trophy. Belgium — out in the quarters — have the oldest brewers on the planet. Bavaria — sitting at home tonight — have the oldest brewery. Spain have the largest new craft scene in southern Europe stacked on top of three legacy macros. England have the oldest format. If Pub VAR calls it right, the trophy goes where the format goes. Drink properly. Lift trophy. Roll credits.</p>
 
     <div class="companion">
       <b>Companion essays:</b> England Lift the Pub Trophy: A Cask Renaissance, Thirty-Six Years On · <a href="/blog/beer-world-cup-xi.html">Beer World Cup XI — the manifesto</a> · <a href="/blog/beer-world-cup-xi-line-ups.html">All 48 squads</a> · <a href="/blog/beer-world-cup-xi-fixtures.html">Wall chart — Fixtures &amp; results</a>
@@ -308,29 +268,20 @@
 
     <aside class="footnote">
       <b>A note on provenance</b>
-      CAMRA's <a href="https://camra.org.uk/beer-report">Beer in the UK Report</a> (July 2026) documents that several of the brands named in this fantasy XI — including Estrella Damm, Mahou, San Miguel and Cruzcampo on the Spanish side, and Draught Bass, Boddingtons, Marston's Pedigree, Brakspear and Wainwright on the English — are today produced by, or under contract for, corporate parents, and in the Spanish case are often brewed at Bedford or Northampton at reduced strength for the UK market. The squads honour the styles and heritage their names carry. Drink these beers in Spain and you're drinking the Spanish original — different brewery, different water, usually a higher ABV. Reader beware: the tap is not always where the brand says it is. <a href="/blog/beer-tastes-better-on-holiday.html">More on that here.</a>
+      CAMRA's <a href="https://camra.org.uk/beer-report">Beer in the UK Report</a> (Ash Corbett-Collins, July 2026) documents that several of the brands named in this fantasy XI — including Estrella Damm, Mahou, San Miguel and Cruzcampo on the Spanish side, and Draught Bass, Boddingtons, Marston's Pedigree, Brakspear and Wainwright on the English — are today produced by, or under contract for, corporate parents, and in the Spanish case are often brewed at Bedford or Northampton at reduced strength for the UK market. The squads honour the styles and heritage their names carry. Drink these beers in Spain and you're drinking the Spanish original — different brewery, different water, usually a higher ABV. Reader beware: the tap is not always where the brand says it is. <a href="/blog/beer-tastes-better-on-holiday.html">More on that here.</a>
     </aside>
 
-    <section class="sources">
-      <h2>Sources</h2>
-      <ul>
-        <li>CAMRA, <a href="https://camra.org.uk/beer-report">Beer in the UK: A consumer perspective on the real state of UK brewing and supply of beer to pubs in 2026</a> (Ash Corbett-Collins, July 2026).</li>
-        <li>Perfect Pint Promise (Cask Marque Trust) rebrand, June 2026 — <a href="https://perfectpintpromise.co.uk">perfectpintpromise.co.uk</a></li>
-        <li>Euro 2024 Final, Spain 2-1 England, 14 July 2024, Olympiastadion, Berlin — Williams, Oyarzabal.</li>
-        <li>Beer World Cup XI QF: Spain 2-1 Belgium, per <a href="/blog/beer-world-cup-xi-fixtures.html">live fixtures tracker</a>.</li>
-        <li>Companion piece on the cask argument and the full England XI rationale — see "England Lift the Pub Trophy".</li>
-      </ul>
-    </section>
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="/">Home</a>
       <a href="/pubs/">Venues</a>
       <a href="/blog/">Blog</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
     </div>
-    <p style="font-size:0.72rem;color:#555;margin-top:10px">Alt-timeline editorial conceit. Argentina beat England 2-1 in the real semi-final on 16 July; the actual Beer World Cup XI final is Argentina versus Spain, published separately. This piece was drafted for the beer final we might have had and is preserved as the parallel-timeline read. "FIFA" and "World Cup" are trademarks of FIFA. Not affiliated with any brewery, the Cask Marque Trust, CAMRA, or any Spanish brewing association.</p>
+    <p class="ps-1">Alt-timeline editorial conceit. Argentina beat England 2-1 in the real semi-final on 16 July; the actual Beer World Cup XI final is Argentina versus Spain, published separately. This piece was drafted for the beer final we might have had and is preserved as the parallel-timeline read. "FIFA" and "World Cup" are trademarks of FIFA. Not affiliated with any brewery, the Cask Marque Trust, CAMRA, or any Spanish brewing association.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
   <!-- Cloudflare Web Analytics — cookieless, no consent banner required.
