@@ -6,3 +6,7 @@ node_modules/
 
 # Working file, never published: the internal venue backlog page
 venue-backlog.html
+
+# Generated locally by scripts/build-drafts-index.mjs, not tracked: a contents
+# page that names every unpublished draft in one list.
+blog/drafts/index.html

@@ -7,10 +7,17 @@
  * A drafts list that goes stale is worse than none, because it quietly stops
  * showing you the thing you were looking for.
  *
- * Reachability: the worker 404s the bare /blog/drafts/ directory and anything
- * under it that is not .html, but passes .html through with
- * X-Robots-Tag: noindex, nofollow. So this page is reachable at its explicit
- * path and nowhere else — not by browsing the directory, not by search.
+ * Reachability, corrected 31 Oct 2026. This used to say the page was
+ * "reachable at its explicit path and nowhere else — not by browsing the
+ * directory, not by search", and that was true of the worker and not true of
+ * the world. The worker's 404 on the bare /blog/drafts/ directory is bypassed
+ * by asking for index.html directly, which ends in .html and so passes
+ * through; and this repo is public, so everything under blog/drafts/ also
+ * serves from raw.githubusercontent.com, which no edge rule can touch.
+ *
+ * So the output is no longer committed. It is gitignored and written for this
+ * machine only, which is why running the script leaves the working tree clean.
+ * /blog/drafts/* on the live domain now sits behind Cloudflare Access instead.
  *
  * Run: node scripts/build-drafts-index.mjs
  */
