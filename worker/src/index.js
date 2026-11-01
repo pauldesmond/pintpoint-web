@@ -183,11 +183,15 @@ export default {
       // - Everything else under drafts/ (markdown notes, generator scripts,
       //   archive sub-dirs etc): hard-404 — robots.txt is advisory and we
       //   don't want working notes reachable by path-guessing.
-      if (tail === 'drafts' || tail === 'drafts/') {
-        return new Response('Not found', { status: 404 });
-      }
-      if (tail.startsWith('drafts/')) {
-        if (tail.endsWith('.html')) {
+      //
+      // The bare directory used to 404 here too, to stop the draft list being
+      // browsable. It is served now: /blog/drafts/* sits behind Cloudflare
+      // Access, so the request only reaches this worker once the visitor has
+      // authenticated, and the 404 was costing us the contents page rather
+      // than hiding anything. Falls through to the .html branch below, which
+      // Pages answers with index.html and which stamps noindex.
+      if (tail === 'drafts' || tail === 'drafts/' || tail.startsWith('drafts/')) {
+        if (tail.endsWith('.html') || tail === 'drafts' || tail === 'drafts/') {
           const upstream = await fetch(request);
           const headers = new Headers(upstream.headers);
           headers.set('X-Robots-Tag', 'noindex, nofollow');
