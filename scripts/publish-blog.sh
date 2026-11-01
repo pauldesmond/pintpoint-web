@@ -95,6 +95,23 @@ if ! grep -q 'PINtPRESS column standard v1' "${POST_FILE}" \
   GUARD_FAIL=1
 fi
 
+# 4. Things every live PINtPRESS page carries and no draft does, because they
+#    are added at promotion: the article JSON-LD, the Cloudflare beacon and
+#    /js/pageview.js. Each has been missed on a promote before, and none of
+#    them is visible on the page, so nothing notices afterwards.
+#    Note the pageview path must be absolute: ../../js/ is right from
+#    blog/drafts/ and survives at blog/ only because browsers clamp ../ at the
+#    document root.
+for NEEDLE in 'application/ld+json:article JSON-LD' \
+              'static.cloudflareinsights.com:Cloudflare beacon' \
+              '/js/pageview.js:absolute /js/pageview.js'; do
+  PAT="${NEEDLE%%:*}"; WHAT="${NEEDLE#*:}"
+  if ! grep -qF "$PAT" "${POST_FILE}"; then
+    echo "❌ Promotion guard failed: ${POST_FILE} has no ${WHAT}."
+    GUARD_FAIL=1
+  fi
+done
+
 if [[ "$GUARD_FAIL" -eq 1 ]]; then
   echo
   echo "→ Fix ${POST_FILE} and re-run publish-blog.sh. Nothing has been committed."
@@ -103,15 +120,15 @@ if [[ "$GUARD_FAIL" -eq 1 ]]; then
   exit 1
 fi
 
-echo "✓ Draft-meta guard passed (no noindex, no /blog/drafts/ URLs, column standard present)."
+echo "✓ Guards passed (no noindex, no /blog/drafts/ URLs, column standard, JSON-LD, beacon, pageview)."
 echo
 
-# 4. Show diff stat
+# 5. Show diff stat
 echo "→ Working-tree changes:"
 git diff --stat
 echo
 
-# 5. Confirmation
+# 6. Confirmation
 read -r -p "Commit + push + IndexNow ping for this post? [y/N] " ANSWER
 # Lowercased with tr, not ${ANSWER,,}: that expansion is bash 4 and the bash on
 # the front of PATH here is 3.2, so the old line aborted the script with "bad
