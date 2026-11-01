@@ -7,17 +7,21 @@
  * A drafts list that goes stale is worse than none, because it quietly stops
  * showing you the thing you were looking for.
  *
- * Reachability, corrected 31 Oct 2026. This used to say the page was
- * "reachable at its explicit path and nowhere else — not by browsing the
- * directory, not by search", and that was true of the worker and not true of
- * the world. The worker's 404 on the bare /blog/drafts/ directory is bypassed
- * by asking for index.html directly, which ends in .html and so passes
- * through; and this repo is public, so everything under blog/drafts/ also
- * serves from raw.githubusercontent.com, which no edge rule can touch.
+ * Reachability, as measured 1 Nov 2026. /blog/drafts/* on the live domain
+ * sits behind Cloudflare Access: every path under it answers 302 to the
+ * Access login, including the bare directory and index.html, while the rest
+ * of the site answers 200.
  *
- * So the output is no longer committed. It is gitignored and written for this
- * machine only, which is why running the script leaves the working tree clean.
- * /blog/drafts/* on the live domain now sits behind Cloudflare Access instead.
+ * This output is committed, and that is a deliberate reversal. It was
+ * gitignored for a day on the reasoning that a page naming every unpublished
+ * draft should not sit in a public repo. That reasoning protected nothing:
+ * the drafts themselves are tracked here, so each one already answers 200
+ * unauthenticated at raw.githubusercontent.com, and GitHub's own tree view of
+ * blog/drafts/ is a contents page whether we ship one or not. Withholding the
+ * index cost us the only copy that was gated and gained no privacy.
+ *
+ * If the drafts need to be genuinely unreadable, the repo is the thing to
+ * change, not this file.
  *
  * Run: node scripts/build-drafts-index.mjs
  */
