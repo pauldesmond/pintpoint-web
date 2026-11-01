@@ -90,3 +90,55 @@ imagery, any text on the clock face.
 - It used the deprecated "JOURNALISM FROM PINtPOINT" lockup. Current is
   "PINtPRESS · THE PINtPOINT BLOG".
 - Collages of landmarks died at thumbnail size. One focal object each.
+
+---
+
+## Companion — 6 November — winter-is-not-christmas.html
+
+Published alongside Part 3, but not one of the three, so it takes the house
+style with **one deliberate departure: it is a morning, not a night.** The
+piece turns on winter not being Christmas, and a navy snow-field would argue
+the opposite of the headline before anyone reads a word. Same flat vector
+screen-print treatment, same text placement, cold daylight instead of the
+night ground.
+
+**Style block for this one** (replaces the shared block above):
+
+> Flat vector illustration in the style of a mid-century screen-printed
+> travel poster. Limited palette, hard edges, no gradients, no photographic
+> texture, no 3D rendering. A cold, overcast late-October morning: pale
+> grey-blue sky as the dominant field, no snow, no frost, no night. Warm
+> lamplight from one lit window as the only glow. Bold, legible at thumbnail
+> size: one clear focal object, not a collage of landmarks. Render ONLY the
+> text specified below. Do not invent signage, slogans, shopfront names,
+> captions or micro-text anywhere in the image.
+
+Subject: the interior of a Victorian covered market arcade, seen down its
+length. Slender cast-iron columns on both sides carrying an arched, glazed
+roof, the glass panes drawn as plain flat shapes with the sky showing through.
+Worn cobblestones underfoot. Dead centre, standing alone on the cobbles, a
+single wooden beer cask on its side in a timber stillage, hoops and staves
+drawn graphically. Two or three flat silhouetted figures at a distance,
+small, with their backs turned. The cask is the focal object and should read
+as the only thing in the arcade anyone is looking at.
+
+Accent palette: claret and cream for the painted ironwork, with the columns
+and roof ribs distinguished by their shape and line weight as well as their
+colour, so the architecture still reads in greyscale. Oak brown and dull
+black iron for the cask. One warm amber window, upper right.
+
+Title text, large, upper left:
+`Winter is not Christmas`
+
+Avoid: snow, frost, holly, wreaths, baubles, Christmas trees, Santa, fairy
+lights, anything Christmas at all. No horses and no dray (Part 3 has those).
+No night sky. No market stalls full of produce, no shop fascias, no crowd of
+faces. No pump clips, no pint glasses.
+
+**Social crop:** same as Part 3. Cut the top band of the 1:1 at 1200x628 and
+check the title and the PINtPRESS lockup both survive the crop before it ships.
+
+**Once the file exists** at `blog/images/winter-is-not-christmas.jpg` plus the
+`-x.jpg` crop, the page needs `og:image`, the three `og:image:*` metas,
+`og:image:alt`, `twitter:image`, `image` in the JSON-LD, and
+`twitter:card` moved from `summary` to `summary_large_image`.
