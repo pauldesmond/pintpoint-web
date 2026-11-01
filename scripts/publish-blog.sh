@@ -95,22 +95,16 @@ if ! grep -q 'PINtPRESS column standard v1' "${POST_FILE}" \
   GUARD_FAIL=1
 fi
 
-# 4. Things every live PINtPRESS page carries and no draft does, because they
-#    are added at promotion: the article JSON-LD, the Cloudflare beacon and
-#    /js/pageview.js. Each has been missed on a promote before, and none of
-#    them is visible on the page, so nothing notices afterwards.
-#    Note the pageview path must be absolute: ../../js/ is right from
-#    blog/drafts/ and survives at blog/ only because browsers clamp ../ at the
-#    document root.
-for NEEDLE in 'application/ld+json:article JSON-LD' \
-              'static.cloudflareinsights.com:Cloudflare beacon' \
-              '/js/pageview.js:absolute /js/pageview.js'; do
-  PAT="${NEEDLE%%:*}"; WHAT="${NEEDLE#*:}"
-  if ! grep -qF "$PAT" "${POST_FILE}"; then
-    echo "❌ Promotion guard failed: ${POST_FILE} has no ${WHAT}."
-    GUARD_FAIL=1
-  fi
-done
+# 4. The things that do not show on the page: the article JSON-LD, the
+#    Cloudflare beacon, the pageview script, and every local reference
+#    actually resolving to a file we hold. A grep is not enough for any of
+#    them, so this is a real check: "../../js/pageview.js" contains the string
+#    "/js/pageview.js", which is how a substring guard passes the exact bug it
+#    was written to catch.
+if ! python3 "$(dirname "$0")/check-promoted-page.py" "${POST_FILE}"; then
+  echo "❌ Promotion guard failed: see above."
+  GUARD_FAIL=1
+fi
 
 if [[ "$GUARD_FAIL" -eq 1 ]]; then
   echo
