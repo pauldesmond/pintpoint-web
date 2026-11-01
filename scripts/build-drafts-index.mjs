@@ -31,7 +31,20 @@ import { join } from 'node:path';
 const DRAFTS = 'blog/drafts';
 const PUBLISHED = 'blog';
 
-const stripSuffix = (t) => t.replace(/\s*[—-]\s*PINtPRESS\s*$/i, '').trim();
+// A <title> is markup, so it can carry entities. Two drafts write the dash in
+// their headline as &mdash;, which meant the suffix regex (a literal dash) did
+// not match and the row rendered "... &mdash; PINtPRESS" with the entity shown
+// raw, because esc() escapes the ampersand on the way out. Decode first.
+const decode = (t) => t
+  .replace(/&(mdash|ndash);/g, '\u2014')
+  .replace(/&(lsquo|rsquo|apos);/g, '\u2019')
+  .replace(/&(ldquo|rdquo|quot);/g, '"')
+  .replace(/&hellip;/g, '\u2026')
+  .replace(/&middot;/g, '\u00b7')
+  .replace(/&nbsp;/g, ' ')
+  .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n))
+  .replace(/&amp;/g, '&');
+const stripSuffix = (t) => decode(t).replace(/\s*[\u2013\u2014-]\s*PINtPRESS\s*$/i, '').trim();
 
 // Matching drafts to published pieces by filename alone has a blind spot, and
 // it bit twice in one day: four redirect stubs read as unpublished drafts, and
@@ -152,11 +165,11 @@ const items = rows.map((r) => {
     : r.live
       ? (r.live.how === 'file' ? 'published' : `published as ${r.live.at}`)
       : r.lead
-        ? `check — ${r.lead.file} ${r.why}`
+        ? `check: may already be published as ${r.lead.file}, ${r.why}`
         : '';
   return `      <li${r.stub || r.live ? ' class="live"' : r.lead ? ' class="check"' : ''}>
         <a href="${r.file}">${label}</a>
-        <span class="meta">${fmt(r.mtime)}${meta ? ' · ' + meta : ''}</span>
+        <span class="meta">edited ${fmt(r.mtime)}${meta ? ' · ' + meta : ''}</span>
       </li>`;
 }).join('\n');
 
