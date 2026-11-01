@@ -142,3 +142,8 @@ check the title and the PINtPRESS lockup both survive the crop before it ships.
 `-x.jpg` crop, the page needs `og:image`, the three `og:image:*` metas,
 `og:image:alt`, `twitter:image`, `image` in the JSON-LD, and
 `twitter:card` moved from `summary` to `summary_large_image`.
+
+**Composition note, learned on this one:** a 1200x628 card cannot hold a deep
+title block top left AND a focal object sitting low in the square. Put the
+focal object at mid-height beside the title, the way Part 3's clock sits, or
+accept that the social crop is title and setting only.
