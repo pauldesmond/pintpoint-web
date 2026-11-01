@@ -87,7 +87,13 @@ h1 em { font-style: italic; font-weight: 600; color: inherit; }
 }
 
 /* ---------- 8. Body + drop cap ---------- */
-p { margin-bottom: 1.05em; hyphens: auto; -webkit-hyphens: auto; text-wrap: pretty; }
+/* No automatic hyphenation. The browser's English dictionary breaks on
+   syllables rather than sense and a narrow phone column gives it plenty of
+   chances: "car-ry", "cele-brations". A ragged right edge is better than a
+   word cut in half. text-wrap: pretty stays, since that only moves whole
+   words to avoid an orphan, and long URLs are handled by overflow-wrap on
+   links further down. */
+p { margin-bottom: 1.05em; hyphens: manual; -webkit-hyphens: manual; text-wrap: pretty; }
 p.lede { font-size: 1.06em; }
 p.lede::first-letter {
   float: left; font-weight: 600; font-size: 4.1em; line-height: 0.82;
