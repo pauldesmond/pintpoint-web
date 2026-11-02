@@ -23,6 +23,9 @@ import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 const CHECK = process.argv.includes('--check');
+// Adding an entry means choosing where it goes, so it is never the default:
+// --check and a plain run both report and stop.
+const ADD = process.argv.includes('--add-missing');
 const ROOT = process.argv.find(a => !a.startsWith('--') && a !== process.argv[0] && a !== process.argv[1]) ?? '.';
 const SKIP = new Set(['node_modules', '.git', '.github', 'research']);
 
@@ -56,6 +59,8 @@ const VISIBLE = /<details class="faq-item">\s*<summary>([\s\S]*?)<\/summary>\s*(
 
 let drifted = 0;
 let synced = 0;
+let unmarked = 0;
+let added = 0;
 
 for (const path of files(ROOT)) {
   const original = readFileSync(path, 'utf8');
@@ -76,16 +81,54 @@ for (const path of files(ROOT)) {
 
   // Each stored answer is rewritten only when its own question is on the page.
   const changes = [];
-  const next = original.replace(
+  const marked = new Set();
+  // Several pages word a question more fully in the JSON-LD than on the page
+  // ("Which was the first?" against "Which was the first Loaded World Cup?").
+  // The answer is what has to be marked up, so a stored answer that matches a
+  // visible one counts as covering it however the question is phrased.
+  const answered = new Set();
+  let next = original.replace(
     /("name":\s*")((?:[^"\\]|\\.)*)("\s*,\s*"acceptedAnswer":\s*\{\s*"@type":\s*"Answer",\s*"text":\s*")((?:[^"\\]|\\.)*)(")/g,
     (match, nameHead, question, mid, stored, tail) => {
-      const want = seen.get(plain(question.replace(/\\"/g, '"')));
+      const asked = plain(question.replace(/\\"/g, '"'));
+      marked.add(asked);
+      answered.add(stored.replace(/\\"/g, '"').replace(/\\\\/g, '\\'));
+      const want = seen.get(asked);
       if (want === undefined) return match;
       const encoded = want.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
       if (encoded !== stored) changes.push(question);
       return nameHead + question + mid + encoded + tail;
     },
   );
+
+  // A question the page asks but the block never mentions. The rewrite above
+  // can only correct answers that are already there, so this is reported and
+  // left for a person: inserting an entry means choosing where it goes, and a
+  // syncer that silently grows the block would hide the drift it exists to
+  // catch.
+  const missing = [...seen.keys()].filter(q => !marked.has(q) && !answered.has(seen.get(q)));
+  if (missing.length) {
+    console.log(`  ${relative(ROOT, path)}`);
+    for (const q of missing) console.log(`      not in the JSON-LD: ${q}`);
+    if (ADD && !CHECK) {
+      // Appended to mainEntity in the order the page asks them, matching the
+      // indentation of the entry above so the block stays readable.
+      const enc = t => t.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+      const entries = missing.map(q =>
+        `      {\n        "@type": "Question",\n        "name": "${enc(q)}",\n` +
+        `        "acceptedAnswer": { "@type": "Answer", "text": "${enc(seen.get(q))}" }\n      }`);
+      const closed = /(\n\s*\}\n)(\s*\]\s*\n\s*\}\n\s*<\/script>)/;
+      if (closed.test(next)) {
+        next = next.replace(closed, (m, end, tail) => `${end.replace(/\n$/, '')},\n${entries.join(',\n')}\n${tail}`);
+        added += missing.length;
+      } else {
+        console.log('      could not place it: the mainEntity array has an unexpected shape');
+        unmarked++;
+      }
+    } else {
+      unmarked++;
+    }
+  }
 
   if (next === original) continue;
   drifted++;
@@ -95,8 +138,15 @@ for (const path of files(ROOT)) {
   if (!CHECK) { writeFileSync(path, next); synced++; }
 }
 
-if (!drifted) { console.log('Every FAQPage block matches the FAQ on the page.'); process.exit(0); }
-console.log(CHECK
-  ? `\n${drifted} page(s) carry a FAQPage block that no longer matches the page.`
-  : `\n${synced} page(s) rebuilt from their visible FAQ.`);
-process.exit(CHECK ? 1 : 0);
+if (!drifted && !unmarked) {
+  console.log('Every FAQPage block matches the FAQ on the page.');
+  process.exit(0);
+}
+if (drifted) {
+  console.log(CHECK
+    ? `\n${drifted} page(s) carry a FAQPage block that no longer matches the page.`
+    : `\n${synced} page(s) rebuilt from their visible FAQ.`);
+}
+if (unmarked) console.log(`\n${unmarked} page(s) ask a question the JSON-LD never answers. Add it, or run with --add-missing.`);
+if (added) console.log(`\n${added} question(s) added to the JSON-LD.`);
+process.exit(CHECK || unmarked ? 1 : 0);
