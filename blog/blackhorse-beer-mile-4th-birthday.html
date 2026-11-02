@@ -81,7 +81,7 @@
       { "@type": "ListItem", "position": 4, "url": "https://pintpoint.co.uk/pubs/signature-brew-london", "name": "Signature Brew" },
       { "@type": "ListItem", "position": 5, "url": "https://pintpoint.co.uk/pubs/pretty-decent-beer-co-london", "name": "Pretty Decent Beer Co" },
       { "@type": "ListItem", "position": 6, "url": "https://pintpoint.co.uk/pubs/exale-taproom-london", "name": "Exale Taproom" },
-      { "@type": "ListItem", "position": 7, "url": "https://pintpoint.co.uk/pubs/borough-wines-blackhorse-mile-london", "name": "Borough Wines (Blackhorse Mile)" },
+      { "@type": "ListItem", "position": 7, "name": "Borough Wines (Blackhorse Mile)" },
       { "@type": "ListItem", "position": 8, "url": "https://pintpoint.co.uk/pubs/east-london-brewing-co-ltd-london", "name": "East London Brewing Co" },
       { "@type": "ListItem", "position": 9, "url": "https://pintpoint.co.uk/pubs/40ft-brewery-london", "name": "40FT Brewery" },
       { "@type": "ListItem", "position": 10, "url": "https://pintpoint.co.uk/pubs/renegade-urban-winery-london", "name": "Renegade Urban Winery" }
@@ -145,6 +145,8 @@
     .pub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin: 32px 0 40px; }
     .pub-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; text-decoration: none; color: var(--text); display: block; transition: border-color 0.15s; }
     .pub-card:hover { border-color: var(--teal); }
+    .pub-card.nolink { cursor: default; }
+    .pub-card.nolink:hover { border-color: var(--border); }
     .pub-card .num { display: inline-block; font-size: 0.7rem; font-weight: 800; color: var(--accent); letter-spacing: 1.5px; margin-bottom: 4px; }
     .pub-card .name { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .pub-card .loc { font-size: 0.85rem; color: var(--muted); }
@@ -235,11 +237,11 @@
         <div class="name">Exale Taproom</div>
         <div class="loc">Walthamstow E17 · Uplands</div>
       </a>
-      <a href="../pubs/borough-wines-blackhorse-mile-london" class="pub-card">
+      <div class="pub-card nolink">
         <div class="num">07</div>
         <div class="name">Borough Wines (Blackhorse Mile)</div>
-        <div class="loc">Walthamstow E17 · Uplands</div>
-      </a>
+        <div class="loc">Walthamstow E17 &middot; Uplands</div>
+      </div>
       <a href="../pubs/east-london-brewing-co-ltd-london" class="pub-card">
         <div class="num">08</div>
         <div class="name">East London Brewing Co</div>
