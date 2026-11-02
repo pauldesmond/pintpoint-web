@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-itunes-app" content="app-id=6760611613">
   <title>The Anti-Check-In: Why We Skip the Feed — PINtPRESS</title>
-  <meta name="description" content="PINtPOINT lets you add a beer you have seen on a pub’s bar without posting a check-in or drinking it yourself. How the contribution works and what information it shares." />
+  <meta name="description" content="Untappd's tap lists are only as fresh as the people willing to publicly post every beer they drink. PINtPOINT lets you improve any tap list with one tap and no check-in — because contributing to shared data shouldn't demand personal consumption or a social broadcast. Here's why that gap matters." />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="canonical" href="https://pintpoint.co.uk/blog/anti-check-in.html" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://pintpoint.co.uk/blog/anti-check-in.html" />
   <meta property="og:title" content="The Anti-Check-In: Why We Skip the Feed" />
-  <meta property="og:description" content="PINtPOINT lets you add a beer you have seen on a pub’s bar without posting a check-in or drinking it yourself. How the contribution works and what information it shares." />
+  <meta property="og:description" content="Untappd's tap lists only get fresh when someone posts publicly about their pint. PINtPOINT lets you improve any tap list with one tap and no check-in. Here's why that gap compounds." />
   <meta property="og:image" content="https://pintpoint.co.uk/blog/images/anti-check-in.jpg" />
   <meta property="og:image:width" content="1254" />
   <meta property="og:image:height" content="1254" />
@@ -22,23 +22,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "The Anti-Check-In: Why We Skip the Feed",
-  "description": "PINtPOINT lets you add a beer you have seen on a pub’s bar without posting a check-in or drinking it yourself. How the contribution works and what information it shares.",
-  "author": {
-    "@id": "https://pintpoint.co.uk/#organization"
-  },
-  "publisher": {
-    "@id": "https://pintpoint.co.uk/#organization"
-  },
-  "datePublished": "2026-07-17",
-  "dateModified": "2026-07-17",
-  "url": "https://pintpoint.co.uk/blog/anti-check-in.html",
-  "image": "https://pintpoint.co.uk/blog/images/anti-check-in.jpg",
-  "mainEntityOfPage": "https://pintpoint.co.uk/blog/anti-check-in.html"
-}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The Anti-Check-In: Why We Skip the Feed",
+    "description": "Untappd's tap lists are only as fresh as the people willing to publicly post every beer they drink. PINtPOINT lets you improve any tap list with one tap and no check-in — because contributing to shared data shouldn't demand personal consumption or a social broadcast.",
+    "author": { "@id": "https://pintpoint.co.uk/#organization" },
+    "publisher": { "@id": "https://pintpoint.co.uk/#organization" },
+    "datePublished": "2026-07-17",
+    "dateModified": "2026-07-17",
+    "url": "https://pintpoint.co.uk/blog/anti-check-in.html",
+    "image": "https://pintpoint.co.uk/blog/images/anti-check-in.jpg",
+    "mainEntityOfPage": "https://pintpoint.co.uk/blog/anti-check-in.html"
+  }
+  </script>
   <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
     html { overflow-x: hidden; }
@@ -77,7 +75,7 @@
     <p>The inference goes like this: someone drinks a beer at that pub, opens Untappd, taps <em>check in</em>, picks a beer, rates it, adds a photo, tags a friend, posts it to their feed. Every beer on those unverified tap lists is the residue of a public social act. If nobody at the pub feels like broadcasting their pint on a Tuesday night, the tap list rots for a week.</p>
     <p>Untappd's data model has a single input event: the check-in. It bundles four separate things — <span class="highlight">"I saw this beer,"</span> <span class="highlight">"I drank this beer,"</span> <span class="highlight">"I have an opinion about it,"</span> and <span class="highlight">"I want my followers to know I drank it"</span> — into one action. That bundling is elegant if the goal is a social network. It's a problem if the goal is a fresh tap list.</p>
     <p>Consider what it excludes. You went to the pub, saw a great cask ale on the handpull, ordered the cask ale, drank the cask ale — but you don't want to check in because your feed is your feed and not everything belongs on it. Untappd's tap list doesn't learn from your visit. You saw six beers on tap, drank one, and could describe every pump clip from memory — Untappd's tap list learns about at most one of them, if you check in.</p>
-    <p>Now consider the friend who was with you and had a lager. Their check-in updates the tap list. Yours doesn't. The state of the world according to Untappd is: the pub had one lager on tap that Tuesday.</p>
+    <p>Now consider the friend who was with you and had a lager. Their check-in updates the tap list. Yours doesn't. The state of the world according to Untappd is: the pub had one lager on tap that Tuesday. Which is what makes their tap lists look the way they look.</p>
 
     <blockquote>
       The check-in bundles "I saw this beer" and "I want everyone to know I drank it" into one action. Untappd tap lists are only as fresh as the people willing to do the second thing.
@@ -99,13 +97,13 @@
     <p>There is no check-in event on our side. Your Untappd feed is untouched. No friends are tagged. No badge fires. The beer's canonical identity — its name, brewery, style, ABV — stays anchored to Untappd's canonical beer page, so the same beer at three different pubs is the same row in our database. The only user input is the URL. You didn't have to drink the beer. You didn't have to like it. You didn't even have to have a beer at that pub yourself. You saw a pump clip, you knew what it was, and you told the next drinker.</p>
 
     <h2>Why this compounds</h2>
-    <p>Every regular sees dozens of beers a week they don't drink. Every pub-crawler notices what's on at pubs they only walk past. Every publican working the bar has perfect knowledge of their own current tap list and no incentive to publish it as a series of check-ins on their personal Untappd account. All of that knowledge is stranded on Untappd because the only way to contribute it is to pretend you drank the beer.</p>
-    <p>Multiply that across a year and a city and you get the tap-list quality gap PINtPOINT is closing. Untappd's tap lists reflect check-in behaviour, filtered through people's willingness to broadcast. PINtPOINT's tap lists can also include beers people have seen without drinking. Both use Untappd’s beer identities.</p>
+    <p>The gap between "did I drink this?" and "did I see this?" is quietly enormous. Every regular sees dozens of beers a week they don't drink. Every pub-crawler notices what's on at pubs they only walk past. Every publican working the bar has perfect knowledge of their own current tap list and no incentive to publish it as a series of check-ins on their personal Untappd account. All of that knowledge is stranded on Untappd because the only way to contribute it is to pretend you drank the beer.</p>
+    <p>Multiply that across a year and a city and you get the tap-list quality gap PINtPOINT is closing. Untappd's tap lists reflect check-in behaviour, filtered through people's willingness to broadcast. PINtPOINT's tap lists reflect what's actually on. Same underlying beer identities — Untappd's canonical beer_id — but a different contribution contract. Less social, more useful.</p>
 
     <h2>What it isn't</h2>
     <p>It isn't a substitute for Untappd's check-in graph. Ratings, badges, personal history, the social feed — that's what Untappd is for and it does that better than anyone. If you want to keep a lifetime record of every beer you've ever drunk with a friend list and a scoring rubric, use Untappd. PINtPOINT doesn't try to replace any of it.</p>
     <p>It also isn't free-form. You can't type "IPA" into the log-a-beer field and have it appear at your local — the input is <em>only</em> an Untappd beer URL or ID, and the beer identity comes from Untappd's canonical page. This is deliberate. Free-form beer names collide (four breweries make a beer called Trinity, three make Session IPA, dozens make Pale Ale), and one wrong guess about which brewery it is corrupts the data for everyone. Every beer that lands on a PINtPOINT tap list, whether it came from our Untappd scrape or from a user's anti-check-in, has the same identity anchor. The contribution surface is narrow on purpose.</p>
-    <p>You can report a beer you have seen on the bar without posting a check-in or drinking it yourself.</p>
+    <p>The pitch is not that we've solved beer discovery. It's that we've removed one specific friction — the requirement to publicly broadcast your own consumption in order to update the shared record — and that removing it makes the shared record noticeably better.</p>
 
     <h2>What we owe you back</h2>
     <p>If you tell the app what's on at a pub, we do two things. First, we render it: your addition appears on that pub's tap list, alongside our scrape, for every drinker who opens the app after you. Second, we push it: if any of your watched beers land on nearby taps because of your own additions or someone else's, you get a notification. The contribution loop closes on the drinker who cares, not the drinker who checked in.</p>

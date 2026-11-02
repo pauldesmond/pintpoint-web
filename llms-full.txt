@@ -2109,7 +2109,7 @@ Untappd's data model has a single input event: the check-in. It bundles four sep
 
 Consider what it excludes. You went to the pub, saw a great cask ale on the handpull, ordered the cask ale, drank the cask ale — but you don't want to check in because your feed is your feed and not everything belongs on it. Untappd's tap list doesn't learn from your visit. You saw six beers on tap, drank one, and could describe every pump clip from memory — Untappd's tap list learns about at most one of them, if you check in.
 
-Now consider the friend who was with you and had a lager. Their check-in updates the tap list. Yours doesn't. The state of the world according to Untappd is: the pub had one lager on tap that Tuesday.
+Now consider the friend who was with you and had a lager. Their check-in updates the tap list. Yours doesn't. The state of the world according to Untappd is: the pub had one lager on tap that Tuesday. Which is what makes their tap lists look the way they look.
 
 The check-in bundles "I saw this beer" and "I want everyone to know I drank it" into one action. Untappd tap lists are only as fresh as the people willing to do the second thing.
 
@@ -2131,9 +2131,9 @@ There is no check-in event on our side. Your Untappd feed is untouched. No frien
 
 Why this compounds
 
-Every regular sees dozens of beers a week they don't drink. Every pub-crawler notices what's on at pubs they only walk past. Every publican working the bar has perfect knowledge of their own current tap list and no incentive to publish it as a series of check-ins on their personal Untappd account. All of that knowledge is stranded on Untappd because the only way to contribute it is to pretend you drank the beer.
+The gap between "did I drink this?" and "did I see this?" is quietly enormous. Every regular sees dozens of beers a week they don't drink. Every pub-crawler notices what's on at pubs they only walk past. Every publican working the bar has perfect knowledge of their own current tap list and no incentive to publish it as a series of check-ins on their personal Untappd account. All of that knowledge is stranded on Untappd because the only way to contribute it is to pretend you drank the beer.
 
-Multiply that across a year and a city and you get the tap-list quality gap PINtPOINT is closing. Untappd's tap lists reflect check-in behaviour, filtered through people's willingness to broadcast. PINtPOINT's tap lists can also include beers people have seen without drinking. Both use Untappd’s beer identities.
+Multiply that across a year and a city and you get the tap-list quality gap PINtPOINT is closing. Untappd's tap lists reflect check-in behaviour, filtered through people's willingness to broadcast. PINtPOINT's tap lists reflect what's actually on. Same underlying beer identities — Untappd's canonical beer_id — but a different contribution contract. Less social, more useful.
 
 What it isn't
 
@@ -2141,7 +2141,7 @@ It isn't a substitute for Untappd's check-in graph. Ratings, badges, personal hi
 
 It also isn't free-form. You can't type "IPA" into the log-a-beer field and have it appear at your local — the input is only an Untappd beer URL or ID, and the beer identity comes from Untappd's canonical page. This is deliberate. Free-form beer names collide (four breweries make a beer called Trinity, three make Session IPA, dozens make Pale Ale), and one wrong guess about which brewery it is corrupts the data for everyone. Every beer that lands on a PINtPOINT tap list, whether it came from our Untappd scrape or from a user's anti-check-in, has the same identity anchor. The contribution surface is narrow on purpose.
 
-You can report a beer you have seen on the bar without posting a check-in or drinking it yourself.
+The pitch is not that we've solved beer discovery. It's that we've removed one specific friction — the requirement to publicly broadcast your own consumption in order to update the shared record — and that removing it makes the shared record noticeably better.
 
 What we owe you back
 
@@ -2270,7 +2270,7 @@ The four subjects
 1
 Problem
 
-Why ratings, preferences and local availability.
+Why the usual approach is broken.
 
 2
 Engine
@@ -2349,7 +2349,7 @@ PINtPRESS Essay 2 June 2026
 
 Beerology — The Anatomy of a Pint
 
-You're at the bar. Four taps. Someone behind you is waiting to order. The existing language for picking between those four pints — star ratings, flavour-wheel categories, hop varieties listed off a chalkboard — none of it is built for the decision you're actually making. This is a different one: what does each of these beers feel like to drink?
+You're at the bar. Four taps. You have about 800 milliseconds before someone else makes the call. The existing language for picking between those four pints — star ratings, flavour-wheel categories, hop varieties listed off a chalkboard — none of it is built for the decision you're actually making. This is a different one: what does each of these beers feel like to drink?
 
 Should I order this — and what sort of drinking experience am I signing up for?
 
@@ -2391,9 +2391,9 @@ Drinkability: Strong — mechanical from 6.5% ABV (the 5.8–7.4% band); a row b
 
 What it feels like: a West Coast IPA with more malt weight than the lean stereotype lets on — pine and grapefruit on the front, a caramel-malt spine underneath, bitterness that lingers without scouring. The kind of pint that earns the second pour.
 
-Beerology verdict: reference-grade. A full-bodied take on West Coast IPA.
+Beerology verdict: reference-grade. The WCIPA most other UK WCIPAs are accidentally trying to be.
 
-The card puts the tasting description beside suggested occasions for drinking it. Its eight scores are model-generated; the cues and description are editorial judgements.
+Read against the other formats: Untappd has Bosko around 4.0 — well-liked but not famous, the kind of score that tells you almost nothing about whether it suits the moment. A flavour-wheel reading would slot it under "American IPA / West Coast" — accurate, useless for picking. The brewery's own copy goes hard on hop varietals. None of those signals tell you it's the pint to start your evening with, that it'll outpace fried food, that you should drink it before the smoothie sours and the dessert stouts. The Beerology card does — in eight numbers, four cues, and a sentence.
 
 Interactive · The Beerology card
 
@@ -2419,13 +2419,13 @@ Almost everything else on a Beerology card is a refinement of vocabulary that al
 
 This is the part rating frameworks structurally can't reach. A 1-5 score can't tell you a beer is contemplative, only that the average drinker liked it. A flavour wheel can't tell you a beer is meal-proof, only what category it belongs to. The drinker cues are the closest available language for the question the bar-decision actually turns on.
 
-Each card carries three or four cues. We leave out those we cannot justify.
+Three or four cues per beer. Not a checklist — a curation. The wrong cue is worse than no cue, so the cues that don't fire stay quiet.
 
-There's a quieter cousin to the drinker cues already running inside PINtPOINT: the drinkability bucket the recommender attaches to every beer — Session, Standard, Strong, Boozy. Those are mechanical, ABV-derived, single-dimensional; you'd struggle to write a Beerology cue from one. The cue is what the bucket reaches for and can't quite touch — a label that combines strength, body, finish length and complexity into a phrase the drinker uses without thinking.
+There's a quieter cousin to the drinker cues already running inside PINtPOINT: the drinkability bucket the recommender attaches to every beer — Session, Standard, Strong, Boozy. Those are mechanical, ABV-derived, single-dimensional; you'd struggle to write a Beerology cue from one. The cue is what the bucket reaches for and can't quite touch — a label that combines strength, body, finish length and complexity into a phrase the drinker uses without thinking. Cues are buckets with subtext.
 
 How the card is built
 
-The eight axes do the quantitative work: Body, Bitterness, Sweetness, Roast, Fruit, Finish, Softness, Complexity, each 1–10. The shape across those eight is the beer's skeleton — deliberately a different axis set from the recommender's in-app visualisations. If you already think about beer in terms of aroma, taste and mouthfeel, the eight sit quite naturally on top: Body and Softness describe mouthfeel; Bitterness, Sweetness, Roast and Fruit capture most of the flavour picture; Finish lingers at the end; Complexity is what makes the whole thing feel simple or layered. The drinker cues sit underneath. The anatomical-poster wrapper (first-contact sweetness, mid-palate spread, finish grip, aftertaste echo) does the visual register. A short description and verdict follow the scores.
+The eight axes do the quantitative work: Body, Bitterness, Sweetness, Roast, Fruit, Finish, Softness, Complexity, each 1–10. The shape across those eight is the beer's skeleton — deliberately a different axis set from the recommender's in-app visualisations. If you already think about beer in terms of aroma, taste and mouthfeel, the eight sit quite naturally on top: Body and Softness describe mouthfeel; Bitterness, Sweetness, Roast and Fruit capture most of the flavour picture; Finish lingers at the end; Complexity is what makes the whole thing feel simple or layered. The drinker cues sit underneath. The anatomical-poster wrapper (first-contact sweetness, mid-palate spread, finish grip, aftertaste echo) does the visual register. One "what it feels like" sentence, in plain English, is the soul. One closing Beerology verdict line ties it.
 
 PINtPOINT ships two recommender visualisations alongside Beerology, both built on a shared 5-axis core (Sweet · Bitter · Sour · Body · Strength): a TastePentagon radar for the brand-mark single-beer view, and a FlavourEqualizer that surfaces a beer's personality across five families — Hop (Citrusy · Tropical · Piney · Floral), Malt (Toasty · Roasty · Smoky · Bready · Chocolatey · Caramel), Fruit (Juicy · Stone-fruity), Yeast (Spicy · Funky · Estery), and Finish (Crisp · Dry · Soft). Twenty-three labels in total, picked per beer from a ranked list. A NEIPA reads four hop/fruit notes plus Soft (juicy mouthfeel); a saison reads Spicy alongside Dry and Yeasty; a Schlenkerla rauchbier reads Smoky=5 outright; a Tegernseer helles reads Bready and Crisp where most beers show parent labels. Labels float across families by score rather than a fixed slot per family.
 
@@ -2462,9 +2462,9 @@ Source material:
 
 Companion essays
 
-- Why · Beer Recommendation Systems: What Most Get Wrong — ratings, preferences and local availability
+- Why · Beer Recommendation Systems: What Most Get Wrong — the usual approach is broken
 
-- How · Under the Hood: How PINtDEXTER Picks Your Pint — how the engine works
+- How · Under the Hood: How PINtDEXTER Picks Your Pint — the engine that does it instead
 
 - What's in it · The Drinker's Guide to Hops — the ingredient and sensory vocabulary
 
@@ -2494,7 +2494,7 @@ The dominant approach for the last fifteen years is collaborative filtering — 
 
 The ŷhat post is honest about what makes the approach work. Their worked example pits Fat Tire against Michelob Ultra and Dale's Pale Ale: Fat Tire fans rate Dale's similarly and Michelob lower, and the recommender quantifies the difference. Intuitive — on those three beers. The catch is in the filter: they only considered beers with 500+ reviews, and the demo ran on the 20 most-reviewed beers in the dataset.
 
-Collaborative filtering needs density. The UK alone releases more than a hundred new beers a week, and most never accumulate that volume. Cold start hits twice — new users have no history, new beers have no community signal — and the fallback in both cases is popularity, which is a ranked list of famous things rather than a recommendation.
+That threshold isn't a footnote, it's the design speaking. Collaborative filtering needs density. The UK alone releases more than a hundred new beers a week, and most never accumulate that volume. Cold start hits twice — new users have no history, new beers have no community signal — and the fallback in both cases is popularity, which is a ranked list of famous things rather than a recommendation.
 
 The other half of the field, suddenly cheap
 
@@ -2597,7 +2597,7 @@ What if the LLM gets a beer's profile wrong?
 Four corrective layers sit on top. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. The style-contextual resolver scopes the override to the user's dominant style family so cross-family beers aren't punished for being a different shape. And confidence influences scoring — low-signal beers (no specific cue from name or brewery) get treated more cautiously in ranking. Mis-extractions still happen, but they get caught by the architecture rather than escaping into the recommendation silently.
 
 How quickly does a brand-new beer become recommendable?
-Usually within a day or two of the beer being publicly listed somewhere — sometimes longer. The profile does not require community ratings: once a beer is in our catalogue with style and ABV, the LLM can score it without waiting for anyone to write about it.
+Usually within a day or two of the beer being publicly listed somewhere — sometimes longer. The point is that the recommendation shape doesn't depend on community ratings accumulating first: once a beer is in our catalogue with style and ABV, the LLM can score it without waiting for anyone to write about it.
 
 What are PINtDEXTER's four layers?
 Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override directly with five flavour sliders plus body and strength (TUNeDEXTER); the resolver applies that tuning per style family rather than globally, so the override sticks to the user's dominant style without spilling onto unrelated styles (per-family slider UI is a future slice). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 scores those features against what's been pouring recently at venues near you.
@@ -2615,9 +2615,9 @@ Source material:
 
 Companion essays
 
-- Why · Beer Recommendation Systems: What Most Get Wrong — ratings, preferences and local availability
+- Why · Beer Recommendation Systems: What Most Get Wrong — the usual approach is broken
 
-- How · Under the Hood: How PINtDEXTER Picks Your Pint — how the engine works ← you're reading
+- How · Under the Hood: How PINtDEXTER Picks Your Pint — the engine that does it instead ← you're reading
 
 - What's in it · The Drinker's Guide to Hops — the ingredient and sensory vocabulary
 
@@ -2649,13 +2649,13 @@ Two pieces are worth reading as a starting point:
 
 Haley's piece treats Untappd's rating data as fuel for a collaborative-filtering recommender. Ninkasi scrapes RateBeer, runs SVD++ and Restricted Boltzmann Machines, and wraps the output in a Flask app. Both are careful, honest work — the kind you wish more consumer-app companies did publicly.
 
-Three practical problems remain: learning a new user’s preferences, popularity bias and local availability.
+They also both bump into the same three walls, and those walls are what PINtPOINT was designed around rather than over.
 
 Wall 1: The cold-start problem
 
 Collaborative filtering needs history. These models need dozens of ratings per user before predictions stabilise. What does a rating-based recommender serve to a brand-new user with zero check-ins?
 
-In practice: popular beers. Pliny the Elder for anyone with "IPA" in their signature. Guinness for anyone who once rated a stout. These are popular defaults, with little information about the new user’s taste.
+In practice: popular beers. Pliny the Elder for anyone with "IPA" in their signature. Guinness for anyone who once rated a stout. That's not a recommendation. It's a bestseller list.
 
 PINtPOINT uses a structured preference-elicitation step instead: a feature called Sip-or-Skip. Ten quick card-swipes — "would you order this? yes/no" — produces a usable style profile in under a minute. It's the same principle Tinder uses for matchmaking: forced binary choices beat free-form ratings for fast signal.
 
@@ -2699,7 +2699,7 @@ Same bar. Different drinkers. Different top pints.
 
 switch profile ↓
 
-Below: a real tap list from Chelmsford Brewing Company (10 beers pouring as of this morning) scored against four reader profiles. Tap a profile, watch the ranking re-sort. The same beer doesn't win every time.
+Below: a real tap list from Chelmsford Brewing Company (10 beers pouring as of this morning) scored against four reader profiles. Tap a profile, watch the ranking re-sort. The same beer doesn't win every time. That's the geography-blindness fix.
 
 Hop-forward IPA drinker Roast-led stout drinker Pale-ale moderate Sour / wild curious Neutral newbie
 
@@ -2745,7 +2745,7 @@ What we're not claiming
 
 PINtDEXTER isn't a breakthrough in recommender research. It's not going to out-predict SVD++ on a RateBeer leaderboard. Those models and the people who build them are doing harder work than what's in a consumer app.
 
-PINtDEXTER ranks beers recently seen at nearby venues against the drinker’s preferences. Its usefulness depends on the preference profile, beer descriptions and freshness of the tap data.
+What we think it is is a better answer to the practical question a drinker is actually asking: what should I get? Framed as a venue-bound, tonight-shaped problem, the recommender gets to use much smaller, cleaner inputs and deliver a sharper output.
 
 Where the public recommender projects are still valuable
 
@@ -2758,6 +2758,9 @@ Honest respect to both linked pieces. A few things they get exactly right:
 - Transparent methodology + working Flask/R web apps + public notebooks is a great cultural norm. The models linked above could be dropped into a real product with modest effort.
 
 If you're interested in the ML side of beer recommendation specifically, both links in the intro are worth reading end-to-end. If you're interested in what to drink tonight, PINtPOINT will answer that question faster.
+
+Most beer recommenders predict ratings.
+PINtPOINT picks pints.
 
 Frequently asked questions
 
@@ -2789,9 +2792,9 @@ Source material referenced:
 
 Companion essays
 
-- Why · Beer Recommendation Systems: What Most Get Wrong — ratings, preferences and local availability &larr; you're reading
+- Why · Beer Recommendation Systems: What Most Get Wrong — the usual approach is broken &larr; you're reading
 
-- How · Under the Hood: How PINtDEXTER Picks Your Pint — how the engine works
+- How · Under the Hood: How PINtDEXTER Picks Your Pint — the engine that does it instead
 
 - What's in it · The Drinker's Guide to Hops — the ingredient and sensory vocabulary
 
@@ -2925,7 +2928,7 @@ A brief, practical method that works on any beer in front of you:
 You won't identify every variety this way — professional brewers often can't, blind — but you will reliably place a beer in one of the six flavour families, which is 95% of what knowing your hops is actually for.
 
 Aside · fresh or don't bother
-A two-month-old Citra IPA isn't telling you about Citra any more — it's telling you about storage. Dry-hopped aromatic oils degrade fast: tropical turns oniony, then old-hay, then flat. If a modern IPA smells off-register for what you were promised, check the packaging date before blaming the brewery. Storage affects how much of that hop character reaches your glass.
+A two-month-old Citra IPA isn't telling you about Citra any more — it's telling you about storage. Dry-hopped aromatic oils degrade fast: tropical turns oniony, then old-hay, then flat. If a modern IPA smells off-register for what you were promised, check the packaging date before blaming the brewery. A hop is only as good as the last week it spent in cold storage.
 
 The American C-hops
 
@@ -3295,9 +3298,9 @@ Start with Cascade in a pale ale like Sierra Nevada Pale — it's the foundation
 
 Companion essays
 
-- Why · Beer Recommendation Systems: What Most Get Wrong — ratings, preferences and local availability
+- Why · Beer Recommendation Systems: What Most Get Wrong — the usual approach is broken
 
-- How · Under the Hood: How PINtDEXTER Picks Your Pint — how the engine works
+- How · Under the Hood: How PINtDEXTER Picks Your Pint — the engine that does it instead
 
 - What's in it · The Drinker's Guide to Hops — the ingredient and sensory vocabulary ← you're reading
 
@@ -3379,9 +3382,9 @@ The pro-sparkler case is that the head is part of the drink. Bitterness softens,
 
 The anti-sparkler case is that it "bruises" the beer: it agitates the natural CO₂ out so the pint goes flatter, traps the aroma in the foam, and gives you a glass with two fingers of head where two fingers of beer should be.
 
-At the CAMRA Members' Weekend Discovery Bar in April 2025, Beer Nouveau poured the same cask five ways: gravity, hand pull without sparkler, flat sparkler, 1mm sparkler, and vortex creamer. The result was not a clean winner but a demonstration that service changes the beer profoundly. Side by side, the first and last pours felt like different drinks.
+The best answer is probably not ideological at all. At the CAMRA Members' Weekend Discovery Bar in April 2025, Beer Nouveau poured the same cask five ways: gravity, hand pull without sparkler, flat sparkler, 1mm sparkler, and vortex creamer. The result was not a clean winner but a demonstration that service changes the beer profoundly. Side by side, the first and last pours felt like different drinks.
 
-Brewers who expect their beer to be served through a sparkler brew accordingly. Ask how the brewer recommends serving it, then try the two pours if you get the chance.
+That is the useful resolution. A sparkler is not vandalism. It is a tool. Brewers who expect their beer to be served through one brew accordingly; those who do not, don't. The argument is real, but it is not really about right and wrong. It is about intent.
 
 Why London matters now
 
@@ -3465,7 +3468,7 @@ Pizza Port, AleSmith, Green Flash and the hop arms race
 
 Pizza Port acted like a finishing school for brewers. AleSmith brought technical polish. Green Flash helped put the phrase "West Coast IPA" directly into drinkers' hands. Through the late 1990s and 2000s, San Diego breweries pushed hops harder while keeping the beers clean, bright, and dry.
 
-Brewers layered the hops: bittering charge, flavour charge, late hops, dry hops, all stacked into something aggressive but controlled.
+The point was not just more bitterness. It was structure: bittering charge, flavour charge, late hops, dry hops, all stacked into something aggressive but controlled.
 
 2010s
 
@@ -3473,7 +3476,7 @@ The neighbourhood shift
 
 What changed in the 2010s was not the style so much as the geography. Breweries like Societe, North Park Beer Co, Modern Times, and Pure Project helped shift the scene from industrial parks into walkable neighbourhoods.
 
-North Park became the clearest version of this: a dense, walkable beer district where brewery taprooms, craft bars, and restaurants sit close enough together that the scene becomes visible on foot. You no longer had to understand the county-wide brewery map. University Avenue made a useful starting point.
+North Park became the clearest version of this: a dense, walkable beer district where brewery taprooms, craft bars, and restaurants sit close enough together that the scene becomes visible on foot. You no longer had to understand the county-wide brewery map. You could land on University Avenue and understand the point.
 
 What the West Coast IPA actually is
 
@@ -3524,13 +3527,15 @@ If you have one evening and want the scene in miniature:
 
 This is the San Diego rhythm: hops first, movement second, sea air at the end.
 
-Find a San Diego beer stop
+Why this matters for PINtPOINT
 
 San Diego is a brewery-first city, but it is still a city best understood through what is pouring right now.
 
 The names matter here more than they do in Melbourne. The brewery brand does some of the work in advance. But the live decision still happens on the bar: which of these taps is worth the pint, tonight, in this neighbourhood, in this weather?
 
 In a city this hoppy, "nearest beer" is not enough. You want the right IPA, in the right room, at the right moment.
+
+That is why San Diego belongs in PINtPOINT. The app is useful wherever beer culture is strong enough that the next pint should be chosen, not guessed.
 
 Frequently asked questions
 
@@ -3553,6 +3558,8 @@ How many craft breweries are there in San Diego?
 Over 150 active craft breweries sit within San Diego County, making it one of the most densely-brewed metro areas in the US. PINtPOINT currently tracks around 30 of the key city-of-San-Diego venues with live tap lists.
 
 San Diego did not set out to become a beer capital. It became one because a handful of people decided to brew the hoppiest, cleanest, brightest beer they could, and because enough drinkers showed up to make that taste into a civic identity.
+
+The rest of us got West Coast IPA as a gift.
 
 Explore San Diego in PINtPOINT
 
@@ -3686,9 +3693,9 @@ Firkin (1979–2001) was the brewpub revolution — unpretentious, loud, boister
 
 Two iconic, contrasting pillars of London drinking culture — one still holding its rooms; the other now remembered as much for what it lost as for what it built.
 
-Davy's has never been in a hurry, which is part of why it's still here. A chain that opens a handful of sites a decade and closes a handful more isn't chasing scale. It's tending a room that was old when the founder's grandson took it over, and passing it on. When a Davy's does close — as Skinkers did in 2013, Terroirs (the old Tappit Hen) in 2020, Bangers in 2021, the St Swithin's Tappit Hen revival not long after, and the Crusting Pipe just before Christmas 2025 — the room usually goes with it: the sawdust vacuumed up, the tankards packed off to the next site, the sign taken down. The 2012 shot at St Mary at Hill caught the sign coming down, though nobody knew it yet.
+Davy's has never been in a hurry, which is part of why it's still here. A chain that opens a handful of sites a decade and closes a handful more isn't chasing scale. It's tending a room that was old when the founder's grandson took it over, and passing it on. The stubs of candle in the wax rings on the shelf above the bar are the point, not the marketing. When a Davy's does close — as Skinkers did in 2013, Terroirs (the old Tappit Hen) in 2020, Bangers in 2021, the St Swithin's Tappit Hen revival not long after, and the Crusting Pipe just before Christmas 2025 — the room usually goes with it: the sawdust vacuumed up, the tankards packed off to the next site, the sign taken down. The 2012 shot at St Mary at Hill caught the sign coming down, though nobody knew it yet.
 
-Fourteen rooms are still trading. You can still walk into one and ask for Old Wallop.
+The fourteen still trading are, between them, most of the argument for why the chain outlasted the wine-bar boom. Not because they refused to change, but because the change was inside the room, not visible from the door.
 
 Sources
 
@@ -3728,7 +3735,7 @@ Ghosts of Baddow Brewery
 
 Baddow Brewery stopped brewing in 1927. Nearly a century later, 30 of the 61 pubs associated with it are still serving drinkers.
 
-The map includes places where Essex used to drink alongside the pubs still open.
+This is the sort of map PINtPOINT was made for: not just where to drink now, but where Essex used to drink.
 
 There is a modern echo too. Chelmsford Brew Co now brews on Brewery Fields, a stone’s throw from the old brewing ground. The ghosts come first.
 
@@ -3736,7 +3743,7 @@ At 47 Church Street in Great Baddow stands The Old Brewery: the surviving shell 
 
 The headline history, as the Brewery History Society has it, is simple enough. Baddow Brewery was founded in 1798 by a Mr Crabb. In 1866 Frederick and Arthur Veley came in as partners — later joined by Thomas Smee — and the firm ran as Crabb, Veley & Company until 1887. Two years after the Veleys arrived, in 1868, a new brewery was built to designs by George Scamell, a specialist brewery architect who had worked on Truman, Hanbury & Buxton's London plant earlier in the decade. From 1902 it was chaired by Reginald Watney, of the Watney brewing family, until his death in 1923. In 1927 it was acquired by Seabrook, and brewing at Great Baddow came to an end. Local oral history, as Helen Gray sets it down in Goodness Grays , has fingered a specific culprit for the sale: the founder's three granddaughters, all staunch Temperance movement members.
 
-The brewery supplied an estate of pubs across Essex.
+But the more interesting story is not just the brewery building. It is the network.
 
 The answer: 30 still appear to be trading
 
@@ -3750,7 +3757,7 @@ After working through the estate pub by pub, the current working count is:
 
 2 Unknown
 
-of Baddow Brewery’s 61 listed pubs, 30 still appear to be trading. Not always under the same name. Not always with the same interior, ownership or beer. But still serving as pubs, bars, inns, hotels or pub-restaurants. One caveat on the number. The Brewery History Society records the 1927 Seabrook acquisition with 53 tied houses while its own pub list runs to 61 entries, and this audit follows the full 61-name list, treating the 53 as the acquisition snapshot rather than the whole estate.
+That gives us a beautifully clean, slightly melancholy headline: of Baddow Brewery’s 61 listed pubs, 30 still appear to be trading. Not always under the same name. Not always with the same interior, ownership or beer. But still serving as pubs, bars, inns, hotels or pub-restaurants. One caveat on the number. The Brewery History Society records the 1927 Seabrook acquisition with 53 tied houses while its own pub list runs to 61 entries, and this audit follows the full 61-name list, treating the 53 as the acquisition snapshot rather than the whole estate.
 
 *Method note: “Open” includes renamed pubs, free houses, hotel bars and pub-restaurants such as Harvester — not only traditional wet-led locals.
 
@@ -3770,7 +3777,7 @@ Four living transformations
 
 - Five Bells, Vange → Harvester: not a traditional wet-led local, but still open, still licensed, still part of the living estate.
 
-Baddow Brewery is dead as a brewery company, but its estate has not vanished. Half of it is still visible in the modern pub map; the other half survives as restaurants, shops, houses, names, rumours and awkward gaps in the record.
+That is why the count matters. Baddow Brewery is dead as a brewery company, but its estate has not vanished. Half of it is still visible in the modern pub map; the other half survives as restaurants, shops, houses, names, rumours and awkward gaps in the record.
 
 Curated Collection
 
@@ -3852,7 +3859,7 @@ The two unknowns
 
 The two awkward entries are Gardeners Arms, Kelvedon and New Inn, Pitsea.
 
-Gardeners Arms is troublesome because ClosedPubs’ Kelvedon list and PubWiki both give fairly full Kelvedon lost-pub lists, and neither has a Gardeners Arms. Until a street, licensee or tithe entry turns up, it remains a name on a brewery list rather than a pinned house. New Inn, Pitsea is similarly polluted by other Essex New Inns, and the historic address is not yet nailed down tightly enough. Both remain unlocated.
+Gardeners Arms is troublesome because ClosedPubs’ Kelvedon list and PubWiki both give fairly full Kelvedon lost-pub lists, and neither has a Gardeners Arms. Until a street, licensee or tithe entry turns up, it remains a name on a brewery list rather than a pinned house. New Inn, Pitsea is similarly polluted by other Essex New Inns, and the historic address is not yet nailed down tightly enough. So they stay unknown — not a failure of the map, but the map being honest.
 
 Baddow brews again — but carefully
 
@@ -3876,17 +3883,17 @@ The football is heading to the business end. The Beer World Cup is heading the s
 
 The argument works because it is not just a joke. Cask is the one beer format England can still claim without squinting: local, fragile, pub-dependent, and impossible to separate from the person keeping it properly in the cellar.
 
-Our England selection puts cask first because the beer depends on the pub’s cellar work as well as the brewery.
+That is why the case for English cask at the Beer World Cup lands. Not because cask is cleaner, colder, stronger or more technically perfect than anything else. Because cask is the format that turns a pub into part of the beer.
 
 So: who'd be in the line-up? An eleven-strong squad of properly kept cask beers. Why does that matter? Because warm, flat, hand-pulled bitter is the one beer category no other country dares compete in. Abroad it is a novelty. In Blighty it is a speciality.
 
 Warm and flat, and neither
 
-Cask is unfiltered, unpasteurised beer that finishes fermenting in the pub cellar, poured at cellar temperature with the carbonation that secondary fermentation gives it. Anywhere else those words are a fault report; here they are the format. The long version, with what the trade’s own numbers say about who is drinking it now, is in Cask Ale Week: the Format Nobody Else Can Pour.
+Cask is unfiltered, unpasteurised beer that finishes fermenting in the pub cellar, poured at cellar temperature with the carbonation that secondary fermentation gives it. Anywhere else those words are a fault report; here they are the format. The long version, with what the trade’s own numbers say about who is drinking it now, is in Cask Ale Week: the work behind the pint.
 
 Somebody checks the cellars
 
-The Cask Marque Trust has been inspecting pub cellars for nearly thirty years, twice a year, by trained assessors — the plaque on the door, the sticker in the window, the listing in CaskFinder. Its beer-quality accreditation now trades under plainer language as the Perfect Pint Promise, and covers all draught rather than cask alone. What that promise is for is set out in Cask Ale Week: the Format Nobody Else Can Pour.
+The Cask Marque Trust has been inspecting pub cellars for nearly thirty years, twice a year, by trained assessors — the plaque on the door, the sticker in the window, the listing in CaskFinder. Its beer-quality accreditation now trades under plainer language as the Perfect Pint Promise, and covers all draught rather than cask alone. What that promise is for is set out in Cask Ale Week: the work behind the pint.
 
 A category with a membership
 
@@ -3896,9 +3903,9 @@ The Cask XI
 
 So if England is going to make a serious case at a Beer World Cup, the team cannot be a squad of lager clones and international pale-ale lookalikes. Other countries do those brilliantly. Some do them better. England's strongest hand is older, stranger, softer and more pub-shaped: cask ale.
 
-Cask carries English beer's heritage, history and stubborn local memory in a way no single modern style can. It depends on cellars, handpulls, throughput, publicans, regulars, regional breweries and the quiet skill of serving beer alive rather than merely cold. It is fragile, unfashionable in places, and easy to get wrong. But when it is right, it is the thing nobody else can quite copy.
+That is not just nostalgia. Cask carries English beer's heritage, history and stubborn local memory in a way no single modern style can. It depends on cellars, handpulls, throughput, publicans, regulars, regional breweries and the quiet skill of serving beer alive rather than merely cold. It is fragile, unfashionable in places, and easy to get wrong. But when it is right, it is the thing nobody else can quite copy.
 
-The England XI is all cask: eleven beers we would want to order from a well-kept handpull.
+That is why the England XI is all cask. Not because every English beer should be cask, and not because keg, lager or modern pale ale do not belong in English pubs. They do. But if the question is what England can send out against the world with the deepest roots and the clearest identity, the answer comes through a handpull.
 
 So: who would we line up with? Eleven pints that, between them, cover the country properly. Not eleven shouts from the back. Eleven beers that any pub in any region would be lucky to have on. We have stayed away from the obvious pyramid of nostalgia — there are no team-sheet appearances for Greene King IPA or Cloudwater here — and stayed close to beers that still make sense on hand pump, in the kind of cellars Cask Marque exists to protect.
 
@@ -3932,7 +3939,7 @@ What this team has that others don’t
 
 Look down the eleven. Every one is from a region, a brewery town, a pub network, or a drinker memory that still means something. Several are still family-owned; the rest sit inside larger portfolios where the commercial logic is now plain: do not mess with the thing drinkers came back for.
 
-That is the moat, and it is a matter of format rather than age: Belgium has older brewers and Germany older breweries, but only cask has to be finished in the cellar of the pub that serves it. The full version of that argument, and what it means for who is drinking cask now, is in Cask Ale Week: the Format Nobody Else Can Pour.
+That is the moat, and it is a matter of format rather than age: Belgium has older brewers and Germany older breweries, but only cask has to be finished in the cellar of the pub that serves it. The full version of that argument, and what it means for who is drinking cask now, is in Cask Ale Week: the work behind the pint.
 
 And now the big brewers want the old names
 
@@ -3980,15 +3987,15 @@ Sources
 
 ---
 
-# Blog: Cask Ale Week: the Format Nobody Else Can Pour
+# Blog: Cask Ale Week: the work behind the pint
 
 Source: https://pintpoint.co.uk/blog/cask-ale-week-2026.html
 
 PINtPRESS Essay 17 September 2026
 
-Cask Ale Week: the Format Nobody Else Can Pour
+Cask Ale Week: the work behind the pint
 
-Cask Ale Week runs from 17 to 27 September, and it celebrates the one thing British beer cannot ship abroad: unfiltered, unpasteurised beer that finishes fermenting in the cellar of the pub you drink it in. The publican is part of the recipe, which is why nobody else has copied it, and why a bad one tastes like an apology.
+Cask Ale Week runs from 17 to 27 September. It celebrates unfiltered, unpasteurised beer that finishes conditioning in the cask, under the care of the pub serving it. The publican’s work helps determine what reaches your glass.
 
 Thirteen pints worth chasing this week, what the plaque on the door actually promises, and the numbers behind a revival that is being led, of all people, by drinkers in their twenties.
 
@@ -3996,7 +4003,7 @@ The misconception we keep apologising for
 
 Anywhere else in the world, you would read warm and flat on a back-of-bottle review and put the glass down. In Britain, that combination — given a working cellar and a publican who knows what they are doing — is the format. Cask ale is not a fault. It is unfiltered, unpasteurised beer that finishes its fermentation inside the cask, in the pub cellar, under the publican's care. It is poured at cellar temperature, around 11 to 13 degrees, which is cool to the touch but not cold to the tongue. Its carbonation comes from secondary fermentation and a soft natural release, not a CO2 cylinder.
 
-This is what makes cask hard to copy. A keg lager travels. A bottle of Bordeaux travels. A cask of bitter, properly kept, is a living thing that exists for a few days in one specific cellar, on one specific bar, in one specific pub. It needs careful handling in transit and at the pub that serves it. The technical window is small — Des de Moor’s Cask: The Real Story of Britain’s Unique Beer (CAMRA Books, 2023) puts the ideal serving window at three days once broached, four with very careful cellar work — but the cultural consequence is huge. The pub’s cellar work determines what reaches the glass.
+A cask can travel, but it needs careful handling at the pub that serves it. Once broached, the serving window is short: Des de Moor’s Cask: The Real Story of Britain’s Unique Beer (CAMRA Books, 2023) puts the ideal at three days, or four with very careful cellar work.
 
 Who is actually drinking it
 
@@ -4004,7 +4011,7 @@ This is the biggest one yet: more than 10,000 pubs have signed up, with hundreds
 
 The audience is changing underneath it. CGA’s June figures put 16% of cask drinkers between 18 and 34, and the Society of Independent Brewers’ Independent Beer Report has a quarter of 18 to 24-year-olds having now tried cask, up ten per cent on the year, with some independents seeing cask growth in double digits.
 
-Firebrand Brewing in Cornwall is one of them, at 18% up on the year. Its founder Joe Thomson told The Drinks Business in September that drinkers "seem to be embracing cask in a way we've not seen for years", and marked the week by brewing a 4.8% pale ale from an 1864 recipe: pale malt, Goldings, nothing else. The reasons younger drinkers give are not the ones the trade expected either. Most cask is under 4.5%, it cannot be delivered to your door, and it is the cheapest proper pint on the bar: £4.54 against £4.97 for the average pint.
+Firebrand Brewing in Cornwall is one of them, at 18% up on the year. Its founder Joe Thomson told The Drinks Business in September that drinkers "seem to be embracing cask in a way we've not seen for years", and marked the week by brewing a 4.8% pale ale from an 1864 recipe: pale malt, Goldings, nothing else. The reasons younger drinkers give are not the ones the trade expected either. Most cask is under 4.5%, and the price comparison favours it: £4.54 against £4.97 for the average pint.
 
 None of which means the category is fixed. Cask still sells 8.1% of draught beer by volume and only 7.4% by value, volumes are falling where distribution has been cut, and a week of celebration does not reverse a decade. The cheapness is the sore point in the trade. St Austell's chief operating officer Andrew Turner put it plainly to the Morning Advertiser in July: cask is "the most difficult beer to look after, requires the most energy, the most effort, but yet it appears to be the cheapest pint on the bar — and the two just don't go hand in hand." He expects it to be the trendiest drink on the bar again; he would rather it arrived with a price that paid for the cellar work.
 
@@ -4018,7 +4025,7 @@ The trust's beer-quality accreditation — what used to be Beer Marque — has h
 
 The point of the rebrand is what it says out loud. Beer Marque told you a pub had passed an inspection. Perfect Pint Promise tells you what the inspection is for: that the next pint you pull out a chair for is going to be in good nick. That is a much easier sentence to hear in a busy bar.
 
-The infrastructure scales with the ambition. The Cask Marque Trust audits 7,000 5-star cellars right now; the Perfect Pint Promise aims for 3,000 fully accredited venues inside twelve months. The standard hardens at the same time — Beer Pro e-learning for bar staff, proper pour, correct glassware. The accreditation also covers staff training, pouring and glassware.
+The infrastructure scales with the ambition. The Cask Marque Trust audits 7,000 5-star cellars right now; the Perfect Pint Promise aims for 3,000 fully accredited venues inside twelve months. The standard hardens at the same time — Beer Pro e-learning for bar staff, proper pour, correct glassware. The point isn't just the cellar any more. It is the whole pub.
 
 The plaque is the same. The CaskFinder app is the same. The decades of cellar audits behind it are the same. What changed is the language at the front of the bar, and it is sharper.
 
@@ -4066,13 +4073,11 @@ Thirteen to look for
 
 Thirteen is an arbitrary number. Four more that would have done the same job: Butcombe Original , Oakham Citra , Titanic Plum Porter , Caledonian Deuchars IPA — the last of which is Edinburgh’s, and a reminder that cask did not stop at the border.
 
-Why nobody else has this
+A network of regional beers
 
 Look down the list. Every one of them is from a region. None began life as a multinational product-board exercise. Every one is rooted in a region, a brewery town, a pub network, or a drinker memory that still means something. Several are still owned by the families or regional breweries that made them; others now sit inside larger corporate portfolios, where the commercial logic is increasingly clear: do not mess with the thing drinkers came back for.
 
-That is the moat. No other country has a network of this size. Ireland keeps cask alive too, and Northern Ireland is on the Cask Ale Week map; nowhere else has thousands of pubs running it as the house format. The closest analogues — Belgian Trappist abbey ales, German Rauchbier in Bamberg, Czech tank lager in Prague — are formats that travel through bottles or kegs. Cask travels only into the cellar of the pub down the road. It is a deeply, irreducibly local thing, and Britain is the country that built a national network of pubs willing to run it.
-
-Three ways to be old, three ways to claim heritage. Belgium have the oldest brewers — Rochefort has been brewing continuously since 1595, with abbey lineage back to 1230. Germany has the oldest breweries — Weihenstephan dates itself to 1040, and Munich’s oldest, Augustiner, to 1328. England have the oldest format. Only one of those three definitions of old can be poured, kept and drunk locally without first being shipped, filtered or pasteurised.
+Britain has a large network of pubs equipped to condition and serve cask beer. The format also exists abroad. A cask’s destination can be overseas; the receiving pub still has to look after it.
 
 The big brewers have noticed
 
@@ -4252,19 +4257,17 @@ All three are billed as the biggest Oktoberfest outside Germany. They count diff
 
 Oktoberfest isn’t really in October
 
-It was not a harvest festival. It was a wedding. On 12 October 1810, Crown Prince Ludwig married Princess Therese of Saxe-Hildburghausen and Munich was invited to the party on the fields outside the city gates — fields still named the Theresienwiese after the bride, which is why Germans call the whole thing the Wiesn. The only event was a horse race. The agricultural show, the part that makes it look like a harvest festival, was bolted on the following year.
+It began with a wedding. On 12 October 1810, Crown Prince Ludwig married Princess Therese of Saxe-Hildburghausen and Munich was invited to the party on the fields outside the city gates — fields still named the Theresienwiese after the bride, which is why Germans call the whole thing the Wiesn. The only event was a horse race. The agricultural show, the part that makes it look like a harvest festival, was bolted on the following year.
 
 It is not really in October either. Drinkers had been complaining about the Bavarian cold since the 1820s, so the festival was walked steadily forward into the milder end of September, and by around 1905 it had settled there for good. It keeps the name by finishing on the first Sunday in October — the 4th, this year — which means that of the sixteen days of the 191st Oktoberfest, twelve of them fall in September. The one thing everybody thinks they know about the festival, that it is the October one, has been wrong for over a century.
 
-Märzen was brewed in March and stored for autumn drinking. green hop beer follows a different calendar: the brewer uses freshly picked, undried hops during the harvest. The urgency belongs to getting the hops into the brew; the finished beer can still be on the bar afterwards.
-
-So the month is wrong, the harvest was never there, and the beer was chosen for having sat still the longest. Almost nothing about Oktoberfest is what most people think it is.
+Märzen was brewed in March and stored for autumn drinking. Green hop beer uses freshly picked, undried hops during the harvest. The hops need to reach the brew quickly; the finished beer can remain on the bar afterwards.
 
 The one thing that travelled intact
 
 For all that, there is one part of Oktoberfest that travelled, and it is not in the glass. In the Munich tents, two or three times an hour, the band stops whatever it is playing and starts Ein Prosit der Gemütlichkeit. A few thousand people put down their conversations, pick up a litre of beer and sing a toast to Gemütlichkeit, a word English has never managed to import: warmth, ease, the specific contentment of being among people with no particular need to be anywhere else. Then comes the count — Oans, zwoa, drei, g'suffa! One, two, three, drink — and the room drinks together.
 
-That is Munich’s clock, and the clock did not travel. The song did. They sing Ein Prosit in Blumenau, in Kitchener, in Cincinnati, and in that Manchester mission hall at teatime — some rooms often, some when the mood takes them, none of them translating it. Every country in this piece changed the beer. Not one of them changed the words. The festival was never really about a recipe. It was about the interval at which strangers agree to become a crowd, and that exports beautifully, in any colour of lager you like.
+That is Munich’s clock, and the clock did not travel. The song did. They sing Ein Prosit in Blumenau, in Kitchener, in Cincinnati, and in that Manchester mission hall at teatime — some rooms often, some when the mood takes them, none of them translating it. Every country in this piece changed the beer. Not one of them changed the words. The toast brings the room together, in any colour of lager you like.
 
 There isn’t one Oktoberfest any more.
 
@@ -4393,11 +4396,11 @@ The Whippet, due to open in mid-May just outside Liverpool Street Station, looks
 
 On paper, it is already interesting enough. This is the new venue from Bloomsbury Leisure Group, the team behind the Euston Tap — one of the most important specialist beer bars in modern London. The soft launch is set for 14 May 2026 from around 4pm, with a full opening shortly after. The group already runs a handful of specialist rooms across London, Manchester and Bristol, which makes EC2 a next move rather than a one-off.
 
-The original Holborn Whippet closed in 2020. EC2 brings back the name under the same operator.
+The name matters too. The original Holborn Whippet, which closed in 2020, built a loyal following of its own and left enough of an impression that this new opening does not feel like a name pulled from thin air. EC2 is not just a launch. It feels more like the return of a line that was cut short. For people who remember the Holborn site properly, that gives this opening a little more emotional charge than the average new-bar announcement.
 
 The name itself was a reference, not a flourish. Bloomsbury and Holborn parishes had a 19th-century habit of following an afternoon of whippet racing with ale and a plate of coal-grilled meats. The original Holborn site stitched that into its identity — cask from small breweries, a coal grill, a basement room for food and games. The pool, food and entertainment signals for EC2 are not accidents. They're the house style returning.
 
-The closure wasn't voluntary either. The original traded for over a decade on Sicilian Avenue before folding in December 2020, displaced when the Holborn Links Estate changed hands. In late 2024 the group teased a four-times-larger "Whippet 2.0" for High Holborn. It didn't happen. EC2 is the plan that actually landed, on the City side of Liverpool Street.
+The closure wasn't voluntary either. The original traded for over a decade on Sicilian Avenue before folding in December 2020, displaced when the Holborn Links Estate changed hands. In late 2024 the group teased a four-times-larger "Whippet 2.0" for High Holborn. It didn't happen. EC2 is the plan that actually landed, and the pivot back to the City rather than Holborn says something about where the group now thinks the appetite is.
 
 That alone would be enough to get London beer drinkers to pay attention. But the early signals are what make this feel more significant.
 
@@ -4417,7 +4420,7 @@ A lot of new London bars open with the same generic promise: good drinks, nice r
 
 The Whippet looks like it may be aiming at something more specific.
 
-The operator's own framing, from a general-manager job ad live this week: "a brand-new pub … built around one simple idea: exceptionally well-kept cask ale and perfectly poured pints." The role spec lists "proven cellar management experience (essential)" and "strong cask ale knowledge" ahead of the usual hospitality boilerplate.
+The operator's own framing, from a general-manager job ad live this week: "a brand-new pub … built around one simple idea: exceptionally well-kept cask ale and perfectly poured pints." The role spec lists "proven cellar management experience (essential)" and "strong cask ale knowledge" ahead of the usual hospitality boilerplate. They're hiring for the strategy, not just describing it.
 
 If the early details hold, this is a venue trying to bridge several London drinking instincts at once:
 
@@ -4429,17 +4432,23 @@ If the early details hold, this is a venue trying to bridge several London drink
 
 - people who know the Euston Tap legacy and understand that Bloomsbury Leisure usually means beer is being taken seriously
 
-The group has started to name its opening brewery line-up on the @WhippetEC2 account: Green Duck, Bristol Beer Factory, Joseph Holt, Floc, Otter, Ossett and Boddingtons. The phrase they used was that these are breweries "generally locked out of the big chains in London" — which is exactly the gap a bar like this should be filling. Independent regional producers that most City drinkers cannot get pouring within walking distance of their office.
+That mix matters. London's beer scene has plenty of excellent places, but fewer that feel designed to cut across cask drinkers, lager traditionalists, and modern craft drinkers without becoming muddled. The Whippet might.
 
-Beamish is also on draught; sister bar The Bolter has poured it since February. The food is gyoza, replacing the coal-grilled meats of the original Holborn site.
+The group has started to name its opening brewery line-up on the @WhippetEC2 account: Green Duck, Bristol Beer Factory, Joseph Holt, Floc, Otter, Ossett and Boddingtons. The phrase they used was that these are breweries "generally locked out of the big chains in London" — which is exactly the gap a bar like this should be filling. Independent regional producers that most City drinkers cannot get pouring within walking distance of their office. The list reinforces everything the Augustiner-and-sparkler signal was already telling us.
 
-Outside Liverpool Street
+The boards confirmed more breadth than the launch teaser implied. By early June the keg list included Bitburger Pils, Pivo Kutna Hora Czech Pils, Tegernseer Hell, Benediktiner Hell and Sapporo — the kind of continental-lager spread you do not normally see in a craft-leaning City bar. Beamish on draft is doing different work: the Cork stout (competing with Guinness since 1792) has quietly become a Bloomsbury Leisure house signature — sister site The Bolter has been pouring it since February. Putting it back on the EC2 lineup is the group telling regulars "the things we like, we keep." And the food sign-off was Gyoza rather than the coal-grilled meats of the original Holborn site — a different generation's choice, but the same idea: pair the beer with one committed food style rather than a generic menu.
 
-Bloomsbury Leisure already runs specialist beer bars by Euston, Waterloo, Piccadilly, Victoria and Oxford Road stations. The Whippet adds Liverpool Street under a different name.
+The location is a bigger deal than it looks
+
+Liverpool Street is not short of places to drink. It is short of places people feel attached to.
+
+That is exactly the gap this group specialises in closing. Their formula is station-pub specialist beer — Euston, Waterloo, Piccadilly, Victoria, Oxford Road, five Taps outside five major stations across two cities. The Whippet directly outside Liverpool Street is the first time they've run that play under the Whippet name rather than the Tap name. Same formula. Different sub-brand. A station that was overdue one.
 
 The formula has heritage. The original Euston Tap opened on Bonfire Night 2010 as a joint venture between Bloomsbury Leisure and Jamie Hawksworth of Pivovar — Pivovar being the Yorkshire group that already ran Sheffield Tap and Pivní York and effectively invented the rail-adjacent Northern Tap concept. The two groups co-owned Euston Tap for years; Bloomsbury runs it solo today and built the rest of the Tap family from the playbook the partnership left them.
 
-The location makes it a convenient stop:
+And it arrives in better company than the station blur suggests. The City and the streets immediately east of it carry a quietly serious specialist-beer scene already, and EC2 has been the gap in it for years. The Whippet doesn't need to be a destination on its own to matter — it slots in as the eastern point on a small beer compass that already works, in a part of London that most drinkers still underestimate.
+
+Station-adjacent bars have been a quiet soft-spot on the London craft-beer map for a long time. The Euston Tap is the reference. Almost everything else in the genre either concedes to tourist throughput or pours a thin, unambitious list. A serious beer-led opening directly outside one of the busiest stations in the country has a chance to become more than a commuter convenience. It could become a hinge point:
 
 - somewhere you meet before heading east
 
@@ -4447,27 +4456,79 @@ The location makes it a convenient stop:
 
 - somewhere City drinkers and railway-beer obsessives both decide is worth a detour
 
-On the bar
+If it gets the room right, not just the beer, it could embed itself quickly.
 
-Augustiner is still absent. The June board lists Bitburger Pils, Pivo Kutna Hora, Sapporo, Tegernseer Hell and Benediktiner: five of the ten keg lines, covering a German pils, a Czech pils, two Bavarian Hells and a Japanese rice lager.
+The lager list and Boddingtons are doing different jobs here
 
-The launch-week board had Bohemia Regent and Moretti in the places now occupied by Pivo Kutna Hora and Benediktiner Hell.
+This is the detail that makes the whole thing feel thought-through rather than accidental.
 
-The lagers have their own glassware: Benediktiner Hell in the monk-badge glass, Tegernseer Hell in the HTB crown-and-cross, and Sapporo in the star glass.
+The original Augustiner teaser told one story. The lived June board tells a better one. No, the famous Munich badge is not on the bar — but the bar is leaning into lager with unusual intent: Bitburger Pils, Pivo Kutna Hora, Sapporo, Tegernseer Hell, Benediktiner. Five of the ten keg lines. Half the keg list is continental lager — a German pils, a Czech pils, two Bavarian Hells, and a Japanese rice lager. This is not a token lager lane. The usual ratio at a craft-leaning City bar is two safe imports, both there to keep the office crowd comfortable. The Whippet is doubling that and reaching wider.
 
-Boddingtons cask is served with a sparkler. The tap list identifies it as the version brewed by J.W. Lees in Middleton. Timothy Taylor’s Boltmaker occupies the second handpull.
+And the June board isn't the first version of this. The launch-week list, three weeks earlier, ran Bitburger, Sapporo, Tegernseer, Bohemia Regent, and Moretti — five of ten keg lines, all continental. Same ratio. Two beers have rotated out since. Bohemia Regent → Pivo Kutna Hora: a Czech-pils-for-Czech-pils swap, but Kutna Hora is the more highly regarded of the two. Moretti → Benediktiner Hell is the bigger tell. Moretti is what most City craft bars list. Benediktiner is a Bavarian monastery brewery. A bar hedging keeps the Moretti. A bar that's decided what it is replaces it with a proper Hell. Three weeks in, the lager curation got tighter, not looser.
 
-The June keg list also carries Deya Steady Rolling Man, The Kernel Pale Ale and Howling Hops NEIPA.
+And the lagers arrive in their own branded glassware. Benediktiner Hell in the Benediktiner glass with the monk badge. Tegernseer Hell in the HTB crown-and-cross. Sapporo in the star glass. Most "craft" bars that carry continental lagers serve everything in a generic shaker pint because branded glassware is cellar-storage hassle and the bar's identity is meant to live above any one badge. Stocking and rotating three different brewery glasses for three different lagers on the same bar is not a beer-list move. It is a service decision, not just a stocking decision — choosing to serve each beer the way its home brewery serves it.
+
+Boddingtons cask with a sparkler tells a different story. Sparkler-on cask service is a Northern-English signature, almost never poured in London — a small piece of plastic on the end of a hand-pump that has been splitting British cask drinkers for 140 years. Choosing it for an opening lineup in EC2 is not there to please everybody. It is there because somebody involved cares about service style, texture, and the kind of beer argument London drinkers have been having for decades. The cask itself, the venue's tap list quietly confirms, is brewed on contract by J.W. Lees in Middleton — a real family-brewer continuation of the Manchester line, not the AB InBev industrial-scale version. The closest thing to a proper Manchester-cask Boddingtons currently being poured. The second handpull is pouring Timothy Taylor's Boltmaker — the four-time CAMRA Champion Beer of Britain — alongside it. Boltmaker and Boddingtons on adjacent handpulls is a much stronger cask statement than Boddingtons on its own; it says the cask side is being curated, not just propped up by one heritage badge.
+
+The craft side hasn't been left to drift either. The June keg list carries Deya Steady Rolling Man, The Kernel Pale Ale, and Howling Hops NEIPA alongside the lager run — three of the most respected independent UK producers, none of them there for appearances. The bar isn't pulling the lager and cask tricks at the expense of a credible craft lane. It's running all three at once.
+
+Put those two details next to each other and you get something more interesting than a standard craft bar launch. You get a venue that appears to understand that beer culture is not one tribe. It is several overlapping ones, and the most interesting bars know how to speak to more than one of them at once.
 
 Last pour, first pour
 
-Untappd keeps the RSS archive for closed venues, which means the final pint poured at the original Holborn Whippet is still on record. It was a Cold Spark by Big Smoke Brew, logged at 19:13 on Friday 11 December 2020. Ten days before London was ordered into Tier 4 Lockdown.
+A small detail that most coverage will miss. Untappd keeps the RSS archive for closed venues, which means the final pint poured at the original Holborn Whippet is still on record. It was a Cold Spark by Big Smoke Brew, logged at 19:13 on Friday 11 December 2020. Ten days before London was ordered into Tier 4 Lockdown.
 
 Another small detail, confirmed in early June. The Norman Cornish prints that hung in the original Holborn room are now going up on the EC2 walls, a few weeks after opening — Cornish being the Durham painter of working men's pub and street scenes, the mood the original Whippet quietly built its room around. Different walls, same pictures.
 
-The Whippet opens from around 4pm on Thursday 14 May — standing room only that first night, with the fixed seating arriving Friday. Five and a half years after that final pull, there will be a first check-in again — a new first pour, under the same name, a short walk from where the last one happened.
+The Whippet opens from around 4pm on Thursday 14 May — standing room only that first night, with the fixed seating arriving Friday. Five and a half years after that final pull, there will be a first check-in again — a new first pour, under the same name, a short walk from where the last one happened. Whoever it is, they quietly become part of the story.
 
 PINtPOINT's pick: visit from Friday onwards — once the seating's in, the room can do its job. The beer's the same; the pint reads better sat down.
+
+Why Bloomsbury Leisure's involvement matters
+
+Euston Tap is not just "another bar in the group." It is one of the modern reference points in London beer culture.
+
+Tiny room. Huge reputation. Serious curation. The kind of place that helped teach London drinkers that station drinking did not have to mean compromise.
+
+That pedigree matters. It means The Whippet is not arriving as a generic branded expansion. It arrives with inherited trust from people who have already proved they understand what makes a beer room work.
+
+And the group has been building quietly. Three Taps in Manchester, a Bristol outpost, bowling alleys on both ends. EC2 is the latest London move, not the whole plan. If it lands properly, it confirms a trajectory rather than starting one.
+
+The real test
+
+Of course, launch details are one thing and lived reality is another.
+
+A beer list can be promising and the room can still feel dead. A strong opening month can turn into drift. Station-adjacent sites can end up leaning too hard into convenience and not hard enough into identity.
+
+So the real question is not whether The Whippet can generate curiosity. It already has.
+
+The real question is whether it can become the kind of place London drinkers start recommending unprompted.
+
+That usually comes down to a few things:
+
+- whether the room has personality
+
+- whether the list keeps its nerve
+
+- whether the service understands what kind of place it is
+
+- whether it feels like a bar people choose, not just one they happen to be standing near
+
+If it gets those right, Liverpool Street may suddenly have one of the most interesting beer stops in the City.
+
+What we'll be watching
+
+As opening day gets closer, the main things worth watching are:
+
+- the final tap list
+
+- how much of the cask/lager promise survives first contact with reality
+
+- whether the room feels like a proper destination or just a very good station bar
+
+- whether the teased extras — pool, food, entertainment — support the concept rather than distract from it
+
+The most interesting new venues usually reveal themselves fast. Within a week or two, London drinkers normally know whether a place is just new or actually worth caring about. The Whippet has a real chance to be the second kind.
 
 Opening details
 
@@ -4483,7 +4544,17 @@ Opening details
 
 - Early details: June update: still no Augustiner, but an unusually strong continental lager mix, Boddingtons cask with sparkler, and pool table
 
-The Whippet is outside Liverpool Street. Follow @WhippetEC2 for updates.
+Final word
+
+London beer people are not short of openings to be cynical about. Most new venues arrive wrapped in the same tired language and reveal very little once the doors open.
+
+The Whippet feels different so far.
+
+Not because it is loud.
+
+Because it sounds like it knows what it is doing.
+
+Thursday 14 May, around 4pm, outside Liverpool Street. Follow @WhippetEC2 for the run-up.
 
 Frequently asked questions
 
@@ -4500,7 +4571,7 @@ Is The Whippet the same as the Holborn Whippet?
 No — different building, different area, different room. But the name carries deliberately. The original Holborn Whippet, run by the same group, closed in 2020 and built a loyal following. EC2 is not a reopening, but it is the first new site under the Whippet name since Holborn closed six years ago.
 
 What will be on tap at The Whippet?
-June 2026 update: The Whippet still is not pouring Augustiner. What it is pouring, though, is one of the more unusual lager selections for a craft-leaning City bar: Bitburger Pils, Pivo Kutna Hora Czech Pils, Tegernseer Hell, Benediktiner Hell and Sapporo, plus Boddingtons on cask served with a sparkler. The board also includes a range of continental lagers.
+June 2026 update: The Whippet still is not pouring Augustiner. What it is pouring, though, is one of the more unusual lager selections for a craft-leaning City bar: Bitburger Pils, Pivo Kutna Hora Czech Pils, Tegernseer Hell, Benediktiner Hell and Sapporo, plus Boddingtons on cask served with a sparkler. The bigger story turned out not to be one famous Munich name, but a quietly serious continental lager mix.
 
 What is a sparkler and why does it matter on cask Boddingtons?
 A sparkler is a small nozzle fitted to the end of a cask hand-pull. It forces the beer through at pressure and produces a tight, creamy head with different texture and mouthfeel to an unsparkled pour. It is the standard cask-service style across Northern England; London has traditionally pulled without one. A London venue choosing to sparkler a cask Boddingtons is a deliberate editorial call about service style and texture. Read the full sparkler argument →
@@ -4517,9 +4588,9 @@ Guide 5 April 2026 · Chelmsford, Essex
 
 The Chelmsford Beer Mile: A Live Guide to Essex's Best Craft-Beer Crawl
 
-Eight specialist venues sit within a mile of each other — from a Moulsham Street bottle shop to railway-arch taprooms — and the route between them has been mapped out by the people who actually drink there.
+Chelmsford has quietly become one of the most interesting craft-beer towns in the UK. Eight specialist venues sit within a mile of each other — from a Moulsham Street bottle shop to railway-arch taprooms — and the route between them has been mapped out by the people who actually drink there.
 
-This guide is the live companion to that crawl. The grassroots route originates with Chelmsford Beer Mile, a community project by locals keeping the city's beer scene visible. Our guide adds recorded tap lists for each stop.
+This guide is the live companion to that crawl. The grassroots route originates with Chelmsford Beer Mile, a community project by locals who quietly do the unglamorous work of keeping the city's beer scene visible. We're not replacing their site — we're adding the bit they don't cover: what's actually on tap at each stop, right now.
 
 Hat tip to the crew behind chelmsfordbeermile.co.uk. The route order below is theirs. Go visit their site, follow #chelmsfordbeermile on Instagram, and — their words — "if we don't get out and support these venues, they won't survive and Chelmsford will be a much duller place to live."
 
@@ -4797,7 +4868,7 @@ PINtPRESS Essay 27 April 2026 · UK · Craft beer imports
 
 Left Field Beer: One of Britain's Best Independent Beer Shops
 
-Left Field Beer stocks a range that runs from fresh-out-of-Chicago Hop Butcher and Trillium hazies, through European specialists like Arpus and CoolHead, to championed UK indies including DEYA and Buxton. Left Field Beer is one of the few shops that does it.
+There's a particular thrill in finding a UK shop that takes beer seriously across the board. Not legacy token stuff, not a dusty Sam Adams behind the Sierra Nevada — but a tight, considered range that runs from fresh-out-of-Chicago Hop Butcher and Trillium hazies, through European specialists like Arpus and CoolHead, to championed UK indies including DEYA and Buxton. Left Field Beer is one of the few shops that does it.
 
 This piece spends most of its time on the American end of the range — partly because it's where the prices sting hardest, and partly because the structural reasons behind those prices are the most useful thing to explain. But the broader curatorial breadth is the more honest description of what Left Field actually do.
 
@@ -4809,7 +4880,7 @@ Why Left Field matters
 
 Trading since 2016, based in Solihull, they've built something closer to a curator's shop than a warehouse. The roster is tight, not indiscriminate. American headliners — Trillium, Hop Butcher For The World — show up not as one-off lucky landings but as deliberate import decisions, with the freshness to back them up.
 
-The European range earns the same care. Arpus from Latvia, Factory from Romania, CoolHead from Finland — none of these are the easy stocking choices, and yet they sit on the shelves alongside the American imports. UK indies fit the same frame. DEYA from Cheltenham, Buxton from the Peak District, the modern hazy and barrel-aged generation — given equal billing rather than treated as the cheaper-by-default fallback.
+The European range earns the same care. Arpus from Latvia, Factory from Romania, CoolHead from Finland — none of these are the easy stocking choices, and yet they sit on the shelves alongside the American imports because the curatorial logic is consistent: stock the breweries that matter to people who pay attention. UK indies fit the same frame. DEYA from Cheltenham, Buxton from the Peak District, the modern hazy and barrel-aged generation — given equal billing rather than treated as the cheaper-by-default fallback.
 
 That kind of judgment is harder than it sounds. It's the difference between a shop that serves the hype cycle and one that keeps a real conversation going across borders.
 
@@ -5002,7 +5073,7 @@ The unit-takeover pattern is the structural story: the cluster survives even whe
 
 The thread to elsewhere
 
-The Blackhorse 4th birthday lands two days after another north-east London anchor's birthday: Pressure Drop's 12 Years of Bosko on Friday 1 May. Pressure Drop's brewery is across the Lea River in Tottenham Hale rather than on the Blackhorse cluster itself, but Bosko is one of the beers that first taught a generation of east London drinkers what hop-forward really meant.
+The Blackhorse 4th birthday lands two days after another north-east London anchor's birthday: Pressure Drop's 12 Years of Bosko on Friday 1 May. Pressure Drop's brewery is across the Lea River in Tottenham Hale rather than on the Blackhorse cluster itself, but Bosko is one of the beers that first taught a generation of east London drinkers what hop-forward really meant. North-east London has had a quietly defining decade in UK craft, and these two birthdays falling in the same week say more about the area than any branding exercise could.
 
 Full disclosure: independent editorial. We have no commercial relationship with the Blackhorse Beer Mile, the participating venues, or the event organisers. PINtPOINT users get Beer Alerts when watched beers appear on tap nearby; nothing in this piece is paid placement or sponsored. Venue list compiled from the official BHBM events page on 1 May 2026.
 
@@ -5039,13 +5110,13 @@ Radio City turns seven
 
 Saturday 9 May 2026, Radio City Beer Works marks its seventh birthday with the biggest release it has put its name to yet: seven collaboration beers, one for each deadly sin, brewed in Essex with seven different UK breweries and launched across 35 first-pour venues two days before the main brewery party.
 
-The collaborators come from Nottingham, York, Lewes, Norwich, Manchester, Hampshire and Berkshire.
+For Chelmsford drinkers, it's more than a birthday event. It's a snapshot of how far Radio City has come in seven years — from local brewery to a name confident enough to pull collaborators from Nottingham, York, Lewes, Norwich, Manchester, Hampshire and Berkshire, and to launch the resulting range nationwide rather than just over its own bar.
 
 The cans go live on Thursday 7 May. The brewery party follows on Saturday 9 May at Radley Green, with all seven beers on tap, four more alongside them, live music, street food, beer pong, table football, and a shuttle bus running between Radio City Social in the city centre and the brewery.
 
 The seven beers
 
-Each beer pairs one sin with one collaborating brewery.
+Each beer pairs one sin with one collaborating brewery — not just a neat theme, but a line-up that tells you something about Radio City's own peer group.
 
 - Lust × Black Iris — Nottingham
 Strawberry Vanilla Pastry Sour, 6%
@@ -5068,7 +5139,7 @@ NEIPA, 6%
 - Pride × Elusive — Berkshire
 NZ West Coast Pilsner, 5.6%
 
-The range runs from Sloth, a 4.8% hazy pale, to Gluttony, an 8.4% imperial stout, with IPAs, a pastry sour and a pilsner between them.
+There's a nice intelligence to the spread. Sureshot's Envy NEIPA and Ampersand's Wrath Southern Hemisphere IPA bracket the hop-forward spectrum from opposite directions. Greed at 8% and Gluttony at 8.4% are the heavyweights — a DIPA and an imperial stout, the late-evening beers. Lust's strawberry vanilla pastry sour from Black Iris is the mid-session reset; Pride's NZ West Coast Pilsner from Elusive the early-doors palate-cleaner. Sloth's hazy pale at 4.8% is the only one you can comfortably have more than once. It reads less like a random collab dump and more like the arc of a real long afternoon.
 
 The brewery party · Saturday 9 May
 
@@ -5088,7 +5159,7 @@ This is the third birthday bash Radio City has staged on-site, and previous year
 
 The 35 launch venues · cans go live Thursday 7 May
 
-The cans and first pours land on Thursday 7 May across 35 launch venues chosen by Radio City. The venues span Essex, East Anglia, London, the South and the North.
+The cans and first pours land on Thursday 7 May across 35 launch venues chosen by Radio City. That matters: this is not just a local release with a few sympathetic stockists. It's a deliberately mapped spread of indie beer venues across Essex, East Anglia, London, the South and the North.
 
 View all 35 launch venues by region →
 
@@ -5098,11 +5169,17 @@ Why this matters for Chelmsford
 
 For local drinkers, this isn't just one more birthday release. Radio City have become one of the engines of a craft scene that barely existed in Chelmsford fifteen years ago. The city now has a real beer-mile structure, a serious specialist venue in Radio City Social, and an independent brewery close enough to feel local but ambitious enough to pull in collaborators from across the country.
 
+That's what this release really shows. Not just "seven beers because seven years," but a brewery confident enough to use a birthday as a statement of position.
+
+If you've ever ended a Chelmsford crawl at Radio City Social and felt that it represented the modern version of the city's beer scene, this is the brewery-scale version of the same thought.
+
 If you're going
 
 If you're heading to the brewery on Saturday, book the shuttle. It's cheap, practical, and clearly the intended route in and out. Buses run throughout the day in both directions — outbound from Radio City Social to the brewery, and return from the brewery back to the city centre — so pick whichever pair of slots fits your day. Book both legs at the same time on rcbw.shop.
 
 If you're not making the party, the cans are the main event. From Thursday 7 May, find the nearest launch venue and start there. If you want to track specific beers, PINtPOINT's Beer Alerts can watch for any of the seven sins and flag them when they land on tap nearby.
+
+Seven years. Seven beers. Thirty-five launch venues. A proper statement release from a brewery that's no longer just thinking locally.
 
 Full disclosure: independent editorial. We have no commercial relationship with Radio City Beer Works or any of the collaborator breweries. Launch-venue list compiled from Radio City Beer Works' own announcements via @radiocitybw and @radiocitysocial on 1 May 2026.
 
@@ -5232,7 +5309,7 @@ The framing is the framing the campaign needs: UK pubs are closing at a rate of 
 
 Cross-party backing
 
-The campaign has drawn backing from across the political parties. Nigel Farage and Zack Polanski — Reform UK and Green Party leaders, polar opposites on almost every other axis of British politics — have both publicly backed National Pub Day. So have Sir Ed Davey for the Liberal Democrats and Kemi Badenoch for the Conservative opposition. Boris Johnson called pub closures "not just an economic disaster [but] a cultural and spiritual desecration". Polanski, a non-drinker, said pubs are "on its knees".
+The most striking thing about today's Save Our Pubs coverage isn't the beer. It's the line-up of political backers. Nigel Farage and Zack Polanski — Reform UK and Green Party leaders, polar opposites on almost every other axis of British politics — have both publicly backed National Pub Day. So have Sir Ed Davey for the Liberal Democrats and Kemi Badenoch for the Conservative opposition. Boris Johnson called pub closures "not just an economic disaster [but] a cultural and spiritual desecration". Polanski, a non-drinker, said pubs are "on its knees".
 
 That's a coalition you almost never see in 2026. The shared messaging — that the pub is community infrastructure, not just a business — is doing more work than the free pint will. Backers also include chef Tom Kerridge, model Jodie Kidd, and Tim Martin of JD Wetherspoon, who calls pubs "the heartbeat of the nation". Hiroshi Suzuki, Japan's ambassador to the UK and an internet-cult-favourite of British real-ale drinkers, put it cleanest: "Nothing is more uniquely and wonderfully British than the local pub. Let's support local pubs — they are national treasures."
 
@@ -5305,9 +5382,9 @@ What PINtPOINT adds
 
 The Telegraph's map tells you which pub is pouring Telegraph Ale. It doesn't tell you whether the rest of the tap list is worth staying for. That's PINtPOINT's job. Once your voucher is spent, the second pint is your call — and that's where knowing what else is pouring before you walk in starts to matter. Filter by style on the radar, see what's fresh at the next pub down the road, plan a small crawl that takes you from the free Renegade pint to a Cumberland sausage roll and a sharper second beer somewhere closer to home.
 
-The structural problem behind National Pub Day doesn't get solved by a single Saturday's free round. But every reader who walks into a participating pub this Saturday is also a reader who's reminded what their local actually does for them — and that's where the cultural defence of British pubs starts. Whatever you think of the Telegraph's editorial line or the cross-party photo opportunity, the line of pumphandles in pubs like the Bell is the part that matters.
+The structural problem behind National Pub Day doesn't get solved by a single Saturday's free round. Two-to-four closures a day is a relief-cuts and red-tape problem, not a marketing problem. But every reader who walks into a participating pub this Saturday is also a reader who's reminded what their local actually does for them — and that's where the cultural defence of British pubs starts. A pint is the smallest possible unit of solidarity. Whatever you think of the Telegraph's editorial line or the cross-party photo opportunity, the line of pumphandles in pubs like the Bell is the part that matters.
 
-Follow-up note: the Bell at Ingatestone, where we claimed our Telegraph Ale on Saturday, is itself flagged Struggling on PINtPOINT's Financial Pressure Index — rates +74% vs 2023. Save Our Pubs, in one pub →
+Follow-up note: the Bell at Ingatestone, where we claimed our Telegraph Ale on Saturday, is itself flagged Struggling on PINtPOINT's Financial Pressure Index — rateable value +74% vs 2023. Save Our Pubs, in one pub →
 
 A free pint won't save 1,500 pubs a year.
 But it gets you back through the door.
@@ -5357,7 +5434,7 @@ Note 16 May 2026 · Essex · Save Our Pubs follow-up
 
 Save Our Pubs, in one pub.
 
-We walked into the Bell at Ingatestone on Saturday to claim a free pint of Telegraph Ale. The cask was on, the pumpclip was unmistakable, the day went as advertised. Then PINtPOINT opened on the venue page — and the same building the Telegraph's campaign was celebrating was also flagged Struggling on our own Financial Pressure Index.
+We walked into the Bell at Ingatestone on Saturday to claim a free pint of Telegraph Ale. The cask was on, the pumpclip was unmistakable, the day went as advertised. Then PINtPOINT opened on the venue page — and the same building the Telegraph's campaign was celebrating was also flagged Struggling on our own Financial Pressure Index. The campaign's structural argument, made personal, on the bar in front of us.
 
 The Bell sits at 55 High Street, Ingatestone CM4 0AT — a coaching-inn-era pub midway down the A12 between Chelmsford and Brentwood, the kind of village local that defines Mid-Essex hospitality. Saturday lunchtime, sun out, 10 beers on tap including Telegraph Ale, Guinness Draught, Greene King IPA, the usual rotation. A barmaid pulling pints, a few tables of regulars, the till clicking through.
 
@@ -5381,21 +5458,15 @@ Source
 
 VOA rating list data (England & Wales)
 
-The VOA valuation data show a 74% increase since 2023. That is the change used by our pressure index; it does not by itself establish the change in the pub’s final rates bill.
+The Bell’s rateable value has risen 74% since 2023, according to the VOA data used by our index. That is not the same as a 74% increase in its final rates bill.
 
-PINtPOINT's Financial Pressure Index (FPI) is the app's way of surfacing this directly inside the venue list. It pulls VOA rating-list data from England and Wales, computes how much each pub's rateable value has shifted, and labels venues by pressure tier — fine, watch, struggling, critical. The Bell's score of 44/100 puts it in the "struggling" band: an index category, rather than a finding about the pub’s accounts.
-
-The Bell was taking part in the Telegraph’s Save Our Pubs campaign while also appearing in our index’s struggling category.
+PINtPOINT's Financial Pressure Index (FPI) is the app's way of surfacing this directly inside the venue list. It pulls VOA rating-list data from England and Wales, computes how much each pub's rateable value has shifted, and labels venues by pressure tier — fine, watch, struggling, critical. The Bell's score of 44/100 puts it in the "struggling" band: the category assigned by our index, not a review of the pub’s accounts.
 
 Telegraph Ale at the Bell — 16 May 2026.
 
 What the Bell does anyway
 
-A poster on the front wall advertises a free Sunday-afternoon gig on 24 May: Blue Notes and Double Trouble, 1pm, no cover.
-
-Find pubs in the pressure index
-
-Troubled Pub Mode in PINtPOINT highlights England-and-Wales venues in the watch, struggling and critical tiers. The categories reflect changes in rateable value, not an inspection of each pub’s finances.
+A poster on the front wall advertises a free Sunday-afternoon gig on 24 May — Blue Notes and Double Trouble, 1pm, no cover.
 
 Read next
 
@@ -5447,7 +5518,7 @@ The revival, so far, isn't repeating the mistake. The varsity-block mark is what
 
 What Anchor was for
 
-Fritz Maytag bought Anchor in 1965 when the brewery was close to collapse. His work there helped establish the American craft brewing movement.
+Why this matters more than another brewery reopening comes down to what Anchor was actually for. Not as a product, but as a story. Fritz Maytag bought the brewery in 1965 from a near-bankrupt owner because the world's last Steam Beer brewery was about to disappear and Maytag thought that was, simply, intolerable. He had no business plan. The American craft brewing industry didn't exist; he was inventing it as he went. Everything since — Sierra Nevada, Sam Adams, the late-80s microbrewery explosion, the modern hazy generation — built downstream of Maytag's bet. Anchor was the founding image.
 
 As Jeff Alworth wrote on closure day in 2023, "Anchor was never just a brewery. It was wrapped up in the myth of America." When Sapporo closed it, the loss wasn't a beer going off the market — it was the founding image going off the market. The ground, as Alworth put it, "may suddenly feel spongy under our feet."
 
@@ -5465,7 +5536,7 @@ The labour question may matter most. Ulukaya built his public reputation on labo
 
 There's a precedent for the choice the May 2026 homepage shows. After the 1906 San Francisco earthquake destroyed the original brewery, its owners could have rebuilt it for the new century — ice, refrigeration, the modern German lager model the rest of the country was already adopting. They didn't. They rebuilt looking back to the nineteenth century instead. Anchor's own brewery historian David Burkhart calls that decision "radically traditional." Fritz Maytag, decades later, articulated the same instinct in his own words: "What is traditional? And I realized it's all barley malt and whole hops and nothing else, and that's extreme."
 
-The 2021 rebrand was the break with that pattern. Putting the heritage mark back at the front door, before a single bottle has shipped, is the return to it. Whether the beer that follows lives up to it is what 2027 will answer.
+The 2021 rebrand was the break with that pattern. Putting the heritage mark back at the front door, before a single bottle has shipped, is the return to it — and a quiet statement of intent. Whether the beer that follows lives up to it is what 2027 will answer.
 
 Companion piece: Anchor Brewing's British heritage runs deeper than people realise — the 1975 Yorkshire pub tour, the Halifax distributor, and what a return to UK taps would actually depend on.
 
@@ -5513,7 +5584,7 @@ Fritz puts the descent plainly: "The Christmas Ale and Old Foghorn were the prod
 
 "We learned quickly that English brewing was not traditional at all, in the sense that they were all made with sugar. I never found out how they got that bitterness, but I'm quite sure they didn't get it from using a lot of hops. But we knew a lot about brewing by then and English ales were kind of a joke to us, just the way the English used to make fun of American beers. There's nothing wrong with either one of them."Fritz Maytag, in David Burkhart, The Anchor Brewing Story
 
-Elsewhere he is more specific still: the trip "stunned us with the lack of traditional brewing — charming advertising sign at pubs, and charming 'cask conditioning' process by some brewers, but sugar and color and thin products." Anchor's all-malt creed predates England: Fritz had written to Esquire in 1974 that the brewery used "only malted barley, whole hops, yeast, and water… no additives, preservatives, or other '-ives'". What Yorkshire gave him was not a method but a conviction: "we came home," he says, "determined to do something really traditional and real and true." The new brew's working title was "2nd L.A.": a second Liberty Ale. It descends from Anchor's own April beer, and acquired its Christmas theme afterwards.
+Elsewhere he is more specific still: the trip "stunned us with the lack of traditional brewing — charming advertising sign at pubs, and charming 'cask conditioning' process by some brewers, but sugar and color and thin products." That is the assessment the tidy version of this story leaves out, and it is the one that makes sense of the rest. Anchor's all-malt creed predates England: Fritz had written to Esquire in 1974 that the brewery used "only malted barley, whole hops, yeast, and water… no additives, preservatives, or other '-ives'". What Yorkshire gave him was not a method but a conviction: "we came home," he says, "determined to do something really traditional and real and true." The new brew's working title was "2nd L.A.": a second Liberty Ale. It descends from Anchor's own April beer, and acquired its Christmas theme afterwards.
 
 Christmas Ale became something particular over the years: a deliberately experimental annual beer with a fresh Jim Stitt-illustrated label and, less visibly, a fresh recipe. Fritz, in Burkhart's account: "Our theme for the Christmas Ale from the very beginning was not just that the label would change but that the brew would change. We did things that only a brewer would be interested in, but that a brewer would be very interested in. And we never mentioned it. We kept it a secret." By the late 2000s and early 2010s, The Rake in Borough Market, London's specialist beer shop, was, by reputation, among the UK bottle vendors that stocked multiple recent vintages of Anchor Christmas Ale side by side in their fridges. The annual American experiment had quietly become a small UK collector's ritual: an English-inspired beer made in San Francisco, shipped back to England, cellared by serious drinkers across years.
 
@@ -5543,7 +5614,7 @@ House put the question to two beer writers, and both answered in the affirmative
 
 Protz’s two words answered a question that bundled the movement with Wickett, Pale Rider and Jaipur. On Wickett himself he points to Yorkshire: in the same correspondence he named Timothy Taylor’s Landlord as Wickett’s major influence and said he did not recall Wickett discussing American beers with him, and his 2004 profile gives Landlord as Wickett’s inspiration when he started. It leaves a neat symmetry: the Yorkshire beer Maytag credited for Liberty Ale is the one Protz records as Wickett’s own.
 
-Cascade was in Jaipur from the beginning, and the brewers said at the time what they were copying. Jonny Garrett, writing for Good Beer Hunting in October 2020, has the two brewers, Martin Dickie and Stefano Cossi, given free rein once the early contract brews for Kelham Island were out of the way, and setting out “inspired by Wickett’s beers and their own experience of American craft brewing”, using American hops at low strengths for a British drinker. That plan lasted until the summer, when they had a 6% American IPA in tank, saturated with Cascade, Chinook, Ahtanum and Simcoe, and poured it at a garden party at the hall. It went down well enough to be named after the city where Jim Harrison had married, and Dickie told Garrett what they had been after: “Jaipur was the first one where we tried to mimic the American IPA.”
+Cascade was in Jaipur from the beginning, and the brewers said at the time what they were copying. Jonny Garrett, writing for Good Beer Hunting in October 2020, has the two brewers, Martin Dickie and Stefano Cossi, given free rein once the early contract brews for Kelham Island were out of the way, and setting out “inspired by Wickett’s beers and their own experience of American craft brewing”, using American hops at low strengths for a British drinker. That plan lasted until the summer, when they had a 6% American IPA in tank, saturated with Cascade, Chinook, Ahtanum and Simcoe, and poured it at a garden party at the hall. It went down well enough to be named after the city where Jim Harrison had married, and Dickie told Garrett what they had been after: “Jaipur was the first one where we tried to mimic the American IPA.” That is the brewer’s own account of the intention, and it dates the hop to the first batch rather than to a current ingredient list.
 
 Pete Brown, quoted in the same piece, puts the beer at the start of everything that followed: “For me, Jaipur was the start of the British craft brewing scene. BrewDog brought the attitude, the packaging, the language, but Thornbridge were the trailblazers.”
 
@@ -5551,13 +5622,13 @@ Cascade, the hop Protz singled out in Liberty Ale, is in all three beers as they
 
 So the link from Liberty Ale to Wickett’s own brewing rests on Gore’s understanding, on Protz’s judgement of Liberty Ale’s influence on the movement Wickett led, and on a hop that is in all three beers. What the record does not hold is Wickett’s own word on it, or any note of who chose Cascade for which recipe.
 
-The yeast crossed too. At the 1983 KQED Beer & Cider Festival in San Francisco, Thames brought over polypins of cask-conditioned Fuller's beer, and a polypin of cask beer contains live yeast by definition. House says those were London Pride vessels. John Keeling, who joined Fuller's in 1981 and was its head brewer from 1999 until 2017, says the brewery propagated one house yeast from London Pride fermentations and pitched it into Pride, ESB and Chiswick Bitter alike. Whatever was alive in those polypins was the yeast Fuller's used for everything. Wyeast Laboratories wrote in September 2023 that their 1968 London ESB Ale strain had been isolated for the Wyeast Culture Collection thirty years earlier. Where that sample was first collected, and its link to the 1983 polypins, are still being researched. How a yeast catalogued as Fuller's came to ferment Firestone Walker's beers is the subject of our companion piece, Why Firestone Walker chose Fuller's yeast. But a live English brewing yeast was standing on a trestle table in San Francisco in 1983, which is its own kind of freight.
+The yeast crossed too. At the 1983 KQED Beer & Cider Festival in San Francisco, Thames brought over polypins of cask-conditioned Fuller's beer, and a polypin of cask beer contains live yeast by definition. House says those were London Pride vessels, which matters more than it sounds. John Keeling, who joined Fuller's in 1981 and was its head brewer from 1999 until 2017, says the brewery propagated one house yeast from London Pride fermentations and pitched it into Pride, ESB and Chiswick Bitter alike. Whatever was alive in those polypins was the yeast Fuller's used for everything. Wyeast Laboratories wrote in September 2023 that their 1968 London ESB Ale strain had been isolated for the Wyeast Culture Collection thirty years earlier. Where that sample was first collected, and its link to the 1983 polypins, are still being researched. How a yeast catalogued as Fuller's came to ferment Firestone Walker's beers is the subject of our companion piece, Why Firestone Walker chose Fuller's yeast. But a live English brewing yeast was standing on a trestle table in San Francisco in 1983, which is its own kind of freight.
 
 The traffic ran in the tanks as well as the kegs. Wyeast’s own history of strain 1272, American Ale II, has it coming from “a mixed morphology yeast originating from Anchor Brewing Company of San Francisco, California”. While Fuller’s yeast was going west in a polypin, Anchor’s was going into a yeast bank in Oregon.
 
 Fifteen years on, the route had a new owner. From the mid-to-late 2000s, Anchor was imported into the UK by James Clay & Sons, the Halifax specialist distributor whose roster reads like a careful drinker's reference library: Brooklyn, Victory and Flying Dog from the American side; the full Trappist line (Orval, Chimay, Westmalle, Rochefort, La Trappe); the German heritage names (Schlenkerla, Schneider Weisse, Erdinger). By the mid-2010s, the relationship was visibly mature: James Clay's 2016 catalogue listed seven core Anchor beers, with Anchor Steam available on 20-litre American Sankey-coupler kegs alongside bottles. Steam on UK draught was a real, if quiet, thing.
 
-The trade reputation that Steam "didn't travel well" was a quality argument about what arrived in the glass, not an availability constraint. The British beer writer Des de Moor reported a working theory for why Anchor bothered with UK exports at all despite the modest volumes: partly to keep commercial use of the trademarked "Steam Beer" mark active in international markets. Mark Carpenter, Anchor's brewmaster through most of the modern era, was known to admire English session-drinking culture.
+Not many pubs poured it, but the ones that did were the right ones. The trade reputation that Steam "didn't travel well" was a quality argument about what arrived in the glass, not an availability constraint. The British beer writer Des de Moor reported a working theory for why Anchor bothered with UK exports at all despite the modest volumes: partly to keep commercial use of the trademarked "Steam Beer" mark active in international markets. Mark Carpenter, Anchor's brewmaster through most of the modern era, was known to admire English session-drinking culture.
 
 What 2023 broke. What still works.
 
@@ -5569,9 +5640,11 @@ So will it come back?
 
 Whether Ulukaya's team rebuilds UK shelf or draught presence isn't a question they've answered publicly. A brewery rebuilding its core American distribution first, and the COLAs filed so far are for the US market, has a long list of priorities before British supply chains. None of that should be brushed past. The American craft market is meaningfully smaller in 2026 than it was when Anchor closed, and Anchor's national distribution evaporated entirely during the closure. Rebuilding domestic shelf presence is, by some distance, the more urgent problem.
 
-James Clay’s experience importing Anchor and running other draught-import programmes would be relevant to a return. Whether Anchor will resume UK exports has not been announced.
+But the question of can Anchor return to UK taps, the logistical question, is, on the evidence, essentially solved. The distributor exists, knows the brand, and has just rebuilt a comparable premium-import draught programme. The venues that would pour it exist and are visible in UK tap data. The route works. What's missing is a strategic decision and the beer to put down it.
 
-It'll be visible the moment it happens.
+If Anchor Steam shows up on a UK tap line at some point in 2026 or 2027, most plausibly via James Clay given the historical relationship, that will be a small, specific signal worth flagging. Not because it tells you anything definitive about the wider revival, but because it tells you the international specialist-beer trade has voted on whether the founding myth still earns a tap line in 2026. Given how deep the English roots already ran in 1975, it would also complete a small circle.
+
+It'll be visible the moment it happens. That's what tap-list watching is for.
 
 ---
 
@@ -7065,7 +7138,7 @@ All 16 host cities now have beer venues mapped in PINtPOINT. World Cup host geog
 
 What counts as useful?
 
-For the Stadium Beer Map, we kept places a travelling fan could realistically use before or after a match. The venues need to be practical stops on matchday, close enough to reach from the ground.
+For the Stadium Beer Map, we kept places a travelling fan could realistically use before or after a match. The aim was simple — help fans find somewhere decent near the ground. Not just "a bar somewhere in the city". Not a generic search result. Not a famous place that looks good on a list but makes no sense on matchday.
 
 - walk, transit or short ride
 
@@ -7128,7 +7201,7 @@ The Fox & Pheasant, ChelseaJames Blunt (& Sofia Wellesley) · since 2017
 
 Victorian pub since 1846 Top 50 Gastropubs listed
 
-Blunt and Wellesley bought The Fox & Pheasant after hearing their favourite local was at risk of closing.
+Blunt and Wellesley bought The Fox & Pheasant after hearing their favourite local was at risk of closing. Which is a better origin story than most celebrity hospitality projects: not "brand extension", but "we actually drink here, so we bought it before someone flattened it".
 
 Reopened 2018 as a polished-but-not-precious Chelsea/Fulham corner boozer. Victorian bones from 1846 kept intact, dartboard, wood-panelled fireplaces, a proper Sunday roast operation. Not likely to be your scruffy session pub. Very west London, and honest about it.
 
@@ -7299,7 +7372,7 @@ These aren't revivals. They're not even spirits
 
 Why do I want these beers back?
 
-Old beer names are returning. The recipes, yeast and breweries behind them do not always return together.
+The interesting question isn't whether the beer is authentic. It's whether anyone is being honest about what came back.
 
 Partly it's nostalgia: the thought that I might be drinking something resembling what my father drank. I know perfectly well that most 1970s beer probably wouldn't suit taste buds ruined by years of heavily hopped West Coast IPAs. But I'll still buy the pint.
 
@@ -7359,7 +7432,7 @@ The cleanest benchmark for the badge type is Hofmeister, of all things. Disconti
 
 Which era are you reviving?
 
-A 1970s brand can revive the 1970s recipe — usually cold, carbonated, industrial keg — or it can leapfrog the bad years and revive the beer that corporate brewing interrupted.
+This is the axis that saves the piece from soft-focus nostalgia. A 1970s brand can revive the 1970s recipe — usually cold, carbonated, industrial keg — or it can leapfrog the bad years and revive the beer that corporate brewing interrupted.
 
 David Behrens's Stones Bitter is the clearest case. Writing in the Yorkshire Post, he remembers the 1970s Stones as "ghastly" and "gassy", the "gaudy orange badge on the pump" that "embodied everything that was wrong with Britain at that time". But he also blesses the True North Brew Co revival in Sheffield, on precisely the ground that True North is not returning to the keg era. They are returning to the beer that pre-dated it: cask, drawn from the wood, with the recipe adjusted to replenish the salt Sheffield steelworkers lost sweating in the foundries.
 
@@ -7370,6 +7443,8 @@ The absentee landlords
 The people who own the dead names are often not the people capable of bringing the beers meaningfully back. Heineken holds Watney's and Truman's. Carlsberg-Marston’s has the Ind Coope / Jennings / Banks’s / Bombardier trail, a lineage Des de Moor has mapped in detail. AB InBev retains Boddingtons. Molson Coors runs Carling. The genuinely interesting work happens when the IP is licensed out — or abandoned — into the hands of people with a regional or technical reason to care. Burton Bridge, Jennings under the Canfields, True North, JW Lees.
 
 Carlsberg keeps turning up at the scene. It discontinued Ind Coope's Draught Burton Ale before Burton Bridge picked it up. It closed Jennings Brewery in Cockermouth in November 2022 before the Canfields bought it back. Its Marston's operation has axed Banks's Mild and Bombardier in recent years.
+
+None of that is a moral verdict on the aggregators. It's a structural observation: honesty gets easier the further the brewer sits from the boardroom.
 
 The archaeology
 
@@ -7383,17 +7458,17 @@ Project Jurassic Beer
 
 The archaeology case that goes furthest is Guinness, and it fits this piece's argument in an unexpected way. In 2025 the Belgian underwater photographer Stefan Panis and his diving partner Eddie Huzzey recovered an intact bottle of Guinness from the wreck of the sailing barque Mindoro, which sank in the English Channel about three miles off Dover on 27 November 1864. The bottle survived the sinking and 162 years underwater. Panis's colleague Pawel Truszynski contacted Kevin Verstrepen, a microbiologist specialising in beer at KU Leuven University in Belgium. The divers themselves named the effort Project Jurassic Beer. Panis's ambition is direct: "There is always a chance that we can recover the complete DNA, and then we can do a small re-brew of the exact beer that was found in the 1860s."
 
-Diageo, which owns Guinness, has been in touch with the divers via the Guinness Archive team. Its full spokesperson statement, per the BBC: "Discoveries like this provide a fascinating window into our past and help build a deeper understanding of our heritage. Currently, our Guinness Archive team is liaising with the divers to gather more information and evaluate the find." The divers and KU Leuven are investigating whether usable DNA survives.
+Diageo, which owns Guinness, has been in touch with the divers via the Guinness Archive team. Its full spokesperson statement, per the BBC: "Discoveries like this provide a fascinating window into our past and help build a deeper understanding of our heritage. Currently, our Guinness Archive team is liaising with the divers to gather more information and evaluate the find." Which is telling. Diageo is engaged, but the science and the naming and the ambition sit with the divers and KU Leuven, not Dublin. If a biological continuity attempt at Guinness scale actually succeeds, it will have been driven by a Belgian underwater photographer who is by his own admission "not that big" a Guinness fan, his colleague, and Kevin Verstrepen at KU Leuven. Which is the pattern this piece has been describing all along. The interesting work happens outside the boardroom.
 
 The duty scale is the invisible editor
 
-Since August 2023, UK alcohol duty is charged proportional to strength rather than by product category. Higher-ABV beer costs the brewer more duty per hectolitre; lower-ABV beer costs less. That single change has been quietly reshaping recipes. Belhaven Twisted Thistle IPA came back at 4.0% versus an original 5.6%. Marketing text will call this "evolving the range" or "designed for today's beer market" or "drinks like a lager".
+Since August 2023, UK alcohol duty is charged proportional to strength rather than by product category. Higher-ABV beer costs the brewer more duty per hectolitre; lower-ABV beer costs less. That single change has been quietly reshaping recipes. Belhaven Twisted Thistle IPA came back at 4.0% versus an original 5.6%. Marketing text will call this "evolving the range" or "designed for today's beer market" or "drinks like a lager". Sometimes the real editor isn't the archive. It's the tax scale.
 
 The hop list is the receipt
 
 Within seconds of reading a revival's spec sheet, the hops tell you almost everything. Modern American C-hops — Citra, Centennial, Columbus, Cascade, Mosaic, Galaxy — are the 2010s craft-IPA palette. Classic English hops — Fuggles, Goldings, Challenger, Bramling Cross, Target, Pilgrim, plus Central European Celeia and Saaz — are the nineteenth- and twentieth-century British palette. A heritage revival that uses American C-hops while claiming "as it was in 1922" is either being honest about reinventing the beer or pretending the historical anchor is real when it isn't.
 
-Compare the specs. Allsopp's Double Diamond, claiming 1922 inspiration: Citra, Columbus, Mosaic. Jennings, reviving its own 1990s core: Fuggles, Goldings, Challenger and Celeia hops, with Maris Otter malt and, of course, the brewery's own Cumbrian well water. Burton Bridge DBA: traditional Burton-Ale style. Modern hops are not bad; there is nothing wrong with a Citra/Mosaic pale ale. The problem is only rhetorical — if the archive is what is being sold, the hop list has to match the archive.
+Compare the specs. Allsopp's Double Diamond, claiming 1922 inspiration: Citra, Columbus, Mosaic. Jennings, reviving its own 1990s core: Fuggles, Goldings, Challenger and Celeia hops, with Maris Otter malt and, of course, the brewery's own Cumbrian well water. That last part is not a marketing point. It is the recipe. Burton Bridge DBA: traditional Burton-Ale style. Modern hops are not bad; there is nothing wrong with a Citra/Mosaic pale ale. The problem is only rhetorical — if the archive is what is being sold, the hop list has to match the archive.
 
 Jennings is worth pausing on because it does the disclosure gracefully. Sneck Lifter — Northern dialect for a last sixpence, the money to lift a pub-door latch. Cumberland Ale, the North West bestseller. Cocker Hoop, a cask-spigot joke. And "Back Yam", introduced in 2026 to mark the revival and openly labelled as new, not smuggled in as heritage. That single word is the discipline the revival category needs more of.
 
@@ -7403,7 +7478,7 @@ Boddingtons is the corporate-licensed continuity in its cleanest form. AB InBev 
 
 The argument CAMRA’s What’s Brewing makes for it is generous but not naive. Boddingtons is not reinventing the wheel. There are more interesting pints at any given handpull, JW Lees's own included. But a familiar name lowers the barrier for younger drinkers who find a row of unknown handpulls intimidating — and the numbers seem to back it. Bass Pale Ale has reportedly grown 19% year-on-year; early Boddingtons demand in Manchester outstripped supply. Heritage brands are turning out to be a cask-beer gateway drug.
 
-The cost is real too. The world's largest brewer is muscling back onto bar space that would otherwise go to smaller independents. Two things at once: familiar names bring new drinkers to cask, and they crowd out the brewers who kept cask interesting while the big brands were away.
+The cost is real too. The world's largest brewer is muscling back onto bar space that would otherwise go to smaller independents. Two things at once: familiar names bring new drinkers to cask, and they crowd out the brewers who kept cask interesting while the big brands were away. The revival argument does not have to resolve that tension. It just has to name it.
 
 The shelf-presence defence
 
@@ -7411,7 +7486,7 @@ None of this rules out simply wanting the badge on the shelf. A flawed Double Di
 
 But some beers will never get a licensed revival. No corporate owner will bring them back; no supermarket will make room for them. Those beers belong somewhere else: in archive recipes of the kind Ron Pattinson keeps publishing at Barclay Perkins, old brewery booklets, homebrewers' sheds, and memory. Which is where Romford's John Bull Bitter — and a few other ghost beers — may have to live.
 
-Though sometimes the archive answers back. In October 2026 Harvey’s of Lewes released Lost Brew No 156, a 7.7% Victorian strong ale brewed from an 1890 journal that Pattinson himself turned up in 2019 in the archives of the former Beard’s Brewery, the other brewery in the same town. It had been filed under Beard’s, which helped obscure its connection to Harvey’s, but the pages are headed Harvey & Son, Bridge Wharf Brewery. Beer Today reports that the journal is thought to have belonged to Henry John Barrett, son of Harvey’s third head brewer, and that head brewer Peter Yarlett’s team brewed it in the same tower it first came out of, with heritage British barley, Sussex Fuggles and Kent Goldings. Put that against the questions this piece keeps asking and it does unusually well. The recipe survived. The brewery survived. The journal is believed to have belonged to the son of Harvey’s third head brewer. The yeast, as ever, is the open one. Harvey’s hopes to brew five more recipes from the journal.
+Though sometimes the archive answers back. In October 2026 Harvey’s of Lewes released Lost Brew No 156, a 7.7% Victorian strong ale brewed from an 1890 journal that Pattinson himself turned up in 2019 in the archives of the former Beard’s Brewery, the other brewery in the same town. It had been filed under Beard’s, which is why nobody had found it, but the pages are headed Harvey & Son, Bridge Wharf Brewery. Beer Today reports that the journal is thought to have belonged to Henry John Barrett, son of Harvey’s third head brewer, and that head brewer Peter Yarlett’s team brewed it in the same tower it first came out of, with heritage British barley, Sussex Fuggles and Kent Goldings. Put that against the questions this piece keeps asking and it does unusually well. The recipe survived. The brewery survived. The man who wrote the thing down was the son of the man who ran the place. The yeast, as ever, is the open one. Five more recipes from the same journal are promised.
 
 The ghosts are welcome
 
@@ -7536,7 +7611,7 @@ Tegernseer Hell is the beer people come back from Bavaria talking about. It is b
 Tegernseer is not one of the Munich six. If you want the Wiesn beers themselves, seventy UK Oktoberfest events, sorted by which actually pour them. &rarr;
 There is no published list of UK stockists, so this is ours: eleven venues we can show poured it, built the same way as our Augustiner list — by cross-referencing the public check-in record against our own tap data, rather than by asking an importer who is under no obligation to answer.
 
-The list is ordered by the most recent sighting. Check with the pub before travelling, especially for older entries.
+Sorted by how recently it was actually seen, because that is the only thing that matters when you are deciding where to go tonight. A pub that poured it in May is not a pub that has it now, and most lists will not tell you the difference.
 
 On, or as good as
 
@@ -7546,7 +7621,7 @@ Tegernseer Hell, 4.8%, on draught — seen today. London’s original beer bar, 
 
 Indie Rabble Brewing Company · Windsor
 
-Tegernseer Quirinus, 7%, on draught — four days ago. Not the Hell: the doppelbock, named after the saint whose relics are in the monastery church. At 7%, it is stronger than the Hell.
+Tegernseer Quirinus, 7%, on draught — four days ago. Not the Hell: the doppelbock, named after the saint whose relics are in the monastery church. A brewery taproom pouring someone else’s doppelbock is a deliberate act, and at 7% it is the most serious beer Tegernsee make.
 
 Seen this month
 
@@ -8228,7 +8303,7 @@ Before beer brands were global, Bass was already everywhere.
 
 A Burton brewery, a small red shape and a beer that crossed every ocean before its time.
 
-The red triangle of Bass Pale Ale became a mark of quality, a Victorian shorthand for a beer drinkers trusted whether they were in Britain, North America, Australia or somewhere else entirely. Beer writer Pete Brown has described Bass as the first big consumer brand and the world's first multinational beer brand. That sounds like mythology until you look at what Bass became.
+The red triangle of Bass Pale Ale was not just a brewery logo. It was a mark of quality, a Victorian shorthand for a beer drinkers trusted whether they were in Britain, North America, Australia or somewhere else entirely. Beer writer Pete Brown has described Bass as the first big consumer brand and the world's first multinational beer brand. That sounds like mythology until you look at what Bass became.
 
 In the 19th century, Bass Pale Ale travelled the world at a time when global consumer brands barely existed. Its red triangle appeared in bars, adverts, bottle labels and paintings. It was one of the first symbols a drinker could recognise across borders.
 
@@ -8266,7 +8341,7 @@ Then came glass. When taxes on glass were reduced in the 1850s, drinkers increas
 
 A city-within-a-city
 
-At its height, Bass occupied an industrial estate. Burton became a landscape of maltings, wells, cellars, steam power, cooperage, railway links, union rooms and distribution networks. This was British brewing at imperial scale: part brewery, part city-within-a-city.
+At its height, Bass was not simply a large brewery but an industrial estate. Burton became a landscape of maltings, wells, cellars, steam power, cooperage, railway links, union rooms and distribution networks. This was British brewing at imperial scale: part brewery, part city-within-a-city.
 
 The pale ales that made Bass famous were not like modern cask bitters. They were brewed strong, heavily hopped, and then aged until they were ready. Contemporary drinkers talked about beer being ripe or not ripe yet, as if it were fruit, cheese or wine.
 
@@ -8320,11 +8395,11 @@ That drinker network matters. National Bass Day, Best Bass in Burton, the Facebo
 
 But the number of places serving it has been rising again. Roger Protz reported in late 2025 that Draught Bass had passed 1,000 outlets, with numbers almost trebling over two years after renewed support from AB InBev. The irony is pure Bass: the brand is owned by AB InBev, brewed in Burton for a global rival, and kept alive by cask drinkers who care about it far more than corporate logic says they should.
 
-What does it taste like today? At its best, it tastes like the ideal version of an English bitter: dry, gently fruity, bitter at the finish, with caramel malt through the middle and, when fresh, a sulphurous Burton nose that can fade as the cask settles.
+What does it taste like today? At its best, it is not spectacular in the modern craft sense. It is better than that. It tastes like the ideal version of an English bitter: dry, gently fruity, bitter at the finish, with caramel malt through the middle and, when fresh, a sulphurous Burton nose that can fade as the cask settles.
 
 Ron Pattinson's brewery notes capture that split beautifully. A cask open for a few days was dry, bitter and clean. A freshly tapped sample was fuller of sulphur, softer in perceived bitterness and more obviously Burton. Later, in the pub, the sulphur had mellowed and the beer had become exactly what Bass drinkers chase: dry, bitter, balanced and deeply drinkable.
 
-The first sip has texture and fruit, the middle has malt, the finish has bitterness, and then somehow the glass is empty.
+That is the point. Draught Bass is not great because it is dramatic. It is great because, when looked after properly, it disappears too quickly. The first sip has texture and fruit, the middle has malt, the finish has bitterness, and then somehow the glass is empty.
 
 Some Bass pubs have become minor pilgrimage sites: the Coopers Tavern in Burton, Dyffryn Arms in Pembrokeshire, the Sun Inn in Stockton-on-Tees, the Express Tavern by Kew Bridge, and Burton pubs such as the Roebuck and Devonshire Arms. The geography is uneven, but that is part of the appeal. Finding a good pint of Bass still feels like finding something.
 
@@ -8369,7 +8444,7 @@ A separate Charrington IPA was recreated in 2015 by Steve Wellington at Heritage
 What does Draught Bass taste like today?
 At its best, Draught Bass is a classic English bitter: dry, gently fruity, caramel-malted and firmly bitter, with a sulphurous Burton note when fresh. That sulphur softens as the cask settles, leaving a drier, balanced beer that drinks easily. Ron Pattinson's notes describe the same cask changing from sulphurous and full when freshly tapped, to clean, dry and deeply drinkable later in the pub.
 
-Kept properly, the glass empties without you noticing.
+Kept properly, the glass empties without you noticing — which is the whole point.
 
 What is the "Burton snatch"?
 A subtle sulphurous note in Burton-brewed beer caused by the area's hard, sulphate-rich water. It is the smell of the brewery as much as of the beer — yeast, sulphur, fermenting rooms, carbon dioxide and wort. For many drinkers it is the defining marker of a genuine Burton ale.
@@ -8421,17 +8496,17 @@ PINtPRESS Essay 28 July 2026
 
 The Green Triangle and the Oldest Trademark in British Beer
 
-On 1 January 1876, the world's very first registered trademark was granted to a beer. Bass Brewery of Burton-upon-Trent claimed a red equilateral triangle as UK Trade Mark No. 1 — the first mark ever entered on any statutory register anywhere. Not a word, not a monogram, not a coat of arms. A triangle.
+On 1 January 1876, the UK’s new trade mark register opened with a beer label. Bass Brewery’s pale ale label, featuring its red triangle, became UK Trade Mark No. 1.
 
 That was 1876. This is 2026. One hundred and fifty years — to the year. When PINtPOINT needed a shape to single out the best pub around, we didn't have to think about it. What else were we going to pick?
 
-The first trademark was a beer trademark
+The UK register opened with a beer label
 
 The Trade Marks Registration Act of 1875 was the first British statute to create a formal register of commercial marks. It opened for applications on 1 January 1876. Before that, protecting your mark meant paying lawyers to fight for it in court, case by case. After it, protection was a matter of paperwork — as long as you got in first.
 
 Bass understood the stakes immediately. Its pale ale was already a global product, shipped to Trieste, Calcutta, New York and the Baltic, and imitated everywhere it went. So a Bass employee slept on the pavement outside the new Trade Mark Registry Office at 47 Chancery Lane the night of 31 December, waiting for Henry Reader Lack — the first Registrar of Trade Marks — to open the door. When he did, the Bass red equilateral triangle became UK Trade Mark No. 1. A second Bass mark — the diamond, for the stronger export ale — became No. 2, registered the same day. Both the Intellectual Property Office and CITMA have retold that morning for the anniversary.
 
-Every registered trademark in this country traces its lineage back to that queue. And the mark at the front of it, the one every subsequent trademark is by definition later than, was about beer. We borrowed the triangle for a beer app with that history in mind.
+Every registered trademark in this country traces its lineage back to that queue. And the mark at the front of it, the one every subsequent trademark is by definition later than, was about beer. That is not a nice coincidence. It is the founding fact of British trademark law. When you build a beer app and you need to pick a shape, you don't get to pretend that history isn't there.
 
 What else could we pick?
 
@@ -8447,7 +8522,7 @@ Six years after that queue outside the registry, Édouard Manet finished A Bar a
 
 Nobody had to explain the label. That was the whole point. A French painter, working in Paris, put a British beer bottle on the counter of a Paris cabaret because he knew — and knew that his audience knew — what it was. The triangle had become a language. Very few beer brands have ever earned that. The Bass triangle got there first, by decades, and it did it with a shape a five-year-old could draw from memory.
 
-Our marker borrows the shape; it is green and points down.
+That is the shape we borrowed. Not the trademark. The lesson.
 
 1876 · Bass No. 1 · 2026 · Pick of the Pubs
 
@@ -8461,7 +8536,7 @@ The homage lives in the geometry, not the pigment. Bass proved a triangle is eno
 
 150 years on
 
-Bass’s triangle was recognisable on a bottle in a Paris painting. Our green triangle has a smaller job: marking the pub we suggest you try next.
+Bass understood in 1876 what every good product mark has understood since: a shape carries a promise faster than a sentence. That is why a Bass employee slept on a pavement in December 1875 to be first through the door on New Year's Day. That is why the Bass triangle turned up, unlabelled, on the counter of Manet's cabaret six years later. And that is why, a century and a half on — to the year — the fastest way to say this one on a small screen at the end of a long day is still a triangle.
 
 Different pigment. Same discipline. Happy sesquicentennial to the format that started it.
 
@@ -8829,7 +8904,7 @@ That is the whole story in one address: a Victorian wine merchant's counter, a 1
 
 That is the shape of every honest ghost record: name, address, what came after, and — where the paperwork allows — why.
 
-Ghost Hunter records: this place changed names, this one changed owners, this one changed use, and this one cannot honestly be pinned yet.
+Ghost Hunter is not just a list of dead pubs. It is a way of saying: this place changed names, this one changed owners, this one changed use, and this one cannot honestly be pinned yet.
 
 The City changes when you know what used to be there
 
@@ -8875,9 +8950,13 @@ If you wanted to understand the old mechanics of London, you did not look at the
 
 For centuries, London’s working world was governed by a rich, inherited street ecology: a messy, accidental patchwork of medieval courtyards, narrow passageways, gaslit basement vaults and wood-panelled drinking rooms.
 
-These were places to exchange news, meet clients and find colleagues as well as to drink.
+This was not merely the scenery where people happened to spend their leisure time. It was the vital infrastructure of information, transactions and survival.
 
-Relocation also changed the working drinking day. Newspaper offices moved from Fleet Street to Wapping, and financial firms moved staff from the Square Mile to Canary Wharf, separating workplaces from established pubs and wine bars.
+The standard narrative tells us that London eventually grew up and sobered up. We are told that corporate compliance, modern HR departments, digital trading and wellness culture slowly squeezed the legendary excess out of the working week.
+
+But that narrative is a polite fiction.
+
+The truth is far more clinical. The old London drinking culture did not die because people suddenly decided to prioritise their liver health. It was not murdered by prohibition. It was made homeless by relocation.
 
 Within a few short decades, London’s two greatest professional tribes — the print journalists of Fleet Street and the financial operators of the Square Mile — were lifted out of their chaotic, organic street habitats and dropped into sterile, controlled corporate spaces.
 
@@ -8909,7 +8988,7 @@ The full inventory of that lost circuit — Corney & Barrow, Balls Brothers, Coa
 
 The eastern exodus
 
-Relocation broke up these networks of workplaces and drinking rooms.
+And then, almost simultaneously, the traps were sprung. The old street ecologies were dissolved not by law, but by moving the coordinates of the map.
 
 Fleet Street (The Hack)
 
@@ -8979,7 +9058,7 @@ The medieval street grid was a machine for generating accidental encounters. You
 
 What Ghost Hunter should pin
 
-Each mapped pub needs its place in the working life of the area recorded too. Fleet Street and the City need different map languages because they were different machines.
+The next step is not simply to add more dead pubs. It is to give each ghost a role in the vanished system. Fleet Street and the City need different map languages because they were different machines.
 
 Ghost Hunter territory tags
 
@@ -8999,21 +9078,25 @@ Survivor / Ghost / Re-skinned
 
 A venue might still be trading, physically present but socially absent, closed under scaffolding, or alive as a different business. The status matters as much as the address.
 
-El Vino is the perfect test case. It was a Fleet Street wine bar patronised by journalists, still pulled toward the legal district, and descended from a wine-merchant culture that also belongs to the City. It is not simply Ink or Pinstripe. Its history includes disputes over who could drink at the counter.
+El Vino is the perfect test case. It was a Fleet Street wine bar patronised by journalists, still pulled toward the legal district, and descended from a wine-merchant culture that also belongs to the City. It is not simply Ink or Pinstripe. It is a border crosser with a bar-length history of who was allowed into the room, who was allowed to stand at the counter, and who controlled the ritual.
 
 The Punch Tavern is another clean pin: a pub a few doors from Ludgate Circus, associated with Punch magazine and the vanished comic press world, but sitting close enough to the City’s western edge to feel like a hinge rather than a museum piece.
 
 The Tipperary, meanwhile, is almost too useful: a Grade II-listed, wood-panelled Fleet Street survivor with claims to being London’s oldest Irish pub — trading since 1605 as The Boar’s Head, renamed after Irish pub group JG Mooney and Co. bought it in the 1800s. It closed at the start of the pandemic and stayed shut for three years, before reopening in March 2024 after restorative works led by developer Dominus. It is not a dead ghost, but something better for the map: a rescued survivor.
 
+Even the deepest scars on the map can heal. Long feared to be another permanent casualty of the print exodus and pandemic closures, London’s oldest Irish pub was meticulously restored and reopened. It stands today as a living, breathing rejection of sterile corporate spacing — a room where the old street ecology successfully reclaimed its ground.
+
 The legacy: double-exposed London
 
-Ghost Hunter maps the places where London drank, worked and exchanged news alongside the pubs still trading.
+This is where Ghost Hunter becomes more than a list of closed pubs. It is a way of seeing the city in layers: not just where you can drink now, but where London once did its business, swapped its rumours and performed its rituals.
 
 Walk Fleet Street with the ghost layer switched on and the vanished press city starts to reappear: the old offices, the courts, the legendary pubs, the rooms where gossip became copy and copy became history. Walk the Square Mile the same way and another lost operating system appears beneath the glass towers: wine bars, merchant cellars, lunchtime fortresses and basements where the bill mattered less than the relationship it preserved.
 
 Modern London is cleaner, healthier and probably less likely to make catastrophic decisions after a bottle of claret. That is not nothing. But the old city lost more than alcohol. It lost a particular form of accidental human infrastructure: the unplanned encounter, the inherited room, the landlord who knew too much, the back table where work and life became indistinguishable.
 
 PINtPOINT cannot bring that world back. But it can show where the traces remain.
+
+The map remembers what the relocation erased.
 
 ---
 
@@ -9037,7 +9120,7 @@ Change is not entirely a future tense, and the Pub Curmudgeon was asking what ca
 
 Now the whole thing sits under him, Samuel Smith's will change further. Some of that will be welcome. Boarded-up pubs may reopen, the rules may soften, staff may breathe easier, and the whole enterprise may become less combative. Fair enough. But if the place ends up tidier, friendlier and more commercially sane, it may also lose the thing that made it memorable. Humphrey Smith left behind more than a brewery. He left behind a question — how much of that strange old world survives once the man who kept it in being is no longer there — and a son who has already started to answer it.
 
-British pub culture has lost one of its great awkward characters.
+That is why his death feels significant. Not because he was lovable, and not because he was always right, but because he was unmistakably himself in a country increasingly run by people and companies that sound, look and behave exactly like each other. British pub culture has lost one of its great awkward characters. It may become easier without him. It will also be less peculiar.
 
 Every Samuel Smith’s pub in London — where to raise an Old Brewery Bitter
 
@@ -9211,7 +9294,7 @@ He sold the pub in 2006, at seventy-nine, and lived long enough to say publicly,
 
 He is not, either, the only such loss of these last few weeks. Humphrey Smith: another famously awkward character in the British pub trade. The Samuel Smith's beer baron, who ran his brewery and pubs by his own equally private rule, died only days earlier, aged 81. One a Yorkshire brewery-owner in a threadbare boiler suit, the other a Soho landlord who preferred a tie — and both, in their different ways, quietly refusing to become like everybody else.
 
-The Coach and Horses is still there, of course, on Greek Street. Alastair Choat took the tenancy from Balon in 2006 and ran it for thirteen years before Fuller's — always the freeholder — ended the lease and pulled the pub into their managed estate in 2019. By all accounts it's still a perfectly decent pub. But it is no longer Balon's pub, and hasn't been for nearly twenty years. A room is not the same room once the person who kept it wrong on purpose has left. Modern Soho is full of places that are wrong by accident. Balon's Coach and Horses was one of the last where the wrongness was deliberate, and welcome, and completely, unshakeably his.
+The Coach and Horses is still there, of course, on Greek Street. Alastair Choat took the tenancy from Balon in 2006 and ran it for thirteen years before Fuller's — always the freeholder — ended the lease and pulled the pub into their managed estate in 2019. By all accounts it's still a perfectly decent pub. But it is no longer Balon's pub, and hasn't been for nearly twenty years. The distinction matters more than it sounds. A room is not the same room once the person who kept it wrong on purpose has left. Modern Soho is full of places that are wrong by accident. Balon's Coach and Horses was one of the last where the wrongness was deliberate, and welcome, and completely, unshakeably his.
 
 The Coach and Horses today
 
@@ -9669,6 +9752,8 @@ London did something stranger. It taught much of the world how to think about be
 
 The pubs were always there. The cask tradition never fully disappeared. But the modern London craft-beer scene — the one built around Bermondsey arches, Hackney taprooms, specialist bars, and constantly rotating keg lines — is barely fifteen years old.
 
+That is why London feels different from the other great beer cities. It is not one clean model. It is a comeback layered over an inheritance.
+
 Part of a trilogy: the companion pieces are our postcard to San Diego (brewery-first) and our postcard to Melbourne (bar-first). Three routes to the same question.
 
 The city that had already been a beer capital
@@ -9715,15 +9800,17 @@ The Bermondsey Beer Mile deserves its reputation, even if the phrase now carries
 
 It worked because it gave London a simple beer route in a city that is otherwise too large to summarise. Start under the railway arches, move east, drink in production spaces, and watch a new brewing scene explain itself one stop at a time.
 
-The Kernel, Partizan, Anspach & Hobday, Brew By Numbers and the wider Bermondsey cluster made craft beer feel physical. You could walk between the breweries and drink in their taprooms.
+The Kernel, Partizan, Anspach & Hobday, Brew By Numbers and the wider Bermondsey cluster made craft beer feel physical. You were not just reading about a scene. You could walk it.
 
-The concentration made a convenient afternoon’s route through a large city.
+That mattered. London is vast, expensive, and fragmented. Bermondsey gave the scene a spine.
 
 Hackney made it feel mature
 
 If Bermondsey was the origin story, Hackney was the proof that the scene could become normal city life.
 
 Five Points, Pressure Drop, Howling Hops and the wider east London cluster showed that London craft beer did not have to live only in Saturday-afternoon railway-arch crawls. It could sit inside neighbourhood drinking, food, markets, music, pubs, and regular weekends.
+
+That is when the scene started to feel less like a boom and more like infrastructure. Not a trend. A layer of the city.
 
 What makes London different
 
@@ -9770,7 +9857,7 @@ If you have a weekend:
 
 - Sunday evening — a real pub. Close the weekend the way London still knows how.
 
-Find a London beer stop
+Why this matters for PINtPOINT
 
 London is the hardest of the three cities to navigate on intuition alone.
 
@@ -9780,7 +9867,7 @@ Melbourne is bar-first. Find a good room and trust the wall.
 
 London is both, and more. Brewery taprooms, specialist bars, historic pubs, cask rooms, bottle-shop bars, rotating lines, railway arches, neighbourhood locals, and the biggest beer city in Europe.
 
-With so many pubs, taprooms and bars spread across London, check the current beer list before deciding where to go.
+On any given Saturday, there are more plausible right answers in London than in San Diego and Melbourne combined. That means live tap data is not a luxury. It is how the city becomes legible.
 
 PINtPOINT is at its best in cities like this, where the next pint should be chosen, not guessed. A curated entry point across the scene:
 
@@ -9793,6 +9880,12 @@ A final word
 The strangest thing about London's beer story is how young the current version of it still is.
 
 The pubs are old. Cask is old. IPA itself is old. But the scene you drink in now — the arches, the keg lines, the specialist bars, the weekly brewery taprooms — is barely fifteen years old.
+
+It disappeared once. The fact that it can now be walked, drunk, and enjoyed again is not an accident. Enough brewers, landlords, publicans, bartenders and drinkers decided the gap could be closed, and they were right.
+
+In San Diego, you remember the breweries.
+In Melbourne, you remember the bars.
+In London, you remember where it started.
 
 Frequently asked questions
 
@@ -9825,6 +9918,8 @@ Source material:
 - The Kernel Brewery. The reference point for London's 2009-onwards craft revival.
 
 - Beavertown Brewery. The packaging and distribution story that made craft legible to non-specialists.
+
+San Diego gave the world West Coast IPA. Melbourne gave the world the craft-beer bar. London gave the world IPA itself, then gave it back a century later, then had to rebuild a city's beer culture out of railway arches when everything in between had quietly been lost.
 
 Three postcards, three answers to the same question. Worth drinking in all three.
 
@@ -9923,7 +10018,7 @@ Pirate Life South Melbourne.
 
 Cluster 3 — The CBD & its laneways
 
-Small bars and rotating lists
+Curation becomes a core competency
 
 Small rooms, disciplined lists, strong food, and a very Melbourne instinct for turning compact spaces into full evenings. Cookie and Boilermaker House are the clearest examples.
 
@@ -9965,6 +10060,9 @@ The bars compensate for that, and arguably that is exactly what makes Melbourne 
 
 The answer is to lean into what the city actually is. The pilgrimage in Melbourne is the bar crawl, not the brewery tour.
 
+Melbourne isn't a collection of breweries.
+It's a collection of rooms.
+
 A one-day visitor itinerary
 
 If you have one Saturday and want the city in miniature:
@@ -9977,7 +10075,13 @@ If you have one Saturday and want the city in miniature:
 
 - If you have Sunday too, go to St Kilda. The Local Taphouse closes the loop.
 
-Find a Melbourne beer stop
+Why this matters for PINtPOINT
+
+If a city's beer culture is bar-first, the useful tool is not just a brewery guide. It is something that helps you navigate bars as living tap lists.
+
+In a brewery-first city, the name on the tank does half the work. In Melbourne, the decision lives on the wall.
+
+That is why Melbourne makes sense on PINtPOINT. The app is at its best in scenes where curation changes night by night, where the room matters, and where the practical question is not "which brewery should I worship?" but "where should I go next, and what is actually pouring when I get there?"
 
 PINtPOINT tracks Melbourne-area venues, with live tap data surfaced wherever the current beer list can be resolved cleanly. A curated entry point:
 
@@ -9990,6 +10094,9 @@ A final word, if you're visiting
 The mistake most visitors make in Melbourne is treating the city like San Diego or Portland, expecting brewery names to be the organising principle. They are not.
 
 Walk into a great Melbourne bar and look at the room before you look at the beer list. Then look at what is on the wall. Then order something that has only been on a few days. That is the pattern. It repeats all over the city.
+
+In San Diego, you remember the breweries.
+In Melbourne, you remember the bars.
 
 Frequently asked questions
 
@@ -10025,7 +10132,7 @@ Source material:
 
 - TripAdvisor — Melbourne craft beer activities. Tourist-consensus ranking.
 
-For a first visit, choose a neighbourhood and work through its bars on foot. The rotating lists give you reasons to return.
+Melbourne's gift to craft beer is the idea that the bar is a product. Not the room that sells the product — the actual product. When that idea is taken seriously, you end up with a scene that can't be copied by just cloning the same breweries somewhere else. The magic is in how the pints are put together, not in the names on the taps.
 
 Worth at least one weekend.
 
@@ -10545,9 +10652,9 @@ The Fox & Firkin, 316 Lewisham High Street, 1988. The only original Firkin still
 
 One of those — the Fox & Firkin in Lewisham — has become the anchor point for a modern Firkin Brewery revival, now pouring across eight south London bars: not the old estate reborn, but a live reminder of what made the original concept stick. On-site brewing resumed at the Fox in October 2023 — twenty-four years after the 1999 shutdown. The Goose & Firkin building on Borough Road still trades too, though the Goose itself closed in 1995 — four years before the chain collapse — having quietly reverted to its pre-Firkin name: the Duke of York. Of all the things Firkin left behind, the one that came back was the brewing-in-the-pub itself.
 
-The chain disappeared, but people still remember walking into a Firkin pub in Elephant and Castle, Highbury or Lewisham and seeing their beer being made.
+Firkin's story is not just that a pub chain disappeared. It's that a live brewing idea became a chain, then ceased to be that idea, and the chain disappeared shortly after. The thing being mourned in Firkin nostalgia isn't really the chain. It's the moment when, briefly, you could walk into a pub in Elephant and Castle, or Highbury, or Lewisham, and see your beer being made.
 
-Bruce himself, now in his mid-seventies, told Pellicle in 2025: "Sometimes I wonder, did it start with me in London?" Whatever the answer to that, the brewpub model is now familiar everywhere in British beer culture — small kit, on-site fermentation, locally-named beer, atmosphere over polish — and it doesn't need to call itself Firkin to be doing what Bruce did. Bruce himself never stopped: in the late 1980s, immediately after selling Firkin, he founded a second UK brewpub chain called Hedgehog & Hogshead, with sites in Hove, Southampton and a non-brewing pub (the Water Rat) near Newbury. Its flagship was Hogbolter at 5.8% — a sister-named, slightly stronger Dogbolter. Hedgehog & Hogshead never reached Firkin scale and is now itself a closed chain. But the naming continuity — Dogbolter, Hogbolter — and the parallel insistence on visible on-site brewing made it unmistakably the next move from the same hand. He later opened the Frog & Rosbif chain of brewpubs in Paris, where the pun-naming carried on (Inseine, Parislytic, Dark de Triomphe) and the on-site brewing kept going. But the chain that put this idea most ambitiously in front of British drinkers, four decades back, is the one they still bring up when the subject comes up.
+Bruce himself, now in his mid-seventies, told Pellicle in 2025: "Sometimes I wonder, did it start with me in London?" Whatever the answer to that, the brewpub model is now familiar everywhere in British beer culture — small kit, on-site fermentation, locally-named beer, atmosphere over polish — and it doesn't need to call itself Firkin to be doing what Bruce did. Bruce himself never stopped: in the late 1980s, immediately after selling Firkin, he founded a second UK brewpub chain called Hedgehog & Hogshead, with sites in Hove, Southampton and a non-brewing pub (the Water Rat) near Newbury. Its flagship was Hogbolter at 5.8% — a sister-named, slightly stronger Dogbolter. Hedgehog & Hogshead never reached Firkin scale and is now itself a closed chain. But the naming continuity — Dogbolter, Hogbolter — and the parallel insistence on visible on-site brewing made it unmistakably the next move from the same hand. He later opened the Frog & Rosbif chain of brewpubs in Paris, where the pun-naming carried on (Inseine, Parislytic, Dark de Triomphe) and the on-site brewing kept going. But the chain that put this idea most ambitiously in front of British drinkers, four decades back, is the one they still bring up when the subject comes up. That's not because it lasted. It's because it stuck.
 
 Walk the Firkin Ale Trail
 

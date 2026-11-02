@@ -59,7 +59,7 @@
       {
         "@type": "Question",
         "name": "How quickly does a brand-new beer become recommendable?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Usually within a day or two of a beer being publicly listed somewhere, sometimes longer. The profile does not require community ratings: once a beer is in the PINtPOINT catalogue with style and ABV, the LLM can score it without waiting for anyone to write about it." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Usually within a day or two of a beer being publicly listed somewhere, sometimes longer. The point is that the recommendation shape doesn't depend on community ratings accumulating first: once a beer is in the PINtPOINT catalogue with style and ABV, the LLM can score it without waiting for anyone to write about it." }
       },
       {
         "@type": "Question",
@@ -147,7 +147,7 @@
 
     <p>The &#375;hat post is honest about what makes the approach work. Their worked example pits Fat Tire against Michelob Ultra and Dale's Pale Ale: Fat Tire fans rate Dale's similarly and Michelob lower, and the recommender quantifies the difference. Intuitive — on those three beers. The catch is in the filter: they only considered beers with 500+ reviews, and the demo ran on the 20 most-reviewed beers in the dataset.</p>
 
-    <p>Collaborative filtering needs density. The UK alone releases more than a hundred new beers a week, and most never accumulate that volume. Cold start hits twice — new users have no history, new beers have no community signal — and the fallback in both cases is popularity, which is a ranked list of famous things rather than a recommendation.</p>
+    <p>That threshold isn't a footnote, it's the design speaking. Collaborative filtering needs density. The UK alone releases more than a hundred new beers a week, and most never accumulate that volume. Cold start hits twice — new users have no history, new beers have no community signal — and the fallback in both cases is popularity, which is a ranked list of famous things rather than a recommendation.</p>
 
     <h2>The other half of the field, suddenly cheap</h2>
 
@@ -282,7 +282,7 @@
       </details>
       <details class="faq-item">
         <summary>How quickly does a brand-new beer become recommendable?</summary>
-        <p>Usually within a day or two of the beer being publicly listed somewhere — sometimes longer. The profile does not require community ratings: once a beer is in our catalogue with style and ABV, the LLM can score it without waiting for anyone to write about it.</p>
+        <p>Usually within a day or two of the beer being publicly listed somewhere — sometimes longer. The point is that the recommendation shape doesn't depend on community ratings accumulating first: once a beer is in our catalogue with style and ABV, the LLM can score it without waiting for anyone to write about it.</p>
       </details>
       <details class="faq-item">
         <summary>What are PINtDEXTER's four layers?</summary>
@@ -306,8 +306,8 @@
     <aside class="series-links ps-7">
       <p class="ps-8">Companion essays</p>
       <ul class="ps-9">
-        <li><strong class="ps-10">Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — ratings, preferences and local availability</li>
-        <li><strong class="ps-11">How</strong> · Under the Hood: How PINtDEXTER Picks Your Pint — how the engine works <span class="ps-12">← you're reading</span></li>
+        <li><strong class="ps-10">Why</strong> · <a href="beer-recommendation-systems-what-most-get-wrong.html">Beer Recommendation Systems: What Most Get Wrong</a> — the usual approach is broken</li>
+        <li><strong class="ps-11">How</strong> · Under the Hood: How PINtDEXTER Picks Your Pint — the engine that does it instead <span class="ps-12">← you're reading</span></li>
         <li><strong class="ps-13">What's in it</strong> · <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> — the ingredient and sensory vocabulary</li>
         <li><strong class="ps-14">Feel</strong> · <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> — what drinking it feels like</li>
       </ul>
