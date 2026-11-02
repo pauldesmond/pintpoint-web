@@ -40,9 +40,7 @@ if (!REMOVE && !/^[a-f0-9]{32}$/i.test(token || '')) {
 
 const MARK = 'cloudflareinsights.com/beacon.min.js';
 const snippet = (t) =>
-  `  <!-- Cloudflare Web Analytics — cookieless, no consent banner required.\n` +
-  `       Added 2026-09-23 so referral and direct traffic are visible at all;\n` +
-  `       Search Console only ever reported Google search clicks. -->\n` +
+  `  <!-- Cloudflare Web Analytics - cookieless, no consent banner required. -->\n` +
   `  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"\n` +
   `          data-cf-beacon='{"token": "${t}"}'></script>\n`;
 
