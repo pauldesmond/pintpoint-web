@@ -54,17 +54,17 @@
       {
         "@type": "Question",
         "name": "What if the LLM gets a beer's profile wrong?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Four corrective layers sit on top of the inferred profile. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. The style-contextual resolver scopes the override to the user's dominant style family so cross-family beers aren't punished for being a different shape. And confidence influences scoring — low-signal beers get treated more cautiously in ranking. Mis-extractions still happen but get caught by the architecture rather than escaping into the recommendation silently." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Four corrective layers sit on top. The cross-family penalty catches lager-pretending-to-be-ale errors. The TUNeDEXTER sliders let the user override the inferred preferences directly. The style-contextual resolver scopes the override to the user's dominant style family so cross-family beers aren't punished for being a different shape. And confidence influences scoring — low-signal beers (no specific cue from name or brewery) get treated more cautiously in ranking. Mis-extractions still happen, but they get caught by the architecture rather than escaping into the recommendation silently." }
       },
       {
         "@type": "Question",
         "name": "How quickly does a brand-new beer become recommendable?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Usually within a day or two of a beer being publicly listed somewhere, sometimes longer. The point is that the recommendation shape doesn't depend on community ratings accumulating first: once a beer is in the PINtPOINT catalogue with style and ABV, the LLM can score it without waiting for anyone to write about it." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Usually within a day or two of the beer being publicly listed somewhere — sometimes longer. The point is that the recommendation shape doesn't depend on community ratings accumulating first: once a beer is in our catalogue with style and ABV, the LLM can score it without waiting for anyone to write about it." }
       },
       {
         "@type": "Question",
         "name": "What are PINtDEXTER's four layers?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override directly with five flavour sliders plus body and strength (TUNeDEXTER); the resolver applies that tuning per style family rather than globally, so the override sticks to the user's dominant style without spilling onto unrelated styles (per-family slider UI is a future slice). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 scores those features against what's been pouring recently at venues near the user." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Layer 1 captures preference via Sip-or-Skip binary swipes and Head-to-Head pair rounds. Layer 2 lets the user override directly with five flavour sliders plus body and strength (TUNeDEXTER); the resolver applies that tuning per style family rather than globally, so the override sticks to the user's dominant style without spilling onto unrelated styles (per-family slider UI is a future slice). Layer 3 is the per-beer LLM-inferred DNA — the content features. Layer 4 scores those features against what's been pouring recently at venues near you." }
       },
       {
         "@type": "Question",

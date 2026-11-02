@@ -109,3 +109,8 @@ jobs:
       # Console email weeks later, which is how the 2026-10-04 one was found.
       - name: Validate structured data
         run: node scripts/check-structured-data.mjs
+
+      # Same reasoning: the FAQ a reader sees and the FAQ in the JSON-LD are
+      # two copies, and only one of them is visible while you edit.
+      - name: Check the FAQ JSON-LD still matches the page
+        run: node scripts/sync-faq-jsonld.mjs --check

@@ -61,25 +61,29 @@ for (const path of files(ROOT)) {
   const original = readFileSync(path, 'utf8');
   if (!original.includes('"@type": "FAQPage"') && !original.includes('"@type":"FAQPage"')) continue;
 
-  // The answers a reader sees, in page order.
-  const seen = [];
+  // The answers a reader sees, keyed by the question they answer.
+  //
+  // Keyed, not positional. compare.html carries a seventh question in its
+  // JSON-LD that the visible FAQ does not ask, and matching by position walked
+  // every answer after it onto the wrong question. A block with more questions
+  // than the page is left alone except where a question matches.
+  const seen = new Map();
   for (const [, summary, answer] of original.matchAll(VISIBLE)) {
     const paragraphs = [...answer.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map(m => plain(m[1])).filter(Boolean);
-    if (paragraphs.length) seen.push({ question: plain(summary), answer: paragraphs.join(' ') });
+    if (paragraphs.length) seen.set(plain(summary), paragraphs.join(' '));
   }
-  if (!seen.length) continue;
+  if (!seen.size) continue;
 
-  // Replace each stored answer with the visible one, in the same order.
-  let i = 0;
+  // Each stored answer is rewritten only when its own question is on the page.
   const changes = [];
   const next = original.replace(
-    /("acceptedAnswer":\s*\{\s*"@type":\s*"Answer",\s*"text":\s*")((?:[^"\\]|\\.)*)(")/g,
-    (match, head, stored, tail) => {
-      const want = seen[i++];
-      if (!want) return match;
-      const encoded = want.answer.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-      if (encoded !== stored) changes.push(want.question);
-      return head + encoded + tail;
+    /("name":\s*")((?:[^"\\]|\\.)*)("\s*,\s*"acceptedAnswer":\s*\{\s*"@type":\s*"Answer",\s*"text":\s*")((?:[^"\\]|\\.)*)(")/g,
+    (match, nameHead, question, mid, stored, tail) => {
+      const want = seen.get(plain(question.replace(/\\"/g, '"')));
+      if (want === undefined) return match;
+      const encoded = want.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+      if (encoded !== stored) changes.push(question);
+      return nameHead + question + mid + encoded + tail;
     },
   );
 

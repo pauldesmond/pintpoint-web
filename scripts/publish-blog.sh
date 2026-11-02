@@ -106,6 +106,17 @@ if ! python3 "$(dirname "$0")/check-promoted-page.py" "${POST_FILE}"; then
   GUARD_FAIL=1
 fi
 
+# 5. The FAQ exists twice on a page carrying one: once for the reader and once
+#    in JSON-LD. Only the visible copy is visible while you edit, so the hidden
+#    one drifts silently and keeps answering with text the page has retracted.
+#    This reports it before the post goes out rather than months later.
+if ! node "$(dirname "$0")/sync-faq-jsonld.mjs" --check "${POST_FILE%/*}/.." >/dev/null 2>&1; then
+  node "$(dirname "$0")/sync-faq-jsonld.mjs" --check "${POST_FILE%/*}/.." || true
+  echo "❌ A FAQPage block no longer matches the FAQ on its page."
+  echo "   Fix: node scripts/sync-faq-jsonld.mjs"
+  GUARD_FAIL=1
+fi
+
 if [[ "$GUARD_FAIL" -eq 1 ]]; then
   echo
   echo "→ Fix ${POST_FILE} and re-run publish-blog.sh. Nothing has been committed."
@@ -114,15 +125,15 @@ if [[ "$GUARD_FAIL" -eq 1 ]]; then
   exit 1
 fi
 
-echo "✓ Guards passed (no noindex, no /blog/drafts/ URLs, column standard, JSON-LD, beacon, pageview)."
+echo "✓ Guards passed (no noindex, no /blog/drafts/ URLs, column standard, JSON-LD, beacon, pageview, FAQ in sync)."
 echo
 
-# 5. Show diff stat
+# 6. Show diff stat
 echo "→ Working-tree changes:"
 git diff --stat
 echo
 
-# 6. Confirmation
+# 7. Confirmation
 read -r -p "Commit + push + IndexNow ping for this post? [y/N] " ANSWER
 # Lowercased with tr, not ${ANSWER,,}: that expansion is bash 4 and the bash on
 # the front of PATH here is 3.2, so the old line aborted the script with "bad

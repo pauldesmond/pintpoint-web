@@ -55,32 +55,32 @@
       {
         "@type": "Question",
         "name": "Why is the cold start problem so hard for beer recommenders?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Collaborative-filtering recommenders like the SVD++ model in Ninkasi or typical Untappd-rating models need dozens of ratings from a user before their predictions converge. For a new drinker opening the app, there's no signal to work with, so the system falls back to popular beers — which is exactly the least personalised thing you could recommend. PINtPOINT sidesteps this with Sip-or-Skip: a structured preference-elicitation flow where ~10 quick taps produce a usable style profile from day one." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Collaborative-filtering models like SVD++ or RBMs need dozens of ratings per user before predictions stabilise. A brand-new user gets \"popular beers\" as a fallback, which isn't personalisation — it's a leaderboard. PINtPOINT solves this with Sip-or-Skip: ~10 binary card swipes yield a usable style profile on first use." }
       },
       {
         "@type": "Question",
         "name": "What's wrong with using Untappd ratings as the main input to a recommender?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Untappd ratings are a great record of what someone drank, but they're a biased sample. Heavily rated beers (popular releases, hype cans) dominate the dataset, which means a model trained on them learns popularity more than preference. You end up recommending Pliny the Elder to anyone with a vaguely IPA-shaped history. A recommender built on purpose-collected preference signals — structured comparisons, not reviews of random things — produces sharper personalisation." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Untappd ratings are a biased sample — heavy-hitting releases collect disproportionate ratings, so a model trained on them learns popularity more than preference. Recommenders built on purpose-collected pair-choice signals, rather than free-form reviews, produce sharper personalisation." }
       },
       {
         "@type": "Question",
         "name": "How does PINtPOINT's PINtDEXTER recommender work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "PINtDEXTER layers three signals. First, Sip-or-Skip and Head-to-Head pair-choice rounds build a fast style profile by asking the user to make forced choices (A or B) rather than rate individual beers on a 1-5 scale. Second, that profile sits behind a 13-style preference layer plus direct flavour, body and strength tuning the user can adjust — the resolver applies that tuning per style family rather than globally. Third, recent tap activity at nearby venues is scored against that profile, so recommendations stay tied to beer recently seen on tap near you rather than a global catalogue." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Three layers: (1) Sip-or-Skip + Head-to-Head pair rounds build a style profile from binary choices; (2) that profile sits behind a 13-style preference layer plus direct flavour, body and strength tuning the user can adjust — the resolver applies that tuning per style family rather than globally; (3) recent tap activity at nearby venues is scored against the profile, so recommendations stay tied to beer recently seen on tap near you." }
       },
       {
         "@type": "Question",
         "name": "Why do most beer recommenders ignore location?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Because the training data doesn't include it, or the system is built as a catalogue recommender (what beers exist in the world) rather than an availability recommender (beer recently seen on tap near you). The former is an academic exercise; the latter is the useful product. A recommendation for a Brooklyn brewery you'll never visit isn't a recommendation — it's a suggestion." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Because the training data doesn't include it, or the system is built as a catalogue recommender (what beers exist) rather than an availability recommender (beer recently seen on tap near you). A recommendation for a beer you'll never order isn't really a recommendation." }
       },
       {
         "@type": "Question",
         "name": "Is a good beer recommender even possible given how noisy ratings are?",
-        "acceptedAnswer": { "@type": "Answer", "text": "It depends what you're trying to predict. A model that tries to predict star ratings from other people's star ratings will hit the noise floor quickly — RateBeer and Untappd both have heavy reviewer bias, style preferences, and context effects. A model that tries to answer 'of the four-or-so pints recently seen on tap at this bar, which one are you most likely to enjoy' is a narrower, more tractable problem. Narrow the question and the recommender gets sharper." }
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends what you're predicting. Predicting star ratings from other star ratings hits a noise floor fast. Predicting \"of the four-or-so pints recently seen on tap at this bar, which one will you enjoy most\" is a narrower, more tractable problem." }
       },
       {
         "@type": "Question",
         "name": "How is this different from Next Glass, BeerMenus, or Untappd's own recommendations?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Next Glass (acquired into Untappd) and other rating-driven systems optimise for cataloguing and historical preference. PINtPOINT optimises for the real-time decision at a specific venue. The two are complementary — Untappd is the diary, PINtPOINT is the decision engine." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Next Glass (acquired by Untappd) and similar rating-driven systems optimise for catalogue-style historical preference. PINtPOINT optimises for the real-time decision at a specific venue. The two are complementary — Untappd is the diary, PINtPOINT is the decision engine." }
       }
     ]
   }
