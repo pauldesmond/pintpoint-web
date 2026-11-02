@@ -231,6 +231,16 @@ const NO_TITLE_ON_ART = new Set([
   // 19 October 2026. Add an href here if one ever ships without a headline on
   // its artwork, and take it out again when the card is made.
 ]);
+
+/**
+ * Posts whose cover is somebody else's artwork. The shelf is our own covers
+ * only, so these are skipped and the next post with a cover takes the slot.
+ * Taken out by hand on 24 October 2026 (b2d4d81) and put back by the next
+ * regeneration, because the decision lived in the file and not in here.
+ */
+const NOT_OUR_ART = new Map([
+  ['loaded-lager-olympics-1995.html', "the cover is Loaded's own, not ours"],
+]);
 const SHELF_MAX = 21;
 
 /** Width and height of a jpeg or png, without pulling in a library. */
@@ -302,7 +312,7 @@ function shelfPicks(cards) {
   const picks = [];
   for (const c of cards) {
     if (picks.length >= SHELF_MAX) break;
-    if (NO_TITLE_ON_ART.has(c.href)) continue;
+    if (NO_TITLE_ON_ART.has(c.href) || NOT_OUR_ART.has(c.href)) continue;
     const img = coverFor(c.href);
     if (!img || picks.some(p => p.img === img)) continue;
     const title = cardField(c.html, 'post-title');
