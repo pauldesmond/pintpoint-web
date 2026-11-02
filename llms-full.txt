@@ -36,7 +36,7 @@ What is PINtPOINT?
 PINtPOINT is a beer-first pub discovery app that shows you what is actually on tap before you arrive. A live radar ranks nearby venues by what they are pouring right now, filterable by beer style, so every suggestion is already relevant to the kind of pint you want next. Less bimble, more pint. Currently tracking
 7,000+ venues across
 81 countries, with
-25,700+ beers matched to tap lists.
+25,800+ beers matched to tap lists.
 
 Most beer apps help you remember what you drank. PINtPOINT helps you decide what to drink next.
 
@@ -110,7 +110,7 @@ Asia Singapore, Tokyo
 
 300+ venues · 500+ beers
 
-25,700+ Beers · 7,000+ Venues · 81 Countries and growing
+25,800+ Beers · 7,000+ Venues · 81 Countries and growing
 
 Browse recent venues &rarr;
 
@@ -1121,7 +1121,7 @@ Why don't standard map apps work well for finding beer?
 Map apps rank venues by distance, popularity, and review count — none of which tell you whether the beer is any good or what's on today. A beer-first tool ranks by what's pouring, the freshness of the tap data, and your stated beer preferences, so you don't waste an evening on a pub with a disappointing lineup.
 
 How do I find beer near me abroad?
-This is where most UK-centric tools fall over. PINtPOINT currently tracks over 7,053 venues across 81 countries — from London to Tokyo, Melbourne to Oslo — with the same live tap list and radar view everywhere. Untappd's global footprint is also strong for check-in data. Pairing the two works well when you don't know the city.
+This is where most UK-centric tools fall over. PINtPOINT currently tracks over 7,066 venues across 81 countries — from London to Tokyo, Melbourne to Oslo — with the same live tap list and radar view everywhere. Untappd's global footprint is also strong for check-in data. Pairing the two works well when you don't know the city.
 
 Related reading
 
@@ -1683,9 +1683,73 @@ London
 
 -
 
-The Lamb
+Harp
 
 London
+
+&rsaquo;
+
+-
+
+Brouwerij 't IJ
+
+Amsterdam
+
+&rsaquo;
+
+-
+
+The George Inn
+
+London
+
+&rsaquo;
+
+-
+
+John Harvey Tavern
+
+Lewes
+
+&rsaquo;
+
+-
+
+White Horse Inn
+
+Ditchling
+
+&rsaquo;
+
+-
+
+The Swan Pub
+
+Lewes
+
+&rsaquo;
+
+-
+
+The Snowdrop Inn
+
+Lewes
+
+&rsaquo;
+
+-
+
+Elephant & Castle
+
+Lewes
+
+&rsaquo;
+
+-
+
+The Bell
+
+Reading
 
 &rsaquo;
 
@@ -1699,15 +1763,7 @@ Chelmsford
 
 -
 
-The Catfish
-
-Fitzroy
-
-&rsaquo;
-
--
-
-The Blue Lion
+The Rodney Inn
 
 Chelmsford
 
@@ -1715,57 +1771,17 @@ Chelmsford
 
 -
 
-The Anchor
+The Dorset
 
-Chelmsford
-
-&rsaquo;
-
--
-
-Slug & Lettuce
-
-Chelmsford
+Lewes
 
 &rsaquo;
 
 -
 
-The White Horse
+The Brewers Co-operative
 
-Chelmsford
-
-&rsaquo;
-
--
-
-The Grenadier
-
-Hailsham
-
-&rsaquo;
-
--
-
-3 Sons Brewing Co.
-
-Dania Beach
-
-&rsaquo;
-
--
-
-The Ash Tree Inn
-
-Battle
-
-&rsaquo;
-
--
-
-Hawkins Forge
-
-London
+Auckland
 
 &rsaquo;
 
@@ -1773,47 +1789,31 @@ London
 
 Horse & Groom
 
-Heathfield
-
-&rsaquo;
-
--
-
-The Two Brewers
-
 Chelmsford
 
 &rsaquo;
 
 -
 
-Boom Battle Bar Chelmsford
+The Plough Inn
 
-Chelmsford
-
-&rsaquo;
-
--
-
-Cosy Club
-
-Chelmsford
+Rottingdean
 
 &rsaquo;
 
 -
 
-The Chelmer Inn
+Lake House Cafe
 
-Chelmsford
+Maidenhead
 
 &rsaquo;
 
 -
 
-Black Horse
+The Volunteer
 
-Chelmsford
+Lewes
 
 &rsaquo;
 
@@ -3995,7 +3995,7 @@ PINtPRESS Essay 17 September 2026
 
 Cask Ale Week: the Format Nobody Else Can Pour
 
-Cask Ale Week runs from 17 to 27 September, and it celebrates the one thing British beer cannot ship abroad: unfiltered, unpasteurised beer that finishes fermenting in the cellar of the pub you drink it in. The publican is part of the recipe, which is why nobody else has copied it, and why a bad one tastes like an apology.
+Cask Ale Week runs from 17 to 27 September, and it celebrates the format British beer almost never exports: unfiltered, unpasteurised beer that finishes fermenting in the cellar of the pub you drink it in. The publican is part of the recipe, which is why nobody else has copied it, and why a bad one tastes like an apology.
 
 Thirteen pints worth chasing this week, what the plaque on the door actually promises, and the numbers behind a revival that is being led, of all people, by drinkers in their twenties.
 
@@ -4003,7 +4003,7 @@ The misconception we keep apologising for
 
 Anywhere else in the world, you would read warm and flat on a back-of-bottle review and put the glass down. In Britain, that combination — given a working cellar and a publican who knows what they are doing — is the format. Cask ale is not a fault. It is unfiltered, unpasteurised beer that finishes its fermentation inside the cask, in the pub cellar, under the publican's care. It is poured at cellar temperature, around 11 to 13 degrees, which is cool to the touch but not cold to the tongue. Its carbonation comes from secondary fermentation and a soft natural release, not a CO2 cylinder.
 
-This is what makes cask hard to copy. A keg lager travels. A bottle of Bordeaux travels. A cask of bitter, properly kept, is a living thing that exists for a few days in one specific cellar, on one specific bar, in one specific pub. It cannot be exported as a product. It can only be drunk in place. The technical window is small — Des de Moor’s Cask: The Real Story of Britain’s Unique Beer (CAMRA Books, 2023) puts the ideal serving window at three days once broached, four with very careful cellar work — but the cultural consequence is huge. That makes it the most local format the global drinks industry has, and the easiest to lose, which is why the people who care about it care so loudly.
+This is what makes cask hard to copy. A keg lager travels. A bottle of Bordeaux travels. A cask of bitter, properly kept, is a living thing that exists for a few days in one specific cellar, on one specific bar, in one specific pub. Almost none of it leaves the country. It is drunk within a few days of the cellar it was delivered to. The technical window is small — Des de Moor’s Cask: The Real Story of Britain’s Unique Beer (CAMRA Books, 2023) puts the ideal serving window at three days once broached, four with very careful cellar work — but the cultural consequence is huge. That makes it the most local format the global drinks industry has, and the easiest to lose, which is why the people who care about it care so loudly.
 
 Who is actually drinking it
 
@@ -4077,9 +4077,9 @@ Why nobody else has this
 
 Look down the list. Every one of them is from a region. None began life as a multinational product-board exercise. Every one is rooted in a region, a brewery town, a pub network, or a drinker memory that still means something. Several are still owned by the families or regional breweries that made them; others now sit inside larger corporate portfolios, where the commercial logic is increasingly clear: do not mess with the thing drinkers came back for.
 
-That is the moat. No other country has a network of this size. Ireland keeps cask alive too, and Northern Ireland is on the Cask Ale Week map; nowhere else has thousands of pubs running it as the house format. The closest analogues — Belgian Trappist abbey ales, German Rauchbier in Bamberg, Czech tank lager in Prague — are formats that travel through bottles or kegs. Cask travels only into the cellar of the pub down the road. It is a deeply, irreducibly local thing, and Britain is the country that built a national network of pubs willing to run it.
+That is the moat. No other country has a network of this size. Ireland keeps cask alive too, and Northern Ireland is on the Cask Ale Week map; nowhere else has thousands of pubs running it as the house format. The closest analogues — Belgian Trappist abbey ales, German Rauchbier in Bamberg, Czech tank lager in Prague — are formats that travel through bottles or kegs. Cask mostly travels no further than the cellar of the pub down the road. It is a deeply, irreducibly local thing, and Britain is the country that built a national network of pubs willing to run it.
 
-Three ways to be old, three ways to claim heritage. Belgium have the oldest brewers — Rochefort has been brewing continuously since 1595, with abbey lineage back to 1230. Germany has the oldest breweries — Weihenstephan dates itself to 1040, and Munich’s oldest, Augustiner, to 1328. England have the oldest format. Only one of those three definitions of old can be poured, kept and drunk locally without first being shipped, filtered or pasteurised.
+Three ways to be old, three ways to claim heritage. Belgium have the oldest brewers — Rochefort has been brewing continuously since 1595, with abbey lineage back to 1230. Germany has the oldest breweries — Weihenstephan dates itself to 1040, and Munich’s oldest, Augustiner, to 1328. England have the oldest format. Only one of those three definitions of old can be poured, kept and drunk locally without first being filtered or pasteurised.
 
 The big brewers have noticed
 
@@ -4263,7 +4263,7 @@ It was not a harvest festival. It was a wedding. On 12 October 1810, Crown Princ
 
 It is not really in October either. Drinkers had been complaining about the Bavarian cold since the 1820s, so the festival was walked steadily forward into the milder end of September, and by around 1905 it had settled there for good. It keeps the name by finishing on the first Sunday in October — the 4th, this year — which means that of the sixteen days of the 191st Oktoberfest, twelve of them fall in September. The one thing everybody thinks they know about the festival, that it is the October one, has been wrong for over a century.
 
-Nor was the beer ever fresh. A Märzen is, by definition, the oldest beer in the cellar rather than the newest — brewed in March, drunk in October. A festival celebrating the harvest by serving the previous spring's beer is not a harvest festival, it is a clearing-out. The genuinely harvest-fresh beer in this story is green hop — hops in the copper within twelve hours of being picked — and nobody has built a sixteen-day festival on it, because you cannot: it is gone in a fortnight.
+Nor was the beer ever fresh. A Märzen is brewed in March and drunk in October, the oldest beer in the cellar. A festival that serves the previous spring’s beer to mark the harvest is clearing the cellars. The genuinely harvest-fresh beer in this story is green hop, where Kent’s criteria require the hops to reach the brew within twelve hours of picking, and nobody has built a sixteen-day festival on it, because the picking season that allows it runs only a few weeks.
 
 So the month is wrong, the harvest was never there, and the beer was chosen for having sat still the longest. Almost nothing about Oktoberfest is what most people think it is.
 
@@ -5454,7 +5454,7 @@ FPI score
 
 44.38 / 100
 
-Business rates change
+Rateable value change
 
 +74.0% vs 2023
 
@@ -5462,9 +5462,9 @@ Source
 
 VOA rating list data (England & Wales)
 
-That's not a campaign statement. That's the Government's own valuation data. The Bell's business rates have risen 74% in three years — not "increased to keep up with inflation" but nearly doubled, while National Insurance contributions, alcohol duty and minimum wage have all risen alongside. A pint isn't getting any more expensive in real terms; it's getting harder to keep the lights on behind the bar that pours it.
+That is the Government’s own valuation data. The Bell’s rateable value has risen 74% since 2023, which is the figure the pressure index reads; the bill itself depends on the multiplier and on any reliefs. National Insurance contributions, alcohol duty and the minimum wage have all risen alongside it. A pint isn’t getting any more expensive in real terms; it’s getting harder to keep the lights on behind the bar that pours it.
 
-PINtPOINT's Financial Pressure Index (FPI) is the app's way of surfacing this directly inside the venue list. It pulls VOA rating-list data from England and Wales, computes how much each pub's rateable value has shifted, and labels venues by pressure tier — fine, watch, struggling, critical. The Bell's score of 44/100 puts it in the "struggling" band: not yet in the critical-closure zone, but the trendline isn't flattering.
+PINtPOINT's Financial Pressure Index (FPI) is the app's way of surfacing this directly inside the venue list. It pulls VOA rating-list data from England and Wales, computes how much each pub's rateable value has shifted, and labels venues by pressure tier — fine, watch, struggling, critical. The Bell’s score of 44/100 puts it in the “struggling” band. The index reads movement in rateable value; it does not see a pub’s accounts.
 
 This is the picture the Telegraph's Save Our Pubs campaign is built on. The cross-party coalition (Farage / Polanski / Badenoch / Davey / Johnson), the William Sitwell quotes, the £5,000 drinks tabs, the Renegade cask — all of it points at the same thing the FPI score quantifies. Pubs aren't closing because people stopped wanting to drink in them. They're closing because the unit economics finally gave way.
 
@@ -6000,42 +6000,37 @@ PINtPRESS Series Autumn 2026 · Beer history · Folklore
 
 The Unholy Trinity
 
-Three essays on who made the season up.
-
 Three of the autumn’s great nights fall inside a single week: Halloween on the thirty-first, Lewes Bonfire on the fifth, and on the first Friday of November, at one minute to nine, the evening Denmark declares Christmas open.
 
-Three nights in a week, and in each one something that looks old turns out not to be. Each of these essays takes one of them apart, and the beer is the evidence.
-
-The question is not whether anything here was invented. Something in each of them was. The question is who did the inventing, and how far that was from the people who keep it.
+Each of these essays takes one of them apart.
 
 The overture, six weeks earlier
 
 The same audit, run on a festival that is not in this week and not even in the month it is named after:
 September is Oktoberfest, on a royal wedding with an
-agricultural show bolted on a year later, a beer chosen for being the oldest in the cellar rather than the
-newest, and four countries that cannot agree what is in the glass. It is also where the green hop that
-Part One goes looking for gets its first mention, and the reason nobody has built a festival on it.
+agricultural show bolted on a year later, a beer brewed in March and drunk in October, and four countries that cannot agree what is in the glass. It is also where the green hop that
+Part One goes looking for gets its first mention, and why its season is so short.
 
 Part one · Monday 26 October
 Season of the Witch
 
-A 1939 article in Folklore turned a leafy face on a church corbel into the survival of a pagan fertility cult, under a name that was already on the pub signs and already in print. Folk horror took it up, the comics took it further, and the one part nobody could evidence is the part that stuck. Also: why pumpkin ale was a poverty measure, and why green hop beer follows the picking schedule rather than Halloween.
+A 1939 article in Folklore turned a leafy face on a church corbel into the survival of a pagan fertility cult, under a name that was already on the pub signs and already in print. Folk horror took it up, and the comics took it further. Also: why pumpkin ale was a poverty measure, and why green hop beer follows the picking schedule rather than Halloween.
 
-Established by an outsider, and nobody asked the pubs.
+Established by an outsider.
 
 Part two · Monday 2 November
 Voice of the Fire
 
-Lewes burns a Pope who had nothing to do with the Gunpowder Plot, for reasons invented in the 1850s, in a celebration that had already lapsed once and been rebuilt by young men with tar barrels. It is still the most honest festival in England, and the brewery that makes the beer for it is inside the town.
+Lewes burns a Pope who had nothing to do with the Gunpowder Plot, for Victorian reasons, in a celebration restarted from the 1820s by the Bonfire Boys with tar barrels. The processions pass Harvey’s brewery, where Bonfire Boy is brewed.
 
-Invented by the people who keep it, in public, and they are still arguing.
+Invented by the people who keep it, in public.
 
 Part three · Friday 6 November · to come
 The First Friday of Christmas
 
-A Norwegian king once made brewing Yule ale compulsory, on pain of losing your farm. A thousand years later a Danish brewery set a date for the start of Christmas, and later moved it to one minute to nine on a Friday night. In between, an American brewed a Christmas beer in 1975 because he had looked for the tradition and concluded it was gone.
+A Norwegian king once made brewing Yule ale compulsory. A thousand years later a Danish brewery set a date for the start of Christmas, and later moved it to one minute to nine on a Friday night. In between, an American brewed a Christmas beer in 1975 believing it would be the only real Christmas brew in the world.
 
-Invented by a marketing department, in 1990, and never pretended otherwise.
+Invented by a product manager, in 1990.
 
 ---
 
@@ -8519,7 +8514,7 @@ PINtPRESS Essay 28 July 2026
 
 The Green Triangle and the Oldest Trademark in British Beer
 
-On 1 January 1876, the world's very first registered trademark was granted to a beer. Bass Brewery of Burton-upon-Trent claimed a red equilateral triangle as UK Trade Mark No. 1 — the first mark ever entered on any statutory register anywhere. Not a word, not a monogram, not a coat of arms. A triangle.
+On 1 January 1876 Britain opened its first statutory register of trade marks, and the first mark entered on it was a beer's. Bass Brewery of Burton-upon-Trent claimed a red equilateral triangle as UK Trade Mark No. 1, under the Trade Marks Registration Act of 1875. Not a word, not a monogram, not a coat of arms. A triangle.
 
 That was 1876. This is 2026. One hundred and fifty years — to the year. When PINtPOINT needed a shape to single out the best pub around, we didn't have to think about it. What else were we going to pick?
 
