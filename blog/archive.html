@@ -160,17 +160,14 @@
     .view-toggle[aria-checked="false"] .switch-knob { transform: translateX(0); }
     .view-toggle[aria-checked="false"] .switch-text { justify-content: flex-end; padding-left: 0; padding-right: 10px; }
     @media (prefers-reduced-motion: reduce) { .switch-knob { transition: none; } }
-    .content .shelf-list { list-style: none; margin: 0 0 44px; padding: 0; border-top: 1px solid var(--rule); }
+    .content .shelf-list { list-style: none; display: flex; flex-direction: column; gap: 0; margin: 0 0 44px; padding: 0; }
     /* Out-specifies the `.content .shelf-list` rule above. Both that rule and
        `.shelf-list[hidden]` score the same specificity, so the later one wins
        on order alone: when it carries a `display`, the list stays on screen
        while `hidden` is set and the shelf is drawn twice, once as covers and
        once as the list beneath. This rule is the one that must win. */
     .content .shelf-list[hidden] { display: none; }
-    .shelf-list li { border-bottom: 1px solid var(--rule); }
-    .shelf-list a { display: block; padding: 11px 2px; font-family: var(--serif); font-size: 1.02rem;
-      line-height: 1.4; color: var(--ink); text-decoration: none; }
-    .shelf-list a:hover, .shelf-list a:focus-visible { text-decoration: underline; }
+    .shelf-list li:last-child .post { border-bottom: 1px solid var(--rule); }
     .list-head { font-family: var(--sans); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase;
       color: var(--muted); font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
 
@@ -251,13 +248,53 @@
     <p class="archive-head"><a href="./">PINtPRESS</a> <span>Archive</span></p>
     <h2 class="list-head">Everything</h2>
     <ul class="kinds" aria-label="Filter by kind">
-        <li><button type="button" data-kind="" aria-pressed="true">All<span class="count">47</span></button></li>
-        <li><button type="button" data-kind="essay" aria-pressed="false">Essays<span class="count">26</span></button></li>
-        <li><button type="button" data-kind="note" aria-pressed="false">Notes<span class="count">12</span></button></li>
+        <li><button type="button" data-kind="" aria-pressed="true">All<span class="count">52</span></button></li>
+        <li><button type="button" data-kind="essay" aria-pressed="false">Essays<span class="count">30</span></button></li>
+        <li><button type="button" data-kind="note" aria-pressed="false">Notes<span class="count">13</span></button></li>
         <li><button type="button" data-kind="guide" aria-pressed="false">Guides<span class="count">6</span></button></li>
         <li><button type="button" data-kind="postcard" aria-pressed="false">Postcards<span class="count">3</span></button></li>
     </ul>
     <ul class="post-list">
+      <li>
+        <a href="lewes-voice-of-the-fire.html" class="post">
+          <div class="post-date essay">2 November 2026 &middot; Essay</div>
+          <div class="post-title">Voice of the Fire</div>
+          <div class="post-excerpt">Harvey&rsquo;s have brewed in Lewes since about 1820 and beside the Ouse since 1838. They make Bonfire Boy for the fifth of November and ferment it with a yeast that came down from York by train in 1957.</div>
+          <div class="post-read">Read the essay &rarr;</div>
+        </a>
+      </li>
+      <li>
+        <a href="roast-is-not-smoke.html" class="post">
+          <div class="post-date note">2 November 2026 &middot; Note</div>
+          <div class="post-title">Roast is not smoke</div>
+          <div class="post-excerpt">Harvey&rsquo;s use black malt to give Bonfire Boy its suggestion of smoke. Black malt comes from an 1817 drum, borrowed from coffee roasting, which gave brewers their colour with the fire kept off the grain.</div>
+          <div class="post-read">Read the note &rarr;</div>
+        </a>
+      </li>
+      <li>
+        <a href="green-man-and-season-of-the-witch.html" class="post">
+          <div class="post-date essay">26 October 2026 &middot; Essay</div>
+          <div class="post-title">Season of the Witch</div>
+          <div class="post-excerpt">The Green Man&rsquo;s face is medieval. His pagan biography was written in 1939, and his name was already hanging outside the pub. On folk horror, Rentaghost, why pumpkin ale began as a shortage measure, and what to drink while the signs are up.</div>
+          <div class="post-read">Read the essay &rarr;</div>
+        </a>
+      </li>
+      <li>
+        <a href="ace-the-importer-who-became-a-maker.html" class="post">
+          <div class="post-date essay">24 October 2026 &middot; Essay</div>
+          <div class="post-title">The supermarket wanted 1,200 cases. There wasn&rsquo;t one bottle yet.</div>
+          <div class="post-excerpt">Jeffrey House spent ten years selling other people&rsquo;s cider in America. Then a supermarket ordered 1,200 cases of his own, ACE, before a single bottle of it existed.</div>
+          <div class="post-read">Read the essay &rarr;</div>
+        </a>
+      </li>
+      <li>
+        <a href="unholy-trinity.html" class="post">
+          <div class="post-date essay">24 October 2026 &middot; Essay</div>
+          <div class="post-title">The Unholy Trinity</div>
+          <div class="post-excerpt">Three of the autumn&rsquo;s great nights fall inside a single week. Halloween on the thirty-first, Lewes Bonfire on the fifth, and at one minute to nine on the first Friday of November, the evening Denmark declares Christmas open. One essay each.</div>
+          <div class="post-read">Read the essay &rarr;</div>
+        </a>
+      </li>
       <li>
         <a href="fullers-esb-in-america.html" class="post">
           <div class="post-date essay">20 October 2026 &middot; Essay</div>
@@ -270,16 +307,16 @@
         <a href="fullers-yeast-firestone-walker.html" class="post">
           <div class="post-date note">17 October 2026 &middot; Note</div>
           <div class="post-title">Why Firestone Walker chose Fuller&rsquo;s yeast</div>
-          <div class="post-excerpt">The American influence on British beer is usually told through hops. This one runs the other way. Firestone Walker ran beer trials, a Fuller&rsquo;s yeast beat Chico even though Chico was cleaner, and then its flocculation handed them years of diacetyl. What replaced it is still, in co-founder David Walker&rsquo;s words, essentially a Fullers/London yeast.</div>
+          <div class="post-excerpt">The American influence on British beer is usually told through hops. This one runs the other way. Firestone Walker ran beer trials, a Fuller&rsquo;s ESB yeast beat Chico even though Chico was cleaner, and then its flocculation handed them years of diacetyl. What replaced it is still, in co-founder David Walker&rsquo;s words, essentially a Fullers/London yeast.</div>
           <div class="post-read">Read the note &rarr;</div>
         </a>
       </li>
       <li>
         <a href="tegernseer-on-draught-uk.html" class="post">
-          <div class="post-date guide">23 September 2026 &middot; Guide</div>
+          <div class="post-date note">23 September 2026 &middot; Note</div>
           <div class="post-title">Tegernseer on Draught, and Where</div>
           <div class="post-excerpt">Tegernseer Hell is one of Bavaria&rsquo;s most sought-after lagers and reaches British bars in small, unpublicised quantities. Cross-referencing our own live tap data finds eleven UK venues that have poured it.</div>
-          <div class="post-read">Read the guide &rarr;</div>
+          <div class="post-read">Read the note &rarr;</div>
         </a>
       </li>
       <li>
@@ -540,18 +577,18 @@
       </li>
       <li>
         <a href="blackhorse-beer-mile-4th-birthday.html" class="post">
-          <div class="post-date guide">1 May 2026 &middot; Guide</div>
+          <div class="post-date note">1 May 2026 &middot; Note</div>
           <div class="post-title">Blackhorse Beer Mile 4th Birthday: All 10 Participating Venues with PINtPOINT Links</div>
           <div class="post-excerpt">Sunday 3 May 2026 — Walthamstow's brewery-district mile turns four with an all-day, free-entry, family-friendly takeover across 10 east-London craft venues: Big Penny Social, Exale, Signature, Borough Wines, Burnt Faith, East London Brewing Co, plus 40FT, Hackney Church, Renegade and Pretty Decent. Every venue with a PINtPOINT deeplink plus the canonical Hall of Fame crawl.</div>
-          <div class="post-read">Read the guide →</div>
+          <div class="post-read">Read the note →</div>
         </a>
       </li>
       <li>
         <a href="augustiner-on-draft-uk-six-pubs.html" class="post">
-          <div class="post-date guide">30 April 2026 &middot; Guide</div>
+          <div class="post-date note">30 April 2026 &middot; Note</div>
           <div class="post-title">Augustiner on Draft, Finally: Eight Confirmed UK Pubs Pouring It</div>
           <div class="post-excerpt">Augustiner Helles landed on UK draught in November 2025 via James Clay &amp; Sons with no public venue list. PINtPOINT cross-references public Untappd data to confirm six — King's Arms in Bethnal Green, Caf&eacute; Beermoth and Society in Manchester, Bavaria Brauhaus in Glasgow and two more — with Blind Jack's in Knaresborough and the Oil Basin Brewhouse in Worcester added since. No news on the Whippet, but we are still hopeful.</div>
-          <div class="post-read">Read the guide →</div>
+          <div class="post-read">Read the note →</div>
         </a>
       </li>
       <li>
@@ -671,10 +708,23 @@
     list.className = 'shelf-list';
     list.hidden = true;
     Array.prototype.forEach.call(shelf.querySelectorAll('a.shelf-tile'), function (tile) {
+      var cat = tile.getAttribute('data-cat') || '';
       var li = document.createElement('li');
       var a = document.createElement('a');
       a.href = tile.getAttribute('href');
-      a.textContent = tile.getAttribute('aria-label') || tile.getAttribute('title') || '';
+      a.className = 'post';
+      function part(cls, text) {
+        if (!text) return;
+        var d = document.createElement('div');
+        d.className = cls;
+        d.textContent = text;
+        a.appendChild(d);
+      }
+      var when = tile.getAttribute('data-date') || '';
+      part('post-date' + (cat ? ' ' + cat.toLowerCase() : ''), cat ? when + ' \u00b7 ' + cat : when);
+      part('post-title', tile.getAttribute('aria-label') || tile.getAttribute('title') || '');
+      part('post-excerpt', tile.getAttribute('data-excerpt') || '');
+      part('post-read', cat ? 'Read the ' + cat.toLowerCase() + ' \u2192' : 'Read \u2192');
       li.appendChild(a);
       list.appendChild(li);
     });
