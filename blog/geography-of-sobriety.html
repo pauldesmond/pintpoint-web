@@ -35,77 +35,40 @@
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0d1117;
-      --teal: #00D4AA;
-      --amber: #d4af37;
-      --ink: #9bbcff;
-      --text: #fff;
-      --muted: #8b949e;
-      --card: #161b22;
-      --border: rgba(255,255,255,0.09);
-    }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; line-height: 1.65; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 840px; margin: 0 auto; padding: 48px 24px 72px; }
-    .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .category { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; background: rgba(0,212,170,0.12); color: var(--teal); border: 1px solid rgba(0,212,170,0.32); }
-    h1 { font-size: clamp(2.25rem, 6vw, 4.1rem); font-weight: 900; letter-spacing: -1.7px; line-height: 0.98; margin-bottom: 18px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    .subtitle { font-size: clamp(1.05rem, 2.4vw, 1.35rem); color: #e6edf3; font-weight: 750; line-height: 1.35; max-width: 760px; margin-bottom: 30px; }
-    h2 { font-size: 1.55rem; font-weight: 850; letter-spacing: -0.45px; margin: 42px 0 14px; line-height: 1.2; color: var(--text); }
-    h3 { font-size: 1.12rem; font-weight: 850; margin: 24px 0 8px; color: var(--amber); letter-spacing: -0.2px; }
-    p { margin-bottom: 15px; color: #e6edf3; }
-    a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
-    a:hover { color: #fff; border-bottom-color: var(--teal); }
-    blockquote { margin: 28px 0; padding: 20px 22px; border-left: 4px solid var(--teal); background: rgba(0,212,170,0.06); color: #f0f6fc; font-weight: 800; font-size: 1.12rem; line-height: 1.45; border-radius: 0 12px 12px 0; }
-    .lede { margin-bottom: 28px; }
-    .lede p:first-child { font-size: 1.12rem; font-weight: 700; color: #fff; }
+    .subtitle { font-size: clamp(1.05rem, 2.4vw, 1.35rem); color: var(--ink); font-weight: 750; line-height: 1.35; max-width: 760px; margin-bottom: 30px; }
     .map-split { margin: 30px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .route-card { border: 1px solid var(--border); border-radius: 14px; background: linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018)); padding: 18px; }
-    .route-card.ink { border-color: rgba(155,188,255,0.25); }
-    .route-card.pinstripe { border-color: rgba(212,175,55,0.25); }
-    .route-card h3 { margin-top: 0; color: #fff; }
+    .route-card { border: 1px solid var(--rule-soft); border-radius: 0; background: transparent; padding: 18px; }
+    .route-card.ink { border-color: var(--rule); }
+    .route-card.pinstripe { border-color: var(--rule); }
+    .route-card h3 { margin-top: 0; color: var(--ink); }
     .arrow { color: var(--muted); font-weight: 800; margin: 9px 0; letter-spacing: 1px; }
-    .route-card ul { padding-left: 18px; color: #e6edf3; }
+    .route-card ul { padding-left: 18px; color: var(--ink); }
     .route-card li { margin: 6px 0; }
-    .filter { margin: 28px 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: #10151d; }
-    .filter-title { padding: 14px 18px; font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 900; color: var(--teal); border-bottom: 1px solid var(--border); background: rgba(0,212,170,0.05); }
+    .filter { margin: 28px 0; border: 1px solid var(--rule-soft); border-radius: 0; overflow: hidden; background: transparent; }
+    .filter-title { padding: 14px 18px; font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 900; color: var(--ink); border-bottom: 1px solid var(--rule-soft); background: transparent; }
     .filter-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
-    .filter-item { padding: 18px; border-bottom: 1px solid var(--border); }
-    .filter-item:nth-child(odd) { border-right: 1px solid var(--border); }
+    .filter-item { padding: 18px; border-bottom: 1px solid var(--rule-soft); }
+    .filter-item:nth-child(odd) { border-right: 1px solid var(--rule-soft); }
     .filter-item:nth-last-child(-n+2) { border-bottom: none; }
-    .filter-item h3 { margin: 0 0 7px; color: var(--amber); }
-    .filter-item p { margin: 0; font-size: 0.95rem; color: #c9d1d9; }
-    .note { margin: 30px 0; padding: 16px 18px; border: 1px dashed rgba(212,175,55,0.45); border-radius: 12px; color: #d8dee9; background: rgba(212,175,55,0.06); font-size: 0.95rem; }
-    .sources { margin-top: 42px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--muted); }
-    .sources h2 { font-size: 1rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
-    .sources ul { padding-left: 18px; }
-    .sources li { margin-bottom: 6px; }
-    footer { text-align: center; padding: 36px 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--muted); margin-top: 24px; }
-    footer .links { display: flex; gap: 22px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
-    footer a { color: var(--muted); text-decoration: none; border-bottom: none; }
-    footer a:hover { color: var(--teal); }
+    .filter-item h3 { margin: 0 0 7px; color: var(--amber-ink); }
+    .filter-item p { margin: 0; font-size: 0.95rem; color: var(--ink); }
+    .note { margin: 30px 0; padding: 16px 18px; border: 1px dashed var(--rule); border-radius: 0; color: var(--ink); background: transparent; font-size: 0.95rem; }
+    body .ps-1 { color: var(--ink); }
+    body .ps-2 { color: var(--amber-ink); }
     @media (max-width: 760px) {
-      nav { padding: 16px 20px; }
-      .content { padding: 34px 20px 56px; }
       .map-split, .filter-grid { grid-template-columns: 1fr; }
       .filter-item:nth-child(odd) { border-right: none; }
-      .filter-item:nth-last-child(2) { border-bottom: 1px solid var(--border); }
+      .filter-item:nth-last-child(2) { border-bottom: 1px solid var(--rule-soft); }
     }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="/" class="logo" style="text-decoration:none;color:var(--text);border:none">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="/" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="/about-pintpoint.html">About</a>
       <a href="/features.html">Features</a>
       <a href="/pubs/">Venues</a>
@@ -114,7 +77,7 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>3 September 2026 · London · Ghost Hunter</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category essay">Essay</span>3 September 2026 · London · Ghost Hunter</p>
     <h1>The Geography of <em>Sobriety</em></h1>
     <p class="subtitle">How London’s drinking culture was designed out of existence.</p>
 
@@ -164,7 +127,7 @@
 
     <div class="map-split" aria-label="Old systems and sterilised outcomes">
       <section class="route-card ink">
-        <h3>Fleet Street <span style="color:var(--ink)">(The Hack)</span></h3>
+        <h3>Fleet Street <span class="ps-1">(The Hack)</span></h3>
         <div class="arrow">======&gt; Wapping, 1986</div>
         <ul>
           <li>Alleys, courts, gossip</li>
@@ -174,7 +137,7 @@
         </ul>
       </section>
       <section class="route-card pinstripe">
-        <h3>Square Mile <span style="color:var(--amber)">(The Broker)</span></h3>
+        <h3>Square Mile <span class="ps-2">(The Broker)</span></h3>
         <div class="arrow">======&gt; Canary Wharf, 1990s+</div>
         <ul>
           <li>Basements, deals, claret</li>
@@ -280,6 +243,7 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="/about-pintpoint.html">About</a>
       <a href="/features.html">Features</a>
