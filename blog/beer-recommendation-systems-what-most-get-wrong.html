@@ -199,7 +199,7 @@
     .tap-pct { text-align: right; font-family: 'SF Mono', Menlo, monospace; font-weight: 700; font-size: 0.95rem; color: var(--muted); }
     .tap-row.top-pick .tap-pct { color: var(--amber-lit); }
     .top-pick-flag { display: inline-block; font-family: 'SF Mono', Menlo, monospace; font-size: 9px; color: #171309; background: var(--amber-lit); padding: 2px 6px; border-radius: 0; letter-spacing: 0.08em; margin-left: 6px; vertical-align: 1px; }
-    
+
     /* After the plate's own rules, so these win. One face inside the plate, so
        Android and Windows render it like a Mac, and a phone layout that beats
        the base .tap-row grid instead of losing to it. */
@@ -241,11 +241,11 @@
 
     <p>Haley's piece treats Untappd's rating data as fuel for a collaborative-filtering recommender. Ninkasi scrapes RateBeer, runs SVD++ and Restricted Boltzmann Machines, and wraps the output in a Flask app. Both are careful, honest work — the kind you wish more consumer-app companies did publicly.</p>
 
-    <p>They also both bump into the same three walls, and those walls are what <a href="https://pintpoint.co.uk">PINtPOINT</a> was designed around rather than over.</p>
+    <p>Three practical problems remain: learning a new user’s preferences, popularity bias and local availability.</p>
 
     <h2>Wall 1: The cold-start problem</h2>
     <p>Collaborative filtering needs history. These models need dozens of ratings per user before predictions stabilise. What does a rating-based recommender serve to a brand-new user with zero check-ins?</p>
-    <p>In practice: <span class="highlight">popular beers</span>. Pliny the Elder for anyone with "IPA" in their signature. Guinness for anyone who once rated a stout. That's not a recommendation. It's a bestseller list.</p>
+    <p>In practice: <span class="highlight">popular beers</span>. Pliny the Elder for anyone with "IPA" in their signature. Guinness for anyone who once rated a stout. These are popular defaults, with little information about the new user’s taste.</p>
     <p>PINtPOINT uses a structured preference-elicitation step instead: a feature called <a href="../features.html">Sip-or-Skip</a>. Ten quick card-swipes — "would you order this? yes/no" — produces a usable style profile in under a minute. It's the same principle Tinder uses for matchmaking: forced binary choices beat free-form ratings for fast signal.</p>
 
     <blockquote>Asking "rate this beer 1-5" is a harder cognitive task than "would you order this now?" — and it produces noisier data.</blockquote>
@@ -280,7 +280,7 @@
         </div>
         <div class="venue-hint">switch profile ↓</div>
       </div>
-      <p class="venue-sub">Below: a real tap list from <strong>Chelmsford Brewing Company</strong> (10 beers pouring as of this morning) scored against four reader profiles. Tap a profile, watch the ranking re-sort. The same beer doesn't win every time. That's the geography-blindness fix.</p>
+      <p class="venue-sub">Below: a real tap list from <strong>Chelmsford Brewing Company</strong> (10 beers pouring as of this morning) scored against four reader profiles. Tap a profile, watch the ranking re-sort. The same beer doesn't win every time. </p>
       <div class="profile-chips" id="profile-chips" role="group" aria-label="Choose a reader profile">
         <button class="profile-chip" data-profile="0" aria-pressed="true">Hop-forward IPA drinker</button>
         <button class="profile-chip" data-profile="1" aria-pressed="false">Roast-led stout drinker</button>
@@ -318,7 +318,7 @@
 
     <h2>What we're not claiming</h2>
     <p>PINtDEXTER isn't a breakthrough in recommender research. It's not going to out-predict SVD++ on a RateBeer leaderboard. Those models and the people who build them are doing harder work than what's in a consumer app.</p>
-    <p>What we think it <em>is</em> is a better answer to the practical question a drinker is actually asking: <span class="highlight">what should I get?</span> Framed as a venue-bound, tonight-shaped problem, the recommender gets to use much smaller, cleaner inputs and deliver a sharper output.</p>
+    <p>PINtDEXTER ranks beers recently seen at nearby venues against the drinker’s preferences. Its usefulness depends on the preference profile, beer descriptions and freshness of the tap data.</p>
 
     <h2>Where the public recommender projects are still valuable</h2>
     <p>Honest respect to both linked pieces. A few things they get exactly right:</p>
@@ -329,7 +329,7 @@
     </ul>
     <p>If you're interested in the ML side of beer recommendation specifically, both links in the intro are worth reading end-to-end. If you're interested in what to drink tonight, PINtPOINT will answer that question faster.</p>
 
-    <p class="quote">Most beer recommenders predict ratings.<br/>PINtPOINT picks pints.</p>
+
 
     <div class="faq">
       <h2>Frequently asked questions</h2>
@@ -371,8 +371,8 @@
     <aside class="series-links">
       <p class="series-label">Companion essays</p>
       <ul>
-        <li><strong>Why</strong> &middot; Beer Recommendation Systems: What Most Get Wrong &mdash; the usual approach is broken <span class="you-are-here">&larr; you're reading</span></li>
-        <li><strong>How</strong> &middot; <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> &mdash; the engine that does it instead</li>
+        <li><strong>Why</strong> &middot; Beer Recommendation Systems: What Most Get Wrong &mdash; ratings, preferences and local availability <span class="you-are-here">&larr; you're reading</span></li>
+        <li><strong>How</strong> &middot; <a href="under-the-hood-how-pintdexter-picks-your-pint.html">Under the Hood: How PINtDEXTER Picks Your Pint</a> &mdash; how the engine works</li>
         <li><strong>What's in it</strong> &middot; <a href="hops-what-each-one-tastes-like.html">The Drinker's Guide to Hops</a> &mdash; the ingredient and sensory vocabulary</li>
         <li><strong>Feel</strong> &middot; <a href="beerology-anatomy-of-a-pint.html">Beerology: Anatomy of a Pint</a> &mdash; what drinking it feels like</li>
       </ul>
