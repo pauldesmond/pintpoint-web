@@ -289,6 +289,15 @@ function tileSrc(img, tier) {
   return existsSync(join(BLOG, small)) ? small : img;
 }
 
+/** The text of one `<div class="cls">` in a card, tags stripped. */
+function cardField(html, cls) {
+  const m = html.match(new RegExp(`<div class="${cls}[^"]*">([\\s\\S]*?)</div>`));
+  return m ? m[1].replace(/<[^>]+>/g, '').trim() : '';
+}
+
+/** Safe inside a double-quoted attribute. The text is already HTML-escaped. */
+const attr = (t) => t.replace(/"/g, '&quot;');
+
 function shelfPicks(cards) {
   const picks = [];
   for (const c of cards) {
@@ -296,9 +305,13 @@ function shelfPicks(cards) {
     if (NO_TITLE_ON_ART.has(c.href)) continue;
     const img = coverFor(c.href);
     if (!img || picks.some(p => p.img === img)) continue;
-    const title = (c.html.match(/<div class="post-title">([\s\S]*?)<\/div>/) || [, ''])[1]
-      .replace(/<[^>]+>/g, '').trim();
-    picks.push({ href: c.href, img, title });
+    const title = cardField(c.html, 'post-title');
+    // The titles-only view is built client-side from these attributes. Without
+    // them every row renders as a bare headline and a "Read" link, which is
+    // what the shelf already shows in pictures mode.
+    const [when, cat] = cardField(c.html, 'post-date').split(/\s*(?:&middot;|\u00b7)\s*/);
+    const excerpt = cardField(c.html, 'post-excerpt');
+    picks.push({ href: c.href, img, title, when: when || '', cat: cat || '', excerpt });
   }
   if (!picks.length) return '';
   const tier = i => (i === 0 ? 't1' : i < 5 ? 't2' : 't3');
@@ -315,9 +328,10 @@ function shelfHtml(picks) {
     const webp = jpg.replace(/\.jpg$/, '.webp');
     const source = jpg !== p.img && existsSync(join(BLOG, webp))
       ? `<source type="image/webp" srcset="${webp}" />` : '';
-    const img = `<img src="${jpg}" alt="${p.title}" loading="${i === 0 ? 'eager' : 'lazy'}" ` +
+    const img = `<img src="${jpg}" alt="${attr(p.title)}" loading="${i === 0 ? 'eager' : 'lazy'}" ` +
       `decoding="async" width="${w}" height="${w}" />`;
-    return `        <a class="shelf-tile ${t}" href="${p.href}" title="${p.title}" aria-label="${p.title}">` +
+    const data = ` data-date="${attr(p.when)}" data-cat="${attr(p.cat)}" data-excerpt="${attr(p.excerpt)}"`;
+    return `        <a class="shelf-tile ${t}" href="${p.href}" title="${attr(p.title)}" aria-label="${attr(p.title)}"${data}>` +
       (source ? `<picture>${source}${img}</picture>` : img) + `</a>`;
   }).join('\n');
   return `    <div class="shelf">\n${tiles}\n    </div>\n\n`;
