@@ -15,7 +15,7 @@
   <meta property="og:title" content="Everything Traditional About Oktoberfest Is Younger Than the Tent" />
   <meta property="og:description" content="Five strawmen, one 6,000-seat hall, and a lawsuit for 15,690 Mark. How the Oktoberfest tent arrived by fraud — and why the six-brewery rule dates from 1907." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,72 +43,39 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; --red: #C8102E; --blue: #0B61A4; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; line-height: 1.65; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .category { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(0,212,170,0.12); color: var(--teal); border: 1px solid rgba(0,212,170,0.32); }
-    h1 { font-size: clamp(1.9rem, 5.2vw, 2.7rem); font-weight: 900; letter-spacing: -1.1px; line-height: 1.08; margin-bottom: 18px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.4px; margin: 40px 0 12px; line-height: 1.25; }
-    h3.region { font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin: 30px 0 12px; }
-    p { margin-bottom: 14px; color: #e6edf3; }
-    .lede { margin-bottom: 30px; padding-left: 14px; border-left: 3px solid var(--red); }
-    .lede p:first-child { font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
-    .highlight { color: var(--text); font-weight: 600; }
-    a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
-    a:hover { border-bottom-color: var(--teal); }
-    .ev { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; margin: 0 0 12px; }
+    :root { --red: #C8102E; --blue: #0B61A4; }
+    h3.region { font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber-ink); margin: 30px 0 12px; }
+    .ev { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 16px 18px; margin: 0 0 12px; }
     .ev h3 { font-size: 1.05rem; font-weight: 800; margin: 2px 0 4px; letter-spacing: -0.2px; }
     .ev h3 a { border-bottom: none; }
-    .ev-when { font-size: 0.74rem; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: var(--amber); margin-bottom: 2px; }
+    .ev-when { font-size: 0.74rem; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: var(--amber-ink); margin-bottom: 2px; }
     .ev-where { font-size: 0.9rem; color: var(--muted); margin-bottom: 8px; }
     .ev-note { font-size: 0.95rem; margin-bottom: 8px; }
     .ev-link { font-size: 0.85rem; margin-bottom: 0; }
-    .ev-tag { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; }
-    .ev-tag.six { background: rgba(192,163,64,0.16); color: var(--amber); border: 1px solid rgba(192,163,64,0.4); }
-    .ev-tag.named { background: rgba(0,212,170,0.1); color: var(--teal); border: 1px solid rgba(0,212,170,0.3); }
-    table { width: 100%; border-collapse: collapse; margin: 18px 0 8px; font-size: 0.95rem; }
-    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
-    th { font-size: 0.72rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+    .ev-tag { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 0; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; }
+    .ev-tag.six { background: transparent; color: var(--amber-ink); border: 1px solid var(--rule); }
+    .ev-tag.named { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
     table.spirit td { padding: 9px 10px; }
-    table.spirit td.w { white-space: nowrap; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; color: var(--amber); width: 1%; }
-    table.spirit .flag { color: var(--red); font-weight: 700; }
+    table.spirit td.w { white-space: nowrap; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; color: var(--amber-ink); width: 1%; }
+    table.spirit .flag { color: #C8102E; font-weight: 700; }
     table.spirit .sub { font-size: 0.88rem; color: var(--muted); }
     table.spirit b a { border-bottom: none; }
-    .tellus { background: var(--card); border: 1px solid rgba(0,212,170,0.28); border-radius: 12px; padding: 18px; margin: 34px 0 8px; }
+    .tellus { background: transparent; border: 1px solid var(--rule); border-radius: 0; padding: 18px; margin: 34px 0 8px; }
     .tellus h2 { margin-top: 0; font-size: 1.15rem; }
-    .sources { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--border); }
-    .sources h2 { font-size: 1.1rem; }
-    .sources li { font-size: 0.9rem; color: #c9d1d9; margin-bottom: 8px; }
-    .sources ul { padding-left: 18px; }
-    footer { border-top: 1px solid var(--border); padding: 30px 40px; text-align: center; color: #555; font-size: 0.8rem; }
-    footer .links { display: flex; gap: 18px; justify-content: center; margin-bottom: 8px; flex-wrap: wrap; }
-    footer a { color: var(--muted); border: none; }
-      /* PINtPRESS column standard v1 (2026-09-17): desktop 960px column, 880px of text at 17px; mobile full width, 20px gutters, 16px text. Do not vary per page. */
-    .content { max-width: 960px; margin: 0 auto; padding: 60px 40px 80px; }
-    body { font-size: 17px; }
-    @media (max-width: 600px) { .content { max-width: none; padding: 32px 20px 56px; } body { font-size: 16px; } }    /* Seasonal signpost — remove after 4 November 2026. Routes the traffic
-       these posts already earn to the Oktoberfest guide, which earns none
-       of its own yet. Placed straight after the lede, not in the footer. */
-    .seasonal { display: block; margin: 18px 0 6px; padding: 13px 15px; border-radius: 9px;
-      background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.28);
-      font-size: 0.93rem; color: #c9d1d9; text-decoration: none; }
-    .seasonal b { color: var(--teal); }
-    .seasonal:hover { border-color: var(--teal); }
-
+    .seasonal { display: block; margin: 18px 0 6px; padding: 13px 15px; border-radius: 0; background: transparent; border: 1px solid var(--rule); font-size: 0.93rem; color: var(--ink); text-decoration: none; }
+    .seasonal b { color: var(--ink); }
+    .seasonal:hover { border-color: var(--amber); }
+    body .ps-1 { font-size: 0.92rem; color: var(--muted); border-left: 3px solid var(--rule); padding-left: 12px; margin: 22px 0; }
+    body .ps-2 { margin-top: 26px; }
+    body .ps-3 { font-size: 0.72rem; color: var(--muted); margin-top: 10px; }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="/" class="logo" style="text-decoration:none;color:var(--text);border:none">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="/" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="/about-pintpoint.html">About</a>
       <a href="/features.html">Features</a>
       <a href="/pubs/">Venues</a>
@@ -117,7 +84,7 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category essay">Essay</span>20 September 2026 · Beer history · Oktoberfest</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category essay">Essay</span>20 September 2026 · Beer history · Oktoberfest</p>
     <h1>Everything Traditional About Oktoberfest Is <em>Younger Than the Tent</em></h1>
 
     <a class="seasonal" href="/blog/uk-oktoberfest-events-2026.html">Companion piece: <b>seventy-six UK Oktoberfest events</b> running now, sorted by whether the beer is from one of Munich&rsquo;s six licensed breweries. &rarr;</a>
@@ -128,7 +95,7 @@
 
     <p>Yesterday&rsquo;s companion piece argued that <a href="/blog/september-is-oktoberfest.html">the beer in the tents is not the beer the festival started with</a>: Munich lightened its amber M&auml;rzen into the pale Festbier it pours today, and America kept the old one. That is one pillar of &ldquo;tradition&rdquo; turning out to be recent. This is the other two.</p>
 
-    <p style="font-size:0.92rem;color:var(--muted);border-left:3px solid rgba(255,255,255,0.14);padding-left:12px;margin:22px 0">The archive work behind this piece is <a href="https://dafteejit.com/2026/03/the-scandal-of-oktoberfests-first-giant-tent/" target="_blank" rel="noopener noreferrer">Andreas Krennmair&rsquo;s</a>, who reconstructed the whole affair issue by issue from the <em>Bayerische Gastwirts-Zeitung</em> of 1898 on his blog Daft Eejit Brewing. We have followed his citations to the digitised originals and added the argument; the digging is his.</p>
+    <p class="ps-1">The archive work behind this piece is <a href="https://dafteejit.com/2026/03/the-scandal-of-oktoberfests-first-giant-tent/" target="_blank" rel="noopener noreferrer">Andreas Krennmair&rsquo;s</a>, who reconstructed the whole affair issue by issue from the <em>Bayerische Gastwirts-Zeitung</em> of 1898 on his blog Daft Eejit Brewing. We have followed his citations to the digitised originals and added the argument; the digging is his.</p>
 
     <h2>What the Wiesn looked like before</h2>
     <p>The beer stalls stood in the Wirtsbudenring, a ring of wooden booths laid out by municipal decree in 1825. They were small by deliberate policy. The <em>Bayerische Gastwirths-Zeitung</em> recorded the maximum permitted dimensions for 1888: <span class="highlight">4.4 metres tall, 7.3 metres wide, 10 metres long</span>. A modern Wiesn tent seats more people than lived in most Bavarian villages at the time.</p>
@@ -156,9 +123,9 @@
     <p>And in <span class="highlight">1907</span>, nine years after the scandal, the small stalls of the Wirtsbudenring were cleared away and replaced by six festival halls belonging to Munich&rsquo;s major breweries. The rule that defines the modern Wiesn — six breweries, nobody else — is not ancient custom. It is the settlement that followed the fight.</p>
 
     <h2>You can still drink the 1896 line-up</h2>
-    <p>Most of it, anyway. <a href="/beers/schneider-weisse-g-schneider-and-sohn-original-tap07">Schneider Weisse</a> is brewed by the same family firm that took the festival&rsquo;s first wheat-beer stall. <a href="/beers/kulmbacher-brauerei-m-nchshof-original">Kulmbacher</a> is still in Kulmbach. And the Vienna lager that Dreher of Kleinschwechat brought to the Theresienwiese is the direct ancestor of M&auml;rzen itself &mdash; which is to say the beer the festival is nostalgic for arrived, once, as an import.</p>
+    <p class="end">Most of it, anyway. <a href="/beers/schneider-weisse-g-schneider-and-sohn-original-tap07">Schneider Weisse</a> is brewed by the same family firm that took the festival&rsquo;s first wheat-beer stall. <a href="/beers/kulmbacher-brauerei-m-nchshof-original">Kulmbacher</a> is still in Kulmbach. And the Vienna lager that Dreher of Kleinschwechat brought to the Theresienwiese is the direct ancestor of M&auml;rzen itself &mdash; which is to say the beer the festival is nostalgic for arrived, once, as an import.</p>
 
-    <p style="margin-top:26px">Companion pieces: <a href="/blog/september-is-oktoberfest.html">September is Oktoberfest</a>, on the beer in the tents today, and <a href="/blog/uk-oktoberfest-events-2026.html">UK Oktoberfest Events 2026</a>, on where Britain is pouring.</p>
+    <p class="ps-2">Companion pieces: <a href="/blog/september-is-oktoberfest.html">September is Oktoberfest</a>, on the beer in the tents today, and <a href="/blog/uk-oktoberfest-events-2026.html">UK Oktoberfest Events 2026</a>, on where Britain is pouring.</p>
 
     <section class="sources">
       <h2>Sources</h2>
@@ -171,13 +138,14 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="/">Home</a>
       <a href="/pubs/">Venues</a>
       <a href="/blog/">Blog</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
     </div>
-    <p style="font-size:0.72rem;color:#555;margin-top:10px">Independent editorial; not affiliated with Oktoberfest, the city of Munich, or any brewery or promoter listed.</p>
+    <p class="ps-3">Independent editorial; not affiliated with Oktoberfest, the city of Munich, or any brewery or promoter listed.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
   <!-- Cloudflare Web Analytics - cookieless, no consent banner required. -->
