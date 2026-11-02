@@ -39,14 +39,25 @@ function* files(dir) {
   }
 }
 
-// Collects slug -> the files that link to it. Matches ../pubs/x, /pubs/x and
-// the absolute form, and stops at the quote, #, ? or whitespace.
+// Collects slug -> the files that link to it.
+//
+// Read whole URLs, not a bare /pubs/ anywhere in the text: camra.org.uk and
+// closedpubs both put their own venues under /pubs/, and a pattern that lets
+// the host be optional claims those as ours. Each candidate is taken from an
+// href, a src or a JSON "url", then kept only if it is our own site or a
+// relative path on it.
 const links = new Map();
-const PATTERN = /(?:https:\/\/pintpoint\.co\.uk)?(?:\.\.)?\/pubs\/([a-z0-9][a-z0-9-]*)/g;
+const URLS = /(?:href|src)="([^"]+)"|"url":\s*"([^"]+)"/g;
+const OURS = /^(?:https:\/\/pintpoint\.co\.uk)?(?:\.\.)?\/?pubs\/([a-z0-9][a-z0-9-]*)/;
 
 for (const path of files(ROOT)) {
   const text = readFileSync(path, 'utf8');
-  for (const [, slug] of text.matchAll(PATTERN)) {
+  for (const m of text.matchAll(URLS)) {
+    const href = m[1] ?? m[2];
+    if (/^https?:\/\//.test(href) && !href.startsWith('https://pintpoint.co.uk/')) continue;
+    const hit = OURS.exec(href.split('#')[0].split('?')[0]);
+    if (!hit) continue;
+    const slug = hit[1];
     if (!links.has(slug)) links.set(slug, new Set());
     links.get(slug).add(relative(ROOT, path));
   }

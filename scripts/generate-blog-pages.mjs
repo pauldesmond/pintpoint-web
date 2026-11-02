@@ -172,10 +172,24 @@ function filterBar(cards) {
  * The pages are still read, and anything found there that the file does not
  * know about is added, so a hand-added card is never lost either.
  */
+/**
+ * Posts published quietly: live at their own address, kept off the index, the
+ * archive and the feed until they are announced. Absence from the corpus used
+ * to be the only thing holding them back, and on 2 November 2026 a corpus
+ * repair put ACE on the front page by accident. Name them here instead, and
+ * take the line out on the day the piece is announced.
+ */
+const HELD = new Map([
+  ['ace-the-importer-who-became-a-maker.html', 'announced the week of 9 November 2026'],
+]);
+
 function collectCards() {
   const seen = new Map();
   if (existsSync(CORPUS)) {
-    for (const c of JSON.parse(readFileSync(CORPUS, 'utf8'))) seen.set(c.href, c);
+    for (const c of JSON.parse(readFileSync(CORPUS, 'utf8'))) {
+      if (HELD.has(c.href)) continue;
+      seen.set(c.href, c);
+    }
   }
   const sources = ['index.html', 'older.html',
     ...readdirSync(BLOG).filter(f => /^page-\d+\.html$/.test(f))];
@@ -187,7 +201,7 @@ function collectCards() {
     let m;
     while ((m = re.exec(html))) {
       const [block, , href] = m;
-      if (seen.has(href)) continue;
+      if (seen.has(href) || HELD.has(href)) continue;
       const dateRaw = (block.match(/<div class="post-date[^"]*">([\s\S]*?)<\/div>/) || [,''])[1]
         .replace(/<[^>]+>/g, '').split('·')[0].replace(/&middot;/g, '').trim();
       const dm = dateRaw.match(/(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/);
