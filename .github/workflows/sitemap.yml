@@ -114,3 +114,13 @@ jobs:
       # two copies, and only one of them is visible while you edit.
       - name: Check the FAQ JSON-LD still matches the page
         run: node scripts/sync-faq-jsonld.mjs --check
+
+      # Same again for the HowTo steps.
+      - name: Check the HowTo JSON-LD still matches the page
+        run: node scripts/sync-howto-jsonld.mjs --check .
+
+      # And the lines we have already corrected once. Subjects are read from
+      # _data/retired-strings.json, not from git, because this checkout is
+      # shallow and cannot reach the commit that retired them.
+      - name: Check no corrected line has come back
+        run: node scripts/check-corrections.mjs

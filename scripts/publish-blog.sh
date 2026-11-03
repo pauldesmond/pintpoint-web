@@ -162,6 +162,18 @@ if ! node "$(dirname "$0")/check-blog-counts.mjs" >/dev/null 2>&1; then
   GUARD_FAIL=1
 fi
 
+# 9. A line we corrected coming back. Corrections do not stay made: a later
+#    commit re-introduces a retired claim, usually into a copy nobody is
+#    editing. Four of those on 3 November 2026 alone, one of them a count
+#    corrected an hour earlier. Each hit prints the subject of the commit that
+#    retired the line, which is what separates a regression from a source
+#    approving the old wording back.
+if ! node "$(dirname "$0")/check-corrections.mjs" >/dev/null 2>&1; then
+  node "$(dirname "$0")/check-corrections.mjs" || true
+  echo "❌ A retired line is back. Confirm it above, then fix it or allowlist it."
+  GUARD_FAIL=1
+fi
+
 if [[ "$GUARD_FAIL" -eq 1 ]]; then
   echo
   echo "→ Fix ${POST_FILE} and re-run publish-blog.sh. Nothing has been committed."
