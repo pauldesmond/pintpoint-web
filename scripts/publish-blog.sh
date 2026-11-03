@@ -117,6 +117,28 @@ if ! node "$(dirname "$0")/sync-faq-jsonld.mjs" --check "${POST_FILE%/*}/.." >/d
   GUARD_FAIL=1
 fi
 
+# 6. The dates in the JSON-LD. A draft written against a future publication
+#    date keeps it on promotion, and the draft-meta guard above never looked:
+#    the ESB piece went live carrying datePublished 2026-11-21, a month ahead,
+#    and same-steel-as-the-wiesn is sitting on 19 November right now. A future
+#    date tells Google the page has not happened yet. dateModified earlier than
+#    datePublished is the same class of nonsense and is cheap to catch here.
+TODAY="$(date -u +%Y-%m-%d)"
+DP="$(grep -o '"datePublished"[[:space:]]*:[[:space:]]*"[0-9-]\{10\}"' "${POST_FILE}" | head -1 | grep -o '[0-9-]\{10\}')"
+DM="$(grep -o '"dateModified"[[:space:]]*:[[:space:]]*"[0-9-]\{10\}"' "${POST_FILE}" | head -1 | grep -o '[0-9-]\{10\}')"
+if [[ -n "${DP}" && "${DP}" > "${TODAY}" ]]; then
+  echo "❌ Date guard failed: datePublished ${DP} is in the future (today is ${TODAY})."
+  echo "   A future date tells Google the page has not happened yet."
+  GUARD_FAIL=1
+fi
+if [[ -n "${DP}" && -n "${DM}" && "${DM}" < "${DP}" ]]; then
+  echo "❌ Date guard failed: dateModified ${DM} is earlier than datePublished ${DP}."
+  GUARD_FAIL=1
+fi
+if [[ -z "${DP}" ]]; then
+  echo "⚠️  No datePublished found in ${POST_FILE} — check it carries a BlogPosting block."
+fi
+
 if [[ "$GUARD_FAIL" -eq 1 ]]; then
   echo
   echo "→ Fix ${POST_FILE} and re-run publish-blog.sh. Nothing has been committed."

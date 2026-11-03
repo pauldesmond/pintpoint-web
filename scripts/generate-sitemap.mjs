@@ -565,9 +565,16 @@ async function collectCatalogueStats() {
 //
 // TWO DIFFERENT "VENUES" NUMBERS, DELIBERATELY KEPT APART:
 //   venues            every live venue we hold — the coverage claim
-//   venues-with-taps  only those that actually have tap data — which is what
-//                     "live tap lists across N venues" means on compare.html
-// Conflating them would overclaim by about 2,500 pubs.
+//   venues-with-taps  those that can produce a tap list on demand, which is
+//                     what "live tap lists across N venues" means on
+//                     compare.html. See the `refreshable` note below: it is
+//                     the app's own canRefresh test, NOT a count of stored
+//                     rows.
+// The gap between the two is small — 3 venues on 2026-11-03 — because almost
+// every live venue carries a usable Untappd venue identity. This comment used
+// to say the gap was about 2,500, from the era when the figure counted the
+// cache; that number misled a review and a session on 2026-11-03 before
+// anyone checked it against the code below.
 //
 // "beers" is distinct beer names appearing on tap lists, NOT the beers table
 // (which is ~49k and counts every beer we know of, poured or not). The page
@@ -664,7 +671,11 @@ async function rewriteHeadlineStats() {
       [/[\d,]+\+ roster\./g, `${v} roster.`],
       [/Live tap lists across [\d,]+\+ venues/g, `Live tap lists across ${round(stats.venuesWithTaps)} venues`],
       // "over 1,776 venues" — no plus sign, so the patterns above miss it.
-      [/over [\d,]+ venues/g, `over ${stats.venues.toLocaleString('en-GB')} venues`],
+      // It has to round DOWN, or the sentence is false by construction: the
+      // exact live count written after the word "over" claims more venues
+      // than we hold. It published "over 7,069" against a real 7,070.
+      [/over [\d,]+ venues/g,
+        `over ${(Math.floor(stats.venues / 100) * 100).toLocaleString('en-GB')} venues`],
     ];
     const files = [];
     for (const name of await readdir(root)) {
