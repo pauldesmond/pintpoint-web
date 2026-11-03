@@ -128,6 +128,18 @@ fi
 echo "✓ Guards passed (no noindex, no /blog/drafts/ URLs, column standard, JSON-LD, beacon, pageview, FAQ in sync)."
 echo
 
+# 5b. dateModified, from the last commit that changed each article body. It was
+#     hand-maintained until 3 November 2026 and stale on 37 of the 44 pages
+#     carrying it, about half of them because the fact audit had corrected the
+#     prose and left the structured data saying nothing had changed since
+#     spring. This is a sync, not a guard: it writes before the commit below,
+#     and an uncommitted body edit dates to today. It ignores the <head>
+#     JSON-LD it writes into, the stylesheets, and the furniture that site-wide
+#     design passes touch, so running it twice changes nothing the second time.
+echo "→ Syncing JSON-LD dateModified from git history..."
+node "$(dirname "$0")/sync-date-modified.mjs"
+echo
+
 # 6. Show diff stat
 echo "→ Working-tree changes:"
 git diff --stat
