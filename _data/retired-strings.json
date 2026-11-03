@@ -764,6 +764,27 @@
    "note": "Mosaic Tap is bottle/can and Ball & Chain could not be shown to exist; the list is six. Proximity entry because \"eight UK pubs\" defeated a phrase sweep.",
    "id": "augustiner-01",
    "retired_in_subject": "Augustiner: two of the eight pubs do not hold up, so the list is six"
+  },
+  {
+   "post": "fullers-yeast-firestone-walker",
+   "string": "catalogued as a Fuller's",
+   "retired_in": "8ae0ebf",
+   "retired_in_subject": "The Wyeast attribution: I fixed the wording and kept the error",
+   "files": [
+    "blog/fullers-yeast-firestone-walker.html",
+    "blog/fullers-esb-in-america.html",
+    "llms.txt",
+    "llms-full.txt",
+    "feed.xml",
+    "blog/feed.xml",
+    "_data/blog-archive.json",
+    "blog/archive.html",
+    "blog/index.html",
+    "blog/page-*.html"
+   ],
+   "proof_file": "blog/fullers-yeast-firestone-walker.html",
+   "note": "Wyeast's catalogue name is '1968 London ESB Ale' and never says Fuller's. The Fuller's ESB name is David Walker's memory of the strain. Came back twice: once as our own voice, once reworded to look sourced.",
+   "id": "yeast-01"
   }
  ],
  "allowlist": []
