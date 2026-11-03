@@ -139,6 +139,29 @@ if [[ -z "${DP}" ]]; then
   echo "⚠️  No datePublished found in ${POST_FILE} — check it carries a BlogPosting block."
 fi
 
+# 7. The HowTo JSON-LD, where a page carries one. Same problem as the FAQ:
+#    two hand-kept copies of the same steps, one of them invisible while you
+#    edit. how-to-find-beer-near-you.html had two steps worded differently
+#    from the page and a totalTime of two minutes under a heading promising
+#    five.
+if ! node "$(dirname "$0")/sync-howto-jsonld.mjs" --check . >/dev/null 2>&1; then
+  node "$(dirname "$0")/sync-howto-jsonld.mjs" --check . || true
+  echo "❌ A HowTo block no longer matches the steps on its page."
+  echo "   Fix: node scripts/sync-howto-jsonld.mjs"
+  GUARD_FAIL=1
+fi
+
+# 8. Catalogue figures in a blog post. A post is dated writing, so a number in
+#    it either carries an "as of" or should not be there. The nightly stats
+#    sweep deliberately never touches blog/, so one of our figures written
+#    into a post freezes on the day it was written and nothing fixes it:
+#    national-pub-day-telegraph-ale said "1,776+ venues globally" against a
+#    real 7,070, in a present-tense FAQ answer.
+if ! node "$(dirname "$0")/check-blog-counts.mjs" >/dev/null 2>&1; then
+  node "$(dirname "$0")/check-blog-counts.mjs" || true
+  GUARD_FAIL=1
+fi
+
 if [[ "$GUARD_FAIL" -eq 1 ]]; then
   echo
   echo "→ Fix ${POST_FILE} and re-run publish-blog.sh. Nothing has been committed."
