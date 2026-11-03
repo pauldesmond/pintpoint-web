@@ -12,6 +12,13 @@ Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 # Netfax app feed packs aren't for indexing. The app fetches them directly.
 Disallow: /netfax/starter-pack
+# Build machinery, not reading matter: the generators and the data files
+# they read. _data/retired-strings.json is the corrections guard's record of
+# lines we have taken off pages, which is our process rather than our
+# writing. A Disallow only stops crawlers that obey it, and it names the path
+# to anyone reading this file, so it is a stopgap and not the fix.
+Disallow: /_data/
+Disallow: /scripts/
 
 # Allow AI search/assistant crawlers (these surface your site in AI answers)
 User-agent: GPTBot
