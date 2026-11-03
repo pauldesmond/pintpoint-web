@@ -429,7 +429,7 @@ Search a pub name, tap into a venue, hit back — your query and the filtered li
 
 Beer Beer Alerts · Beer Scan ›
 
-Real beers you find in the wild. Beer Alerts pings you when a watched beer turns up at a venue you've saved. Beer Scan reads a barcode or pump-clip photo and adds the beer to your history — every confident scan grows the shared catalogue for everyone.
+Real beers you find in the wild. Beer Alerts pings you when a watched beer turns up at a venue you've saved, or at any venue within fifteen miles of you. Beer Scan reads a barcode or pump-clip photo and adds the beer to your history — every confident scan grows the shared catalogue for everyone.
 
 🔔
 
@@ -3647,7 +3647,7 @@ Davy’s dropped the Crusting Pipe from the list after it closed in December 202
 
 The El Vino sisters
 
-Davy's acquired the El Vino group in 2015: the Fleet Street institution and its sisters, run as sibling operations under the same ownership but with their own signage, menus and identity. Not pure-Davy's, but part of the same portfolio, and tagged chain:davys in PINtPOINT alongside the family-name sites so a chain filter surfaces both.
+Davy's acquired the El Vino group in 2015: the Fleet Street institution and its sisters, run as sibling operations under the same ownership but with their own signage, menus and identity. Not pure-Davy's, but part of the same portfolio, and filed under the same chain in PINtPOINT as the family-name sites, so searching Davy's in the app finds both.
 
 - El Vino Fleet Street 47 Fleet St, EC4A · the flagship; El Vino was founded in 1879
 
@@ -3655,7 +3655,7 @@ Davy's acquired the El Vino group in 2015: the Fleet Street institution and its 
 
 - El Vino London Bridge 5a More Place, Tooley St, SE1 · More London side
 
-All fourteen sites Davy's list, all three El Vinos and the historic Davy's ghosts carry a chain:davys tag in PINtPOINT; successor tenants such as Bar 1790 are linked through predecessor/successor relationships rather than treated as Davy's venues.
+Searching Davy's in PINtPOINT brings back more than the fourteen: all fourteen sites Davy's list, all three El Vinos and the historic Davy's ghosts are filed together, which is why the app's count runs higher than the company's own; successor tenants such as Bar 1790 are linked through predecessor/successor relationships rather than treated as Davy's venues.
 
 New · Curated Collection
 
@@ -4922,7 +4922,7 @@ Beerblefish Brewing Company (2015–2025) spent ten years brewing and three of t
 
 Hackney Brewery / High Hill Taproom — Hackney Brewery's 20-tap Walthamstow site at Unit 10 Lockwood Way — closed following a dispute with the council. 40FT Brewery now occupy the same unit and pour from it as their Mile-resident bar.
 
-The unit-takeover pattern is the structural story: the cluster survives even when individual breweries don't. ELB and 40FT both built Mile presences by walking into Mile graves. Inside the app, tapping any of these venues surfaces the predecessor/successor lineage — PINtPOINT preserves the shadow Mile alongside the live one.
+The unit-takeover pattern is the structural story: the cluster survives even when individual breweries don't. ELB and 40FT both built Mile presences by walking into Mile graves.
 
 The thread to elsewhere
 
@@ -8477,7 +8477,7 @@ We are not claiming mild is back. The 0.5% figure is from 2011 and the trend has
 
 What's true: it's still being made, by people who care about it, in versions that range from quiet to assertive. The argument inside the camp is loud and interesting. The pint, where you find it, drinks well.
 
-Full disclosure: independent editorial. We have no commercial relationship with any brewery named here. PINtPOINT's style filter is part of the free app; nothing in this piece is paid placement or sponsored.
+Full disclosure: independent editorial. We have no commercial relationship with any brewery named here. PINtPOINT's style filter is part of the app, which costs £3.99 a year after a seven-day free trial; nothing in this piece is paid placement or sponsored.
 
 Frequently asked questions
 
@@ -8565,8 +8565,6 @@ Then and now
 
 - Now: still trading, everywhere, no longer surprising.
 
-- Ghost Hunter reading: context for why the basement City lost its grip, rather than a ghost.
-
 3. Pitcher & Piano: cathedral cocktails and high-octane glamour
 
 Where All Bar One took the clean slate, Pitcher & Piano took the civic architecture.
@@ -8582,8 +8580,6 @@ Then and now
 - Then: theatrical vanity dressed in civic architecture, all grand halls, chrome and Sea Breezes at 6pm. Two documented City sites (200 Bishopsgate and Crutched Friars) plus the Cornhill banking-hall flagship.
 
 - Now: the Bishopsgate site closed around 2011 and was converted into a Boots pharmacy; the Crutched Friars site is gone too. The chain still trades under Marston's, quieter and slimmer, with a handful of sites nationally.
-
-- Ghost Hunter reading: two City deaths in the collection, both by the early 2010s, from a chain that survived at the corporate level but shed its City estate.
 
 4. Corney & Barrow: the slick modern aristocracy
 
@@ -8601,7 +8597,7 @@ Then and now
 
 - Important wrinkle: Drake & Morgan did not simply erase every physical site from scratch. Several locations survived under the new ownership. But the Corney & Barrow bar branding, wine-merchant identity and nineties corporate style were stripped away.
 
-- The sister chain: Coates, the more accessible offshoot C&B built out of its 1959 W. Coates acquisition, ran alongside the C&B bars through the same period. Its 45 London Wall room, a century of drinking told in full below, is our first anchor for the C&B ghost estate.
+- The sister chain: Coates, the more accessible offshoot C&B built out of its 1959 W. Coates acquisition, ran alongside the C&B bars through the same period. Its 45 London Wall room gets a century of drinking told in full below.
 
 5. Davy's: sawdust, pewter and stubborn antiquity
 
@@ -8617,7 +8613,7 @@ Then and now
 
 - Now: still recognisably itself in several locations, even as the City around it has changed beyond recognition.
 
-- Ghost Hunter reading: a survivor rather than a ghost. See the Davy's essay for the full account.
+- Still trading: see the Davy's essay for the full account.
 
 Slug & Lettuce changed in the same period, though it was never a City wine bar. After Grosvenor Inns acquired Fast Forward in 1992, the chain was pushed deliberately away from the old pub model: “more of a bar, less of a pub”, younger, more contemporary, less blokey, aiming for an even male-female crowd. Sheila McKenzie, already associated with the female-friendly Pitcher & Piano formula, helped steer that shift.
 
@@ -8669,15 +8665,13 @@ The address passed through the 2000s as Mehek, an award-winning Indian restauran
 
 Today, 45 London Wall is the Moorgate Post Office.
 
-The room is pinned in Ghost Hunter as our first anchor.
+The room has a page of its own.
 
 The City changes when you know what used to be there
 
 Walk past a modern bar near Liverpool Street and it might just look like another after-work venue.
 
 Knowing it was part of the old wine-bar circuit makes it a continuation, a replacement or a disguise. The City’s old drinking map has been built over, rebranded, thinned out and made respectable.
-
-Walk down Bishopsgate, Broadgate, Cheapside or Cornhill with Ghost Hunter switched on, and the City becomes double-exposed: the glass towers and coffee chains in front of you, and underneath them the older operating system of claret, red braces, cellars and three-hour lunches.
 
 Ghosts confirmed in the 1999 book, pinned as a Curated Collection: Old Haunts of the Square Mile .
 
