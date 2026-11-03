@@ -62,12 +62,21 @@ const decodeOnce = s => s
   .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(+d))
   .replace(/&([a-z]+);/gi, (m, n) => NAMED[n.toLowerCase()] ?? m)
   .replace(/\\u([0-9a-f]{4})/gi, (_, h) => String.fromCharCode(parseInt(h, 16)));   // JSON escapes
-const norm = s => decodeOnce(decodeOnce(s))          // twice: catches &amp;amp; and &amp;rsquo;
-  .replace(/<[^>]+>/g, ' ')
+// A retired claim duplicated into a meta description, an og:description or an
+// og:image:alt sits inside an attribute, and stripping tags threw those away
+// with the tag. The alt-01 entry fired on nothing until this hoisted them back.
+const ATTR = /\b(?:content|alt|title|aria-label)\s*=\s*"([^"]*)"/gi;
+const hoistAttrs = s => s.replace(/<[^>]+>/g, (tag) => {
+  let out = ' ';
+  for (const m of tag.matchAll(ATTR)) out += m[1] + ' ';
+  return out;
+});
+const norm = s => decodeOnce(decodeOnce(hoistAttrs(s)))   // twice: catches &amp;amp; and &amp;rsquo;
+  .replace(/<[^>]+>/g, ' ')                               // decoding can reveal tags inside JSON strings
   .replace(/[\u2018\u2019\u201b\u2032]/g, "'").replace(/[\u201c\u201d\u201f\u2033]/g, '"')
   .replace(/[\u00a0\u2009\u202f]/g, ' ').replace(/\s+/g, ' ').toLowerCase();
 const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-const SCAN_DIRS = ['.', 'blog', '_data', 'scripts', 'r'];
+const SCAN_DIRS = ['.', 'blog', '_data', 'scripts', 'r', 'pubs', 'crawls', 'firkin'];
 const walk = (d, out = []) => { for (const f of readdirSync(d)) { const p = join(d, f);
   if (statSync(p).isDirectory()) { if (d !== ROOT && !p.includes('/drafts')) walk(p, out); }
   else if (/\.(html|txt|xml|json|mjs|js|sh|py)$/.test(f)) out.push(relative(ROOT, p)); } return out; };
