@@ -138,7 +138,13 @@ function htmlToText(html) {
 }
 
 function decode(s) {
-  const named = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', mdash: '—', ndash: '–', hellip: '…', rsquo: '’', lsquo: '‘', ldquo: '“', rdquo: '”', pound: '£', eacute: 'é', middot: '·' };
+  // Every named entity the blog actually uses. An unknown one is left as
+  // literal text, so a missing key does not error, it just prints
+  // "No&euml;lle Phillips" into the file answer engines read. Counted across
+  // blog/*.html on 2026-11-03 rather than guessed: auml 77, copy 52, rarr 49,
+  // ouml 18, uuml 15, iacute 7, larr 6, szlig 4, ntilde 2, and one each of
+  // euml, uarr, deg, iuml, agrave, aacute.
+  const named = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', mdash: '—', ndash: '–', hellip: '…', rsquo: '’', lsquo: '‘', ldquo: '“', rdquo: '”', pound: '£', middot: '·', copy: '©', rarr: '→', larr: '←', uarr: '↑', deg: '°', szlig: 'ß', auml: 'ä', ouml: 'ö', uuml: 'ü', euml: 'ë', iuml: 'ï', eacute: 'é', egrave: 'è', iacute: 'í', aacute: 'á', agrave: 'à', oacute: 'ó', uacute: 'ú', ntilde: 'ñ', ccedil: 'ç', aring: 'å', oslash: 'ø', aelig: 'æ', lsaquo: '‹', rsaquo: '›', laquo: '«', raquo: '»', bull: '•', dagger: '†', times: '×', frac12: '½', frac14: '¼', eth: 'ð', thorn: 'þ' };
   return s
     .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
     .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
