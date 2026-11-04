@@ -44,8 +44,12 @@ const fails = [];
 
 /* ---------- rule 3 needs a pass over every file first ---------- */
 const links = new Map();   // slug -> Set(slug) linked from a companion block
+/* A set can link itself through a companion block OR through cards: the parts
+   on a series hub, the essay cards on an arc page. Reading only the blocks
+   reported six false asymmetries on pick-the-right-pint and unholy-trinity,
+   both of which link every part through their cards. */
 const BLOCK = new RegExp(
-  `<(div|p|aside|section)[^>]*class="[^"]*\\b(companion|sibling|series-links|read-next)\\b[^"]*"[^>]*>([\\s\\S]*?)</\\1>`,
+  `<(div|p|aside|section)[^>]*class="[^"]*\\b(companion|sibling|series-links|read-next|part|essay-card|arc-cell|path-persona)\\b[^"]*"[^>]*>([\\s\\S]*?)</\\1>`,
   'g');
 
 const pages = [...files(ROOT)];

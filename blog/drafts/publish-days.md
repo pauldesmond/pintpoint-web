@@ -29,9 +29,12 @@ Two posts, the J-dag pair.
 
 Three things on other pages, none of which anything will flag:
 
-1. `blog/lewes-voice-of-the-fire.html` L155 carries
+1. Three pages carry
    `<!-- LINK ON 6 NOV: /blog/the-first-friday-of-christmas.html -->` against an
-   unlinked **Part 3**. Wrap the name in that anchor.
+   unlinked **Part 3**: `blog/lewes-voice-of-the-fire.html`,
+   `blog/unholy-trinity.html` and `blog/green-man-and-season-of-the-witch.html`.
+   Wrap the name in that anchor on each. Grep for the comment rather than
+   trusting this list.
 2. `blog/unholy-trinity.html` L94-98, the Part three card. The heading at L96 is
    bare text where parts one and two are links, and L95 still reads
    `Part three · Friday 6 November · to come`. Link the heading and drop the
