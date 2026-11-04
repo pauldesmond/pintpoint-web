@@ -30,8 +30,10 @@
   /* Text column. Calibrated by rendered line length, not by the number: ch is
      the advance of "0", and Source Serif 4's oldstyle zero is about 0.37em,
      so 68ch rendered as roughly 56 characters a line, well under the 65-75 the
-     token was aiming at. 92ch puts it at about 75. Measured 4 Nov 2026. */
-  --measure: 92ch;
+     token was aiming at. 92ch put it at about 75; Paul asked for wider again on
+     a 2560px display, so 120ch, about 845px and roughly 98 characters. That is
+     past the classic band and is his call, taken twice. Measured 4 Nov 2026. */
+  --measure: 120ch;
   --page: 1100px;          /* masthead / footer width */
   --fig-w: 270px;          /* desktop floated figure width */
   --fig-hang: 135px;       /* how far a figure hangs past the measure */
