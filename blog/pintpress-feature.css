@@ -345,7 +345,7 @@ a.cta svg { fill: currentColor; }
    background on a box: "background: transparent" here is drift, not a choice.
    End matter in section 25 is deliberately not a box. It has a hairline above
    it and no rule around it, so there is nothing to tint. */
-.seasonal, .geek, .steps, .conditional, .scorecard, .lineup, .xi, .crawl-cta, .filter, .collection-cta, .aside-box, .toc, .hop-explorer, .tellus, .fig, .details-card, .lineage, .fig-block, .anchor-pub { background: var(--paper-deep); }
+.seasonal, .geek, .steps, .conditional, .scorecard, .lineup, .xi, .crawl-cta, .collection-cta, .aside-box, .toc, .hop-explorer, .tellus, .fig, .details-card, .lineage, .fig-block, .anchor-pub { background: var(--paper-deep); }
 .seasonal {
   display: block; margin: 18px 0 6px; padding: 13px 15px; border-radius: 0;
   border: 1px solid var(--rule); font-size: 0.93rem; color: var(--ink); text-decoration: none;
