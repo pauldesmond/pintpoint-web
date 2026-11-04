@@ -1332,7 +1332,7 @@ City of London — a proper City boozer
 
 The Underwriter
 
-Now a Costa. Of course it is.
+Now a Costa.
 
 📸 Then
 
@@ -2447,9 +2447,6 @@ What this isn't
 
 Serious enough to trust, funny enough to remember.
 
-Untappd asks how good. The flavour wheel asks what style.
-Beerology asks what it feels like to drink.
-
 Source material:
 
 - Under the Hood: How PINtDEXTER Picks Your Pint. The engineering essay this builds on; where the per-beer flavour data comes from.
@@ -2756,9 +2753,6 @@ Honest respect to both linked pieces. A few things they get exactly right:
 - Transparent methodology + working Flask/R web apps + public notebooks is a great cultural norm. The models linked above could be dropped into a real product with modest effort.
 
 If you're interested in the ML side of beer recommendation specifically, both links in the intro are worth reading end-to-end. If you're interested in what to drink tonight, PINtPOINT will answer that question faster.
-
-Most beer recommenders predict ratings.
-PINtPOINT picks pints.
 
 Frequently asked questions
 
@@ -4892,10 +4886,6 @@ BHBM publish their route 1 Renegade → 10 Hackney Church. We recommend reversin
 
 Inside the app, opening the Blackhorse Beer Mile crawl from the 🏆 Hall of Fame loads it as your active route — walking distances pre-calculated, ghost markers if any stop is closed for the day, and a Start Crawl button. Beer Alerts let you watch any one-off birthday collab beers and ping you the moment they appear on a tap line at a participating venue.
 
-Four years.
-Ten venues.
-One Sunday on the mile.
-
 Ghosts of the Mile
 
 The Mile in 2026 is a survivor. Three of the breweries that helped build the cluster's reputation didn't make it to the 4th birthday.
@@ -5307,10 +5297,6 @@ Read next
 
 Almost Two Pubs a Day Are Closing. The Telegraph's Answer Is a Free Pint.
 Today's main coverage of the Telegraph's National Pub Day, the Renegade-brewed Telegraph Ale, the £5,000 drinks tabs, and the campaign's cross-party backing.
-
-Two campaigns, one pub.
-The Telegraph paid for the pint.
-Saturday afternoon at the Bell paid for everything else.
 
 SHARE
 
@@ -8544,6 +8530,8 @@ The man running Fuller’s bars division, Harri Owen, had been operations manage
 Two of them are still trading in the Square Mile and neither is called the Fine Line any more. The Bow Churchyard one reopened as The Saint in April 2022. The Monument Street one opened in September 1999 and was renamed The Hydrant in 2015, with light fire-brigade theming. Fuller’s still run both.
 
 How a ghost is made
+
+In PINtPOINT a ghost is a closed venue. Ghost Hunter puts them on the radar as purple blips. Tap one and you get the pub as it was, a Street View of what stands there now, the year it closed and its last known tap list, where we have them.
 
 45 London Wall
 
