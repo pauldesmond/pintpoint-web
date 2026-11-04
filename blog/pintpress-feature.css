@@ -15,7 +15,7 @@
 /* ---------- 1. Variables ---------- */
 :root {
   --paper: #f6f1e7;        /* page background */
-  --paper-deep: #efe7d8;   /* rare tinted boxes */
+  --paper-deep: #efe7d8;   /* every box: see section 26b */
   --ink: #1d1b18;          /* body text */
   --ink-soft: #3a352e;     /* standfirst, quotes */
   --muted: #6f665a;        /* captions, metadata, footer */
@@ -336,6 +336,20 @@ a.cta svg { fill: currentColor; }
   margin-left: 0.4em; vertical-align: 0.05em;
 }
 .content > p.no-end:last-child::after, .content > blockquote.no-end:last-child::after { content: none; }
+
+/* ---------- 26b. Boxes: tinted paper ---------- */
+/* A box is anything that encloses content inside a rule. Every box sits on
+   --paper-deep so it reads as a panel and not as page, and the tint is the
+   only thing that separates the two. This is the house rule across every page
+   on this stylesheet, so a page-level sheet must not declare its own
+   background on a box: "background: transparent" here is drift, not a choice.
+   End matter in section 25 is deliberately not a box. It has a hairline above
+   it and no rule around it, so there is nothing to tint. */
+.seasonal, .geek { background: var(--paper-deep); }
+.seasonal {
+  display: block; margin: 18px 0 6px; padding: 13px 15px; border-radius: 0;
+  border: 1px solid var(--rule); font-size: 0.93rem; color: var(--ink); text-decoration: none;
+}
 
 /* ---------- 27. Footer extras and phones (kept last) ---------- */
 footer .legal { font-size: 0.68rem; margin-top: 10px; }
