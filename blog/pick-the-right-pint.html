@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
     .arc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px 0 8px; }
-    .arc-cell { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 18px 16px; }
+    .arc-cell { border: 1px solid var(--rule-soft); border-radius: 0; padding: 18px 16px; }
     .arc-cell .arc-num { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ink); text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
     .arc-cell .arc-word { font-size: 1.1rem; font-weight: 800; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.3px; }
     .arc-cell .arc-role { font-size: 0.75rem; color: var(--muted); }
@@ -35,14 +35,14 @@
     .path .path-q { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; font-style: italic; }
     .path .path-route { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
     .path .path-route a { color: var(--ink); }
-    .essay-card { background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 24px 26px; margin-bottom: 16px; }
+    .essay-card { border: 1px solid var(--rule-soft); border-radius: 0; padding: 24px 26px; margin-bottom: 16px; }
     .essay-card .ec-role { display: inline-block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ink); text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
     .essay-card .ec-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.3px; }
     .essay-card .ec-title a { color: var(--ink); text-decoration: none; }
     .essay-card .ec-title a:hover { color: var(--ink); }
     .essay-card .ec-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 0; }
     .path-picker-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 20px; }
-    .path-persona { font-family: 'SF Mono', Menlo, monospace; font-size: 12px; letter-spacing: 0.02em; color: var(--muted); background: transparent; border: 1px solid var(--rule-soft); border-radius: 0; padding: 7px 14px; cursor: pointer; transition: all .18s ease; }
+    .path-persona { font-family: 'SF Mono', Menlo, monospace; font-size: 12px; letter-spacing: 0.02em; color: var(--muted); border: 1px solid var(--rule-soft); border-radius: 0; padding: 7px 14px; cursor: pointer; transition: all .18s ease; }
     .path-persona:hover { color: var(--ink); border-color: var(--rule); }
     .path-persona[aria-pressed="true"] { color: var(--ink); background: transparent; border-color: var(--amber); }
     .paths .path { transition: all .25s ease; }
