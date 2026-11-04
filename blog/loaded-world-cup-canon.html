@@ -21,7 +21,8 @@
   <meta name="twitter:site" content="@pintpoint" />
   <meta name="twitter:creator" content="@pintpoint" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -95,118 +96,57 @@
   }
   </script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; --red: #C8102E; --gold: #FFD700; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; line-height: 1.65; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 900px; margin: 0 auto; padding: 48px 24px 72px; }
-    .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .category { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
-    .category.reference { background: rgba(192,163,64,0.16); color: var(--amber); border: 1px solid rgba(192,163,64,0.4); }
-    h1 { font-size: clamp(1.95rem, 5.2vw, 2.7rem); font-weight: 900; letter-spacing: -1.2px; line-height: 1.07; margin-bottom: 22px; text-transform: none; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.4px; margin: 44px 0 14px; line-height: 1.25; }
-    h3 { font-size: 1.1rem; font-weight: 700; margin: 24px 0 8px; color: var(--amber); letter-spacing: -0.2px; }
-    p { margin-bottom: 14px; color: #e6edf3; }
-    .lede { margin-bottom: 30px; padding-left: 14px; border-left: 3px solid var(--amber); }
-    .lede p:first-child { font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
-    .highlight { color: var(--text); font-weight: 600; }
-    a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
-    a:hover { border-bottom-color: var(--teal); }
-    .factbox { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin: 20px 0; }
+    /* Only the canon components. The reset, the type, the nav, .content,
+       .meta, .lede, .pullquote, tables, .faq, .companion, .sources and the
+       footer all come from pintpress-feature.css. Boxes take their tint from
+       section 26b, so nothing here declares a background on one. */
+    .factbox { border: 1px solid var(--rule-soft); padding: 18px 20px; margin: 20px 0; }
     .factbox h3 { margin-top: 0; }
-    .factbox dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; font-size: 0.93rem; }
+    .factbox dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; font-family: var(--sans); font-size: 0.9rem; }
     .factbox dt { color: var(--muted); font-weight: 600; }
-    .factbox dd { color: var(--text); }
-    .pullquote { border-left: 3px solid var(--teal); padding: 8px 0 8px 16px; margin: 22px 0; font-size: 1.05rem; font-style: italic; color: var(--text); line-height: 1.5; }
-    .pullquote strong { font-style: normal; color: var(--text); }
-    .pullquote cite { display: block; font-style: normal; font-size: 0.78rem; color: var(--muted); margin-top: 8px; letter-spacing: 0.4px; }
-    .cup { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; margin: 24px 0; }
-    .cup-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 4px; }
-    .cup-num { font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); }
-    .cup-issue { font-size: 0.78rem; color: var(--muted); }
-    .cup h3 { font-size: 1.4rem; color: var(--text); font-weight: 900; margin: 0 0 4px; letter-spacing: -0.5px; }
-    .cup .byline { font-size: 0.85rem; color: var(--muted); margin-bottom: 14px; }
-    .cup p { margin-bottom: 12px; font-size: 0.97rem; }
-    .cup .winner { display: inline-block; background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; padding: 8px 14px; margin: 6px 0 4px; font-size: 0.92rem; }
-    .cup .winner .lbl { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber); margin-right: 8px; }
-    .cup .winner .name { color: var(--gold); font-weight: 800; }
-    .canon-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.86rem; background: var(--card); border-radius: 12px; overflow: hidden; }
-    .canon-table th, .canon-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
-    .canon-table th { background: rgba(255,255,255,0.04); color: var(--amber); font-weight: 700; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; }
-    .canon-table td.gold { color: var(--gold); font-weight: 700; }
-    .canon-table td.dim { color: var(--muted); font-style: italic; }
-    .canon-table tr:last-child td { border-bottom: 0; }
-    .canon-wrap { overflow-x: auto; margin: 18px -8px; }
-    .faq { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--border); }
-    .faq h2 { font-size: 1.3rem; margin-bottom: 14px; }
-    .faq-item { margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-    .faq-item summary { cursor: pointer; font-weight: 600; padding: 8px 0; color: var(--text); }
-    .faq-item summary:hover { color: var(--teal); }
-    .faq-item p { padding: 6px 0 8px; color: #c9d1d9; font-size: 0.95rem; }
-    .companion { margin-top: 36px; padding: 16px 18px; background: rgba(0,212,170,0.06); border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; font-size: 0.92rem; }
-    .companion b { color: var(--teal); }
-    .sources { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    .sources h2 { font-size: 1rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-    .sources ul { padding-left: 18px; }
-    .sources li { margin-bottom: 6px; }
-    footer { text-align: center; padding: 36px 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--muted); margin-top: 24px; }
-    footer a { color: var(--muted); text-decoration: none; border-bottom: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 22px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
-    /* Swipeable canon deck, same pattern as the rounds-deck on the Lager'lympics page */
+    .factbox dd { color: var(--ink); }
+
+    /* One cup per card, swiped horizontally. Same pattern as the
+       rounds-deck on the Lager'lympics page. */
     .cups-deck-wrap { margin: 24px -24px 8px; padding: 0 24px; }
-    .cups-deck {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
-      padding-bottom: 14px;
-      align-items: stretch;
-    }
-    .cups-deck .cup {
-      flex: 0 0 88%;
-      max-width: 480px;
-      scroll-snap-align: start;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-    }
-    @media (min-width: 720px) {
-      .cups-deck .cup { flex-basis: 460px; }
-    }
-    .deck-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin: 0 0 32px; }
-    /* Collapsible body so all cup cards have a uniform compact height */
+    .cups-deck { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; scrollbar-width: thin; padding-bottom: 14px; align-items: stretch; }
+    .cup { border: 1px solid var(--rule-soft); padding: 22px 24px; margin: 24px 0; }
+    .cups-deck .cup { flex: 0 0 88%; max-width: 480px; scroll-snap-align: start; margin: 0;
+      display: flex; flex-direction: column; }
+    @media (min-width: 720px) { .cups-deck .cup { flex-basis: 460px; } }
+    .cup-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 4px; }
+    .cup-num { font-family: var(--sans); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-ink); }
+    .cup-issue { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
+    .cup h3 { font-size: 1.35rem; font-weight: 700; color: var(--ink); margin: 0 0 4px; letter-spacing: -0.02em; }
+    .cup .byline { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); margin-bottom: 14px; }
+    .cup p { margin-bottom: 12px; font-size: 0.97rem; }
+    .cup .winner { display: inline-block; border: 1px solid var(--amber); padding: 8px 14px; margin: 6px 0 4px; }
+    .cup .winner .lbl { font-family: var(--sans); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-ink); margin-right: 8px; }
+    .cup .winner .name { color: var(--ink); font-weight: 800; }
+    .deck-hint { text-align: center; font-family: var(--sans); font-size: 0.78rem; color: var(--muted); margin: 0 0 32px; }
+
+    /* Collapsible body, so every cup card keeps the same compact height */
     .cup-details { margin: 6px 0 12px; }
-    .cup-details summary {
-      cursor: pointer;
-      list-style: none;
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--teal);
-      padding: 8px 0;
-      border-top: 1px solid var(--border);
-    }
+    .cup-details summary { cursor: pointer; list-style: none; font-family: var(--sans); font-size: 0.78rem;
+      font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-ink);
+      padding: 8px 0; border-top: 1px solid var(--rule-soft); }
     .cup-details summary::-webkit-details-marker { display: none; }
     .cup-details summary::before { content: '+ '; display: inline-block; width: 1.2em; }
-    .cup-details[open] summary::before { content: '− '; }
-    .cup-details summary:hover { color: var(--text); }
+    .cup-details[open] summary::before { content: '\2212 '; }
     .cup-details > p, .cup-details > blockquote { margin-top: 10px; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 32px 20px 56px; } .canon-table th, .canon-table td { padding: 8px 10px; font-size: 0.8rem; } }
+
+    .caption { font-style: italic; color: var(--muted); font-size: 0.9rem; }
+
+    .canon-wrap { overflow-x: auto; margin: 18px -8px; }
+    .canon-table td.gold { color: var(--amber-ink); font-weight: 700; }
+    .canon-table td.dim { color: var(--muted); font-style: italic; }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="/" class="logo" style="text-decoration:none;color:var(--text);border:none">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="/" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="/about-pintpoint.html">About</a>
       <a href="/features.html">Features</a>
       <a href="/pubs/">Venues</a>
@@ -215,7 +155,7 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category guide">Guide</span>27 June 2026</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category guide">Guide</span>27 June 2026</p>
     <h1>Loaded's World Cup Canon: <em>From Crisps to Vodka and erm, a selection of more questionable items</em></h1>
 
     <div class="lede">
@@ -243,7 +183,7 @@
       </table>
     </div>
 
-    <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">The chronology above is confirmed by an internal reference in the Vodka WC splash (December 1995): <em>"Smells like clear spirit&hellip; We've done beer, crisps, washing powder and cereals&hellip;"</em></p>
+    <p class="caption">The chronology above is confirmed by an internal reference in the Vodka WC splash (December 1995): <em>"Smells like clear spirit&hellip; We've done beer, crisps, washing powder and cereals&hellip;"</em></p>
 
     <h2>The origin: Crisps, September 1994</h2>
 
@@ -291,7 +231,7 @@
         <summary>Read the bracket</summary>
         <p class="byline">Story: <strong>James Brown</strong> · photos: Chris Floyd &amp; Damian Smyth. Subhead: <em>"Ever willing to face any challenge in the name of science and the truth, loaded just had to find out which powder washes whiter."</em></p>
         <p>The format's first stunt-discipline edition (and the first one the editor himself wrote up). The whole staff dons white vests and brand-new Levi 501s and proceeds to dirty them maximally: <em>"Puddle jumping, mud fights, orienteering, and football in white vests and brand new Levi 501s. All in the name of research."</em> Diving header competitions, playground ice-slides into troughs of mouldy leaves, mud-pie fights in horse tracks. Olympic gold-medallist swimmer Adrian Moorhouse drives past as the team change at the end of his road and swerves his car in shock. Once the whites are sufficiently destroyed they're driven back to the assistant editor's house for stage two, the food stains: ketchup, Lea &amp; Perrins, chilli sauce, red wine, ashtray contents, several prawn dansaks and chicken tikka masalas. Then the launderette: <strong>eight finalists</strong> chosen from fifteen brands (after eliminating Domestos, Colgate toothpaste, dishwasher powder, Fairy Liquid washing powder ("I thought they only did washing-up liquid?") and the Safeway own-brand for being design-undercut by Tesco). Final lineup: Happy Shopper, Radion, Surf, Daz, Tesco, Persil, Ariel, and the wild card <strong>Down To Earth</strong> (£4.29/2kg, "dolphins on bag, obviously for environmentally friendly yuppies"). Two-axis scoring: Woodland Caper out of ten, Food &amp; Wine Cocktail out of ten. Persil collapses ("Shocking middle-order collapse from market heavyweight"); Ariel underperforms on the curry stain.</p>
-        <blockquote class="pullquote" style="margin-top:14px;">"The bloody dolphins scooped it!! And the upshot is? Just don't bother washing your clothes."<cite>James Brown, Washing Powder World Cup, <em>Loaded</em> #8, December 1994</cite></blockquote>
+        <blockquote class="pullquote">"The bloody dolphins scooped it!! And the upshot is? Just don't bother washing your clothes."<cite>James Brown, Washing Powder World Cup, <em>Loaded</em> #8, December 1994</cite></blockquote>
       </details>
     </article>
 
@@ -299,7 +239,7 @@
       <div class="cup-head"><span class="cup-num">Edition 03</span><span class="cup-issue"><em>Loaded</em> #12 · April 1995 (supplement)</span></div>
       <h3>The Lager'lympics</h3>
       <div class="winner"><span class="lbl">Winner</span><span class="name">Budvar</span> (Budweiser Budvar, Czech Republic; beat Molson 178&ndash;98 in the final)</div>
-      <p style="margin-top:8px;font-size:0.88rem;"><a href="/blog/loaded-lager-olympics-1995.html">&rarr; Full bracket, scoring tables and provenance</a></p>
+      <p class="deck-hint"><a href="/blog/loaded-lager-olympics-1995.html">&rarr; Full bracket, scoring tables and provenance</a></p>
       <details class="cup-details">
         <summary>Read the bracket</summary>
         <p class="byline">Published in <em>What's For Tea Love?</em>, the magazine's first food-and-drink supplement.</p>
@@ -328,7 +268,7 @@
         <summary>Read the bracket</summary>
         <p class="byline">Story: Phil Robinson, his first known World Cup byline; he becomes the format's recurring late-canon writer (Toast 1997, Booze 1998).</p>
         <p>33 vodkas in a knockout. The conceit is that <strong>James Brown the editor, billed as "James the Editor" and presiding, visibly morphs into Captain Mainwaring as the night progresses</strong>, surrounded by twelve <em>"gattered Private Pykes"</em> (the office). Later in the night he morphs again, this time into Gordon of Khartoum facing the native hordes. The conceit is Phil Robinson's writerly device, not a costumed bit. (Arthur Lowe had been dead since 1982 in any case.) Cast also includes <strong>"Stringfellow's Mark"</strong> joining the team mid-event, a cleaner-judge corps recruited from the office cleaners, and a guest cameo from a bowl of Stringfellow's vodka jelly entered as a novelty contestant. The "Ein Berliner" sick-bin makes its first appearance; it returns three years later in the Booze WC. Tanqueray Sterling (a vodka, despite the name) reaches the final stages before the throw-up rule is invented to break the deadlock: <em>"We'll sit here and pass the bottle round until someone throws up. And whoever throws up, whatever they're drinking gets booted out and we've got a winner."</em> The verdict ultimately comes from a more reliable source: <em>"Stoli Cristall won because some bloke wrote it down on a piece of paper. Bright spark."</em></p>
-        <blockquote class="pullquote" style="margin-top:14px;">"The <em>loaded</em> Dad's Army Vodka World Cup. That's a lot of vodka. And I'll tell you one thing for nothing, the Russians can have it back. One. Two. Three. Altogether now: 'Who do you think you are kidding Mr Yeltsin if you think old Innngluuunds duuuuuunnnnnnya...'"<cite>Phil Robinson, Vodka World Cup, <em>Loaded</em> #20, December 1995</cite></blockquote>
+        <blockquote class="pullquote">"The <em>loaded</em> Dad's Army Vodka World Cup. That's a lot of vodka. And I'll tell you one thing for nothing, the Russians can have it back. One. Two. Three. Altogether now: 'Who do you think you are kidding Mr Yeltsin if you think old Innngluuunds duuuuuunnnnnnya...'"<cite>Phil Robinson, Vodka World Cup, <em>Loaded</em> #20, December 1995</cite></blockquote>
       </details>
     </article>
 
@@ -340,7 +280,7 @@
         <summary>Read the bracket</summary>
         <p class="byline">Story: Phil Robinson. Splash: <em>"spread 'em"</em>. Subhead: <em>"Modern man survives for weeks on a diet of just toast and the odd drink. So loaded decided to pit slice against slice and find the greatest toast of all."</em></p>
         <p>34 loaves from the supermarkets, with "money", gingerbread men and bagels disqualified for not properly being toast, whittled to twelve for the bracket proper. Categories rotate as the rounds progress: round one is butter-take and taste; the quarter-finals add "compatibility with a winter's evening" and "bloat-you-up-ability"; the semi-finals add the smell-of-bread-against-the-face test and (genuinely) "resistance to an average golf swing" as a measure of robustness. The Traditional Wholemeal, the semis report, could "knock a dog unconscious" with a hard enough hit. Robinson's signature Mainwaring conceit reappears: <em>"James the editor once again assumes a Captain Mainwaring role in the proceedings and orders the rabble back so a more empirical tasting can begin."</em> Final three: <strong>Pain de Campagne</strong> v <strong>White Crusty Loaf</strong> v <strong>Soft Granary Malted</strong>.</p>
-        <blockquote class="pullquote" style="margin-top:14px;">"It's crisp, holds the butter like a fine crumpet, but without collapsing. It also has a sublime nutty crust you can rip off with your teeth, plus a dough so succulent and fragrant a little mouse princess could sleep in it. An Emperor among toast. The winner!"<cite>Phil Robinson, Toast Olympics, <em>Loaded</em> #34, February 1997</cite></blockquote>
+        <blockquote class="pullquote">"It's crisp, holds the butter like a fine crumpet, but without collapsing. It also has a sublime nutty crust you can rip off with your teeth, plus a dough so succulent and fragrant a little mouse princess could sleep in it. An Emperor among toast. The winner!"<cite>Phil Robinson, Toast Olympics, <em>Loaded</em> #34, February 1997</cite></blockquote>
       </details>
     </article>
 
@@ -363,7 +303,7 @@
         <summary>Read the bracket</summary>
         <p class="byline">Story: Phil Robinson · photos: Antony Medley. Subtitle: <em>"Don't feel the spirit, drink it"</em>.</p>
         <p>Spirits-only knockout; the sick-bin is back, this time labelled <strong>"WORLD CUP SICK BIN &mdash; EIN BERLINER"</strong>, the same gag from the Vodka WC four years earlier. The round names map the panel's physical decline: <em>"You can't drink that much, you'll be sick"</em> &rarr; <em>"Let's get this finished"</em> &rarr; <em>"Everything is horrible, nothing is nice"</em> &rarr; <em>"I went to the toilet and I couldn't p*ss"</em> &rarr; <em>"My teeth itch, I'm going home"</em>. Iran, Morocco, Tunisia and Saudi Arabia are out at the first hurdle because <em>"you can't run the Booze World Cup if you only drink Vimto"</em> [sic]. The final pits Linie Aquavit against Beefeater London Distilled Dry Gin; both are declared to "taste like w*nk".</p>
-        <blockquote class="pullquote" style="margin-top:14px;">"We wanted David Niven in a bottle, what we've got is David Icke."<cite>Booze World Cup, Loaded #51 · July 1998</cite></blockquote>
+        <blockquote class="pullquote">"We wanted David Niven in a bottle, what we've got is David Icke."<cite>Booze World Cup, Loaded #51 · July 1998</cite></blockquote>
       </details>
     </article>
 
@@ -386,7 +326,7 @@
         <summary>Read the bracket</summary>
         <p class="byline">Story: Johnny Cigarettes · photos: Antony Medley. <strong>Hosted by Tony Hart.</strong></p>
         <p>32 paintings, run as a knockout. The intro sets the production design exactly right: <em>"Take 32 paintings, one art telly genius, a bunch of ignorant <em>loaded</em> berks and a big box full of cravats."</em> Tony Hart, aged 75 and decades into national-treasure status, is pictured holding the eventual winner. A "Charity Shop Dog Painting" wildcard reaches the quarter-finals before being beaten by Toulouse-Lautrec. The final pits Klimt against Degas. Klimt's <em>The Three Ages of Woman</em> (1905) is declared "now officially the best painting in the whole world".</p>
-        <blockquote class="pullquote" style="margin-top:14px;">"Picasso hasn't captured angst. He's just captured a woman with a filling biting into an ice lolly."<cite>Mick, Loaded panel, Art WC</cite></blockquote>
+        <blockquote class="pullquote">"Picasso hasn't captured angst. He's just captured a woman with a filling biting into an ice lolly."<cite>Mick, Loaded panel, Art WC</cite></blockquote>
       </details>
     </article>
 
@@ -398,7 +338,7 @@
         <summary>Read the bracket</summary>
         <p class="byline">Story: Will Storr · photos: Alan McFadden &amp; Mark Kinge. Strapline: "Loaded Sex Awards".</p>
         <p>32 contraptions, £1,628.24 of merchandise gathered from Harmony Sex Shop and passiononline.co.uk, bracketed in a Soho-style knockout. Entrants include the Letha Weapons doll (£439), John Holmes Realistic C*ck, Spank Paddle, Hustler Dual Vibrator, Chasey Lain Cyberskin, Rotating Laser C*ck ("Princess Leia's dream weapon", £94.55), Five Gates of Hell c*ck-strap, the Honey Bee strap-on with its "Stinger" pipe, the Double Header ("two-eyed trouser snake"), and the Parachute Ball Stretcher ("Soft landings for small b*llocks"). Mock-serious matchup captions: <em>"Are we allowed to touch the poodles?"</em> &middot; <em>"The Spread Eagle becomes roadkill"</em> &middot; <em>"Big skin-sock swallows Polly"</em> &middot; <em>"Revenge of the killer snake"</em>. Semi-finals: <strong>Jessica v Honey Bee</strong> (Jessie stings the Bee) and <strong>Vibrating Panty v Double Header</strong> (the bi-bonced f*ck monster doesn't get it). Final: <strong>Jessica v Vibrating Panty</strong>. Vibrating Panty wins on novelty, versatility and "labour-saving" appeal, with a pub-table scene as the verdict copy: girlfriend at the bar wearing the remote-controlled knickers, fella at the table with the remote, ordering Stellas under increasingly compromised circumstances.</p>
-        <blockquote class="pullquote" style="margin-top:14px;">"'Err...I... errrr... oof, Jesus... ahhhhhhh... Stellaaaaaaaah...'"<cite>Will Storr, Sex Toy World Cup, <em>Loaded</em> #79, November 2000</cite></blockquote>
+        <blockquote class="pullquote">"'Err...I... errrr... oof, Jesus... ahhhhhhh... Stellaaaaaaaah...'"<cite>Will Storr, Sex Toy World Cup, <em>Loaded</em> #79, November 2000</cite></blockquote>
       </details>
     </article>
 
@@ -410,7 +350,7 @@
         <summary>Read the bracket</summary>
         <p class="byline">Story: Chris Burke · photos: Antony Medley. <strong>Presided over by Mark Gatiss in character as Hilary Briss</strong>, the sinister ginger butcher from <em>The League of Gentlemen</em>. Gary, head chef at London restaurant Christopher's, on cooking duty.</p>
         <p>18 cuts staged at a long table "like the disciples from the Last Supper", with a raised pig's head pride of place. The framing is creationist butchery: <em>"It all started, as many things did, in the Garden of Eden. 'Not apple again,' complained Adam to his other half. 'Sod that, I want my rib back.'"</em> The rules: <strong>no poultry</strong> ("p*ofs' meat") and <strong>no offal</strong>, though external bits qualify as fair game and endangered species are encouraged. Notable round-one matchups: Pigs' Tails v Mutton (mutton wins); Veal v Lamb Chops ("they strangle little baby cows and fill them full of Tippex then put them in a cardboard box," explains Hilary); Boiled Ham v Ox Tongue ("It's been in someone's mouth"); Wild Boar v Rabbit ("Rabbit's like bland turkey," then the table descends into turkey-w*nking discourse); Venison v Ostrich; Crocodile v Kangaroo; and <strong>Bacon v Hilary Briss's own "Special Stuff"</strong>, the nosebleed-inducing Royston Vasey product, source unknown. Bacon wins it. The quarter-finals deliver a three-way Venison / Bacon / Kangaroo decided by Hilary's casting line <em>"Bacon makes children smile"</em>. Semi-finals: Beef beats Hilary's beloved Ham; T-Bone beats Bacon. <strong>All-cow final: T-Bone v Roast Beef.</strong> T-Bone takes it.</p>
-        <blockquote class="pullquote" style="margin-top:14px;">"Take note, Frenchmen: from now on, we English shall no longer be known as <em>Les Rostbifs</em>, we wish to be called <em>Les T-Bones</em>."<cite>Chris Burke, Meat World Cup, <em>Loaded</em> #81, January 2001</cite></blockquote>
+        <blockquote class="pullquote">"Take note, Frenchmen: from now on, we English shall no longer be known as <em>Les Rostbifs</em>, we wish to be called <em>Les T-Bones</em>."<cite>Chris Burke, Meat World Cup, <em>Loaded</em> #81, January 2001</cite></blockquote>
       </details>
     </article>
 
@@ -583,13 +523,14 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="/">Home</a>
       <a href="/pubs/">Venues</a>
       <a href="/blog/">Blog</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
     </div>
-    <p style="font-size:0.72rem;color:#555;margin-top:10px">Reference page. <em>Loaded</em> magazine remains the property of its rights holders; scans and excerpts reproduced for editorial reference and historical record. Not affiliated with IPC Media.</p>
+    <p class="legal">Reference page. <em>Loaded</em> magazine remains the property of its rights holders; scans and excerpts reproduced for editorial reference and historical record. Not affiliated with IPC Media.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
   <!-- Cloudflare Web Analytics - cookieless, no consent banner required. -->

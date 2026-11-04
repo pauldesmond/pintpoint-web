@@ -351,7 +351,7 @@ a.cta svg { fill: currentColor; }
    background on a box: "background: transparent" here is drift, not a choice.
    End matter in section 25 is deliberately not a box. It has a hairline above
    it and no rule around it, so there is nothing to tint. */
-.anchor-pub, .arc-cell, .aside-box, .beerology-octagon, .bracket, .collection-cta, .conditional, .crawl-cta, .details-card, .empty, .essay-card, .ev, .factbox, .fig, .fig-block, .geek, .ghost-card, .hop, .hop-chip-grid, .hop-explorer, .hop-filter, .lineage, .lineup, .part, .path-persona, .pub-card, .pub-list, .pubs, .read-next, .round-card, .route-card, .shelf-tile, .sibling, .stat, .statement, .steps, .stop, .tellus, .tier-table, .toc, .update, .venue-list, .visit-box, .winner-card, .xi { background: var(--paper-deep); }
+.anchor-pub, .arc-cell, .aside-box, .beerology-octagon, .bracket, .collection-cta, .conditional, .crawl-cta, .cup, .details-card, .empty, .essay-card, .ev, .factbox, .fig, .fig-block, .geek, .ghost-card, .hop, .hop-chip-grid, .hop-explorer, .hop-filter, .lineage, .lineup, .part, .path-persona, .pub-card, .pub-list, .pubs, .read-next, .round-card, .route-card, .shelf-tile, .sibling, .stat, .statement, .steps, .stop, .tellus, .tier-table, .toc, .update, .venue-list, .visit-box, .winner-card, .xi { background: var(--paper-deep); }
 
 /* ---------- 27. Footer extras and phones (kept last) ---------- */
 footer .legal { font-size: 0.68rem; margin-top: 10px; }
