@@ -17,10 +17,10 @@
   <meta property="og:image:alt" content="PINtPOINT&rsquo;s radar screen, showing nearby pubs by direction and distance." />
   <meta property="fb:app_id" content="1892965231402903" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="The Chelmsford Beer Mile — Live Guide" />
+  <meta name="twitter:title" content="The Chelmsford Beer Mile: A Live Guide to the Route" />
   <meta name="twitter:description" content="Eight-plus-one craft-beer stops in walking order, with live tap lists." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,69 +107,27 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .content { max-width: 900px; margin: 0 auto; padding: 60px 24px 80px; }
-    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 48px; margin-bottom: 16px; }
-    h3 { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 16px; margin-bottom: 6px; color: var(--text); }
-    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
-    article a, article a:visited, main a, main a:visited { color: var(--teal); }
-    .highlight { color: var(--text); font-weight: 600; }
-    .meta { font-size: 0.8rem; color: #666; margin-bottom: 32px; letter-spacing: 0.3px; }
-    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
-    .category.essay { color: #9DA5FF; border: 1px solid rgba(157,165,255,0.4); }
-    .category.guide { color: #00D4AA; border: 1px solid rgba(0,212,170,0.4); }
-    .category.love { color: #FF8C9E; border: 1px solid rgba(255,140,158,0.4); }
-    .category.note { color: #C0A340; border: 1px solid rgba(192,163,64,0.4); }
-    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
-    .quote { font-size: 1.2rem; font-weight: 700; color: var(--teal); text-align: center; padding: 28px 0; margin: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); line-height: 1.55; }
-    ul, ol { margin: 16px 0 24px 20px; }
-    li { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 6px; }
-    .credit { font-size: 0.9rem; color: var(--muted); font-style: italic; padding: 16px 20px; background: var(--card); border-left: 2px solid var(--teal); border-radius: 4px; margin: 24px 0; }
-    .credit a { color: var(--teal); }
-    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: var(--teal); text-transform: uppercase; margin-top: 40px; margin-bottom: 12px; }
-    .stop { display: block; padding: 20px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; text-decoration: none; color: var(--text); margin-bottom: 14px; transition: border-color 0.15s; }
-    .stop:hover { border-color: var(--teal); }
-    .stop-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
-    .stop-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--teal); color: #000; font-weight: 800; font-size: 0.85rem; flex-shrink: 0; }
-    .stop-name { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.2px; }
-    .stop-addr { font-size: 0.8rem; color: var(--muted); margin-left: 40px; margin-bottom: 8px; }
-    .stop-note { font-size: 0.92rem; color: var(--muted); line-height: 1.65; margin-left: 40px; }
-    .stop-links { margin-left: 40px; margin-top: 10px; display: flex; gap: 12px; font-size: 0.8rem; flex-wrap: wrap; }
-    .stop-links a { color: var(--teal); text-decoration: none; font-weight: 600; }
-    .stop-links a:hover { text-decoration: underline; }
-    .stop-bonus .stop-num { background: #FFC107; color: #000; }
-    .faq { margin-top: 48px; }
-    .faq h2 { margin-bottom: 24px; }
-    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-    .faq-item summary { font-size: 1rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--teal); }
-    .faq-item[open] summary::after { content: '\2212'; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item p { margin-top: 10px; }
-    a.cta { display: inline-flex; align-items: center; gap: 10px; background: var(--teal); color: #000; font-weight: 700; font-size: 1rem; padding: 16px 32px; border-radius: 14px; text-decoration: none; margin-top: 32px; }
-    a.cta:hover { opacity: 0.88; }
-    .closing { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
-    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
-    footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .content { padding: 40px 20px 60px; } }
+    /* Only what the sheet does not carry. No hex, no page background on a box:
+       .stop and .aside-box take their tint from section 26b. */
+    .credit { font-style: italic; color: var(--ink-soft); padding: 2px 0 2px 20px; border-left: 2px solid var(--amber); margin: 24px 0; }
+    a.stop { display: block; border: 1px solid var(--rule-soft); border-radius: 0; padding: 18px 20px; margin: 0 0 14px; color: var(--ink); text-decoration: none; }
+    a.stop:hover { border-color: var(--amber); }
+    .stop-num { display: inline-block; font-family: var(--sans); font-size: 0.7rem; font-weight: 800; color: var(--amber-ink); letter-spacing: 0.14em; margin-bottom: 6px; }
+    .stop-bonus .stop-num { color: var(--ink); }
+    .stop-name { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .stop-addr { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; }
+    .stop-note { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6; }
+    .stop-links { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; color: var(--amber-ink); margin-top: 10px; }
+    .aside-box { font-size: 0.88rem; color: var(--muted); padding: 10px 14px; margin: 0 0 14px; }
+    .aside-box strong { color: var(--ink); }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="../index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="../about-pintpoint.html">About</a>
       <a href="../features.html">Features</a>
       <a href="../pubs/">Venues</a>
@@ -179,7 +137,7 @@
   </nav>
 
   <article class="content">
-    <p class="meta"><span class="category guide">Guide</span>5 April 2026 · Chelmsford, Essex</p>
+    <p class="meta"><span class="imprint">PINtPRESS</span><span class="category guide">Guide</span>5 April 2026 · Chelmsford, Essex</p>
     <h1>The Chelmsford <em>Beer Mile</em>: A Live Guide to the Route</h1>
 
     <p class="lede">When we wrote this, eight specialist venues sat within a mile of each other, from a Moulsham Street bottle shop to railway-arch taprooms, and the route between them has been mapped out by the people who actually drink there.</p>
@@ -193,74 +151,83 @@
     <h2>The route at a glance</h2>
     <p>Start on Moulsham Street. Walk north, cross the river into the city centre via Duke Street, then finish in the railway arches off Viaduct Road — which dumps you at Chelmsford station for the journey home. Roughly a mile of walking, eight stops, plus one short detour to Voodoo Keller.</p>
 
-    <p class="quote">Moulsham → city centre → the Arches → train home.</p>
+    <p>Moulsham, the city centre, the Arches, then the train home.</p>
 
-    <p class="section-label">Stage 1 — Moulsham Street</p>
+    <h3>Stage 1: Moulsham Street</h3>
 
     <a href="../pubs/the-hop-beer-shop-chelmsford" class="stop">
-      <div class="stop-head"><span class="stop-num">1</span><span class="stop-name">The Hop Beer Shop</span></div>
+      <div class="stop-num">STOP 01</div>
+        <div class="stop-name">The Hop Beer Shop</div>
       <div class="stop-addr">173 Moulsham St, Chelmsford CM2 0LD</div>
       <div class="stop-note">Proper specialist bottle shop with a tight draught list. Starts you strong: rotating UK craft kegs alongside an unusually good fridge for drink-in.</div>
       <div class="stop-links"><span>View live tap list →</span></div>
     </a>
 
-    <p style="font-size:0.85rem;color:#888;padding:10px 14px;margin:0 0 14px;border-left:2px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.02);border-radius:0 6px 6px 0"><strong style="color:var(--muted)">A recent casualty:</strong> Hopsters Beer Store (47a Moulsham St) was the second Moulsham stop on earlier versions of this crawl. It closed in January 2026. The fridge lives on at Hop Beer Shop and at Hopsters' surviving Leigh-on-Sea location — worth the trip if you're making a day of it.</p>
+    <p class="aside-box"><strong>A recent casualty:</strong> Hopsters Beer Store (47a Moulsham St) was the second Moulsham stop on earlier versions of this crawl. It closed in January 2026. The fridge lives on at Hop Beer Shop and at Hopsters' surviving Leigh-on-Sea location — worth the trip if you're making a day of it.</p>
 
     <a href="../pubs/united-brethren-chelmsford" class="stop">
-      <div class="stop-head"><span class="stop-num">2</span><span class="stop-name">United Brethren ("The UB")</span></div>
+      <div class="stop-num">STOP 02</div>
+        <div class="stop-name">United Brethren ("The UB")</div>
       <div class="stop-addr">New Writtle St, Chelmsford CM2 0LF</div>
       <div class="stop-note">Proper local, cask-led, relaxed front room and beer garden out back. Short walk north from The Hop Beer Shop, crossing the road.</div>
       <div class="stop-links"><span>View live tap list →</span></div>
     </a>
 
     <a href="../pubs/the-orange-tree-chelmsford" class="stop">
-      <div class="stop-head"><span class="stop-num">3</span><span class="stop-name">The Orange Tree</span></div>
+      <div class="stop-num">STOP 03</div>
+        <div class="stop-name">The Orange Tree</div>
       <div class="stop-addr">6 Lower Anchor St, Chelmsford CM2 0AS</div>
       <div class="stop-note">Last of the Moulsham-side stops before the walk over the river. CAMRA-favoured cask lineup, quirky room, strong food.</div>
       <div class="stop-links"><span>View live tap list →</span></div>
     </a>
 
-    <p class="section-label">Stage 2 — City centre</p>
+    <h3>Stage 2: City centre</h3>
 
     <a href="../pubs/brewhouse-and-kitchen-chelmsford-chelmsford" class="stop">
-      <div class="stop-head"><span class="stop-num">4</span><span class="stop-name">Brewhouse &amp; Kitchen — Chelmsford</span></div>
+      <div class="stop-num">STOP 04</div>
+        <div class="stop-name">Brewhouse &amp; Kitchen — Chelmsford</div>
       <div class="stop-addr">Anne Knight Building, Duke St, Chelmsford CM1 1LW</div>
       <div class="stop-note">Opened March 2023 in the Grade II listed Anne Knight Building — by far the largest venue on the mile, with in-house brews on tap alongside guest beers, cocktails and food. Good mid-crawl refuel point.</div>
       <div class="stop-links"><span>View live tap list →</span></div>
     </a>
 
     <a href="../pubs/voodoo-keller-bar-chelmsford" class="stop stop-bonus">
-      <div class="stop-head"><span class="stop-num">★</span><span class="stop-name">Voodoo Keller Bar (bonus stop)</span></div>
+      <div class="stop-num">BONUS STOP</div>
+        <div class="stop-name">Voodoo Keller Bar (bonus stop)</div>
       <div class="stop-addr">Basement, 59 New St, Chelmsford CM1 1NE</div>
       <div class="stop-note">Short detour rather than on the official mile, but worth it: sister venue to Chelmsford Brew Co, so you can drink the local brewery's beer at source. Basement room, darker-vibe drinking den than the bottle-shop stops.</div>
       <div class="stop-links"><span>View live tap list →</span></div>
     </a>
 
-    <p class="section-label">Stage 3 — The Arches</p>
+    <h3>Stage 3: The Arches</h3>
 
     <a href="../pubs/thirst-drinks-syndicate-chelmsford" class="stop">
-      <div class="stop-head"><span class="stop-num">5</span><span class="stop-name">Thirst Drinks Syndicate</span></div>
+      <div class="stop-num">STOP 05</div>
+        <div class="stop-name">Thirst Drinks Syndicate</div>
       <div class="stop-addr">Viaduct Arches, Chelmsford CM1 1TS</div>
       <div class="stop-note">First of the four Arches venues — all within sixty seconds of each other. Keg-led and rotating fast. If you're pressed for time, pick one Arch and stay; if you're not, graze.</div>
       <div class="stop-links"><span>View live tap list →</span></div>
     </a>
 
     <a href="../pubs/the-ale-house-chelmsford" class="stop">
-      <div class="stop-head"><span class="stop-num">6</span><span class="stop-name">The Ale House</span></div>
+      <div class="stop-num">STOP 06</div>
+        <div class="stop-name">The Ale House</div>
       <div class="stop-addr">24-26 Viaduct Road, Chelmsford CM1 1TS</div>
       <div class="stop-note">Chelmsford's most recognisable beer-led pub, sharing the Arches strip. Strong cask and keg mix, long-time local favourite.</div>
       <div class="stop-links"><span>View live tap list →</span></div>
     </a>
 
     <a href="../pubs/hot-box-live-events-chelmsford" class="stop">
-      <div class="stop-head"><span class="stop-num">7</span><span class="stop-name">Hot Box Live</span></div>
+      <div class="stop-num">STOP 07</div>
+        <div class="stop-name">Hot Box Live</div>
       <div class="stop-addr">28-29 Viaduct Road, Chelmsford CM1 1TS</div>
       <div class="stop-note">Music-venue-meets-bar. The programming skews gig nights so check what's on — if it's a quiet night the tap list does all the work.</div>
       <div class="stop-links"><span>View live tap list →</span></div>
     </a>
 
     <a href="../pubs/radio-city-social-chelmsford" class="stop">
-      <div class="stop-head"><span class="stop-num">8</span><span class="stop-name">Radio City Social</span></div>
+      <div class="stop-num">STOP 08</div>
+        <div class="stop-name">Radio City Social</div>
       <div class="stop-addr">35-36 Viaduct Road, Chelmsford CM1 1TS</div>
       <div class="stop-note">Final stop, two-minute walk from the station, late licence Friday/Saturday. Usually 17+ beers on tap, strong independent guest list (recent regulars include Sureshot, Parish, Garage, Mills, Põhjala). The natural finish line.</div>
       <div class="stop-links"><span>View live tap list →</span></div>
@@ -325,13 +292,14 @@
   </article>
 
   <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="../index.html">Home</a>
       <a href="../features.html">Features</a>
       <a href="../privacy-policy.html">Privacy Policy</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
     </div>
-    <p style="font-size:0.75rem;color:#555;margin-top:12px">Chelmsford Beer Mile route and branding © the original site authors at <a href="https://www.chelmsfordbeermile.co.uk" target="_blank" rel="noopener">chelmsfordbeermile.co.uk</a>. This page is an independent companion guide with their tip-of-the-hat in mind.</p>
+    <p class="legal">Chelmsford Beer Mile route and branding © the original site authors at <a href="https://www.chelmsfordbeermile.co.uk" target="_blank" rel="noopener">chelmsfordbeermile.co.uk</a>. This page is an independent companion guide with their tip-of-the-hat in mind.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
   <!-- Cloudflare Web Analytics - cookieless, no consent banner required. -->
