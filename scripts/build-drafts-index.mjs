@@ -160,16 +160,21 @@ const items = rows.map((r) => {
   const label = r.stub
     ? `<span class="from">${esc(r.file.replace(/\.html$/, ''))}</span> → ${esc(r.targetTitle || r.target || 'unknown')}`
     : esc(r.title);
+  // Short status goes on the title row; the check sentence is a whole
+  // sentence and gets its own line. Keeping it in .meta squeezed the title
+  // to one word per line, because .meta is nowrap so the date never breaks.
   const meta = r.stub
     ? 'redirect stub'
     : r.live
       ? (r.live.how === 'file' ? 'published' : `published as ${r.live.at}`)
-      : r.lead
-        ? `check: may already be published as ${r.lead.file}, ${r.why}`
-        : '';
+      : '';
+  const note = r.lead
+    ? `check: may already be published as ${r.lead.file}, ${r.why}`
+    : '';
   return `      <li${r.stub || r.live ? ' class="live"' : r.lead ? ' class="check"' : ''}>
         <a href="${r.file}">${label}</a>
-        <span class="meta">edited ${fmt(r.mtime)}${meta ? ' · ' + meta : ''}</span>
+        <span class="meta">edited ${fmt(r.mtime)}${meta ? ' · ' + meta : ''}</span>${note ? `
+        <span class="note">${note}</span>` : ''}
       </li>`;
 }).join('\n');
 
@@ -193,11 +198,12 @@ writeFileSync(join(DRAFTS, 'index.html'), `<!DOCTYPE html>
     .sub { color:var(--muted); font-size:0.9rem; margin-bottom:28px; }
     .warn { border-left:3px solid var(--amber); background:rgba(245,166,35,0.07); padding:12px 16px; border-radius:0 8px 8px 0; font-size:0.88rem; margin-bottom:28px; }
     ul { list-style:none; }
-    li { display:flex; justify-content:space-between; gap:16px; align-items:baseline; padding:11px 0; border-bottom:1px solid var(--border); }
+    li { display:flex; flex-wrap:wrap; justify-content:space-between; gap:2px 16px; align-items:baseline; padding:11px 0; border-bottom:1px solid var(--border); }
     li a { color:var(--text); text-decoration:none; font-weight:500; }
     li a:hover { color:var(--teal); }
     li.live a { color:var(--muted); }
     li.check .meta { color:var(--amber); }
+    .note { flex-basis:100%; color:var(--amber); font-size:0.78rem; }
     .from { color:var(--muted); font-weight:400; }
     .meta { color:var(--muted); font-size:0.78rem; white-space:nowrap; font-variant-numeric:tabular-nums; }
     footer { margin-top:32px; color:var(--muted); font-size:0.8rem; }

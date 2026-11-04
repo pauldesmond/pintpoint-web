@@ -41,6 +41,14 @@ echo "→ Rebuilding llms-full.txt..."
 node scripts/generate-llms-full.mjs
 echo
 
+# 2c. Rebuild the drafts index. It greys a draft once a published counterpart
+#     exists, so promoting a post without this leaves the index claiming the
+#     draft is still unpublished. It was running by hand only, and on 4 Nov
+#     the served page said 13 drafts and 15 notes while the tree held 12 and 17.
+echo "→ Rebuilding the drafts index..."
+node scripts/build-drafts-index.mjs
+echo
+
 # 3. Identify the newest post URL from feed.xml (top <item>'s <link>)
 NEW_URL=$(awk '/<item>/{p=1} p && /<link>/{gsub(/.*<link>|<\/link>.*/, ""); print; exit}' blog/feed.xml)
 NEW_SLUG=$(basename "$NEW_URL" .html)
