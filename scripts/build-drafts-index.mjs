@@ -59,7 +59,8 @@ const stripSuffix = (t) => decode(t).replace(/\s*[\u2013\u2014-]\s*PINtPRESS\s*$
 //   title — identical headline                 (certain)
 //   stem  — same headline up to the first dash or colon (a LEAD, not a fact)
 // The stem is where retitles live: the subject survives the rewrite even when
-// the payoff clause does not. It is shown as "check" and never greys a row,
+// the payoff clause does not. It is shown as a possible duplicate and never
+// greys a row,
 // because a near-miss asserted as published is how a live draft gets deleted.
 const norm = (t) => stripSuffix(t).toLowerCase().replace(/\(.*?\)/g, ' ')
   .replace(/[^a-z0-9]+/g, ' ').trim();
@@ -169,7 +170,7 @@ const items = rows.map((r) => {
       ? (r.live.how === 'file' ? 'published' : `published as ${r.live.at}`)
       : '';
   const note = r.lead
-    ? `check: may already be published as ${r.lead.file}, ${r.why}`
+    ? `possible duplicate: may already be published as ${r.lead.file}, ${r.why}`
     : '';
   return `      <li${r.stub || r.live ? ' class="live"' : r.lead ? ' class="check"' : ''}>
         <a href="${r.file}">${label}</a>
@@ -213,8 +214,8 @@ writeFileSync(join(DRAFTS, 'index.html'), `<!DOCTYPE html>
 <body>
   <div class="wrap">
     <h1>PINtPRESS <span>drafts</span></h1>
-    <p class="sub">${rows.filter((r) => !r.stub).length} drafts · ${rows.filter((r) => !r.live && !r.stub).length} unpublished · ${rows.filter((r) => r.lead).length} to check · ${rows.filter((r) => r.stub).length} redirect stubs · ${notes} working notes (not served)</p>
-    <div class="warn">Unlisted, not indexed — but publicly served. Anyone with a URL can read these. Greyed entries have a published counterpart in <code>/blog/</code>; those marked <em>redirect stub</em> are not drafts at all and exist to keep old draft links working. A <em>check</em> flag means a published piece shares a headline phrase or the filename's subject — often the same article, retitled on the way out; open both before deleting.</div>
+    <p class="sub">${rows.filter((r) => !r.stub).length} drafts · ${rows.filter((r) => !r.live && !r.stub).length} unpublished · ${rows.filter((r) => r.lead).length} possible duplicate${rows.filter((r) => r.lead).length === 1 ? '' : 's'} · ${rows.filter((r) => r.stub).length} redirect stubs · ${notes} working notes (not served)</p>
+    <div class="warn">Unlisted, not indexed — but publicly served. Anyone with a URL can read these. Greyed entries have a published counterpart in <code>/blog/</code>; those marked <em>redirect stub</em> are not drafts at all and exist to keep old draft links working. Every draft here wants checking; a <em>possible duplicate</em> only means a published piece shares a headline phrase or the filename's subject — often the same article, retitled on the way out; open both before deleting.</div>
     <ul>
 ${items}
     </ul>
@@ -223,8 +224,8 @@ ${items}
 </body>
 </html>
 `);
-console.log(`drafts index: ${rows.length} drafts (${rows.filter((r) => !r.live && !r.stub).length} unpublished, ${rows.filter((r) => r.lead).length} to check), ${notes} notes`);
-for (const r of rows.filter((x) => x.lead)) console.log(`  check: ${r.file} ~ ${r.lead.file} — ${r.why}`);
+console.log(`drafts index: ${rows.length} drafts (${rows.filter((r) => !r.live && !r.stub).length} unpublished, ${rows.filter((r) => r.lead).length} possible duplicates), ${notes} notes`);
+for (const r of rows.filter((x) => x.lead)) console.log(`  possible duplicate: ${r.file} ~ ${r.lead.file} — ${r.why}`);
 
 // --- stub target check -------------------------------------------------
 // Deleting a superseded draft on 2026-09-30 broke a stub that pointed at it:
