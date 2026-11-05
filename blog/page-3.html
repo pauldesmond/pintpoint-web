@@ -150,11 +150,21 @@
     .tile-zoom { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center;
       justify-content: center; padding: 20px; background: rgba(12, 10, 8, .94); cursor: zoom-out; }
     .tile-zoom[hidden] { display: none; }
-    .tile-zoom figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-    .tile-zoom img { display: block; width: auto; height: auto; max-width: min(94vw, 1100px);
-      max-height: 84vh; border: 1px solid rgba(255, 255, 255, .22); }
-    .tile-zoom figcaption { font-family: var(--sans); font-size: .78rem; letter-spacing: .04em;
-      color: rgba(255, 255, 255, .82); text-align: center; max-width: 46ch; line-height: 1.5; }
+    /* The box is sized, not the picture. The tile's own cut goes in first and
+       the full one replaces it, and both are the same shape (sips -Z keeps the
+       ratio), so fixing the width means the swap changes sharpness and nothing
+       else. Sizing the img instead made it open at the cut's own 240px and
+       then jump. Every rule here also has to out-specify pintpress-feature.css,
+       which styles figures for articles: a caption rule with a top border, an
+       img rule at width 100% with an outline, and a float:right above 1000px
+       that would have put this overlay in a narrow right-hand column. */
+    .tile-zoom figure { margin: 0; float: none; width: min(94vw, 84vh, 1100px);
+      display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .tile-zoom figure img { display: block; width: 100%; height: auto; max-height: 84vh;
+      outline: none; border: 1px solid rgba(255, 255, 255, .22); }
+    .tile-zoom figcaption { margin: 0; padding: 0; border-top: 0; font-family: var(--sans);
+      font-size: .78rem; letter-spacing: .04em; color: rgba(255, 255, 255, .82);
+      text-align: center; max-width: 46ch; line-height: 1.5; }
     .tile-zoom .dismiss { display: block; margin-top: 2px; font-size: .68rem; letter-spacing: .12em;
       text-transform: uppercase; color: rgba(255, 255, 255, .5); }
     .t1 { grid-column: span 4; grid-row: span 2; }
