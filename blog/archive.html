@@ -142,6 +142,21 @@
     .shelf-tile { display: block; border: 1px solid var(--rule); border-radius: 0; overflow: hidden; line-height: 0; }
     .shelf-tile:hover, .shelf-tile:focus-visible { border-color: var(--amber-ink); outline: none; }
     .shelf-tile img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+    /* Long-press a cover to see the art at its own size. The shelf cuts tiles
+       to 960, 480 and 240 wide, which is enough to recognise a cover and not
+       enough to read one, and the type is half the point of these. The callout
+       has to go or iOS answers the press with its own share sheet first. */
+    .shelf-tile { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+    .tile-zoom { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center;
+      justify-content: center; padding: 20px; background: rgba(12, 10, 8, .94); cursor: zoom-out; }
+    .tile-zoom[hidden] { display: none; }
+    .tile-zoom figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .tile-zoom img { display: block; width: auto; height: auto; max-width: min(94vw, 1100px);
+      max-height: 84vh; border: 1px solid rgba(255, 255, 255, .22); }
+    .tile-zoom figcaption { font-family: var(--sans); font-size: .78rem; letter-spacing: .04em;
+      color: rgba(255, 255, 255, .82); text-align: center; max-width: 46ch; line-height: 1.5; }
+    .tile-zoom .dismiss { display: block; margin-top: 2px; font-size: .68rem; letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(255, 255, 255, .5); }
     .t1 { grid-column: span 4; grid-row: span 2; }
     .t2 { grid-column: span 2; }
     .t3 { grid-column: span 1; }
@@ -734,6 +749,112 @@
       var next = shelf.hidden ? false : true;
       apply(next);
       try { localStorage.setItem('pintpress-shelf-view', next ? 'titles' : 'pictures'); } catch (e) {}
+    });
+  })();
+  </script>
+  <script>
+  // Press and hold a cover to see the art full size. Tap still opens the post,
+  // which is the reason this is a hold and not a tap: the tile already has a
+  // job. The pages after the first have no shelf, and this does nothing there.
+  (function () {
+    var shelf = document.querySelector('.shelf');
+    if (!shelf || !shelf.querySelector) return;
+
+    var HOLD = 420;   // long enough not to fire on a slow tap
+    var SLOP = 12;    // a press that travels this far was a scroll
+    var timer = null, opened = false, fromTouch = false, startX = 0, startY = 0;
+    var box = null, pic = null, cap = null, lastFocus = null;
+
+    function build() {
+      box = document.createElement('div');
+      box.className = 'tile-zoom';
+      box.hidden = true;
+      box.setAttribute('role', 'dialog');
+      box.setAttribute('aria-modal', 'true');
+      box.setAttribute('aria-label', 'Cover, full size');
+      box.tabIndex = -1;
+      var fig = document.createElement('figure');
+      pic = document.createElement('img');
+      pic.alt = '';
+      cap = document.createElement('figcaption');
+      fig.appendChild(pic);
+      fig.appendChild(cap);
+      box.appendChild(fig);
+      document.body.appendChild(box);
+      box.addEventListener('click', close);
+    }
+
+    function open(tile) {
+      if (!box) build();
+      var small = tile.querySelector('img');
+      var full = tile.getAttribute('data-full');
+      var title = tile.getAttribute('aria-label') || tile.getAttribute('title') || '';
+      // The tile's own cut is already decoded, so it paints at once and the
+      // full one replaces it when it arrives. Nobody watches a dark rectangle.
+      pic.src = (small && (small.currentSrc || small.src)) || full || '';
+      pic.alt = title;
+      if (full && full !== pic.getAttribute('src')) {
+        var big = new Image();
+        big.onload = function () { if (!box.hidden) pic.src = full; };
+        big.src = full;
+      }
+      cap.textContent = title;
+      var hint = document.createElement('span');
+      hint.className = 'dismiss';
+      hint.textContent = 'Tap anywhere to close';
+      cap.appendChild(hint);
+      lastFocus = document.activeElement;
+      box.hidden = false;
+      document.documentElement.style.overflow = 'hidden';
+      box.focus();
+    }
+
+    function close() {
+      if (!box || box.hidden) return;
+      box.hidden = true;
+      document.documentElement.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function cancel() { clearTimeout(timer); timer = null; }
+
+    function tileFrom(node) {
+      while (node && node !== shelf) {
+        if (node.classList && node.classList.contains('shelf-tile')) return node;
+        node = node.parentNode;
+      }
+      return null;
+    }
+
+    shelf.addEventListener('pointerdown', function (e) {
+      var tile = tileFrom(e.target);
+      if (!tile) return;
+      fromTouch = e.pointerType !== 'mouse';
+      opened = false;
+      startX = e.clientX;
+      startY = e.clientY;
+      cancel();
+      timer = setTimeout(function () { opened = true; open(tile); }, HOLD);
+    });
+    shelf.addEventListener('pointermove', function (e) {
+      if (!timer) return;
+      if (Math.abs(e.clientX - startX) > SLOP || Math.abs(e.clientY - startY) > SLOP) cancel();
+    });
+    shelf.addEventListener('pointerup', cancel);
+    shelf.addEventListener('pointercancel', cancel);
+    shelf.addEventListener('pointerleave', cancel);
+
+    // The press that opened the zoom must not also follow the link.
+    shelf.addEventListener('click', function (e) {
+      if (!opened) return;
+      e.preventDefault();
+      opened = false;
+    });
+    // Suppressed for touch only. A right-click on a desktop keeps its menu.
+    shelf.addEventListener('contextmenu', function (e) { if (fromTouch) e.preventDefault(); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.key === 'Esc') close();
     });
   })();
   </script>

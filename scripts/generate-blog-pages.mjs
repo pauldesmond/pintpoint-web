@@ -340,7 +340,12 @@ function shelfHtml(picks) {
       ? `<source type="image/webp" srcset="${webp}" />` : '';
     const img = `<img src="${jpg}" alt="${attr(p.title)}" loading="${i === 0 ? 'eager' : 'lazy'}" ` +
       `decoding="async" width="${w}" height="${w}" />`;
-    const data = ` data-date="${attr(p.when)}" data-cat="${attr(p.cat)}" data-excerpt="${attr(p.excerpt)}"`;
+    // data-full is the cover at its own size. The tiles are cut down to 960,
+    // 480 and 240 wide, which is enough to recognise a cover and not enough to
+    // read one, and the type is half the point of these. Long-pressing a tile
+    // loads this instead; nothing fetches it until someone asks.
+    const data = ` data-date="${attr(p.when)}" data-cat="${attr(p.cat)}" data-excerpt="${attr(p.excerpt)}"` +
+      ` data-full="${attr(p.img)}"`;
     return `        <a class="shelf-tile ${t}" href="${p.href}" title="${attr(p.title)}" aria-label="${attr(p.title)}"${data}>` +
       (source ? `<picture>${source}${img}</picture>` : img) + `</a>`;
   }).join('\n');
