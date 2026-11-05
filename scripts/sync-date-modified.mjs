@@ -24,7 +24,7 @@
 //   node scripts/sync-date-modified.mjs --check    # report only, exit 1 if stale
 //   node scripts/sync-date-modified.mjs blog/x.html [...]   # limit to some files
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, basename } from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 
@@ -62,12 +62,24 @@ const bodyHash = src => {
 };
 
 const DM = /("dateModified"\s*:\s*")([0-9]{4}-[0-9]{2}-[0-9]{2})(")/;
+// Written whole by generate-blog-pages.mjs, so never have a field inserted.
+const GENERATED = /^(index|archive|page-\d+)\.html$/;
 const DP = /"datePublished"\s*:\s*"([0-9]{4}-[0-9]{2}-[0-9]{2})"/;
 
 const BLOG = join(ROOT, 'blog');
 const targets = (ARGS.length ? ARGS : readdirSync(BLOG).filter(f => f.endsWith('.html')).map(f => `blog/${f}`))
   .filter(f => existsSync(join(ROOT, f)))
-  .filter(f => DM.test(readFileSync(join(ROOT, f), 'utf8')));
+  .filter(f => {
+    const src = readFileSync(join(ROOT, f), 'utf8');
+    // A page with neither field has no JSON-LD dates at all and is not ours to
+    // touch. A page with datePublished and no dateModified used to be skipped
+    // here, which left its edits invisible to the sitemap's freshness signal.
+    // It is taken now, UNLESS generate-blog-pages.mjs writes the file whole,
+    // in which case an inserted field is wiped at the next build and the fix
+    // belongs in that generator instead.
+    if (DM.test(src)) return true;
+    return DP.test(src) && !GENERATED.test(basename(f));
+  });
 
 // One `git log --raw` per file gives every commit that touched it along with the
 // blob it left behind; one `git cat-file --batch` then streams all of those
@@ -107,7 +119,7 @@ if (wanted.size) {
 const rows = [];
 for (const f of targets) {
   const src = readFileSync(join(ROOT, f), 'utf8');
-  const stored = DM.exec(src)[2];
+  const stored = DM.exec(src)?.[2] ?? null;
   const published = DP.exec(src)?.[1];
   const commits = history.get(f) ?? [];
   const hashes = commits.map(c => (blobs.has(c.blob) ? bodyHash(blobs.get(c.blob)) : null));
@@ -127,10 +139,18 @@ for (const f of targets) {
 }
 
 for (const { f, stored, date } of rows) {
-  console.log(`${CHECK ? '•' : '→'} ${f}: ${stored} → ${date}`);
+  console.log(`${CHECK ? '\u2022' : '\u2192'} ${f}: ${stored === null ? 'no field' : stored} \u2192 ${date}`);
   if (CHECK) continue;
   const p = join(ROOT, f);
-  writeFileSync(p, readFileSync(p, 'utf8').replace(DM, `$1${date}$3`));
+  const src = readFileSync(p, 'utf8');
+  if (stored === null) {
+    // Insert after datePublished, matching its indentation, once.
+    writeFileSync(p, src.replace(
+      /([ \t]*)"datePublished"\s*:\s*"[0-9]{4}-[0-9]{2}-[0-9]{2}",/,
+      (m, indent) => `${m}\n${indent}"dateModified": "${date}",`));
+  } else {
+    writeFileSync(p, src.replace(DM, `$1${date}$3`));
+  }
 }
 
 console.log(`${rows.length} of ${targets.length} page(s) ${CHECK ? 'stale' : 'updated'}.`);
