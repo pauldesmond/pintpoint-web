@@ -39,13 +39,12 @@ Three things on other pages, none of which anything will flag:
    bare text where parts one and two are links, and L95 still reads
    `Part three · Friday 6 November · to come`. Link the heading and drop the
    `· to come`.
-3. `blog/drafts/the-first-friday-of-christmas.html` L78 reports what Untappd's
-   page for Tuborg Julebryg showed when it was read: check-ins running back a
-   fortnight before the start time, from Reykjavík, Sweden, the Helsinki to
-   Tallinn ferry and Copenhagen. It is written in the present tense with no
-   read date, and J-dag fires at 20:59 that evening, so by the time most people
-   read the post it will describe a feed that no longer looks like that. Either
-   date the observation in the line or restate it before it goes out.
+3. ~~The Untappd line in `the-first-friday-of-christmas.html`.~~ **Done on
+   5 November** (34dcbd7). The page was read again that morning and the line
+   now dates the observation: twenty check-ins back to 28 October, none of them
+   British, named by the venues the page prints. It stays true after J-dag
+   fires at 20:59 on the 6th, because it says when it was read. If the post
+   slips past this week, read the page again and restate it.
 
 Both anchor edits are body edits, so `sync-date-modified.mjs` will move
 `dateModified` on Lewes and on Trinity to 6 November. That is correct.
