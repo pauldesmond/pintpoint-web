@@ -61,7 +61,10 @@ const bodyHash = src => {
   return createHash('sha1').update(body).digest('hex');
 };
 
-const DM = /("dateModified"\s*:\s*")([0-9]{4}-[0-9]{2}-[0-9]{2})(")/;
+// The value may be a bare date or a full ISO timestamp. Matching only the
+// bare form once made a timestamped page look like it had no field at all,
+// and it was given a second one in the same object.
+const DM = /("dateModified"\s*:\s*")([0-9]{4}-[0-9]{2}-[0-9]{2})(?:T[0-9:.+\-Z]*)?(")/;
 // Written whole by generate-blog-pages.mjs, so never have a field inserted.
 const GENERATED = /^(index|archive|page-\d+)\.html$/;
 const DP = /"datePublished"\s*:\s*"([0-9]{4}-[0-9]{2}-[0-9]{2})"/;
