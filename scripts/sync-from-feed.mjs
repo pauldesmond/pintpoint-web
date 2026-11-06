@@ -112,12 +112,20 @@ function syncSitemap(items) {
   const isBlog = (e) => /^https:\/\/pintpoint\.co\.uk\/blog\//.test(locOf(e));
 
   // The feed is NOT the full list of blog URLs, and treating it as one costs
-  // real pages. Quiet-published posts are deliberately kept out of feed.xml
-  // while staying indexable — that is the whole taxonomy — so rebuilding the
-  // block from the feed alone silently dropped eight live URLs on the first
-  // test of this rewrite, including oktoberfest-first-giant-tent.html,
-  // quiet-published the day before. De-indexing a page is worse than the
-  // duplicate bug this function was being fixed for.
+  // real pages: rebuilding the block from the feed alone silently dropped
+  // eight live URLs on the first test of this rewrite. De-indexing a page is
+  // worse than the duplicate bug this function was being fixed for.
+  //
+  // 2026-11-06: quiet-published POSTS are no longer among the absentees.
+  // Paul: "We don't publicize on socials but they deserve an rss spot." So
+  // the taxonomy is now skip-the-socials, not skip-the-feed, and the six that
+  // were outside it — the two J-dag companions, tegernseer-on-draught-uk,
+  // oktoberfest-first-giant-tent and the two Loaded reference pages — are in.
+  //
+  // What legitimately stays out is everything that is not a post: archive.html,
+  // page-N.html, the series hubs, pick-the-right-pint, the Radio City venue
+  // list, and any piece deliberately held (ACE until 9 November). Those are
+  // what this preservation block is protecting now.
   //
   // So: refresh from the feed where the feed knows the post, and preserve any
   // existing blog URL it does not.
