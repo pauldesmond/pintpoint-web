@@ -15,7 +15,12 @@
 #   - Shows the working-tree diff for sanity check
 #   - Asks for a commit message (defaults to "blog: publish <newest slug>")
 #   - git add -A && commit && push
-#   - Pings IndexNow with the new blog URL so Bing/Yandex re-crawl fast
+#   - Waits for the Pages build, confirms the URL serves the article, and only
+#     THEN pings IndexNow (see the long note at step 7 for why that order)
+#
+# RUNTIME: this can now sit for several minutes at step 7, waiting on the Pages
+# build and the edge. That wait is deliberate. If you run it from a tool with a
+# short command timeout, give it ten minutes or run it in the background.
 
 set -euo pipefail
 
@@ -233,10 +238,95 @@ git add -A
 git commit -m "blog: publish ${NEW_SLUG}"
 git push
 
-# 7. IndexNow ping for the new URL + the blog index
-echo
-echo "→ Pinging IndexNow..."
-./scripts/indexnow.sh "${NEW_URL}" "https://pintpoint.co.uk/blog/" || echo "  (IndexNow ping failed; not fatal)"
+# 7. IndexNow, but only once the URL actually serves the article.
+#
+# This used to fire the instant `git push` returned. Bing and Yandex then
+# fetched a URL GitHub Pages had not finished building, got a 404, and
+# Cloudflare stored it at the edge. On 6 November 2026 the J-dag post served a
+# cached 404 for about three minutes after its own build reported `built`,
+# `cf-cache-status: HIT` with GitHub's request id replayed on every retry,
+# while its companion in the same commit, which nothing had asked for early,
+# served 200 straight away. No human requested that URL early. This script did.
+#
+# So the order is now: build confirmed, edge given a moment, page confirmed to
+# return 200 AND to carry its own canonical, and only then the ping. If the
+# deploy has not caught up inside the budget, the ping is skipped and said so
+# out loud with the command to run by hand. A late ping costs a day of crawl
+# latency. An early one costs a cached 404 on a brand new post.
+#
+# The EDGE_GRACE sleep is the load-bearing part and the easiest to delete by
+# mistake: after `built`, the bytes are not necessarily at the edge yet, so the
+# FIRST request is the one that can cache the 404. Making that first request
+# ourselves, promptly, is the bug, not the fix.
+
+PAGES_REPO="$(git remote get-url origin | sed -E 's#^.*github\.com[:/]##; s#\.git$##')"
+PUSHED_SHA="$(git rev-parse HEAD)"
+BUILD_BUDGET=240   # seconds to wait for Pages to report `built` for our commit
+EDGE_GRACE=120     # seconds after `built` before the first request
+SERVE_BUDGET=240   # seconds to wait for the URL to serve the article
+
+ping_deferred() {
+  echo
+  echo "⚠️  IndexNow NOT pinged: $1"
+  echo "   The post is committed and pushed. Only the search-engine ping is outstanding,"
+  echo "   and it is deliberately not being sent blind: that is what cached a 404 before."
+  echo "   Once ${NEW_URL} loads in a browser, run:"
+  echo "     ./scripts/indexnow.sh \"${NEW_URL}\" \"https://pintpoint.co.uk/blog/\""
+}
 
 echo
-echo "✅ Published. Live at ${NEW_URL} in 1–2 min (GitHub Pages build)."
+echo "→ Waiting for the GitHub Pages build of ${PUSHED_SHA:0:7} (up to ${BUILD_BUDGET}s)..."
+BUILD_OK=0
+if command -v gh >/dev/null 2>&1; then
+  WAITED=0
+  while [[ "${WAITED}" -lt "${BUILD_BUDGET}" ]]; do
+    STATUS="$(gh api "repos/${PAGES_REPO}/pages/builds/latest" --jq '.status + " " + .commit' 2>/dev/null || true)"
+    if [[ "${STATUS}" == "built ${PUSHED_SHA}" ]]; then BUILD_OK=1; break; fi
+    sleep 15
+    WAITED=$(( WAITED + 15 ))
+  done
+fi
+
+if [[ "${BUILD_OK}" -ne 1 ]]; then
+  if command -v gh >/dev/null 2>&1; then
+    ping_deferred "the Pages build for ${PUSHED_SHA:0:7} did not report \`built\` within ${BUILD_BUDGET}s"
+  else
+    ping_deferred "gh is not on PATH, so the Pages build could not be confirmed"
+  fi
+else
+  echo "  ✓ built"
+  echo "→ Giving the edge ${EDGE_GRACE}s before the first request. Asking too early is"
+  echo "  what caches the 404, so this wait is the whole point of the reordering."
+  sleep "${EDGE_GRACE}"
+
+  echo "→ Checking ${NEW_URL} returns 200 and carries the article..."
+  BODY_TMP="$(mktemp)"
+  trap 'rm -f "${BODY_TMP}"' EXIT
+  EXPECT="rel=\"canonical\" href=\"${NEW_URL}\""
+  SERVE_OK=0
+  WAITED=0
+  while [[ "${WAITED}" -lt "${SERVE_BUDGET}" ]]; do
+    CODE="$(curl -sS -A 'PINtPOINT publish check (pintpoint.co.uk)' --max-time 20 \
+              -o "${BODY_TMP}" -w '%{http_code}' "${NEW_URL}" 2>/dev/null || true)"
+    if [[ "${CODE}" == "200" ]] && grep -qF "${EXPECT}" "${BODY_TMP}"; then SERVE_OK=1; break; fi
+    sleep 20
+    WAITED=$(( WAITED + 20 ))
+  done
+
+  if [[ "${SERVE_OK}" -eq 1 ]]; then
+    echo "  ✓ 200, and the served page carries its own canonical"
+    echo
+    echo "→ Pinging IndexNow..."
+    ./scripts/indexnow.sh "${NEW_URL}" "https://pintpoint.co.uk/blog/" || echo "  (IndexNow ping failed; not fatal)"
+  else
+    ping_deferred "${NEW_URL} did not serve the article within ${SERVE_BUDGET}s of the build (last status: ${CODE:-none})"
+  fi
+fi
+
+echo
+if [[ "${SERVE_OK:-0}" -eq 1 ]]; then
+  echo "✅ Published and live at ${NEW_URL}, IndexNow pinged."
+else
+  echo "✅ Published and pushed: ${NEW_URL}"
+  echo "   Live once the Pages build lands. IndexNow still to send, see above."
+fi
