@@ -125,15 +125,23 @@ if ! node "$(dirname "$0")/sync-faq-jsonld.mjs" --check "${POST_FILE%/*}/.." >/d
   GUARD_FAIL=1
 fi
 
-# 6. The dates in the JSON-LD. A draft written against a future publication
+# 6. The dates in the JSON-LD. The `|| true` on both of these is load-bearing:
+#    under `set -o pipefail` a page with no dateModified yet makes the final
+#    grep exit 1, which `set -e` turned into a silent abort of the whole script
+#    right here, after the guards had passed and before anything was printed.
+#    A brand-new post has no dateModified until sync-date-modified.mjs runs,
+#    which is forty lines below this, so every first publish hit it. Found on
+#    6 November 2026 publishing the J-dag pair.
+#
+#    A draft written against a future publication
 #    date keeps it on promotion, and the draft-meta guard above never looked:
 #    the ESB piece went live carrying datePublished 2026-11-21, a month ahead,
 #    and same-steel-as-the-wiesn is sitting on 19 November right now. A future
 #    date tells Google the page has not happened yet. dateModified earlier than
 #    datePublished is the same class of nonsense and is cheap to catch here.
 TODAY="$(date -u +%Y-%m-%d)"
-DP="$(grep -o '"datePublished"[[:space:]]*:[[:space:]]*"[0-9-]\{10\}"' "${POST_FILE}" | head -1 | grep -o '[0-9-]\{10\}')"
-DM="$(grep -o '"dateModified"[[:space:]]*:[[:space:]]*"[0-9-]\{10\}"' "${POST_FILE}" | head -1 | grep -o '[0-9-]\{10\}')"
+DP="$(grep -o '"datePublished"[[:space:]]*:[[:space:]]*"[0-9-]\{10\}"' "${POST_FILE}" | head -1 | grep -o '[0-9-]\{10\}' || true)"
+DM="$(grep -o '"dateModified"[[:space:]]*:[[:space:]]*"[0-9-]\{10\}"' "${POST_FILE}" | head -1 | grep -o '[0-9-]\{10\}' || true)"
 if [[ -n "${DP}" && "${DP}" > "${TODAY}" ]]; then
   echo "❌ Date guard failed: datePublished ${DP} is in the future (today is ${TODAY})."
   echo "   A future date tells Google the page has not happened yet."

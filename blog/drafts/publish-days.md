@@ -1,6 +1,6 @@
 # Publish days: November 2026
 
-Four drafts are closed and dated. This is the list of what a human has to do on
+Two drafts are closed and dated. This is the list of what a human has to do on
 each day that `scripts/publish-blog.sh` will not do and will not warn about.
 
 Delete a date from this file once it is out, and delete the file when the last
@@ -13,41 +13,6 @@ robots meta or any `/blog/drafts/` URL, and prints the offending lines. So the
 mechanical half of every promotion below is enforced rather than remembered.
 It does not check the publish date, the meta line, relative paths, or anything
 on another page.
-
----
-
-## Friday 6 November
-
-Two posts, the J-dag pair.
-
-- `blog/drafts/winter-is-not-christmas.html` → `/blog/`
-  - L6 `noindex` out, L10 canonical to `/blog/`. og:url and both JSON-LD urls
-    already read `/blog/`.
-- `blog/drafts/the-first-friday-of-christmas.html` → `/blog/`
-  - L6 `noindex` out, L10 canonical to `/blog/`. Same: the rest already read
-    `/blog/`.
-
-Three things on other pages, none of which anything will flag:
-
-1. Three pages carry
-   `<!-- LINK ON 6 NOV: /blog/the-first-friday-of-christmas.html -->` against an
-   unlinked **Part 3**: `blog/lewes-voice-of-the-fire.html`,
-   `blog/unholy-trinity.html` and `blog/green-man-and-season-of-the-witch.html`.
-   Wrap the name in that anchor on each. Grep for the comment rather than
-   trusting this list.
-2. `blog/unholy-trinity.html` L94-98, the Part three card. The heading at L96 is
-   bare text where parts one and two are links, and L95 still reads
-   `Part three · Friday 6 November · to come`. Link the heading and drop the
-   `· to come`.
-3. ~~The Untappd line in `the-first-friday-of-christmas.html`.~~ **Done on
-   5 November** (34dcbd7). The page was read again that morning and the line
-   now dates the observation: twenty check-ins back to 28 October, none of them
-   British, named by the venues the page prints. It stays true after J-dag
-   fires at 20:59 on the 6th, because it says when it was read. If the post
-   slips past this week, read the page again and restate it.
-
-Both anchor edits are body edits, so `sync-date-modified.mjs` will move
-`dateModified` on Lewes and on Trinity to 6 November. That is correct.
 
 ---
 
