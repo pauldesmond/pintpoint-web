@@ -169,6 +169,28 @@ Burkhart. Do not date that trip from it.
   27 dray horses from the **Ram Brewery, Wandsworth** in the 1870s.
 - **J-dag**: horse-drawn wagons in blue finery leave the Tuborg brewery
   for the pubs of Copenhagen.
+- **The White Cross, Richmond** runs its own, and it is the bigger of the
+  two mornings. Its 2026 listing: **35th Annual Winter Warmer**, Friday 23
+  October, **08:00 to midday**, sittings at eight, ten and twelve, “a
+  homemade breakfast accompanied by Morris Dancers, Cockney Carol Singers,
+  and the Dray Horses”. The dray comes along the towpath; the singing is
+  Carradine’s Cockney Sing-a-long at an upright piano, under a banner
+  promising a good old-fashioned kneesup.
+
+  The count: **35th in 2026**, so the first was **1992**, twenty-one years
+  after the beer. Squares with Young’s video calling 2024 the 33rd and the
+  trade press calling 2016 the 25th.
+
+  NOT sourced, and kept out of the published piece: that these two pubs are
+  the only places in the country to get the beer first. It was in the
+  pre-split draft; find it in Young’s own words or leave it out.
+
+  This paragraph has now been lost twice: once when I cut the carol singers
+  because a text scrape could not see them (restored in 289c3e7 on Paul’s
+  say-so), and once at the 25 October split (63eaf1f), where everything after
+  the Lamb Tavern’s name landed in neither half. Paul noticed the second
+  one on publication day. It is written down here so there is no third time.
+
 - **The Ram Brewery is where Maytag's October 1975 tour began** — John
   Young and his head brewer were the first visit of the trip (Burkhart
   p.138).
