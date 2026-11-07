@@ -36,7 +36,7 @@ What is PINtPOINT?
 PINtPOINT is a beer-first pub discovery app that shows you what is actually on tap before you arrive. A live radar ranks nearby venues by what they are pouring right now, filterable by beer style, so every suggestion is already relevant to the kind of pint you want next. Less bimble, more pint. Currently tracking
 7,100+ venues across
 81 countries, with
-26,000+ beers matched to tap lists.
+26,500+ beers matched to tap lists.
 
 Most beer apps help you remember what you drank. PINtPOINT helps you decide what to drink next.
 
@@ -76,7 +76,7 @@ Filter by what you actually drink — West Coast IPA, Bitter, Hazy Pale — so e
 
 Ghost Pubs
 
-765 pubs that called last orders for good, many with the photograph and the story of what happened. Build a crawl from the 1983 CAMRA guide and walk what's left.
+766 pubs that called last orders for good, many with the photograph and the story of what happened. Build a crawl from the 1983 CAMRA guide and walk what's left.
 
 Recently spotted.
 
@@ -96,7 +96,7 @@ Coverage
 
 Europe Barcelona, Berlin, London, Prague
 
-5,700+ venues · 18,900+ beers
+5,800+ venues · 19,400+ beers
 
 North America Nashville, New York, San Diego
 
@@ -110,7 +110,7 @@ Asia Singapore, Tokyo
 
 300+ venues · 500+ beers
 
-26,000+ Beers · 7,100+ Venues · 81 Countries and growing
+26,500+ Beers · 7,100+ Venues · 81 Countries and growing
 
 Browse recent venues →
 
@@ -1683,22 +1683,6 @@ London
 
 -
 
-Harp
-
-London
-
-›
-
--
-
-The Wenlock Arms
-
-London
-
-›
-
--
-
 Ye Grapes
 
 London
@@ -1707,47 +1691,7 @@ London
 
 -
 
-La Roma Brewing
-
-Mexico City
-
-›
-
--
-
-White Horse
-
-Atherstone
-
-›
-
--
-
-The Shakespeare
-
-Birmingham
-
-›
-
--
-
-Head of Steam Birmingham
-
-Birmingham
-
-›
-
--
-
-The Briar Rose
-
-Birmingham
-
-›
-
--
-
-Williamson's Tavern
+The Lamb
 
 London
 
@@ -1755,65 +1699,121 @@ London
 
 -
 
-Brentwood Brewery Company
+The Bell
 
-Brentwood
-
-›
-
--
-
-Hand & Marigold
-
-London
+Ingatestone
 
 ›
 
 -
 
-Oyster Shed
+The Tuppenny
 
-London
-
-›
-
--
-
-The Clapham Tap
-
-London
+Swindon
 
 ›
 
 -
 
-Bacchus Bar
+The Wine Bar - Highworth
 
-Birmingham
-
-›
-
--
-
-Lord Aberconway
-
-London
+Swindon
 
 ›
 
 -
 
-The Little Owl
+3 Sons Brewing Co.
 
-Solihull
+Dania Beach
 
 ›
 
 -
 
-Coach and Horses
+The Bottle Kiln
 
-Norwich
+Harwich
+
+›
+
+-
+
+The Plough Inn
+
+Swindon
+
+›
+
+-
+
+The Royal Oak Inn
+
+Harwich
+
+›
+
+-
+
+The Drink Valley Old Town
+
+Swindon
+
+›
+
+-
+
+Great Baddow Barn
+
+Chelmsford
+
+›
+
+-
+
+BrewDog Tallinn
+
+Tallinn
+
+›
+
+-
+
+The Golden Pheasant Inn
+
+Burford
+
+›
+
+-
+
+The Hop Inn
+
+Swindon
+
+›
+
+-
+
+Firtallet
+
+København
+
+›
+
+-
+
+Klods Hans
+
+Copenhagen
+
+›
+
+-
+
+The Pulpit
+
+Swindon
 
 ›
 
@@ -5753,7 +5753,7 @@ THAMES A, the plate from House’s maroon Monte Carlo, bought new in San Francis
 
 Bulmers already had an American importer for Strongbow and Woodpecker. So House went to Taunton.
 
-There were two ciders to choose from. Thames America picked Taunton’s medium Special Vat and sold it as Blackthorn, judging the Dry too dry for American drinkers. Ken Vermes, writing in the trade press at the end of the nineties, counted the Taunton ciders as the first imported draught ciders sold in the United States. Woodpecker and Strongbow were on draught before Blackthorn.
+There were two ciders to choose from. Thames America picked Taunton’s medium dry Special Vat and sold it in America as Blackthorn Dry. The UK Dry Blackthorn, they thought at the time, was too dry for American palates. Ken Vermes, writing in the trade press at the end of the nineties, counted the Taunton ciders as the first imported draught ciders sold in the United States. Woodpecker and Strongbow were on draught before Blackthorn.
 
 Where a bar or a pub said it had no cooler space for cider, Taunton would provide one of about fifty glycol electric chillers. Blackthorn went on one spigot and London Pride on the other. In time there were around a hundred taps, and two to three hundred 50-litre kegs a month.
 
@@ -5823,7 +5823,7 @@ House counts the range as the thing that set ACE apart, and he was early to most
 
 House with ACE Pumpkin, which arrived in 2010, at the second Ace in the Hole, on Gravenstein Highway, in October 2020.
 
-From 70,000 case equivalents in 1997, he puts sales at 1.3 million a year by the time he sold. ACE reached every state, he says, New Hampshire last of all, and ten countries beyond America. He had been debt free since 2015 and growing at close to twenty per cent a year, with about sixty people on the payroll and, he counts, eleven consecutive hot brand of the year awards from Impact.
+From 70,000 case equivalents in 1997, he puts sales at 1.3 million a year by the time he sold. ACE reached every state, he says, New Hampshire last of all, and ten countries beyond America. He had been debt free since 2015 and growing at close to twenty per cent a year, with about sixty people on the payroll and, he counts, eleven consecutive Hot Brand of the Year awards from Impact.
 
 Some of that rise came on other companies’ marketing budgets. House says he encouraged Jim Koch of Boston Beer into cider. Angry Orchard went national in April 2012. That October, Woodchuck of Vermont’s owners agreed to sell to C&C, which owns Magners, for $305 million, and House reckons they got out at the right moment. By the following summer Angry Orchard had passed Woodchuck as the brand leader.
 
@@ -5851,7 +5851,7 @@ House at the ACE tap in October 2020, thirteen months before he sold the company
 
 Vintage Wine Estates went into bankruptcy in 2024 and ACE went to auction. House tried to buy it back. He told the Press Democrat in August 2024 that he was not doing it for the money but for his legacy, and that he did not want to see thirty years of work go down the tubes. He bid alongside Playa Capital and stopped at $7.185 million, the paper reported, and the sale order records the winning bid at $7.63 million from two Lipton family companies, Ace Cider I and Cider Leasing. House says he held the lead bidder’s position until the final hour of the final day, and that the family who outbid him, Anheuser-Busch wholesalers from Ohio, were buying the business for their daughters and son. Reva Lipton signed as president of Ace Cider I, and her sister Gila Lipton Blum is president of ACE today.
 
-They hired him. He went back as general manager for about eight months, restarting and rebuilding what he had built.
+They hired him. He went back as general manager for about eight months, restarting and rebuilding what he had built after a hundred and twenty days of no production, zero credit terms, and lost shelf space and distribution, with the brand and the legacy close to destroyed.
 
 It is still made in Sebastopol. The name on the tap is the one he chose in 1993.
 
