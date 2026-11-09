@@ -180,7 +180,7 @@ function filterBar(cards) {
  * take the line out on the day the piece is announced.
  */
 const HELD = new Map([
-  ['ace-the-importer-who-became-a-maker.html', 'announced the week of 9 November 2026'],
+  ['a-cider-of-his-own.html', 'announced the week of 9 November 2026'],
 ]);
 
 function collectCards() {
