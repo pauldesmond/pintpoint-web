@@ -180,7 +180,8 @@ function filterBar(cards) {
  * take the line out on the day the piece is announced.
  */
 const HELD = new Map([
-  ['a-cider-of-his-own.html', 'announced the week of 9 November 2026'],
+  // Empty: the ACE piece was announced on 9 November 2026 and takes its
+  // place on the shelf like any other post.
 ]);
 
 function collectCards() {
