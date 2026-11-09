@@ -149,7 +149,15 @@ const rows = readdirSync(DRAFTS)
         }
       }
     }
-    return { file: f, title, live, lead, why, stub, target, targetTitle, mtime: statSync(join(DRAFTS, f)).mtime };
+    // The headline is not always enough to find a piece by its subject.
+    // "The biggest launch in a generation" is the London Pride Unfiltered
+    // article, and Paul read this index twice on 9 Nov 2026 looking for
+    // Unfiltered without spotting it. The meta description names the
+    // subject in its first clause, so it is the line that makes a row
+    // findable.
+    const dm = src.match(/<meta\s+name=["']description["']\s+content=["']([\s\S]*?)["']\s*\/?>/i);
+    const blurb = dm ? decode(dm[1]).replace(/\s+/g, ' ').trim() : '';
+    return { file: f, title, blurb, live, lead, why, stub, target, targetTitle, mtime: statSync(join(DRAFTS, f)).mtime };
   })
   .sort((a, b) => b.mtime - a.mtime);
 
@@ -170,11 +178,18 @@ const items = rows.map((r) => {
       ? (r.live.how === 'file' ? 'published' : `published as ${r.live.at}`)
       : '';
   const note = r.lead
-    ? `possible duplicate: may already be published as ${r.lead.file}, ${r.why}`
+    ? `<b>possible duplicate:</b> may already be published as ${r.lead.file}, ${r.why}`
     : '';
+  const CLIP = 150;
+  const blurb = r.stub || !r.blurb
+    ? ''
+    : r.blurb.length > CLIP
+      ? r.blurb.slice(0, r.blurb.lastIndexOf(' ', CLIP)) + '\u2026'
+      : r.blurb;
   return `      <li${r.stub || r.live ? ' class="live"' : r.lead ? ' class="check"' : ''}>
         <a href="${r.file}">${label}</a>
-        <span class="meta">edited ${fmt(r.mtime)}${meta ? ' · ' + meta : ''}</span>${note ? `
+        <span class="meta">edited ${fmt(r.mtime)}${meta ? ' · ' + meta : ''}</span>${blurb ? `
+        <span class="blurb">${esc(blurb)}</span>` : ''}${note ? `
         <span class="note">${note}</span>` : ''}
       </li>`;
 }).join('\n');
@@ -190,21 +205,22 @@ writeFileSync(join(DRAFTS, 'index.html'), `<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg:#0a0e1a; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --teal:#00d4aa; --amber:#f5a623; }
+    :root { --bg:#0a0e1a; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --teal:#00d4aa; }
     * { box-sizing:border-box; margin:0; padding:0; }
     body { font-family:'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; font-size:16px; }
     .wrap { max-width:760px; margin:0 auto; padding:48px 20px 72px; }
     h1 { font-size:1.9rem; font-weight:900; letter-spacing:-0.02em; margin-bottom:6px; }
     h1 span { color:var(--teal); }
     .sub { color:var(--muted); font-size:0.9rem; margin-bottom:28px; }
-    .warn { border-left:3px solid var(--amber); background:rgba(245,166,35,0.07); padding:12px 16px; border-radius:0 8px 8px 0; font-size:0.88rem; margin-bottom:28px; }
+    .warn { border-left:3px solid var(--border); background:rgba(255,255,255,0.04); padding:12px 16px; border-radius:0 8px 8px 0; font-size:0.88rem; margin-bottom:28px; }
     ul { list-style:none; }
     li { display:flex; flex-wrap:wrap; justify-content:space-between; gap:2px 16px; align-items:baseline; padding:11px 0; border-bottom:1px solid var(--border); }
     li a { color:var(--text); text-decoration:none; font-weight:500; }
     li a:hover { color:var(--teal); }
     li.live a { color:var(--muted); }
-    li.check .meta { color:var(--amber); }
-    .note { flex-basis:100%; color:var(--amber); font-size:0.78rem; }
+    .note { flex-basis:100%; color:var(--text); font-size:0.78rem; }
+    .note b { font-weight:700; }
+    .blurb { flex-basis:100%; color:var(--muted); font-size:0.8rem; line-height:1.45; }
     .from { color:var(--muted); font-weight:400; }
     .meta { color:var(--muted); font-size:0.78rem; white-space:nowrap; font-variant-numeric:tabular-nums; }
     footer { margin-top:32px; color:var(--muted); font-size:0.8rem; }

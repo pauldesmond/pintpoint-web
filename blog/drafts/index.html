@@ -9,21 +9,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg:#0a0e1a; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --teal:#00d4aa; --amber:#f5a623; }
+    :root { --bg:#0a0e1a; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --teal:#00d4aa; }
     * { box-sizing:border-box; margin:0; padding:0; }
     body { font-family:'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; font-size:16px; }
     .wrap { max-width:760px; margin:0 auto; padding:48px 20px 72px; }
     h1 { font-size:1.9rem; font-weight:900; letter-spacing:-0.02em; margin-bottom:6px; }
     h1 span { color:var(--teal); }
     .sub { color:var(--muted); font-size:0.9rem; margin-bottom:28px; }
-    .warn { border-left:3px solid var(--amber); background:rgba(245,166,35,0.07); padding:12px 16px; border-radius:0 8px 8px 0; font-size:0.88rem; margin-bottom:28px; }
+    .warn { border-left:3px solid var(--border); background:rgba(255,255,255,0.04); padding:12px 16px; border-radius:0 8px 8px 0; font-size:0.88rem; margin-bottom:28px; }
     ul { list-style:none; }
     li { display:flex; flex-wrap:wrap; justify-content:space-between; gap:2px 16px; align-items:baseline; padding:11px 0; border-bottom:1px solid var(--border); }
     li a { color:var(--text); text-decoration:none; font-weight:500; }
     li a:hover { color:var(--teal); }
     li.live a { color:var(--muted); }
-    li.check .meta { color:var(--amber); }
-    .note { flex-basis:100%; color:var(--amber); font-size:0.78rem; }
+    .note { flex-basis:100%; color:var(--text); font-size:0.78rem; }
+    .note b { font-weight:700; }
+    .blurb { flex-basis:100%; color:var(--muted); font-size:0.8rem; line-height:1.45; }
     .from { color:var(--muted); font-weight:400; }
     .meta { color:var(--muted); font-size:0.78rem; white-space:nowrap; font-variant-numeric:tabular-nums; }
     footer { margin-top:32px; color:var(--muted); font-size:0.8rem; }
@@ -33,53 +34,69 @@
 <body>
   <div class="wrap">
     <h1>PINtPRESS <span>drafts</span></h1>
-    <p class="sub">11 drafts · 11 unpublished · 1 possible duplicate · 0 redirect stubs · 17 working notes (not served)</p>
+    <p class="sub">12 drafts · 12 unpublished · 1 possible duplicate · 0 redirect stubs · 17 working notes (not served)</p>
     <div class="warn">Unlisted and not indexed. Behind Cloudflare Access, so only signed-in browsers can read these. Greyed entries have a published counterpart in <code>/blog/</code>; those marked <em>redirect stub</em> are not drafts at all and exist to keep old draft links working. Every draft here wants checking; a <em>possible duplicate</em> only means a published piece shares a headline phrase or the filename's subject, often the same article retitled on the way out, so open both before deleting.</div>
     <ul>
       <li>
+        <a href="london-pride-at-home.html">London Pride @home</a>
+        <span class="meta">edited 2026-11-09</span>
+        <span class="blurb">Pinter and Fuller's have put London Pride in a kit you brew on the kitchen counter, with Spark on the label. We have some friendly questions about…</span>
+      </li>
+      <li>
         <a href="the-third-thursday.html">The Third Thursday</a>
         <span class="meta">edited 2026-11-05</span>
+        <span class="blurb">Beaujolais Nouveau's release date has moved more than once since 1937 and has been the third Thursday of November since 1985. Oktoberfest began as a…</span>
       </li>
       <li>
         <a href="same-steel-as-the-wiesn.html">Same Steel as the Wiesn. Different Beer.</a>
         <span class="meta">edited 2026-11-05</span>
+        <span class="blurb">How much of Hyde Park Winter Wonderland is actually Oktoberfest? The rollercoaster is the Wiesn's own travelling steel, the hall borrows its evening,…</span>
       </li>
       <li class="check">
         <a href="beer-faults-wrong-place.html">A fault is only a fault in the wrong place</a>
         <span class="meta">edited 2026-11-05</span>
-        <span class="note">possible duplicate: may already be published as beer-recommendation-systems-what-most-get-wrong.html, same subject in the filename</span>
+        <span class="blurb">Four lists of what goes wrong in beer, written for different readers. The drinker is the one who has to taste the result, and the one who cannot tell…</span>
+        <span class="note"><b>possible duplicate:</b> may already be published as beer-recommendation-systems-what-most-get-wrong.html, same subject in the filename</span>
       </li>
       <li>
         <a href="beer-faults-drinkers-list.html">What’s wrong with my pint?</a>
         <span class="meta">edited 2026-11-05</span>
+        <span class="blurb">Fifteen things that can be wrong with a pint, what causes each one, when it is supposed to be there, and which of them you can do anything about.</span>
       </li>
       <li>
         <a href="biggest-launch-in-a-generation.html">The biggest launch in a generation</a>
         <span class="meta">edited 2026-11-05</span>
+        <span class="blurb">In February 2017 Fuller's called London Pride Unfiltered its biggest beer launch in a generation. It was the official beer of Pride in London the next…</span>
       </li>
       <li>
         <a href="like-how-pubs-used-to-be.html">"Like how pubs used to be": National Pub Day in three pubs</a>
         <span class="meta">edited 2026-11-04</span>
+        <span class="blurb">The morning after the Telegraph's National Pub Day. Two nine-gallon barrels drained at the Blacksmiths Arms in Lastingham. Capacity by noon at Brown…</span>
       </li>
       <li>
         <a href="colchester-beer-festival-2026.html">39th Colchester Real Ale &amp; Cider Festival: 80+ Casks, 20+ Ciders, Four Days at the Arts Centre</a>
         <span class="meta">edited 2026-11-04</span>
+        <span class="blurb">The 39th Colchester Real Ale &amp; Cider Festival runs Wednesday 27 to Saturday 30 May 2026 at Colchester Arts Centre — 80+ cask ales, 20+ real ciders &amp;…</span>
       </li>
       <li>
         <a href="hop-city-2026.html">Hop City 2026: Northern Monk's Flagship Festival Pours Nine — 15–16 May, Leeds</a>
         <span class="meta">edited 2026-11-04</span>
+        <span class="blurb">Hop City 2026 returns for its ninth year on 15–16 May at Northern Monk's Old Flax Store in Leeds. ~35 breweries, ~250 beers across the UK, Europe and…</span>
       </li>
       <li>
         <a href="uk-beer-festivals-2026.html">The 2026 UK Beer Festival Calendar: the dates worth circling now</a>
         <span class="meta">edited 2026-10-19</span>
+        <span class="blurb">A planning guide to the 16 UK beer festivals already confirmed for 2026 — from giant all-inclusive craft weekenders to the long-running CAMRA…</span>
       </li>
       <li>
         <a href="gfg-best-pubs-2026-nominations.html">Pick of the Pubs 2026: our 12 nominations for Good Food Guide Best Pubs</a>
         <span class="meta">edited 2026-10-19</span>
+        <span class="blurb">Pick of the Pubs, PINtPOINT's own curation, meets Good Food Guide Best Pubs 2026 nominations — closes 13 August. Twelve PINtPOINT favourites from…</span>
       </li>
       <li>
         <a href="nobody-asked-for-most-of-it.html">Nobody Asked For Most Of It</a>
         <span class="meta">edited 2026-09-29</span>
+        <span class="blurb">The test was never whether AI touched it. It was whether anyone had the problem in the first place — and what happens when the answer turns out to be…</span>
       </li>
     </ul>
     <footer>Generated by <code>scripts/build-drafts-index.mjs</code>, which publish-blog.sh runs; re-run it by hand after adding a draft.</footer>
