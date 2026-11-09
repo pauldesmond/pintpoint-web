@@ -206,6 +206,27 @@ fi
 echo "✓ Guards passed (no noindex, no /blog/drafts/ URLs, column standard, JSON-LD, beacon, pageview, FAQ in sync)."
 echo
 
+# 5a. The X card title bar. NOT a guard, a warning, because it only applies to
+#     a card whose artwork already carries the headline.
+#
+#     X draws its own title bar across the foot of the card and fills it from
+#     twitter:title, falling back to og:title. When the art carries the
+#     headline, as every PINtPRESS cover does, leaving twitter:title unset or
+#     equal to og:title prints the headline twice, and three times counting the
+#     caption above it. Paul spotted it on the ACE post, 9 November 2026.
+#
+#     It has to be right BEFORE the first share: X keeps what it found on its
+#     first fetch, and the only way back is a repost with ?v=2.
+OG_TITLE=$(grep -o 'property="og:title" content="[^"]*"' "${POST_FILE}" | head -1 | sed 's/.*content="//;s/"$//')
+TW_TITLE=$(grep -o 'name="twitter:title" content="[^"]*"' "${POST_FILE}" | head -1 | sed 's/.*content="//;s/"$//')
+if [[ -z "${TW_TITLE}" || "${TW_TITLE}" == "${OG_TITLE}" ]]; then
+  echo "⚠️  twitter:title is $( [[ -z "${TW_TITLE}" ]] && echo "not set" || echo "the same as og:title" )."
+  echo "   If this card's art carries the headline, X will print it twice. Give"
+  echo "   twitter:title a line that identifies the piece and adds something."
+  echo "   Ignore this if the artwork carries no headline."
+  echo
+fi
+
 # 5b. dateModified, from the last commit that changed each article body. It was
 #     hand-maintained until 3 November 2026 and stale on 37 of the 44 pages
 #     carrying it, about half of them because the fact audit had corrected the
