@@ -353,6 +353,14 @@ a.cta svg { fill: currentColor; }
    it and no rule around it, so there is nothing to tint. */
 .anchor-pub, .arc-cell, .aside-box, .beerology-octagon, .bracket, .collection-cta, .conditional, .crawl-cta, .cup, .details-card, .empty, .essay-card, .ev, .factbox, .fig, .fig-block, .geek, .ghost-card, .hop, .hop-chip-grid, .hop-explorer, .hop-filter, .lineage, .lineup, .part, .path-persona, .pub-card, .pub-list, .pubs, .read-next, .round-card, .route-card, .shelf-tile, .sibling, .stat, .statement, .steps, .stop, .tellus, .tier-table, .toc, .update, .venue-list, .visit-box, .winner-card, .xi { background: var(--paper-deep); }
 
+/* Dated notes. A post is dated writing: the body stays as published and
+   anything learned since goes in its own box, so a reader can tell which is
+   which. The tint above is not enough on its own, so the box carries a rule
+   as well as a background. */
+.update { border: 1px solid var(--rule-soft, rgba(0,0,0,.18)); padding: 20px 22px; margin: 40px 0 8px; }
+.update h2 { margin-top: 0; }
+.update-meta { font-size: 0.86rem; opacity: 0.78; margin-bottom: 14px; }
+
 /* ---------- 27. Footer extras and phones (kept last) ---------- */
 footer .legal { font-size: 0.68rem; margin-top: 10px; }
 @media (max-width: 700px) {
