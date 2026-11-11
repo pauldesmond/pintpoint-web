@@ -41,7 +41,10 @@ const today = new Date().toISOString().slice(0, 10);
 // word "PINtPRESS" to the meta line of 67 pages, and nothing anyone wrote
 // changed. Overstating freshness on dozens of pages in one commit is the thing
 // this sweep exists to avoid, not a side effect to accept.
-const FURNITURE = ['meta', 'imprint-note', 'disclosure', 'analytics-note'];
+// 'reference-note' added 11 Nov 2026 on Paul's instruction: a reference block
+// appended to a published piece is source material parked beside the essay, not
+// the essay changing, so it must not restamp the page as freshly modified.
+const FURNITURE = ['meta', 'imprint-note', 'disclosure', 'analytics-note', 'reference-note'];
 const dropFurniture = s => FURNITURE.reduce((acc, cls) =>
   acc.replace(new RegExp(`<(p|div|span)\\b[^>]*class="[^"]*\\b${cls}\\b[^"]*"[^>]*>[\\s\\S]*?</\\1>`, 'gi'), ' '), s);
 
