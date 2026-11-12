@@ -1,67 +1,47 @@
 <!DOCTYPE html>
 <!--
-  HOLD until 19 November 2026, Winter Wonderland's opening day. Decided 2 November:
-  opening day, not the earlier ~12 November window. The Third Thursday goes out the
-  day before, on 18 November, so readers have the Beaujolais date before it passes;
-  grep that draft for LINK ON 19 NOV and restore the companion anchor when this one
-  publishes. This also keeps the opener exact, since 19 September to 19 November is the
-  "about two months later" the first paragraph claims.
-  Held deliberately; 21 September was two months early for an event guide.
+  HOLD until 19 November 2026, Winter Wonderland's opening day. Decided 2 November.
+  The Third Thursday goes out the day before, on 18 November, so readers have the
+  Beaujolais date before it passes; grep that draft for LINK ON 19 NOV and restore
+  the companion anchor when this one publishes.
 
-  BEFORE PUBLISHING:
-    1. The opener is written in the present tense of the Wiesn tapping ("At noon on
-       19 September the new Lord Mayor..."). By mid-November that is 54 days past and
-       the festival has been over for 39. Reframe around Winter Wonderland opening
-       that week, which is the stronger hook on the day anyway.
-    2. datePublished, dateModified and the .meta line are all 21 September 2026.
-    3. Promote-to-live: strip noindex, swap the four drafts URLs to /blog/, add the
-       feed.xml item and the blog/index.html entry, then scripts/publish-blog.sh.
-    4. UNVERIFIED, same batch as the Camerons claim that was pulled: the £5 stein
-       deposit and the over-18s evening sessions both come from the brainstorm, not
-       from a source checked here, and Winter Wonderland had published no 2026 detail
-       as of 21 September. Deposit amounts and session rules change season to season.
-       Confirm both when their site goes up, or cut the figures back to "a refundable
-       deposit" and "tips toward adults in the evening", which is what the piece said
-       before and is safe either way.
-    5. OPTIONAL TRIM, an editor's call at publish time, not before. "Theresienwiese"
-       appears three times — the opening borrow, the circuit sentence, and the close
-       ("what travels most easily from the Theresienwiese to London"). That is
-       deliberate architecture: open / engine / close, with the place-name doing the
-       pivot work. If a cold re-read in November makes it feel like a tic, cut ONLY
-       the middle one and leave the opening and closing instances alone:
+  PUBLISH DAY:
+    1. Strip noindex, move the canonical off /blog/drafts/, swap the drafts URLs to
+       /blog/, add the feed.xml item and the blog/index.html entry, then run
+       scripts/publish-blog.sh.
+    2. STRIP THIS COMMENT. The publish guards check noindex and /blog/drafts/ URLs,
+       they do not check comments, and a published post carries exactly one: the
+       Cloudflare analytics note.
+    3. Re-check the Village's arrival-slot prices (a pound, GBP 5.50, GBP 8.25) and
+       the ride prices near the day. Season pricing moves.
 
-         "...works German Volksfeste, peaks at Oktoberfest, then goes onto lorries
-          for Hyde Park at Christmas -- put up again by the same showmen who build
-          and tear down the Wiesn's steel rides."
+  SETTLED, DO NOT REDO (12 November):
+    - datePublished, dateModified and the .meta line are all 2026-11-19.
+    - The GBP 5 stein deposit, the 568ml stein and the over-18s evening session are
+      sourced to the Village's own FAQ, not to the brainstorm. So is the 2025 price
+      of a pint of Bavarian Gold, GBP 7.95.
+    - The companion line no longer states an event count, so there is nothing to
+      re-derive from uk-oktoberfest-events-2026.html.
+    - hydeparkwinterwonderland.com/bavarian-village/ 301s to
+      /feasting-drinking/bavarian-village/. The body links the destination.
+    - The comparison table is gone; the "If you're going" box replaced it.
 
-       i.e. "peaks at Oktoberfest" for "peaks on the Theresienwiese", nothing else.
-       (An earlier note gave this as "...then is trucked to Hyde Park for Christmas:",
-       which was written against an earlier version of the sentence — the passive and
-       the colon have since gone. The intent is the same: drop the third naming of
-       the meadow, keep the route and the rhythm.)
-    6. Optional, worth a look in November: Winter Wonderland had not published its
-       2026 Bavarian Village page as of 21 September, so the house beer could not be
-       named. If they name it, that is one proper noun with a source behind it, for
-       the body and the comparison table. (/bavarian-village/ is a soft 404 — HTTP 200
-       with a "Page not found" body — so do not trust a status check on it.)
+  STILL OPEN:
+    - No 2026 price for Bavarian Gold is published anywhere we have looked.
+    - Camerons is Untappd's attribution for the brewing, not the operator's, and the
+      2026 supplier is unconfirmed. The letter to Camerons is drafted and unsent.
+    - The share card still depicts a litre Maß, and og:image:alt still describes one,
+      while the piece turns on the Village pouring 568ml. Patch the master, never
+      regenerate it, and update the alt when the art changes.
+    - Paul recalls a Münchner Rutschn or similar slide at Winter Wonderland in an
+      earlier season. Unconfirmed: the Internet Archive index shows a 2010 rides A-to-Z
+      at rides_atoz.html but playback returned 429 on every attempt. Not finding it is
+      a fact about our searching.
 
-  7. RE-DERIVE THE COMPANION COUNT. The companion line says "forty-six
-events". That is correct as of 21 September and will almost certainly be
-wrong by publication -- it went 41 -> 46 in the course of that single day
-as reader submissions and checks came in. Do NOT trust this number at
-publish time: open blog/uk-oktoberfest-events-2026.html and count
-class="ev" (the cards) plus <tr><td class="w"> (the spirit rows). The
-Home Sweet Home row is <tr class="home"> and is deliberately EXCLUDED
-from the count, as is the Alexandra Palace note, which is a 7 November
-fireworks night and not an Oktoberfest. The guide states the figure in
-four places (og:description, the JSON-LD description, "This list is...",
-and the spirit-table intro); they should all agree with each other, so
-if they do not, fix the guide before quoting it here.
-
-"About two months later" is measured from the tapping on 19 September to the
+  "About two months later" is measured from the tapping on 19 September to the
   Wonderland opening on 19 November: exactly two months. Do not "correct" it to six
-  weeks — that is the interval from the END of the Wiesn (4 October), which the piece
-  never states, and the nearest antecedent is the tapping.
+  weeks, which is the interval from the END of the Wiesn on 4 October, a date the
+  piece never states. The nearest antecedent is the tapping.
 -->
 <html lang="en">
 <head>
