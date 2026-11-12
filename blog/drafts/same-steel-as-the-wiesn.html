@@ -66,7 +66,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://pintpoint.co.uk/blog/images/same-steel-as-the-wiesn-x.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -92,79 +93,30 @@
     ]
   }
   </script>
-<style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d1117; --teal: #00D4AA; --text: #fff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --amber: #C0A340; --red: #C8102E; --blue: #0B61A4; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; line-height: 1.65; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
-    .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text); }
-    .meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .meta .imprint { position: relative; padding: 10px 12px 0 0; border-right: 1px solid var(--border); font-weight: 800; font-size: 0.82rem; color: var(--amber); }
-    .meta .imprint::before { content: ""; position: absolute; left: 0; top: 0; width: 28px; height: 3px; background: var(--amber); }
-    .category { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(0,212,170,0.12); color: var(--teal); border: 1px solid rgba(0,212,170,0.32); }
-    h1 { font-size: clamp(1.9rem, 5.2vw, 2.7rem); font-weight: 900; letter-spacing: -1.1px; line-height: 1.08; margin-bottom: 18px; }
-    h1 em { color: var(--teal); font-style: normal; }
-    h2 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.4px; margin: 40px 0 12px; line-height: 1.25; }
-    h3.region { font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin: 30px 0 12px; }
-    p { margin-bottom: 14px; color: #e6edf3; }
-    .lede { margin-bottom: 30px; padding-left: 14px; border-left: 3px solid var(--red); }
-    .lede p:first-child { font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
-    .highlight { color: var(--text); font-weight: 600; }
-    a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,212,170,0.3); }
-    a:hover { border-bottom-color: var(--teal); }
-    .ev { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; margin: 0 0 12px; }
-    .ev h3 { font-size: 1.05rem; font-weight: 800; margin: 2px 0 4px; letter-spacing: -0.2px; }
-    .ev h3 a { border-bottom: none; }
-    .ev-when { font-size: 0.74rem; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: var(--amber); margin-bottom: 2px; }
-    .ev-where { font-size: 0.9rem; color: var(--muted); margin-bottom: 8px; }
+  <style>
+    /* Page-level only. Everything else comes from pintpress-feature.css. */
+    .ev { border: 1px solid var(--rule-soft); padding: 16px 18px; margin: 0 0 12px; }
+    .ev h2 { margin-top: 0; font-size: 1.15rem; }
     .ev-note { font-size: 0.95rem; margin-bottom: 8px; }
-    .ev-link { font-size: 0.85rem; margin-bottom: 0; }
-    .ev-tag { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; }
-    .ev-tag.six { background: rgba(192,163,64,0.16); color: var(--amber); border: 1px solid rgba(192,163,64,0.4); }
-    .ev-tag.named { background: rgba(0,212,170,0.1); color: var(--teal); border: 1px solid rgba(0,212,170,0.3); }
-    table { width: 100%; border-collapse: collapse; margin: 18px 0 8px; font-size: 0.95rem; }
-    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
-    th { font-size: 0.72rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); font-weight: 800; }
-    table.spirit td { padding: 9px 10px; }
-    table.spirit td.w { white-space: nowrap; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; color: var(--amber); width: 1%; }
-    table.spirit .flag, .ev-note .flag { color: var(--red); font-weight: 700; }
-    table.spirit .sub { font-size: 0.88rem; color: var(--muted); }
-    table.spirit b a { border-bottom: none; }
-    .tellus { background: var(--card); border: 1px solid rgba(0,212,170,0.28); border-radius: 12px; padding: 18px; margin: 34px 0 8px; }
-    .tellus h2 { margin-top: 0; font-size: 1.15rem; }
-    .sources { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--border); }
-    .sources h2 { font-size: 1.1rem; }
-    .sources li { font-size: 0.9rem; color: #c9d1d9; margin-bottom: 8px; }
-    .sources ul { padding-left: 18px; }
-    footer { border-top: 1px solid var(--border); padding: 30px 40px; text-align: center; color: #555; font-size: 0.8rem; }
-    footer .links { display: flex; gap: 18px; justify-content: center; margin-bottom: 8px; flex-wrap: wrap; }
-    footer a { color: var(--muted); border: none; }
-      /* PINtPRESS column standard v1 (2026-09-17): desktop 960px column, 880px of text at 17px; mobile full width, 20px gutters, 16px text. Do not vary per page. */
-    .content { max-width: 960px; margin: 0 auto; padding: 60px 40px 80px; }
-    body { font-size: 17px; }
-    @media (max-width: 600px) { .content { max-width: none; padding: 32px 20px 56px; } body { font-size: 16px; } }
+    body .ps-3 { margin-top: 28px; }
   </style>
 </head>
 <body>
   <nav aria-label="Primary">
-    <a href="/" class="logo" style="text-decoration:none;color:var(--text);border:none">PINt<span>POINT</span></a>
-    <div style="display:flex;gap:20px;align-items:center">
+    <a href="/index.html" class="logo">PINt<span>POINT</span></a>
+    <div>
       <a href="/about-pintpoint.html">About</a>
       <a href="/features.html">Features</a>
       <a href="/pubs/">Venues</a>
       <a href="/blog/">Blog</a>
+      <a href="/screenshots.html">Screenshots</a>
     </div>
   </nav>
   <article class="content">
     <p class="meta"><span class="imprint">PINtPRESS</span><span class="category">Guide</span>19 November 2026 &middot; London &middot; Festivals</p>
     <h1>Same steel as the Wiesn. <em>Different beer.</em></h1>
-    <div class="lede">
-      <p>At noon on 19 September the new Lord Mayor of Munich drove a tap into the first barrel of the 191st Wiesn. About two months later Winter Wonderland opens: five steel loops, a £5 stein deposit and a Bavarian hall.</p>
-      <p><a href="https://hydeparkwinterwonderland.com/" target="_blank" rel="noopener noreferrer">Hyde Park Winter Wonderland</a> runs from 19 November 2026 to 3 January 2027. How much of it is actually Oktoberfest?</p>
-    </div>
+    <p class="lede">At noon on 19 September the new Lord Mayor of Munich drove a tap into the first barrel of the 191st Wiesn. About two months later Winter Wonderland opens: five steel loops, a £5 stein deposit and a Bavarian hall.</p>
+    <p><a href="https://hydeparkwinterwonderland.com/" target="_blank" rel="noopener noreferrer">Hyde Park Winter Wonderland</a> runs from 19 November 2026 to 3 January 2027. How much of it is actually Oktoberfest?</p>
     <p>The five-loop coaster is the same one.</p>
     <h2>The rollercoaster</h2>
     <p>At Winter Wonderland the coaster is called Munich Looping. In Germany it is Olympia Looping, and the billing is the same at both ends of the trip: the ride&rsquo;s <a href="https://olympialooping.de/" target="_blank" rel="noopener noreferrer">own site</a> calls it the world&rsquo;s largest transportable coaster with five loops, and <a href="https://hydeparkwinterwonderland.com/ride/munich-looping/" target="_blank" rel="noopener noreferrer">Winter Wonderland&rsquo;s ride page</a> calls it &ldquo;the world&rsquo;s largest transportable rollercoaster&rdquo;. <a href="https://en.wikipedia.org/wiki/Olympia_Looping" target="_blank" rel="noopener noreferrer">Wikipedia</a> puts the whole structure at nine hundred tonnes.</p>
@@ -192,23 +144,28 @@
     <p>Getting in is cheap, and the box below has the detail: arrival slots from a pound, and a free entry ticket for anyone who spends &pound;25 in advance. The rides are extra, and not trivially so. Winter Wonderland prices a standard ride on <a href="https://hydeparkwinterwonderland.com/ride/munich-looping/" target="_blank" rel="noopener noreferrer">Munich Looping</a> at &pound;12 in advance. Eating is priced in the same register: a bratwurst meal deal from &pound;12.50, the all-day Almh&uuml;tte Experience from &pound;42. The Village&rsquo;s <a href="https://bavarianvillage.com/faq/" target="_blank" rel="noopener noreferrer">FAQ</a> says a pint of Bavarian Gold cost &pound;7.95 in 2025, and gives no price for this season.</p>
     <p>Nine hundred tonnes of coaster come off the Theresienwiese and onto lorries for Hyde Park. Follow the beer&rsquo;s Untappd entry and you end up in Hartlepool.</p>
     <div class="ev">
-      <h2 style="margin-top:0">If you&rsquo;re going</h2>
+      <h2>If you&rsquo;re going</h2>
       <p class="ev-note">19 November 2026 to 3 January 2027, closed Christmas Day. Green Gate for the Village. The ticket is for Winter Wonderland itself rather than the Village: the Village&rsquo;s <a href="https://bavarianvillage.com/faq/" target="_blank" rel="noopener noreferrer">FAQ</a> puts some arrival slots at a pound and others at &pound;5.50 or &pound;8.25 in advance, and that ticket then covers Bavarian Village, the Hall included, though Winter Wonderland&rsquo;s own page adds that it does not guarantee entry to Bavarian Hall or the other Village venues.</p>
       <p class="ev-note"><a href="https://hydeparkwinterwonderland.com/feasting-drinking/bavarian-village/" target="_blank" rel="noopener noreferrer">Winter Wonderland&rsquo;s page</a> says Bavarian Hall closes at 5pm from Wednesday to Sunday and reopens at 6:15pm to anyone without a table package; the Village&rsquo;s own site says Thursday to Sunday. The evening session, 6pm to 10pm, is over-18s only, with passport or driving licence checked on a scanner at the door.</p>
       <p class="ev-note">The all-day Almh&uuml;tte Experience gives reserved seating with four drinks and a meal deal per guest; a soft-drinks version is offered too.</p>
     </div>
 
-    <p style="margin-top:28px">Companion piece: <a href="/blog/uk-oktoberfest-events-2026.html">UK Oktoberfest Events 2026</a>: every British event we could find this autumn, sorted by whether the beer in the stein is actually from Munich.</p>
+    <p class="ps-3">Companion piece: <a href="/blog/uk-oktoberfest-events-2026.html">UK Oktoberfest Events 2026</a>: every British event we could find this autumn, sorted by whether the beer in the stein is actually from Munich.</p>
   </article>
-<footer>
+  <footer>
+    <p class="imprint-note">PINtPRESS is the editorial imprint of PINtPOINT.</p>
     <div class="links">
       <a href="/">Home</a>
       <a href="/pubs/">Venues</a>
       <a href="/blog/">Blog</a>
       <a href="mailto:hello@pintpoint.co.uk">Contact</a>
     </div>
-    <p style="font-size:0.72rem;color:#555;margin-top:10px">Independent editorial; not affiliated with Oktoberfest, the city of Munich, or any brewery or promoter listed.</p>
+    <p class="legal">Independent editorial; not affiliated with Oktoberfest, the city of Munich, or any brewery or promoter listed.</p>
     <p>&copy; 2026 PINtPOINT</p>
   </footer>
+  <!-- Cloudflare Web Analytics - cookieless, no consent banner required. -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "6971c676a791477aa5c33ef62298efc0"}'></script>
+  <script defer src="/js/pageview.js"></script>
 </body>
 </html>
