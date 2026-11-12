@@ -29,10 +29,20 @@
 (function () {
   try {
     if (!navigator.sendBeacon) return;
+    // tz replaces the country we used to get from Cloudflare. cf-ipcountry
+    // stopped reaching the edge function on 2 June 2026 (a header probe on
+    // 12 November 2026 found no geo header arrives at all), and the
+    // alternatives were a third-party IP lookup or storing the IP, neither of
+    // which belongs in front of a cookieless beacon. The browser already has
+    // the zone in memory, so this costs no request. It is the reader's clock,
+    // not their location, and it is reported as such.
+    var tz = null;
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || null; } catch (e) { /* older browsers */ }
     var payload = JSON.stringify({
       path: location.pathname || '/',
       referrer: document.referrer || null,
       ua: navigator.userAgent || null,
+      tz: tz,
     });
     // text/plain keeps this a CORS simple request: no preflight, which
     // sendBeacon cannot perform anyway.
