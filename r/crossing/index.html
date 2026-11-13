@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<!-- Draft shared with a source while the piece is unpublished, same job as
+     /r/esb/ and /r/ace/. Not in the sitemap (generate-sitemap.mjs scans blog/
+     only), not in llms.txt, noindex and nofollow. The piece carries one
+     untraced quotation and two open questions, so it must not be linked from
+     anywhere on the site. Delete this folder the day the piece goes live. -->
+<title>The Return Crossing</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+  :root{
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+    --ink:#1b1917;
+    --ink-soft:#4a4541;
+    --ink-faint:#6f6862;
+    --ground:#faf8f5;
+    --panel:#ffffff;
+    --rule:#ded7cf;
+    --accent:#8a5a2b;
+    --query-ground:#f3eee6;
+    --query-rule:#b79a6e;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#ece7e1;
+      --ink-soft:#bdb5ac;
+      --ink-faint:#938b83;
+      --ground:#171614;
+      --panel:#1f1d1a;
+      --rule:#3a352f;
+      --accent:#d9a066;
+      --query-ground:#262219;
+      --query-rule:#6d5a38;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#ece7e1;
+    --ink-soft:#bdb5ac;
+    --ink-faint:#938b83;
+    --ground:#171614;
+    --panel:#1f1d1a;
+    --rule:#3a352f;
+    --accent:#d9a066;
+    --query-ground:#262219;
+    --query-rule:#6d5a38;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:19px;
+    line-height:1.62;
+    padding-block:0;
+    padding-left:16px;
+    padding-right:16px;
+  }
+  .wrap{max-width:40rem;margin:0 auto;padding-block:2.5rem 4rem}
+
+  .flag{
+    font-family:var(--sans);
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    display:flex;
+    flex-wrap:wrap;
+    gap:.6rem 1rem;
+    align-items:baseline;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:.9rem;
+  }
+  .flag strong{color:var(--ink);font-weight:700;letter-spacing:.18em}
+  .status{
+    font-family:var(--sans);
+    font-size:.74rem;
+    font-weight:600;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    border:1px solid var(--query-rule);
+    border-radius:2px;
+    padding:.22rem .5rem;
+    color:var(--ink-soft);
+  }
+
+  .standfirst{
+    font-family:var(--sans);
+    font-size:.95rem;
+    line-height:1.55;
+    color:var(--ink-soft);
+    background:var(--panel);
+    border:1px solid var(--rule);
+    border-left:4px solid var(--query-rule);
+    padding:1rem 1.1rem;
+    margin:1.6rem 0 2.4rem;
+  }
+  .standfirst p{margin:0 0 .6rem}
+  .standfirst p:last-child{margin:0}
+
+  h1{
+    font-family:var(--serif);
+    font-size:2.5rem;
+    line-height:1.08;
+    font-weight:600;
+    letter-spacing:-.015em;
+    margin:0 0 .5rem;
+    text-wrap:balance;
+  }
+  .deck{
+    font-family:var(--sans);
+    font-weight:400;
+    font-size:1.02rem;
+    color:var(--ink-soft);
+    margin:0 0 2rem;
+    text-wrap:balance;
+  }
+  h2{
+    font-family:var(--sans);
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:2.6rem 0 .9rem;
+    padding-top:1.1rem;
+    border-top:1px solid var(--rule);
+  }
+  p{margin:0 0 1.15rem}
+  .lede{font-size:1.1rem}
+  .turn{
+    font-size:1.25rem;
+    line-height:1.4;
+    font-weight:600;
+    margin:1.8rem 0;
+    padding-left:1rem;
+    border-left:3px solid var(--accent);
+  }
+  .dagger{
+    font-family:var(--sans);
+    font-size:.78em;
+    vertical-align:super;
+    color:var(--accent);
+    font-weight:600;
+  }
+  .query{
+    font-family:var(--sans);
+    font-size:.88rem;
+    line-height:1.5;
+    background:var(--query-ground);
+    border:1px dashed var(--query-rule);
+    padding:.85rem 1rem;
+    margin:1.3rem 0;
+    color:var(--ink-soft);
+  }
+  .query b{
+    display:block;
+    font-size:.7rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:.3rem;
+  }
+  .note{
+    font-family:var(--sans);
+    font-size:.9rem;
+    line-height:1.55;
+    color:var(--ink-soft);
+    background:var(--panel);
+    border:1px solid var(--rule);
+    padding:1.1rem 1.2rem;
+    margin-top:2.6rem;
+  }
+  .note h3{
+    font-family:var(--sans);
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin:0 0 .6rem;
+  }
+  .note p{margin:0 0 .7rem}
+  .note p:last-child{margin:0}
+  footer{
+    font-family:var(--sans);
+    font-size:.78rem;
+    color:var(--ink-faint);
+    margin-top:2.6rem;
+    padding-top:1rem;
+    border-top:1px solid var(--rule);
+  }
+  @media (max-width:430px){
+    body{font-size:18px}
+    h1{font-size:2rem}
+    .wrap{padding-block:1.8rem 3rem}
+  }
+  @media print{
+    body{background:#fff;color:#000;font-size:11.5pt}
+    .query{border:1px dashed #999}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="flag">
+    <strong>PINtPRESS</strong>
+    <span class="status">Draft for review</span>
+    <span>13 November 2026</span>
+  </div>
+
+  <div class="standfirst">
+    <p>This is an unpublished working draft, shared privately for correction. Nothing on this page has appeared on the site and nothing will go up until it has been read and approved.</p>
+    <p>Two passages are still open, and both are marked in the text where they fall. They are repeated in the source note at the foot.</p>
+  </div>
+
+  <h1>The Return Crossing</h1>
+  <p class="deck">How American hops came back across the Atlantic</p>
+
+  <p class="lede">Some time after 1996 one of Dark Star's owners came home from California with Cascade pellets in his luggage. Boak and Bailey have it from Mark Tranter, who recalls those hops feeding something the Brighton brewery called the Hophead Club, until Cascade became the house hop and Hophead became the beer people came for.</p>
+
+  <p>That is how one brewery got its Cascade. In a suitcase, in the quantity one man could carry, for as long as its curiosity could be satisfied that way. This is the story of what happened when a suitcase stopped being enough.</p>
+
+  <p>Gordon A. Ponce's account of the Transatlantic Beer Bridge, published at The Craft Beer Finder in October 2026 and built on Jeffrey House's research, follows the traffic west: Fuller's ESB into America, London Pride into American distribution, Fuller's yeast into a Californian fermenting tank. We have followed that span four times. This is the other carriageway.</p>
+
+  <h2>Before the bridge</h2>
+
+  <p>The first thing to cross was not a hop but a book. Michael Jackson's <em>World Guide to Beer</em> appeared in 1977, and commenting under Boak and Bailey's 2012 timeline Martyn Cornell called it probably the single most important event in the history of opening people's minds in the UK to other types of beer. Jackson's <em>Beer Hunter</em> followed on Channel 4 in 1990. Somewhere to buy the stuff came in between. The Two Brewers off licence opened on Pitfield Street around 1980 selling German and Belgian beer, and Cornell, in the same thread, remembers it as a source of American beer when such beers were almost impossible to find here.</p>
+
+  <p>Then the brewers went looking. Boak and Bailey date Sean Franklin's first trials with Cascade to the early 1980s, hedged as "as far back as". He left brewing, drove a taxi for five years, and came back to it in 1993. Brendan Dobbin set up West Coast Brewing at the Kings Arms in Manchester in 1989, according to the Brewery History Society, and his Yakima Grande pale ale was hopped in a way British drinkers had no reference for. Beer52 goes as far as to say it could well be the first example of American Cascade in British brewing. The dates are too loose to settle it between the two men. Dobbin moved the brewery to the King William IV in 1993 and it closed in August 1994.</p>
+
+  <p>Three beers arrived in 1993. Franklin's Rooster's Yankee was 4.3 per cent and hopped with Cascade, more aromatic, Boak and Bailey write, than most British drinkers were used to. Oakham brewed Jeffrey Hudson Bitter commercially for the first time on 13 September, and the brewery's own history gives the recipe as Mount Hood with Challenger for bittering: an American hop in the first batch of a beer that took Supreme Champion Beer of Great Britain in 2001. Boak and Bailey say JHB was developed quite independently, its inspiration Hop Back's Summer Lightning rather than anything American. In Sheffield, Dave Wickett's Kelham Island brewed Pale Rider.</p>
+
+  <p>The beers themselves were arriving too. In House's account, which we set out in our piece on Fuller's ESB in America, he brought Fritz Maytag and Anthony Fuller together at a distributor party at the Mark Hopkins Hotel in San Francisco, then encouraged Fuller's to import Anchor in their own returnable 50 litre kegs. Fuller's arranged a trial and the beer went into three London pubs in late 1991: the Mawson Arms, the Dove and the Churchill Arms. A fourth pub matters as much. Jackson found Liberty Ale at the White Horse at Parsons Green in 1992,<span class="dagger">&dagger;</span> which was not one of the trial houses. Mark Dorber had kept that cellar since 1981, by Will Hawkes's account, and had run a seminar on Burton pale ales in 1990 that led the pub to commission an IPA of its own. The American beer landed in a bar already thinking hard about hops.</p>
+
+  <h2>The road</h2>
+
+  <p>In 2002 someone built a road. Oakham's own history says John Bryan was the first UK brewer to travel to the American hop fields and select hops direct from the farms, and that he went with Paul Corbett of Charles Faram. He returned for almost every harvest afterwards. Beer Today, writing when he retired in May 2022, says those relationships helped increase the availability of American varieties to British brewers generally.</p>
+
+  <p>Corbett is what joins the thing together. Charles Faram is a hop merchant, and when Dark Star needed more Cascade than one owner could carry home, Boak and Bailey have their American hops arriving through Charles Faram. The suitcase had become a supply line.</p>
+
+  <h2>Sheffield</h2>
+
+  <p>Dave Wickett had opened the Fat Cat in the Kelham Island district in 1981 and added the brewery in 1990, as we reported in our ESB piece. Pale Rider followed in 1993 and carried Kelham Island well beyond the city, and in 2004 it was named Champion Beer of Britain. Jonny Garrett, writing in Good Beer Hunting, calls it the first American-hopped beer to win the prize.</p>
+
+  <p>Several things are true about that beer at once. House credits the original recipe to Patrick Morton. Melissa Cole, in <em>Let Me Tell You About Beer</em>, says it was conceived to appeal to women drinkers. Roger Protz's 2004 profile of Wickett gives Timothy Taylor's Landlord as his inspiration when he started. Authorship, intended drinker, influence and hop bill are four different questions, and the answers sit side by side. Gordon Ponce has written the fuller Sheffield account and it is worth your time.</p>
+
+  <div class="query">
+    <b>Open question</b>
+    Which hop did Patrick Morton use in the original Pale Rider, and roughly when did the beer change? If the switch to Cascade came before 2004 it changes what can be said about the Champion Beer of Britain win. Is that from Patrick himself, and would he be content to be quoted?
+  </div>
+
+  <h2>Thornbridge to BrewDog</h2>
+
+  <p>Jim Harrison founded Thornbridge at the suggestion of his friend Wickett, Garrett writes, with Wickett helping to get it started in exchange for contract brewing Kelham Island beers at the site. The brewery began at Thornbridge Hall in early 2005 with two young brewers, Stefano Cossi and Martin Dickie, who set out inspired by Wickett's beers and their own experience of American craft brewing, meaning to use American hops at low strengths for a British drinker.</p>
+
+  <p>That plan lasted until the summer. Jaipur was first brewed on 7 June 2005, by Thornbridge's own account, saturated with Cascade, Chinook, Ahtanum and Simcoe and poured at a garden party at the hall. Garrett calls it a bold 6 per cent American IPA; Thornbridge list it at 5.9 today. It was named after the city where Harrison had married. Dickie put the intention plainly to Garrett: Jaipur was the first one where they tried to mimic the American IPA. Pete Brown, quoted by Garrett, calls it the start of the British craft brewing scene.</p>
+
+  <p>In 2007 Dickie left Thornbridge to co-found BrewDog, where Punk IPA arrived at about 6 per cent on a similar malt and hop bill, set apart, Garrett notes, by the New Zealand hop Motueka, and dialled back to 5.6 within a few years. BrewDog's own recipe book calls the original Punk James and Martin's original take. The man who brewed the first one went and brewed the second.</p>
+
+  <div class="query">
+    <b>Open question</b>
+    You describe Dave encouraging Martin Dickie and Stefano Cossi to make a strong Cascade ale. Is that from your own conversations, or from someone at Thornbridge? Garrett quotes Dickie on Jaipur, and we would like to set your account beside his.
+  </div>
+
+  <h2>The leftovers</h2>
+
+  <p>Bryan and Corbett were introduced to Citra on the 2009 trip, and what they were offered was the remains of its third harvest. Oakham say Barth Haas developed the variety and that the story goes Sierra Nevada asked for further work on it; Stan Hieronymus, quoted by Boak and Bailey, credits the original cross to Gene Probasco. Oakham took about 450kg of what was going spare and sent it home by air. The first batch was brewed on 20 November 2009, the day after the hops landed. The brewery says it can say with some certainty that it was the first UK brewery to brew a beer entirely with Citra hops. Citra was brewed every other month through 2010 and joined the permanent range in 2011.</p>
+
+  <p>What he did with it is the point. He had meant to brew a strong single hop IPA. He had only the hops he could get hold of, and stronger beers, in Oakham's own words, weren't fast sellers for Oakham at the time. So he brewed a 4.2 per cent bitter instead, and told Beer Today it was his first sensible commercial decision at Oakham Ales. The strong IPA he had wanted turned up in 2011 as Green Devil.</p>
+
+  <p>Thornbridge had faced the same question four years earlier and answered it the other way.</p>
+
+  <p class="turn">At Oakham, the strength did not cross.</p>
+
+  <h2>What it became</h2>
+
+  <p>By December 2018 Boak and Bailey were writing that you cannot go wrong with anything with Citra in the name, and that Oakham Citra effectively owns the hop in Britain and has done since 2009. The variety had become a brand in the way a grape is a brand. By 2020 Thornbridge's Rob Lovatt was telling Garrett that the Mosaic and Citra dominated profile means any muppet can make IPA. The two remarks are the same observation from opposite ends.</p>
+
+  <h2>The loop</h2>
+
+  <p>What Britain built from all this was never an American IPA. Boak and Bailey describe the style as pilsner coloured, all pale malt, heavily hopped with new world varieties and usually between 3 and 5 per cent, and when they reach for an American comparison they name session IPAs such as Firestone Walker's Easy Jack.</p>
+
+  <p>Firestone Walker say Easy Jack is fermented with their house ale yeast, and David Walker has described that house strain as essentially a Fuller's one, which is the story we told in October. So the hop went east and the yeast went west, and the American beer Boak and Bailey reach for to explain the British session pale is fermented in California with a London yeast.</p>
+
+  <div class="note">
+    <h3>Source note</h3>
+    <p>The one quotation above marked &dagger; is carried from correspondence and we have not traced it to its original printing: Jackson's report of Liberty Ale at the White Horse in 1992.</p>
+    <p>Which hop Patrick Morton used in the original Pale Rider, and when the beer changed, is an open question.</p>
+    <p>We have found no first hand account from Dave Wickett, and no record of who first put American Cascade into a British recipe. Whether Dobbin or Franklin got there first is open rather than settled, and the dates for both are loose.</p>
+  </div>
+
+  <footer>Working draft, 13 November 2026. Not published. Not for circulation.</footer>
+
+</div>
+</body>
+</html>
