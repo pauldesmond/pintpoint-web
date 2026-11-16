@@ -134,55 +134,55 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/crawls/ex-firkin-central.html</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/crawls/ex-firkin-london.html</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/crawls/ex-firkin-north.html</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/crawls/ex-firkin-south.html</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/crawls/ex-firkin-survivors.html</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/crawls/ex-firkin-west.html</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/crawls/firkin-doghead.html</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/crawls/firkin-revival.html</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pintpoint.co.uk/crawls/lewes.html</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2031,6 +2031,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://pintpoint.co.uk/pubs/t-poatersgat-brugge</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://pintpoint.co.uk/pubs/people-like-us-beer-bar-k-benhavn</loc>
     <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -2159,6 +2165,12 @@
   <url>
     <loc>https://pintpoint.co.uk/pubs/love-city-brewing-philadelphia</loc>
     <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pintpoint.co.uk/pubs/good-george-brewing-craft-house-auckland</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3532,7 +3544,7 @@
   </url>
   <url>
     <loc>https://pintpoint.co.uk/pubs/radio-city-social-chelmsford</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3689,12 +3701,6 @@
   <url>
     <loc>https://pintpoint.co.uk/pubs/the-banker-london</loc>
     <lastmod>2026-11-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://pintpoint.co.uk/pubs/oyster-shed-london</loc>
-    <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
