@@ -93,14 +93,39 @@ for (const p of published) for (const c of p.clauses) clauseCount.set(c, (clause
 const byClause = new Map();
 for (const p of published) for (const c of p.clauses) if (clauseCount.get(c) === 1) byClause.set(c, p);
 
-// Slug overlap is the weakest signal and needs the most care: two distinctive
-// tokens in common, and only when no other published piece shares as many.
+// Two shared tokens was not enough on its own, and on 2026-11-16 it put
+// beer-faults-wrong-place.html forward as beer-recommendation-systems-what-most-
+// get-wrong.html. The tokens they share are "beer" and "wrong". Nothing about
+// those two pieces is the same. The rule called them distinctive because the
+// only thing standing between a token and that word was a stop list, and a stop
+// list cannot know that "beer" identifies nothing on a site about beer.
+//
+// So distinctiveness is now measured rather than listed. A token that appears in
+// TOPIC_DF or more published slugs is a subject word here, not a name, and is
+// dropped before anything is compared: today that removes beer (11), world (6)
+// and cup (6) and keeps baddow, brewery, ghosts, city and london, all of which
+// appear in three or fewer.
+//
+// And the count is now a proportion as well. Two tokens out of two is a
+// different claim from two tokens out of four: the pair that matters shares most
+// of the shorter slug, not a corner of it. Both documented catches, the Baddow
+// brewery retitle and the City of London ghosts one, share all of it and score
+// 1.00. The false positive scored 0.50.
+const TOPIC_DF = 5;
+const slugDf = new Map();
+for (const p of published) for (const t of p.slug) slugDf.set(t, (slugDf.get(t) || 0) + 1);
+const distinctive = (tokens) => new Set([...tokens].filter((t) => (slugDf.get(t) || 0) < TOPIC_DF));
+for (const p of published) p.slug = distinctive(p.slug);
+
 const slugLead = (f) => {
-  const t = slugTokens(f);
+  const t = distinctive(slugTokens(f));
   if (t.size < 2) return null;
   const scored = published
-    .map((p) => ({ p, n: [...t].filter((x) => p.slug.has(x)).length }))
-    .filter((x) => x.n >= 2)
+    .map((p) => {
+      const n = [...t].filter((x) => p.slug.has(x)).length;
+      return { p, n, frac: n / Math.min(t.size, p.slug.size || Infinity) };
+    })
+    .filter((x) => x.n >= 2 && x.frac >= 0.6)
     .sort((a, b) => b.n - a.n);
   if (!scored.length) return null;
   if (scored.length > 1 && scored[1].n === scored[0].n) return null;
