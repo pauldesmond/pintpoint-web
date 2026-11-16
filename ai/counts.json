@@ -1,6 +1,6 @@
 {
   "venues_live": 7444,
-  "beers": 61495,
-  "generated_at": "2026-11-15",
+  "beers": 61611,
+  "generated_at": "2026-11-16",
   "source": "nightly Supabase count via scripts/generate-sitemap.mjs"
 }
