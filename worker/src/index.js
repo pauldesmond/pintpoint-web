@@ -42,7 +42,7 @@ const PHOTO_CACHE_CONTROL = 'public, max-age=604800, s-maxage=2592000, immutable
 
 // Bump this to invalidate the Worker's edge cache (e.g. after changing
 // the edge function's rendering or slug-resolution logic).
-const CACHE_VERSION = 'v15'; // v15 2026-11-18: venue pages were serving renders made before their last scrape, so pubs with beer on showed 'No tap data available' for up to 24h
+const CACHE_VERSION = 'v16'; // v16 2026-11-18: venue pages now show tap history from the database, so every v15 render is the pre-fix one
 
 // Per-route cache version — bump ONLY the routes whose rendering / data
 // changed, so we don't cold-rehydrate the whole fleet (photos in particular
