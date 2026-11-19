@@ -99,7 +99,7 @@
     nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
     .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
     .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    nav a { color: var(--muted); text-decoration: none; font-size: clamp(0.82rem, 2.5vw, 0.9rem); transition: color 0.2s; }
     nav a:hover { color: var(--text); }
 
     /* HERO */
@@ -207,10 +207,9 @@
 
   <nav aria-label="Primary">
     <a href="index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;flex-wrap:wrap;column-gap:20px;row-gap:8px;align-items:center">
+    <div style="display:flex;flex-wrap:wrap;column-gap:clamp(10px,3vw,20px);row-gap:8px;align-items:center">
       <a href="about-pintpoint.html">About</a>
       <a href="features.html">Features</a>
-      <a href="pubs/">Venues</a>
       <a href="collections/">Collections</a>
       <a href="blog/">Blog</a>
       <a href="screenshots.html">Screenshots</a>
@@ -391,6 +390,7 @@
       <a href="index.html">Home</a>
       <a href="about-pintpoint.html">About</a>
       <a href="features.html">Features</a>
+      <a href="pubs/">Venues</a>
       <a href="screenshots.html">Screenshots</a>
       <a href="blog/">Blog</a>
       <a href="faq.html">FAQ</a>

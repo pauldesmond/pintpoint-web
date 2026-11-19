@@ -116,7 +116,7 @@
     nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
     .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
     .logo span { color: var(--teal); }
-    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a { color: var(--muted); text-decoration: none; font-size: clamp(0.82rem, 2.5vw, 0.9rem); }
     nav a:hover { color: var(--text); }
     .content { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
     h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
@@ -161,10 +161,9 @@
 <body>
   <nav aria-label="Primary">
     <a href="index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
-    <div style="display:flex;flex-wrap:wrap;column-gap:20px;row-gap:8px;align-items:center">
+    <div style="display:flex;flex-wrap:wrap;column-gap:clamp(10px,3vw,20px);row-gap:8px;align-items:center">
       <a href="about-pintpoint.html">About</a>
       <a href="features.html">Features</a>
-      <a href="pubs/">Venues</a>
       <a href="collections/">Collections</a>
       <a href="blog/">Blog</a>
       <a href="screenshots.html">Screenshots</a>
@@ -320,6 +319,7 @@
     <div class="links">
       <a href="index.html">Home</a>
       <a href="features.html">Features</a>
+      <a href="pubs/">Venues</a>
       <a href="screenshots.html">Screenshots</a>
       <a href="ghost.html">Ghost Hunter</a>
       <a href="fpi.html">Troubled Pubs</a>

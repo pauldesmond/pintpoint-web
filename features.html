@@ -142,11 +142,11 @@
     }
     .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
     .logo span { color: var(--teal); }
-    .nav-links { display: flex; flex-wrap: wrap; column-gap: 24px; row-gap: 8px; align-items: center; }
+    .nav-links { display: flex; flex-wrap: wrap; column-gap: clamp(10px, 3vw, 24px); row-gap: 8px; align-items: center; }
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: clamp(0.82rem, 2.5vw, 0.9rem);
       font-weight: 500;
       transition: color 0.2s;
     }
@@ -623,7 +623,6 @@
     <div class="nav-links">
       <a href="about-pintpoint.html">About</a>
       <a href="features.html">Features</a>
-      <a href="pubs/">Venues</a>
       <a href="collections/">Collections</a>
       <a href="blog/">Blog</a>
       <a href="screenshots.html">Screenshots</a>
@@ -1676,6 +1675,7 @@
       <a href="index.html">Home</a>
       <a href="about-pintpoint.html">About</a>
       <a href="features.html">Features</a>
+      <a href="pubs/">Venues</a>
       <a href="screenshots.html">Screenshots</a>
       <a href="blog/">Blog</a>
       <a href="faq.html">FAQ</a>
