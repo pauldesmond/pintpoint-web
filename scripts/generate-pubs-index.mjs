@@ -2,29 +2,29 @@
 /**
  * generate-pubs-index.mjs
  *
- * Regenerates the venue list inside pubs/index.html from Supabase. The list
- * is 20 venues, structured as three tiers, all date-seeded so the page is
- * stable within a day but rotates between days:
+ * Rebuilds the venue index inside pubs/index.html.
  *
- *   1. STABLE        — 3 hand-picked flagship venues, always visible, fixed order.
- *                      Editorial trust: anyone landing on the page sees these.
- *   2. ROTATING      — 3 venues drawn daily from _data/featured-venues.json's
- *                      rotation_pool[], using a deterministic shuffle keyed on
- *                      today's date. Grow rotation_pool to expand variety.
- *   3. AUTO-FILL     — 14 venues from Supabase, shuffled from the 40 most-
- *                      recently-updated venues with full data (photo, city,
- *                      address) and not closed. Date-seeded shuffle gives each
- *                      eligible venue a ~35% chance of being visible any given
- *                      day, instead of the strict top-14 cycle that previously
- *                      caused the same handful to recur or skip frequently.
+ * WHAT THIS REPLACED, AND WHY. Until 19 November 2026 this page showed
+ * twenty venues: three hand-picked and fixed, three rotated daily out of a
+ * pool of fifteen, and fourteen shuffled from the forty most recently
+ * updated. Fifty-eight venues could ever appear, three of them every single
+ * day, on a page whose own description promised browsing tap lists across
+ * eighty-two countries. Paul, the same morning: "Venues is a pointless page
+ * it's always narrow set of the same ones."
  *
- * Writes the <li> block between the PUBS-INDEX markers; the JSON-LD ItemList
- * between the ITEMLIST markers reflects the top 6 visible (stable+rotating).
+ * Meanwhile the sitemap carried 1,137 venue pages with no internal route to
+ * them at all. An editor's shelf of twenty is what a home page does; this
+ * page's job is to be the index, so that is what it now is: every venue the
+ * sitemap considers worth indexing, grouped by country and then by town.
  *
- * Run nightly by .github/workflows/sitemap.yml.
+ * WHERE THE LIST COMES FROM. _data/indexable-venues.json, written by
+ * generate-sitemap.mjs, which already decides which venues go in the sitemap
+ * (live ones with enough recent tap activity, plus the curated ghosts).
+ * Recomputing that rule here would put it in two scripts to drift apart, and
+ * this repo has paid for duplicated rules before. The nightly workflow runs
+ * the sitemap first.
  *
- * Usage:
- *   PINTPOINT_SUPABASE_URL=... PINTPOINT_SUPABASE_SERVICE_ROLE_KEY=... node generate-pubs-index.mjs
+ * Usage: node scripts/generate-pubs-index.mjs
  */
 
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -33,285 +33,115 @@ import { dirname, join } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const INDEX_PATH = join(__dirname, '..', 'pubs', 'index.html');
-const FEATURED_PATH = join(__dirname, '..', '_data', 'featured-venues.json');
-const START_MARKER = '<!-- PUBS-INDEX:START -->';
-const END_MARKER = '<!-- PUBS-INDEX:END -->';
+const DATA_PATH = join(__dirname, '..', '_data', 'indexable-venues.json');
+const START = '<!-- PUBS-INDEX:START -->';
+const END = '<!-- PUBS-INDEX:END -->';
 const ITEMLIST_START = '<!-- ITEMLIST:START -->';
 const ITEMLIST_END = '<!-- ITEMLIST:END -->';
-const TOTAL_SLOTS = 20;
-const ROTATING_FEATURED_SLOTS = 3;          // drawn daily from rotation_pool
-const AUTO_FILL_POOL_SIZE = 40;              // overfetch this many from Supabase, then shuffle
+const SCHEMA_SAMPLE = 10;
 
-const SUPABASE_URL = process.env.PINTPOINT_SUPABASE_URL;
-const SERVICE_KEY  = process.env.PINTPOINT_SUPABASE_SERVICE_ROLE_KEY;
-if (!SUPABASE_URL || !SERVICE_KEY) {
-  console.error('ERROR: Set PINTPOINT_SUPABASE_URL and PINTPOINT_SUPABASE_SERVICE_ROLE_KEY');
+const esc = (v) => String(v ?? '')
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+const anchor = (v) => String(v).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'x';
+const num = (n) => n.toLocaleString('en-GB');
+
+const data = JSON.parse(readFileSync(DATA_PATH, 'utf8'));
+const venues = data.venues ?? [];
+if (!venues.length) {
+  console.error('❌ _data/indexable-venues.json has no venues. Run generate-sitemap.mjs first.');
   process.exit(1);
 }
 
-// Mirrors supabase/functions/venue-page/index.ts so URLs match exactly.
-function slugify(name) {
-  return name.toLowerCase()
-    .replace(/['']/g, '')
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-}
-function cleanCityForSlug(raw) {
-  return raw
-    .replace(/\s+[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}\b/i, '')
-    .replace(/,\s*(UK|USA|GB|US)\s*$/i, '')
-    .trim();
-}
-function canonicalSlug(v) {
-  const nameSlug = slugify(v.name);
-  const cleanedCity = v.city ? cleanCityForSlug(v.city) : '';
-  const citySlug = cleanedCity ? slugify(cleanedCity) : '';
-  return citySlug ? `${nameSlug}-${citySlug}` : nameSlug;
+/** country -> city -> venues, each sorted so the page reads the same way twice. */
+const byCountry = new Map();
+for (const v of venues) {
+  const country = v.country_name || v.country_code || 'Elsewhere';
+  const city = v.city || 'Elsewhere';
+  if (!byCountry.has(country)) byCountry.set(country, new Map());
+  const cities = byCountry.get(country);
+  if (!cities.has(city)) cities.set(city, []);
+  cities.get(city).push(v);
 }
 
-function escapeHtml(s) {
-  return String(s ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
+const collator = new Intl.Collator('en-GB', { sensitivity: 'base' });
+// Sort key drops a leading article: "The Rake" files under R, the same rule
+// the app's venue letter chips use.
+const fileAs = (name) => String(name).replace(/^(the|a|an)\s+/i, '');
 
-// Strip postal-code fragments and country suffixes from a city string for
-// display. Mirrors cleanCityForSlug but covers more patterns we see in the
-// wild: US zips ("CA 95014"), European 5-digit ("18001 Granada"), Czech
-// "110 00 Praha 1-Nové Město", UK postcodes ("Bridport DT6 3SY").
-function cleanCityForDisplay(raw) {
-  return String(raw ?? '')
-    // UK postcode anywhere ("Bridport DT6 3SY" → "Bridport")
-    .replace(/\s+[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}\b/i, '')
-    // US-style "CA 95014" prefix or suffix
-    .replace(/\b[A-Z]{2}\s*\d{5}\b/g, '')
-    // Czech-style "110 00 " prefix
-    .replace(/^\d{3}\s*\d{2}\s+/, '')
-    // Spanish-style "18001 " prefix
-    .replace(/^\d{4,5}\s+/, '')
-    // Trailing "Praha 1-Nové Město" → "Praha"
-    .replace(/\s+\d+-.+$/, '')
-    // Trailing country code
-    .replace(/,\s*(UK|USA|GB|US)\s*$/i, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-// After cleaning, if the result is empty or still digit-led it's junk.
-function cityLooksLikePostcode(city) {
-  const cleaned = cleanCityForDisplay(city);
-  return !cleaned || /^\d/.test(cleaned) || /^[A-Z]{2}$/.test(cleaned);
-}
+const countries = [...byCountry.entries()]
+  .map(([country, cities]) => ({
+    country,
+    total: [...cities.values()].reduce((n, list) => n + list.length, 0),
+    cities: [...cities.entries()]
+      .map(([city, list]) => ({
+        city,
+        list: list.sort((a, b) => collator.compare(fileAs(a.name), fileAs(b.name))),
+      }))
+      .sort((a, b) => (b.list.length - a.list.length) || collator.compare(a.city, b.city)),
+  }))
+  .sort((a, b) => (b.total - a.total) || collator.compare(a.country, b.country));
 
-// Strip stale HTML entities Helen/users sometimes pasted into venue names
-// (`North Park Beer Co &#45; Bankers Hill`, `&amp;` doubled etc).
-function decodeEntities(s) {
-  return String(s ?? '')
-    .replace(/&#45;/g, '-')
-    .replace(/&#39;/g, "'")
-    .replace(/&amp;/g, '&');
-}
+const jump = countries
+  .map((c) => `<a href="#country-${anchor(c.country)}">${esc(c.country)} <span class="n">${num(c.total)}</span></a>`)
+  .join('\n        ');
 
-// Date-seeded deterministic PRNG (Mulberry32). Same date → same shuffle, so
-// the page stays stable within a day no matter how many times the script
-// runs. Different date → different shuffle, naturally.
-function dateSeed(d = new Date()) {
-  const iso = d.toISOString().slice(0, 10); // YYYY-MM-DD in UTC
-  let h = 2166136261;
-  for (let i = 0; i < iso.length; i++) {
-    h ^= iso.charCodeAt(i);
-    h = Math.imul(h, 16777619);
+const sections = countries.map((c) => {
+  const cities = c.cities.map((ct) => {
+    const items = ct.list.map((v) => {
+      const gone = v.kind === 'ghost' ? ' class="gone"' : '';
+      const tag = v.kind === 'ghost' ? '<span class="tag">closed</span>' : '';
+      return `<li><a href="${esc(v.slug)}"${gone}>${esc(v.name)}${tag}</a></li>`;
+    }).join('');
+    return `        <h3 id="city-${anchor(c.country)}-${anchor(ct.city)}">${esc(ct.city)} <span class="n">${num(ct.list.length)}</span></h3>\n`
+      + `        <ul class="venue-index">${items}</ul>`;
+  }).join('\n');
+  return `      <section class="country" id="country-${anchor(c.country)}">\n`
+    + `        <h2>${esc(c.country)} <span class="n">${num(c.total)}</span></h2>\n`
+    + `${cities}\n      </section>`;
+}).join('\n');
+
+const live = venues.filter((v) => v.kind === 'live');
+const sample = live.slice(0, SCHEMA_SAMPLE).map((v, i) =>
+  `      { "@type": "ListItem", "position": ${i + 1}, "name": ${JSON.stringify(v.name)}, "url": "https://pintpoint.co.uk/pubs/${v.slug}" }`
+).join(',\n');
+
+const itemList = `${ITEMLIST_START}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Sample PINtPOINT venue pages",
+    "itemListOrder": "https://schema.org/ItemListUnordered",
+    "numberOfItems": ${venues.length},
+    "itemListElement": [
+${sample}
+    ]
   }
-  return h >>> 0;
-}
-function mulberry32(seed) {
-  let s = seed >>> 0;
-  return function () {
-    s = (s + 0x6D2B79F5) >>> 0;
-    let t = s;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-function seededShuffle(arr, rng) {
-  const out = [...arr];
-  for (let i = out.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1));
-    [out[i], out[j]] = [out[j], out[i]];
-  }
-  return out;
-}
+  </script>
+  ${ITEMLIST_END}`;
 
-async function pgrest(params) {
-  const url = `${SUPABASE_URL}/rest/v1/venues?${params.toString()}`;
-  const res = await fetch(url, {
-    headers: {
-      apikey: SERVICE_KEY,
-      Authorization: `Bearer ${SERVICE_KEY}`,
-      Accept: 'application/json',
-    },
-  });
-  if (!res.ok) throw new Error(`PostgREST ${res.status}: ${await res.text()}`);
-  return await res.json();
-}
-
-// Look up a hand-picked featured venue by exact name + city. We don't
-// filter by closed_down here — featured picks can include pre-launch and
-// even ghost venues if that's the editorial intent.
-async function fetchFeaturedPick({ name, city }) {
-  const params = new URLSearchParams({
-    select: 'id,name,city,address,photo',
-    deleted_at: 'is.null',
-    name: `eq.${name}`,
-    city: `eq.${city}`,
-    limit: '1',
-  });
-  const rows = await pgrest(params);
-  if (!rows.length) {
-    console.warn(`  ⚠ featured pick not found: ${name} (${city})`);
-    return null;
-  }
-  return rows[0];
-}
-
-// Build the eligible pool from the most-recently-updated venues with full
-// data. Returns POOL_SIZE candidates (post-filter); the caller shuffles
-// from this pool and takes `limit`. Overfetch heavily because Supabase's
-// strict updated_at ordering would otherwise collapse to the same handful
-// of frequently-scraped venues night after night.
-async function fetchRecentVenuePool(excludeSlugs, poolSize) {
-  const params = new URLSearchParams({
-    select: 'id,name,city,address,photo,closed_down,updated_at',
-    deleted_at: 'is.null',
-    closed_down: 'eq.false',
-    photo: 'not.is.null',
-    city: 'not.is.null',
-    address: 'not.is.null',
-    order: 'updated_at.desc',
-    limit: String(poolSize * 3), // overfetch — discards: postcode-cities, featured dupes, duplicate slugs
-  });
-  const data = await pgrest(params);
-
-  const seen = new Set(excludeSlugs);
-  const out = [];
-  for (const v of data ?? []) {
-    if (cityLooksLikePostcode(v.city)) continue;
-    const cleanName = decodeEntities(v.name);
-    const slug = canonicalSlug({ ...v, name: cleanName });
-    if (!slug || seen.has(slug)) continue;
-    seen.add(slug);
-    out.push({ slug, name: cleanName, city: v.city });
-    if (out.length >= poolSize) break;
-  }
-  return out;
-}
-
-// Three-tier list: stable hand-picks (always shown), daily-rotated picks from
-// rotation_pool, then date-shuffled auto-fill from recently-updated venues.
-async function fetchVenues() {
-  const config = JSON.parse(readFileSync(FEATURED_PATH, 'utf8'));
-  const stableConfig = config.stable ?? [];
-  const poolConfig = config.rotation_pool ?? [];
-
-  const seed = dateSeed();
-  const rng = mulberry32(seed);
-  console.log(`Date seed: ${seed} (${new Date().toISOString().slice(0,10)})`);
-
-  // Tier 1: stable picks, always shown in defined order.
-  console.log(`Resolving ${stableConfig.length} stable picks (always visible)...`);
-  const stable = [];
-  const seenSlugs = new Set();
-  for (const pick of stableConfig) {
-    const row = await fetchFeaturedPick(pick);
-    if (!row) continue;
-    const cleanName = decodeEntities(row.name);
-    const slug = canonicalSlug({ ...row, name: cleanName });
-    if (seenSlugs.has(slug)) continue;
-    seenSlugs.add(slug);
-    stable.push({ slug, name: cleanName, city: row.city });
-  }
-
-  // Tier 2: rotating featured. Resolve the whole pool, then date-shuffle and
-  // pick ROTATING_FEATURED_SLOTS. Picks visibly absent from the pool log a warn.
-  console.log(`Resolving ${poolConfig.length} rotation_pool entries...`);
-  const resolvedPool = [];
-  for (const pick of poolConfig) {
-    const row = await fetchFeaturedPick(pick);
-    if (!row) continue;
-    const cleanName = decodeEntities(row.name);
-    const slug = canonicalSlug({ ...row, name: cleanName });
-    if (seenSlugs.has(slug)) continue;
-    resolvedPool.push({ slug, name: cleanName, city: row.city });
-  }
-  const shuffledPool = seededShuffle(resolvedPool, rng);
-  const rotated = shuffledPool.slice(0, ROTATING_FEATURED_SLOTS);
-  for (const v of rotated) seenSlugs.add(v.slug);
-  console.log(`  Picked ${rotated.length}/${ROTATING_FEATURED_SLOTS} rotating from ${resolvedPool.length}-strong pool: ${rotated.map(v => v.slug).join(', ')}`);
-
-  // Tier 3: auto-fill. Fetch a wider pool from Supabase, date-shuffle, take
-  // however many slots remain.
-  const remaining = TOTAL_SLOTS - stable.length - rotated.length;
-  console.log(`Auto-filling ${remaining} slots from a ${AUTO_FILL_POOL_SIZE}-venue pool (shuffled by date seed)...`);
-  const autoPool = await fetchRecentVenuePool(seenSlugs, AUTO_FILL_POOL_SIZE);
-  const autoShuffled = seededShuffle(autoPool, rng);
-  const autoPicks = autoShuffled.slice(0, remaining);
-  console.log(`  Picked ${autoPicks.length}/${remaining} auto-fill from ${autoPool.length}-strong pool`);
-
-  return [...stable, ...rotated, ...autoPicks];
-}
-
-function renderListBlock(venues) {
-  const rows = venues.map(v => {
-    const cityLabel = cleanCityForDisplay(v.city);
-    return `      <li><a href="${escapeHtml(v.slug)}" class="venue-link"><div><div class="venue-name">${escapeHtml(v.name)}</div><div class="venue-city">${escapeHtml(cityLabel)}</div></div><span class="venue-arrow">&rsaquo;</span></a></li>`;
-  });
-  return `${START_MARKER}\n${rows.join('\n')}\n      ${END_MARKER}`;
-}
-
-// JSON-LD ItemList — the top 6 venues (the hand-picked featured set).
-// The whole <script type="application/ld+json"> ... </script> block is
-// regenerated between ITEMLIST:START / ITEMLIST:END (which sit *outside*
-// the script tag so they don't break JSON-LD parsing).
-function renderItemListBlock(venues) {
-  const items = venues.slice(0, 6).map((v, i) =>
-    `      { "@type": "ListItem", "position": ${i + 1}, "name": ${JSON.stringify(v.name)}, "url": "https://pintpoint.co.uk/pubs/${v.slug}" }`
-  );
-  return `${ITEMLIST_START}\n  <script type="application/ld+json">\n  {\n    "@context": "https://schema.org",\n    "@type": "ItemList",\n    "name": "Sample PINtPOINT venue pages",\n    "itemListOrder": "https://schema.org/ItemListUnordered",\n    "itemListElement": [\n${items.join(',\n')}\n    ]\n  }\n  </script>\n  ${ITEMLIST_END}`;
-}
-
-function replaceBlock(html, startMarker, endMarker, newBlock) {
-  const startIdx = html.indexOf(startMarker);
-  const endIdx = html.indexOf(endMarker);
-  if (startIdx === -1 || endIdx === -1) {
-    console.error(`ERROR: Markers ${startMarker} / ${endMarker} not found in pubs/index.html.`);
+let html = readFileSync(INDEX_PATH, 'utf8');
+for (const [a, b] of [[START, END], [ITEMLIST_START, ITEMLIST_END]]) {
+  if (!html.includes(a) || !html.includes(b)) {
+    console.error(`❌ pubs/index.html is missing ${a} / ${b}`);
     process.exit(1);
   }
-  return html.slice(0, startIdx) + newBlock + html.slice(endIdx + endMarker.length);
 }
 
-async function main() {
-  const venues = await fetchVenues();
-  console.log(`Final list (${venues.length} venues):`);
-  for (const v of venues) console.log(`  ${v.slug}  ·  ${v.name} (${v.city})`);
+html = html.replace(
+  new RegExp(`${START}[\\s\\S]*?${END}`),
+  `${START}\n${sections}\n      ${END}`,
+);
+html = html.replace(new RegExp(`${ITEMLIST_START}[\\s\\S]*?${ITEMLIST_END}`), itemList);
 
-  let html = readFileSync(INDEX_PATH, 'utf8');
-  const orig = html;
-  html = replaceBlock(html, START_MARKER, END_MARKER, renderListBlock(venues));
-  if (html.indexOf(ITEMLIST_START) !== -1) {
-    html = replaceBlock(html, ITEMLIST_START, ITEMLIST_END, renderItemListBlock(venues));
-  } else {
-    console.warn(`  ⚠ ${ITEMLIST_START} markers not found — JSON-LD ItemList not regenerated. Add markers around the existing itemListElement rows.`);
-  }
+// The two counts in the page's own prose, kept true by the same run that
+// writes the list. A hand-typed total on a generated page is a lie waiting.
+html = html
+  .replace(/<span data-count="venues">[^<]*<\/span>/g, `<span data-count="venues">${num(venues.length)}</span>`)
+  .replace(/<span data-count="countries">[^<]*<\/span>/g, `<span data-count="countries">${num(countries.length)}</span>`)
+  .replace(/<!-- JUMP:START -->[\s\S]*?<!-- JUMP:END -->/, `<!-- JUMP:START -->\n        ${jump}\n        <!-- JUMP:END -->`);
 
-  if (html === orig) {
-    console.log('No changes needed — pubs/index.html already up to date.');
-    return;
-  }
-  writeFileSync(INDEX_PATH, html);
-  console.log('pubs/index.html regenerated.');
-}
-
-main().catch(e => { console.error(e); process.exit(1); });
+writeFileSync(INDEX_PATH, html);
+console.log(`Rebuilt pubs/index.html: ${num(venues.length)} venues (${num(live.length)} live, ${num(venues.length - live.length)} closed) across ${countries.length} countries.`);

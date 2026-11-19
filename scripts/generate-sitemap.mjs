@@ -243,7 +243,7 @@ async function fetchVenues() {
   const venues = [];
   for (let offset = 0; ; offset += PAGE_SIZE) {
     const endpoint = new URL('/rest/v1/venues', supabaseUrl);
-    endpoint.searchParams.set('select', 'id,name,city,country_code,untappd_id,untappd_type,untappd_category,created_at,updated_at,last_scraped_at');
+    endpoint.searchParams.set('select', 'id,name,city,country_code,country_name,untappd_id,untappd_type,untappd_category,created_at,updated_at,last_scraped_at');
     endpoint.searchParams.set('deleted_at', 'is.null');
     endpoint.searchParams.set('closed_down', 'eq.false');
     endpoint.searchParams.set('order', 'id.asc');
@@ -272,7 +272,7 @@ async function fetchCuratedGhosts() {
   const ghosts = [];
   for (let offset = 0; ; offset += PAGE_SIZE) {
     const endpoint = new URL('/rest/v1/venues', supabaseUrl);
-    endpoint.searchParams.set('select', 'id,name,city,updated_at,historical_note,historical_photos,last_pour_beer,last_pour_date');
+    endpoint.searchParams.set('select', 'id,name,city,country_code,country_name,updated_at,historical_note,historical_photos,last_pour_beer,last_pour_date');
     endpoint.searchParams.set('deleted_at', 'is.null');
     endpoint.searchParams.set('closed_down', 'eq.true');
     endpoint.searchParams.set('order', 'id.asc');
@@ -445,6 +445,37 @@ const ghostUrls = curatedGhosts
     };
   })
   .filter(Boolean);
+
+// The venue list the sitemap just decided on, written out for
+// generate-pubs-index.mjs. /pubs/ used to show twenty venues drawn from a
+// pool of about fifty-eight while the sitemap carried eleven hundred, and the
+// obvious fix — have the index recompute "which venues are worth linking" —
+// would have put the same rule in two scripts to drift apart. So the rule
+// stays here, where the sitemap already applies it, and the index reads the
+// answer. The nightly workflow runs this script first.
+const indexableVenueFile = [
+  ...indexableVenues.map((v) => ({ venue: v, kind: 'live' })),
+  ...curatedGhosts.map((v) => ({ venue: v, kind: 'ghost' })),
+]
+  .map(({ venue, kind }) => {
+    const slug = canonicalSlug(venue);
+    if (!slug) return null;
+    return {
+      slug,
+      name: venue.name ?? '',
+      city: cleanCityForSlug(venue.city) || '',
+      country_code: venue.country_code ?? '',
+      country_name: venue.country_name ?? '',
+      kind,
+    };
+  })
+  .filter(Boolean);
+
+await import('node:fs/promises').then(({ writeFile }) => writeFile(
+  new URL('../_data/indexable-venues.json', import.meta.url),
+  JSON.stringify({ generated_at: TODAY, count: indexableVenueFile.length, venues: indexableVenueFile }, null, 1) + '\n',
+));
+console.log(`[sitemap] wrote _data/indexable-venues.json with ${indexableVenueFile.length} venue(s) for the /pubs/ index.`);
 
 const collectionUrls = collections.map((c) => ({
   loc: `/collections/${c.slug}`,
