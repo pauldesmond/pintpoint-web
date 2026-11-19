@@ -38,6 +38,7 @@ const staticUrls = [
   { loc: '/ai/counts.json', lastmod: TODAY, changefreq: 'daily', priority: '0.5' },
   { loc: '/download', lastmod: TODAY, changefreq: 'weekly', priority: '0.95' },
   { loc: '/pubs/', lastmod: TODAY, changefreq: 'weekly', priority: '0.95' },
+  { loc: '/collections/', lastmod: TODAY, changefreq: 'weekly', priority: '0.9' },
   { loc: '/features.html', lastmod: '2026-04-13', changefreq: 'monthly', priority: '0.8' },
   { loc: '/screenshots.html', lastmod: '2026-04-13', changefreq: 'monthly', priority: '0.8' },
   { loc: '/ghost.html', lastmod: '2026-04-13', changefreq: 'monthly', priority: '0.7' },
@@ -297,6 +298,24 @@ async function fetchCuratedGhosts() {
   }
 }
 
+// Curated Collections live at /collections/<slug>, rendered by an edge
+// function rather than held as files, so nothing in the repo knows they
+// exist. Until 19 November 2026 none of the eight was in the sitemap at
+// all: crawlable, allowed by robots.txt, carrying no noindex, and reachable
+// only from a blog post. Four of them were reachable from nothing.
+async function fetchCollections() {
+  const endpoint = new URL('/rest/v1/collections', supabaseUrl);
+  endpoint.searchParams.set('select', 'slug,updated_at,published_at,noindex');
+  endpoint.searchParams.set('order', 'published_at.desc');
+  const response = await supabaseFetch(endpoint);
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`Supabase collections fetch failed: HTTP ${response.status} ${body.slice(0, 500)}`);
+  }
+  const rows = await response.json();
+  return rows.filter((c) => c.slug && !c.noindex && c.published_at);
+}
+
 // Sitemap inclusion = "has live tap data right now". A venue qualifies
 // if it has at least MIN_LIVE_BEERS confirmed tap_list rows whose
 // last_seen is within TAP_FRESHNESS_DAYS. Beats the old
@@ -370,13 +389,14 @@ function renderUrl({ loc, lastmod, changefreq, priority }) {
   ].join('\n');
 }
 
-const [venues, liveTapCounts, curatedGhosts, crawlPages, blogPages, beerCount] = await Promise.all([
+const [venues, liveTapCounts, curatedGhosts, crawlPages, blogPages, beerCount, collections] = await Promise.all([
   fetchVenues(),
   fetchLiveTapCountsByVenue(),
   fetchCuratedGhosts(),
   listCrawlPages(),
   listBlogPages(),
   fetchExactCount('beers'),
+  fetchCollections(),
 ]);
 const totalVenues = venues.length;
 
@@ -426,8 +446,15 @@ const ghostUrls = curatedGhosts
   })
   .filter(Boolean);
 
+const collectionUrls = collections.map((c) => ({
+  loc: `/collections/${c.slug}`,
+  lastmod: isoDate(c.updated_at || c.published_at),
+  changefreq: 'monthly',
+  priority: '0.8',
+}));
+
 const seen = new Set();
-const urls = [...staticUrls, ...crawlPages, ...blogPages, ...venueUrls, ...ghostUrls].filter((url) => {
+const urls = [...staticUrls, ...crawlPages, ...blogPages, ...collectionUrls, ...venueUrls, ...ghostUrls].filter((url) => {
   const loc = url.loc.startsWith('http') ? url.loc : `${SITE_URL}${url.loc}`;
   if (seen.has(loc)) return false;
   seen.add(loc);
@@ -445,7 +472,7 @@ const sitemap = [
 
 await import('node:fs/promises').then(({ writeFile }) => writeFile(new URL('../sitemap.xml', import.meta.url), sitemap));
 
-console.log(`Generated sitemap.xml with ${staticUrls.length} static URL(s), ${crawlPages.length} crawl-page URL(s), ${blogPages.length} blog-post URL(s), ${venueUrls.length} live-venue URL(s), and ${ghostUrls.length} curated ghost URL(s).`);
+console.log(`Generated sitemap.xml with ${staticUrls.length} static URL(s), ${crawlPages.length} crawl-page URL(s), ${blogPages.length} blog-post URL(s), ${collectionUrls.length} collection URL(s), ${venueUrls.length} live-venue URL(s), and ${ghostUrls.length} curated ghost URL(s).`);
 console.log(`Excluded ${totalVenues - indexableVenues.length} live venue(s) with fewer than ${MIN_LIVE_BEERS} live taps in the last ${TAP_FRESHNESS_DAYS} days (of ${totalVenues} total).`);
 const venueUrlInputTotal = venueUrls.length + ghostUrls.length;
 if (uniqueVenueUrlCount !== venueUrlInputTotal) {
@@ -796,6 +823,16 @@ function collectFeaturedVenues() {
     // list from Untappd on demand, so a venue with no cached rows still
     // renders — but a brewery id reads a stranger's feed.
     .filter((v) => v.untappd_id && v.untappd_id !== 0 && (v.untappd_type ?? 'venue') === 'venue')
+    // And needs tap data that is actually LIVE, by the same measure the
+    // sitemap uses to decide a venue is worth indexing. The chip row is the
+    // newest venues we hold, and "newest" is about when we added it, not
+    // when anyone last drank there. On 2026-11-19 that put The Store,
+    // Croydon on the home page hours after it was added: ten beers in its
+    // tap history, newest check-in 25 December 2025, and Google, the
+    // operator's own site and that eleven-month silence all pointing the
+    // same way. The page verifier below could not catch it, because it
+    // tests the rendered beer count and history counts.
+    .filter((v) => (liveTapCounts.get(v.id) ?? 0) >= MIN_LIVE_BEERS)
     .filter((v) => v.country_code)
     .map((v) => ({ venue: v, city: cleanCityForSlug(v.city) }))
     .map((c) => ({ ...c, label: cityLabel(c.city) }))

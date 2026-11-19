@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-itunes-app" content="app-id=6760611613">
+  <title>Curated Collections — PINtPOINT</title>
+  <meta name="description" content="Themed pub maps assembled by hand: the surviving tied houses of a lost brewery, every pub to win a national award, the ones that played somewhere fictional on television. Eight collections, worked through over weeks rather than in an evening." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+  <link rel="canonical" href="https://pintpoint.co.uk/collections/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pintpoint.co.uk/collections/" />
+  <meta property="og:title" content="Curated Collections — PINtPOINT" />
+  <meta property="og:description" content="Themed pub maps assembled by hand. Eight collections, worked through over weeks rather than in an evening." />
+  <meta property="og:image" content="https://pintpoint.co.uk/icon.png" />
+  <meta property="og:image:alt" content="PINtPOINT app icon." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Curated Collections — PINtPOINT" />
+  <meta name="twitter:description" content="Eight themed pub maps, worked through over weeks rather than in an evening." />
+  <meta name="twitter:image" content="https://pintpoint.co.uk/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pintpoint.co.uk/" },
+      { "@type": "ListItem", "position": 2, "name": "Curated Collections" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Curated Collections",
+    "description": "Themed pub reference maps assembled by hand by PINtPOINT, grouped by area and worked through over weeks or months.",
+    "url": "https://pintpoint.co.uk/collections/",
+    "isPartOf": { "@id": "https://pintpoint.co.uk/#website" },
+    "publisher": { "@id": "https://pintpoint.co.uk/#organization" },
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": 8,
+      "itemListElement": [
+      { "@type": "ListItem", "position": 1, "url": "https://pintpoint.co.uk/collections/gray-and-sons", "name": "Gray & Sons" },
+      { "@type": "ListItem", "position": 2, "url": "https://pintpoint.co.uk/collections/green-man", "name": "The Green Man" },
+      { "@type": "ListItem", "position": 3, "url": "https://pintpoint.co.uk/collections/national-pub-of-the-year", "name": "National Pub of the Year" },
+      { "@type": "ListItem", "position": 4, "url": "https://pintpoint.co.uk/collections/fullers-quest-for-silver", "name": "Fuller's Quest for Silver" },
+      { "@type": "ListItem", "position": 5, "url": "https://pintpoint.co.uk/collections/screen-pubs", "name": "Pubs You Have Already Seen" },
+      { "@type": "ListItem", "position": 6, "url": "https://pintpoint.co.uk/collections/square-mile-old-haunts", "name": "Old Haunts of the Square Mile" },
+      { "@type": "ListItem", "position": 7, "url": "https://pintpoint.co.uk/collections/davys-wine-bars", "name": "Davy's Wine Bars" },
+      { "@type": "ListItem", "position": 8, "url": "https://pintpoint.co.uk/collections/baddow-brewery-survivors", "name": "Baddow Brewery Survivors" }
+      ]
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --amber: #F2A93B; --text: #ffffff; --muted: #8b949e; --card: #13131f; --border: rgba(255,255,255,0.08); }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    nav a:hover { color: var(--text); }
+    nav a[aria-current="page"] { color: var(--text); }
+
+    .hero { max-width: 760px; margin: 0 auto; padding: 72px 24px 40px; }
+    .eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+    h1 { font-size: clamp(2.1rem, 5.5vw, 3.2rem); font-weight: 900; line-height: 1.08; letter-spacing: -1.2px; margin-bottom: 20px; }
+    .hero p { color: #b9c0c8; font-size: 1.05rem; line-height: 1.7; margin-bottom: 14px; }
+    .hero p.small { font-size: 0.92rem; color: var(--muted); }
+
+    .grid { max-width: 1040px; margin: 0 auto; padding: 24px 24px 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+    .col-card { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+    .col-card:hover, .col-card:focus-visible { border-color: var(--teal); transform: translateY(-2px); outline: none; }
+    .col-card h2 { font-size: 1.22rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 10px; }
+    .col-desc { color: #b9c0c8; font-size: 0.93rem; line-height: 1.6; margin-bottom: 16px; flex: 1; }
+    .col-meta { font-size: 0.76rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .col-meta .count { color: var(--amber); font-weight: 700; }
+    .col-go { font-size: 0.86rem; font-weight: 600; color: var(--teal); }
+
+    footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+    footer .links { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; margin-bottom: 18px; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 48px 20px 28px; }
+      .grid { padding: 16px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary">
+    <a href="/index.html" class="logo" style="text-decoration:none;color:var(--text)">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <a href="/about-pintpoint.html">About</a>
+      <a href="/features.html">Features</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/collections/" aria-current="page">Collections</a>
+      <a href="/blog/">Blog</a>
+      <a href="/screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <p class="eyebrow">Curated Collections</p>
+    <h1>Pub maps with a reason to exist.</h1>
+    <p>A Curated Collection is a themed set of pubs put together by hand: the surviving tied houses of a brewery that stopped brewing, every pub to have won a national award, the real ones that played somewhere fictional on television. Each is grouped by area, mapped, and built to be ticked off over weeks or months.</p>
+    <p class="small">Not a crawl, which is one walkable route for one session, and not a watchlist, which is yours alone. A collection is a reference you come back to.</p>
+  </div>
+
+  <main class="grid">
+        <a class="col-card" href="/collections/gray-and-sons">
+          <h2>Gray &amp; Sons</h2>
+          <p class="col-desc">The Chelmsford family firm that stopped brewing in 1974 and kept the pubs. Twenty-one of the twenty-four Gray houses in that year&#x27;s Good Beer Guide are still theirs, fifty-two years on.</p>
+          <p class="col-meta"><span class="count">47</span> venues &middot; 7 areas</p>
+          <span class="col-go">Open the collection &rarr;</span>
+        </a>
+        <a class="col-card" href="/collections/green-man">
+          <h2>The Green Man</h2>
+          <p class="col-desc">Every Green Man pub our catalogue still had trading when we last checked, and the 1939 article that handed the sign a pagan biography it never had.</p>
+          <p class="col-meta"><span class="count">69</span> venues &middot; 6 areas</p>
+          <span class="col-go">Open the collection &rarr;</span>
+        </a>
+        <a class="col-card" href="/collections/national-pub-of-the-year">
+          <h2>National Pub of the Year</h2>
+          <p class="col-desc">Every pub CAMRA has named National Pub of the Year since the award began in 1988: 31 pubs from Aberdeenshire to Cornwall. Twenty-nine still pour.</p>
+          <p class="col-meta"><span class="count">31</span> venues &middot; 35 areas</p>
+          <span class="col-go">Open the collection &rarr;</span>
+        </a>
+        <a class="col-card" href="/collections/fullers-quest-for-silver">
+          <h2>Fuller&#x27;s Quest for Silver</h2>
+          <p class="col-desc">Fuller&#x27;s 1977 Silver Jubilee pub quest: 112 houses across its certificate and passport. Sixty-one still pour; the rest are sites you can still stand in front of.</p>
+          <p class="col-meta"><span class="count">112</span> venues &middot; 7 areas</p>
+          <span class="col-go">Open the collection &rarr;</span>
+        </a>
+        <a class="col-card" href="/collections/screen-pubs">
+          <h2>Pubs You Have Already Seen</h2>
+          <p class="col-desc">Real pubs that played fictional ones — Emmerdale&#x27;s Woolpack, Heartbeat&#x27;s Aidensfield Arms, and five of the twelve from The World&#x27;s End.</p>
+          <p class="col-meta"><span class="count">10</span> venues &middot; 5 areas</p>
+          <span class="col-go">Open the collection &rarr;</span>
+        </a>
+        <a class="col-card" href="/collections/square-mile-old-haunts">
+          <h2>Old Haunts of the Square Mile</h2>
+          <p class="col-desc">Twenty-eight closed City wine bars listed in the 1999 Evening Standard Guide, from the Balls Brothers, Bill Bentley&#x27;s, Coates, Corney &amp; Barrow and Pitcher &amp; Piano chains.</p>
+          <p class="col-meta"><span class="count">28</span> venues &middot; 5 areas</p>
+          <span class="col-go">Open the collection &rarr;</span>
+        </a>
+        <a class="col-card" href="/collections/davys-wine-bars">
+          <h2>Davy&#x27;s Wine Bars</h2>
+          <p class="col-desc">The London family chain of sawdust cellars, City cellars and champagne rooms, still going 155 years after John Davy opened his first bar off the Strand in 1870.</p>
+          <p class="col-meta"><span class="count">16</span> venues &middot; 4 areas</p>
+          <span class="col-go">Open the collection &rarr;</span>
+        </a>
+        <a class="col-card" href="/collections/baddow-brewery-survivors">
+          <h2>Baddow Brewery Survivors</h2>
+          <p class="col-desc">Thirty pubs still serving across Chelmsford, mid-Essex and the Essex coast — once tied houses of Baddow Brewery, which stopped brewing in 1927.</p>
+          <p class="col-meta"><span class="count">30</span> venues &middot; 2 areas</p>
+          <span class="col-go">Open the collection &rarr;</span>
+        </a>
+  </main>
+
+  <footer>
+    <div class="links">
+      <a href="/index.html">Home</a>
+      <a href="/about-pintpoint.html">About</a>
+      <a href="/features.html">Features</a>
+      <a href="/pubs/">Venues</a>
+      <a href="/blog/">Blog</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:hello@pintpoint.co.uk">Contact</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT</p>
+  </footer>
+  <!-- Cloudflare Web Analytics - cookieless, no consent banner required. -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "6971c676a791477aa5c33ef62298efc0"}'></script>
+  <script defer src="/js/pageview.js"></script>
+</body>
+</html>

@@ -405,6 +405,7 @@
       <a href="about-pintpoint.html">About</a>
       <a href="features.html">Features</a>
       <a href="pubs/">Venues</a>
+      <a href="collections/">Collections</a>
       <a href="blog/">Blog</a>
       <a href="screenshots.html">Screenshots</a>
     </div>
@@ -451,7 +452,7 @@
       <p style="font-size:0.95rem;color:var(--muted,#8b949e);line-height:1.7;margin-bottom:14px">PINtPOINT is a beer-first pub discovery app that shows you what is actually on tap before you arrive. A live radar ranks nearby venues by what they are pouring right now, filterable by beer style, so every suggestion is already relevant to the kind of pint you want next. Less bimble, more pint. Currently tracking
         <data value="1500" data-stat="venues">7,400+</data> venues across
         <data value="49" data-stat="countries">82</data> countries, with
-        <data value="16000" data-stat="beers">27,600+</data> beers matched to tap lists.</p>
+        <data value="16000" data-stat="beers">27,800+</data> beers matched to tap lists.</p>
       <p style="font-size:0.82rem;color:var(--muted,#8b949e);margin:0">Most beer apps help you remember what you drank. PINtPOINT helps you decide what to drink next.</p>
     </div>
   </section>
@@ -486,7 +487,12 @@
     <div class="feature-card">
       <div class="feature-icon">👻</div>
       <h3>Ghost Pubs</h3>
-      <p><data value="767" data-stat="ghosts">768</data> pubs that called last orders for good, many with the photograph and the story of what happened. Build a crawl from the 1983 CAMRA guide and walk what's left.</p>
+      <p><data value="767" data-stat="ghosts">770</data> pubs that called last orders for good, many with the photograph and the story of what happened. Build a crawl from the 1983 CAMRA guide and walk what's left.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🗺️</div>
+      <h3>Curated Collections</h3>
+      <p>Themed pub maps put together by hand: the surviving tied houses of a brewery that stopped brewing, every winner of a national award, the real pubs that played fictional ones. <a href="collections/" style="color:var(--teal,#00D4AA);text-decoration:none;font-weight:600">Browse all eight &rarr;</a></p>
     </div>
   </section>
 
@@ -516,15 +522,15 @@
       </div>
       <div class="global-row">
         <div class="global-cell">Europe <span style="color:#666;font-size:0.8em">Barcelona, Berlin, London, Prague</span></div>
-        <div class="global-cell" data-stat="region-europe">6,000+ venues · 20,100+ beers</div>
+        <div class="global-cell" data-stat="region-europe">6,000+ venues · 20,300+ beers</div>
       </div>
       <div class="global-row">
         <div class="global-cell">North America <span style="color:#666;font-size:0.8em">Nashville, New York, San Diego</span></div>
-        <div class="global-cell" data-stat="region-north-america">800+ venues · 6,100+ beers</div>
+        <div class="global-cell" data-stat="region-north-america">800+ venues · 6,200+ beers</div>
       </div>
       <div class="global-row">
         <div class="global-cell">Oceania <span style="color:#666;font-size:0.8em">Christchurch, Melbourne</span></div>
-        <div class="global-cell" data-stat="region-oceania">100+ venues · 1,400+ beers</div>
+        <div class="global-cell" data-stat="region-oceania">100+ venues · 1,500+ beers</div>
       </div>
       <div class="global-row">
         <div class="global-cell">Asia <span style="color:#666;font-size:0.8em">Singapore, Tokyo</span></div>
@@ -532,7 +538,7 @@
       </div>
     </div>
 
-    <p class="global-footer">27,600+ Beers · 7,400+ Venues · 82 Countries <span>and growing</span></p>
+    <p class="global-footer">27,800+ Beers · 7,400+ Venues · 82 Countries <span>and growing</span></p>
 
     <div id="featured-venues" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px"></div>
     <p style="text-align:center;margin-top:16px"><a href="pubs/" style="color:var(--teal);text-decoration:none;font-size:0.9rem;font-weight:600">Browse recent venues &rarr;</a></p>
@@ -745,10 +751,10 @@
       // it. See the FEATURED VENUE CHIPS note in the generator.
       var venues = [
         /* FEATURED-VENUES:START */
-        {name:"The Rifleman",city:"Twickenham",slug:"the-rifleman-twickenham"},  // GB · added 2026-11-17 · 12 beers
-        {name:"Hold-An",city:"Helsingør",slug:"hold-an-helsing-r"},  // DK · added 2026-11-10 · 11 beers
-        {name:"Ocean Lodge",city:"Nelson",slug:"ocean-lodge-nelson"},  // NZ · added 2026-11-09 · 8 beers
-        {name:"The Big Ben Pub",city:"Stockholm",slug:"the-big-ben-pub-stockholm"},  // SE · added 2026-10-27 · 11 beers
+        {name:"Wolfpack",city:"London",slug:"wolfpack-london"},  // GB · added 2026-11-19 · 10 beers
+        {name:"Les Berthom",city:"Lille",slug:"les-berthom-lille"},  // FR · added 2026-11-16 · 9 beers
+        {name:"Thime Station",city:"Bryne",slug:"thime-station-bryne"},  // NO · added 2026-11-12 · 5 beers
+        {name:"Axelbar",city:"Helsingør",slug:"axelbar-helsing-r"},  // DK · added 2026-11-10 · 11 beers
         /* FEATURED-VENUES:END */
       ];
       // No shuffle, no client-side filtering. The generator emits exactly

@@ -439,7 +439,12 @@ export default {
         canonical.pathname = `/collections/${slug.slice(0, -5)}`;
         return Response.redirect(canonical.toString(), 301);
       }
-      if (!slug || !/^[a-z0-9-]+$/i.test(slug)) {
+      // An empty slug is the index of every collection, which is a static
+      // file on Pages (collections/index.html). This worker used to answer it
+      // with its own 404, so the collections had no listing anywhere on the
+      // site and nothing but four blog posts linked to any of them.
+      if (!slug) return fetch(request);
+      if (!/^[a-z0-9-]+$/i.test(slug)) {
         return new Response('Collection not found', { status: 404 });
       }
       const colCacheUrl = new URL(request.url);
