@@ -48,7 +48,61 @@ const CACHE_VERSION = 'v16'; // v16 2026-11-18: venue pages now show tap history
 // changed, so we don't cold-rehydrate the whole fleet (photos in particular
 // — see [[feedback_no_cache_key_bumps_under_egress_pressure]]). Falls
 // back to CACHE_VERSION when a route hasn't declared its own.
-const COLLECTIONS_CACHE_VERSION = 'v25'; // v25 2026-11-19: Brakspear published, and its Henley region was briefly marked featured, which the renderer never draws
+const COLLECTIONS_CACHE_VERSION = 'v26'; // v26 2026-11-19: the key now carries the row's own updated_at, so this constant is only for renderer changes
+
+// HOW A COLLECTION PAGE GETS CLEARED, AND WHY THIS EXISTS.
+//
+// The page is edge-cached for a day and the key used to be the constant
+// above and nothing else. That welded two unrelated things together: "the
+// renderer changed" and "somebody edited a collection" both came out as
+// "deploy the worker". In the 36 hours to 19 November 2026 this file took
+// eight deploys and five of them were a bump and nothing else. Paul, that
+// morning: "why do we have to wrangler each change? we never used to do
+// this and we had to do it 10 times in 24 hours?"
+//
+// So the key is now `<constant>-<row updated_at>`. An edit moves updated_at,
+// which moves the key, which clears that one page inside the minute below
+// and touches no other. The constant stays for the case it was actually for:
+// a change to the renderer, which no row's timestamp knows about.
+//
+// The lookup is nine slugs and nine timestamps, edge-cached for a minute, so
+// the steady-state cost is at most one small PostgREST read a minute across
+// the whole zone rather than one per page view. If it fails the map comes
+// back empty, the key falls back to the constant alone, and the page serves
+// exactly as it did before: degraded to the old behaviour, never broken.
+const COLLECTION_VERSIONS_TTL = 60;
+const COLLECTION_VERSIONS_KEY = 'https://pintpoint.co.uk/__internal/collection-versions';
+
+async function collectionVersions(env, ctx) {
+  const cache = caches.default;
+  const key = new Request(COLLECTION_VERSIONS_KEY, { method: 'GET' });
+  const hit = await cache.match(key);
+  if (hit) {
+    try { return await hit.json(); } catch { /* fall through and re-read */ }
+  }
+  try {
+    const postgrest = 'https://rvokskoevmcekkgiglpa.supabase.co/rest/v1';
+    const resp = await fetch(`${postgrest}/collections?select=slug,updated_at`, {
+      headers: { 'apikey': env.SUPABASE_SERVICE_ROLE_KEY, 'Authorization': `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}` },
+    });
+    if (!resp.ok) return {};
+    const rows = await resp.json();
+    const map = {};
+    for (const r of rows) {
+      if (!r?.slug) continue;
+      map[r.slug] = String(r.updated_at ?? '').replace(/[^0-9]/g, '').slice(0, 14) || '0';
+    }
+    ctx.waitUntil(cache.put(key, new Response(JSON.stringify(map), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': `public, max-age=${COLLECTION_VERSIONS_TTL}`,
+      },
+    })));
+    return map;
+  } catch {
+    return {};
+  }
+}
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
@@ -447,8 +501,12 @@ export default {
       if (!/^[a-z0-9-]+$/i.test(slug)) {
         return new Response('Collection not found', { status: 404 });
       }
+      // Key on the renderer version AND the row's own updated_at, so an
+      // editorial edit clears this page by itself. See collectionVersions.
+      const colVersions = await collectionVersions(env, ctx);
+      const colRowVersion = colVersions[slug] ?? '0';
       const colCacheUrl = new URL(request.url);
-      colCacheUrl.searchParams.set('_cv', COLLECTIONS_CACHE_VERSION);
+      colCacheUrl.searchParams.set('_cv', `${COLLECTIONS_CACHE_VERSION}-${colRowVersion}`);
       const colCacheKey = new Request(colCacheUrl.toString(), { method: 'GET' });
       const colCache = caches.default;
       const cachedCol = await colCache.match(colCacheKey);
