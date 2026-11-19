@@ -65,6 +65,15 @@ const COLLECTIONS_CACHE_VERSION = 'v26'; // v26 2026-11-19: the key now carries 
 // and touches no other. The constant stays for the case it was actually for:
 // a change to the renderer, which no row's timestamp knows about.
 //
+// WHICH DEPENDS ON SOMETHING THAT WAS NOT TRUE WHEN THIS SHIPPED. There is
+// no trigger on public.collections, so updated_at does NOT move on its own:
+// an UPDATE setting the title to its own value left it where it had been
+// through three earlier edits. Every writer therefore has to set updated_at
+// itself, and one that forgets leaves its edit behind a day of cache with
+// nothing to show that anything is wrong. The trigger that fixes it is in
+// Desktop/collections-updated-at-trigger.sql; until it is run, treat
+// "set updated_at" as part of what editing a collection means.
+//
 // The lookup is nine slugs and nine timestamps, edge-cached for a minute, so
 // the steady-state cost is at most one small PostgREST read a minute across
 // the whole zone rather than one per page view. If it fails the map comes
