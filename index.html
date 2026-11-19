@@ -225,7 +225,7 @@
     .qr-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
     .qr-block img { width: 150px; height: 150px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.1); }
 
-    .features { max-width: 1100px; margin: 0 auto; padding: 80px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .features { max-width: 1100px; margin: 0 auto; padding: 80px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px; }
     .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 36px 32px; transition: border-color 0.2s; }
     .feature-card:hover { border-color: rgba(0,212,170,0.3); }
     .feature-icon { font-size: 2.2rem; margin-bottom: 16px; }
@@ -557,7 +557,7 @@
     </style>
     <h2 style="text-align:center;font-size:1.1rem;font-weight:800;letter-spacing:-0.3px;color:var(--text);margin-bottom:6px">From the blog</h2>
     <p style="text-align:center;font-size:0.85rem;color:var(--muted,#8b949e);margin-bottom:20px">Guides, love letters, essays, notes — <a href="blog/" style="color:var(--teal,#00D4AA);text-decoration:none">browse all →</a></p>
-    <div id="home-blog-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+    <div id="home-blog-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:12px">
       <!-- Static fallback for crawlers + no-JS readers. JS below replaces with the live top 3 from feed.xml. -->
       <!-- Keep this in sync with feed.xml's top 3 so bingbot (which doesn't run JS) sees the same surface as JS readers. -->
       <a href="blog/mild-half-to-half-a-percent.html" class="home-card">
