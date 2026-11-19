@@ -48,7 +48,7 @@ const CACHE_VERSION = 'v16'; // v16 2026-11-18: venue pages now show tap history
 // changed, so we don't cold-rehydrate the whole fleet (photos in particular
 // — see [[feedback_no_cache_key_bumps_under_egress_pressure]]). Falls
 // back to CACHE_VERSION when a route hasn't declared its own.
-const COLLECTIONS_CACHE_VERSION = 'v24'; // v24 2026-11-19: collection pages carry the site nav, six items in the site order, Collections among them
+const COLLECTIONS_CACHE_VERSION = 'v24'; // v24 2026-11-19: collection pages carry the site nav, five links in the site order, Collections among them
 
 // Fallback Cache-Control if the upstream edge function doesn't set one.
 // In practice the edge function sets a per-page-type value (short for
