@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-11-19",
- "count": 1199,
+ "count": 1202,
  "venues": [
   {
    "slug": "the-ship-tavern-london",
@@ -2411,9 +2411,33 @@
    "kind": "live"
   },
   {
+   "slug": "nags-head-abingdon",
+   "name": "Nag's Head",
+   "city": "Abingdon",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-george-and-dragon-hudswell",
    "name": "The George & Dragon",
    "city": "Hudswell",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "porch-house-stow-on-the-wold",
+   "name": "Porch House",
+   "city": "Stow-on-the-Wold",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "sheep-on-sheep-street-stow-on-the-wold",
+   "name": "Sheep on Sheep Street",
+   "city": "Stow-on-the-Wold",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
