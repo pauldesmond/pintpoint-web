@@ -41,20 +41,11 @@
   <link rel="stylesheet" href="/blog/pintpress-feature.css" />
   <style>
     .subtitle { font-size: clamp(1.05rem, 2.4vw, 1.35rem); color: var(--ink); font-weight: 750; line-height: 1.35; max-width: 760px; margin-bottom: 30px; }
-    .map-split { margin: 30px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .route-card { border: 1px solid var(--rule-soft); border-radius: 0; padding: 18px; }
-    .route-card.ink { border-color: var(--rule); }
-    .route-card.pinstripe { border-color: var(--rule); }
-    .route-card h3 { margin-top: 0; color: var(--ink); }
-    .arrow { color: var(--muted); font-weight: 800; margin: 9px 0; letter-spacing: 1px; }
-    .route-card ul { padding-left: 18px; color: var(--ink); }
-    .route-card li { margin: 6px 0; }
     /* .note is a box here, but it is also a span class on 48 other pages, so it is tinted locally rather than in section 26b. */
     .note { margin: 30px 0; padding: 16px 18px; border: 1px dashed var(--rule); border-radius: 0; color: var(--ink); background: var(--paper-deep); font-size: 0.95rem; }
     body .ps-1 { color: var(--ink); }
     body .ps-2 { color: var(--amber-ink); }
     @media (max-width: 760px) {
-      .map-split { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -115,25 +106,6 @@
     <h2>The moves east</h2>
 
     <p>The papers left Fleet Street from 1986, and from 1991, <a href="https://www.theguardian.com/business/2015/jan/28/canary-wharf-timeline-london-building-docklands-thatcher">the <em>Guardian</em>&rsquo;s timeline records</a>, banks including Morgan Stanley and Credit Suisse First Boston moved to Canary Wharf, with Barclays leaving Lombard Street in 2005.</p>
-
-    <div class="map-split" aria-label="Before and after the moves">
-      <section class="route-card ink">
-        <h3>Fleet Street</h3>
-        <div class="arrow">Wapping, 1986</div>
-        <ul>
-          <li><a href="https://www.lrb.co.uk/the-paper/v13/n05/ian-aitken/knights-of-the-king-and-keys">A large Scotch or a pint of bitter</a></li>
-          <li>A guarded plant behind a wall</li>
-        </ul>
-      </section>
-      <section class="route-card pinstripe">
-        <h3>Square Mile</h3>
-        <div class="arrow">Canary Wharf, from 1988</div>
-        <ul>
-          <li>Basements and claret</li>
-          <li>A privately owned estate</li>
-        </ul>
-      </section>
-    </div>
 
     <h2>Wapping, 1986</h2>
 
