@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-19",
+ "generated_at": "2026-11-20",
  "count": 1202,
  "venues": [
   {
@@ -1163,6 +1163,14 @@
    "kind": "live"
   },
   {
+   "slug": "the-dolphin-tavern-london",
+   "name": "The Dolphin Tavern",
+   "city": "London",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-elephant-british-pub-adelaide",
    "name": "The Elephant British Pub",
    "city": "Adelaide",
@@ -1571,6 +1579,14 @@
    "kind": "live"
   },
   {
+   "slug": "the-ship-london",
+   "name": "The Ship",
+   "city": "London",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "cocked-hat-gosport",
    "name": "Cocked Hat",
    "city": "Gosport",
@@ -1667,14 +1683,6 @@
    "kind": "live"
   },
   {
-   "slug": "le-lovibond-lille",
-   "name": "Le Lovibond",
-   "city": "Lille",
-   "country_code": "FR",
-   "country_name": "France",
-   "kind": "live"
-  },
-  {
    "slug": "the-whippet-inn-micropub-lichfield",
    "name": "The Whippet Inn Micropub",
    "city": "Lichfield",
@@ -1712,6 +1720,14 @@
    "city": "København",
    "country_code": "DK",
    "country_name": "Denmark",
+   "kind": "live"
+  },
+  {
+   "slug": "the-joker-brighton-brighton",
+   "name": "The Joker - Brighton",
+   "city": "Brighton",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
@@ -1782,14 +1798,6 @@
    "slug": "hot-box-live-events-chelmsford",
    "name": "Hot Box Live Events",
    "city": "Chelmsford",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "the-green-goddess-london",
-   "name": "The Green Goddess",
-   "city": "London",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -1939,14 +1947,6 @@
    "kind": "live"
   },
   {
-   "slug": "the-wig-and-pen-northampton",
-   "name": "The Wig & Pen",
-   "city": "Northampton",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "the-brasshouse-birmingham",
    "name": "The Brasshouse",
    "city": "Birmingham",
@@ -2072,14 +2072,6 @@
    "city": "København K",
    "country_code": "DK",
    "country_name": "Denmark",
-   "kind": "live"
-  },
-  {
-   "slug": "mill-on-the-exe-exeter",
-   "name": "Mill on the Exe",
-   "city": "Exeter",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
@@ -2275,14 +2267,6 @@
    "kind": "live"
   },
   {
-   "slug": "the-three-crowns-plymouth",
-   "name": "The Three Crowns",
-   "city": "Plymouth",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "the-swinton-hop-house-swinton",
    "name": "The Swinton Hop House",
    "city": "Swinton",
@@ -2411,6 +2395,30 @@
    "kind": "live"
   },
   {
+   "slug": "flower-pot-sunbury-on-thames",
+   "name": "Flower Pot",
+   "city": "Sunbury-on-Thames",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "fox-and-hounds-egham",
+   "name": "Fox and Hounds",
+   "city": "Egham",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "hand-and-flowers-maidenhead",
+   "name": "Hand and Flowers",
+   "city": "Maidenhead",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "nags-head-abingdon",
    "name": "Nag's Head",
    "city": "Abingdon",
@@ -2462,6 +2470,14 @@
    "slug": "the-white-hart-london",
    "name": "The White Hart",
    "city": "London",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "the-duck-henley-on-thames",
+   "name": "The Duck",
+   "city": "Henley-on-Thames",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -2638,14 +2654,6 @@
    "slug": "the-county-gosforth",
    "name": "The County",
    "city": "Gosforth",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "the-rifle-volunteers-maidstone",
-   "name": "The Rifle Volunteers",
-   "city": "Maidstone",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -2923,14 +2931,6 @@
    "kind": "live"
   },
   {
-   "slug": "bar-1790-london",
-   "name": "Bar 1790",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "three-colts-tavern-london",
    "name": "Three Colts Tavern",
    "city": "London",
@@ -3077,14 +3077,6 @@
   {
    "slug": "the-lucky-anchor-london",
    "name": "The Lucky Anchor",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "the-wren-tavern-london",
-   "name": "The Wren Tavern",
    "city": "London",
    "country_code": "GB",
    "country_name": "United Kingdom",
@@ -3464,6 +3456,14 @@
    "city": "London",
    "country_code": "GB",
    "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "laughing-monk-brewing-san-francisco",
+   "name": "Laughing Monk Brewing",
+   "city": "San Francisco",
+   "country_code": "US",
+   "country_name": "United States of America",
    "kind": "live"
   },
   {
@@ -4307,6 +4307,14 @@
    "kind": "live"
   },
   {
+   "slug": "east-india-arms-london",
+   "name": "East India Arms",
+   "city": "London",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "golden-fleece-london",
    "name": "Golden Fleece",
    "city": "London",
@@ -4637,14 +4645,6 @@
   {
    "slug": "the-swan-tavern-london",
    "name": "The Swan Tavern",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "st-stephens-tavern-london",
-   "name": "St Stephen's Tavern",
    "city": "London",
    "country_code": "GB",
    "country_name": "United Kingdom",
