@@ -98,8 +98,17 @@ for (const p of pages) {
     }
   }
 
-  /* 3. companion symmetry */
-  for (const other of links.get(name) ?? []) {
+  /* 3. companion symmetry.
+     A noindex page is exempt as a SOURCE. It may link published pages that
+     do not link back, because a link back would expose it: that is the
+     whole point of holding it. the-crossings is the case this was written
+     for, a series hub held until its fifth essay lands, pointing at four
+     live pieces whose footers must not point at it yet. When it publishes,
+     the footers gain the link and the symmetry returns by itself. The page
+     is still checked as a TARGET, so nothing published can quietly link a
+     held page and call it a companion. */
+  const noindex = /<meta[^>]+name="robots"[^>]+content="[^"]*noindex/i.test(html);
+  for (const other of noindex ? [] : links.get(name) ?? []) {
     if (!links.has(other)) continue;                 // outside this directory
     if (!links.get(other).has(name)) {
       fails.push(`${name}: links ${other} as a companion, but ${other} does not link back (rule 3)`);
