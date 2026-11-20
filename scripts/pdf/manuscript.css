@@ -1,0 +1,24 @@
+/* Overrides for rendering a post as a manuscript PDF. Both of these cancel a
+   rule that is correct on the site and wrong in a file you send to someone.
+   Do not "tidy" them away.
+
+   1. The site's print stylesheet prints every href in full after its link
+      text, which is right for a reader holding paper with no way to follow a
+      link, and unreadable in a manuscript: the first page of a sourced essay
+      becomes more URL than prose. The links stay live and clickable in the
+      PDF either way.
+
+   2. The lede's drop cap renders as a floated ::first-letter that overlaps
+      the rest of its own first word in this engine, so "Some time after 1996"
+      prints as "S  ome time after 1996" with the "ome" hidden behind the cap.
+      The site already carries a no-drop variant (section 26 of
+      pintpress-feature.css) for pages that do not want one; these are its
+      declarations. */
+
+.content a[href^="http"]::after,
+.content a[href^="/"]::after { content: none !important; }
+
+p.lede::first-letter {
+  float: none !important; font-size: inherit !important; line-height: inherit !important;
+  margin: 0 !important; color: inherit !important; font-weight: inherit !important;
+}
