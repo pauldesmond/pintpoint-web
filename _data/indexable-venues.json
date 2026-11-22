@@ -1,7 +1,15 @@
 {
- "generated_at": "2026-11-21",
- "count": 1211,
+ "generated_at": "2026-11-22",
+ "count": 1229,
  "venues": [
+  {
+   "slug": "warbler-on-the-wharf-milton-keynes",
+   "name": "Warbler on the Wharf",
+   "city": "Milton Keynes",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
   {
    "slug": "the-ship-tavern-london",
    "name": "The Ship Tavern",
@@ -94,6 +102,14 @@
    "slug": "byatts-brewery-west-midlands",
    "name": "Byatt's Brewery",
    "city": "West Midlands",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "the-prae-wood-arms-st-albans",
+   "name": "The Prae Wood Arms",
+   "city": "St Albans",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -355,19 +371,19 @@
    "kind": "live"
   },
   {
+   "slug": "tring-brewery-co-tring",
+   "name": "Tring Brewery Co.",
+   "city": "Tring",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "heidis-bier-bar-copenhagen",
    "name": "Heidi's Bier Bar",
    "city": "Copenhagen",
    "country_code": "DK",
    "country_name": "Denmark",
-   "kind": "live"
-  },
-  {
-   "slug": "the-greyhound-colchester",
-   "name": "The Greyhound",
-   "city": "Colchester",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
@@ -582,6 +598,14 @@
    "slug": "the-independent-brighton",
    "name": "The Independent",
    "city": "Brighton",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "the-lamb-berkhamsted",
+   "name": "The Lamb",
+   "city": "Berkhamsted",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -923,6 +947,22 @@
    "kind": "live"
   },
   {
+   "slug": "the-six-bells-st-albans",
+   "name": "The Six Bells",
+   "city": "St Albans",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "talbot-inn-milton-keynes",
+   "name": "Talbot Inn",
+   "city": "Milton Keynes",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "figure-of-eight-birmingham",
    "name": "Figure of Eight",
    "city": "Birmingham",
@@ -971,6 +1011,14 @@
    "kind": "live"
   },
   {
+   "slug": "blackened-sun-brewing-milton-keynes",
+   "name": "Blackened Sun Brewing",
+   "city": "Milton Keynes",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "three-bulls-heads-newcastle-upon-tyne",
    "name": "Three Bulls Heads",
    "city": "Newcastle upon Tyne",
@@ -987,6 +1035,14 @@
    "kind": "live"
   },
   {
+   "slug": "mad-squirrel-brewery-and-taproom-hemel-hempstead",
+   "name": "Mad Squirrel Brewery & Taproom",
+   "city": "Hemel Hempstead",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "thirst-drinks-syndicate-chelmsford",
    "name": "Thirst Drinks Syndicate",
    "city": "Chelmsford",
@@ -998,22 +1054,6 @@
    "slug": "southwark-tap-and-wine-bar-london",
    "name": "Southwark Tap & Wine Bar",
    "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "the-swan-cheltenham",
-   "name": "The Swan",
-   "city": "Cheltenham",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "bird-and-bear-dundee",
-   "name": "Bird & Bear",
-   "city": "Dundee",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -1067,6 +1107,14 @@
    "kind": "live"
   },
   {
+   "slug": "the-new-crown-wetherspoon-southgate",
+   "name": "The New Crown (Wetherspoon)",
+   "city": "Southgate",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-pommelers-rest-wetherspoon-london",
    "name": "The Pommelers Rest (Wetherspoon)",
    "city": "London",
@@ -1115,6 +1163,14 @@
    "kind": "live"
   },
   {
+   "slug": "the-moon-on-the-hill-sutton",
+   "name": "The Moon on the Hill",
+   "city": "Sutton",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-dirty-barrel-southampton",
    "name": "The Dirty Barrel",
    "city": "Southampton",
@@ -1158,14 +1214,6 @@
    "slug": "the-half-moon-wetherspoon-london",
    "name": "The Half Moon (Wetherspoon)",
    "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "the-dirty-cow-lichfield",
-   "name": "The Dirty Cow",
-   "city": "Lichfield",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -1299,6 +1347,14 @@
    "kind": "live"
   },
   {
+   "slug": "the-nonsuch-inn-north-cheam",
+   "name": "The Nonsuch Inn",
+   "city": "North Cheam",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-oxted-inn-oxted",
    "name": "The Oxted Inn",
    "city": "Oxted",
@@ -1347,6 +1403,14 @@
    "kind": "live"
   },
   {
+   "slug": "last-pub-standing-norwich",
+   "name": "Last Pub Standing",
+   "city": "Norwich",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-bulls-head-hailsham",
    "name": "The Bull's Head",
    "city": "Hailsham",
@@ -1379,6 +1443,14 @@
    "kind": "live"
   },
   {
+   "slug": "the-sun-carshalton",
+   "name": "The Sun",
+   "city": "Carshalton",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "l-rien-palma",
    "name": "Lórien",
    "city": "Palma",
@@ -1390,6 +1462,14 @@
    "slug": "penderels-oak-london",
    "name": "Penderel's Oak",
    "city": "London",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "the-moon-under-water-enfield",
+   "name": "The Moon Under Water",
+   "city": "Enfield",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -1483,9 +1563,25 @@
    "kind": "live"
   },
   {
+   "slug": "the-railway-bell-barnet",
+   "name": "The Railway Bell",
+   "city": "Barnet",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-giddy-bridge-southampton",
    "name": "The Giddy Bridge",
    "city": "Southampton",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "the-cannon-newport-pagnell",
+   "name": "The Cannon",
+   "city": "Newport Pagnell",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -1528,6 +1624,22 @@
    "city": "Aalborg",
    "country_code": "DK",
    "country_name": "Denmark",
+   "kind": "live"
+  },
+  {
+   "slug": "3-sons-brewing-co-dania-beach",
+   "name": "3 Sons Brewing Co.",
+   "city": "Dania Beach",
+   "country_code": "US",
+   "country_name": "United States of America",
+   "kind": "live"
+  },
+  {
+   "slug": "ye-olde-red-lion-sutton",
+   "name": "Ye Olde Red Lion",
+   "city": "Sutton",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
@@ -1603,6 +1715,14 @@
    "kind": "live"
   },
   {
+   "slug": "the-bull-st-albans",
+   "name": "The Bull",
+   "city": "St Albans",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-ship-london",
    "name": "The Ship",
    "city": "London",
@@ -1640,6 +1760,14 @@
    "city": "Melbourne",
    "country_code": "AU",
    "country_name": "Australia",
+   "kind": "live"
+  },
+  {
+   "slug": "st-andrews-brew-house-norwich",
+   "name": "St Andrews Brew House",
+   "city": "Norwich",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
@@ -1864,6 +1992,14 @@
    "city": "Brisbane",
    "country_code": "AU",
    "country_name": "Australia",
+   "kind": "live"
+  },
+  {
+   "slug": "the-whispering-moon-wetherspoon-wallington",
+   "name": "The Whispering Moon (Wetherspoon)",
+   "city": "Wallington",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
@@ -2384,14 +2520,6 @@
    "city": "London",
    "country_code": "GB",
    "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "biergarten-baras-kiemas-kaunas",
-   "name": "Biergarten Baras Kiemas",
-   "city": "Kaunas",
-   "country_code": "LT",
-   "country_name": "Lithuania",
    "kind": "live"
   },
   {
@@ -2955,14 +3083,6 @@
    "kind": "live"
   },
   {
-   "slug": "the-joiner-on-worship-london",
-   "name": "The Joiner on Worship",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "brewing-august-vancouver",
    "name": "Brewing August",
    "city": "Vancouver",
@@ -3067,6 +3187,14 @@
    "kind": "live"
   },
   {
+   "slug": "have-i-got-brews-for-you-stony-stratford-towcester",
+   "name": "Have I Got Brews For You Stony Stratford",
+   "city": "Towcester",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "goose-island-salt-shed-pub-chicago",
    "name": "Goose Island Salt Shed Pub",
    "city": "Chicago",
@@ -3131,14 +3259,6 @@
    "kind": "live"
   },
   {
-   "slug": "newhall-street-tavern-2es",
-   "name": "Newhall Street Tavern",
-   "city": "2ES",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "the-knave-of-clubs-london",
    "name": "The Knave of Clubs",
    "city": "London",
@@ -3171,6 +3291,14 @@
    "kind": "live"
   },
   {
+   "slug": "winter-wonderland-hyde-park-london",
+   "name": "Winter Wonderland Hyde Park",
+   "city": "London",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "barley-mow-london",
    "name": "Barley Mow",
    "city": "London",
@@ -3197,14 +3325,6 @@
   {
    "slug": "the-wild-swan-london",
    "name": "The Wild Swan",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "paternoster-tavern-london",
-   "name": "Paternoster Tavern",
    "city": "London",
    "country_code": "GB",
    "country_name": "United Kingdom",
@@ -3307,6 +3427,14 @@
    "kind": "live"
   },
   {
+   "slug": "the-bohemia-london",
+   "name": "The Bohemia",
+   "city": "London",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "draft-san-diego",
    "name": "Draft",
    "city": "San Diego",
@@ -3374,6 +3502,14 @@
    "slug": "tap-and-spile-birmingham",
    "name": "Tap & Spile",
    "city": "Birmingham",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "the-plough-at-simpson-milton-keynes",
+   "name": "The Plough at Simpson",
+   "city": "Milton Keynes",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -3584,6 +3720,14 @@
    "city": "Kotor",
    "country_code": "ME",
    "country_name": "Montenegro",
+   "kind": "live"
+  },
+  {
+   "slug": "the-globe-luton",
+   "name": "The Globe",
+   "city": "Luton",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
@@ -3843,6 +3987,14 @@
    "kind": "live"
   },
   {
+   "slug": "shinner-and-sudtone-sutton",
+   "name": "Shinner and Sudtone",
+   "city": "Sutton",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "brewhouse-and-kitchen-chelmsford-chelmsford",
    "name": "Brewhouse & Kitchen - Chelmsford",
    "city": "Chelmsford",
@@ -4080,6 +4232,14 @@
    "city": "Salt Lake City",
    "country_code": "US",
    "country_name": "United States of America",
+   "kind": "live"
+  },
+  {
+   "slug": "the-hope-carshalton",
+   "name": "The Hope",
+   "city": "Carshalton",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
@@ -4667,14 +4827,6 @@
    "kind": "live"
   },
   {
-   "slug": "magpie-and-stump-london",
-   "name": "Magpie & Stump",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "the-new-moon-london",
    "name": "The New Moon",
    "city": "London",
@@ -4693,14 +4845,6 @@
   {
    "slug": "betsey-trotwood-london",
    "name": "Betsey Trotwood",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "rose-and-crown-london",
-   "name": "Rose & Crown",
    "city": "London",
    "country_code": "GB",
    "country_name": "United Kingdom",
