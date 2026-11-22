@@ -390,7 +390,7 @@ footer .legal { font-size: 0.68rem; margin-top: 10px; }
     content: " <" attr(href) ">";
   }
   .content a[href^="/"]::after {
-    content: " <pintpoint.co.uk" attr(href) ">";
+    content: " <https://pintpoint.co.uk" attr(href) ">";
   }
   .content a[href^="http"]::after, .content a[href^="/"]::after {
     font-size: 0.76em; font-weight: 400; color: var(--muted);
