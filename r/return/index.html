@@ -31,6 +31,19 @@
   <style>
     body .ps-1 { color: var(--muted); font-size: 1.05rem; margin-top: -4px; margin-bottom: 28px; }
     body .ps-2 { margin-top: 14px; color: var(--muted); font-size: 0.85rem; }
+    /* The shared sheet prints every figure at 50% of the page, which is right
+       for a photograph and wrong for a seven-panel timeline: the lettering
+       ends up too small to read on paper. Scoped here rather than changed in
+       pintpress-feature.css, because that rule is correct for the other
+       thirty-odd pages using it. */
+    @media print {
+      body figure.timeline { width: 100%; max-width: 100%; margin: 1.3em 0; }
+    }
+    /* On a wide screen let it hang past the measure on both sides, the way a
+       plate does, so the panels are read rather than squinted at. */
+    @media screen and (min-width: 1240px) {
+      body figure.timeline { margin-left: calc(-1 * var(--fig-hang)); margin-right: calc(-1 * var(--fig-hang)); }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -100,7 +113,7 @@
 
     <p>Corbett is what joins the thing together, and he was in it nine years before the road was built. Morton has told House that Corbett at Charles Faram could supply him the American hops he wanted for Pale Rider. Oakham had trialled Willamette for JHB in 1993. Faram were the merchants behind the other American hops in Dark Star&rsquo;s Hophead Club too, in the small quantities a tasting club needs. Until then the hops came through a merchant. In 2002 a brewer went to the farms and chose them himself.</p>
 
-    <figure class="wide">
+    <figure class="wide timeline">
       <picture>
         <source type="image/webp" srcset="/blog/images/the-return-crossing-timeline.webp" />
         <img src="/blog/images/the-return-crossing-timeline.jpg" alt="An illustrated timeline of the return crossing, running from 1972 to 2012. Every entry is set out in words in the list below." width="1600" height="679" loading="lazy" />
