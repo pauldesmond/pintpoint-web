@@ -103,6 +103,14 @@
       body .content .crossing-map { break-inside: avoid; page-break-inside: avoid; }
       body .content .crossing-map a { color: var(--ink); }
     }
+    /* A credit, not a source note. It names the person the series leans on;
+       where each fact came from stays on the links inside the essays. Section
+       25's end matter treatment, a hairline above and nothing around it.
+       Not .disclosure, which on this site states a commercial relationship. */
+    body .content .credit {
+      margin-top: 2.4em; padding: 14px 0 0; border-top: 1px solid var(--rule);
+      font-family: var(--sans); font-size: 0.8rem; line-height: 1.6; color: var(--muted);
+    }
     /* The span label is the structural marker of the series and was sitting
        at body size, which left it reading as the first line of the blurb
        rather than as the heading of a span. Sans at this size carries more
@@ -179,6 +187,8 @@
       <h3><a href="/blog/the-return-crossing.html">The Return Crossing</a></h3>
       <p>What British brewers made of American hops once they could get them. The road runs through Kelham Island&rsquo;s Pale Rider, Thornbridge&rsquo;s Jaipur and BrewDog&rsquo;s Punk, and it starts at the White Horse, where the span above ends.</p>
     </div>
+
+    <p class="credit no-end">With thanks to Jeffrey House, whose recollections, papers and corrections run through all five essays.</p>
 
   </article>
   <footer>
