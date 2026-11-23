@@ -36,7 +36,7 @@ What is PINtPOINT?
 PINtPOINT is a beer-first pub discovery app that shows you what is actually on tap before you arrive. A live radar ranks nearby venues by what they are pouring right now, filterable by beer style, so every suggestion is already relevant to the kind of pint you want next. Less bimble, more pint. Currently tracking
 7,600+ venues across
 82 countries, with
-28,200+ beers matched to tap lists.
+28,300+ beers matched to tap lists.
 
 Most beer apps help you remember what you drank. PINtPOINT helps you decide what to drink next.
 
@@ -102,7 +102,7 @@ Coverage
 
 Europe Barcelona, Berlin, London, Prague
 
-6,200+ venues · 20,600+ beers
+6,200+ venues · 20,700+ beers
 
 North America Nashville, New York, San Diego
 
@@ -116,7 +116,7 @@ Asia Singapore, Tokyo
 
 300+ venues · 500+ beers
 
-28,200+ Beers · 7,600+ Venues · 82 Countries and growing
+28,300+ Beers · 7,600+ Venues · 82 Countries and growing
 
 Browse recent venues →
 
@@ -1659,7 +1659,7 @@ Source: https://pintpoint.co.uk/pubs/
 
 Every venue we hold a page for
 
-1,229 venue pages across 25 countries, grouped by town. Each one carries what drinkers have logged there, newest first. Pubs marked closed have a page for what was there.
+1,226 venue pages across 25 countries, grouped by town. Each one carries what drinkers have logged there, newest first. Pubs marked closed have a page for what was there.
 
 United Kingdom 1,043
 
@@ -1889,6 +1889,8 @@ London 798
 
 - Brewhouse and Kitchenclosed
 
+- Bricklayers Arms
+
 - Bridge Houseclosed
 
 - Bridge House Hotelclosed
@@ -2023,6 +2025,8 @@ London 798
 
 - Clipperclosed
 
+- The Coach & Horses
+
 - Coach & Horsesclosed
 
 - Coach & Horses (Wellington Street)
@@ -2090,8 +2094,6 @@ London 798
 - Crownclosed
 
 - The Crown & Anchor
-
-- The Crown & Sceptre, Shepherd's Bush
 
 - The Crown & Shuttle
 
@@ -2204,8 +2206,6 @@ London 798
 - Empire Tavern
 
 - Empress Of Russiaclosed
-
-- The Enterprise
 
 - The Enterprise
 
@@ -2383,8 +2383,6 @@ London 798
 
 - Holy Drinkerclosed
 
-- Holy Tavern
-
 - Honey Potclosed
 
 - Hoop & Grapes
@@ -2393,13 +2391,9 @@ London 798
 
 - The Hop Locker
 
-- The Hope
-
 - Horn Tavernclosed
 
 - The Horniman at Hays
-
-- Horse & Groom
 
 - Horse and Groomclosed
 
@@ -2456,8 +2450,6 @@ London 798
 - Kill The Catclosed
 
 - King & Keysclosed
-
-- King Edward VII
 
 - King Of Diamondsclosed
 
@@ -2603,6 +2595,8 @@ London 798
 
 - Microbarclosed
 
+- Mikkeller Bar London
+
 - Miller'sclosed
 
 - The Minories
@@ -2620,6 +2614,8 @@ London 798
 - Monty'sclosed
 
 - Monument Tavernclosed
+
+- The Moon Under Water
 
 - The Moorgateclosed
 
@@ -2693,6 +2689,8 @@ London 798
 
 - The Old Roseclosed
 
+- The Old Star
+
 - Old Street Breweryclosed
 
 - Old Town Tavern
@@ -2704,6 +2702,8 @@ London 798
 - Out of the Blueclosed
 
 - The Outpost - Three Hills Brewing Projectclosed
+
+- Owl & Pussycat
 
 - Paddington Packet Boatclosed
 
@@ -2933,6 +2933,8 @@ London 798
 
 - Shipclosed
 
+- The Ship & Shovell
+
 - Ship Agroundclosed
 
 - The Ship Tavern
@@ -2986,8 +2988,6 @@ London 798
 - Southwark Tavern
 
 - Spatzclosed
-
-- The Speaker
 
 - Sports Academyclosed
 
@@ -3261,7 +3261,7 @@ London 798
 
 - Yorkclosed
 
-Chelmsford 30
+Chelmsford 28
 
 - The Ale House
 
@@ -3315,11 +3315,7 @@ Chelmsford 30
 
 - Wheatsheaf Writtle
 
-- The White Horse
-
 - The White Horseclosed
-
-- The Woolpack
 
 - Yates'sclosed
 
@@ -3389,6 +3385,28 @@ Lewes 11
 
 - The Royal Oak
 
+Belfast 10
+
+- Bullhouse East
+
+- The Crown Liquor Saloon
+
+- Fibber Magee
+
+- HellCat Maggies
+
+- Kelly’s Cellars
+
+- McHughs Bar & Restaurant
+
+- The Parlour
+
+- The Points
+
+- Sunflower
+
+- The Woodworkers
+
 Newcastle upon Tyne 8
 
 - Black Garter
@@ -3406,24 +3424,6 @@ Newcastle upon Tyne 8
 - The Strawberry
 
 - Three Bulls Heads
-
-Southampton 8
-
-- The Dirty Barrel
-
-- The Giddy Bridge
-
-- The Grapes
-
-- Raven & Bine
-
-- The Red Lion
-
-- The Rockstone
-
-- Unity Brewing Co
-
-- The White Star Tavern, Southampton
 
 Colchester 7
 
@@ -3456,6 +3456,22 @@ Edinburgh 7
 - Royal Mile Tavern
 
 - The Royal Oak
+
+Southampton 7
+
+- The Dirty Barrel
+
+- The Giddy Bridge
+
+- Raven & Bine
+
+- The Red Lion
+
+- The Rockstone
+
+- Unity Brewing Co
+
+- The White Star Tavern, Southampton
 
 Cheltenham 6
 
@@ -3549,16 +3565,6 @@ Manchester 5
 
 - Society
 
-Bristol 4
-
-- The Beer Emporium
-
-- The Cornubia
-
-- The Old Fish Market, Bristol
-
-- The Wellington, Bristol
-
 Salford 4
 
 - Craftbrew
@@ -3568,14 +3574,6 @@ Salford 4
 - Old Pint Pot
 
 - SEVEN BRO7HERS SOCIAL
-
-Dundee 3
-
-- Abandon Ship
-
-- Star & Garter
-
-- Trades House
 
 Gosport 3
 
@@ -3645,11 +3643,23 @@ Brentwood 2
 
 - The Peasant's Revolt Micropub
 
+Bristol 2
+
+- The Beer Emporium
+
+- The Cornubia
+
 Carshalton 2
 
 - The Hope
 
 - The Sun
+
+Dundee 2
+
+- Star & Garter
+
+- Trades House
 
 Hemel Hempstead 2
 
@@ -3674,12 +3684,6 @@ Maidenhead 2
 - Hand and Flowers
 
 - Moogbrew
-
-Maldon 2
-
-- The Queen Victoria
-
-- The Queens Head
 
 Portsmouth 2
 
@@ -3729,10 +3733,6 @@ Braintree 1
 
 - The Picture Palace - JD Wetherspoon
 
-Brighton and Hove 1
-
-- UnBarred Brewery & Taproom
-
 Bromley 1
 
 - The Craft Beer Cabin BR1
@@ -3745,6 +3745,10 @@ Cambridge 1
 
 - The Station Tavern
 
+Castlewellan 1
+
+- The Maghera Inn
+
 Chipping Norton 1
 
 - The Blue Boar
@@ -3752,10 +3756,6 @@ Chipping Norton 1
 Coventry 1
 
 - The Greyhound Inn
-
-Crawley 1
-
-- The Jubilee Oak
 
 Croydon 1
 
@@ -3796,10 +3796,6 @@ Harwich 1
 Henley-on-Thames 1
 
 - The Duck
-
-Hitchin 1
-
-- Radcliffe Arms, Hitchin
 
 Hornchurch 1
 
@@ -3873,13 +3869,13 @@ Selsdon 1
 
 - The Sir Julian Huxley
 
-Sevenoaks 1
-
-- The Sennockian
-
 Slough 1
 
 - The White Horse
+
+South Croydon 1
+
+- Golden Ark
 
 Southgate 1
 
@@ -3941,7 +3937,7 @@ Woolston 1
 
 - Olaf's Tun
 
-United States of America 42
+United States of America 43
 
 San Diego 5
 
@@ -3985,6 +3981,14 @@ Philadelphia 3
 
 - McGillin's Olde Ale House
 
+Salt Lake City 3
+
+- Beer Bar
+
+- East Liberty Tap House
+
+- HandleBar
+
 Seattle 3
 
 - Chuck's Hop Shop Greenwood
@@ -4004,12 +4008,6 @@ New York 2
 - Harlem Public
 
 - Old Town Bar
-
-Salt Lake City 2
-
-- Beer Bar
-
-- HandleBar
 
 Alameda 1
 
@@ -4351,32 +4349,6 @@ Queenstown 1
 
 - Smiths Craft Beer House
 
-Sweden 9
-
-Stockholm 7
-
-- The Auld Dub
-
-- Belgobaren
-
-- Bishop Arms Gamla Stan
-
-- The Liffey
-
-- Omnipollos hatt
-
-- Stigbergets Fot
-
-- UDDA
-
-Skanstull 1
-
-- Ölkemi
-
-Storstockholm 1
-
-- Lådan
-
 Spain 7
 
 Palma 4
@@ -4401,6 +4373,28 @@ Guipúzcoa 1
 
 - Bar Desy
 
+Sweden 7
+
+Stockholm 5
+
+- Belgobaren
+
+- Bishop Arms Gamla Stan
+
+- The Liffey
+
+- Omnipollos hatt
+
+- Stigbergets Fot
+
+Skanstull 1
+
+- Ölkemi
+
+Storstockholm 1
+
+- Lådan
+
 Belgium 4
 
 Brugge 4
@@ -4413,19 +4407,17 @@ Brugge 4
 
 - Le Trappiste
 
-Norway 4
-
-Bryne 2
-
-- Mellombels ølstove
-
-- Thime Station
+Norway 3
 
 Oslo 2
 
 - The Dubliner Folk Pub
 
 - Sir Winston's Public House
+
+Bryne 1
+
+- Mellombels ølstove
 
 Germany 2
 
@@ -4436,16 +4428,6 @@ Bamberg 1
 Düsseldorf 1
 
 - BrauArt Düsseldorf
-
-Ireland 2
-
-Dublin 1
-
-- Johnnie Fox's
-
-Killarney 1
-
-- O'Connors Traditional Pub
 
 Lithuania 2
 
@@ -4504,6 +4486,12 @@ Hungary 1
 Budapest 1
 
 - Ruin Bars Budapest
+
+Ireland 1
+
+Killarney 1
+
+- O'Connors Traditional Pub
 
 Japan 1
 
@@ -6710,7 +6698,19 @@ Five essays on the beer traffic between Britain and America, and the Londoner wh
 
 Beer crossed the Atlantic in both directions and the same name keeps appearing on the manifest. Jeffrey House sold Fuller’s ESB to America, watched American brewers take more from it than a good pint, lost the agency in 1990, and started making cider in Sonoma instead. In between, a London yeast went west and stayed, and Anchor’s beers came east into three London pubs. Gordon A. Ponce named the shape of it, the Transatlantic Beer Bridge, writing at The Craft Beer Finder on House’s research.
 
-These are the spans we have written, and they are not in the order they were published. Two go west, one stays, and two come back.
+Two go west, one stays, and two come back.
+
+America the Atlantic Britain Year
+
+- 1 Seattle Fuller’s ESB, Chiswick 1987 West
+
+- 2 California Fuller’s yeast, Chiswick West
+
+- 3 Sonoma 1993 Stays
+
+- 4 Anchor, San Francisco Parsons Green 1992 East
+
+- 5 American hops Sheffield 1993 East
 
 One · The beer goes west
 Before he could sell ESB to America, he had to sell it to Fuller’s
@@ -6735,7 +6735,9 @@ Fritz Maytag came to England in 1975 and went home with two beers in mind. Liber
 Five · And the hops come back
 The Return Crossing
 
-Some time after 1996 one of the owners of the Evening Star in Brighton came back from California with Cascade hop pellets. The road that opened runs through Kelham Island’s Pale Rider, Thornbridge’s Jaipur and BrewDog’s Punk, and it starts at the same handpump at the White Horse.
+Anchor’s Liberty Ale came east. From Pale Rider in Sheffield to Jaipur at Thornbridge, here’s what British brewers made of American hops.
+
+With thanks to Jeffrey House, whose recollections, papers and corrections run through all five essays.
 
 ---
 
