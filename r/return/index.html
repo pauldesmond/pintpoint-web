@@ -44,6 +44,22 @@
     @media screen and (min-width: 1240px) {
       body figure.timeline { margin-left: calc(-1 * var(--fig-hang)); margin-right: calc(-1 * var(--fig-hang)); }
     }
+    /* The dates below the graphic are a box, so the tint comes from section
+       26b of the shared sheet and only the geometry is set here. The hairline
+       is deliberate: the tint alone is a small step in value and the rule is
+       what makes the edge findable. */
+    body .content ul.timeline-list {
+      list-style: none; margin: -0.6em 0 1.8em; padding: 22px 26px;
+      border: 1px solid var(--rule); font-size: 0.95em;
+    }
+    body .content ul.timeline-list li { margin: 0 0 0.75em; }
+    body .content ul.timeline-list li:last-child { margin-bottom: 0; }
+    @media print {
+      body .content ul.timeline-list {
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        break-inside: avoid; page-break-inside: avoid;
+      }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -121,7 +137,7 @@
       <figcaption>The crossing in dates, from the registration of a hop to a Chiswick pale ale. The same entries follow in full below.</figcaption>
     </figure>
 
-    <ul>
+    <ul class="timeline-list">
       <li><strong>1972 to 1975.</strong> The USDA registers Cascade. Anchor brews Liberty Ale.</li>
       <li><strong>The 1980s.</strong> Sean Franklin experiments with American Cascade in the early 1980s. Brendan Dobbin opens the West Coast Brewery in Manchester in 1989.</li>
       <li><strong>1990 to 1992.</strong> Wickett adds a brewery to the Fat Cat in 1990. Liberty Ale makes its British draught debut at the White Horse, Parsons Green, in 1992.</li>
