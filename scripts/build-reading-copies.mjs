@@ -31,7 +31,6 @@ const CHECK = process.argv.includes('--check');
 
 /** short name at /r/<name>/  →  the draft it copies */
 const RELEASED = new Map([
-  ['return', 'the-return-crossing'],
   ['pint',   'beer-faults-drinkers-list'],
   ['faults', 'beer-faults-wrong-place'],
   ['1779',   'established-1779'],

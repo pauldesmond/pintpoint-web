@@ -9,7 +9,7 @@
     <copyright>© 2026 PINtPOINT</copyright>
     <managingEditor>hello@pintpoint.co.uk (PINtPOINT)</managingEditor>
     <webMaster>hello@pintpoint.co.uk (PINtPOINT)</webMaster>
-    <lastBuildDate>Thu, 19 Nov 2026 05:50:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 06:30:00 +0000</lastBuildDate>
     <pubDate>Fri, 06 Nov 2026 10:00:00 +0000</pubDate>
     <generator>PINtPOINT hand-maintained RSS</generator>
     <ttl>60</ttl>
@@ -18,6 +18,25 @@
       <title>PINtPRESS</title>
       <link>https://pintpoint.co.uk/blog/</link>
     </image>
+    <item>
+      <title>The Return Crossing</title>
+      <category>Essay</category>
+      <link>https://pintpoint.co.uk/blog/the-return-crossing.html</link>
+      <enclosure url="https://pintpoint.co.uk/blog/images/tiles/the-return-crossing-480.jpg" length="104049" type="image/jpeg" />
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/the-return-crossing.html</guid>
+      <pubDate>Mon, 23 Nov 2026 06:30:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <description>How American hops came back across the Atlantic: from the Cascade pellets brought back to Brighton and Michael Jackson&apos;s 1992 column to Pale Rider, Jaipur and Punk.</description>
+    </item>
+    <item>
+      <title>The Crossings</title>
+      <category>Series</category>
+      <link>https://pintpoint.co.uk/blog/the-crossings.html</link>
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/the-crossings.html</guid>
+      <pubDate>Fri, 20 Nov 2026 15:00:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <description>Five essays on the beer traffic between Britain and America, and the Londoner who moved a good deal of it: Fuller&apos;s ESB into Seattle, Fuller&apos;s yeast into a Californian tank, an importer who stopped importing and made cider, Anchor&apos;s beers coming the other way, and the American hops coming back.</description>
+    </item>
     <item>
       <title>Same Steel as the Wiesn. Different Beer.</title>
       <category>Guide</category>
