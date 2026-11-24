@@ -137,6 +137,11 @@ figcaption {
 }
 @media (min-width: 1000px) {
   figure { float: right; width: var(--fig-w); margin: 0.4em calc(-1 * var(--fig-hang)) 1.4em 36px; }
+  /* The same figure against the other edge, for a piece carrying more than one
+     picture: all of them down the right reads as a column of stamps rather
+     than as pictures set into a page. The hang and the text gap swap sides
+     with the float, so the measure is unchanged either way. */
+  figure.left { float: left; margin: 0.4em 36px 1.4em calc(-1 * var(--fig-hang)); }
 }
 
 /* ---------- 13. Blockquote ---------- */

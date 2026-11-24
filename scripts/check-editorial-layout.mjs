@@ -137,8 +137,15 @@ for (const p of pages) {
   const FIG_W = 270, LINE_PX = 26, LINE_CH = 85, CAPTION_PX = 60, GAP_PX = 25;
   const figs = [...html.matchAll(/<figure([^>]*)>([\s\S]*?)<\/figure>/g)];
   const floats = figs.filter(m => !/\b(wide|hero|plate|fig-block)\b/.test(m[1]));
+  /* Only a figure on the SAME edge can be in the way. class="left" mirrors the
+     float, and a picture against the other edge is a stagger, not a collision:
+     the two hang into opposite gutters and the measure between them is the
+     same as it would be with one. */
+  const side = m => (/\bleft\b/.test(m[1]) ? 'left' : 'right');
   for (let i = 0; i < floats.length - 1; i++) {
-    const a = floats[i], b = floats[i + 1];
+    const a = floats[i];
+    const b = floats.slice(i + 1).find(f => side(f) === side(a));
+    if (!b) continue;
     const dim = a[2].match(/width="(\d+)"\s+height="(\d+)"/);
     if (!dim) continue;
     const tall = FIG_W * (Number(dim[2]) / Number(dim[1])) + CAPTION_PX + GAP_PX;
