@@ -49,14 +49,12 @@
       margin-top: 2.4em; padding: 14px 0 0; border-top: 1px solid var(--rule);
       font-family: var(--sans); font-size: 0.8rem; line-height: 1.6; color: var(--muted);
     }
-    /* The span label is the structural marker of the series and was sitting
-       at body size, which left it reading as the first line of the blurb
-       rather than as the heading of a span. Sans at this size carries more
-       x-height than the serif it sits above, so it reads as a label and
-       still gives the essay title the longer line. */
-    body .content .part .when {
-      display: block; margin: 0 0 10px; font-family: var(--sans);
-      font-size: 1.08rem; font-weight: 700; letter-spacing: 0.01em; color: var(--ink);
+    /* The number sits on the same line as the title, in sans against the
+       serif of the heading, so it reads as the span marker rather than as
+       the first word of the title. It is not a link: the title is. */
+    body .content .part h3 .when {
+      font-family: var(--sans); font-weight: 700; letter-spacing: 0.01em;
+      color: var(--ink); margin-right: 0.15em;
     }
     body .content .part h3 { margin-top: 0; }
   </style>
@@ -86,32 +84,27 @@
     <p>Three go west, one stays, and one comes back.</p>
 
     <div class="part">
-      <span class="when">One</span>
-      <h3><a href="/blog/fullers-esb-in-america.html">Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s</a></h3>
+      <h3><span class="when">One &middot;</span> <a href="/blog/fullers-esb-in-america.html">Before he could sell ESB to America, he had to sell it to Fuller&rsquo;s</a></h3>
       <p>The first pour was at the College Inn in Seattle on 3 November 1987, and the argument that got it there was with the brewery, not the market. Fuller&rsquo;s head brewer did not want ESB bottled, so America got it on draught. Then the brewers who drank it started borrowing from it.</p>
     </div>
 
     <div class="part">
-      <span class="when">Two</span>
-      <h3><a href="/blog/fullers-yeast-firestone-walker.html">Why Firestone Walker chose Fuller&rsquo;s yeast</a></h3>
+      <h3><span class="when">Two &middot;</span> <a href="/blog/fullers-yeast-firestone-walker.html">Why Firestone Walker chose Fuller&rsquo;s yeast</a></h3>
       <p>A London strain went into a Californian fermenting tank and stayed there. What it does to a beer brewed a continent and an ocean from Chiswick, why they wanted it, and what has crossed since.</p>
     </div>
 
     <div class="part">
-      <span class="when">Three</span>
-      <h3><a href="/blog/a-cider-of-his-own.html">A Cider of His Own</a></h3>
+      <h3><span class="when">Three &middot;</span> <a href="/blog/a-cider-of-his-own.html">A Cider of His Own</a></h3>
       <p>An importer gets about ten years with somebody else&rsquo;s brand. It happened to House twice, and the second time he stopped importing and built ACE in Sonoma, out of a pack of cards, a building the Duttons put up for him and an order he could not yet fill.</p>
     </div>
 
     <div class="part">
-      <span class="when">Four</span>
-      <h3><a href="/blog/anchor-british-heritage.html">Anchor Brewing&rsquo;s British heritage runs deeper than people realise</a></h3>
+      <h3><span class="when">Four &middot;</span> <a href="/blog/anchor-british-heritage.html">Anchor Brewing&rsquo;s British heritage runs deeper than people realise</a></h3>
       <p>Fritz Maytag came to England in 1975 and went home with British ales in mind, Timothy Taylor&rsquo;s Landlord among them. What he took back went into Anchor&rsquo;s beers.</p>
     </div>
 
     <div class="part">
-      <span class="when">Five</span>
-      <h3><a href="/blog/the-return-crossing.html">The Return Crossing</a></h3>
+      <h3><span class="when">Five &middot;</span> <a href="/blog/the-return-crossing.html">The Return Crossing</a></h3>
       <p>Anchor&rsquo;s Liberty Ale reached a British handpump at the White Horse in 1992. From Pale Rider in Sheffield to Jaipur at Thornbridge, here&rsquo;s what British brewers made of American hops.</p>
     </div>
 
