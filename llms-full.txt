@@ -1659,11 +1659,11 @@ Source: https://pintpoint.co.uk/pubs/
 
 Every venue we hold a page for
 
-1,226 venue pages across 25 countries, grouped by town. Each one carries what drinkers have logged there, newest first. Pubs marked closed have a page for what was there.
+1,229 venue pages across 24 countries, grouped by town. Each one carries what drinkers have logged there, newest first. Pubs marked closed have a page for what was there.
 
-United Kingdom 1,043
+United Kingdom 1,039
 
-London 798
+London 794
 
 - 26 Furnival Street
 
@@ -2012,8 +2012,6 @@ London 798
 - Clangerclosed
 
 - The Clapham Tap
-
-- Clapton Craft
 
 - Claremontclosed
 
@@ -2442,8 +2440,6 @@ London 798
 - Junctionclosed
 
 - Katzenjammer'sclosed
-
-- Keats Bar at the Globe
 
 - The Kernel Brewery Taproom
 
@@ -3031,8 +3027,6 @@ London 798
 
 - Star in the Eastclosed
 
-- The Star Tavern, Belgravia
-
 - Sterling Castleclosed
 
 - Stone Horse Paper Cowclosed
@@ -3042,8 +3036,6 @@ London 798
 - Strongroom Bar
 
 - Suchardclosed
-
-- The Sugar Loaf
 
 - The Sun Wharf (Wetherspoon)
 
@@ -3261,7 +3253,7 @@ London 798
 
 - Yorkclosed
 
-Chelmsford 28
+Chelmsford 29
 
 - The Ale House
 
@@ -3285,13 +3277,13 @@ Chelmsford 28
 
 - Judge Tindal'sclosed
 
+- The Nags Head
+
 - The Old Windmill
 
 - The Orange Tree
 
 - The Plough
-
-- The Queens Head
 
 - Radio City Social
 
@@ -3316,6 +3308,8 @@ Chelmsford 28
 - Wheatsheaf Writtle
 
 - The White Horseclosed
+
+- The Woolpack
 
 - Yates'sclosed
 
@@ -3361,30 +3355,6 @@ Birmingham 20
 
 - The Wolf
 
-Lewes 11
-
-- ABYSS Brewery + Tap
-
-- Beak Brewery
-
-- The Black Horse
-
-- The Brewers Arms
-
-- Elephant & Castle
-
-- The Gardeners Arms
-
-- John Harvey Tavern
-
-- The Lewes Arms
-
-- The patch
-
-- The Pelham Arms
-
-- The Royal Oak
-
 Belfast 10
 
 - Bullhouse East
@@ -3407,6 +3377,28 @@ Belfast 10
 
 - The Woodworkers
 
+Lewes 10
+
+- ABYSS Brewery + Tap
+
+- Beak Brewery
+
+- The Black Horse
+
+- The Brewers Arms
+
+- Elephant & Castle
+
+- The Gardeners Arms
+
+- John Harvey Tavern
+
+- The Lewes Arms
+
+- The Pelham Arms
+
+- The Royal Oak
+
 Newcastle upon Tyne 8
 
 - Black Garter
@@ -3424,22 +3416,6 @@ Newcastle upon Tyne 8
 - The Strawberry
 
 - Three Bulls Heads
-
-Colchester 7
-
-- The Odd One Out
-
-- Other Monkey Brewing
-
-- The Playhouse
-
-- The Purple Dog
-
-- Queen St Brewhouse
-
-- Three Wise Monkeys
-
-- Two Brews
 
 Edinburgh 7
 
@@ -3487,33 +3463,19 @@ Cheltenham 6
 
 - The Vine
 
-Exeter 6
+Colchester 6
 
-- Arcadia Exeter by Utopian
+- The Odd One Out
 
-- CUCKOO Taproom and Bottleshop
+- Other Monkey Brewing
 
-- Double Locks
+- The Playhouse
 
-- George's Meeting House
+- The Purple Dog
 
-- The Prospect Inn
+- Queen St Brewhouse
 
-- Ship Inn
-
-Milton Keynes 6
-
-- Blackened Sun Brewing
-
-- The Craufurd Arms
-
-- The Plough at Simpson
-
-- Talbot Inn
-
-- Warbler on the Wharf
-
-- Wetherspoons
+- Two Brews
 
 Romford 6
 
@@ -3541,6 +3503,18 @@ Brighton 5
 
 - Vine Street Tap + Bottle
 
+Exeter 5
+
+- Arcadia Exeter by Utopian
+
+- CUCKOO Taproom and Bottleshop
+
+- Double Locks
+
+- George's Meeting House
+
+- Ship Inn
+
 Glasgow 5
 
 - Coopers
@@ -3564,6 +3538,18 @@ Manchester 5
 - Piccadilly Tap
 
 - Society
+
+Milton Keynes 5
+
+- Blackened Sun Brewing
+
+- The Craufurd Arms
+
+- The Plough at Simpson
+
+- Talbot Inn
+
+- Wetherspoons
 
 Salford 4
 
@@ -3590,6 +3576,14 @@ Norwich 3
 - Last Pub Standing
 
 - St Andrews Brew House
+
+Saffron Walden 3
+
+- DEAD Time
+
+- The Old English Gentleman
+
+- The Temeraire
 
 Solihull 3
 
@@ -3642,12 +3636,6 @@ Brentwood 2
 - Liquorice
 
 - The Peasant's Revolt Micropub
-
-Bristol 2
-
-- The Beer Emporium
-
-- The Cornubia
 
 Carshalton 2
 
@@ -3733,6 +3721,10 @@ Braintree 1
 
 - The Picture Palace - JD Wetherspoon
 
+Bristol 1
+
+- The Beer Emporium
+
 Bromley 1
 
 - The Craft Beer Cabin BR1
@@ -3764,6 +3756,10 @@ Croydon 1
 East Grinstead 1
 
 - Missing Link Brewing
+
+Edwardstone 1
+
+- The White Horse Inn
 
 Enfield 1
 
@@ -3885,10 +3881,6 @@ Southsea 1
 
 - Staggeringly Good Brewery
 
-Stansted 1
-
-- The Windmill
-
 Steeple 1
 
 - The Sun & Anchor, Steepleclosed
@@ -3896,6 +3888,10 @@ Steeple 1
 Streatham 1
 
 - The Holland Tringham (Wetherspoon)
+
+Sudbury 1
+
+- Grover & Allen - JD Wetherspoon
 
 Sunbury-on-Thames 1
 
@@ -4073,25 +4069,7 @@ Sunnyvale 1
 
 - Laughing Monk Brewing
 
-Denmark 41
-
-Aalborg 8
-
-- Basement Beer Bar
-
-- Hjort Beer House
-
-- The Irish House
-
-- John Bull Pub
-
-- London Pub
-
-- Proud Mary Pub
-
-- Søgaards Bryghus
-
-- The Wharf
+Denmark 39
 
 København 8
 
@@ -4110,6 +4088,22 @@ København 8
 - Trykbar
 
 - Warpigs Brewpub
+
+Aalborg 7
+
+- Basement Beer Bar
+
+- Hjort Beer House
+
+- The Irish House
+
+- John Bull Pub
+
+- London Pub
+
+- Søgaards Bryghus
+
+- The Wharf
 
 Copenhagen 7
 
@@ -4151,19 +4145,17 @@ Aarhus 3
 
 - Tir Na Nóg
 
-Odense 3
-
-- Anarkist Beer & Food Lab
-
-- Christian Firtal
-
-- Ryan's of Odense
-
 Helsingør 2
 
 - Axelbar
 
 - værfthallerne
+
+Odense 2
+
+- Anarkist Beer & Food Lab
+
+- Christian Firtal
 
 Aarhus C 1
 
@@ -4293,6 +4285,42 @@ Marcq-en-Barœul 1
 
 - Hoppiness Craft Beer
 
+Ireland 12
+
+Dublin 7
+
+- The Bloody Stream
+
+- BrewDog Outpost Dublin
+
+- Cassidy's
+
+- John Kavanagh's The Gravediggers
+
+- Kehoe's
+
+- Priory Brewing
+
+- Tap + Brew
+
+Swords 2
+
+- The Fallow Kitchen and Bar
+
+- The Old Schoolhouse
+
+Dublin 2 1
+
+- The Auld Dubliner
+
+Killarney 1
+
+- O'Connors Traditional Pub
+
+Malahide 1
+
+- Gibney's
+
 Canada 11
 
 Vancouver 5
@@ -4349,7 +4377,7 @@ Queenstown 1
 
 - Smiths Craft Beer House
 
-Spain 7
+Spain 8
 
 Palma 4
 
@@ -4361,27 +4389,27 @@ Palma 4
 
 - Mad Island CAPITOL
 
+Granada 2
+
+- Bella kurva
+
+- Cafe Pub Amsterdam
+
 Donostia / San Sebastián 1
 
 - Garagar
-
-Granada 1
-
-- Cafe Pub Amsterdam
 
 Guipúzcoa 1
 
 - Bar Desy
 
-Sweden 7
+Sweden 5
 
-Stockholm 5
+Stockholm 4
 
 - Belgobaren
 
 - Bishop Arms Gamla Stan
-
-- The Liffey
 
 - Omnipollos hatt
 
@@ -4390,10 +4418,6 @@ Stockholm 5
 Skanstull 1
 
 - Ölkemi
-
-Storstockholm 1
-
-- Lådan
 
 Belgium 4
 
@@ -4475,23 +4499,11 @@ Singapore 2
 
 - Heart Of Darknessclosed
 
-China 1
-
-北京市 1
-
-- 鲜啤吧Beersmith Gastropub
-
 Hungary 1
 
 Budapest 1
 
 - Ruin Bars Budapest
-
-Ireland 1
-
-Killarney 1
-
-- O'Connors Traditional Pub
 
 Japan 1
 
