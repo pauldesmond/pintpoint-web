@@ -88,7 +88,7 @@
    ],
    "proof_file": "blog/september-is-oktoberfest.html",
    "note": "Fits neither 1953 nor 1990",
-   "context": "(m[aä]rzen|festbier|munich|wiesn)",
+   "context": "(m[a\u00e4]rzen|festbier|munich|wiesn)",
    "id": "september-04",
    "retired_in_subject": "Oktoberfest: the thesis was overstated, in three posts at once"
   },
@@ -133,7 +133,7 @@
     "blog/page-*.html"
    ],
    "proof_file": "blog/oktoberfest-first-giant-tent.html",
-   "note": "Old lede: nobody is shown paying them; strawmen for Münchner Kindl",
+   "note": "Old lede: nobody is shown paying them; strawmen for M\u00fcnchner Kindl",
    "id": "oktoberfest-06",
    "retired_in_subject": "Giant tent: the lede contradicted the body, and the Sources block goes"
   },
@@ -1021,6 +1021,18 @@
    "note": "Mansfield's own recollection from his wine-selling days, not a reported fact. Must stay attributed: Mansfield recalls the French tiring of the whole business",
    "id": "third-thursday-02",
    "retired_in_subject": "blog: two claims about the end of the Run that outran the source"
+  },
+  {
+   "post": "the-return-crossing",
+   "string": "first new one in over 100 years",
+   "retired_in": "90fedaee",
+   "files": [
+    "blog/the-return-crossing.html",
+    "llms-full.txt",
+    "r/return/index.html"
+   ],
+   "proof_file": "blog/the-return-crossing.html",
+   "note": "Sheffield University's obituary of Dave Wickett calls Kelham Island the city's first new brewery in over 100 years and we repeated it. Dave Pickersgill, who administers Sheffield CAMRA, corrected it on 24 November 2026: the Hope opened in 1938 and the Frog & Parrot, a Whitbread brewpub, in 1982, and the gap being reached for runs back to the Sheffield Free on Queens Road in 1900, which is ninety years rather than a hundred. Safe form: first new INDEPENDENT brewery since 1900, attributed at the claim."
   }
  ],
  "allowlist": []
