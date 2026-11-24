@@ -15,6 +15,10 @@
  *    only on pages that load pintpress-feature.css, because on an old-paint
  *    page the border-bottom is the only underline there is.
  *
+ * 4. FLOATED FIGURES DO NOT CROWD EACH OTHER. Two plain figures close
+ *    together are placed side by side by the float rules, not stacked. The
+ *    check estimates whether the text between them covers the first picture.
+ *
  * 3. A COMPANION SET LINKS ITSELF. If A's companion block links B, B's must
  *    link A. Over every pair that is the same thing as "each piece links every
  *    other piece", and unlike counting a set it needs no list to be kept.
@@ -112,6 +116,36 @@ for (const p of pages) {
     if (!links.has(other)) continue;                 // outside this directory
     if (!links.get(other).has(name)) {
       fails.push(`${name}: links ${other} as a companion, but ${other} does not link back (rule 3)`);
+    }
+  }
+
+  /* 4. A FLOATED FIGURE NEEDS THE ONE ABOVE IT TO FINISH.
+     At 1000px and up a plain <figure> floats right with a negative right
+     margin, so its margin box is narrower than the picture. Two of them close
+     together are therefore placed BESIDE one another rather than stacked: the
+     second lands on the first one's caption, or at best sits shoved left out
+     of the gutter where every other picture hangs. It happened on the Return
+     Crossing on 24 November 2026 with two photographs in a row.
+
+     So we estimate. A figure drawn at --fig-w 270px is 270 * h/w tall, plus a
+     caption and its bottom margin. The text between the two is worth about
+     26px a line at roughly 85 characters a line. If the text cannot cover the
+     picture above it, the next one has nowhere to go.
+
+     Only plain figures count: .wide, .hero, .plate and .fig-block do not
+     float, and pages put those back to back on purpose. */
+  const FIG_W = 270, LINE_PX = 26, LINE_CH = 85, CAPTION_PX = 60, GAP_PX = 25;
+  const figs = [...html.matchAll(/<figure([^>]*)>([\s\S]*?)<\/figure>/g)];
+  const floats = figs.filter(m => !/\b(wide|hero|plate|fig-block)\b/.test(m[1]));
+  for (let i = 0; i < floats.length - 1; i++) {
+    const a = floats[i], b = floats[i + 1];
+    const dim = a[2].match(/width="(\d+)"\s+height="(\d+)"/);
+    if (!dim) continue;
+    const tall = FIG_W * (Number(dim[2]) / Number(dim[1])) + CAPTION_PX + GAP_PX;
+    const between = html.slice(a.index + a[0].length, b.index).replace(/<[^>]+>/g, ' ');
+    const room = (between.replace(/\s+/g, ' ').trim().length / LINE_CH) * LINE_PX;
+    if (room < tall) {
+      fails.push(`${name}: a floated figure starts ${Math.round(tall - room)}px before the one above it has finished, so it lands beside it (figures)`);
     }
   }
 }
