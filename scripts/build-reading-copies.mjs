@@ -36,6 +36,7 @@ const RELEASED = new Map([
   ['1779',   'established-1779'],
   ['six',    'everything-good-starts-at-six'],
   ['asked',  'nobody-asked-for-most-of-it'],
+  ['purl',   'hot-beer'],
 ]);
 
 /* Drafts cross-link each other at the address the piece WILL have. That is a
