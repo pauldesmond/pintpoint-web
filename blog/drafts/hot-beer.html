@@ -36,6 +36,17 @@
       color: var(--amber-ink); margin-bottom: 10px; }
     .factbox p { margin: 0 0 12px; font-size: 0.95rem; line-height: 1.7; }
     .factbox p:last-child { margin-bottom: 0; }
+
+    /* The purl-man plate. At the full measure a near-square picture runs over
+       600px tall and becomes the page rather than an illustration in it; at the
+       270px house float a whole scene is unreadable. Set it in the column at
+       520px, with the full 1280px file a click away for the detail. Mobile is
+       untouched: the shared sheet already gives every figure full width there. */
+    @media (min-width: 1000px) {
+      figure.engraving { float: none; width: 520px; max-width: 100%; margin: 2.2em auto; }
+    }
+    figure.engraving a { display: block; }
+    figure.engraving figcaption { text-align: center; }
   </style>
 </head>
 <body>
@@ -59,17 +70,19 @@
     <p class="lede">Before dawn, in the Pool of London, a man rowed out to the ships with a fire burning in the bottom of his boat.</p>
 
     <p>He was selling hot beer. In 1851 Henry Mayhew counted men like him and wrote the chapter up as a trade rather than a curiosity, <a href="https://dl.tufts.edu/teiviewer/parent/rv043431c/chapter/c3s8" target="_blank" rel="noopener noreferrer">Of the River Beer-Sellers, or Purl-Men</a>: what a boat cost, what a licence cost, who bought. They worked in short, broad skiffs, rang a heavy bell as they came, and were hailed from the ships by sailors and coal-whippers with a shout of &ldquo;Purl ahoy&rdquo;. They were licensed from Waterman&rsquo;s Hall, like the watermen themselves.</p>
-    <figure>
-      <picture>
-        <source type="image/webp" srcset="https://pintpoint.co.uk/blog/images/hot-beer-purl-man-illustration.webp" />
-        <img src="https://pintpoint.co.uk/blog/images/hot-beer-purl-man-illustration.jpg" alt="A modern illustration drawn in the manner of a Victorian wood engraving. A young purl-man leans out of his skiff with his oars resting across it, a large hand bell in one hand, small casks on a frame across the stern behind him, a black pot steaming on a fire pan drilled with holes, and a long-necked tin bottle standing on a box beside it. A sailor leans over the side of a collier above him with a tankard. The plate is captioned Not a contemporary engraving, and a line printed beneath it reads A PINtPRESS illustration, 2026." width="1280" height="1015" loading="lazy" />
-      </picture>
-      <figcaption>Based on Mayhew&rsquo;s description of the purl-man.</figcaption>
-    </figure>
 
     <p>The men in the boats were no longer what Mayhew calls &ldquo;the weather-beaten tars who in former times alone were licensed&rdquo;. He found the trade had passed to young men off the river itself, come to it &ldquo;either from some accident having befallen them in the course of their work&rdquo; or from preferring a seat in a boat to continuous labour. The trade held because no man working the river would buy from a stranger when his own fellow-workman was afloat and would give him trust when he had no money. It was no unusual thing, he says, for the busiest of them to take a public-house after four or five years and rise into the rank of licensed victuallers. One purl-man Mayhew talked to had been a coal-whipper himself, until he fell from a ship&rsquo;s side into a barge, spent a long time in hospital, came out unable to work and saw nothing in front of him but the workhouse. &ldquo;I thought I&rsquo;d be by this time toes up in Stepney churchyard,&rdquo; he said, &ldquo;and grinning at the lid of an old coffin.&rdquo; A neighbour, a waterman, advised him into the purl business and gave him the money to start. He <a href="https://archive.org/details/londonlabourlond02mayh/page/95/mode/2up" target="_blank" rel="noopener noreferrer">cleared eighteen to twenty shillings a week</a>, and was owed between ten and twenty pounds he never expected to see.</p>
 
     <p>In winter fog, when the watermen lost their bearings and shouting got them nowhere, the purl-man&rsquo;s bell still carried, and by sounding it he found the ships that hailed him. Boak &amp; Bailey went through the same chapter <a href="https://boakandbailey.com/2018/01/purl-bumboats-pool-london/" target="_blank" rel="noopener noreferrer">in 2018</a> and followed the boats further than we are going to here.</p>
+    <figure class="engraving">
+      <a href="https://pintpoint.co.uk/blog/images/hot-beer-purl-man-illustration.jpg" target="_blank" rel="noopener noreferrer">
+        <picture>
+          <source type="image/webp" srcset="https://pintpoint.co.uk/blog/images/hot-beer-purl-man-illustration.webp" />
+          <img src="https://pintpoint.co.uk/blog/images/hot-beer-purl-man-illustration.jpg" alt="A modern illustration drawn in the manner of a Victorian wood engraving. A young purl-man leans out of his skiff with his oars resting across it, a large hand bell in one hand, small casks on a frame across the stern behind him, a black pot steaming on a fire pan drilled with holes, and a long-necked tin bottle standing on a box beside it. A sailor leans over the side of a collier above him with a tankard. The plate is captioned Not a contemporary engraving, and a line printed beneath it reads A PINtPRESS illustration, 2026." width="1280" height="1015" loading="lazy" />
+        </picture>
+      </a>
+      <figcaption>Based on Mayhew&rsquo;s description of the purl-man.</figcaption>
+    </figure>
 
 
     <h2>What was in it</h2>
