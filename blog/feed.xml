@@ -9,7 +9,7 @@
     <copyright>© 2026 PINtPOINT</copyright>
     <managingEditor>hello@pintpoint.co.uk (PINtPOINT)</managingEditor>
     <webMaster>hello@pintpoint.co.uk (PINtPOINT)</webMaster>
-    <lastBuildDate>Mon, 23 Nov 2026 06:30:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 17:30:00 +0000</lastBuildDate>
     <pubDate>Fri, 06 Nov 2026 10:00:00 +0000</pubDate>
     <generator>PINtPOINT hand-maintained RSS</generator>
     <ttl>60</ttl>
@@ -18,6 +18,16 @@
       <title>PINtPRESS</title>
       <link>https://pintpoint.co.uk/blog/</link>
     </image>
+    <item>
+      <title>Purl ahoy!</title>
+      <category>Essay</category>
+      <link>https://pintpoint.co.uk/blog/hot-beer.html</link>
+      <enclosure url="https://pintpoint.co.uk/blog/images/tiles/hot-beer-480.jpg" length="90886" type="image/jpeg" />
+      <guid isPermaLink="true">https://pintpoint.co.uk/blog/hot-beer.html</guid>
+      <pubDate>Thu, 26 Nov 2026 17:30:00 +0000</pubDate>
+      <dc:creator>PINtPOINT</dc:creator>
+      <description>Winter Warmer is a name, not a temperature. Purl was: beer heated nearly to boiling with gin, sugar and ginger, rowed out to the ships in the Pool of London before dawn, and still being filmed by British Path&#233; in 1958.</description>
+    </item>
     <item>
       <title>The Return Crossing</title>
       <category>Essay</category>
