@@ -119,6 +119,18 @@ if ! python3 "$(dirname "$0")/check-promoted-page.py" "${POST_FILE}"; then
   GUARD_FAIL=1
 fi
 
+# 4b. The X title bar lands on the card. X draws its own bar across the foot of
+#     a summary_large_image and fills it from twitter:title, so anything the
+#     artwork already prints down there is rendered underneath it. Nothing in
+#     the file is wrong and nothing shows until the post is live, which is how
+#     the purl card went out on 26 November 2026 with the bar sitting across
+#     its sub-line. X caches a card on first scrape, so there is no fixing it
+#     after the fact: it has to be caught here or not at all.
+if ! python3 "$(dirname "$0")/check-card-safe-zone.py" "${POST_FILE}"; then
+  echo "❌ Card guard failed: the X title bar will land on the card's own text."
+  GUARD_FAIL=1
+fi
+
 # 5. The FAQ exists twice on a page carrying one: once for the reader and once
 #    in JSON-LD. Only the visible copy is visible while you edit, so the hidden
 #    one drifts silently and keeps answering with text the page has retracted.
