@@ -88,7 +88,7 @@
    ],
    "proof_file": "blog/september-is-oktoberfest.html",
    "note": "Fits neither 1953 nor 1990",
-   "context": "(m[a\u00e4]rzen|festbier|munich|wiesn)",
+   "context": "(m[aä]rzen|festbier|munich|wiesn)",
    "id": "september-04",
    "retired_in_subject": "Oktoberfest: the thesis was overstated, in three posts at once"
   },
@@ -133,7 +133,7 @@
     "blog/page-*.html"
    ],
    "proof_file": "blog/oktoberfest-first-giant-tent.html",
-   "note": "Old lede: nobody is shown paying them; strawmen for M\u00fcnchner Kindl",
+   "note": "Old lede: nobody is shown paying them; strawmen for Münchner Kindl",
    "id": "oktoberfest-06",
    "retired_in_subject": "Giant tent: the lede contradicted the body, and the Sources block goes"
   },
@@ -1033,6 +1033,37 @@
    ],
    "proof_file": "blog/the-return-crossing.html",
    "note": "Sheffield University's obituary of Dave Wickett calls Kelham Island the city's first new brewery in over 100 years and we repeated it. Wrong twice: Sheffield had openings in between, and the gap is not a hundred years. Sheffield CAMRA's own branch site says first new INDEPENDENT brewery in Sheffield for over fifty years, in Beer Matters 500 (Aug 2019) and again in the closure notice of May 2022. That is the safe form, linked at the claim."
+  },
+  {
+   "post": "celeb-owned-pubs-worth-a-pint",
+   "string": "namechecked it in Our Mutual Friend",
+   "retired_in": "d816d20e",
+   "files": [
+    "blog/celeb-owned-pubs-worth-a-pint.html",
+    "llms-full.txt"
+   ],
+   "proof_file": "blog/celeb-owned-pubs-worth-a-pint.html",
+   "note": "Dickens never names the Grapes. The novel's pub is the Six Jolly Fellowship Porters; the Grapes is the building tradition attaches to it. Checked against the Illinois scans of Books One to Three, ~270k words, zero hits for Grapes. Book Four's scan would not serve.",
+   "id": "grapes-01",
+   "retired_in_subject": "blog: the Grapes is not named in Our Mutual Friend"
+  },
+  {
+   "post": "celeb-owned-pubs-worth-a-pint",
+   "string": "Dickens-listed Thames boozer",
+   "retired_in": "d816d20e",
+   "files": [
+    "blog/celeb-owned-pubs-worth-a-pint.html",
+    "blog/feed.xml",
+    "feed.xml",
+    "_data/blog-archive.json",
+    "blog/index.html",
+    "blog/archive.html",
+    "llms-full.txt"
+   ],
+   "proof_file": "blog/celeb-owned-pubs-worth-a-pint.html",
+   "note": "Weaker twin of the same claim, in the page meta, the JSON-LD, the feed and the archive corpus. Replaced with 'Limehouse Thames boozer'.",
+   "id": "grapes-02",
+   "retired_in_subject": "blog: the Grapes is not named in Our Mutual Friend"
   }
  ],
  "allowlist": []
