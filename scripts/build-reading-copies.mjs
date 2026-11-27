@@ -38,7 +38,7 @@ const RELEASED = new Map([
   ['asked',  'nobody-asked-for-most-of-it'],
   ['dickens', 'dickens-drank-here'],
   ['hogarth', 'the-beer-in-the-picture'],
-  ['xmas',   'father-christmas-five-hundred-gallons'],
+  ['xmas',   'a-cask-called-father-christmas'],
   ['oldtom', 'not-named-after-the-cat'],
 ]);
 
