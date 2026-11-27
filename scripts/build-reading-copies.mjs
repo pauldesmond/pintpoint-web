@@ -36,7 +36,10 @@ const RELEASED = new Map([
   ['1779',   'established-1779'],
   ['six',    'everything-good-starts-at-six'],
   ['asked',  'nobody-asked-for-most-of-it'],
-  ['purl',   'hot-beer'],
+  ['dickens', 'dickens-drank-here'],
+  ['hogarth', 'the-beer-in-the-picture'],
+  ['xmas',   'father-christmas-five-hundred-gallons'],
+  ['oldtom', 'not-named-after-the-cat'],
 ]);
 
 /* Drafts cross-link each other at the address the piece WILL have. That is a
@@ -72,6 +75,15 @@ for (const [name, slug] of RELEASED) {
   // than the editorial ([[editorial-not-the-newsroom]]). Strip the lot, then
   // add the one note that belongs on a copy.
   html = html.replace(/<!--[\s\S]*?-->\s*/g, '');
+  // Since November 2026 the drafts carry that same material in a visible
+  // amber .draft-note block instead of a comment: open checks, what is
+  // unverified, what must not creep back in. Identical reasoning, so strip
+  // the block and the rules that style it. A reading copy keeps the DRAFT
+  // byline, which tells a reader what they are holding, and loses the
+  // working list, which is ours.
+  html = html.replace(/\s*<div class="draft-note">[\s\S]*?<\/div>\s*/g, '\n\n    ');
+  html = html.replace(/\s*\/\* Draft only[\s\S]*?\*\/\s*/g, '\n');
+  html = html.replace(/\s*\.draft-note[^{]*\{[^}]*\}/g, '');
   // Article-relative assets (src="images/x.jpg") resolve against /blog/ on the
   // real page and against /r/<name>/ here, where there is no images folder.
   // Root-relative keeps one copy of the file serving both addresses.
