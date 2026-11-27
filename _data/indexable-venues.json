@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-26",
- "count": 1284,
+ "generated_at": "2026-11-27",
+ "count": 1275,
  "venues": [
   {
    "slug": "le-bettignies-bbp-lille-lille",
@@ -91,14 +91,6 @@
    "kind": "live"
   },
   {
-   "slug": "the-purple-dog-colchester",
-   "name": "The Purple Dog",
-   "city": "Colchester",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "gamma-nv-k-benhavn",
    "name": "Gamma NV",
    "city": "København",
@@ -160,14 +152,6 @@
    "city": "Aarhus C",
    "country_code": "DK",
    "country_name": "Denmark",
-   "kind": "live"
-  },
-  {
-   "slug": "ship-inn-exeter",
-   "name": "Ship Inn",
-   "city": "Exeter",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
@@ -331,14 +315,6 @@
    "kind": "live"
   },
   {
-   "slug": "ye-three-lords-london",
-   "name": "Ye Three Lords",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "the-endeavour-chelmsford",
    "name": "The Endeavour",
    "city": "Chelmsford",
@@ -470,14 +446,6 @@
    "slug": "wip-lichfield",
    "name": "WIP",
    "city": "Lichfield",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "the-maghera-inn-castlewellan",
-   "name": "The Maghera Inn",
-   "city": "Castlewellan",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -723,14 +691,6 @@
    "kind": "live"
   },
   {
-   "slug": "la-mousse-touch-lille",
-   "name": "La Mousse Touch'",
-   "city": "Lille",
-   "country_code": "FR",
-   "country_name": "France",
-   "kind": "live"
-  },
-  {
    "slug": "founders-hall-manchester",
    "name": "Founder's Hall",
    "city": "Manchester",
@@ -848,14 +808,6 @@
    "city": "Lille",
    "country_code": "FR",
    "country_name": "France",
-   "kind": "live"
-  },
-  {
-   "slug": "the-craft-beer-cabin-br1-bromley",
-   "name": "The Craft Beer Cabin BR1",
-   "city": "Bromley",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
@@ -990,6 +942,14 @@
    "slug": "grover-and-allen-jd-wetherspoon-sudbury",
    "name": "Grover & Allen - JD Wetherspoon",
    "city": "Sudbury",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "the-sir-alexander-fleming-wetherspoon-paddington",
+   "name": "The Sir Alexander Fleming (Wetherspoon)",
+   "city": "Paddington",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -1211,14 +1171,6 @@
    "kind": "live"
   },
   {
-   "slug": "the-new-crown-wetherspoon-southgate",
-   "name": "The New Crown (Wetherspoon)",
-   "city": "Southgate",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "the-pommelers-rest-wetherspoon-london",
    "name": "The Pommelers Rest (Wetherspoon)",
    "city": "London",
@@ -1246,22 +1198,6 @@
    "slug": "the-briar-rose-birmingham",
    "name": "The Briar Rose",
    "city": "Birmingham",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "the-sir-christopher-hatton-london",
-   "name": "The Sir Christopher Hatton",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "grants-bar-accrington",
-   "name": "Grants Bar",
-   "city": "Accrington",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -2275,6 +2211,14 @@
    "kind": "live"
   },
   {
+   "slug": "the-woolpack-chelmsford",
+   "name": "The Woolpack",
+   "city": "Chelmsford",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-old-bank-of-england-london",
    "name": "The Old Bank of England",
    "city": "London",
@@ -2454,22 +2398,6 @@
    "slug": "the-vine-cheltenham",
    "name": "The Vine",
    "city": "Cheltenham",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "garagar-donostia-san-sebasti-n",
-   "name": "Garagar",
-   "city": "Donostia / San Sebastián",
-   "country_code": "ES",
-   "country_name": "Spain",
-   "kind": "live"
-  },
-  {
-   "slug": "double-locks-exeter",
-   "name": "Double Locks",
-   "city": "Exeter",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -3243,14 +3171,6 @@
    "kind": "live"
   },
   {
-   "slug": "the-anchor-london",
-   "name": "The Anchor",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "anchor-and-hops-warrington",
    "name": "Anchor & Hops",
    "city": "Warrington",
@@ -3360,14 +3280,6 @@
    "city": "Montréal",
    "country_code": "CA",
    "country_name": "Canada",
-   "kind": "live"
-  },
-  {
-   "slug": "munich-cricket-club-london",
-   "name": "Munich Cricket Club",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
@@ -4107,14 +4019,6 @@
    "kind": "live"
   },
   {
-   "slug": "missing-link-brewing-east-grinstead",
-   "name": "Missing Link Brewing",
-   "city": "East Grinstead",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "the-enterprise-london",
    "name": "The Enterprise",
    "city": "London",
@@ -4342,6 +4246,14 @@
    "slug": "brewhouse-and-kitchen-chester",
    "name": "Brewhouse & Kitchen",
    "city": "Chester",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "the-tuppenny-swindon",
+   "name": "The Tuppenny",
+   "city": "Swindon",
    "country_code": "GB",
    "country_name": "United Kingdom",
    "kind": "live"
@@ -4723,14 +4635,6 @@
    "kind": "live"
   },
   {
-   "slug": "the-jackalope-london",
-   "name": "The Jackalope",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
    "slug": "off-the-wall-craft-beer-and-wine-honolulu",
    "name": "Off the Wall Craft Beer & Wine",
    "city": "Honolulu",
@@ -5075,8 +4979,24 @@
    "kind": "live"
   },
   {
+   "slug": "red-lion-london",
+   "name": "Red Lion",
+   "city": "London",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-ship-london",
    "name": "The Ship",
+   "city": "London",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
+   "slug": "the-bull-and-the-hide-london",
+   "name": "The Bull and The Hide",
    "city": "London",
    "country_code": "GB",
    "country_name": "United Kingdom",
@@ -5179,6 +5099,14 @@
    "kind": "live"
   },
   {
+   "slug": "the-bolter-london",
+   "name": "The Bolter",
+   "city": "London",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-bishops-finger-london",
    "name": "The Bishops Finger",
    "city": "London",
@@ -5243,6 +5171,14 @@
    "kind": "live"
   },
   {
+   "slug": "horseshoe-inn-london",
+   "name": "Horseshoe Inn",
+   "city": "London",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-albion-london",
    "name": "The Albion",
    "city": "London",
@@ -5277,14 +5213,6 @@
   {
    "slug": "viaduct-tavern-london",
    "name": "Viaduct Tavern",
-   "city": "London",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
-   "kind": "live"
-  },
-  {
-   "slug": "betsey-trotwood-london",
-   "name": "Betsey Trotwood",
    "city": "London",
    "country_code": "GB",
    "country_name": "United Kingdom",
