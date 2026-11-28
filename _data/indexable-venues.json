@@ -1267,6 +1267,14 @@
    "kind": "live"
   },
   {
+   "slug": "the-potters-newport",
+   "name": "The Potters",
+   "city": "Newport",
+   "country_code": "GB",
+   "country_name": "United Kingdom",
+   "kind": "live"
+  },
+  {
    "slug": "the-gardeners-arms-lewes",
    "name": "The Gardeners Arms",
    "city": "Lewes",
@@ -4616,14 +4624,6 @@
    "city": "Arlington",
    "country_code": "US",
    "country_name": "United States of America",
-   "kind": "live"
-  },
-  {
-   "slug": "red-lion-wirksworth",
-   "name": "Red Lion",
-   "city": "Wirksworth",
-   "country_code": "GB",
-   "country_name": "United Kingdom",
    "kind": "live"
   },
   {
