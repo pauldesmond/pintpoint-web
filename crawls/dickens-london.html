@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index,follow" />
+  <title>The Dickens crawl &mdash; five London pubs, and what each claim is worth</title>
+  <meta name="description" content="The five pubs every Dickens crawl visits, walked in order from the City to Southwark, with the evidence for each claim set out. One of the five has a visit Dickens described himself. The most famous has the thinnest case." />
+  <link rel="canonical" href="https://pintpoint.co.uk/crawls/dickens-london.html" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://pintpoint.co.uk/crawls/dickens-london.html" />
+  <meta property="og:title" content="The Dickens crawl &mdash; five London pubs, and what each claim is worth" />
+  <meta property="og:description" content="From the City to Southwark, about four miles. One documented visit, one pub that appears in none of the books, and three in between." />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d1117; --teal: #00D4AA; --text: #ffffff; --muted: #8b949e; --card: #161b22; --border: rgba(255,255,255,0.08); --accent: #FF7A45; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 40px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--teal); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: var(--text); }
+    .content { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
+    .meta { font-size: 0.8rem; color: #666; margin-bottom: 16px; letter-spacing: 0.3px; }
+    .category { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-right: 8px; color: #FFD580; border: 1px solid rgba(255,213,128,0.4); }
+    h1 { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 12px; }
+    .lede { font-size: 1.05rem; color: var(--text); line-height: 1.75; margin-bottom: 32px; }
+    p { font-size: 0.97rem; line-height: 1.7; color: var(--text); margin-bottom: 14px; }
+    a { color: var(--teal); }
+    h2.turn { font-size: 1.2rem; font-weight: 800; margin: 36px 0 14px; color: var(--text); }
+
+    /* Same furniture as the Lewes crawl: a left bar AND an uppercase label
+       AND its own border, so it reads as a caution without anyone having to
+       see that the bar is orange. */
+    .warn { margin: 28px 0 36px; padding: 20px 22px; background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px; }
+    .warn .eyebrow { font-size: 0.72rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .warn p:last-child { margin-bottom: 0; }
+
+    .stops { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 0 0 32px; }
+    .stop { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; }
+    .stop .num { font-size: 1.4rem; font-weight: 900; color: var(--teal); line-height: 1.1; }
+    .stop .body { min-width: 0; }
+    .stop .name { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .stop .addr { font-size: 0.82rem; color: #666; margin-bottom: 10px; }
+    .stop p { margin-bottom: 8px; }
+    .stop .go { font-size: 0.85rem; margin-bottom: 0; }
+
+    /* The verdict line is the point of this page, so it is labelled rather
+       than left to tone of voice. */
+    .stop .verdict { font-size: 0.82rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+
+    .open-app { margin: 40px 0 0; padding: 24px 28px; background: linear-gradient(135deg, rgba(0,212,170,0.08), rgba(0,212,170,0.02)); border: 1px solid rgba(0,212,170,0.3); border-radius: 12px; }
+    .open-app h2 { font-size: 1.2rem; font-weight: 800; color: var(--teal); margin-bottom: 10px; }
+    .open-app p:last-child { margin-bottom: 0; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 24px 48px; text-align: center; }
+    footer .links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+    footer a { color: var(--muted); text-decoration: none; font-size: 0.88rem; }
+    footer a:hover { color: var(--text); }
+    footer p { font-size: 0.8rem; color: #666; margin: 0; }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .content { padding: 32px 18px 64px; }
+      .stop { grid-template-columns: 30px 1fr; padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary">
+    <a href="../index.html" class="logo">PINt<span>POINT</span></a>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../blog/">Blog</a>
+      <a href="../collections/">Collections</a>
+      <a href="../features.html">Features</a>
+      <a href="../screenshots.html">Screenshots</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <p class="meta"><span class="category">Crawl</span>London, City to Southwark</p>
+    <h1>The Dickens crawl</h1>
+
+    <p class="lede">Five pubs, about four miles, from an alley off Cornhill to a galleried yard on Borough High Street. These are the houses every Dickens walk visits, in the order the ground suggests. What the brass plates say and what the record supports are two different things, so each stop below carries both.</p>
+
+    <div class="warn">
+      <p class="eyebrow">The short version</p>
+      <p>One of these five has a visit Dickens described in his own words. One appears in none of the books about him at all. The most famous of them has the thinnest case of the lot.</p>
+      <p>None of that is an argument against the walk. They are five good pubs and two are among the best buildings left in London. It is an argument against believing the plaque on the way in.</p>
+    </div>
+
+    <h2 class="turn">The five</h2>
+
+    <div class="stops">
+      <div class="stop">
+        <div class="num">1</div>
+        <div class="body">
+          <div class="name">The George &amp; Vulture</div>
+          <div class="addr">3 Castle Court, EC3V 9DL</div>
+          <div class="verdict">A house in a novel</div>
+          <p>Mr Pickwick&rsquo;s headquarters, and B. W. Matz, who wrote the standard books on Dickensian inns, treats it as exactly that. Across four period books there is no claim that Dickens himself drank here. The floor shown to visitors is the floor tradition has decided was Mr Pickwick&rsquo;s bedroom.</p>
+          <p>A beautiful pub in an alley off Cornhill all the same. Note that there is a second George and Vulture in Hoxton: this is not it.</p>
+          <p class="go"><a href="/pubs/george-and-vulture-london">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">2</div>
+        <div class="body">
+          <div class="name">Ye Olde Cheshire Cheese</div>
+          <div class="addr">145 Fleet Street, EC4A 2BU</div>
+          <div class="verdict">Famous, and the thinnest case here</div>
+          <p>Matz, in 1922, could not find it in the books at all. Never mentioned in any one of Dickens&rsquo;s books by name, he writes, nor alluded to or described under an assumed name. He adds that it is known Dickens visited, and offers no letter, no diary and no Forster for it. What he produces is a menu card showing Dickens and Thackeray at a table, which is a souvenir rather than a source.</p>
+          <p>A warren of dark rooms off Fleet Street, and worth the stop on its own account.</p>
+          <p class="go"><a href="/pubs/ye-olde-cheshire-cheese-london">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">3</div>
+        <div class="body">
+          <div class="name">Lamb &amp; Flag</div>
+          <div class="addr">3 Rose Street, WC2E 9EB</div>
+          <div class="verdict">Nothing at all, and go anyway</div>
+          <p>It appears in neither of Matz&rsquo;s books, nor in Hughes in 1891, nor in Miltoun in 1903. The negative is checked in all four.</p>
+          <p>It is a lovely pub, and that is reason enough to drink in it.</p>
+          <p class="go"><a href="/pubs/lamb-and-flag-london">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">4</div>
+        <div class="body">
+          <div class="name">The Red Lion</div>
+          <div class="addr">48 Parliament Street, SW1A 2NH</div>
+          <div class="verdict">The one he described himself</div>
+          <p>In <em>David Copperfield</em> a small boy puts his money on the counter and asks for a glass of the Genuine Stunning. The landlord calls his wife, she opens the half-door of the bar, gives the boy his money back and kisses him.</p>
+          <p>It happened to Dickens, in the blacking-factory years, and he said so himself in the account Forster printed in his <em>Life</em>. He does not name the house. He describes it, at the corner of the short street leading into Cannon Row, and Matz identifies this one from the description. The building he walked into came down in 1899; there is a bust of him in a niche on the one that replaced it.</p>
+          <p class="go"><a href="/pubs/red-lion-whitehall-london">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="num">5</div>
+        <div class="body">
+          <div class="name">The George Inn</div>
+          <div class="addr">75 Borough High Street, SE1 1NH</div>
+          <div class="verdict">Where Matz loses patience</div>
+          <p>The legend is that the George is the original of the White Hart in <em>Pickwick</em>. Matz goes through it, rejects it, and on the writer who pointed out the seat Dickens used to sit in as a boy in Lant Street says flatly that it is sheer nonsense.</p>
+          <p>Then he is scrupulous about what survives. Dickens may have known the house as a boy and was unlikely to have frequented it; in later years he may well have visited, and the hostess told Matz so on the authority of a carman who said he had chatted with him. Thin, and honestly thin.</p>
+          <p>The galleries are the thing. The last galleried coaching inn in London, with its outside wooden galleries still standing, which is a better fact than any of the stories.</p>
+          <p class="go"><a href="/pubs/the-george-inn-london">Open in PINtPOINT &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="turn">Walking it</h2>
+
+    <p>The order above runs west and then south: Cornhill to Fleet Street, Fleet Street to Covent Garden, Covent Garden down Whitehall, then over the river to Southwark. About four miles with the river crossing at the end, and every leg of it walkable in twenty minutes or so.</p>
+
+    <p>Two of the five keep City hours rather than pub hours, so a weekday walk is a different proposition from a Saturday one. Check before you set out, and start early if you want the George and Vulture open.</p>
+
+    <!-- The essay this page draws on, blog/dickens-drank-here.html, is still
+         a draft. This page is index,follow, so the link waits until the piece
+         publishes rather than shipping a 404 to a crawler. Restore then:
+         <p>The long version of all this, with the quotations and what was cut
+         for want of a source, is in our essay <a href="/blog/dickens-drank-here.html">Dickens drank here</a>.</p> -->
+
+    <section class="open-app">
+      <h2>Walk it in the app</h2>
+      <p>Every stop above links to its page in <strong>PINtPOINT</strong>, where you can see what has been seen on tap there recently and how far it is from wherever you are standing.</p>
+      <p>Tap lists move. On the day, check the app rather than this page.</p>
+    </section>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="../index.html">PINtPOINT</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about-pintpoint.html">About</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </div>
+    <p>&copy; 2026 PINtPOINT &middot; Find the right pub before the first pint.</p>
+  </footer>
+  <!-- Cloudflare Web Analytics - cookieless, no consent banner required. -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "6971c676a791477aa5c33ef62298efc0"}'></script>
+  <script defer src="/js/pageview.js"></script>
+</body>
+</html>
