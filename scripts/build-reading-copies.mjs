@@ -40,13 +40,23 @@ const RELEASED = new Map([
   ['hogarth', 'the-beer-in-the-picture'],
   ['xmas',   'a-cask-called-father-christmas'],
   ['oldtom', 'not-named-after-the-cat'],
+  ['albion', 'he-thought-he-made-it-up'],
 ]);
 
 /* Drafts cross-link each other at the address the piece WILL have. That is a
    404 until it publishes, so inside a reading copy those links point at the
-   other reading copy instead. */
-const REWRITE = [...RELEASED].map(([name, slug]) => [
-  `https://pintpoint.co.uk/blog/${slug}.html`, `https://pintpoint.co.uk/r/${name}/`,
+   other reading copy instead.
+
+   BOTH FORMS, and the root-relative one is the form that actually occurs.
+   Until 28 November 2026 this list held only the absolute address, while
+   every cross-link in every draft is written href="/blog/<slug>.html". So
+   nothing was ever rewritten, and /r/dickens/, /r/hogarth/ and /r/oldtom/
+   each sent a reader clicking back to the Christmas piece to a 404. The
+   series reads as wired from the drafts and was broken in the copies, which
+   is the surface Paul actually reviews. */
+const REWRITE = [...RELEASED].flatMap(([name, slug]) => [
+  [`https://pintpoint.co.uk/blog/${slug}.html`, `https://pintpoint.co.uk/r/${name}/`],
+  [`"/blog/${slug}.html"`, `"/r/${name}/"`],
 ]);
 
 let changed = 0, stale = [];
