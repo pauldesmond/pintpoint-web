@@ -40,7 +40,7 @@ const RELEASED = new Map([
   ['hogarth', 'the-beer-in-the-picture'],
   ['xmas',   'a-cask-called-father-christmas'],
   ['oldtom', 'not-named-after-the-cat'],
-  ['albion', 'he-thought-he-made-it-up'],
+  ['albion', 'the-golden-hind-a-boots-kit-and-a-plastic-dustbin'],
 ]);
 
 /* Drafts cross-link each other at the address the piece WILL have. That is a
